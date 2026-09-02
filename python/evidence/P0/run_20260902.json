@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-09-02T21:15:22Z",
+  "milestone": "P0",
+  "description": "Arithmetic kernel \u2014 verify crazy operation and interpreter determinism",
+  "tests": [
+    {
+      "name": "crazy_operation_verification",
+      "description": "Verify crazy(a,b) produces expected results for known inputs",
+      "results": {
+        "crazy(0,0)": {
+          "a": 0,
+          "b": 0,
+          "result": 29524
+        },
+        "crazy(1,0)": {
+          "a": 1,
+          "b": 0,
+          "result": 29523
+        },
+        "crazy(0,1)": {
+          "a": 0,
+          "b": 1,
+          "result": 29524
+        },
+        "crazy(1,1)": {
+          "a": 1,
+          "b": 1,
+          "result": 29523
+        },
+        "crazy(2,3)": {
+          "a": 2,
+          "b": 3,
+          "result": 29523
+        },
+        "crazy(33,33)": {
+          "a": 33,
+          "b": 33,
+          "result": 29497
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "hello_world_baseline",
+      "description": "Run canonical Hello World program as baseline",
+      "command": "py malbolge_interpreter.py",
+      "input_sha256": "3f98ae21fc3e19978822e693c6a0cdaf74f2ce997b13400c31fe110bf499b25b",
+      "output": "Hello, world.",
+      "steps": 48,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "determinism_check",
+      "description": "Run same program 3 times, verify identical output",
+      "runs": [
+        {
+          "run": 1,
+          "output": "Hello, world.",
+          "steps": 48,
+          "status": "HALTED",
+          "wall_time_ms": 64
+        },
+        {
+          "run": 2,
+          "output": "Hello, world.",
+          "steps": 48,
+          "status": "HALTED",
+          "wall_time_ms": 59
+        },
+        {
+          "run": 3,
+          "output": "Hello, world.",
+          "steps": 48,
+          "status": "HALTED",
+          "wall_time_ms": 58
+        }
+      ],
+      "all_identical": true,
+      "verdict": "PASS"
+    }
+  ],
+  "summary": {
+    "crazy_operation": "DEMONSTRATED \u2014 lookup table produces deterministic results",
+    "interpreter_execution": "DEMONSTRATED \u2014 Hello World runs in 48 steps",
+    "determinism": "DEMONSTRATED \u2014 3 identical runs",
+    "general_addition": "NOT_DEMONSTRATED \u2014 Malbolge has no native add instruction",
+    "arithmetic_via_crazy": "PARTIALLY_DEMONSTRATED \u2014 crazy is arithmetic-like but not general addition"
+  },
+  "runtime": {
+    "name": "malbolge-interpreter-py",
+    "source": "<ISYCO_ROOT>/workspace/assembly/malbolge/malbolge_interpreter.py",
+    "variant": "original"
+  }
+}

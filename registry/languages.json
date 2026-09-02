@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-02",
+  "languages": [
+    {
+      "id": "python",
+      "target_artifact": "python.mb",
+      "target_kind": "language_interpreter",
+      "malbolge_variant": "unshackled",
+      "status": "research",
+      "host_compiler_allowed": true,
+      "self_hosted_parser": false,
+      "runtime_demonstrated": false,
+      "highest_milestone": null,
+      "milestones_completed": [],
+      "notes": "Primary track. Malbolge Unshackled target. pyMalbolge (Python→Malbolge20 compiler) is prior art but targets different variant."
+    },
+    {
+      "id": "swift",
+      "target_artifact": "swift.mb",
+      "target_kind": "language_interpreter",
+      "malbolge_variant": "unshackled",
+      "status": "not_started",
+      "host_compiler_allowed": true,
+      "self_hosted_parser": false,
+      "runtime_demonstrated": false,
+      "highest_milestone": null,
+      "milestones_completed": [],
+      "notes": "Placeholder. No research begun."
+    },
+    {
+      "id": "rust",
+      "target_artifact": "rust.mb",
+      "target_kind": "language_interpreter",
+      "malbolge_variant": "unshackled",
+      "status": "not_started",
+      "host_compiler_allowed": true,
+      "self_hosted_parser": false,
+      "runtime_demonstrated": false,
+      "highest_milestone": null,
+      "milestones_completed": [],
+      "notes": "Placeholder. No research begun."
+    },
+    {
+      "id": "java",
+      "target_artifact": "java.mb",
+      "target_kind": "language_interpreter",
+      "malbolge_variant": "unshackled",
+      "status": "not_started",
+      "host_compiler_allowed": true,
+      "self_hosted_parser": false,
+      "runtime_demonstrated": false,
+      "highest_milestone": null,
+      "milestones_completed": [],
+      "notes": "Placeholder. No research begun."
+    },
+    {
+      "id": "c",
+      "target_artifact": "c.mb",
+      "target_kind": "language_interpreter",
+      "malbolge_variant": "unshackled",
+      "status": "not_started",
+      "host_compiler_allowed": true,
+      "self_hosted_parser": false,
+      "runtime_demonstrated": false,
+      "highest_milestone": null,
+      "milestones_completed": [],
+      "notes": "Placeholder. No research begun."
+    }
+  ]
+}

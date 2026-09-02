@@ -1,0 +1,460 @@
+{
+  "timestamp": "2026-09-02T21:15:47Z",
+  "milestone": "P0",
+  "description": "Hello World trace \u2014 demonstrates crazy operation as arithmetic primitive",
+  "program": "(=<`#9]~6ZY327Uv4-QsqpMn&+Ij\"'E%e{Ab~w=_:]Kw%o44Uqp0/Q?xNvL:`H%c#DD2^WV>gY;dts76qKJImZkj",
+  "program_sha256": "3f98ae21fc3e19978822e693c6a0cdaf74f2ce997b13400c31fe110bf499b25b",
+  "output": "Hello, world.",
+  "steps": 48,
+  "status": "HALTED",
+  "trace_first_60": [
+    {
+      "step": 1,
+      "a": 0,
+      "c": 0,
+      "d": 0,
+      "op": 40,
+      "cell": 40,
+      "op_name": "mov"
+    },
+    {
+      "step": 2,
+      "a": 0,
+      "c": 1,
+      "d": 41,
+      "op": 62,
+      "cell": 61,
+      "op_name": "crazy"
+    },
+    {
+      "step": 3,
+      "a": 29524,
+      "c": 2,
+      "d": 42,
+      "op": 62,
+      "cell": 60,
+      "op_name": "crazy"
+    },
+    {
+      "step": 4,
+      "a": 72,
+      "c": 3,
+      "d": 43,
+      "op": 5,
+      "cell": 96,
+      "op_name": "out"
+    },
+    {
+      "step": 5,
+      "a": 72,
+      "c": 4,
+      "d": 44,
+      "op": 39,
+      "cell": 35,
+      "op_name": "rot"
+    },
+    {
+      "step": 6,
+      "a": 19695,
+      "c": 5,
+      "d": 45,
+      "op": 62,
+      "cell": 57,
+      "op_name": "crazy"
+    },
+    {
+      "step": 7,
+      "a": 9829,
+      "c": 6,
+      "d": 46,
+      "op": 5,
+      "cell": 93,
+      "op_name": "out"
+    },
+    {
+      "step": 8,
+      "a": 9829,
+      "c": 7,
+      "d": 47,
+      "op": 39,
+      "cell": 126,
+      "op_name": "rot"
+    },
+    {
+      "step": 9,
+      "a": 19700,
+      "c": 8,
+      "d": 48,
+      "op": 62,
+      "cell": 54,
+      "op_name": "crazy"
+    },
+    {
+      "step": 10,
+      "a": 9836,
+      "c": 9,
+      "d": 49,
+      "op": 5,
+      "cell": 90,
+      "op_name": "out"
+    },
+    {
+      "step": 11,
+      "a": 9836,
+      "c": 10,
+      "d": 50,
+      "op": 5,
+      "cell": 89,
+      "op_name": "out"
+    },
+    {
+      "step": 12,
+      "a": 9836,
+      "c": 11,
+      "d": 51,
+      "op": 62,
+      "cell": 51,
+      "op_name": "crazy"
+    },
+    {
+      "step": 13,
+      "a": 19707,
+      "c": 12,
+      "d": 52,
+      "op": 62,
+      "cell": 50,
+      "op_name": "crazy"
+    },
+    {
+      "step": 14,
+      "a": 9839,
+      "c": 13,
+      "d": 53,
+      "op": 68,
+      "cell": 55,
+      "op_name": "nop"
+    },
+    {
+      "step": 15,
+      "a": 9839,
+      "c": 14,
+      "d": 54,
+      "op": 5,
+      "cell": 85,
+      "op_name": "out"
+    },
+    {
+      "step": 16,
+      "a": 9839,
+      "c": 15,
+      "d": 55,
+      "op": 39,
+      "cell": 118,
+      "op_name": "rot"
+    },
+    {
+      "step": 17,
+      "a": 40,
+      "c": 16,
+      "d": 56,
+      "op": 68,
+      "cell": 52,
+      "op_name": "nop"
+    },
+    {
+      "step": 18,
+      "a": 40,
+      "c": 17,
+      "d": 57,
+      "op": 62,
+      "cell": 45,
+      "op_name": "crazy"
+    },
+    {
+      "step": 19,
+      "a": 29484,
+      "c": 18,
+      "d": 58,
+      "op": 5,
+      "cell": 81,
+      "op_name": "out"
+    },
+    {
+      "step": 20,
+      "a": 29484,
+      "c": 19,
+      "d": 59,
+      "op": 40,
+      "cell": 115,
+      "op_name": "mov"
+    },
+    {
+      "step": 21,
+      "a": 29484,
+      "c": 20,
+      "d": 59,
+      "op": 39,
+      "cell": 113,
+      "op_name": "rot"
+    },
+    {
+      "step": 22,
+      "a": 19702,
+      "c": 21,
+      "d": 60,
+      "op": 39,
+      "cell": 112,
+      "op_name": "rot"
+    },
+    {
+      "step": 23,
+      "a": 32,
+      "c": 22,
+      "d": 61,
+      "op": 5,
+      "cell": 77,
+      "op_name": "out"
+    },
+    {
+      "step": 24,
+      "a": 32,
+      "c": 23,
+      "d": 62,
+      "op": 39,
+      "cell": 110,
+      "op_name": "rot"
+    },
+    {
+      "step": 25,
+      "a": 19695,
+      "c": 24,
+      "d": 63,
+      "op": 62,
+      "cell": 38,
+      "op_name": "crazy"
+    },
+    {
+      "step": 26,
+      "a": 9847,
+      "c": 25,
+      "d": 64,
+      "op": 68,
+      "cell": 43,
+      "op_name": "nop"
+    },
+    {
+      "step": 27,
+      "a": 9847,
+      "c": 26,
+      "d": 65,
+      "op": 5,
+      "cell": 73,
+      "op_name": "out"
+    },
+    {
+      "step": 28,
+      "a": 9847,
+      "c": 27,
+      "d": 66,
+      "op": 39,
+      "cell": 106,
+      "op_name": "rot"
+    },
+    {
+      "step": 29,
+      "a": 39388,
+      "c": 28,
+      "d": 67,
+      "op": 62,
+      "cell": 34,
+      "op_name": "crazy"
+    },
+    {
+      "step": 30,
+      "a": 9839,
+      "c": 29,
+      "d": 68,
+      "op": 68,
+      "cell": 39,
+      "op_name": "nop"
+    },
+    {
+      "step": 31,
+      "a": 9839,
+      "c": 30,
+      "d": 69,
+      "op": 5,
+      "cell": 69,
+      "op_name": "out"
+    },
+    {
+      "step": 32,
+      "a": 9839,
+      "c": 31,
+      "d": 70,
+      "op": 68,
+      "cell": 37,
+      "op_name": "nop"
+    },
+    {
+      "step": 33,
+      "a": 9839,
+      "c": 32,
+      "d": 71,
+      "op": 39,
+      "cell": 101,
+      "op_name": "rot"
+    },
+    {
+      "step": 34,
+      "a": 39386,
+      "c": 33,
+      "d": 72,
+      "op": 62,
+      "cell": 123,
+      "op_name": "crazy"
+    },
+    {
+      "step": 35,
+      "a": 9842,
+      "c": 34,
+      "d": 73,
+      "op": 5,
+      "cell": 65,
+      "op_name": "out"
+    },
+    {
+      "step": 36,
+      "a": 9842,
+      "c": 35,
+      "d": 74,
+      "op": 39,
+      "cell": 98,
+      "op_name": "rot"
+    },
+    {
+      "step": 37,
+      "a": 39385,
+      "c": 36,
+      "d": 75,
+      "op": 68,
+      "cell": 126,
+      "op_name": "nop"
+    },
+    {
+      "step": 38,
+      "a": 39385,
+      "c": 37,
+      "d": 76,
+      "op": 62,
+      "cell": 119,
+      "op_name": "crazy"
+    },
+    {
+      "step": 39,
+      "a": 9836,
+      "c": 38,
+      "d": 77,
+      "op": 5,
+      "cell": 61,
+      "op_name": "out"
+    },
+    {
+      "step": 40,
+      "a": 9836,
+      "c": 39,
+      "d": 78,
+      "op": 40,
+      "cell": 95,
+      "op_name": "mov"
+    },
+    {
+      "step": 41,
+      "a": 9836,
+      "c": 40,
+      "d": 56,
+      "op": 4,
+      "cell": 58,
+      "op_name": "jmp"
+    },
+    {
+      "step": 42,
+      "a": 9836,
+      "c": 79,
+      "d": 57,
+      "op": 39,
+      "cell": 54,
+      "op_name": "rot"
+    },
+    {
+      "step": 43,
+      "a": 9828,
+      "c": 80,
+      "d": 58,
+      "op": 5,
+      "cell": 113,
+      "op_name": "out"
+    },
+    {
+      "step": 44,
+      "a": 9828,
+      "c": 81,
+      "d": 59,
+      "op": 62,
+      "cell": 75,
+      "op_name": "crazy"
+    },
+    {
+      "step": 45,
+      "a": 19705,
+      "c": 82,
+      "d": 60,
+      "op": 62,
+      "cell": 74,
+      "op_name": "crazy"
+    },
+    {
+      "step": 46,
+      "a": 9830,
+      "c": 83,
+      "d": 61,
+      "op": 62,
+      "cell": 73,
+      "op_name": "crazy"
+    },
+    {
+      "step": 47,
+      "a": 19758,
+      "c": 84,
+      "d": 62,
+      "op": 5,
+      "cell": 109,
+      "op_name": "out"
+    },
+    {
+      "step": 48,
+      "a": 19758,
+      "c": 85,
+      "d": 63,
+      "op": 81,
+      "cell": 90,
+      "op_name": "end"
+    }
+  ],
+  "operation_counts": {
+    "mov": 3,
+    "crazy": 14,
+    "out": 13,
+    "rot": 10,
+    "nop": 6,
+    "jmp": 1,
+    "end": 1
+  },
+  "analysis": {
+    "crazy_used": true,
+    "output_used": true,
+    "rotation_used": true,
+    "computation_demonstrated": true,
+    "explanation": "Each output character passes through crazy(a, mem[d]) and rotation before being printed. The crazy operation IS the arithmetic primitive of Malbolge."
+  }
+}
