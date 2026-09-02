@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-09-02T22:04:19Z",
+  "milestone": "P1",
+  "description": "Minimal MalPy VM \u2014 stack machine with PUSH/ADD/OUT/HALT",
+  "vm_type": "stack_machine",
+  "opcodes": {
+    "0": "HALT",
+    "1": "PUSH",
+    "2": "ADD",
+    "3": "OUT"
+  },
+  "tests": [
+    {
+      "name": "2+3=5",
+      "bytecode_hex": "01020103020300",
+      "bytecode_size": 7,
+      "expected": "\u0005",
+      "observed": "\u0005",
+      "steps": 5,
+      "halted": true,
+      "verdict": "PASS"
+    },
+    {
+      "name": "3+4=7",
+      "bytecode_hex": "01030104020300",
+      "bytecode_size": 7,
+      "expected": "\u0007",
+      "observed": "\u0007",
+      "steps": 5,
+      "halted": true,
+      "verdict": "PASS"
+    },
+    {
+      "name": "10+20=30",
+      "bytecode_hex": "010a0114020300",
+      "bytecode_size": 7,
+      "expected": "\u001e",
+      "observed": "\u001e",
+      "steps": 5,
+      "halted": true,
+      "verdict": "PASS"
+    },
+    {
+      "name": "0+0=0",
+      "bytecode_hex": "01000100020300",
+      "bytecode_size": 7,
+      "expected": "\u0000",
+      "observed": "\u0000",
+      "steps": 5,
+      "halted": true,
+      "verdict": "PASS"
+    },
+    {
+      "name": "100+155=255",
+      "bytecode_hex": "0164019b020300",
+      "bytecode_size": 7,
+      "expected": "\u00ff",
+      "observed": "\u00ff",
+      "steps": 5,
+      "halted": true,
+      "verdict": "PASS"
+    }
+  ],
+  "vm_hash": "561f1095d295a2cf340bcafb1c73a06b2e720a5dead5b556be0916a8b3267ede",
+  "summary": {
+    "vm_executes_bytecode": true,
+    "same_vm_different_results": true,
+    "data_driven_execution": true,
+    "addition_via_bytecode": true,
+    "anti_fake_satisfied": true
+  },
+  "bytecodes": {
+    "fixture_1": "01020103020300",
+    "fixture_2": "01030104020300",
+    "fixture_3": "010a0114020300",
+    "fixture_4": "01000100020300",
+    "fixture_5": "0164019b020300"
+  }
+}

@@ -2,28 +2,37 @@
 
 Reproducible Malbolge execution environments.
 
-## Directory Structure
+## Currently Available
 
-```
-runners/
-├── malbolge-original/     ← 10-trit Classic (59049 cells)
-├── malbolge-unshackled/   ← 19-20 trit Unshackled (~1T cells)
-├── malbolge20/            ← Nagoya Malbolge20
-└── README.md              ← this file
-```
+| Runner | Variant | Status | Binary | SHA256 |
+|--------|---------|--------|--------|--------|
+| bolge19 | Unshackled (3^19) | BUILT | `malbolge-unshackled/bolge19.exe` | `58D0B5E8...` |
+| malbolge-engine | Original (3^10) | COPIED | `malbolge-original/malbolge.exe` | `9A7AD87E...` |
+| malbolge20 | Malbolge20 | NOT_AVAILABLE | — | — |
 
-## Runner Requirements
+## bolge19 (Unshackled)
 
-Every runner must document:
+- **Source**: `malbolge-lisp-forensics/src/bolge19/main.zig`
+- **License**: MIT
+- **Build**: `zig build-exe -O ReleaseFast main.zig -femit-bin=bolge19.exe`
+- **Platform**: Windows native (no Cygwin, no mmap)
+- **CLI**: `bolge19.exe <image.mb> [--max-steps N]`
+- **Verified**: MalbolgeLISP v1.2 boots, `(+ 1 2)` → `3`
 
-1. **Source**: Where the interpreter code came from
-2. **Version**: Exact version or commit hash
-3. **Build command**: How to compile it
-4. **Compiler**: Which compiler and version
-5. **Flags**: Compilation flags
-6. **SHA256**: Hash of the built binary
-7. **Platform**: OS and architecture requirements
-8. **Limitations**: Known issues or patches needed
+## malbolge-engine (Classic)
+
+- **Source**: `Malbolge-Engine/src/vm.c`
+- **License**: MIT
+- **Build**: `make`
+- **Platform**: Windows (pre-built exe)
+- **CLI**: `malbolge.exe <input.mb`
+- **IPC**: `malbolge-ipc.exe` (JSONL protocol)
+- **Limitation**: 3^10 only — cannot run Unshackled programs
+
+## Bootstrap Scripts
+
+- `tools/bootstrap_runners.ps1` — download/build all runners
+- `tools/runner_doctor.ps1` — verify runner integrity
 
 ## Acceptance Rule
 
@@ -33,27 +42,3 @@ A `.mb` file is not validated until:
 3. Steps/status are recorded
 4. SHA256 of the artifact is recorded
 5. Evidence JSON is produced
-
-## Currently Available
-
-| Runner | Status | Source | Notes |
-|--------|--------|--------|-------|
-| malbolge-original | NOT_AVAILABLE | — | Need to build from source |
-| malbolge-unshackled | NOT_AVAILABLE | — | Need fast20.c or bolge19 |
-| malbolge20 | NOT_AVAILABLE | — | Need Nagoya toolchain |
-
-## Building Runners
-
-### Original Malbolge (Python reference interpreter)
-
-From ISyCo `workspace/assembly/malbolge/malbolge_interpreter.py`:
-- Canonical Python interpreter
-- 59049 cells, 10-trit words
-- Verified against Wikipedia Hello World (48 steps)
-
-### Unshackled (fast20.c)
-
-Source: MalbolgeLISP repository or malbolge-lisp-forensics
-- `fast20.c` or `bolge19` (Zig)
-- Build: `clang -O3 -march=native fast20.c -o fast20`
-- Windows: may need `mprotect` patch instead of `mmap(MAP_FIXED)`

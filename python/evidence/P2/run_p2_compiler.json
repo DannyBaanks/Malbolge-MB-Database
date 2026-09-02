@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-09-02T22:04:19Z",
+  "milestone": "P2",
+  "description": "Python AST \u2192 MalPy bytecode \u2192 VM execution",
+  "compiler": "MalPyCompiler (ast.parse, no eval/exec)",
+  "vm_hash": "d958cb5c5320fe76",
+  "host_eval_exec": false,
+  "tests": [
+    {
+      "source": "print(2 + 3)",
+      "description": "basic addition",
+      "bytecode_hex": "01020103020300",
+      "bytecode_hash": "1cb2b6363b34d7ea",
+      "expected": "\u0005",
+      "observed": "\u0005",
+      "steps": 5,
+      "verdict": "PASS"
+    },
+    {
+      "source": "print(3 + 4)",
+      "description": "basic addition",
+      "bytecode_hex": "01030104020300",
+      "bytecode_hash": "8bab2ebf6b4dd076",
+      "expected": "\u0007",
+      "observed": "\u0007",
+      "steps": 5,
+      "verdict": "PASS"
+    },
+    {
+      "source": "print(10 + 20)",
+      "description": "double digits",
+      "bytecode_hex": "010a0114020300",
+      "bytecode_hash": "bda7495c3a07ada2",
+      "expected": "\u001e",
+      "observed": "\u001e",
+      "steps": 5,
+      "verdict": "PASS"
+    },
+    {
+      "source": "print(0 + 0)",
+      "description": "zero",
+      "bytecode_hex": "01000100020300",
+      "bytecode_hash": "424a3ec2fafbcab9",
+      "expected": "\u0000",
+      "observed": "\u0000",
+      "steps": 5,
+      "verdict": "PASS"
+    },
+    {
+      "source": "print(100 + 155)",
+      "description": "max value",
+      "bytecode_hex": "0164019b020300",
+      "bytecode_hash": "b6b31823fe388758",
+      "expected": "\u00ff",
+      "observed": "\u00ff",
+      "steps": 5,
+      "verdict": "PASS"
+    },
+    {
+      "source": "print(50 + 50)",
+      "description": "round number",
+      "bytecode_hex": "01320132020300",
+      "bytecode_hash": "8b3ca3a8558a51d7",
+      "expected": "d",
+      "observed": "d",
+      "steps": 5,
+      "verdict": "PASS"
+    }
+  ],
+  "summary": {
+    "python_ast_compilation": true,
+    "same_vm_different_results": true,
+    "no_host_eval": true,
+    "anti_fake_satisfied": true
+  }
+}

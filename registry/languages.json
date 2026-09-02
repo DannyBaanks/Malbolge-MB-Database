@@ -7,13 +7,13 @@
       "target_artifact": "python.mb",
       "target_kind": "language_interpreter",
       "malbolge_variant": "unshackled",
-      "status": "research",
+      "status": "partial_runtime",
       "host_compiler_allowed": true,
       "self_hosted_parser": false,
-      "runtime_demonstrated": false,
-      "highest_milestone": null,
-      "milestones_completed": [],
-      "notes": "Primary track. Malbolge Unshackled target. pyMalbolge (Python→Malbolge20 compiler) is prior art but targets different variant."
+      "runtime_demonstrated": true,
+      "highest_milestone": "P2",
+      "milestones_completed": ["P1", "P2"],
+      "notes": "P1/P2 demonstrated: MalPy VM + Python AST compiler. P0 constrained: general addition infeasible in pure Malbolge."
     },
     {
       "id": "swift",

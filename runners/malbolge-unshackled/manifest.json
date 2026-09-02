@@ -1,0 +1,21 @@
+{
+  "runner": "bolge19",
+  "variant": "unshackled",
+  "word_width_trits": 19,
+  "memory_cells": 1162261467,
+  "source_url": "https://github.com/DannyBaanks/malbolge-lisp-forensics",
+  "source_path": "src/bolge19/main.zig",
+  "source_commit": "20f843b",
+  "license": "MIT",
+  "compiler": "zig",
+  "compiler_version": "0.16.0",
+  "build_command": "zig build-exe -O ReleaseFast src/bolge19/main.zig -femit-bin=bolge19.exe",
+  "binary_sha256": "58D0B5E8A4DCCD2E3ED44949DA6E847BA9C22E9688CC7F11A097EA1A987E9D8C",
+  "binary_size_bytes": 859648,
+  "platform": "windows-x64",
+  "cli": "bolge19.exe <image.mb> [--max-steps N] [--normalize output.txt]",
+  "input_handling": "stdin single-byte reads via Win32 API",
+  "compatibility": "malbolgelisp-v1.2-verified",
+  "known_issues": "None on Windows native (avoids mmap/Cygwin entirely)",
+  "performance": "~5.7e8 steps/s"
+}

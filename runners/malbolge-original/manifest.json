@@ -1,0 +1,22 @@
+{
+  "runner": "malbolge-engine",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "source_url": "https://github.com/DannyBaanks/Malbolge-Engine",
+  "source_path": "src/vm.c",
+  "source_commit": "e7faeb1",
+  "license": "MIT",
+  "compiler": "gcc",
+  "compiler_version": "16.1.0",
+  "build_command": "make",
+  "binary_sha256": "9A7AD87EC094EC0948974F5D600190C0D2DEBBEA645F4781CD7EEEDA7D679775",
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "malbolge.exe <input.mb",
+  "ipc_cli": "malbolge-ipc.exe (JSONL protocol)",
+  "input_handling": "stdin buffer",
+  "compatibility": "classic-malbolge-only",
+  "known_issues": "3^10 only — cannot run Unshackled programs (3^19)",
+  "ipc_protocol": "JSONL: {op:run/ping/quit, program, steps, input}"
+}
