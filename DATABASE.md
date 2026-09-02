@@ -15,7 +15,7 @@ Navigation map for the Malbolge MB Database.
 
 | Track | Directory | Status | Active? |
 |-------|-----------|--------|---------|
-| Python | `python/` | RESEARCH | Yes |
+| Python | `python/` | REFERENCE_FRONTEND | Yes |
 | Swift | `swift/` | NOT_STARTED | No |
 | Rust | `rust/` | NOT_STARTED | No |
 | Java | `java/` | NOT_STARTED | No |
@@ -42,10 +42,14 @@ Each active language directory contains:
 
 ```
 runners/
-├── malbolge-original/    ← 10-trit Classic (59049 cells)
-├── malbolge-unshackled/  ← 20-trit (3^20 = ~1T cells)
-└── malbolge20/           ← Nagoya Malbolge20
+├── malbolge-original/    ─ 10-trit Classic (59049 cells)
+├── malbolge-unshackled/  ─ 19-trit (3^19 = ~1.16G cells)
+└── malbolge20/           ─ Nagoya Malbolge20 (not available yet)
 ```
+
+> Runner manifests record provenance (SHA256, source, build). A manifest is a
+> CLAIM until a runner doctor (A01) verifies binary presence, hash match, and
+> known-vector execution.
 
 ## Evidence Lifecycle
 

@@ -1,8 +1,12 @@
 """
-Test harness for MalPy VM and Python compiler.
+REFERENCE test harness for the Python MalPy VM and AST compiler.
 
-Runs all test fixtures and verifies correctness.
-Fails if: runner missing, wrong variant, output wrong, bytecode malformed.
+This suite tests ONLY the Python reference implementation (REFERENCE_MODEL /
+FRONTEND evidence). It does NOT invoke malbolge.exe, bolge19.exe, or any .mb
+artifact. Malbolge runtime tests are a separate integration suite (A01/A04).
+
+Fails if: reference VM output is wrong, bytecode is malformed, or a negative
+(underflow) case does not raise as expected.
 """
 import hashlib
 import json
@@ -69,6 +73,33 @@ check("P1 same VM different results", r1["output"] != r2["output"])
 vm.load(b1)
 r3 = vm.run()
 check("P1 VM determinism", r1["output"] == r3["output"] and r1["steps"] == r3["steps"])
+
+# Test 7: OUT on empty stack must raise (underflow guard)
+underflow_raised = False
+try:
+    vm.load(assemble([("OUT",), ("HALT",)]))
+    vm.run()
+except RuntimeError as e:
+    underflow_raised = "OUT with empty stack" in str(e)
+check("P1 OUT empty-stack underflow raises", underflow_raised)
+
+# Test 8: ADD on <2 stack values must raise (underflow guard)
+add_underflow_raised = False
+try:
+    vm.load(assemble([("PUSH", 5), ("ADD",), ("HALT",)]))
+    vm.run()
+except RuntimeError as e:
+    add_underflow_raised = "ADD with fewer than 2" in str(e)
+check("P1 ADD underflow raises", add_underflow_raised)
+
+# Test 9: unknown opcode must raise
+bad_opcode_raised = False
+try:
+    vm.load(bytes([0x99, 0x00]))
+    vm.run()
+except RuntimeError as e:
+    bad_opcode_raised = "Unknown opcode" in str(e)
+check("P1 unknown opcode raises", bad_opcode_raised)
 
 # --- P2 Compiler Tests ---
 print("\n[P2] Python AST Compiler")

@@ -1,5 +1,6 @@
 """
-P1: Minimal MalPy VM — a stack machine that runs on Malbolge.
+P1: Minimal MalPy VM — a Python reference stack machine designed for later
+translation to run on Malbolge.
 
 This implements the SMALLEST possible bytecode VM:
   PUSH <const>  — push constant to stack
@@ -11,18 +12,21 @@ The VM is implemented in Python but designed to be translatable to Malbolge.
 The key insight: bytecode lives in data cells (not executed), so it doesn't
 self-encrypt via the crazy operation.
 
+This is P1_CLASSIC_PROTOTYPE — the REFERENCE implementation (Python) that will
+later be ported to Malbolge source code.
+
 WHAT THIS DEMONSTRATES:
-- A real bytecode VM with stack semantics
-- Same VM executes different bytecodes producing different results
+- A real bytecode VM with stack semantics (reference model)
+- Same reference VM executes different bytecodes producing different results
 - Data-driven execution (VM hash identical, bytecode varies)
-- Addition implemented via lookup table (not hardcoded output)
+- Addition implemented via bytecode (not hardcoded output)
 
 WHAT THIS DOES NOT DEMONSTRATE:
-- VM running inside Malbolge (this is the Python reference implementation)
+- The VM running inside Malbolge (Malbolge-hosted runtime)
 - General-purpose Malbolge computation
 
-This is P1_CLASSIC_PROTOTYPE — the reference implementation that we will
-later port to Malbolge source code.
+This file is REFERENCE_MODEL evidence (host language: Python), NOT
+MALBOLGE_RUNTIME evidence.
 """
 import hashlib
 import json
@@ -99,7 +103,7 @@ class MalPyVM:
                 self.stack.append(a + b)
             
             elif opcode == 0x03:  # OUT
-                if len(self.stack) < 0:
+                if len(self.stack) < 1:
                     raise RuntimeError("OUT with empty stack")
                 value = self.stack.pop()
                 self.output.append(value % 256)
@@ -246,26 +250,44 @@ for name, bytecode, expected in tests:
     print(f"  {name}: {r['verdict']} (steps={r['steps']}, output={r['observed']!r})")
 
 # Verify same VM, different bytecodes
-vm_hash = hashlib.sha256(MalPyVM.__module__.encode()).hexdigest()
-print(f"\nVM identity: {vm_hash[:16]}")
+# Hash the exact source bytes of THIS file (implementation provenance),
+# not a module name or label.
+vm_hash = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+print(f"\nVM source hash: {vm_hash[:16]}")
 print(f"All bytecodes run on same VM: True")
 print(f"Different bytecodes produce different results: {len(set(r['observed'] for r in results)) == len(results)}")
+
+# Negative test: OUT on empty stack must raise (underflow guard)
+underflow_triggered = False
+try:
+    vmu = MalPyVM()
+    vmu.load(assemble([("OUT",), ("HALT",)]))
+    vmu.run()
+except RuntimeError as e:
+    if "OUT with empty stack" in str(e):
+        underflow_triggered = True
+print(f"OUT empty-stack guard raises: {underflow_triggered}")
 
 # Evidence
 evidence = {
     "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     "milestone": "P1",
-    "description": "Minimal MalPy VM — stack machine with PUSH/ADD/OUT/HALT",
+    "evidence_kind": "REFERENCE_MODEL",
+    "host_language": "Python",
+    "description": "Minimal MalPy VM — reference stack machine with PUSH/ADD/OUT/HALT",
     "vm_type": "stack_machine",
     "opcodes": OPCODES,
     "tests": results,
     "vm_hash": vm_hash,
+    "vm_hash_source": "sha256 of p1_vm.py source bytes (implementation provenance)",
     "summary": {
         "vm_executes_bytecode": all(r["verdict"] == "PASS" for r in results),
         "same_vm_different_results": True,
         "data_driven_execution": True,
         "addition_via_bytecode": True,
-        "anti_fake_satisfied": True,
+        "reference_anti_fake_satisfied": True,
+        "out_empty_stack_guard_raises": underflow_triggered,
+        "malbolge_hosted_runtime": "NOT_DEMONSTRATED"
     },
     "bytecodes": {
         "fixture_1": FIXTURE_1.hex(),
@@ -282,5 +304,6 @@ with open(evidence_path, "w") as f:
     json.dump(evidence, f, indent=2)
 
 print(f"\nEvidence saved to {evidence_path}")
-print(f"\nVerdict: P1 = DEMONSTRATED")
-print(f"Same VM, 5 bytecodes, 5 different correct results")
+print(f"\nVerdict: P1 = REFERENCE_DEMONSTRATED")
+print(f"Reference VM (Python), 5 bytecodes, 5 different correct results")
+print(f"Malbolge-hosted VM = NOT_DEMONSTRATED")

@@ -1,7 +1,9 @@
 {
-  "timestamp": "2026-09-02T22:04:19Z",
+  "timestamp": "2026-09-02T23:08:46Z",
   "milestone": "P1",
-  "description": "Minimal MalPy VM \u2014 stack machine with PUSH/ADD/OUT/HALT",
+  "evidence_kind": "REFERENCE_MODEL",
+  "host_language": "Python",
+  "description": "Minimal MalPy VM \u2014 reference stack machine with PUSH/ADD/OUT/HALT",
   "vm_type": "stack_machine",
   "opcodes": {
     "0": "HALT",
@@ -61,13 +63,16 @@
       "verdict": "PASS"
     }
   ],
-  "vm_hash": "561f1095d295a2cf340bcafb1c73a06b2e720a5dead5b556be0916a8b3267ede",
+  "vm_hash": "fa1d98a422cf848a33b6d82aeb04d66ead747eeafc402ba4006bb0a18b5a1586",
+  "vm_hash_source": "sha256 of p1_vm.py source bytes (implementation provenance)",
   "summary": {
     "vm_executes_bytecode": true,
     "same_vm_different_results": true,
     "data_driven_execution": true,
     "addition_via_bytecode": true,
-    "anti_fake_satisfied": true
+    "reference_anti_fake_satisfied": true,
+    "out_empty_stack_guard_raises": true,
+    "malbolge_hosted_runtime": "NOT_DEMONSTRATED"
   },
   "bytecodes": {
     "fixture_1": "01020103020300",

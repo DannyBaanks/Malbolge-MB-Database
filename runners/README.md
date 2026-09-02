@@ -29,10 +29,18 @@ Reproducible Malbolge execution environments.
 - **IPC**: `malbolge-ipc.exe` (JSONL protocol)
 - **Limitation**: 3^10 only — cannot run Unshackled programs
 
-## Bootstrap Scripts
+## Runner Verification Status
 
+The manifests in `malbolge-original/manifest.json` and
+`malbolge-unshackled/manifest.json` record provenance (SHA256, source, build
+command, compiler). These are CLAIMS pending the A01 runner doctor.
+
+Planned (A01, NOT yet implemented):
 - `tools/bootstrap_runners.ps1` — download/build all runners
-- `tools/runner_doctor.ps1` — verify runner integrity
+- `tools/runner_doctor.ps1` — verify binary presence, SHA256 match, known-vector execution, variant sanity, exit/status capture
+
+Until the doctor runs, runner availability is `NOT_DEMONSTRATED` at runtime
+level (binary present locally, but not independently verified).
 
 ## Acceptance Rule
 

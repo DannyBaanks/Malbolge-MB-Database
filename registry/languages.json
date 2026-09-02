@@ -7,13 +7,20 @@
       "target_artifact": "python.mb",
       "target_kind": "language_interpreter",
       "malbolge_variant": "unshackled",
-      "status": "partial_runtime",
+      "primary_target": "unshackled",
+      "status": "reference_frontend",
       "host_compiler_allowed": true,
       "self_hosted_parser": false,
-      "runtime_demonstrated": true,
+      "runtime_demonstrated": false,
       "highest_milestone": "P2",
       "milestones_completed": ["P1", "P2"],
-      "notes": "P1/P2 demonstrated: MalPy VM + Python AST compiler. P0 constrained: general addition infeasible in pure Malbolge."
+      "milestones_status": {
+        "P1": "REFERENCE_DEMONSTRATED",
+        "P2": "FRONTEND_DEMONSTRATED",
+        "P0": "NOT_DEMONSTRATED"
+      },
+      "runtime_artifact_registered": false,
+      "notes": "P1 reference VM (Python) demonstrated; P2 AST->bytecode frontend demonstrated; both executed on Python reference VM only. Malbolge-hosted execution NOT_DEMONSTRATED until A04. P0 has no verified Malbolge addition artifact."
     },
     {
       "id": "swift",

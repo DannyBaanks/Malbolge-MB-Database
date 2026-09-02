@@ -10,8 +10,15 @@ Pipeline:
 Example:
   print(2 + 3) → PUSH 2, PUSH 3, ADD, OUT, HALT → output chr(5)
 
-The Malbolge VM is the SAME as P1. Only the bytecode differs.
-This proves: Python semantics executed by a Malbolge-hosted runtime.
+The P1 VM is the REFERENCE VM (Python). Execution of the compiled bytecode
+happens on the Python reference VM, NOT on a Malbolge-hosted runtime.
+
+This demonstrates:
+- PYTHON_SOURCE_TO_MALPY_BYTECODE = DEMONSTRATED (restricted subset)
+- REFERENCE_VM_EXECUTION = DEMONSTRATED
+- MALBOLGE_HOSTED_EXECUTION = NOT_DEMONSTRATED
+
+This file is FRONTEND / REFERENCE_MODEL evidence, not MALBOLGE_RUNTIME evidence.
 """
 import ast
 import hashlib
@@ -161,8 +168,10 @@ for source, expected_char, desc in test_sources:
         print(f"  {source} -> ERROR: {e}")
 
 # Verify: same VM, different sources, different results
-vm_hash = hashlib.sha256("MalPyVM".encode()).hexdigest()[:16]
-print(f"\nVM identity: {vm_hash}")
+# Hash the exact source bytes of THIS file (implementation provenance),
+# not a constant label.
+vm_hash = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:16]
+print(f"\nCompiler source hash: {vm_hash}")
 print(f"Host eval/exec used: NO")
 print(f"All sources compiled via ast.parse: YES")
 print(f"All tests pass: {all(r['verdict'] == 'PASS' for r in results)}")
@@ -171,16 +180,20 @@ print(f"All tests pass: {all(r['verdict'] == 'PASS' for r in results)}")
 evidence = {
     "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     "milestone": "P2",
-    "description": "Python AST → MalPy bytecode → VM execution",
+    "evidence_kind": "FRONTEND",
+    "host_language": "Python",
+    "description": "Python AST → MalPy bytecode → reference VM execution",
     "compiler": "MalPyCompiler (ast.parse, no eval/exec)",
     "vm_hash": vm_hash,
+    "vm_hash_source": "sha256 of p2_compiler.py source bytes (implementation provenance)",
     "host_eval_exec": False,
     "tests": results,
     "summary": {
         "python_ast_compilation": all(r["verdict"] == "PASS" for r in results),
         "same_vm_different_results": len(set(r["observed"] for r in results if r["verdict"] == "PASS")) > 1,
         "no_host_eval": True,
-        "anti_fake_satisfied": True,
+        "reference_anti_fake_satisfied": True,
+        "execution_on_malbolge_hosted_runtime": "NOT_DEMONSTRATED"
     },
 }
 
@@ -190,6 +203,7 @@ with open(evidence_path, "w") as f:
     json.dump(evidence, f, indent=2)
 
 print(f"\nEvidence saved to {evidence_path}")
-print(f"\nVerdict: P2 = DEMONSTRATED")
-print(f"Python source -> AST -> bytecode -> VM -> correct output")
+print(f"\nVerdict: P2 = FRONTEND_DEMONSTRATED")
+print(f"Python source -> AST -> bytecode -> REFERENCE VM -> correct output")
 print(f"No eval/exec used in compilation")
+print(f"Malbolge-hosted execution = NOT_DEMONSTRATED")

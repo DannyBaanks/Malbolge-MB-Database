@@ -30,11 +30,15 @@ README ≠ evidence. Filename ≠ evidence. Claim ≠ implementation.
 
 | Language | Target | Variant | Status | Highest Milestone | Evidence |
 |----------|--------|---------|--------|-------------------|----------|
-| Python   | python.mb | TBD | RESEARCH | — | — |
-| Swift    | swift.mb  | TBD | NOT_STARTED | — | — |
-| Rust     | rust.mb   | TBD | NOT_STARTED | — | — |
-| Java     | java.mb   | TBD | NOT_STARTED | — | — |
-| C        | c.mb      | TBD | NOT_STARTED | — | — |
+| Python   | python.mb | Unshackled (primary) | REFERENCE_FRONTEND | P2 (frontend) | P1 ref VM, P2 frontend |
+| Swift    | swift.mb  | Unshackled (primary) | NOT_STARTED | — | — |
+| Rust     | rust.mb   | Unshackled (primary) | NOT_STARTED | — | — |
+| Java     | java.mb   | Unshackled (primary) | NOT_STARTED | — | — |
+| C        | c.mb      | Unshackled (primary) | NOT_STARTED | — | — |
+
+> Honest status: P1 is a **Python reference VM** (REFERENCE_MODEL evidence) and
+> P2 is a **Python AST → bytecode frontend** (FRONTEND evidence). Neither
+> executes on Malbolge. **Malbolge-hosted runtime = NOT_DEMONSTRATED** until A04.
 
 ## Repository Structure
 

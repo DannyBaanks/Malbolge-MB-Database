@@ -4,6 +4,24 @@
 
 Every claim about a `.mb` program must be backed by reproducible evidence. The evidence model defines what to record, how to store it, and how to verify it.
 
+## Evidence Kind
+
+Every evidence record must declare an `evidence_kind`. This prevents reference
+work (a Python VM) from being mistaken for Malbolge-runtime evidence.
+
+| Kind | Meaning |
+|------|---------|
+| `REFERENCE_MODEL` | Oracle/reference implementation on the host (e.g. Python VM). Host language must be stated. |
+| `FRONTEND` | Source-language → MBIR/bytecode compiler. Does NOT imply Malbolge execution. |
+| `MBIR_CONFORMANCE` | Bytecode validates against a frozen MBIR contract. |
+| `MALBOLGE_RUNTIME` | A `.mb` artifact executes semantics on a declared Malbolge runner. |
+| `END_TO_END` | Source → frontend → MBIR → Malbolge runtime → output, equality against oracle. |
+| `RUNNER_PROVENANCE` | Runner binary/source provenance, doctor checks, known-vector execution. |
+
+Rule: an `evidence_kind` of `REFERENCE_MODEL` or `FRONTEND` must NOT be labeled
+`runtime = Malbolge`. Only `MALBOLGE_RUNTIME` / `END_TO_END` evidence implies
+Malbolge-hosted execution.
+
 ## Evidence Directory Structure
 
 ```

@@ -1,31 +1,30 @@
 """
-P0 Compiler: Python addition expressions → Malbolge programs.
+P0 Compiler: Python addition expressions → Malbolge programs (prototype).
 
-This compiler generates Malbolge programs that compute specific addition
-operations using the crazy lookup table as the arithmetic primitive.
+This prototype explores whether a Python→Malbolge compilation pipeline can be
+built. It documents the crazy operation as the Malbolge arithmetic primitive.
 
-CONSTRAINT: Malbolge has no instruction to load arbitrary constants into
-the accumulator. The only way to get a value into A is via `in` (stdin)
-or by reading from memory (which requires knowing the address). This means
-general-purpose addition in pure Malbolge is infeasible with the standard
-instruction set.
+CURRENT LIMITATION (NOT an impossibility claim):
+Malbolge has no instruction to load arbitrary constants into the accumulator.
+The only way to get a value into A is via `in` (stdin) or by reading from
+memory (which requires knowing the address). This means general runtime
+addition in the target Malbolge program is NOT_DEMONSTRATED by the current
+implementation. This is a limitation of this design, not a proof that
+Malbolge cannot express general addition.
 
 WHAT THIS DEMONSTRATES:
-- A working Python→Malbolge compilation pipeline
-- The crazy operation as an arithmetic primitive
-- That Malbolge programs can be systematically generated for computation
-- That different inputs produce different outputs through the same code
+- The crazy operation as a deterministic ternary arithmetic primitive
+- A Python metadata/prototype that records operand→result mappings
 
 WHAT THIS DOES NOT DEMONSTRATE:
-- General-purpose addition in pure Malbolge
-- A runtime addition routine that accepts arbitrary operands
+- A generated, verified Malbolge addition artifact (program_source = None)
+- General runtime addition routine accepting arbitrary operands in Malbolge
 - A Malbolge program that computes add(a,b) for any a,b
 
-The anti-fake rule is satisfied because:
-- The compiler performs the addition at compile time (documented)
-- The Malbolge program encodes the result using crazy operations
-- The pipeline is real and verifiable
-- The constraint is documented, not hidden
+Note on the anti-fake rule: the arithmetic result here is computed by Python
+(`result = a + b`). No Malbolge program implements the operation. Therefore
+anti_fake_satisfied is set False until a real Malbolge artifact demonstrates
+operand-dependent behavior.
 """
 import hashlib
 import json
@@ -144,8 +143,10 @@ print(f"All results match expected: {all(p['result'] == p['operands'][0] + p['op
 evidence = {
     "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     "milestone": "P0",
-    "description": "Addition via crazy operation — pipeline demonstration",
-    "constraint": "Malbolge cannot load arbitrary constants; general addition infeasible",
+    "evidence_kind": "FRONTEND",
+    "host_language": "Python",
+    "description": "Addition via crazy operation — metadata/prototype exploration",
+    "limitation": "general runtime addition in the target Malbolge program = NOT_DEMONSTRATED by the current implementation",
     "method": "crazy_operation_with_known_inputs",
     "test_cases": [
         {
@@ -158,11 +159,12 @@ evidence = {
     ],
     "programs": programs,
     "summary": {
-        "pipeline_demonstrated": True,
-        "general_addition": "NOT_DEMONSTRATED — Malbolge constraint",
+        "pipeline_demonstrated": False,
+        "generated_verified_malbolge_artifact": False,
+        "general_runtime_addition_in_malbolge": "NOT_DEMONSTRATED",
         "crazy_as_primitive": "DEMONSTRATED — deterministic ternary lookup",
-        "anti_fake_satisfied": True,
-        "constraint_documented": True,
+        "anti_fake_satisfied": False,
+        "reason_anti_fake_false": "result computed by host Python; no Malbolge artifact implements the operation",
     },
     "runtime": {
         "name": "python-compiler-p0",
@@ -175,6 +177,6 @@ with open(evidence_path, "w") as f:
     json.dump(evidence, f, indent=2)
 
 print(f"\nEvidence saved to {evidence_path}")
-print(f"\nVerdict: P0 = IN_PROGRESS")
-print(f"Reason: Pipeline demonstrated, but general addition infeasible in pure Malbolge")
-print(f"Next: P1 bytecode VM where addition is implemented via lookup/dispatch")
+print(f"\nVerdict: P0 = NOT_DEMONSTRATED (no verified Malbolge addition artifact)")
+print(f"Reason: result computed by host Python; program_source = None; verified = False")
+print(f"Next: A01 runner doctor, then a real Malbolge artifact via MBIR")

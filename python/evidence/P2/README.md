@@ -1,11 +1,18 @@
 # Python MB — P2 Evidence
 
-## Status: NOT_STARTED
+## Status: FRONTEND_DEMONSTRATED
 
-P2 (MalPy Bytecode) design is documented in `python/SPEC.md`.
+P2 is a **Python AST → MalPy bytecode frontend**.
+Evidence kind: `FRONTEND` (host_language = Python).
 
-## Blocking Issues
+It demonstrates:
+- Python source → AST (via `ast.parse`) → MalPy bytecode → reference VM → output
+- No eval/exec used in compilation
+- Restricted subset: `print(<int> + <int>)`
 
-Same as P1, plus:
-- MalPy bytecode format not yet finalized
-- Need working stack VM (P1) before bytecode can be designed
+It does NOT demonstrate:
+- Execution on a Malbolge-hosted runtime (MALBOLGE_HOSTED_EXECUTION = NOT_DEMONSTRATED)
+
+## Evidence Record
+
+- `run_p2_compiler.json` — execution record (evidence_kind = FRONTEND)

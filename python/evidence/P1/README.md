@@ -1,30 +1,22 @@
 # Python MB — P1 Evidence
 
-## Status: NOT_STARTED
+## Status: REFERENCE_DEMONSTRATED
 
-P1 (Stack VM) design is documented in `python/SPEC.md`.
+P1 is a **Python reference VM** (stack machine, PUSH/ADD/OUT/HALT).
+Evidence kind: `REFERENCE_MODEL` (host_language = Python).
 
-## Planned Opcode Set
+It demonstrates:
+- Same reference VM executes 5 bytecodes producing 5 different correct results
+- Negative tests: OUT/ADD underflow raise, unknown opcode raises
 
-| Opcode | Name | Effect |
-|--------|------|--------|
-| 0 | HALT | Stop execution |
-| 1 | PUSH_CONST | Push constant to stack |
-| 2 | LOAD_VAR | Push variable value to stack |
-| 3 | STORE_VAR | Pop stack, store in variable |
-| 4 | ADD | Pop two, push sum |
-| 5 | SUB | Pop two, push difference |
-| 6 | MUL | Pop two, push product |
-| 7 | PRINT | Pop one, output value |
-| 8 | JUMP | Unconditional jump |
-| 9 | JUMP_IF | Conditional jump |
-| 10 | CALL | Call function |
-| 11 | RETURN | Return from function |
-| 12 | CMP_GT | Compare greater than |
+It does NOT demonstrate:
+- The VM running inside Malbolge (Malbolge-hosted runtime = NOT_DEMONSTRATED)
 
-## Blocking Issues
+## Evidence Record
 
-1. No Malbolge assembler available for writing Malbolge source
-2. Need HeLL/LMAO toolchain or custom assembler
-3. Original Malbolge (59049 cells) may be too small for stack VM
-4. Unshackled runner (fast20.c) not yet built in this repository
+- `run_p1_vm.json` — execution record (evidence_kind = REFERENCE_MODEL)
+
+## Relationship to design
+
+The opcode set in `python/SPEC.md` is the forward design. This reference VM is
+the semantic oracle that the Malbolge-hosted MBIR VM (A04) must match.

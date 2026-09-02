@@ -1,9 +1,12 @@
 {
-  "timestamp": "2026-09-02T22:04:19Z",
+  "timestamp": "2026-09-02T23:08:46Z",
   "milestone": "P2",
-  "description": "Python AST \u2192 MalPy bytecode \u2192 VM execution",
+  "evidence_kind": "FRONTEND",
+  "host_language": "Python",
+  "description": "Python AST \u2192 MalPy bytecode \u2192 reference VM execution",
   "compiler": "MalPyCompiler (ast.parse, no eval/exec)",
-  "vm_hash": "d958cb5c5320fe76",
+  "vm_hash": "45829c44d09e77f8",
+  "vm_hash_source": "sha256 of p2_compiler.py source bytes (implementation provenance)",
   "host_eval_exec": false,
   "tests": [
     {
@@ -71,6 +74,7 @@
     "python_ast_compilation": true,
     "same_vm_different_results": true,
     "no_host_eval": true,
-    "anti_fake_satisfied": true
+    "reference_anti_fake_satisfied": true,
+    "execution_on_malbolge_hosted_runtime": "NOT_DEMONSTRATED"
   }
 }
