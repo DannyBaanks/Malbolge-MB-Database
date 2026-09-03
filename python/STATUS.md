@@ -6,7 +6,7 @@
 **Highest Milestone**: P2 (Python AST to MalPy bytecode — FRONTEND_DEMONSTRATED)
 **Primary Target**: Unshackled
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
-**Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (A04 in progress)
+**Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (A04 in progress — see vm_malbolge/A04_NEXT.md)
 
 ## Evidence-Backed Progress
 

@@ -1,27 +1,47 @@
-# vm_malbolge — MBIR Interpreter in Malbolge (HeLL)
+# vm_malbolge — MBIR interpreter hosted on real Malbolge
 
-Target: implement the MBIR_VERSION 0 interpreter core in Malbolge via the
-LMAO toolchain (HeLL assembly), produced and verified on real runners.
+## Status (A04 session progress)
 
-This is the A04 work-in-progress directory.
+The toolchain and primitives are verified on the real Malbolge name Classic
+runner. The full interpreter gate is NOT yet demonstrated.
 
-## Layout
+### Verified artifacts
 
-- `src/` — HeLL source files (`.hell`)
-- `tests/` — harness: `buildrun.py` (compile with LMAO → simulate oracle → run on Classic runner)
+- `tools/oracle_classic.py`: Classic 3^10 Malbolge interpreter (outputs run 1:1
+  with `runners/malbolge-original/malbolge.exe`).
+- `tools/runner_doctor.ps1`: runner integrity verification.
+- `third_party/lmao`: vendored LMAO assembler; builds with
+  `tools/build_lmao.ps1`.
+- `vm_malbolge/src/min3_echo1.hell`: byte-store/recover via the verified
+  double-CRAZY idiom, runs on **real** Classic Malbolge and echoes stdin byte
+  back; oracle & runner outputs agree.
+  - Input `41` → output `41` (verified).
+- `vm_malbolge/tests/buildrun.py`: HeLL → LMAO → Oracle+Runner compare
+  harness (compile + run pipeline).
 
-## Dialect notes
+### Reference sources on this repo
 
-- Values stored as cells; byte store/recover idiom verified against real runner:
-  `store: cell(c1) <- crz(byte, C1)` then `recover: A <- crz(C1, cell)` recovers
-  the byte (verified `min3_echo1.hell>: byte 0x41 echoed correctly, 22230 steps, HALTED`).
-- Orthogonally: `py vm_malbolge/tests/buildrun.py <file.hell> <hex-input> [--expect=<hex>]`
-  compiles and runs against both the Python oracle and a real runner.
+- `third_party/lmao/example_cat_halt_on_eof.hell` — EOF-detect cat.
+- `third_party/lmao/example_hello_world.hell` — multi-char output.
+- `third_party/lmao/example_digital_root.hell` — decrement-based digit
+  classification (demonstrates the data-driven dispatch idiom).
+- `third_party/lmao/example_adder.hell` — 3-digit adder (digit data driven).
 
-## Status
+### Explicitly NOT yet demonstrated
 
-- A04.PHASE.A: LMAO toolchain vendored + built + verified (example_hello_world, cat, echo1).
-- A04.PHASE.B: single-byte store/recover idiom on real runner — **DONE** (min3_echo1.hell).
-- A04.PHASE.C: dispatch + multi-instruction MBIR subset — IN PROGRESS.
+Any claim of a working MBIR-on-Malbolge runtime that interprets MBIR programs
+as data: **NOT_DEMONSTRATED** until we ship `runners/malbolge-mbir` (or
+equivalent) running the killer corpus from the roadmap. mbir_vm.hell is a
+design stub with no working implementation yet; no `A04_MBIR_ON_MALBOLGE =
+DEMONSTRATED` will be claimed without green runner evidence.
 
-A04 gate itself (full corpus on one immutable artifact) remains NOT_DEMONSTRATED.
+## Known weirdness
+
+- Windows stdin CRLF: byte `0x0A` read from stdin gets paired with CR — a
+  C-runtime stdin reading artifact on Windows; not a Malbolge or HeLL bug.
+- The runner's stdout carries a trailing CRLF appended by the Windows wrapper.
+
+## Links
+
+- Toolchain evidence: `docs/TOOLCHAIN.md`, `third_party/PROVENANCE.md`.
+- A04 findings/action items: `vm_malbolge/A04_NEXT.md`.
