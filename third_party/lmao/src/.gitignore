@@ -1,0 +1,9 @@
+lex.yy.c
+a.out
+lmao
+lmao.output
+lmao.tab.*
+*.o
+flex.lib
+libfl.*
+
