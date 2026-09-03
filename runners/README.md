@@ -29,18 +29,40 @@ Reproducible Malbolge execution environments.
 - **IPC**: `malbolge-ipc.exe` (JSONL protocol)
 - **Limitation**: 3^10 only — cannot run Unshackled programs
 
-## Runner Verification Status
+## Runner Verification Status (A01)
 
-The manifests in `malbolge-original/manifest.json` and
-`malbolge-unshackled/manifest.json` record provenance (SHA256, source, build
-command, compiler). These are CLAIMS pending the A01 runner doctor.
+Runner availability is now verified by the runner doctor, not assumed.
 
-Planned (A01, NOT yet implemented):
-- `tools/bootstrap_runners.ps1` — download/build all runners
-- `tools/runner_doctor.ps1` — verify binary presence, SHA256 match, known-vector execution, variant sanity, exit/status capture
+```text
+A01_RUNNER_DOCTOR = DEMONSTRATED
+```
 
-Until the doctor runs, runner availability is `NOT_DEMONSTRATED` at runtime
-level (binary present locally, but not independently verified).
+Run the doctor:
+
+```
+py powershell tools/runner_doctor.ps1
+```
+
+It verifies for each runner:
+1. binary exists,
+2. SHA256 matches the manifest,
+3. a known-vector program executes (`hello_world_40.mb` -> "Hello World!"),
+4. the expected variant is enforced (variant firewall),
+5. exit code / steps / status are captured.
+
+It also cross-checks the Classic runner against an independent Python oracle
+(`tools/oracle_classic.py`, 3^10 reference) — both agree on
+`hello_world_40.mb` -> "Hello World!" at 40 steps, HALTED.
+
+Reproducibility caveat: `tools/bootstrap_runners.ps1` can rebuild both runners
+from source, but a fresh gcc/zig rebuild produces different bytes than the
+committed binaries (toolchain/compiler drift). The committed binaries are
+authoritative and their SHA256 is pinned in the manifests; the doctor verifies
+against those pinned hashes.
+
+Scripts:
+- `tools/bootstrap_runners.ps1` — rebuild runners from source, verify hash (compare-first; never clobbers a matching committed binary)
+- `tools/runner_doctor.ps1` — the integrity/known-vector doctor
 
 ## Acceptance Rule
 

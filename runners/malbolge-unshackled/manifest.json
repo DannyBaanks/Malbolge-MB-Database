@@ -10,6 +10,8 @@
   "compiler": "zig",
   "compiler_version": "0.16.0",
   "build_command": "zig build-exe -O ReleaseFast src/bolge19/main.zig -femit-bin=bolge19.exe",
+  "reproducible": false,
+  "reproducibility_note": "Fresh zig rebuild produces different bytes than the committed binary (toolchain drift). Committed binary hash is authoritative for this record.",
   "binary_sha256": "58D0B5E8A4DCCD2E3ED44949DA6E847BA9C22E9688CC7F11A097EA1A987E9D8C",
   "binary_size_bytes": 859648,
   "platform": "windows-x64",
