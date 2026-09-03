@@ -1,0 +1,19 @@
+/*
+ * mbir_vm.hell — MBIR interpreter in HeLL (Malbolge).
+ *
+ * MBIR_VERSION = 0, signed-byte model (0..255) carried in Malbolge trits as
+ * 0..255 (active low byte; ternary).
+ *
+ * Architecture:
+ *   - stdin: MBIR bytecode length (N bytes as raw input) — actually simpler:
+ *     MBIR bytecode supplied via stdin as a byte stream, terminated by EOF.
+ *   - Load phase: read stdin byte by byte into a data array CODE[].
+ *   - Execution: dispatch on CODE[pc], execute opcode, advance pc.
+ *   - Halting: opcode HALT ends execution (stop; not a Malbolge halt unless
+ *     encoded as one in the final byte... no: the VM halts the Malbolge
+ *     process, equivalent to A_MBIR_HALT).
+ *
+ * Coverage: PUSH_CONST, POP, DUP, LOAD_LOCAL, STORE_LOCAL,
+ *   ADD, SUB, MUL, CMP_EQ, CMP_LT, CMP_GT, JUMP, JUMP_IF_FALSE,
+ *   CALL, RETURN, OUT_BYTE, IN_BYTE, HALT.
+ */

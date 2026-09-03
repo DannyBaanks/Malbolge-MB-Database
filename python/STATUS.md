@@ -4,9 +4,23 @@
 
 **Status**: `REFERENCE_FRONTEND`
 **Highest Milestone**: P2 (Python AST to MalPy bytecode — FRONTEND_DEMONSTRATED)
-**Primary Target**: Unshackled (design choice, not a demonstrated bound)
-**Classic Path**: optional research track
-**Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (until A04)
+**Primary Target**: Unshackled
+**Classic Path**: MBIR interpreter in progress via LMAO/HeLL
+**Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (A04 in progress)
+
+## Evidence-Backed Progress
+
+| Claim | State | Notes |
+|-------|-------|-------|
+| Malbolge rendering toolchain (LMAO) | WORKING | `third_party/lmao` built, smoke-tested on real runner |
+| Byte-level storage/recovery primitive | WORKING | `vm_malbolge/src/min3_echo1.hell` verified on classic runner (`runners/malbolge-original/malbolge.exe`) |
+| MBIR interpreter (dispatch, arith, control flow) | NOT_DEMONSTRATED | Beyond incremental proofs; A04 continuation needed |
+
+## Next Runtime Steps
+
+1. Encode MULTI-byte stdin loader (read program bytes into a data array)
+2. Implement dispatch table and instruction handlers
+3. Demonstrate the killer corpus on the declared Malbolge runner
 
 ## Milestones
 
