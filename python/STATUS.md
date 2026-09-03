@@ -39,9 +39,15 @@ discard them; they are the oracle for the real runtime port (A04).
 ## Blockers for P3+
 
 1. A Malbolge-hosted MBIR VM must execute (A04) before any Python completion claim
-2. No Malbolge assembler for writing Malbolge source (HeLL/LMAO) validated
+2. The MBIR contract is frozen (A02, MBIR_VERSION 0); the A03 reference VM must
+   implement and test its full semantic model
 3. Classic Malbolge (3^10) is a design constraint for this track; Unshackled is the primary target by choice, not proven necessity
-4. Bytecode format needs extension (variables, control flow, calls)
+4. Frontend needs to lower the Python subset to MBIR (not a second bytecode)
+
+## Shared MBIR
+
+The frozen language-neutral contract is `docs/MBIR_CONTRACT.md` (MBIR_VERSION 0).
+Encoder/decoder: `mbir/mbir.py`. Conformance: `mbir/tests/test_mbir.py` (23/23).
 
 ## Runners
 

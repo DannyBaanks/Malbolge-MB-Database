@@ -21,6 +21,20 @@ Navigation map for the Malbolge MB Database.
 | Java | `java/` | NOT_STARTED | No |
 | C | `c/` | NOT_STARTED | No |
 
+## Shared Infrastructure
+
+```
+mbir/                 ─ MBIR shared runtime contract (A02, MBIR_VERSION 0)
+  ├── mbir.py         ─ encoder/decoder + static validation
+  ├── tests/          ─ conformance suite (23/23 PASS)
+  └── README.md
+docs/MBIR_CONTRACT.md ─ full contract spec
+```
+
+The MBIR contract is language-neutral and shared by all tracks. A language
+frontend lowers its subset to MBIR; one Malbolge-hosted MBIR VM executes them
+all (A04).
+
 ## Per-Language Structure
 
 Each active language directory contains:

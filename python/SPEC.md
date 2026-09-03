@@ -52,35 +52,22 @@ print(fib(6))
 
 Operations: recursive calls, multiple returns.
 
-## MalPy Bytecode (Design Phase)
+## Bytecode — MBIR (frozen)
 
-Custom bytecode designed for Malbolge execution. Not CPython bytecode.
+The shared runtime contract is **MBIR_VERSION 0** (`docs/MBIR_CONTRACT.md`,
+`mbir/mbir.py`). It is language-neutral and shared across all language tracks.
 
-### Opcode Set (Tentative)
+See:
+- `docs/MBIR_CONTRACT.md` — full contract (opcodes, encoding, semantics)
+- `mbir/mbir.py` — encoder/decoder + static validation
+- `mbir/tests/test_mbir.py` — conformance tests (23/23 PASS)
 
-| Opcode | Name | Effect |
-|--------|------|--------|
-| 0 | HALT | Stop execution |
-| 1 | PUSH_CONST | Push constant to stack |
-| 2 | LOAD_VAR | Push variable value to stack |
-| 3 | STORE_VAR | Pop stack, store in variable |
-| 4 | ADD | Pop two, push sum |
-| 5 | SUB | Pop two, push difference |
-| 6 | MUL | Pop two, push product |
-| 7 | PRINT | Pop one, output value |
-| 8 | JUMP | Unconditional jump |
-| 9 | JUMP_IF | Conditional jump |
-| 10 | CALL | Call function |
-| 11 | RETURN | Return from function |
-| 12 | CMP_GT | Compare greater than |
+For Python-specific lowering, the frontend maps the subset below onto MBIR
+instructions (PUSH_CONST / LOAD_LOCAL / STORE_LOCAL / ADD / SUB / MUL /
+CMP_* / JUMP / JUMP_IF_FALSE / CALL / RETURN / OUT_BYTE / IN_BYTE).
 
-### Bytecode Format
-
-```
-[opcode: 1 byte] [operand: variable width]
-```
-
-Stored in Malbolge data cells (not executed, so not encrypted by `crazy`).
+The old tentative "MalPy bytecode" opcode table in this file is superseded by
+MBIR. Do not introduce a second, Python-only bytecode.
 
 ## Constraints
 
