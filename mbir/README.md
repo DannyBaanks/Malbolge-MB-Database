@@ -4,7 +4,9 @@ Language-neutral intermediate representation executed by a shared runtime,
 ultimately hosted on Malbolge.
 
 - `mbir.py` — encoder/decoder + static validation (MBIR_VERSION 0)
-- `tests/test_mbir.py` — conformance suite (23/23 PASS)
+- `mbir_ref.py` — reference VM implementing the full MBIR semantic model (A03)
+- `tests/test_mbir.py` — contract conformance suite (23/23 PASS)
+- `tests/test_mbir_ref.py` — reference VM conformance suite (28/28 PASS)
 - Contract spec: `docs/MBIR_CONTRACT.md`
 
 ## Quick use

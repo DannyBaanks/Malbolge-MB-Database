@@ -47,7 +47,13 @@ discard them; they are the oracle for the real runtime port (A04).
 ## Shared MBIR
 
 The frozen language-neutral contract is `docs/MBIR_CONTRACT.md` (MBIR_VERSION 0).
-Encoder/decoder: `mbir/mbir.py`. Conformance: `mbir/tests/test_mbir.py` (23/23).
+Encoder/decoder: `mbir/mbir.py` (A02). Reference VM: `mbir/mbir_ref.py` (A03),
+implementing the full semantic model — the oracle the Malbolge-hosted runtime
+(A04) must match. Conformance: `mbir/tests/test_mbir.py` (23/23) +
+`mbir/tests/test_mbir_ref.py` (28/28).
+
+A03_MBIR_REFERENCE_CONFORMANCE = DEMONSTRATED. A04_MBIR_ON_MALBOLGE =
+NOT_DEMONSTRATED.
 
 ## Runners
 
