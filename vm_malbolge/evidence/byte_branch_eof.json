@@ -6,5 +6,5 @@
   "runner_steps": 20575,
   "runner_status": "HALTED",
   "exit_code": 0,
-  "note": "empty stdin -> EOF branch -> clean halt, no byte written"
+  "note": "EOF condition triggers the branch via tmp4_was_C21; the alternative tmp4_was_C20 routes non-EOF inputs."
 }
