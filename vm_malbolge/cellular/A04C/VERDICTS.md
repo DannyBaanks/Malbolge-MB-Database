@@ -17,12 +17,13 @@
 
 ## Explicit negative: the following are NOT YET DEMONSTRATED, they are future scope
 
-- `CELLULAR_PUSH_CONST` (real opcode dispatch): required mechanism is a
-  *gate* (byte selector), which needs more than the fixed mover rule {2};
-  it's not claimed yet.
-- `CELLULAR_OUT_BYTE`, `CELLULAR_HALT` as dispatcher-driven operations.
-  Current transport claimed covers only raw data, not opcode-dispatch.
-- `CELLULAR_MBIR_M0`, `FULL_CELLULAR_MBIR_VM`, `FULL_MALBOLGE_VM`.
+- `CELLULAR_GATE` mechanics demonstrated: byte moves iff token is *aligned*
+  with it (rule {6} = west+north). Falsified under mismatch conditions
+  (token away -> no data flow). Only gate-with-1-bit verified so far.
+- `CELLULAR_PUSH_CONST` (real opcode dispatch): gate is primitive; full
+  dispatch table over MBIR opcodes not yet implemented.
+- `CELLULAR_MBIR_M0`, `FULL_CELLULAR_MBIR_VM`: not demonstrated.
+- `FULL_MALBOLGE_VM`: not demonstrated.
 
 ## Summary
 
