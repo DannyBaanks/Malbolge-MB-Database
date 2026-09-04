@@ -1,0 +1,253 @@
+{
+  "runs": {
+    "C4_VALUE_TRANSPORT": {
+      "pass": true,
+      "cases": [
+        {
+          "input": 0,
+          "final_cells": [],
+          "recovered": 0,
+          "ok": true
+        },
+        {
+          "input": 1,
+          "final_cells": [
+            [
+              8,
+              0,
+              0,
+              0
+            ]
+          ],
+          "recovered": 1,
+          "ok": true
+        },
+        {
+          "input": 2,
+          "final_cells": [
+            [
+              8,
+              0,
+              2,
+              0
+            ]
+          ],
+          "recovered": 2,
+          "ok": true
+        },
+        {
+          "input": 3,
+          "final_cells": [
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              0
+            ]
+          ],
+          "recovered": 3,
+          "ok": true
+        },
+        {
+          "input": 42,
+          "final_cells": [
+            [
+              8,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              0,
+              6,
+              0
+            ],
+            [
+              8,
+              0,
+              10,
+              0
+            ]
+          ],
+          "recovered": 42,
+          "ok": true
+        },
+        {
+          "input": 65,
+          "final_cells": [
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              12,
+              0
+            ]
+          ],
+          "recovered": 65,
+          "ok": true
+        },
+        {
+          "input": 127,
+          "final_cells": [
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              0,
+              4,
+              0
+            ],
+            [
+              8,
+              0,
+              6,
+              0
+            ],
+            [
+              8,
+              0,
+              8,
+              0
+            ],
+            [
+              8,
+              0,
+              10,
+              0
+            ],
+            [
+              8,
+              0,
+              12,
+              0
+            ]
+          ],
+          "recovered": 127,
+          "ok": true
+        },
+        {
+          "input": 128,
+          "final_cells": [
+            [
+              8,
+              0,
+              14,
+              0
+            ]
+          ],
+          "recovered": 128,
+          "ok": true
+        },
+        {
+          "input": 255,
+          "final_cells": [
+            [
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              0,
+              2,
+              0
+            ],
+            [
+              8,
+              0,
+              4,
+              0
+            ],
+            [
+              8,
+              0,
+              6,
+              0
+            ],
+            [
+              8,
+              0,
+              8,
+              0
+            ],
+            [
+              8,
+              0,
+              10,
+              0
+            ],
+            [
+              8,
+              0,
+              12,
+              0
+            ],
+            [
+              8,
+              0,
+              14,
+              0
+            ]
+          ],
+          "recovered": 255,
+          "ok": true
+        }
+      ],
+      "hash": "e9ebfc6c950726422120c28136991f2266bc1596ed71a063066ea3acf2065871"
+    },
+    "C5_CONTROL_ADVANCE": {
+      "pass": true,
+      "detail": {
+        "program_len": 6,
+        "ticks": 6,
+        "tokens_final": [
+          6
+        ],
+        "expected": [
+          6
+        ],
+        "success": true
+      },
+      "hash": "0af217e9f9bf57cbd041afa7c7c8ccab99d784ce7e93d64a4ae8723a2e709f4f"
+    },
+    "C6_COMPOSITION": {
+      "pass": true,
+      "detail": {
+        "a_value": 65,
+        "a_count": 2,
+        "token_count": 1,
+        "token_x": [
+          4
+        ],
+        "both_data_count": 2,
+        "both_token_count": 1
+      },
+      "hash": "dcad3b9189ee972815dca6a261a907faf139bc9fc7468693dc593b083cc35a7d"
+    },
+    "elapsed_seconds": 0.002
+  },
+  "generated_at_utc": "2026-09-04T05:48:10Z"
+}
