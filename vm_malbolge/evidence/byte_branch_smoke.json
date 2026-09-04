@@ -1,0 +1,8 @@
+{
+  "ts": "2026-09-04T17:50:00Z",
+  "file": "vm_malbolge/src/byte_branch_wip.hell",
+  "test": "multi-byte smoke",
+  "inputs": ["00", "01", "02", "03", "10", "11", "ff"],
+  "observation": "ALL inputs produced stdout=input_byte and steps=22230 HALTED",
+  "interpretation": "byte is echoed unchanged; the only branch is EOF-vs-not-EOF. No value-based dispatch yet demonstrated. Only the EOF path (no input, =20575 steps) differs."
+}
