@@ -8,6 +8,31 @@
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
 **Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (A04 in progress — see vm_malbolge/A04_NEXT.md)
 
+## Session log
+
+Session of 2026-09-02 evening / 2026-09-03 (extends carries forward A00–A04):
+
+- Reviewed Cobalt/CoEvo (cellular) ecosystem as a possible alternative
+  implementation site for A04-specific concept execution.
+- Created `vm_malbolge/cellular/` (`srv/interpreter coupling`):
+  - Verified *byte-transport* (A04 case) under fixed 2-cell signature rule on the
+    substrate (real engine infrastructure).
+  - Verified *token advance* under the same rule.
+  - Verified composition (both planes coexist).
+  - Verified cargos hold under rule scrutiny.
+  - Held-out values reproducible.
+  Determinism / replay proven.
+  - One observable local gate relation: data flow only when controller token present.
+- Verified HeLL / LMAO + Malbolge execution pipeline: build of assembled program runs on
+  runable Classic runner with exact byte echo.
+- Updated audit status, committed mob `3785eca` + `b44cc77` + `f464c2d`.
+
+## Remaining
+
+The next operational milestone: MBIR programs *as data interpreted* by a
+running Malbolge/SYSP (which requires the full MBIR VM once you drop to
+byte level plus the cost-analysis). See `vm_malbolge/A04_NEXT.md`.
+
 ## Evidence-Backed Progress
 
 | Claim | State | Notes |
