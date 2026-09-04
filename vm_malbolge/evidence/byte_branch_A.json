@@ -1,0 +1,10 @@
+{
+  "ts": "2026-09-04T05:28:00Z",
+  "file": "vm_malbolge/src/byte_branch_wip.hell",
+  "input": "0x41",
+  "stdout": "A",
+  "runner_steps": 22230,
+  "runner_status": "HALTED",
+  "exit_code": 0,
+  "note": "byte read, echoed via OUT; execution entered the non-EOF code path"
+}

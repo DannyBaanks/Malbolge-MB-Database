@@ -1,0 +1,10 @@
+{
+  "ts": "2026-09-04T05:28:00Z",
+  "file": "vm_malbolge/src/byte_branch_wip.hell",
+  "input": "<EOF>",
+  "stdout": "",
+  "runner_steps": 20575,
+  "runner_status": "HALTED",
+  "exit_code": 0,
+  "note": "empty stdin -> EOF branch -> clean halt, no byte written"
+}
