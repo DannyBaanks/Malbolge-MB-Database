@@ -1,0 +1,19 @@
+{
+  "ts": "2026-09-11T12:46:45.3026273-06:00",
+  "file": "vm_malbolge/src/min3_echo1.hell",
+  "test": "existing double-CRAZY cell store/recover path",
+  "build": "LMAO v0.6.0 normal layout",
+  "runner": "runners/malbolge-original/malbolge.exe",
+  "oracle": "tools/oracle_classic.py",
+  "raw_cases": [
+    {"in": "00", "expect": "00", "oracle": "00", "runner": "00", "steps": 21693, "ok": true},
+    {"in": "41", "expect": "41", "oracle": "41", "runner": "41", "steps": 21693, "ok": true},
+    {"in": "7a", "expect": "7a", "oracle": "7a", "runner": "7a", "steps": 21693, "ok": true},
+    {"in": "ff", "expect": "ff", "oracle": "ff", "runner": "ff", "steps": 21693, "ok": true}
+  ],
+  "verdict": "4/4 PASS. The byte is read, copied into the established tmp cell path, recovered, and emitted by Malbolge; oracle and real runner agree.",
+  "scope_limits": [
+    "This validates the existing tmp2/tmp4 cell path, not a dedicated MBIR stack cell.",
+    "The artifact is one-shot and halts after one byte; no opcode loop or stack depth exists."
+  ]
+}
