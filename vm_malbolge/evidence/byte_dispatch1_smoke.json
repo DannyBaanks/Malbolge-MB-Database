@@ -1,0 +1,34 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch1.hell",
+  "test": "byte-VALUE dispatch smoke (0x00 vs nonzero + EOF)",
+  "spec": {
+    "input_0x00": "HALT with NO output",
+    "input_nonzero": "echo input byte verbatim, HALTED",
+    "input_EOF": "HALT with NO output"
+  },
+  "build": "LMAO v0.6.0 normal layout (NOT -f). third_party/lmao/bin/lmao.exe",
+  "runner": "runners/malbolge-original/malbolge.exe (Classic 3^10)",
+  "oracle": "tools/oracle_classic.py (independent Python Classic)",
+  "cases": [
+    {"in": "00", "exp": "", "oracle": "", "osteps": 28078, "runner": "", "rsteps": 28078, "ok": true},
+    {"in": "01", "exp": "01", "oracle": "01", "osteps": 26486, "runner": "01", "rsteps": 26486, "ok": true},
+    {"in": "02", "exp": "02", "oracle": "02", "osteps": 26789, "runner": "02", "rsteps": 26789, "ok": true},
+    {"in": "03", "exp": "03", "oracle": "03", "osteps": 26667, "runner": "03", "rsteps": 26667, "ok": true},
+    {"in": "10", "exp": "10", "oracle": "10", "osteps": 26486, "runner": "10", "rsteps": 26486, "ok": true},
+    {"in": "11", "exp": "11", "oracle": "11", "osteps": 27092, "runner": "11", "rsteps": 27092, "ok": true},
+    {"in": "41", "exp": "41", "oracle": "41", "osteps": 26789, "runner": "41", "rsteps": 26789, "ok": true},
+    {"in": "7f", "exp": "7f", "oracle": "7f", "osteps": 26486, "runner": "7f", "rsteps": 26486, "ok": true},
+    {"in": "80", "exp": "80", "oracle": "80", "osteps": 26789, "runner": "80", "rsteps": 26789, "ok": true},
+    {"in": "fe", "exp": "fe", "oracle": "fe", "osteps": 26789, "runner": "fe", "rsteps": 26789, "ok": true},
+    {"in": "ff", "exp": "ff", "oracle": "ff", "osteps": 26667, "runner": "ff", "rsteps": 26667, "ok": true},
+    {"in": "EOF", "exp": "", "oracle": "", "osteps": 26588, "runner": "", "rsteps": 25089, "ok": true}
+  ],
+  "verdict": "12/12 OK on oracle AND runner. First TRUE byte-value dispatch: 0x00 takes HALT path, all other byte values take echo path (distinct control flow + distinct observable output). EOF takes EOF path (empty).",
+  "scope_limits": [
+    "Single input byte only; multi-byte stdin loader NOT_DEMONSTRATED.",
+    "Two handlers (HALT vs echo), not an N-entry MBIR opcode table; full MBIR dispatch NOT_DEMONSTRATED.",
+    "Verified on NORMAL LMAO layout only. -f layout: oracle 12/12 correct, C runner halts at fixed 13038 steps with empty output for every input (toolchain trap, same family as byte_dispatch0_v2-fast/microA-fast). See A04_STATUS.md."
+  ],
+  "method": "IN B -> value=B (ENTRY double-crazy) -> save B -> inc (EOF test, overflow IFF C2) -> dec(site1) -> dec(site2 dual exit) (overflow IFF B==0) -> zero?HALT : recover save_B (double C2) + OUT. All idioms verbatim digital_root except dual decrement exit (increment two-site pattern) and single-OUT print tail."
+}

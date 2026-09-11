@@ -1,0 +1,12 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch1.hell",
+  "input": "0x00",
+  "stdout": "",
+  "oracle_steps": 28078,
+  "oracle_status": "HALTED",
+  "runner_steps": 28078,
+  "runner_status": "HALTED",
+  "build": "LMAO v0.6.0 normal layout",
+  "note": "0x00 takes the HALT handler (dispatch_was_zero): no output, halted. Same input on the byte_branch_wip baseline echoes 0x00 (22230 steps) — the dispatch changes observable behavior for this value only."
+}
