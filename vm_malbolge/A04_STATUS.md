@@ -13,33 +13,40 @@
 | Conditional branch EOF-vs-not-EOF (via value-jump to C20/C21) | `vm_malbolge/src/byte_branch_wip.hell` + `vm_malbolge/evidence/byte_branch_{A,eof}.json` — same artifact, two distinct control paths via jump-on-value **only** for the EOF sentinel. All N byte values take the same (echo) path — see `byte_branch_smoke.json`. |
 | Byte-VALUE dispatch 0x00-vs-nonzero (digital_root decrement idiom, single carry pad) | `vm_malbolge/src/byte_dispatch1.hell` + `vm_malbolge/evidence/byte_dispatch1_{00,A,eof,smoke}.json` — 12/12 OK on oracle_classic AND runners/malbolge-original (normal LMAO layout): 0x00→HALT empty (28078 steps), 10 nonzero values→verbatim echo (e.g. 0x41→`A`, 26789 steps), EOF→empty. Distinct paths AND distinct outputs per value class. Built only from verbatim digital_root idioms (ENTRY copy, inc/dec, flag-branch, print recover) + dual decrement exit (increment two-site pattern). |
 | 3-way byte-VALUE dispatch (0x00 / 0x01 / other) | `vm_malbolge/src/byte_dispatch2.hell` + `vm_malbolge/evidence/byte_dispatch2_{01,smoke}.json` — 12/12 OK on oracle AND runner: 0x00→empty (29033 steps), 0x01→`P` marker (29525 steps), other nonzero→echo (e.g. 0x41→`A`, 28230 steps), EOF→empty. Three distinct value classes, three paths, three outputs. Reuses dispatch1 pipeline + a 3rd decrement site. **Key idiom fix:** a multi-site subroutine exit needs a trailing `R_SUBROUTINE_FLAGn` on every non-last site (increment two-site pattern); without it the 3rd site hangs. |
+| Full 18-opcode MBIR dispatch (generated) | `vm_malbolge/tools/mbir_dispatch_gen.py` → `vm_malbolge/src/byte_dispatch18.hell` + `vm_malbolge/evidence/byte_dispatch18_smoke.json` — 21/21 OK on oracle AND runner: every MBIR_VERSION 0 opcode byte 0x00..0x11 takes a distinct handler (0x00 HALT; 0x01..0x11 → marker bytes; non-opcode → echo; EOF → empty). The dispatch is now generated mechanically (parameterized decrement-chain + N `SUBROUTINE_FLAGn` sites), not hand-written. This resolves the "byte-dispatch table" blocker at the classifier level. |
 
 ## What is NOT demonstrated
 
 | item | obstacle |
 |---|---|
-| Full MBIR VM in Malbolge | conditional dispatch of an opcode byte needs an N-entry table. DONE for 3 handlers (0x00→HALT, 0x01→`P` marker, else→echo, `byte_dispatch2.hell`); the full 18-opcode MBIR dispatch (HALT/PUSH_CONST/OUT_BYTE/…) still requires chaining a discriminator per opcode — one decrement + one `SUBROUTINE_FLAGn` site each. |
-| MBIR→HeLL code generator | `vm_malbolge/tools/mbir_gen.py` was rewritten 3 times in-session and still produces malformed HeLL; dropped, not committed. |
+| Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers. What remains is SEMANTIC EXECUTION: operand reading (PUSH_CONST/LOAD_LOCAL/…), a value stack, arithmetic (ADD/SUB/MUL/CMP), control flow (JUMP/JUMP_IF_FALSE/CALL/RETURN), and a fetch-loop over a multi-byte program. Each of these is a real handler replacing the marker, plus a stdin→cells loader. |
+| MBIR→HeLL code generator | for instructions: the dispatch *skeleton* generator now exists (`vm_malbolge/tools/mbir_dispatch_gen.py`, verified). A full MBIR-program → HeLL generator (loader + real handlers lowering through MBIR) is still open. |
 
 ## Blockers to unblock next
 
-1. **Byte-dispatch table.** DONE 2026-09-11: 3 handlers chain (0x00→HALT, 0x01→`P`, else→echo) in `byte_dispatch2.hell`. Pattern per opcode: one increment/decrement + one `SUBROUTINE_FLAGn` site, with trailing `R_SUBROUTINE_FLAGn` restore on non-last exit sites. Next: real handler for 0x01 (PUSH_CONST) instead of the `P` marker, then a 4th opcode.
+1. **Byte-dispatch table.** DONE 2026-09-11: full 18-opcode table generated (`mbir_dispatch_gen.py` → `byte_dispatch18.hell`, 21/21). Each opcode = one decrement + one `SUBROUTINE_FLAGn` site, trailing `R_SUBROUTINE_FLAGn` on non-last exit sites.
 2. **MBIR program from stdin.** MBIR bytecode lives in Malbolge data cells, copied from stdin. The batch-input idiom in `min3_echo1.hell` already shows the way (one byte per iteration). The missing piece is a loop that writes them into consecutive cells.
 
 ## Next concrete step (lowest risk)
 
-3-way dispatch DONE 2026-09-11 (`byte_dispatch2.hell`). Next:
+Dispatch is fully done (18 opcodes, generated, 21/21). Next milestone is a
+REAL semantic handler — the smallest honest increment is a 1-deep-stack
+`PUSH_CONST … OUT_BYTE` pair in a stream loop:
 
 ```
-read byte B
-if B == 0x00 → HALT                 (done)
-if B == 0x01 → OUT 'P' marker       (done; replace marker with real PUSH_CONST handler)
-else        → echo B                (done)
+read opcode B
+B==0x00 HALT                  (this is exactly what dispatch already does)
+B==0x01 PUSH_CONST: read operand byte O, store O in stack cell, loop
+B==0x10 OUT_BYTE:   recover stack cell, OUT it, loop
+EOF      HALT
 ```
 
-Chain another opcode (e.g. `0x10` per MBIR contract) the same way: one
-decrement (B-2 … B-k) + one `SUBROUTINE_FLAGn` site, trailing
-`R_SUBROUTINE_FLAGn` on non-last exit sites.
+Key new pieces vs the current classifier: (1) a fetch LOOP that re-reads the
+next opcode (needs per-iteration reset of value/value_C1/save cells back to C1
+— digital_root's `restore_initial_state` idiom), and (2) reading an operand
+byte inside a handler. Both are small lifts from proven idioms; neither is yet
+demonstrated. The `P`/`O` markers in `byte_dispatch18.hell` are the placeholders
+these replace.
 
 ## Toolchain traps (measured 2026-09-11, all on runners/malbolge-original)
 

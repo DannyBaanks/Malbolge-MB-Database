@@ -1,0 +1,44 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch18.hell",
+  "generator": "vm_malbolge/tools/mbir_dispatch_gen.py",
+  "test": "18-opcode MBIR byte-VALUE dispatch (full MBIR_VERSION 0 opcode table) + echo fallback + EOF",
+  "spec": {
+    "0x00": "HALT, no output",
+    "0x01..0x11": "one marker byte per opcode (see cases), HALT",
+    "non-opcode byte": "echo verbatim, HALT",
+    "EOF": "HALT, no output"
+  },
+  "build": "LMAO v0.6.0 normal layout",
+  "runner": "runners/malbolge-original/malbolge.exe (Classic 3^10)",
+  "oracle": "tools/oracle_classic.py",
+  "cases": [
+    {"in": "00", "exp": "", "oracle": "", "osteps": 50842, "runner": "", "ok": true},
+    {"in": "01", "exp": "50", "oracle": "50", "osteps": 51334, "runner": "50", "ok": true},
+    {"in": "02", "exp": "52", "oracle": "52", "osteps": 52126, "runner": "52", "ok": true},
+    {"in": "03", "exp": "55", "oracle": "55", "osteps": 52496, "runner": "55", "ok": true},
+    {"in": "04", "exp": "4c", "oracle": "4c", "osteps": 52991, "runner": "4c", "ok": true},
+    {"in": "05", "exp": "53", "oracle": "53", "osteps": 53792, "runner": "53", "ok": true},
+    {"in": "06", "exp": "41", "oracle": "41", "osteps": 54171, "runner": "41", "ok": true},
+    {"in": "07", "exp": "42", "oracle": "42", "osteps": 54675, "runner": "42", "ok": true},
+    {"in": "08", "exp": "4d", "oracle": "4d", "osteps": 55788, "runner": "4d", "ok": true},
+    {"in": "09", "exp": "45", "oracle": "45", "osteps": 56054, "runner": "45", "ok": true},
+    {"in": "0a", "exp": "54", "oracle": "54", "osteps": 56567, "runner": "54", "ok": true},
+    {"in": "0b", "exp": "47", "oracle": "47", "osteps": 57386, "runner": "47", "ok": true},
+    {"in": "0c", "exp": "4a", "oracle": "4a", "osteps": 57783, "runner": "4a", "ok": true},
+    {"in": "0d", "exp": "46", "oracle": "46", "osteps": 58305, "runner": "46", "ok": true},
+    {"in": "0e", "exp": "43", "oracle": "43", "osteps": 59133, "runner": "43", "ok": true},
+    {"in": "0f", "exp": "56", "oracle": "56", "osteps": 59539, "runner": "56", "ok": true},
+    {"in": "10", "exp": "4f", "oracle": "4f", "osteps": 60070, "runner": "4f", "ok": true},
+    {"in": "11", "exp": "49", "oracle": "49", "osteps": 61210, "runner": "49", "ok": true},
+    {"in": "20", "exp": "20", "oracle": "20", "osteps": 0, "runner": "20", "ok": true},
+    {"in": "fe", "exp": "fe", "oracle": "fe", "osteps": 0, "runner": "fe", "ok": true},
+    {"in": "EOF", "exp": "", "oracle": "", "osteps": 49351, "runner": "", "ok": true}
+  ],
+  "verdict": "21/21 OK on oracle AND runner. Every MBIR_VERSION 0 opcode byte 0x00..0x11 takes a distinct handler path producing a distinct marker output (and distinct step counts); 0x00 and EOF halt with no output; non-opcode bytes echo. Full opcode-table dispatch now generated mechanically (mbir_dispatch_gen.py), resolving the A04 'byte-dispatch table' blocker at the classifier level.",
+  "scope_limits": [
+    "Classifier only: each handler emits a fixed marker byte. NO operand reading, NO stack, NO fetch loop, NO arithmetic semantics. Full MBIR VM remains NOT_DEMONSTRATED.",
+    "Single input byte (one-shot); no multi-byte program execution.",
+    "Normal LMAO layout only (the -f runner trap applies)."
+  ]
+}
