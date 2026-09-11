@@ -1,0 +1,12 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch1.hell",
+  "input": "0x41",
+  "stdout": "A",
+  "oracle_steps": 26789,
+  "oracle_status": "HALTED",
+  "runner_steps": 26789,
+  "runner_status": "HALTED",
+  "build": "LMAO v0.6.0 normal layout",
+  "note": "0x41 takes the echo handler (dispatch_not_zero -> save_B recovered -> OUT): verbatim echo, halted. Step count differs from the 0x00 path (26789 vs 28078): distinct control flow, not just distinct output."
+}

@@ -1,0 +1,12 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch1.hell",
+  "input": "<EOF>",
+  "stdout": "",
+  "oracle_steps": 26588,
+  "oracle_status": "HALTED",
+  "runner_steps": 25089,
+  "runner_status": "HALTED",
+  "build": "LMAO v0.6.0 normal layout",
+  "note": "EOF takes the EOF handler (increment-overflow on C2 -> got_eof HALT): no output. Oracle/runner step counts differ (26588 vs 25089) while agreeing on output/status — same known EOF divergence as the byte_branch_wip baseline (oracle 22177 vs runner 20575)."
+}
