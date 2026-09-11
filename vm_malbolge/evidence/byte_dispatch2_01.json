@@ -1,0 +1,12 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch2.hell",
+  "input": "0x01",
+  "stdout": "P",
+  "oracle_steps": 29525,
+  "oracle_status": "HALTED",
+  "runner_steps": 29525,
+  "runner_status": "HALTED",
+  "build": "LMAO v0.6.0 normal layout",
+  "note": "0x01 takes the second value discriminator (dispatch_is_one) and emits the 'P' marker byte (0x50). Distinct path and output from both 0x00 (empty, 29033 steps) and echo (e.g. 0x41 -> 'A', 28230 steps)."
+}
