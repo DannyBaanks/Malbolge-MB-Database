@@ -5,9 +5,13 @@ Generates a single-byte, one-shot dispatch program:
     read one opcode byte B -> classify into N handlers (+ echo fallback) -> HALT.
 
 Handler semantics (skeleton only, NOT the full MBIR VM):
-    0x00  -> HALT, no output
-    other listed opcodes -> emit one marker byte, HALT
-    unlisted non-zero   -> echo B verbatim, HALT
+     0x00  -> HALT, no output
+     other listed opcodes -> emit one marker byte, HALT
+     unlisted non-zero   -> echo B verbatim, HALT
+
+With --push-const-out, the 0x01 handler instead consumes one following input
+byte and emits it. This is a partial PUSH_CONST/OUT_BYTE probe, not a stack or
+fetch-loop implementation.
 
 Architecture (proven in byte_dispatch2.hell): digital_root idioms — ENTRY
 double-crazy copy, increment-overflow EOF test, decrement-until-overflow value
@@ -417,7 +421,7 @@ exit_decrement_loop:
 """
 
 
-def generate(opcodes):
+def generate(opcodes, push_const_out=False):
     M = len(opcodes)               # handlers, incl 0x00 HALT
     n_sites = M + 1                # undo + M discriminators
     code = _code(n_sites)
@@ -442,8 +446,13 @@ def generate(opcodes):
     # --- handler bodies ---
     handlers = ["dispatch_00:\n\tHALT\n}{\n"]
     for op in opcodes[1:]:
-        m = MARKERS.get(op, "X")
-        handlers.append("dispatch_%02x:\n\tROT ('%s' << 1) R_ROT\n\tOUT ?- R_OUT\n\tHALT\n}{\n" % (op, m))
+        if push_const_out and op == 0x01:
+            # Partial semantic probe: 0x01 consumes its u8 operand and emits it.
+            # This is not a stack or fetch-loop implementation.
+            handlers.append("dispatch_%02x:\n\tIN ?- R_IN\n\tOUT ?- R_OUT\n\tHALT\n}{\n" % op)
+        else:
+            m = MARKERS.get(op, "X")
+            handlers.append("dispatch_%02x:\n\tROT ('%s' << 1) R_ROT\n\tOUT ?- R_OUT\n\tHALT\n}{\n" % (op, m))
 
     # --- decrement exit (M+1 sites, trailing R on non-last) ---
     lines = []
@@ -469,6 +478,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--opcodes", default="00010203",
                     help="pairs of hex chars = handler opcodes (first MUST be 00)")
+    ap.add_argument("--push-const-out", action="store_true",
+                    help="make 0x01 consume one operand and emit it (partial probe)")
     ap.add_argument("-o", "--out", default=None)
     a = ap.parse_args()
     s = a.opcodes.strip()
@@ -476,7 +487,7 @@ def main():
     opcodes = [int(s[i:i+2], 16) for i in range(0, len(s), 2)]
     assert opcodes == sorted(set(opcodes)), "opcodes must be ascending + unique"
     assert opcodes[0] == 0x00, "first opcode must be 0x00 (HALT)"
-    text = generate(opcodes)
+    text = generate(opcodes, push_const_out=a.push_const_out)
     out = a.out or ("byte_dispatch%d.hell" % len(opcodes))
     with open(out, "w", encoding="utf-8", newline="") as f:
         f.write(text)

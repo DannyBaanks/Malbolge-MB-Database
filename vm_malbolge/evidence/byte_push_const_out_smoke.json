@@ -1,0 +1,22 @@
+{
+  "ts": "2026-09-11T12:14:54.0428515-06:00",
+  "file": "vm_malbolge/src/byte_push_const_out.hell",
+  "generator": "vm_malbolge/tools/mbir_dispatch_gen.py --opcodes 0001 --push-const-out",
+  "test": "partial PUSH_CONST operand read followed by output",
+  "build": "LMAO v0.6.0 normal layout",
+  "runner": "runners/malbolge-original/malbolge.exe",
+  "oracle": "tools/oracle_classic.py",
+  "cases": [
+    {"in": "00", "exp": "", "oracle": "", "runner": "", "steps": 28875, "ok": true},
+    {"in": "017a", "exp": "7a", "oracle": "7a", "runner": "7a", "steps": 29367, "ok": true},
+    {"in": "0100", "exp": "00", "oracle": "00", "runner": "00", "steps": 29367, "ok": true},
+    {"in": "41", "exp": "41", "oracle": "41", "runner": "41", "steps": 28072, "ok": true}
+  ],
+  "verdict": "4/4 OK on oracle AND runner. The 0x01 handler consumes one following input byte and emits that byte; 0x00 halts; unlisted 0x41 echoes.",
+  "scope_limits": [
+    "Partial PUSH_CONST/OUT_BYTE behavioral probe, not a stack implementation.",
+    "No multi-byte fetch loop; consumes at most opcode plus one operand and then halts.",
+    "Missing operand is not yet BAD_OPERAND: the existing input idiom yields EOF-byte behavior.",
+    "No loader, arithmetic, locals, calls, branches, or runtime error statuses."
+  ]
+}

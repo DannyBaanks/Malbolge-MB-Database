@@ -14,12 +14,13 @@
 | Byte-VALUE dispatch 0x00-vs-nonzero (digital_root decrement idiom, single carry pad) | `vm_malbolge/src/byte_dispatch1.hell` + `vm_malbolge/evidence/byte_dispatch1_{00,A,eof,smoke}.json` — 12/12 OK on oracle_classic AND runners/malbolge-original (normal LMAO layout): 0x00→HALT empty (28078 steps), 10 nonzero values→verbatim echo (e.g. 0x41→`A`, 26789 steps), EOF→empty. Distinct paths AND distinct outputs per value class. Built only from verbatim digital_root idioms (ENTRY copy, inc/dec, flag-branch, print recover) + dual decrement exit (increment two-site pattern). |
 | 3-way byte-VALUE dispatch (0x00 / 0x01 / other) | `vm_malbolge/src/byte_dispatch2.hell` + `vm_malbolge/evidence/byte_dispatch2_{01,smoke}.json` — 12/12 OK on oracle AND runner: 0x00→empty (29033 steps), 0x01→`P` marker (29525 steps), other nonzero→echo (e.g. 0x41→`A`, 28230 steps), EOF→empty. Three distinct value classes, three paths, three outputs. Reuses dispatch1 pipeline + a 3rd decrement site. **Key idiom fix:** a multi-site subroutine exit needs a trailing `R_SUBROUTINE_FLAGn` on every non-last site (increment two-site pattern); without it the 3rd site hangs. |
 | Full 18-opcode MBIR dispatch (generated) | `vm_malbolge/tools/mbir_dispatch_gen.py` → `vm_malbolge/src/byte_dispatch18.hell` + `vm_malbolge/evidence/byte_dispatch18_smoke.json` — 21/21 OK on oracle AND runner: every MBIR_VERSION 0 opcode byte 0x00..0x11 takes a distinct handler (0x00 HALT; 0x01..0x11 → marker bytes; non-opcode → echo; EOF → empty). The dispatch is now generated mechanically (parameterized decrement-chain + N `SUBROUTINE_FLAGn` sites), not hand-written. This resolves the "byte-dispatch table" blocker at the classifier level. |
+| Partial `PUSH_CONST` operand path | `vm_malbolge/tools/mbir_dispatch_gen.py --opcodes 0001 --push-const-out` → `vm_malbolge/src/byte_push_const_out.hell` + `vm_malbolge/evidence/byte_push_const_out_smoke.json` — 4/4 OK on oracle AND runner: `01 xx` consumes the following byte and emits `xx`; `00` halts; unlisted `41` echoes. This demonstrates operand consumption/output behavior, but explicitly does not claim a stack or fetch loop. |
 
 ## What is NOT demonstrated
 
 | item | obstacle |
 |---|---|
-| Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers. What remains is SEMANTIC EXECUTION: operand reading (PUSH_CONST/LOAD_LOCAL/…), a value stack, arithmetic (ADD/SUB/MUL/CMP), control flow (JUMP/JUMP_IF_FALSE/CALL/RETURN), and a fetch-loop over a multi-byte program. Each of these is a real handler replacing the marker, plus a stdin→cells loader. |
+| Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers, and a partial `PUSH_CONST` operand path is now demonstrated. What remains is a real value stack, separate `OUT_BYTE` handling, arithmetic, control flow, operand truncation/error behavior, and a fetch-loop over a multi-byte program, plus a stdin→cells loader. |
 | MBIR→HeLL code generator | for instructions: the dispatch *skeleton* generator now exists (`vm_malbolge/tools/mbir_dispatch_gen.py`, verified). A full MBIR-program → HeLL generator (loader + real handlers lowering through MBIR) is still open. |
 
 ## Blockers to unblock next
@@ -29,9 +30,9 @@
 
 ## Next concrete step (lowest risk)
 
-Dispatch is fully done (18 opcodes, generated, 21/21). Next milestone is a
-REAL semantic handler — the smallest honest increment is a 1-deep-stack
-`PUSH_CONST … OUT_BYTE` pair in a stream loop:
+Dispatch is fully done (18 opcodes, generated, 21/21). A partial operand path
+now passes 4/4, but it is not yet a stack or stream loop. The next milestone is
+to separate the two operations with a one-deep stack:
 
 ```
 read opcode B
@@ -42,11 +43,10 @@ EOF      HALT
 ```
 
 Key new pieces vs the current classifier: (1) a fetch LOOP that re-reads the
-next opcode (needs per-iteration reset of value/value_C1/save cells back to C1
-— digital_root's `restore_initial_state` idiom), and (2) reading an operand
-byte inside a handler. Both are small lifts from proven idioms; neither is yet
-demonstrated. The `P`/`O` markers in `byte_dispatch18.hell` are the placeholders
-these replace.
+next opcode (needs per-iteration reset of value/value_C1/save cells back to C1),
+(2) reading an operand inside a handler, and (3) preserving that operand in a
+real stack cell until the separate `OUT_BYTE` handler. The combined
+`byte_push_const_out.hell` probe is not evidence for separate stack semantics.
 
 ## Toolchain traps (measured 2026-09-11, all on runners/malbolge-original)
 
