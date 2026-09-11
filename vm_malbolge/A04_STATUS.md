@@ -8,6 +8,7 @@
 | MBIR reference VM works silently on `python.exe` | `mbir/mbir_ref.py` runs fib(6), branches, calls, I/O |
 | LMAO v0.6.0 builds Malbolge from HeLL | `tools/build_lmao.ps1` + `third_party/lmao/` — Hello World assembles and runs |
 | Byte echo works on the REAL malbolge.exe | `vm_malbolge/src/min3_echo1.hell` → hex41 → hex41, 25991 steps, verified |
+| Cell store/recover path re-run | `vm_malbolge/src/min3_echo1.hell` + `vm_malbolge/evidence/cell_store_recover_smoke.json` — 4/4 OK for `00`, `41`, `7a`, `ff` on oracle AND runner. The established double-CRAZY path stores the input through `tmp2/tmp4`, recovers `tmp2`, and emits it. |
 | Primitive byte transport is provable | host never computes contents; only the Malbolge CPU does |
 | Cellular substrate proves selectability | `vm_malbolge/cellular/A04C/evidence/` (private tree, transport + gate + holdout) |
 | Conditional branch EOF-vs-not-EOF (via value-jump to C20/C21) | `vm_malbolge/src/byte_branch_wip.hell` + `vm_malbolge/evidence/byte_branch_{A,eof}.json` — same artifact, two distinct control paths via jump-on-value **only** for the EOF sentinel. All N byte values take the same (echo) path — see `byte_branch_smoke.json`. |
@@ -47,6 +48,9 @@ next opcode (needs per-iteration reset of value/value_C1/save cells back to C1),
 (2) reading an operand inside a handler, and (3) preserving that operand in a
 real stack cell until the separate `OUT_BYTE` handler. The combined
 `byte_push_const_out.hell` probe is not evidence for separate stack semantics.
+The proven `min3_echo1.hell` cell route is the implementation basis: duplicate
+its tmp2/tmp4 copy/recovery path into a dedicated `stack_top` cell instead of
+reusing `save_B`, whose dispatch continuation is not safely reusable.
 
 ## Toolchain traps (measured 2026-09-11, all on runners/malbolge-original)
 
