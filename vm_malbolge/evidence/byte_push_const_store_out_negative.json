@@ -1,0 +1,11 @@
+{
+  "ts": "2026-09-11T12:14:54.0428515-06:00",
+  "experiment": "attempted operand storage/recovery via existing save_B path",
+  "status": "NOT_DEMONSTRATED",
+  "raw_observations": [
+    "First variant failed assembly: Label return_from_save_tmp_10 is defined multiple times.",
+    "Second variant reused existing labels and assembled, but 017a and 0100 produced empty output on both oracle and runner; 00 and fallback 41 passed.",
+    "The attempted source was deleted and the generator was restored to the last verified behavior."
+  ],
+  "conclusion": "The existing save_B continuation cannot be assumed reusable from the opcode handler. A dedicated storage path or correctly scoped return labels must be proven before claiming stack storage."
+}
