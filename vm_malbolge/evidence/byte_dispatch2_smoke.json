@@ -1,0 +1,35 @@
+{
+  "ts": "2026-09-11T00:00:00Z",
+  "file": "vm_malbolge/src/byte_dispatch2.hell",
+  "test": "3-way byte-VALUE dispatch (0x00 vs 0x01 vs nonzero + EOF)",
+  "spec": {
+    "input_0x00": "HALT with NO output",
+    "input_0x01": "output 'P' (0x50, marker for future PUSH_CONST handler)",
+    "input_nonzero_gt_1": "echo input byte verbatim, HALTED",
+    "input_EOF": "HALT with NO output"
+  },
+  "build": "LMAO v0.6.0 normal layout (NOT -f). third_party/lmao/bin/lmao.exe",
+  "runner": "runners/malbolge-original/malbolge.exe (Classic 3^10)",
+  "oracle": "tools/oracle_classic.py (independent Python Classic)",
+  "cases": [
+    {"in": "00", "exp": "", "oracle": "", "osteps": 29033, "runner": "", "rsteps": 29033, "ok": true},
+    {"in": "01", "exp": "50", "oracle": "50", "osteps": 29525, "runner": "50", "rsteps": 29525, "ok": true},
+    {"in": "02", "exp": "02", "oracle": "02", "osteps": 28230, "runner": "02", "rsteps": 28230, "ok": true},
+    {"in": "03", "exp": "03", "oracle": "03", "osteps": 28108, "runner": "03", "rsteps": 28108, "ok": true},
+    {"in": "10", "exp": "10", "oracle": "10", "osteps": 28108, "runner": "10", "rsteps": 28108, "ok": true},
+    {"in": "11", "exp": "11", "oracle": "11", "osteps": 28533, "runner": "11", "rsteps": 28533, "ok": true},
+    {"in": "41", "exp": "41", "oracle": "41", "osteps": 28230, "runner": "41", "rsteps": 28230, "ok": true},
+    {"in": "7f", "exp": "7f", "oracle": "7f", "osteps": 28289, "runner": "7f", "rsteps": 28289, "ok": true},
+    {"in": "80", "exp": "80", "oracle": "80", "osteps": 28230, "runner": "80", "rsteps": 28230, "ok": true},
+    {"in": "fe", "exp": "fe", "oracle": "fe", "osteps": 28230, "runner": "fe", "rsteps": 28230, "ok": true},
+    {"in": "ff", "exp": "ff", "oracle": "ff", "osteps": 28108, "runner": "ff", "rsteps": 28108, "ok": true},
+    {"in": "EOF", "exp": "", "oracle": "", "osteps": 27542, "runner": "", "rsteps": 26043, "ok": true}
+  ],
+  "verdict": "12/12 OK on oracle AND runner. Three distinct byte-value classes take three distinct paths with three distinct observable outputs (0x00->empty, 0x01->'P', other+nonEOF->echo). This is the first >2-way opcode-style discriminator.",
+  "scope_limits": [
+    "Single input byte only; multi-byte stdin loader NOT_DEMONSTRATED.",
+    "Three handlers (HALT / 'P'-marker / echo), not the full 18-opcode MBIR table; full MBIR VM NOT_DEMONSTRATED.",
+    "Verified on NORMAL LMAO layout only (see -f toolchain trap in A04_STATUS.md)."
+  ],
+  "method": "byte_dispatch1 pipeline + third handler. dec#3 (site3 via SUBROUTINE_FLAG3) decrements B-1 -> B-2; overflow IFF B==1 routes to the 'P' marker. KEY FIX vs first attempt: the decrement exit's non-last sites need a trailing R_SUBROUTINE_FLAGn restore (increment two-site pattern), else the 3rd site call hangs."
+}
