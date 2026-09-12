@@ -10,6 +10,7 @@ from .mbir import (
     MBIRDecodeError, encode, decode, validate, instruction_boundaries,
 )
 from .mbir_ref import MBIRRefVM, MBIRError, source_hash
+from .exit_hook import run_with_exit_hook
 
 __all__ = [
     "mbir", "MBIRRefVM", "MBIRError", "source_hash", "MBIR_VERSION",
@@ -19,4 +20,5 @@ __all__ = [
     "OPERANDS", "MNEMONICS", "operand_width",
     "MBIRDecodeError", "encode", "decode", "validate",
     "instruction_boundaries",
+    "run_with_exit_hook",
 ]
