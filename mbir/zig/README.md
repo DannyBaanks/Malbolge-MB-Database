@@ -1,11 +1,12 @@
 # MBIR Zig backend
 
-Estado: `M1_IN_PROGRESS` — scaffold, decoder seguro y stack mínimo.
+Estado: `M2_PASS` — semántica de ejecución MBIR v0 implementada en el runtime
+Zig; el runner interoperable diferencial todavía es M3.
 
-Este backend ejecutará gradualmente MBIR_VERSION 0. En M1 solo están
-implementados `HALT`, `PUSH_CONST`, `POP` y `DUP`; los otros opcodes se aceptan
-por el decoder para validar el formato, pero todavía devuelven
-`Unsupported` durante la ejecución.
+Este backend ejecuta MBIR_VERSION 0 con aritmética modular, locals, frames,
+saltos, llamadas, I/O y errores fail-closed. El ejecutable actual sigue siendo
+un smoke executable M1; el transporte externo de bytecode/input se implementa
+en M3.
 
 ## Prueba
 
@@ -16,5 +17,5 @@ zig version
 zig build test
 ```
 
-No declarar `ZIG_MBIR_DEMONSTRATED` todavía: faltan aritmética, control de
-flujo, frames, I/O, errores completos y comparación diferencial con Python.
+No declarar `ZIG_MBIR_DEMONSTRATED` todavía: faltan runner interoperable,
+comparación diferencial completa con Python y gate de evidencia final.
