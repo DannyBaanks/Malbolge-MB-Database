@@ -1,0 +1,15 @@
+{
+  "schema": "mbir-zig-hashes/1",
+  "date": "2026-09-12",
+  "files": {
+    "zig-out/bin/mbir-zig.exe": "722a6a89680887b9cc113ca431d935e67a93f74bec64c9220f8c2c0fc676dc41",
+    "src/main.zig": "6b4e7deeeb7a5143040502c40857eb9e6c460905fa979c6b80c621644ff11c96",
+    "src/mbir.zig": "44583920ce486c4fcd443fea323f70c37a8120315f4b29adb0154ae22d09947e",
+    "tests/runtime.zig": "0375741a1118bda3dd37892baa1e6ec759450b3a5b874c0c9cb7f316ed6962d4",
+    "tests/differential.py": "d87fedc2fc6bae76d9a80878a4637c76913996db699bea75502540cb9b69f5d5",
+    "evidence/m1_smoke.json": "c551858e8ec54e6cd9782d0b35afa9d48ca94eb240f818e5903522b38327e5fa",
+    "evidence/m2_smoke.json": "0bb56cb3392a806c467f0e241294cacaba227986cbcfdb6fb452067406645bfe",
+    "evidence/m3_differential.json": "9e97a7fcfa15fc7aa820e3a162865b7a06abbc87696e16cba6f714dbf79d7cd4",
+    "evidence/m3_differential_second.json": "9635847d46fb351256b83721be238b0ffc4d9a8a6f262a6e6962479fc957f1aa"
+  }
+}

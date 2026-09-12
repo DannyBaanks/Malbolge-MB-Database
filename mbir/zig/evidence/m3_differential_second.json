@@ -1,0 +1,504 @@
+{
+  "schema": "mbir-zig-differential/1",
+  "created_at": "2026-09-12T11:55:55.106667+00:00",
+  "verdict": "PASS",
+  "fixtures": 22,
+  "passed": 22,
+  "failed": 0,
+  "hashes": {
+    "runner_exe": "722a6a89680887b9cc113ca431d935e67a93f74bec64c9220f8c2c0fc676dc41",
+    "runner_main": "6b4e7deeeb7a5143040502c40857eb9e6c460905fa979c6b80c621644ff11c96",
+    "vm_zig": "44583920ce486c4fcd443fea323f70c37a8120315f4b29adb0154ae22d09947e",
+    "differential_script": "d87fedc2fc6bae76d9a80878a4637c76913996db699bea75502540cb9b69f5d5",
+    "python_contract": "efd236fe750b39e123c5de73a8ba925df6d6feb9434af026498bafdaeb718473",
+    "python_ref_vm": "89cd1e43c5cab59e640e8b3689cd53f32a558ceec3347b815f68e1194f50f90b"
+  },
+  "records": [
+    {
+      "name": "add-wrap",
+      "program_sha256": "7b769ecbb2b079d8cc1a785acc3f352d18ab3c2a4b1118fd0a42fae67e81346e",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          44
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          44
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "sub-wrap",
+      "program_sha256": "5ee07cec3d4d10c37f40fbe4204a7972088229c939d83033d30fe4c3ec312e6d",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          251
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          251
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "mul",
+      "program_sha256": "1e4a3444b962923fa898e3dfbf83f567c5e06966f504f998d870c93a1177e387",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          48
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          48
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "cmp-eq",
+      "program_sha256": "5783557ebee420105d263c47ed1221b3bd149b3651561acc0a2b31f8fff716c7",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "cmp-lt",
+      "program_sha256": "31f92574a87a1ac6082cf3f1a22bc4835c7e3eeb4597cd6ad96f5c63b9093921",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "cmp-gt",
+      "program_sha256": "b5907d9a722b51a1309e939b68898aa912dc6166f8f9e313a4a8a2f94bc008e7",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "locals-dup",
+      "program_sha256": "e2becaf541553b55e671e6617fdc945e8ffaa50ab51105e19b4bd6f80f93cf76",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 7,
+        "output": [
+          18
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 7,
+        "output": [
+          18
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "pop-leaves",
+      "program_sha256": "5c31ed7f92ed9a9513af19c4411dc33bce744d0994c6683805ac8c31d09758c7",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          1
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "branch-true",
+      "program_sha256": "d4434a9ff343b6deb32c21065fdf6c39f67206644caeceee51caf189fabb19fc",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 8,
+        "output": [
+          7
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 8,
+        "output": [
+          7
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "loop-0-4",
+      "program_sha256": "c9824e8b73e4b51bd927555d4497aa261534378a69be050ae2d34ad0ba66191d",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 57,
+        "output": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 57,
+        "output": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "call-add",
+      "program_sha256": "0e6741c76d44e17b336fe6adc8d6db3477643859b94f6a0cfac24b09a5c8f6f8",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 9,
+        "output": [
+          5
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 9,
+        "output": [
+          5
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "fib6",
+      "program_sha256": "c3dff9b1036302b6c70a0ffcf7626e7bfb6cabda184e44919ec45ca0f5816ae5",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 250,
+        "output": [
+          8
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 250,
+        "output": [
+          8
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "io-echo",
+      "program_sha256": "92985be6116bbe65d790e241552421b8a9bbf77932b016b58eefe21a664c6c7e",
+      "input_sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 22,
+        "output": [
+          72,
+          105
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 22,
+        "output": [
+          72,
+          105
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "eof-repeat",
+      "program_sha256": "decc128674e93a140bb74153185e2b84187986b45455cbcd42e244eb06b660df",
+      "input_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          255,
+          65
+        ]
+      },
+      "actual": {
+        "status": "HALTED",
+        "error": null,
+        "steps": 5,
+        "output": [
+          255,
+          65
+        ]
+      },
+      "match": true
+    },
+    {
+      "name": "underflow-out",
+      "program_sha256": "707bf0b938f307b5c222e670598b865d5e1f8a8003df82c7abbf7c9f8fa4d720",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "STACK_UNDERFLOW",
+        "steps": 1,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "STACK_UNDERFLOW",
+        "steps": 1,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "underflow-add",
+      "program_sha256": "2e0031de0e8c1d2a80a8a47ba42b48de1ceac937a7f7fe0f0a71f06c87c48fc7",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "STACK_UNDERFLOW",
+        "steps": 2,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "STACK_UNDERFLOW",
+        "steps": 2,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "bad-opcode",
+      "program_sha256": "5bf825ff7bdf78af9c7f4f14feef7549b8ebb9d06ddd6111631bc8d71f3bfc40",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "BAD_OPCODE",
+        "steps": 0,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "BAD_OPCODE",
+        "steps": 0,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "bad-target",
+      "program_sha256": "7d1eb621064b1b92ade9775969324493ac2dc4d180cec46ad03b00a16b74f720",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "BAD_TARGET",
+        "steps": 2,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "BAD_TARGET",
+        "steps": 2,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "bad-slot",
+      "program_sha256": "0e35b3d50ceca3075dd2230b62519d54af4c57e1a0e06eb181db6fa0ffe93f5a",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "BAD_SLOT",
+        "steps": 1,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "BAD_SLOT",
+        "steps": 1,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "return-no-frame",
+      "program_sha256": "46e04d129d7b45d054469ce34e24069a1426b3e34f1b68a3d1bff1e070aee192",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "NO_FRAME",
+        "steps": 1,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "NO_FRAME",
+        "steps": 1,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "truncated-push",
+      "program_sha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 1000000,
+      "expected": {
+        "status": "ERROR",
+        "error": "BAD_OPERAND",
+        "steps": 0,
+        "output": []
+      },
+      "actual": {
+        "status": "ERROR",
+        "error": "BAD_OPERAND",
+        "steps": 0,
+        "output": []
+      },
+      "match": true
+    },
+    {
+      "name": "max-steps",
+      "program_sha256": "42f4aeb81c1ef81f771f3de8abca9dcf66901c575530e7672e4b1146474ae650",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "max_steps": 3,
+      "expected": {
+        "status": "MAX_STEPS",
+        "error": null,
+        "steps": 3,
+        "output": []
+      },
+      "actual": {
+        "status": "MAX_STEPS",
+        "error": null,
+        "steps": 3,
+        "output": []
+      },
+      "match": true
+    }
+  ]
+}

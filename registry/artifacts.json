@@ -1,5 +1,29 @@
 {
   "version": 1,
-  "generated_at": "2026-09-02",
-  "artifacts": []
+  "generated_at": "2026-09-12",
+  "artifacts": [
+    {
+      "id": "zig-mbir-v0-backend",
+      "kind": "backend_runner",
+      "language": "zig",
+      "mbir_version": 0,
+      "status": "demonstrated",
+      "path": "mbir/zig/",
+      "runner": "mbir/zig/zig-out/bin/mbir-zig.exe",
+      "evidence": [
+        "mbir/zig/evidence/m1_smoke.json",
+        "mbir/zig/evidence/m2_smoke.json",
+        "mbir/zig/evidence/m3_differential.json",
+        "mbir/zig/evidence/m3_differential_second.json",
+        "mbir/zig/evidence/hashes.json"
+      ],
+      "verification": [
+        "zig build test",
+        "zig build -Doptimize=ReleaseSafe",
+        "py mbir/zig/tests/differential.py --manifest mbir/zig/evidence/m3_differential.json",
+        "py mbir/zig/tests/differential.py --manifest mbir/zig/evidence/m3_differential_second.json"
+      ],
+      "notes": "MBIR_VERSION 0 semantics, external file runner and two independent 22/22 differential runs. Scope excludes source-language frontends and Malbolge-hosted execution."
+    }
+  ]
 }
