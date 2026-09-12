@@ -32,8 +32,15 @@ docs/MBIR_CONTRACT.md ─ full contract spec
 ```
 
 The MBIR contract is language-neutral and shared by all tracks. A language
-frontend lowers its subset to MBIR; one Malbolge-hosted MBIR VM executes them
-all (A04).
+frontend or backend adapter may lower/translate its supported subset to MBIR;
+the resulting boundary representation can be handed to a compatible execution
+substrate. Native Malbolge, Rustbolge, Javolge, Pibolge, and other engines are
+separate backends, not imports into this repository. A single omnilingual
+Malbolge VM is **NOT** a requirement and remains NOT_DEMONSTRATED.
+
+```text
+language program -> frontend -> MBIR middleware -> backend adapter -> substrate
+```
 
 ## Per-Language Structure
 

@@ -1,19 +1,18 @@
 # Malbolge MB Database
 
-Base de datos reproducible y laboratorio de investigacion para programas Malbolge sustanciales y runtimes en otros lenguajes alojados en Malbolge.
+Base de datos reproducible y laboratorio de investigacion para programas Malbolge sustanciales, runtimes en otros lenguajes, y el boundary de middleware que los conecta a substratos de ejecucion.
 
 ## Mision
 
-Investigar, construir, ejecutar y conservar programas `.mb` — especialmente interpretes/runtimes de otros lenguajes implementados sobre Malbolge.
+Investigar, construir, ejecutar y conservar programas `.mb` — especialmente interpretes/runtimes de otros lenguajes implementados sobre Malbolge. MBIR es el
+boundary de intercambio entre un adaptador frontend/backend y un substrato; no es
+una VM omnilingue.
 
 Objetivos a largo plazo:
 
 ```
-python.mb    ← prioridad actual
-swift.mb     ← NOT_STARTED
-rust.mb      ← NOT_STARTED
-java.mb      ← NOT_STARTED
-c.mb         ← NOT_STARTED
+source program -> frontend/adapter -> MBIR -> backend adapter -> substrate
+                                      (native Malbolge, Rustbolge, Pibolge, ...)
 ```
 
 ## Principio Central
@@ -37,8 +36,9 @@ README ≠ evidencia. Nombre de archivo ≠ evidencia. Claim ≠ implementacion.
 | C        | c.mb      | Unshackled (primario) | NOT_STARTED | — | — |
 
 > Estado honesto: P1 es una **VM de referencia Python** (evidencia REFERENCE_MODEL) y
-> P2 es un **frontend Python AST → bytecode** (evidencia FRONTEND). Ninguno
-> ejecuta en Malbolge. **Runtime alojado en Malbolge = NOT_DEMONSTRATED** hasta A04.
+> P2 es un **frontend Python AST → bytecode** (evidencia FRONTEND). El boundary MBIR y
+> las primitivas Malbolge estan parcialmente demostrados; un backend de ejecucion MBIR
+> completo sigue siendo **NOT_DEMONSTRATED**.
 
 ## Estructura del Repo
 
@@ -50,7 +50,7 @@ MALBOLGE-MB-DATABASE/
 ├── registry/              ← metadata estructurada por lenguaje
 ├── docs/                  ← definiciones, variantes, modelo de evidencia
 ├── references/            ← documentacion de referencia externa
-├://tools/                 ← utilidades para build, ejecucion, pruebas
+├── tools/                 ← utilidades para build, ejecucion, pruebas
 ├── runners/               ← entornos de ejecucion reproducibles de Malbolge
 ├── python/                ← pista python.mb (ACTIVO)
 ├── swift/                 ← pista swift.mb (NOT_STARTED)
