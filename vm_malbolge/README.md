@@ -1,9 +1,18 @@
-# vm_malbolge — MBIR interpreter hosted on real Malbolge
+# vm_malbolge — MBIR middleware boundary and Malbolge probes
 
 ## Status (A04 session progress)
 
 The toolchain and primitives are verified on the real Malbolge name Classic
-runner. The full interpreter gate is NOT yet demonstrated.
+runner. MBIR is a backend-neutral middleware boundary between language
+frontends (Python, Rust, COBOL, PITÓN, Fortran, etc.) and execution substrates
+such as native Malbolge, Rustbolge, Javolge, Pibolge, or other Bolge engines.
+This repository does **not** claim that MBIR is an omnilingual VM, nor that
+every backend must implement all source-language semantics.
+
+```text
+source program -> frontend/adapter -> MBIR boundary -> backend adapter -> substrate
+                         native Malbolge / Rustbolge / Pibolge / ...
+```
 
 ### Verified artifacts
 
@@ -29,11 +38,11 @@ runner. The full interpreter gate is NOT yet demonstrated.
 
 ### Explicitly NOT yet demonstrated
 
-Any claim of a working MBIR-on-Malbolge runtime that interprets MBIR programs
-as data: **NOT_DEMONSTRATED** until we ship `runners/malbolge-mbir` (or
-equivalent) running the killer corpus from the roadmap. mbir_vm.hell is a
-design stub with no working implementation yet; no `A04_MBIR_ON_MALBOLGE =
-DEMONSTRATED` will be claimed without green runner evidence.
+Any claim of a complete MBIR-on-Malbolge runtime that interprets arbitrary
+MBIR programs as data: **NOT_DEMONSTRATED**. The demonstrated scope is the
+middleware contract, transport primitives, and backend-facing Malbolge
+probes. `mbir_vm.hell` remains a design stub; no complete omnilingual VM claim
+will be made without green runner evidence.
 
 ## Known weirdness
 

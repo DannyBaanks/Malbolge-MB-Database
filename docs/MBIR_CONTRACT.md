@@ -2,9 +2,13 @@
 
 MB = Malbolge / Multi-Backend.
 
-MBIR is a language-neutral intermediate representation executed by a shared
-runtime that is ultimately hosted on Malbolge. It lets one Malbolge runtime
-serve many language frontends (Python, Swift, Rust, Java, C).
+MBIR is a language-neutral middleware representation at the execution
+boundary. It connects language frontends and backend adapters to a substrate;
+it is not an omnilingual source-language runtime. A backend may be native
+Malbolge, Rustbolge, Javolge, Pibolge, or another compatible substrate.
+
+The contract freezes the boundary data and operations that an adapter exposes;
+it does not require every substrate to contain every frontend's semantics.
 
 ```text
 Python frontend ─┐
@@ -14,8 +18,10 @@ Java frontend   ─┤
 C frontend      ─┘
                   ↓
                  MBIR
-                  ↓
-          Malbolge runtime
+                   ↓
+             backend adapter
+                   ↓
+        Malbolge / Rustbolge / ...
 ```
 
 ## Versioning
