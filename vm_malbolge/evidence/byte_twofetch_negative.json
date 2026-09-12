@@ -1,0 +1,16 @@
+{
+  "ts": "2026-09-11",
+  "experiment": "two-fetch probe 01 <operand> 10",
+  "status": "NOT_DEMONSTRATED",
+  "source_sha256": "CE28D523B7496955BD3A717D7F8760208690D3D063572343C26D533BE52E0767",
+  "generator_sha256": "54590C1BB3AB86B0068475350E127E3F9E83C9B2E8928E2245EBAAF317370A80",
+  "build": "LMAO v0.6.0 normal layout; assembly succeeded",
+  "raw_observations": [
+    "Station 1 controls passed: 00 -> empty; 41 -> 41.",
+    "Every station-2 case failed: oracle emitted deterministic garbage and the real runner emitted empty output, so oracle and runner disagreed.",
+    "Observed 014110 oracle output: 471e26e5e5ffff; expected 41.",
+    "Adding dedicated-cell initialization later broke station-1 runner agreement and was reverted."
+  ],
+  "conclusion": "The two-fetch design has an unresolved return-table/layout error. The WIP generator and generated source were deleted rather than treated as a VM implementation.",
+  "next_safe_step": "Use the verified cell_stack_top.hell as the basis for a smaller isolated second-read experiment before attempting to combine it with the large decrement dispatch."
+}
