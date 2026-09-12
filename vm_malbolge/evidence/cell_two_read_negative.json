@@ -1,0 +1,14 @@
+{
+  "ts": "2026-09-12T03:45:32.9056226-06:00",
+  "file_sha256": "E1172EC1A8D817A7F2D3C51763324EAF975372C51C2855F9912B42F7ED6BDCAA",
+  "experiment": "insert a second IN before the proven min3 cell-store path",
+  "status": "NOT_DEMONSTRATED",
+  "cases": [
+    {"in": "0041", "expect": "41", "oracle": "00", "runner": "00", "steps": 26020},
+    {"in": "017a", "expect": "7a", "oracle": "01", "runner": "01", "steps": 26020},
+    {"in": "ff00", "expect": "00", "oracle": "ff", "runner": "ff"},
+    {"in": "12ff", "expect": "ff", "oracle": "12", "runner": "12"}
+  ],
+  "trace": "oracle executed one IN at step 10, then HALT at step 61 for the 00A case; the inserted second IN was not reached as a second input operation.",
+  "conclusion": "Two raw IN lines cannot simply be placed consecutively in this HeLL layout. The source was deleted; the proven single-read cell artifact remains unchanged. Next attempt needs an explicit label/MOVED return structure, not another adjacent IN."
+}
