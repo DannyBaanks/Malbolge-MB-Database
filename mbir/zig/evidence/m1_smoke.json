@@ -1,0 +1,42 @@
+{
+  "schema": "mbir-zig-m1-smoke/1",
+  "date": "2026-09-12",
+  "toolchain": {
+    "zig_version": "0.16.0",
+    "target": "native Windows"
+  },
+  "commands": [
+    {
+      "command": "zig build test",
+      "exit_code": 0,
+      "raw_output": ""
+    },
+    {
+      "command": "zig build -Doptimize=ReleaseSafe",
+      "exit_code": 0,
+      "raw_output": ""
+    }
+  ],
+  "tests": {
+    "count": 5,
+    "passed": 5,
+    "failed": 0,
+    "coverage": [
+      "all 18 opcode encodings decode structurally",
+      "u8 and u24 little-endian operands",
+      "BAD_OPCODE and BAD_OPERAND rejection",
+      "HALT/PUSH_CONST/POP/DUP execution",
+      "stack underflow error"
+    ]
+  },
+  "artifact_sha256": {
+    "zig-out/bin/mbir-zig.exe": "7cce96c0cb0e5ba1caf728b86a9e62f3f1d7adb6727c86510c7720b12080dc21"
+  },
+  "verdict": "M1_PASS",
+  "not_demonstrated": [
+    "full 18-opcode execution",
+    "external bytecode/input runner",
+    "differential corpus gate",
+    "ZIG_MBIR_DEMONSTRATED"
+  ]
+}
