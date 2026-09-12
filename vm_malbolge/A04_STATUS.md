@@ -24,6 +24,7 @@
 |---|---|
 | Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers, and a partial `PUSH_CONST` operand path is now demonstrated. What remains is a real value stack, separate `OUT_BYTE` handling, arithmetic, control flow, operand truncation/error behavior, and a fetch-loop over a multi-byte program, plus a stdin→cells loader. |
 | MBIR→HeLL code generator | for instructions: the dispatch *skeleton* generator now exists (`vm_malbolge/tools/mbir_dispatch_gen.py`, verified). A full MBIR-program → HeLL generator (loader + real handlers lowering through MBIR) is still open. |
+| Two-fetch `01 <operand> 10` probe | `vm_malbolge/evidence/byte_twofetch_negative.json` — WIP assembled, but station-2 cases disagreed between oracle and real runner (`014110`: oracle `471e26e5e5ffff`, runner empty). Generator/source were deleted; no second-fetch claim. |
 
 ## Blockers to unblock next
 
