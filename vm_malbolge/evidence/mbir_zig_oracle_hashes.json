@@ -1,0 +1,11 @@
+{
+  "schema": "mbir-zig-oracle-hashes/1",
+  "date": "2026-09-12",
+  "files": {
+    "vm_malbolge/tools/mbir_zig_oracle.py": "0fddd12d2d8ae03f1f019cf29fdba984c10a18a50d7e1bcdc7a737d78b13a51d",
+    "vm_malbolge/evidence/mbir_zig_oracle_halt_v3.json": "cbb544b6894fa758bf6438268957f11841daad08d9408ed3a89afc4e9045665e",
+    "vm_malbolge/evidence/mbir_zig_oracle_push_const_v3.json": "9716b3343e8f4ccfb0841213f03f63b48138357d273b0a2c0e1ee1e5b3e6991e",
+    "vm_malbolge/evidence/mbir_zig_oracle_twopush_mismatch_v3.json": "a00ee89c8898897d21d54b748ebd9027dc7617f9597ec73fa28f949fd3c24bd5",
+    "vm_malbolge/evidence/mbir_zig_oracle_push_const_missing_halt_v3.json": "686b64021ad240cc4f1702edb65393cd0ef021cc147bd5345cf15fc0b4fbfccc"
+  }
+}

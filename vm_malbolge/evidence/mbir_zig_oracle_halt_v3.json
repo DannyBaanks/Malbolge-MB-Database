@@ -1,0 +1,38 @@
+{
+  "schema": "mbir-zig-malbolge-oracle/1",
+  "created_at": "2026-09-12T13:18:25.120161+00:00",
+  "verdict": "MATCH",
+  "note": "MATCH proves the probe implements this MBIR stream; MISMATCH records the next Malbolge boundary.",
+  "result": {
+    "hell_source": "C:\\Development\\ISyCo Git\\MALBOLGE-MB-DATABASE\\vm_malbolge\\src\\byte_dispatch18.hell",
+    "mbir_hex": "00",
+    "zig": {
+      "schema": "mbir-zig-result/1",
+      "status": "HALTED",
+      "error": null,
+      "steps": 1,
+      "output": [],
+      "exit_code": 0,
+      "stderr": ""
+    },
+    "malbolge_oracle": {
+      "output": [],
+      "steps": 50842,
+      "status": "HALTED"
+    },
+    "malbolge_runner": {
+      "output": [],
+      "exit_code": 0,
+      "stderr": "steps: 50842 | status: HALTED\r\n"
+    },
+    "match": true,
+    "sources": {
+      "hell_sha256": "3a9b9f1e86ddaa62c7230d0d02649feb8ab5eb45894a275e18e1f70b86fe6fde",
+      "compiled_sha256": "51bed02edcfd701b97f04e1c42951e489b6bc9929b7f8500923c631561bd0add",
+      "zig_runner_sha256": "722a6a89680887b9cc113ca431d935e67a93f74bec64c9220f8c2c0fc676dc41",
+      "malbolge_runner_sha256": "9a7ad87ec094ec0948974f5d600190c0d2debbea645f4781cd7eeeda7d679775",
+      "lmao_sha256": "ad39ba2904b5c967fb9b19a41ca44b3da96d3add0e780129896d626c6053cd23",
+      "oracle_tool_sha256": "0fddd12d2d8ae03f1f019cf29fdba984c10a18a50d7e1bcdc7a737d78b13a51d"
+    }
+  }
+}
