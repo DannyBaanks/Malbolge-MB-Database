@@ -1,19 +1,21 @@
 # Malbolge MB Database
 
-A reproducible database and research laboratory for substantial Malbolge programs and foreign-language runtimes hosted on Malbolge.
+A reproducible database and research laboratory for substantial Malbolge
+programs, foreign-language runtimes, and the middleware boundary that connects
+them to execution substrates.
 
 ## Mission
 
-Investigate, build, execute, and conserve `.mb` programs — especially interpreters/runtimes of other languages implemented over Malbolge.
+Investigate, build, execute, and conserve `.mb` programs — especially
+interpreters/runtimes of other languages implemented over Malbolge. MBIR is the
+interchange boundary between a frontend/backend adapter and a substrate; it is
+not an omnilingual VM.
 
 Long-term targets:
 
 ```
-python.mb    ← current priority
-swift.mb     ← NOT_STARTED
-rust.mb      ← NOT_STARTED
-java.mb      ← NOT_STARTED
-c.mb         ← NOT_STARTED
+source program -> frontend/adapter -> MBIR -> backend adapter -> substrate
+                                      (native Malbolge, Rustbolge, Pibolge, ...)
 ```
 
 ## Central Principle
@@ -37,8 +39,9 @@ README ≠ evidence. Filename ≠ evidence. Claim ≠ implementation.
 | C        | c.mb      | Unshackled (primary) | NOT_STARTED | — | — |
 
 > Honest status: P1 is a **Python reference VM** (REFERENCE_MODEL evidence) and
-> P2 is a **Python AST → bytecode frontend** (FRONTEND evidence). Neither
-> executes on Malbolge. **Malbolge-hosted runtime = NOT_DEMONSTRATED** until A04.
+> P2 is a **Python AST → bytecode frontend** (FRONTEND evidence). The MBIR
+> boundary and Malbolge primitives are partially demonstrated; a complete
+> MBIR execution backend remains **NOT_DEMONSTRATED**.
 
 ## Repository Structure
 
