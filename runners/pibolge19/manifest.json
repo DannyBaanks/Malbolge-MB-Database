@@ -1,0 +1,31 @@
+{
+  "runner": "pibolge19",
+  "variant": "unshackled",
+  "word_width_trits": 19,
+  "memory_cells": 1162261467,
+  "host_language": "Piton (PITON interpreter required)",
+  "source_url": "https://github.com/DannyBaanks/Pibolge19.git",
+  "source_path": "pibolge19.piton",
+  "source_commit": "263f1d7 (2026-09-12)",
+  "license": "MIT",
+  "compiler": "piton interpreter",
+  "compiler_version": "PITON repo HEAD",
+  "build_command": "piton ejecutar pibolge19.piton <program.mal>",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (CPython host for Piton)",
+  "cli": "piton ejecutar pibolge19.piton <program.mal>",
+  "input_handling": "stdin bytes",
+  "compatibility": "unshackled 3^19 - bit-exact port of bolge19/main.zig (base-9 crazy CRZ2 144 entries + 1 ternary digit; rotation by thirds; fast20 region offsets; lazy chain zones + AutoHashMap overlay; EOF op23 -> a <- END-1; XLAT 141 chars)",
+  "known_issues": "no --normalize/anchor CSVs in this port; verified against the bolge19.exe binary only, not against upstream fast20.c",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "differential vs bolge19.exe: 5 programs byte-identical stdout + same final state - reproducer.mal (1947 steps, quine), hello.malbolge (39 steps), program.mal M3 (6 steps), echo.mal (2 steps), program.mal M0 (3 steps) (Pibolge19 README)",
+    "cross_checks": "porting bug found and localized during the port: the real XLAT table starts with a non-obvious multi-char prefix; omitting it diverges silently (caught by write-log diff vs bolge19.exe at cell 98, step 0, value 74 vs 81)",
+    "snapshot": "n/a",
+    "special": "3^19 lineage member: demonstrates cross-implementation bit-exactness is achievable at Unshackled scale in an esolang host"
+  }
+}

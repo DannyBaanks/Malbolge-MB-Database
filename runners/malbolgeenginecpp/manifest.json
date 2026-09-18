@@ -1,0 +1,31 @@
+{
+  "runner": "malbolgeenginecpp",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "C++20",
+  "source_url": "https://github.com/DannyBaanks/MalbolgeEngineCPP.git",
+  "source_path": "include/malbolge/, src/, tests/, examples/",
+  "source_commit": "0ceac45 (2026-09-07)",
+  "license": "MIT",
+  "compiler": "MSVC (C++20) via CMake",
+  "compiler_version": "CMake + MSVC 19 (repo CI)",
+  "build_command": "cmake -S . -B build && cmake --build build && ctest --test-dir build",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (portable C++20)",
+  "cli": "malbolge run <file.mal> [--input <file>] [--max-steps N] [--json]; trace --output trace.jsonl; doctor; version",
+  "input_handling": "file input via --input; exit codes 0/1/2; JSON report mode",
+  "compatibility": "classic-malbolge (3^10); behavioral port-and-rewrite of Malbolge-Engine/src/vm.c (RAII, value-typed) - not a rename",
+  "known_issues": "deliberate deviations from the C engine recorded in docs/REFERENCE_BEHAVIOR.md",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "gate tuple by lineage: behavioral port of Malbolge-Engine/src/vm.c (the canonical Classic implementation, whose gate is Hello, world., 48 steps, a=19758 c=85 d=63) - repo tests run via ctest; NOT re-executed during registration",
+    "cross_checks": "differential verification vs the reference C engine + property-based fuzzing (repo docs/tests); malbolge::Tracer observer emits step traces",
+    "snapshot": "n/a - tracing via Tracer, no snapshot/resume",
+    "special": "the library member: embeddable malbolge::VM (from_source/run/step/output) + doctor self-check; substrate for C++ hosts and step-level tracing"
+  }
+}

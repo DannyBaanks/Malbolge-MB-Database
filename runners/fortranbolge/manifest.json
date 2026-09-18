@@ -1,0 +1,31 @@
+{
+  "runner": "fortranbolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Fortran 2008 (GNU Fortran) + C I/O shim",
+  "source_url": "https://github.com/DannyBaanks/Fortranbolge.git",
+  "source_path": "src/fortranbolge.f90, src/fortranbolge19.f90, c/io_shim.c",
+  "source_commit": "0560749 (2026-09-13)",
+  "license": "MIT",
+  "compiler": "gfortran",
+  "compiler_version": "GNU Fortran (-std=f2008)",
+  "build_command": "gfortran -O2 -std=f2008 -o fortranbolge.exe src\\fortranbolge.f90 c\\io_shim.c",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "cmd /c \"type nul | fortranbolge.exe fixture.mal 100 1>out.bin 2>report.txt\"",
+  "input_handling": "stdin bytes; JSON machine report on stderr; --json mode documented in repo",
+  "compatibility": "classic-malbolge (3^10); second runtime in-repo: fortranbolge19 (Unshackled 3^19, src/fortranbolge19.f90)",
+  "known_issues": "1.0-gate: snapshots/resume NOT_IMPLEMENTED, tracing NOT_IMPLEMENTED, embeddable API NOT_IMPLEMENTED, fuzzing/differential NOT_DEMONSTRATED (repo README)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "fixture.mal -> Hello, world., 48 steps, a=19758 c=85 d=63 , status HALTED, halt_reason VInstruction (Fortranbolge README)",
+    "cross_checks": "six_bolge_challenge classic_challenge.mal -> Z, 7 steps, a=9856 c=6 d=40 (agreement with the other five VMs; MALBOLGE/evidence/six_bolge_challenge.txt)",
+    "snapshot": "n/a - snapshot/resume declared NOT_IMPLEMENTED at 1.0 (repo README)",
+    "special": "the numerics-language member: pure Fortran core + minimal C I/O shim; complete local 3^19 runtime in src/fortranbolge19.f90 (minimum ubO/Z gate passes; broad differential pending)"
+  }
+}

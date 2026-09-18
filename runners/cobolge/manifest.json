@@ -1,0 +1,31 @@
+{
+  "runner": "cobolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "GnuCOBOL 3.2",
+  "source_url": "https://github.com/DannyBaanks/Cobolge.git",
+  "source_path": "src/ (cobolge.cob, cobolge19.cob, cobolge19_codec.cob)",
+  "source_commit": "aa9d32a (2026-09-13)",
+  "license": "MIT",
+  "compiler": "cobc (GnuCOBOL)",
+  "compiler_version": "GnuCOBOL 3.2",
+  "build_command": "cobc -x -o cobolge.exe src/cobolge.cob (repeatable checks in tests/run_tests.ps1)",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "cobolge <program.mal> [max_steps] [--snapshot-out f] [--resume f] [--json] < input",
+  "input_handling": "stdin bytes; --json: raw output on stdout + compact JSON machine report on stderr",
+  "compatibility": "classic-malbolge (3^10); second runtime in-repo: cobolge19 (Unshackled 3^19)",
+  "known_issues": "cobolge19 broad differential corpus coverage pending (repo README)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "canonical Classic fixture: Hello, world., 48 steps, a=19758 c=85 d=63 , status HALTED, halt_reason VInstruction (Cobolge README, tests/run_tests.ps1)",
+    "cross_checks": "six_bolge_challenge classic_challenge.mal -> Z, 7 steps, a=9856 c=6 d=40 (agreement with Swiftbolge, Rustbolge, Javolge, Fortranbolge, Wasmbolge); independent positional codec probe src/cobolge19_codec.cob",
+    "snapshot": "step-17 snapshot byte-identical to the canonical fixture: SHA-256 29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4 (Cobolge README)",
+    "special": "enterprise-language member of the family; complete local 3^19 runtime in src/cobolge19.cob (minimum ubO/Z gate passes)"
+  }
+}

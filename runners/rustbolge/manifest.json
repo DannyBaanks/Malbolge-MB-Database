@@ -1,0 +1,31 @@
+{
+  "runner": "rustbolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Rust 1.97",
+  "source_url": "https://github.com/DannyBaanks/Rustbolge.git",
+  "source_path": "src/ (main.rs, lib.rs)",
+  "source_commit": "625691f (2026-09-11)",
+  "license": "MIT",
+  "compiler": "cargo / rustc",
+  "compiler_version": "Rust 1.97",
+  "build_command": "cargo build --release",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (native Rust)",
+  "cli": "rustbolge <program.mal> [max_steps] [--snapshot-out f] [--resume f] [--json] < input",
+  "input_handling": "stdin bytes; EOF on '/' halts (vm.c lineage)",
+  "compatibility": "classic-malbolge (3^10); bit-exact semantic port of Malbolge-Engine/src/vm.c",
+  "known_issues": "EOF halt-vs-59048 divergence vs oracle documented (malbolge-differential findings/D5_eof_halt_vs_59048.md)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; cargo test 5/5 (Rustbolge README, gate verified 2026-09-11)",
+    "cross_checks": "exact agreement with malbolge-oracle (evidence/oracle_crosscheck_2026-09-11.txt); backend rustbolge-cli in malbolge-differential: CONSISTENT on hello_world.mb, hello_classic.mal and truth_machine input=0 (136 steps); six_bolge_challenge classic_challenge.mal -> Z, 7 steps, a=9856 c=6 d=40",
+    "snapshot": "step-17 snapshot JSON SHA-256 29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4 (evidence/) - byte-compatible with Swiftbolge/Javolge/Cobolge: snapshots swappable across the family",
+    "special": "Machine::snapshot() + --resume full continuation - first fast-VM-cluster member with snapshot/resume JSON"
+  }
+}

@@ -47,7 +47,7 @@ MALBOLGE-MB-DATABASE/
 ├── README.md              ← este archivo
 ├── DATABASE.md            ← overview y navegacion de la base de datos
 ├── LICENSE
-├── registry/              ← metadata estructurada por lenguaje
+├── registry/              ← metadata estructurada (lenguajes + substratos externos: registry/substrates.json)
 ├── docs/                  ← definiciones, variantes, modelo de evidencia
 ├── references/            ← documentacion de referencia externa
 ├── tools/                 ← utilidades para build, ejecucion, pruebas

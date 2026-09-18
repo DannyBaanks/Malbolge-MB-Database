@@ -1,0 +1,31 @@
+{
+  "runner": "malbolge-free",
+  "variant": "free",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Zig",
+  "source_url": "https://github.com/DannyBaanks/MalbolgeFree.git",
+  "source_path": "src/ (interpreter, lmao-lite assembler, BFIR1 backend), tools/",
+  "source_commit": "f3db37c (2026-09-16)",
+  "license": "MIT",
+  "compiler": "zig build / zig test",
+  "compiler_version": "Zig 0.16.x (repo-pinned)",
+  "build_command": "run_all (zig test suites + 33 python tests in tools/)",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "see repo README (run_all entry + run scripts)",
+  "input_handling": "program files in Free dialect (.mb/.lmao); see repo README",
+  "compatibility": "FREE dialect - variable width w (starts at 10), frontier policy, TAPE_BASE + Free opcodes (STORE/LOAD_D/INC/DEC/JMP_A/JZ/JNZ/D_REWIND/D_LEFT, opcodes 69-79); NOT Classic, NOT Unshackled",
+  "known_issues": "per docs/VARIANTS.md: never execute Classic .mb on this variant and treat the result as evidence against the program; Classic parity holds only for the w=10 no-frontier-crossing prefix",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "F4 Classic-parity suite: 6/6 vs Malbolge-Translator at w=10 (Classic semantics intact within the no-frontier-crossing prefix); run_all PASS: zig test suites + 33 python tests (malbolge-free README)",
+    "cross_checks": "CI green on GitHub Actions; LMAO used only as external behavioral oracle, never vendored (repo boundary rule)",
+    "snapshot": "n/a",
+    "special": "the dialect-founder member: extends the language itself (w-variable frontier semantics); Malfuck's --semantic backend targets this core (vendored there under copy-not-integrate)"
+  }
+}

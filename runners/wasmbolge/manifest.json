@@ -1,0 +1,31 @@
+{
+  "runner": "wasmbolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Rust -> wasm32-unknown-unknown",
+  "source_url": "https://github.com/DannyBaanks/Wasmbolge.git",
+  "source_path": "src/lib.rs, src/unshackled19.rs, wasmbolge.mjs",
+  "source_commit": "a45bbde (2026-09-13)",
+  "license": "MIT",
+  "compiler": "cargo --target wasm32-unknown-unknown",
+  "compiler_version": "Rust (repo-pinned toolchain)",
+  "build_command": "cargo test && cargo build --target wasm32-unknown-unknown --release",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "wasm32 (embedder-owned linear memory; Node 22.23.1 verified host)",
+  "cli": "node wasmbolge.mjs  (loadWasmbolge -> wasmbolge_run / wasmbolge_run_unshackled19)",
+  "input_handling": "caller-owned linear-memory buffers: raw output + compact JSON report returned by ABI",
+  "compatibility": "classic-malbolge (3^10) in wasmbolge_run; unshackled 3^19 in wasmbolge_run_unshackled19 (lazy 65536-cell chain pages, fast20 CRZ/rotation, direct 135-char encryption, EOF=END-1)",
+  "known_issues": "JS wrapper exposes Classic only; browser embedding NOT_DEMONSTRATED (Node 22.23.1 is the verified host)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "Node smoke: output_len=13, 48 steps, a=19758 c=85 d=63 , HALTED, VInstruction (Wasmbolge README)",
+    "cross_checks": "six_bolge_challenge classic_challenge.mal -> Z, 7 steps, a=9856 c=6 d=40 (agreement with the other five VMs); wasm unit tests cover CRZ/rotation/encryption at 3^19",
+    "snapshot": "n/a - no snapshot/resume in the ABI",
+    "special": "the embeddable member: embedder-owned memory, no allocation inside the module - substrate for in-browser MBIR execution (browser run still pending)"
+  }
+}
