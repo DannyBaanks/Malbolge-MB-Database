@@ -1,0 +1,289 @@
+{
+  "schema": "malbolge-cell-second-read/1",
+  "created_at": "2026-10-03T10:28:32.787293+00:00",
+  "status": "DEMONSTRATED",
+  "experiment": "explicit MOVED return structure around two sequential IN operations",
+  "source": "vm_malbolge/src/cell_stack_second_read.hell",
+  "build": "LMAO v0.6.0 normal layout (no -f)",
+  "oracle": "tools/oracle_classic.py",
+  "runner": "runners/malbolge-original/malbolge.exe",
+  "claim": "For a complete two-byte input, the first byte is discarded and the second byte is read, stored through the dedicated stack_scratch/stack_top route, recovered, and emitted.",
+  "summary": {
+    "cases_total": 12,
+    "cases_ok": 12,
+    "full_two_byte_cases": 10,
+    "full_two_byte_cases_ok": 10,
+    "eof_controls": 2,
+    "eof_controls_ok": 2,
+    "full_case_step_parity": true,
+    "eof_step_parity_required": false
+  },
+  "cases": [
+    {
+      "name": "first-00_second-41",
+      "input_hex": "0041",
+      "expected_hex": "41",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "41",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "41",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "first-ff_second-41",
+      "input_hex": "ff41",
+      "expected_hex": "41",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "41",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "41",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "first-01_second-7a",
+      "input_hex": "017a",
+      "expected_hex": "7a",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "7a",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "7a",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "first-00_second-7a",
+      "input_hex": "007a",
+      "expected_hex": "7a",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "7a",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "7a",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-00",
+      "input_hex": "ff00",
+      "expected_hex": "00",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "00",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "00",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-ff",
+      "input_hex": "12ff",
+      "expected_hex": "ff",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "ff",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "ff",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-01",
+      "input_hex": "4101",
+      "expected_hex": "01",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "01",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "01",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-42",
+      "input_hex": "7a42",
+      "expected_hex": "42",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "42",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "42",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-55",
+      "input_hex": "aa55",
+      "expected_hex": "55",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "55",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "55",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "second-aa",
+      "input_hex": "55aa",
+      "expected_hex": "aa",
+      "full_two_byte_case": true,
+      "oracle": {
+        "output_hex": "aa",
+        "steps": 26526,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "aa",
+        "exit_code": 0,
+        "steps": 26526,
+        "status": "HALTED",
+        "stderr": "steps: 26526 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": true,
+      "ok": true
+    },
+    {
+      "name": "truncated-after-first",
+      "input_hex": "41",
+      "expected_hex": "",
+      "full_two_byte_case": false,
+      "oracle": {
+        "output_hex": "",
+        "steps": 26410,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "",
+        "exit_code": 0,
+        "steps": 24805,
+        "status": "HALTED",
+        "stderr": "steps: 24805 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "empty-input",
+      "input_hex": "",
+      "expected_hex": "",
+      "full_two_byte_case": false,
+      "oracle": {
+        "output_hex": "",
+        "steps": 26410,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "",
+        "exit_code": 0,
+        "steps": 24799,
+        "status": "HALTED",
+        "stderr": "steps: 24799 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    }
+  ],
+  "hashes": {
+    "hell_sha256": "1aafd0fcf79345d5526f626056240d134dfbc29939986e15a7ff5ae66666d959",
+    "compiled_sha256": "d5b04c3ceda014ec2f4d72e19c4fed82064cf8583103e184c839141fa014cb43",
+    "lmao_sha256": "ad39ba2904b5c967fb9b19a41ca44b3da96d3add0e780129896d626c6053cd23",
+    "malbolge_runner_sha256": "9a7ad87ec094ec0948974f5d600190c0d2debbea645f4781cd7eeeda7d679775",
+    "oracle_tool_sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "probe_tool_sha256": "7c5603bf06c70c3199fcb09c8ac7f4f7029d1245162c86f72a80550385137042"
+  },
+  "scope_limits": [
+    "Demonstrates exactly two sequential input reads for this straight-line artifact; no third read or fetch loop.",
+    "The first byte is intentionally discarded; this is not yet MBIR opcode/operand dispatch.",
+    "Does not demonstrate per-iteration state reset, arbitrary-length stdin loading, or a multi-value stack.",
+    "EOF controls require output/status agreement only; oracle and C runner step accounting differs on EOF for this artifact."
+  ]
+}

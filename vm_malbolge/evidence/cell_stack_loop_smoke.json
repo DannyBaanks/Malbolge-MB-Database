@@ -1,0 +1,203 @@
+{
+  "schema": "malbolge-cell-stack-loop/1",
+  "created_at": "2026-10-03T10:28:58.141853+00:00",
+  "status": "DEMONSTRATED",
+  "experiment": "dedicated stack_scratch/stack_top store-recover path reused across an EOF-terminated input loop",
+  "source": "vm_malbolge/src/cell_stack_loop_echo.hell",
+  "build": "LMAO v0.6.0 normal layout (no -f)",
+  "oracle": "tools/oracle_classic.py",
+  "runner": "runners/malbolge-original/malbolge.exe",
+  "claim": "The dedicated stack_scratch/stack_top pair can be reinitialized and reused across multiple sequential input iterations, recovering and emitting every byte exactly until EOF.",
+  "summary": {
+    "cases_total": 8,
+    "cases_ok": 8,
+    "max_input_bytes": 16,
+    "all_outputs_exact": true,
+    "step_parity_required": false
+  },
+  "cases": [
+    {
+      "name": "empty",
+      "input_hex": "",
+      "expected_hex": "",
+      "oracle": {
+        "output_hex": "",
+        "steps": 25968,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "",
+        "exit_code": 0,
+        "steps": 24366,
+        "status": "HALTED",
+        "stderr": "steps: 24366 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "one",
+      "input_hex": "41",
+      "expected_hex": "41",
+      "oracle": {
+        "output_hex": "41",
+        "steps": 27838,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "41",
+        "exit_code": 0,
+        "steps": 26236,
+        "status": "HALTED",
+        "stderr": "steps: 26236 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "two-binary",
+      "input_hex": "00ff",
+      "expected_hex": "00ff",
+      "oracle": {
+        "output_hex": "00ff",
+        "steps": 29708,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "00ff",
+        "exit_code": 0,
+        "steps": 28106,
+        "status": "HALTED",
+        "stderr": "steps: 28106 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "three",
+      "input_hex": "017aff",
+      "expected_hex": "017aff",
+      "oracle": {
+        "output_hex": "017aff",
+        "steps": 31578,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "017aff",
+        "exit_code": 0,
+        "steps": 29976,
+        "status": "HALTED",
+        "stderr": "steps: 29976 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "five-mixed",
+      "input_hex": "00ff017a42",
+      "expected_hex": "00ff017a42",
+      "oracle": {
+        "output_hex": "00ff017a42",
+        "steps": 35318,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "00ff017a42",
+        "exit_code": 0,
+        "steps": 33716,
+        "status": "HALTED",
+        "stderr": "steps: 33716 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "eight-low",
+      "input_hex": "0001020304050607",
+      "expected_hex": "0001020304050607",
+      "oracle": {
+        "output_hex": "0001020304050607",
+        "steps": 40928,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "0001020304050607",
+        "exit_code": 0,
+        "steps": 39326,
+        "status": "HALTED",
+        "stderr": "steps: 39326 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "eight-high",
+      "input_hex": "f8f9fafbfcfdfeff",
+      "expected_hex": "f8f9fafbfcfdfeff",
+      "oracle": {
+        "output_hex": "f8f9fafbfcfdfeff",
+        "steps": 40928,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "f8f9fafbfcfdfeff",
+        "exit_code": 0,
+        "steps": 39326,
+        "status": "HALTED",
+        "stderr": "steps: 39326 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    },
+    {
+      "name": "sixteen-no-newline",
+      "input_hex": "000102030405060708090b0c0e0f10ff",
+      "expected_hex": "000102030405060708090b0c0e0f10ff",
+      "oracle": {
+        "output_hex": "000102030405060708090b0c0e0f10ff",
+        "steps": 55888,
+        "status": "HALTED"
+      },
+      "runner": {
+        "output_hex": "000102030405060708090b0c0e0f10ff",
+        "exit_code": 0,
+        "steps": 54286,
+        "status": "HALTED",
+        "stderr": "steps: 54286 | status: HALTED"
+      },
+      "output_match": true,
+      "step_match": false,
+      "ok": true
+    }
+  ],
+  "hashes": {
+    "hell_sha256": "3cca51a188dbf9733ca8117d8a3307e201693aa6b55cfe9f5c8815d6ad07b11b",
+    "compiled_sha256": "479d15aaa0da91da607f694105415ba77176cf010c359df918d033ccdb601b85",
+    "lmao_sha256": "ad39ba2904b5c967fb9b19a41ca44b3da96d3add0e780129896d626c6053cd23",
+    "malbolge_runner_sha256": "9a7ad87ec094ec0948974f5d600190c0d2debbea645f4781cd7eeeda7d679775",
+    "oracle_tool_sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "probe_tool_sha256": "f1d326e689da84899000c5f3bcfae37199010fb4a5495b000ad46ee696b872b9"
+  },
+  "runner_text_mode_observation": {
+    "input_hex": "000102030405060708090a0b0c0d0e0f",
+    "oracle_output_hex": "000102030405060708090a0b0c0d0e0f",
+    "runner_output_hex": "000102030405060708090d0a0b0c0d0e0f",
+    "oracle_steps": 55888,
+    "runner_steps": 54286,
+    "interpretation": "The checked-in Classic C runner under Wine emitted LF as CRLF on stdout. This is a host text-mode output translation, so exact binary loop cases avoid 0x0a."
+  },
+  "scope_limits": [
+    "This is a reusable byte loop through the dedicated cell pair, not MBIR opcode dispatch.",
+    "It demonstrates per-iteration reset and reads beyond byte 2, but does not store a whole program into consecutive cells.",
+    "It uses one logical stack value per iteration; persistence across a later independent opcode dispatch is not demonstrated.",
+    "Oracle and C runner EOF step accounting differs; output/HALT agreement is the required cross-engine invariant.",
+    "Exact-output cases omit LF (0x0a) because the C runner under Wine translates LF to CRLF on stdout; the observed control is preserved above."
+  ]
+}
