@@ -72,6 +72,12 @@ runners/
 > CLAIM until a runner doctor (A01) verifies binary presence, hash match, and
 > known-vector execution.
 
+External substrates (the -bolge engine family: Rustbolge, Swiftbolge, Javolge,
+Cobolge, Fortranbolge, Zigbolge, Pibolge, Pibolge19, Wasmbolge, MalbolgeEngineCPP,
+malbolge-free, malbolge-oracle, MalboGost) are registered **by reference** —
+see `runners/README.md` → "External Substrates" and `registry/substrates.json`
+(13 CLAIM manifests, no binaries vendored; the MBIR backends you hand MBIR to).
+
 ## Evidence Lifecycle
 
 ```

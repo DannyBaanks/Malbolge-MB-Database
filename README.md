@@ -1,77 +1,74 @@
 # Malbolge MB Database
 
-A reproducible database and research laboratory for substantial Malbolge
-programs, foreign-language runtimes, and the middleware boundary that connects
-them to execution substrates.
+Base de datos reproducible y laboratorio de investigacion para programas Malbolge sustanciales, runtimes en otros lenguajes, y el boundary de middleware que los conecta a substratos de ejecucion.
 
-## Mission
+## Mision
 
-Investigate, build, execute, and conserve `.mb` programs — especially
-interpreters/runtimes of other languages implemented over Malbolge. MBIR is the
-interchange boundary between a frontend/backend adapter and a substrate; it is
-not an omnilingual VM.
+Investigar, construir, ejecutar y conservar programas `.mb` — especialmente interpretes/runtimes de otros lenguajes implementados sobre Malbolge. MBIR es el
+boundary de intercambio entre un adaptador frontend/backend y un substrato; no es
+una VM omnilingue.
 
-Long-term targets:
+Objetivos a largo plazo:
 
 ```
 source program -> frontend/adapter -> MBIR -> backend adapter -> substrate
                                       (native Malbolge, Rustbolge, Pibolge, ...)
 ```
 
-## Central Principle
+## Principio Central
 
-**NEVER GUESS.** If a property is not demonstrated by code, documentation, execution, test, trace, hash, artifact, or independent reproduction, classify it:
+**NUNCA ADIVINAR.** Si una propiedad no esta demostrada por codigo, documentacion, ejecucion, prueba, trazo, hash, artefacto o reproduccion independiente, clasificala:
 
 ```
 NOT_DEMONSTRATED
 ```
 
-README ≠ evidence. Filename ≠ evidence. Claim ≠ implementation.
+README ≠ evidencia. Nombre de archivo ≠ evidencia. Claim ≠ implementacion.
 
-## Language Tracks
+## Pistas de Lenguaje
 
-| Language | Target | Variant | Status | Highest Milestone | Evidence |
-|----------|--------|---------|--------|-------------------|----------|
-| Python   | python.mb | Unshackled (primary) | REFERENCE_FRONTEND | P2 (frontend) | P1 ref VM, P2 frontend |
-| Swift    | swift.mb  | Unshackled (primary) | NOT_STARTED | — | — |
-| Rust     | rust.mb   | Unshackled (primary) | NOT_STARTED | — | — |
-| Java     | java.mb   | Unshackled (primary) | NOT_STARTED | — | — |
-| C        | c.mb      | Unshackled (primary) | NOT_STARTED | — | — |
+| Lenguaje | Target | Variante | Estado | Hito mas alto | Evidencia |
+|----------|--------|---------|--------|---------------|-----------|
+| Python   | python.mb | Unshackled (primario) | REFERENCE_FRONTEND | P2 (frontend) | P1 ref VM, P2 frontend |
+| Swift    | swift.mb  | Unshackled (primario) | NOT_STARTED | — | — |
+| Rust     | rust.mb   | Unshackled (primario) | NOT_STARTED | — | — |
+| Java     | java.mb   | Unshackled (primario) | NOT_STARTED | — | — |
+| C        | c.mb      | Unshackled (primario) | NOT_STARTED | — | — |
 
-> Honest status: P1 is a **Python reference VM** (REFERENCE_MODEL evidence) and
-> P2 is a **Python AST → bytecode frontend** (FRONTEND evidence). The MBIR
-> boundary and Malbolge primitives are partially demonstrated; a complete
-> MBIR execution backend remains **NOT_DEMONSTRATED**.
+> Estado honesto: P1 es una **VM de referencia Python** (evidencia REFERENCE_MODEL) y
+> P2 es un **frontend Python AST → bytecode** (evidencia FRONTEND). El boundary MBIR y
+> las primitivas Malbolge estan parcialmente demostrados; un backend de ejecucion MBIR
+> completo sigue siendo **NOT_DEMONSTRATED**.
 
-## Repository Structure
+## Estructura del Repo
 
 ```
 MALBOLGE-MB-DATABASE/
-├── README.md              ← this file
-├── DATABASE.md            ← database overview and navigation
+├── README.md              ← este archivo
+├── DATABASE.md            ← overview y navegacion de la base de datos
 ├── LICENSE
-├── registry/              ← structured metadata per language
-├── docs/                  ← definitions, variants, evidence model
-├── references/            ← external reference documentation
-├── tools/                 ← utilities for building, running, testing
-├── runners/               ← reproducible Malbolge execution environments
-├── python/                ← python.mb track (ACTIVE)
-├── swift/                 ← swift.mb track (NOT_STARTED)
-├── rust/                  ← rust.mb track (NOT_STARTED)
-├── java/                  ← java.mb track (NOT_STARTED)
-└── c/                     ← c.mb track (NOT_STARTED)
+├── registry/              ← metadata estructurada (lenguajes + substratos externos: registry/substrates.json)
+├── docs/                  ← definiciones, variantes, modelo de evidencia
+├── references/            ← documentacion de referencia externa
+├── tools/                 ← utilidades para build, ejecucion, pruebas
+├── runners/               ← entornos de ejecucion reproducibles de Malbolge
+├── python/                ← pista python.mb (ACTIVO)
+├── swift/                 ← pista swift.mb (NOT_STARTED)
+├── rust/                  ← pista rust.mb (NOT_STARTED)
+├── java/                  ← pista java.mb (NOT_STARTED)
+└── c/                     ← pista c.mb (NOT_STARTED)
 ```
 
-## How to Use
+## Como Usar
 
-1. Read `DATABASE.md` for navigation.
-2. Read `docs/DEFINITIONS.md` for terminology.
-3. Read the target language's `STATUS.md` for current state.
-4. Read `docs/EVIDENCE_MODEL.md` before interpreting any result.
+1. Lee `DATABASE.md` para navegacion.
+2. Lee `docs/DEFINITIONS.md` para terminologia.
+3. Lee el `STATUS.md` del lenguaje target para el estado actual.
+4. Lee `docs/EVIDENCE_MODEL.md` antes de interpretar cualquier resultado.
 
-## Anti-Fake Rule
+## Regla Anti-Fake
 
-To demonstrate `print(2 + 3)`, we do NOT accept a `.mb` that simply prints `5`. We must demonstrate an operational representation equivalent to:
+Para demostrar `print(2 + 3)`, NO aceptamos un `.mb` que simplemente imprima `5`. Tenemos que demostrar una representacion operacional equivalente a:
 
 ```
 PUSH 2
@@ -80,4 +77,4 @@ ADD
 PRINT
 ```
 
-and that changing operands modifies the result correctly without fabricating an independent print program for each output.
+y que cambiar los operandos modifica el resultado correctamente sin fabricar un programa de print independiente para cada salida.

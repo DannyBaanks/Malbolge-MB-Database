@@ -1,0 +1,31 @@
+{
+  "runner": "malbolge-oracle",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Python 3.10+ (stdlib only)",
+  "source_url": "https://github.com/DannyBaanks/MalbolgeOracle.git",
+  "source_path": "malbolge_oracle/ (oracle.py), test_oracle.py",
+  "source_commit": "fc3daa7 (2026-09-17)",
+  "license": "MIT",
+  "compiler": "CPython",
+  "compiler_version": "Python 3.10+",
+  "build_command": "no build (stdlib); tests: py -m pytest test_oracle.py",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (any CPython 3.10+)",
+  "cli": "library-first: Oracle().load_ascii(path); run() -> output/halted/halt_reason/steps/a/c/d/memory (full 59049-cell state)",
+  "input_handling": "ASCII program loader; stdin for interactive reads",
+  "compatibility": "classic-malbolge (3^10) - reference semantics transcribed from Iizawa 2005 Appendix C pseudocode",
+  "known_issues": "NOT a performance substrate: role is the independent control (REFERENCE_MODEL)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "own vector: 'Hello World!' 40 steps, halt_opcode (malbolge-oracle README); 22 tests PASS (test_oracle.py; count verified 2026-09-17 via pytest --collect-only)",
+    "cross_checks": "the control the rest of the family verifies against (Rustbolge evidence/oracle_crosscheck_2026-09-11.txt; Swiftbolge evidence/oracle_swift_rust_parity.txt); EOF divergence D5 documented against vm.c-lineage engines (malbolge-differential findings/D5_eof_halt_vs_59048.md)",
+    "snapshot": "n/a - exposes the full 59049-cell memory state directly in its run report",
+    "special": "ROLE: REFERENCE_MODEL / independent control per docs/EVIDENCE_MODEL.md - semantics from Iizawa 2005 Appendix C (13 of 19 pseudocode lines appear in reference malbolge.c since 1998)"
+  }
+}

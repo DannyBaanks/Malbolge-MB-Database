@@ -1,0 +1,31 @@
+{
+  "runner": "pibolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Piton (Danny's Spanish-Python language; https://github.com/DannyBaanks/PITON)",
+  "source_url": "https://github.com/DannyBaanks/Pibolge.git",
+  "source_path": "pibolge.piton, pibolge19.piton",
+  "source_commit": "33e377a (2026-09-13)",
+  "license": "MIT",
+  "compiler": "piton interpreter",
+  "compiler_version": "PITON repo HEAD",
+  "build_command": "requires PITON installed (pip install -e <PITON>); run: piton ejecutar pibolge.piton fixture.mal",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (CPython host for Piton)",
+  "cli": "piton ejecutar pibolge.piton <program.mal>  |  py -m piton.cli ejecutar pibolge.piton <program.mal>",
+  "input_handling": "stdin bytes",
+  "compatibility": "classic-malbolge (3^10); second runtime in-repo: pibolge19.piton (Unshackled 3^19)",
+  "known_issues": "depends on the external PITON interpreter (not vendored)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "hello_classic.mal -> bytes 48 65 6c 6c 6f 2c 20 77 6f 72 6c 64 2e 0a ('Hello, world.\\n'), 48 steps, a=19758 c=85 d=63 , HALTED, VInstruction (Pibolge README)",
+    "cross_checks": "byte-exact output vs Rustbolge, Swiftbolge, Javolge, Cobolge, Wasmbolge, Fortranbolge on the canonical fixtures (Pibolge README)",
+    "snapshot": "n/a - no snapshot/resume in this runner",
+    "special": "the esolang-in-an-esolang member: a Malbolge runtime written in Danny's own Piton; complete 3^19 sibling pibolge19.piton in-repo"
+  }
+}

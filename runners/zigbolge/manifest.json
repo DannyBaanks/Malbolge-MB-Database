@@ -1,0 +1,31 @@
+{
+  "runner": "zigbolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Zig",
+  "source_url": "https://github.com/DannyBaanks/Zigbolge.git",
+  "source_path": "src/main.zig",
+  "source_commit": "fc177ff (2026-09-13)",
+  "license": "MIT",
+  "compiler": "zig build-exe",
+  "compiler_version": "Zig 0.16.x (repo-pinned)",
+  "build_command": "zig build-exe src\\main.zig -O ReleaseFast",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "zigbolge.exe fixture.mal 100000000 1>out.bin 2>report.txt",
+  "input_handling": "stdin bytes; report on stderr",
+  "compatibility": "classic-malbolge (3^10)",
+  "known_issues": "zigbolge19 (3^19) announced, pending (repo README)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "README documents the canonical gate as the EXPECTED result: Hello, world., 48 steps, a=19758 c=85 d=63 - NOT independently re-executed during registration (README claim, kept as CLAIM)",
+    "cross_checks": "family member of the vm.c lineage; Malfuck's README documents its Classic extensional .mal artifact as byte-exact under Zigbolge (cited, not re-executed here)",
+    "snapshot": "n/a - no snapshot/resume in this runner",
+    "special": "smallest member of the family; 3^19 sibling (zigbolge19) announced as a future program"
+  }
+}

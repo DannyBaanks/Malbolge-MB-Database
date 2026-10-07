@@ -1,0 +1,31 @@
+{
+  "runner": "javolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Java (OpenJDK 26)",
+  "source_url": "https://github.com/DannyBaanks/Javolge.git",
+  "source_path": "src/com/dannybaanks/javolge/",
+  "source_commit": "fd110a5 (2026-09-11)",
+  "license": "MIT",
+  "compiler": "javac",
+  "compiler_version": "OpenJDK 26",
+  "build_command": "javac -encoding UTF-8 -d out src/com/dannybaanks/javolge/*.java && javac -encoding UTF-8 -cp out -d out test/com/dannybaanks/javolge/JavolgeTest.java",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64 (JVM)",
+  "cli": "java -cp out com.dannybaanks.javolge.Main <program.mal> [max_steps] [--snapshot-out f] [--resume f] [--json] < input",
+  "input_handling": "stdin bytes; EOF on '/' halts (vm.c lineage)",
+  "compatibility": "classic-malbolge (3^10); bit-exact port of Malbolge-Engine/vm.c",
+  "known_issues": "EOF halt-vs-59048 divergence vs oracle documented (malbolge-differential findings/D5_eof_halt_vs_59048.md)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; snapshot->resume reproduces the one-shot run exactly; self-test 4/4 PASS (Javolge README/ROADMAP.md)",
+    "cross_checks": "resumes Rustbolge's real step-17 snapshot to the identical final state; zero build tools, zero third-party dependencies (pure javac + hand-rolled minimal JSON)",
+    "snapshot": "snapshot/resume JSON byte-identical to Rustbolge's: step-17 snapshot SHA-256 29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4 - swappable across the three engines",
+    "special": "zero-dependency JVM substrate; snapshot JSON hand-rolled (no Jackson/Gson)"
+  }
+}

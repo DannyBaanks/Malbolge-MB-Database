@@ -1,0 +1,31 @@
+{
+  "runner": "malbogost",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "C (GCC)",
+  "source_url": "https://github.com/DannyBaanks/MalboGost.git",
+  "source_path": "gost.c, gost/frontend.mal",
+  "source_commit": "71002ba (2026-09-17)",
+  "license": "MIT",
+  "compiler": "gcc",
+  "compiler_version": "GCC (MinGW-w64)",
+  "build_command": "gcc -O2 -o gost gost.c",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "echo -n \"Hi\" | ./gost gost/frontend.mal > print_Hi.mal  &&  ./gost print_Hi.mal",
+  "input_handling": "stdin bytes (frontend reads runtime input from stdin)",
+  "compatibility": "classic-malbolge (3^10); gost.c standalone runtime (j,i,/,<,p,*,v + lazy crazy-fill)",
+  "known_issues": "frontend codegen is XLAT1 positional fixed-text: the frontend is not a general program generator (KNOWN_LIMIT in repo)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "frontend pipeline: 'Hi' -> print_Hi.mal -> outputs Hi (COMPILE_ONCE_TEST_MANY: the same frontend handles many inputs, same SHA-256 for all cases) (MalboGost README/milestones)",
+    "cross_checks": "verified in three independent runtimes: gost.c (canonical), malbolge-oracle, Malbolge-Engine; CI on GitHub Actions; evidence hashed in milestones/",
+    "snapshot": "n/a",
+    "special": "the self-hosting member: a Malbolge program (frontend.mal) that writes Malbolge programs - Python used only as the wire between runs"
+  }
+}

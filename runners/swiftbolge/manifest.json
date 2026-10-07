@@ -1,0 +1,31 @@
+{
+  "runner": "swiftbolge",
+  "variant": "original",
+  "word_width_trits": 10,
+  "memory_cells": 59049,
+  "host_language": "Swift 6.3",
+  "source_url": "https://github.com/DannyBaanks/Swiftbolge.git",
+  "source_path": "src/ (see ROADMAP.md)",
+  "source_commit": "8b05893 (2026-09-11)",
+  "license": "MIT",
+  "compiler": "swiftc",
+  "compiler_version": "Swift 6.3",
+  "build_command": "swift build -c release (see repo ROADMAP.md)",
+  "vendored_binary": false,
+  "binary_sha256": null,
+  "binary_size_bytes": null,
+  "platform": "windows-x64",
+  "cli": "swiftbolge <program.mal> [max_steps] [--snapshot-out f] [--resume f] [--json] < input",
+  "input_handling": "stdin bytes; EOF on '/' halts (vm.c lineage)",
+  "compatibility": "classic-malbolge (3^10); bit-exact semantic port of Malbolge-Engine/vm.c",
+  "known_issues": "EOF halt-vs-59048 divergence vs oracle documented (malbolge-differential findings/D5_eof_halt_vs_59048.md)",
+  "registration": {
+    "registered": "2026-09-18",
+    "status": "CLAIM",
+    "status_note": "External substrate: binary NOT vendored in this repository (DATABASE.md: 'separate backends, not imports'). A CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md RUNNER_PROVENANCE.",
+    "gate_evidence": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; snapshot->resume reproduces the one-shot run exactly; 5/5 XCTest PASS (Swiftbolge README/ROADMAP.md)",
+    "cross_checks": "resumes Rustbolge's real step-17 snapshot to the identical final state (cross-VM resume inside the family); evidence/oracle_swift_rust_parity.txt SHA-256 8A97E03BB8AC901F0B9902191F05849868F1B13DE641C8EF973B05F4E637564E",
+    "snapshot": "JSON schema byte-compatible with Rustbolge; step-17 snapshot SHA-256 29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4",
+    "special": "identical CLI and JSON stderr report shape to rustbolge - any harness driving one drives the other"
+  }
+}

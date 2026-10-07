@@ -1,0 +1,425 @@
+{
+  "schema": "substrates/1",
+  "generated": "2026-09-18",
+  "method": "Read-only audit of the -bolge family (READMEs + recorded evidence, session 2026-09-17/18). No binaries vendored: DATABASE.md declares external engines 'separate backends, not imports'. Every entry is a CLAIM until independently built and gate-executed per docs/EVIDENCE_MODEL.md (RUNNER_PROVENANCE).",
+  "canonical_gate": "Hello, world. | 48 steps | a=19758 c=85 d=63 | HALTED | halt_reason=VInstruction (vm.c lineage: Malbolge-Engine/src/vm.c)",
+  "family_evidence": {
+    "six_bolge_challenge": "classic_challenge.mal -> 'Z', 7 steps, a=9856 c=6 d=40, identical across Swiftbolge, Rustbolge, Javolge, Cobolge, Fortranbolge, Wasmbolge (MALBOLGE/evidence/six_bolge_challenge.txt)",
+    "snapshot_family": "step-17 snapshot JSON SHA-256 29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4 - byte-identical across Rustbolge/Swiftbolge/Javolge/Cobolge; snapshots swappable across the family (Rustbolge README, Cobolge README, Swiftbolge ROADMAP, Javolge ROADMAP)",
+    "eof_divergence": "vm.c-lineage engines halt on EOF; oracle lineage differs - malbolge-differential findings/D5_eof_halt_vs_59048.md",
+    "variant_firewall": "docs/VARIANTS.md: never execute a .mb on a different variant and use the failure as evidence against the program"
+  },
+  "harnesses": [
+    {
+      "name": "malbolge-differential",
+      "role": "cross-implementation differential harness (NOT a runner - it contains no interpreter)",
+      "source_path": "local sibling repo",
+      "source_commit": "2466139 (2026-09-11)",
+      "source_url": "https://github.com/DannyBaanks/malbolge-differential.git",
+      "cli": "python -m mdiff.diff <program.mb>",
+      "backends": [
+        "engine (Malbolge-Engine)",
+        "oracle (malbolge-oracle)",
+        "rust (Rustbolge-cli)"
+      ],
+      "selected_findings": "D1..D5 including EOF halt-vs-59048 (findings/D5_eof_halt_vs_59048.md)"
+    }
+  ],
+  "vendored_runners": [
+    "malbolge-original",
+    "malbolge-unshackled"
+  ],
+  "substrates": [
+    {
+      "name": "rustbolge",
+      "variant": "original",
+      "host_language": "Rust 1.97",
+      "directory": "runners/rustbolge",
+      "source_url": "https://github.com/DannyBaanks/Rustbolge.git",
+      "source_commit": "625691f (2026-09-11)",
+      "gate": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; cargo test 5/5 (Rustbolge README, gate verified 2026-09-11)",
+      "status": "CLAIM",
+      "special": "Machine::snapshot() + --resume full continuation - first fast-VM-cluster member with snapshot/resume JSON"
+    },
+    {
+      "name": "swiftbolge",
+      "variant": "original",
+      "host_language": "Swift 6.3",
+      "directory": "runners/swiftbolge",
+      "source_url": "https://github.com/DannyBaanks/Swiftbolge.git",
+      "source_commit": "8b05893 (2026-09-11)",
+      "gate": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; snapshot->resume reproduces the one-shot run exactly; 5/5 XCTest PASS (Swiftbolge README/ROADMAP.md)",
+      "status": "CLAIM",
+      "special": "identical CLI and JSON stderr report shape to rustbolge - any harness driving one drives the other"
+    },
+    {
+      "name": "javolge",
+      "variant": "original",
+      "host_language": "Java (OpenJDK 26)",
+      "directory": "runners/javolge",
+      "source_url": "https://github.com/DannyBaanks/Javolge.git",
+      "source_commit": "fd110a5 (2026-09-11)",
+      "gate": "hello_classic.mal -> Hello, world., 48 steps, HALTED, a=19758 c=85 d=63 ; snapshot->resume reproduces the one-shot run exactly; self-test 4/4 PASS (Javolge README/ROADMAP.md)",
+      "status": "CLAIM",
+      "special": "zero-dependency JVM substrate; snapshot JSON hand-rolled (no Jackson/Gson)"
+    },
+    {
+      "name": "cobolge",
+      "variant": "original",
+      "host_language": "GnuCOBOL 3.2",
+      "directory": "runners/cobolge",
+      "source_url": "https://github.com/DannyBaanks/Cobolge.git",
+      "source_commit": "aa9d32a (2026-09-13)",
+      "gate": "canonical Classic fixture: Hello, world., 48 steps, a=19758 c=85 d=63 , status HALTED, halt_reason VInstruction (Cobolge README, tests/run_tests.ps1)",
+      "status": "CLAIM",
+      "special": "enterprise-language member of the family; complete local 3^19 runtime in src/cobolge19.cob (minimum ubO/Z gate passes)"
+    },
+    {
+      "name": "fortranbolge",
+      "variant": "original",
+      "host_language": "Fortran 2008 (GNU Fortran) + C I/O shim",
+      "directory": "runners/fortranbolge",
+      "source_url": "https://github.com/DannyBaanks/Fortranbolge.git",
+      "source_commit": "0560749 (2026-09-13)",
+      "gate": "fixture.mal -> Hello, world., 48 steps, a=19758 c=85 d=63 , status HALTED, halt_reason VInstruction (Fortranbolge README)",
+      "status": "CLAIM",
+      "special": "the numerics-language member: pure Fortran core + minimal C I/O shim; complete local 3^19 runtime in src/fortranbolge19.f90 (minimum ubO/Z gate passes; broad differential pending)"
+    },
+    {
+      "name": "zigbolge",
+      "variant": "original",
+      "host_language": "Zig",
+      "directory": "runners/zigbolge",
+      "source_url": "https://github.com/DannyBaanks/Zigbolge.git",
+      "source_commit": "fc177ff (2026-09-13)",
+      "gate": "README documents the canonical gate as the EXPECTED result: Hello, world., 48 steps, a=19758 c=85 d=63 - NOT independently re-executed during registration (README claim, kept as CLAIM)",
+      "status": "CLAIM",
+      "special": "smallest member of the family; 3^19 sibling (zigbolge19) announced as a future program"
+    },
+    {
+      "name": "pibolge",
+      "variant": "original",
+      "host_language": "Piton (Danny's Spanish-Python language; https://github.com/DannyBaanks/PITON)",
+      "directory": "runners/pibolge",
+      "source_url": "https://github.com/DannyBaanks/Pibolge.git",
+      "source_commit": "33e377a (2026-09-13)",
+      "gate": "hello_classic.mal -> bytes 48 65 6c 6c 6f 2c 20 77 6f 72 6c 64 2e 0a ('Hello, world.\\n'), 48 steps, a=19758 c=85 d=63 , HALTED, VInstruction (Pibolge README)",
+      "status": "CLAIM",
+      "special": "the esolang-in-an-esolang member: a Malbolge runtime written in Danny's own Piton; complete 3^19 sibling pibolge19.piton in-repo"
+    },
+    {
+      "name": "pibolge19",
+      "variant": "unshackled",
+      "host_language": "Piton (PITON interpreter required)",
+      "directory": "runners/pibolge19",
+      "source_url": "https://github.com/DannyBaanks/Pibolge19.git",
+      "source_commit": "263f1d7 (2026-09-12)",
+      "gate": "differential vs bolge19.exe: 5 programs byte-identical stdout + same final state - reproducer.mal (1947 steps, quine), hello.malbolge (39 steps), program.mal M3 (6 steps), echo.mal (2 steps), program.mal M0 (3 steps) (Pi",
+      "status": "CLAIM",
+      "special": "3^19 lineage member: demonstrates cross-implementation bit-exactness is achievable at Unshackled scale in an esolang host"
+    },
+    {
+      "name": "wasmbolge",
+      "variant": "original",
+      "host_language": "Rust -> wasm32-unknown-unknown",
+      "directory": "runners/wasmbolge",
+      "source_url": "https://github.com/DannyBaanks/Wasmbolge.git",
+      "source_commit": "a45bbde (2026-09-13)",
+      "gate": "Node smoke: output_len=13, 48 steps, a=19758 c=85 d=63 , HALTED, VInstruction (Wasmbolge README)",
+      "status": "CLAIM",
+      "special": "the embeddable member: embedder-owned memory, no allocation inside the module - substrate for in-browser MBIR execution (browser run still pending)"
+    },
+    {
+      "name": "malbolgeenginecpp",
+      "variant": "original",
+      "host_language": "C++20",
+      "directory": "runners/malbolgeenginecpp",
+      "source_url": "https://github.com/DannyBaanks/MalbolgeEngineCPP.git",
+      "source_commit": "0ceac45 (2026-09-07)",
+      "gate": "gate tuple by lineage: behavioral port of Malbolge-Engine/src/vm.c (the canonical Classic implementation, whose gate is Hello, world., 48 steps, a=19758 c=85 d=63) - repo tests run via ctest; NOT re-executed during regis",
+      "status": "CLAIM",
+      "special": "the library member: embeddable malbolge::VM (from_source/run/step/output) + doctor self-check; substrate for C++ hosts and step-level tracing"
+    },
+    {
+      "name": "malbolge-free",
+      "variant": "free",
+      "host_language": "Zig",
+      "directory": "runners/malbolge-free",
+      "source_url": "https://github.com/DannyBaanks/MalbolgeFree.git",
+      "source_commit": "f3db37c (2026-09-16)",
+      "gate": "F4 Classic-parity suite: 6/6 vs Malbolge-Translator at w=10 (Classic semantics intact within the no-frontier-crossing prefix); run_all PASS: zig test suites + 33 python tests (malbolge-free README)",
+      "status": "CLAIM",
+      "special": "the dialect-founder member: extends the language itself (w-variable frontier semantics); Malfuck's --semantic backend targets this core (vendored there under copy-not-integrate)"
+    },
+    {
+      "name": "malbolge-oracle",
+      "variant": "original",
+      "host_language": "Python 3.10+ (stdlib only)",
+      "directory": "runners/malbolge-oracle",
+      "source_url": "https://github.com/DannyBaanks/MalbolgeOracle.git",
+      "source_commit": "fc3daa7 (2026-09-17)",
+      "gate": "own vector: 'Hello World!' 40 steps, halt_opcode (malbolge-oracle README); 22 tests PASS (test_oracle.py; count verified 2026-09-17 via pytest --collect-only)",
+      "status": "CLAIM",
+      "special": "ROLE: REFERENCE_MODEL / independent control per docs/EVIDENCE_MODEL.md - semantics from Iizawa 2005 Appendix C (13 of 19 pseudocode lines appear in reference malbolge.c since 1998)"
+    },
+    {
+      "name": "malbogost",
+      "variant": "original",
+      "host_language": "C (GCC)",
+      "directory": "runners/malbogost",
+      "source_url": "https://github.com/DannyBaanks/MalboGost.git",
+      "source_commit": "71002ba (2026-09-17)",
+      "gate": "frontend pipeline: 'Hi' -> print_Hi.mal -> outputs Hi (COMPILE_ONCE_TEST_MANY: the same frontend handles many inputs, same SHA-256 for all cases) (MalboGost README/milestones)",
+      "status": "CLAIM",
+      "special": "the self-hosting member: a Malbolge program (frontend.mal) that writes Malbolge programs - Python used only as the wire between runs"
+    }
+  ],
+  "verification": {
+    "executed": "2026-09-18",
+    "hypothesis": {
+      "H1": "all 13 claims traceable: source_commit == live HEAD; cited evidence hashes match disk; shared facts uniform across manifests",
+      "H0": "at least one claim is NOT traceable (stale hash, moved evidence, contradicting manifests)"
+    },
+    "checks": [
+      {
+        "check": "V1: JSON validity",
+        "result": "13/13 manifests parse",
+        "pass": true
+      },
+      {
+        "check": "V2: source_commit == live git HEAD (14 repos; collected 2026-09-18 vs disk now)",
+        "result": "MATCH",
+        "pass": true,
+        "detail": {
+          "Rustbolge": {
+            "expected": "625691f",
+            "live": "625691f",
+            "date": "2026-09-11",
+            "origin": "https://github.com/DannyBaanks/Rustbolge.git"
+          },
+          "Swiftbolge": {
+            "expected": "8b05893",
+            "live": "8b05893",
+            "date": "2026-09-11",
+            "origin": "https://github.com/DannyBaanks/Swiftbolge.git"
+          },
+          "Javolge": {
+            "expected": "fd110a5",
+            "live": "fd110a5",
+            "date": "2026-09-11",
+            "origin": "https://github.com/DannyBaanks/Javolge.git"
+          },
+          "Cobolge": {
+            "expected": "aa9d32a",
+            "live": "aa9d32a",
+            "date": "2026-09-13",
+            "origin": "https://github.com/DannyBaanks/Cobolge.git"
+          },
+          "Fortranbolge": {
+            "expected": "0560749",
+            "live": "0560749",
+            "date": "2026-09-13",
+            "origin": "https://github.com/DannyBaanks/Fortranbolge.git"
+          },
+          "Zigbolge": {
+            "expected": "fc177ff",
+            "live": "fc177ff",
+            "date": "2026-09-13",
+            "origin": "https://github.com/DannyBaanks/Zigbolge.git"
+          },
+          "Pibolge": {
+            "expected": "33e377a",
+            "live": "33e377a",
+            "date": "2026-09-13",
+            "origin": "https://github.com/DannyBaanks/Pibolge.git"
+          },
+          "Pibolge19": {
+            "expected": "263f1d7",
+            "live": "263f1d7",
+            "date": "2026-09-12",
+            "origin": "https://github.com/DannyBaanks/Pibolge19.git"
+          },
+          "Wasmbolge": {
+            "expected": "a45bbde",
+            "live": "a45bbde",
+            "date": "2026-09-13",
+            "origin": "https://github.com/DannyBaanks/Wasmbolge.git"
+          },
+          "MalbolgeEngineCPP": {
+            "expected": "0ceac45",
+            "live": "0ceac45",
+            "date": "2026-09-07",
+            "origin": "https://github.com/DannyBaanks/MalbolgeEngineCPP.git"
+          },
+          "malbolge-free": {
+            "expected": "f3db37c",
+            "live": "f3db37c",
+            "date": "2026-09-16",
+            "origin": "https://github.com/DannyBaanks/MalbolgeFree.git"
+          },
+          "malbolge-oracle": {
+            "expected": "fc3daa7",
+            "live": "fc3daa7",
+            "date": "2026-09-17",
+            "origin": "https://github.com/DannyBaanks/MalbolgeOracle.git"
+          },
+          "MalboGost": {
+            "expected": "71002ba",
+            "live": "71002ba",
+            "date": "2026-09-17",
+            "origin": "https://github.com/DannyBaanks/MalboGost.git"
+          },
+          "malbolge-differential": {
+            "expected": "2466139",
+            "live": "2466139",
+            "date": "2026-09-11",
+            "origin": "https://github.com/DannyBaanks/malbolge-differential.git"
+          }
+        }
+      },
+      {
+        "check": "V3: evidence-file hashes (files cited inside manifests, hashed from disk)",
+        "result": [
+          {
+            "repo": "Rustbolge",
+            "pattern": "evidence/*snapshot*",
+            "found": {
+              "hello_step17_snapshot.json": "29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4"
+            },
+            "expected": "29372AAD12CAA5AFD340328D6C9AFB51408A3A60A477BDA94A671A0DD79A2FE4",
+            "match": true
+          },
+          {
+            "repo": "Swiftbolge",
+            "pattern": "evidence/*parity*",
+            "found": {
+              "oracle_swift_rust_parity.txt": "8A97E03BB8AC901F0B9902191F05849868F1B13DE641C8EF973B05F4E637564E"
+            },
+            "expected": "8A97E03BB8AC901F0B9902191F05849868F1B13DE641C8EF973B05F4E637564E",
+            "match": true
+          },
+          {
+            "repo": "MALBOLGE",
+            "file": "evidence/six_bolge_challenge.txt",
+            "sha256": "B44409A616910ABCBDBC28FD945C35BD6CF03B45D7F530C6BEE7551564F42217",
+            "exists": true,
+            "match": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "check": "V4: cross-manifest consistency assertions",
+        "result": [
+          {
+            "manifest": "rustbolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "swiftbolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "javolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "cobolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "fortranbolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "pibolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "wasmbolge",
+            "assertion": "classic gate tuple uniform (48 steps + a=19758 c=85 d=63)",
+            "pass": true
+          },
+          {
+            "manifest": "zigbolge",
+            "assertion": "gate honesty: labeled EXPECTED (not re-executed)",
+            "pass": true
+          },
+          {
+            "manifest": "malbolgeenginecpp",
+            "assertion": "gate honesty: labeled 'by lineage', NOT re-executed",
+            "pass": true
+          },
+          {
+            "manifest": "rustbolge",
+            "assertion": "snapshot family SHA uniform",
+            "pass": true
+          },
+          {
+            "manifest": "swiftbolge",
+            "assertion": "snapshot family SHA uniform",
+            "pass": true
+          },
+          {
+            "manifest": "javolge",
+            "assertion": "snapshot family SHA uniform",
+            "pass": true
+          },
+          {
+            "manifest": "cobolge",
+            "assertion": "snapshot family SHA uniform",
+            "pass": true
+          },
+          {
+            "manifest": "swiftbolge",
+            "assertion": "oracle parity SHA present",
+            "pass": true
+          },
+          {
+            "manifest": "malbolge-oracle",
+            "assertion": "own vector (Hello World! / 40 steps) distinct from classic gate",
+            "pass": true
+          },
+          {
+            "manifest": "pibolge19",
+            "assertion": "unshackled scale + quine steps recorded",
+            "pass": true
+          },
+          {
+            "manifest": "malbolge-free",
+            "assertion": "F4 6/6 parity + variant firewall note present",
+            "pass": true
+          },
+          {
+            "manifest": "malbogost",
+            "assertion": "COMPILE_ONCE_TEST_MANY + 3-runtime verification recorded",
+            "pass": true
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "manifest_sha256": {
+      "rustbolge": "CFE8A4E117F05F6F69A7C5FA53B2CA7C4D0BE4573EA7B840A1F46F096B6F9223",
+      "swiftbolge": "FE131581F5CE4191B6F3F40A18A7BB2340A5D031E469C22559428DD03EFFBCFD",
+      "javolge": "9E46107A9D61C7DB4A253F86BBFFDAC17A19FC1B03B21CFA100BC9BEF13B6AD8",
+      "cobolge": "FE17C1041B63222D23E9C0B0526605F27C4FA15B93BE5584A52113CB273273EB",
+      "fortranbolge": "22627B928E4E2E9827C7790803161F1410C8EFCA89F77D373AA40B9C0AEF640D",
+      "zigbolge": "2D24E4812C152315BDF4433092AF3D2A5C09154346F47DF6A25D16D9F0FF58C7",
+      "pibolge": "B7E1F532FC1C582D09AED93BEF2F3EFBB54F857F66239076B95C6B6B6F1143E9",
+      "pibolge19": "7661DC950CBF56271E55F2AE6BE55803A39612B1862D046A224DC7D213830D18",
+      "wasmbolge": "2BD137EFF0D12F158218130502E266B28DDE32FAB070ADFE40340EF0436E0CB5",
+      "malbolgeenginecpp": "CA030D380EE898A7830D65DA00BC792E03515571D7F1564BB5F05DE8F92C5A06",
+      "malbolge-free": "E26BD361E6356041815F6B4D3F452CC75E911E6208E078F5C0D353ECEEA42544",
+      "malbolge-oracle": "004636E5479D3A978633CE784C508AD8F5E0EA76D9077199C4640F29C5BF208B",
+      "malbogost": "16B738336D334CE6A2D1A058620420825DE79D9A5A89CDBB6533D62CFF9855CD"
+    },
+    "verdict": "H0_REJECTED: every claim traceable - HEADs live-verified, evidence hashes match, shared facts uniform across manifests. Registration stands as CLAIM set."
+  }
+}
