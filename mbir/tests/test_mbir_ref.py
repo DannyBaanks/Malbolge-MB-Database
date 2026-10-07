@@ -246,11 +246,12 @@ try:
 except MBIRError as e:
     check("max_steps triggers", e.reason == "MAX_STEPS", repr(e))
 
-# --- Summary ---
-print("\n" + "=" * 50)
-print("PASS: %d   FAIL: %d   TOTAL: %d" % (PASS, FAIL, PASS + FAIL))
-print("=" * 50)
-if FAIL > 0:
-    sys.exit(1)
-print("MBIR reference VM conformance OK.")
-sys.exit(0)
+def test_mbir_ref_conformance():
+    assert FAIL == 0, f"{FAIL} tests failed"
+
+
+if __name__ == "__main__":
+    if FAIL > 0:
+        sys.exit(1)
+    print("MBIR reference VM conformance OK.")
+    sys.exit(0)

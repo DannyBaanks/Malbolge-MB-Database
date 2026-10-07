@@ -1,0 +1,69 @@
+{
+  "schema": "a04-malbolge-probe/1",
+  "timestamp": "2026-09-27T11:09:55Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "The one-shot byte classifier recognizes opcode 0x01, consumes the following operand, stores and recovers it through the dedicated cell route, then emits it unchanged.",
+  "claim_status": "PARTIAL_DEMONSTRATED",
+  "scope_limits": [
+    "One opcode and at most one operand are handled; there is no later OUT_BYTE dispatch or multi-instruction fetch loop.",
+    "The recovered value is emitted by the PUSH_CONST handler as a probe observation.",
+    "Truncated PUSH_CONST operands and EOF validation are outside this probe.",
+    "The operand handler must execute R_MOVED after IN because the dispatch path has self-encrypted MOVED."
+  ],
+  "source": {
+    "path": "vm_malbolge/src/byte_push_const_dispatch_cell_probe.hell",
+    "sha256": "494db8a9d6b3060c8ff326096309c2693ffee975f7cc8e1bbf87807b704d76ec",
+    "generator": "vm_malbolge/tools/push_const_dispatch_cell_probe_gen.py",
+    "generator_sha256": "71cf5f437b141d24409ad51f68874a29b35dc64f923483f38bc492a0b57618eb",
+    "base_cell_source": "vm_malbolge/src/cell_stack_top.hell",
+    "base_dispatch_generator": "vm_malbolge/tools/mbir_dispatch_gen.py",
+    "base_hashes": {
+      "vm_malbolge/src/cell_stack_top.hell": "72763394374a86c7dc746ccafa977650d8a41536144b1edb557bb6c20e8a958f",
+      "vm_malbolge/tools/mbir_dispatch_gen.py": "c756fac6f8b55e852618c755e9f5b4e66b737d007d217457e62efd7f2e4285b4"
+    },
+    "generation_command": "python vm_malbolge/tools/push_const_dispatch_cell_probe_gen.py"
+  },
+  "artifact": {
+    "path": "vm_malbolge/evidence/artifacts/byte_push_const_dispatch_cell_probe.mb",
+    "sha256": "29d04027224da8dcec3dbd5fa12aa3adae3f9355f6b978437665e2ee8cf93de7",
+    "size_bytes": 48400,
+    "variant": "classic-3^10",
+    "assembly_command": "wine /home/danny/Development/ISyCo Git/_external/LMAO/lmao.exe -o vm_malbolge/evidence/artifacts/byte_push_const_dispatch_cell_probe.mb vm_malbolge/src/byte_push_const_dispatch_cell_probe.hell",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "1b65a6497d65d85d4b49ce7a857f3985e86936b3e456f1c6d6d9681ef5af4c17",
+      "binary_path": "local external checkout: _external/LMAO/lmao.exe"
+    }
+  },
+  "oracle": {
+    "path": "tools/oracle_classic.py",
+    "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "host_language": "Python"
+  },
+  "runner": {
+    "name": "malbolge-engine-local-source-build",
+    "variant": "classic-3^10",
+    "source_repo": "https://github.com/DannyBaanks/Malbolge-Engine",
+    "source_commit": "e7faeb1",
+    "source_files": {
+      "src/vm.c": "9298106c30b99802d6a3745a017bf45f94c3952b9a14650d5af0b944afa2e2d4",
+      "src/malbolge.c": "e77a8fc79ff48ee5fe67bf5fcf528e31dc2cee5559e293c5c4deb77f79c9fda2",
+      "src/vm.h": "bce35bfcb1dbf728f1af5e4c26cbfa3a520d0de8522bd4b9d8d0263f3a7a1c24"
+    },
+    "build_command": "gcc -O2 -Wall -Wextra -std=c11 -o /tmp/malbolge-engine-e7faeb1-runner src/vm.c src/malbolge.c",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+    "binary_sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "manifest_pinned_binary_sha256": "9A7AD87EC094EC0948974F5D600190C0D2DEBBEA645F4781CD7EEEDA7D679775",
+    "known_vector": "tools/fixtures/hello_world_40.mb -> Hello World!, 40 steps, HALTED"
+  },
+  "cases": [
+    {"input_hex": "0141", "expected_hex": "41", "oracle_hex": "41", "runner_hex": "41", "oracle_steps": 51947, "runner_steps": 51947, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "017a", "expected_hex": "7a", "oracle_hex": "7a", "runner_hex": "7a", "oracle_steps": 51947, "runner_steps": 51947, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "0100", "expected_hex": "00", "oracle_hex": "00", "runner_hex": "00", "oracle_steps": 51947, "runner_steps": 51947, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "0000", "expected_hex": "", "oracle_hex": "", "runner_hex": "", "oracle_steps": 51288, "runner_steps": 51288, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "0041", "expected_hex": "", "oracle_hex": "", "runner_hex": "", "oracle_steps": 51288, "runner_steps": 51288, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "4100", "expected_hex": "41", "oracle_hex": "41", "runner_hex": "41", "oracle_steps": 50485, "runner_steps": 50485, "status": "HALTED", "verdict": "PASS"}
+  ],
+  "verdict": "6/6 PASS on the Python Classic oracle and locally source-built Classic engine. The 0x01 opcode is now classified and its operand survives the dedicated cell route; full PUSH_CONST/OUT_BYTE stream semantics remain unproven."
+}

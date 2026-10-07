@@ -2,8 +2,9 @@
 
 Usage (from repo root):
     py vm_malbolge/tests/buildrun.py <file.hell> <hex-input> [--expect=<hex>]
+    py vm_malbolge/tests/buildrun.py <file.hell> <hex-input> [--fast-layout]
 
-- Compiles with LMAO (fast mode) to a temp .mb
+- Compiles with LMAO normal layout by default; --fast-layout opts into -f.
 - Simulates with oracle_classic
 - Executes on runners/malbolge-original/malbolge.exe
 - Prints both outputs + verdict
@@ -11,7 +12,9 @@ Usage (from repo root):
 import os
 import subprocess
 import sys
+import shutil
 import tempfile
+from pathlib import Path
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LMAO = os.path.join(REPO, "third_party", "lmao", "bin", "lmao.exe")
@@ -20,8 +23,25 @@ sys.path.insert(0, os.path.join(REPO, "tools"))
 import oracle_classic
 
 
-def compile_hell(src_path, out_mb):
-    r = subprocess.run([LMAO, "-f", "-o", out_mb, src_path],
+def exe_command(path_str):
+    if os.name == "nt":
+        return [path_str]
+    path = Path(path_str)
+    native = path.with_suffix("")
+    if native.is_file() and os.access(native, os.X_OK):
+        return [str(native)]
+    wine = shutil.which("wine")
+    if wine is not None:
+        return [wine, str(path)]
+    return [str(path)]
+
+
+def compile_hell(src_path, out_mb, fast_layout=False):
+    cmd = [*exe_command(LMAO)]
+    if fast_layout:
+        cmd.append("-f")
+    cmd.extend(["-o", out_mb, src_path])
+    r = subprocess.run(cmd,
                        capture_output=True, text=True)
     if r.returncode != 0 or not os.path.exists(out_mb):
         return False, r.stdout + r.stderr
@@ -41,29 +61,36 @@ def run_runner(path, stdin_bytes, max_steps=600000):
         stdin_file = f.name
     try:
         with open(stdin_file, "rb") as fin:
-            r = subprocess.run([RUNNER, path, str(max_steps)],
+            r = subprocess.run([*exe_command(RUNNER), path, str(max_steps)],
                                stdin=fin, capture_output=True)
         out_bytes = r.stdout
         if out_bytes.endswith(b"\r\n"):
             out_bytes = out_bytes[:-2]
+        elif out_bytes.endswith(b"\n"):
+            out_bytes = out_bytes[:-1]
         return out_bytes, r.returncode, r.stderr.decode("latin-1")
     finally:
         os.unlink(stdin_file)
 
 
 def main():
-    src = sys.argv[1]
-    hexin = sys.argv[2] if len(sys.argv) > 2 else ""
+    args = sys.argv[1:]
+    fast_layout = "--fast-layout" in args
+    args = [arg for arg in args if arg != "--fast-layout"]
+    if not args:
+        raise SystemExit("usage: buildrun.py <file.hell> <hex-input> [--expect=<hex>] [--fast-layout]")
+    src = args[0]
+    hexin = args[1] if len(args) > 1 else ""
     stdin_bytes = bytes.fromhex(hexin) if hexin else b""
     expect = None
-    for arg in sys.argv[3:]:
+    for arg in args[2:]:
         if arg.startswith("--expect="):
             expect = bytes.fromhex(arg.split("=", 1)[1])
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mb") as f:
         out_mb = f.name
     try:
-        ok, log = compile_hell(src, out_mb)
+        ok, log = compile_hell(src, out_mb, fast_layout=fast_layout)
         print("== LMAO compile:", "OK" if ok else "FAIL")
         if not ok:
             print(log)

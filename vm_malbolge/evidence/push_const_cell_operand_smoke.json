@@ -1,0 +1,63 @@
+{
+  "schema": "a04-malbolge-probe/1",
+  "timestamp": "2026-09-27T09:41:46Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Given the known 0x01 prefix, the following operand byte passes through the existing two-level stack-cell store/recover path and is emitted unchanged.",
+  "claim_status": "PARTIAL_DEMONSTRATED",
+  "scope_limits": [
+    "The probe consumes the first byte unconditionally; it does not classify or validate opcode 0x01.",
+    "The recovered byte is emitted as an observation in the same probe; a separate later OUT_BYTE handler is not demonstrated.",
+    "No multi-instruction fetch loop or persistent stack value across dispatch is demonstrated.",
+    "The runner was rebuilt for Linux from the manifest-pinned source commit, but its binary hash differs from the manifest's Windows binary hash."
+  ],
+  "source": {
+    "path": "vm_malbolge/src/byte_push_const_cell_probe.hell",
+    "sha256": "3912ecad4d7e2091128699c1d24de6733d1a64f8b434ae14e07986db2f370307",
+    "generator": "vm_malbolge/tools/push_const_cell_probe_gen.py",
+    "generator_sha256": "fec050b7a3188d0830c563202ffb0017989cd0be0c003666e746cfb6505709ae",
+    "base_source": "vm_malbolge/src/cell_stack_top.hell",
+    "base_source_sha256": "72763394374a86c7dc746ccafa977650d8a41536144b1edb557bb6c20e8a958f",
+    "generation_command": "python vm_malbolge/tools/push_const_cell_probe_gen.py"
+  },
+  "artifact": {
+    "path": "vm_malbolge/evidence/artifacts/byte_push_const_cell_probe.mb",
+    "sha256": "4db0363dd4801e21667f70f65b2c210cfbc77b1967717031c02803a5c6cf7df5",
+    "size_bytes": 24518,
+    "variant": "classic-3^10",
+    "assembly_command": "wine /home/danny/Development/ISyCo Git/_external/LMAO/lmao.exe -o vm_malbolge/evidence/artifacts/byte_push_const_cell_probe.mb vm_malbolge/src/byte_push_const_cell_probe.hell",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "1b65a6497d65d85d4b49ce7a857f3985e86936b3e456f1c6d6d9681ef5af4c17",
+      "binary_path": "local external checkout: _external/LMAO/lmao.exe"
+    }
+  },
+  "oracle": {
+    "path": "tools/oracle_classic.py",
+    "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "host_language": "Python"
+  },
+  "runner": {
+    "name": "malbolge-engine-local-source-build",
+    "variant": "classic-3^10",
+    "source_repo": "https://github.com/DannyBaanks/Malbolge-Engine",
+    "source_commit": "e7faeb1",
+    "source_files": {
+      "src/vm.c": "9298106c30b99802d6a3745a017bf45f94c3952b9a14650d5af0b944afa2e2d4",
+      "src/malbolge.c": "e77a8fc79ff48ee5fe67bf5fcf528e31dc2cee5559e293c5c4deb77f79c9fda2",
+      "src/vm.h": "bce35bfcb1dbf728f1af5e4c26cbfa3a520d0de8522bd4b9d8d0263f3a7a1c24"
+    },
+    "build_command": "gcc -O2 -Wall -Wextra -std=c11 -o /tmp/malbolge-engine-e7faeb1-runner src/vm.c src/malbolge.c",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+    "binary_sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "manifest_pinned_binary_sha256": "9A7AD87EC094EC0948974F5D600190C0D2DEBBEA645F4781CD7EEEDA7D679775",
+    "known_vector": "tools/fixtures/hello_world_40.mb -> Hello World!, 40 steps, HALTED"
+  },
+  "cases": [
+    {"input_hex": "017a", "expected_hex": "7a", "oracle_hex": "7a", "runner_hex": "7a", "oracle_steps": 25964, "runner_steps": 25964, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "0100", "expected_hex": "00", "oracle_hex": "00", "runner_hex": "00", "oracle_steps": 25964, "runner_steps": 25964, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "017f", "expected_hex": "7f", "oracle_hex": "7f", "runner_hex": "7f", "oracle_steps": 25964, "runner_steps": 25964, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "0141", "expected_hex": "41", "oracle_hex": "41", "runner_hex": "41", "oracle_steps": 25964, "runner_steps": 25964, "status": "HALTED", "verdict": "PASS"}
+  ],
+  "verdict": "4/4 PASS on the Python Classic oracle and a locally source-built Classic engine. This demonstrates operand preservation through the dedicated cell route under a known 0x01 prefix, not full MBIR PUSH_CONST dispatch."
+}

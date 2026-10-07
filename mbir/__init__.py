@@ -7,7 +7,7 @@ from .mbir import (
     ADD, SUB, MUL, CMP_EQ, CMP_LT, CMP_GT,
     JUMP, JUMP_IF_FALSE, CALL, RETURN, OUT_BYTE, IN_BYTE,
     OPERANDS, MNEMONICS, operand_width,
-    MBIRDecodeError, encode, decode, validate, instruction_boundaries,
+    MBIRDecodeError, encode, encode_instruction, decode, validate, instruction_boundaries,
 )
 from .mbir_ref import MBIRRefVM, MBIRError, source_hash
 from .exit_hook import run_with_exit_hook
@@ -18,7 +18,7 @@ __all__ = [
     "ADD", "SUB", "MUL", "CMP_EQ", "CMP_LT", "CMP_GT", "JUMP",
     "JUMP_IF_FALSE", "CALL", "RETURN", "OUT_BYTE", "IN_BYTE",
     "OPERANDS", "MNEMONICS", "operand_width",
-    "MBIRDecodeError", "encode", "decode", "validate",
+    "MBIRDecodeError", "encode", "encode_instruction", "decode", "validate",
     "instruction_boundaries",
     "run_with_exit_hook",
 ]

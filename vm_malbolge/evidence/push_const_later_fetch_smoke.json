@@ -1,0 +1,59 @@
+{
+  "schema": "a04-malbolge-probe/1",
+  "timestamp": "2026-09-27T11:17:30Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "After classifying PUSH_CONST and storing its operand, the runtime can consume one later input byte and still recover the original operand from its dedicated cell.",
+  "claim_status": "PARTIAL_DEMONSTRATED",
+  "scope_limits": [
+    "The later byte is consumed but not classified as OUT_BYTE or HALT.",
+    "The operand is emitted by the same one-shot PUSH_CONST control path after the later IN; this is not a separate MBIR handler.",
+    "This is one later fetch only. There is no fetch loop or general instruction stream support.",
+    "In 01 41 10 00 and 01 42 10 00, the trailing 00 is ignored: steps equal the three-byte cases, so HALT is not fetched.",
+    "Case 01 41 00 deliberately emits 41, showing that the later opcode is not yet dispatched."
+  ],
+  "source": {
+    "path": "vm_malbolge/src/byte_push_const_later_fetch_probe.hell",
+    "sha256": "5db4ca1262b52f7bb13015c4a0df83f50720e144292c39dd8fa6bcdf79012581",
+    "generator": "vm_malbolge/tools/push_const_dispatch_cell_probe_gen.py",
+    "generator_sha256": "71cf5f437b141d24409ad51f68874a29b35dc64f923483f38bc492a0b57618eb",
+    "generation_command": "python vm_malbolge/tools/push_const_dispatch_cell_probe_gen.py --read-next-byte",
+    "base_cell_source": "vm_malbolge/src/cell_stack_top.hell",
+    "base_dispatch_generator": "vm_malbolge/tools/mbir_dispatch_gen.py"
+  },
+  "artifact": {
+    "path": "vm_malbolge/evidence/artifacts/byte_push_const_later_fetch_probe.mb",
+    "sha256": "094a21180cbd522b8f849533354bcee43deb93ab67fd294d52b4bfac57cfb585",
+    "size_bytes": 48676,
+    "variant": "classic-3^10",
+    "assembly_command": "wine /home/danny/Development/ISyCo Git/_external/LMAO/lmao.exe -o vm_malbolge/evidence/artifacts/byte_push_const_later_fetch_probe.mb vm_malbolge/src/byte_push_const_later_fetch_probe.hell",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "1b65a6497d65d85d4b49ce7a857f3985e86936b3e456f1c6d6d9681ef5af4c17",
+      "binary_path": "local external checkout: _external/LMAO/lmao.exe"
+    }
+  },
+  "oracle": {
+    "path": "tools/oracle_classic.py",
+    "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "host_language": "Python"
+  },
+  "runner": {
+    "name": "malbolge-engine-local-source-build",
+    "variant": "classic-3^10",
+    "source_repo": "https://github.com/DannyBaanks/Malbolge-Engine",
+    "source_commit": "e7faeb1",
+    "binary_sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+    "known_vector": "tools/fixtures/hello_world_40.mb -> Hello World!, 40 steps, HALTED"
+  },
+  "cases": [
+    {"input_hex": "01411000", "probe_expected_hex": "41", "oracle_hex": "41", "runner_hex": "41", "oracle_steps": 52187, "runner_steps": 52187, "status": "HALTED", "verdict": "OUTPUT_MATCH_BUT_TRAILING_HALT_IGNORED"},
+    {"input_hex": "01421000", "probe_expected_hex": "42", "oracle_hex": "42", "runner_hex": "42", "oracle_steps": 52187, "runner_steps": 52187, "status": "HALTED", "verdict": "OUTPUT_MATCH_BUT_TRAILING_HALT_IGNORED"},
+    {"input_hex": "017a10", "probe_expected_hex": "7a", "oracle_hex": "7a", "runner_hex": "7a", "oracle_steps": 52187, "runner_steps": 52187, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "010010", "probe_expected_hex": "00", "oracle_hex": "00", "runner_hex": "00", "oracle_steps": 52187, "runner_steps": 52187, "status": "HALTED", "verdict": "PASS"},
+    {"input_hex": "014100", "probe_expected_hex": "41", "full_mbir_expected_hex": "", "oracle_hex": "41", "runner_hex": "41", "oracle_steps": 52187, "runner_steps": 52187, "status": "HALTED", "verdict": "LIMITATION_CONFIRMED: 00 is not dispatched"},
+    {"input_hex": "0000", "probe_expected_hex": "", "oracle_hex": "", "runner_hex": "", "oracle_steps": 51523, "runner_steps": 51523, "status": "HALTED", "verdict": "PASS"}
+  ],
+  "verdict": "The cell value survives one later IN and is recovered identically by both Classic engines in all 6 cases. Exact 01 41 10 00 / 01 42 10 00 outputs match, but the trailing 00 is ignored; 01 41 00 still emits 41. This does not demonstrate OUT_BYTE or HALT dispatch."
+}

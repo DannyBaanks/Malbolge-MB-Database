@@ -179,7 +179,8 @@ def main():
     parser.add_argument("--manifest", help="write a hashed differential manifest")
     options = parser.parse_args()
 
-    exe = Path(__file__).resolve().parents[1] / "zig-out" / "bin" / "mbir-zig.exe"
+    bin_dir = Path(__file__).resolve().parents[1] / "zig-out" / "bin"
+    exe = bin_dir / "mbir-zig" if (bin_dir / "mbir-zig").is_file() else bin_dir / "mbir-zig.exe"
     failures = 0
     records = []
     for entry in FIXTURES:

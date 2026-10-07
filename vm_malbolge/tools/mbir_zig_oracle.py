@@ -20,6 +20,8 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+import shutil
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import oracle_classic  # noqa: E402
@@ -29,6 +31,18 @@ RUNNER = ROOT / "runners" / "malbolge-original" / "malbolge.exe"
 ZIG = ROOT / "mbir" / "zig" / "zig-out" / "bin" / "mbir-zig.exe"
 
 
+def exe_command(path: Path) -> list[str]:
+    if os.name == "nt":
+        return [str(path)]
+    native = path.with_suffix("")
+    if native.is_file() and os.access(native, os.X_OK):
+        return [str(native)]
+    wine = shutil.which("wine")
+    if wine is not None:
+        return [wine, str(path)]
+    return [str(path)]
+
+
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -36,7 +50,7 @@ def sha256_file(path: Path) -> str:
 def compile_hell(source: Path, output: Path) -> None:
     # Normal layout is the evidence-supported path; -f is runner-flaky (A04).
     proc = subprocess.run(
-        [str(LMAO), "-o", str(output), str(source)],
+        [*exe_command(LMAO), "-o", str(output), str(source)],
         capture_output=True,
         check=False,
     )
@@ -62,7 +76,7 @@ def run_runner(binary: Path, mbir_bytes: bytes, max_steps: int):
             stream.write(mbir_bytes)
         with open(input_path, "rb") as stdin:
             proc = subprocess.run(
-                [str(RUNNER), str(binary), str(max_steps)],
+                [*exe_command(RUNNER), str(binary), str(max_steps)],
                 stdin=stdin,
                 capture_output=True,
                 check=False,
@@ -70,6 +84,8 @@ def run_runner(binary: Path, mbir_bytes: bytes, max_steps: int):
         output = proc.stdout
         if output.endswith(b"\r\n"):
             output = output[:-2]
+        elif output.endswith(b"\n"):
+            output = output[:-1]
         return output, proc.returncode, proc.stderr.decode("latin-1")
     finally:
         os.unlink(input_path)
@@ -80,7 +96,7 @@ def run_zig(program: bytes, max_steps: int):
         program_path = Path(tmp) / "program.mbir"
         program_path.write_bytes(program)
         proc = subprocess.run(
-            [str(ZIG), str(program_path), "--max-steps", str(max_steps)],
+            [*exe_command(ZIG), str(program_path), "--max-steps", str(max_steps)],
             capture_output=True,
             check=False,
         )
@@ -115,6 +131,8 @@ def run_case(source: Path, program: bytes, max_steps: int):
             },
             "match": (
                 zig["status"] == "HALTED"
+                and oracle_status == "HALTED"
+                and runner_code == 0
                 and zig_output == oracle_output == runner_output
             ),
             "sources": {
@@ -164,7 +182,12 @@ def main() -> int:
             "schema": "mbir-zig-malbolge-oracle/1",
             "created_at": datetime.now(timezone.utc).isoformat(),
             "verdict": verdict,
-            "note": "MATCH proves the probe implements this MBIR stream; MISMATCH records the next Malbolge boundary.",
+            "note": (
+                "MATCH means the Zig VM halted and the observable output matched "
+                "both Classic executions for this vector. It does not prove the "
+                "Classic probe consumed or dispatched every input byte; use a "
+                "negative control or input-consumption trace for that claim."
+            ),
             "result": result,
         }
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

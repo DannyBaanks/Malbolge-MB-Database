@@ -132,11 +132,12 @@ except ValueError as e:
     check("unknown opcode 0x40 rejected", "unknown opcode" in str(e), str(e))
 
 # --- Summary ---
-print("\n" + "=" * 50)
-print("MBIR_VERSION = %d" % MBIR_VERSION)
-print("PASS: %d   FAIL: %d   TOTAL: %d" % (PASS, FAIL, PASS + FAIL))
-print("=" * 50)
-if FAIL > 0:
-    sys.exit(1)
-print("MBIR CONTRACT conformance OK.")
-sys.exit(0)
+def test_mbir_conformance():
+    assert FAIL == 0, f"{FAIL} tests failed"
+
+
+if __name__ == "__main__":
+    if FAIL > 0:
+        sys.exit(1)
+    print("MBIR CONTRACT conformance OK.")
+    sys.exit(0)

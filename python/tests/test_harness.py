@@ -131,12 +131,14 @@ for source, _ in test_cases:
 print(f"\n{'='*40}")
 print(f"PASS: {PASS}")
 print(f"FAIL: {FAIL}")
-print(f"TOTAL: {PASS + FAIL}")
-print(f"{'='*40}")
+def test_malpy_harness():
+    assert FAIL == 0, f"{FAIL} tests failed"
 
-if FAIL > 0:
-    print("\nSome tests FAILED!")
-    sys.exit(1)
-else:
-    print("\nAll tests passed!")
-    sys.exit(0)
+
+if __name__ == "__main__":
+    if FAIL > 0:
+        print("\nSome tests FAILED!")
+        sys.exit(1)
+    else:
+        print("\nAll tests passed!")
+        sys.exit(0)
