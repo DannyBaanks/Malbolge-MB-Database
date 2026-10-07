@@ -49,7 +49,8 @@ byte level plus the cost-analysis). See `vm_malbolge/A04_NEXT.md`.
 | Malbolge rendering toolchain (LMAO) | WORKING | `third_party/lmao` built, smoke-tested on real runner |
 | Byte-level storage/recovery primitive | WORKING | `vm_malbolge/src/min3_echo1.hell` verified on classic runner (`runners/malbolge-original/malbolge.exe`) |
 | MBIR one-deep stack fetch loop (A04) | DEMONSTRATED | `vm_malbolge/src/mbir_a04_gate.hell` + `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS, bit-exact on oracle, runner, and zig) |
-| MBIR interpreter (full stack, arith, control flow) | NOT_DEMONSTRATED | Beyond one-deep fetch loop; A05 continuation needed |
+| MBIR re-entrant multi-cycle fetch loop (A05) | DEMONSTRATED | `vm_malbolge/src/mbir_a05_multicycle.hell` + `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json` (8/8 PASS, bit-exact sequential output 'AB', 'ABC', 'hello', exact 6,046 step scaling) |
+| MBIR interpreter (concurrent stack, arith, control flow) | NOT_DEMONSTRATED | Beyond sequential multi-cycle fetch loop; concurrent stack / ADD continuation needed |
 
 ## Next Runtime Steps
 

@@ -53,7 +53,8 @@ NOT_DEMONSTRATED
 | **Frontend Python (MalPy)** | `FRONTEND_DEMONSTRATED` | P2 (Python AST → Bytecode MalPy) | `python/src/compiler.py`, suite en `python/tests/` |
 | **Toolchain Nativo Linux** | `WORKING` | Ensamblado y ejecución 100% nativa sin Wine | LMAO v0.6.0 (`third_party/lmao/bin/lmao`), Runner C (`runners/malbolge-original/malbolge`) |
 | **Malbolge VM Runtime (A04)** | `DEMONSTRATED` | **Bucle de ejecución y pila de 1 profundidad** | `vm_malbolge/src/mbir_a04_gate.hell`, `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS) |
-| **Malbolge VM Aritmética / Pila Multicelda (A05)** | `NOT_DEMONSTRATED` | En diseño | Próximo objetivo en frontera |
+| **Malbolge VM Bucle Multi-Ciclo (A05)** | `DEMONSTRATED` | **Ejecución secuencial arbitraria sin corrupción ('AB', 'ABC', 'hello')** | `vm_malbolge/src/mbir_a05_multicycle.hell`, `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json` (8/8 PASS) |
+| **Malbolge VM Pila Concurrente / ADD (A05b/P0)** | `NOT_DEMONSTRATED` | En diseño | Pila concurrente multicelda y suma aritmética |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -81,15 +82,22 @@ Implementado en ensamblador de bajo nivel HeLL ([`vm_malbolge/src/mbir_a04_gate.
 | `01 00 10 00` | PUSH_CONST `0x00`, OUT_BYTE, HALT | `00` | **61,199** | **MATCH / PASS** |
 | `01 ff 10 00` | PUSH_CONST `0xff`, OUT_BYTE, HALT | `ff` | **61,199** | **MATCH / PASS** |
 
-### 2. Tabla de Clasificación de los 18 Opcodes de MBIR
+### 2. Bucle Multi-Ciclo Reentrante (Hito A05)
+Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_a05_multicycle.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_a05_multicycle.hell)) a través de ([`vm_malbolge/tools/mbir_a05_multicycle_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_a05_multicycle_gen.py)):
+- **Teorema del Reset Universal 3-Crazy**: Se descubrió y verificó exhaustivamente que `crz(C0, crz(C2, crz(C1, X))) == 29524 (C1)` para **TODOS** los 59,049 valores de Malbolge. Permite limpiar y re-inicializar incondicionalmente las celdas de almacenamiento tras cada `OUT_BYTE`.
+- **Arquitectura Optimizada**: Eliminación de variables legadas (`tmp1..tmp4`) y comprobación EOF muerta, reduciendo el binario compilado de 52,623 a **40,309 bytes** (ahorrando >12,000 bytes bajo el límite de memoria) y recortando ~20,000 pasos de inicialización.
+- **Multiplexación de Flags**: Celdas de datos comparten sólo 3 flags en `.CODE`, respetando la física de Malbolge (un único ciclo de 2 elementos en XLAT2: `F <-> J`).
+- **Escalabilidad y Cero Deriva**: 8/8 vectores PASS con paridad bit a bit en el Oráculo Python, Runner C nativo y Zig (`mbir-zig`). Escala a exactamente **+6,046 pasos por iteración** sin deriva de fase, permitiendo secuencias arbitrarias de N caracteres (ej. "AB", "ABC", "hello").
+
+### 3. Tabla de Clasificación de los 18 Opcodes de MBIR
 - Generador mecánico ([`vm_malbolge/tools/mbir_dispatch_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_dispatch_gen.py)) que produce ensamblador HeLL para clasificar los 18 opcodes (`0x00`..`0x11`) en Malbolge puro usando cadenas de decremento digital root y sitios `SUBROUTINE_FLAGn` con paridad 21/21 verificada.
 
-### 3. Primitivas Celulares y de Entrada Secuencial Demostradas
+### 4. Primitivas Celulares y de Entrada Secuencial Demostradas
 - Sonda de segunda lectura explícita con retorno `MOVED` ([`vm_malbolge/src/cell_stack_second_read.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/cell_stack_second_read.hell), 12/12 PASS).
 - Bucle de entrada reutilizable hasta 16 bytes con parada en EOF ([`vm_malbolge/src/cell_stack_loop_echo.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/cell_stack_loop_echo.hell), 8/8 PASS).
 - Almacenamiento y recuperación mediante celdas dedicadas `stack_scratch` / `stack_top` independientes.
 
-### 4. Herramientas y Substratos Externos
+### 5. Herramientas y Substratos Externos
 - Binarios nativos compilados para Linux (LMAO, runner clásico, zig-oracle), eliminando dependencia de emulación Wine.
 - Registro consolidado de 13 motores externos de la familia `-bolge` en [`registry/substrates.json`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/registry/substrates.json) (Rustbolge, Swiftbolge, Javolge, Fortranbolge, Cobolge, Zigbolge, Pibolge, Pibolge19, Wasmbolge, MalbolgeEngineCPP, malbolge-free, malbolge-oracle, MalboGost).
 
@@ -97,8 +105,8 @@ Implementado en ensamblador de bajo nivel HeLL ([`vm_malbolge/src/mbir_a04_gate.
 
 ## Lo que FALTA por hacer (Roadmap / NOT_DEMONSTRATED)
 
-1. **Hito A05: Pila Multicelda e Indexación Dinámica**
-   - El soporte actual de pila en Malbolge tiene una profundidad de 1 celda dedicada. Como se demostró en el caso de control negativo `01 41 10 01 42 10 00`, realizar múltiples `PUSH` sucesivos independientes sin sobrescritura requiere implementar un puntero de pila dinámico sobre memoria consecutiva.
+1. **Hito A05b: Pila Concurrente Multicelda (Profundidad > 1)**
+   - El soporte multi-ciclo permite N operaciones secuenciales `PUSH -> OUT`, pero almacenar múltiples elementos simultáneamente antes de hacer pop (`01 41 01 42 10 10 00` -> `BA`) requiere un puntero de pila sobre slots de memoria indexados.
 2. **Operaciones Aritméticas y Lógicas en Malbolge Puro**
    - Implementar los manejadores operacionales para `ADD` (0x02) y `SUB` (0x03) en la VM HeLL/Malbolge reutilizando los patrones de sumador y acarreo ternario.
 3. **Cargador de Programa Completo desde Stdin**

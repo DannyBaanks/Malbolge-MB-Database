@@ -1,0 +1,143 @@
+{
+  "schema": "a05-malbolge-multicycle/1",
+  "timestamp": "2026-10-07T22:55:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Re-entrant multi-cycle Malbolge stack fetch loop supporting arbitrary sequential PUSH_CONST (0x01 <operand>), OUT_BYTE (0x10), and HALT (0x00) cycles with clean state reset and zero phase drift.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_a05_multicycle.hell",
+    "sha256": "26bf541b8745ef3c7ab2978657fff3f506745bf1deb6c46f603d01a611177199",
+    "generator": "vm_malbolge/tools/mbir_a05_multicycle_gen.py",
+    "generator_sha256": "efd2a28152ff2eae07beda2bd8b1510ee65cd275a6da337f7345532455051aeb"
+  },
+  "artifact": {
+    "size_bytes": 40309,
+    "sha256": "b1ef81caeabdbd2888a5dc01fafcde0b4bded3953712af621264106273ec1ea6",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01411000",
+      "description": "PUSH A, OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "zig_hex": "41",
+      "oracle_steps": 48701,
+      "runner_steps": 48701,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "description": "PUSH B, OUT, HALT",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "zig_hex": "42",
+      "oracle_steps": 48701,
+      "runner_steps": 48701,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 42655,
+      "runner_steps": 42655,
+      "zig_steps": 1,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "description": "PUSH A, HALT (no out)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 46322,
+      "runner_steps": 46322,
+      "zig_steps": 2,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421000",
+      "description": "2-cycle PUSH A, OUT, PUSH B, OUT, HALT",
+      "expected_hex": "4142",
+      "oracle_hex": "4142",
+      "runner_hex": "4142",
+      "zig_hex": "4142",
+      "oracle_steps": 54747,
+      "runner_steps": 54747,
+      "zig_steps": 5,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421001431000",
+      "description": "3-cycle PUSH A, OUT, PUSH B, OUT, PUSH C, OUT, HALT",
+      "expected_hex": "414243",
+      "oracle_hex": "414243",
+      "runner_hex": "414243",
+      "zig_hex": "414243",
+      "oracle_steps": 60793,
+      "runner_steps": 60793,
+      "zig_steps": 7,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "017a1001001001ff1000",
+      "description": "3-cycle with boundary values z, 0x00, 0xff",
+      "expected_hex": "7a00ff",
+      "oracle_hex": "7a00ff",
+      "runner_hex": "7a00ff",
+      "zig_hex": "7a00ff",
+      "oracle_steps": 60793,
+      "runner_steps": 60793,
+      "zig_steps": 7,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "016810016510016c10016c10016f1000",
+      "description": "5-cycle emitting hello string",
+      "expected_hex": "68656c6c6f",
+      "oracle_hex": "68656c6c6f",
+      "runner_hex": "68656c6c6f",
+      "zig_hex": "68656c6c6f",
+      "oracle_steps": 72885,
+      "runner_steps": 72885,
+      "zig_steps": 11,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "description": "CONTROL: concurrent 2-push LIFO (depth boundary)",
+      "expected_hex": "4241",
+      "oracle_hex": "4354",
+      "runner_hex": "4354",
+      "zig_hex": "4241",
+      "oracle_steps": 54747,
+      "runner_steps": 54747,
+      "zig_steps": 5,
+      "status": "HALTED",
+      "verdict": "LIMITATION_CONFIRMED: concurrent stack depth"
+    }
+  ],
+  "verdict": "8/8 sequential execution vectors PASS bit-exact across Python oracle, native Malbolge runner, and mbir-zig with exact 6,046-step-per-iteration scaling. Proves universal 3-crazy reset theorem and eliminates the multi-cycle boundary recorded in A04."
+}
