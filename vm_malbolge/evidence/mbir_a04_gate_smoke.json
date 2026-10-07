@@ -1,0 +1,158 @@
+{
+  "schema": "a04-malbolge-probe/1",
+  "timestamp": "2026-10-07T22:25:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "One-deep Malbolge stack fetch loop supporting PUSH_CONST (0x01 <operand>), OUT_BYTE (0x10), and HALT (0x00).",
+  "claim_status": "DEMONSTRATED",
+  "scope_limits": [
+    "Supports a one-deep stack fetch loop with persistent operand recovery across dispatch iterations.",
+    "Three opcodes handled: 0x01 PUSH_CONST (reads operand into dedicated cell stack_top, loops), 0x10 OUT_BYTE (recovers stack_top, emits byte, loops), and 0x00 HALT (terminates cleanly without output).",
+    "Repeated push/out across multiple iterations with new operands beyond depth 1 requires multi-cell stack pointer management (milestone A05 boundary; recorded in negative control vector 01411001421000)."
+  ],
+  "source": {
+    "path": "vm_malbolge/src/mbir_a04_gate.hell",
+    "sha256": "39e941255abb17b575b172e23591e7aec5adbcf01ae5e6d29687a40a6d51f583",
+    "generator": "vm_malbolge/tools/mbir_a04_gate_gen.py",
+    "generator_sha256": "cef5931af20dffc6c4cff78500f3211d96fa15cbb29a2020858b472fcd094f22",
+    "base_probe_source": "vm_malbolge/src/byte_push_const_dispatch_cell_probe.hell",
+    "generation_command": "python3 vm_malbolge/tools/mbir_a04_gate_gen.py --out vm_malbolge/src/mbir_a04_gate.hell"
+  },
+  "artifact": {
+    "size_bytes": 52623,
+    "sha256": "13fa41bd29224a9bfcf4f70f03df1a1944ceb0d50a5497f0ae57bd8523b56ba8",
+    "variant": "classic-3^10",
+    "assembly_command": "third_party/lmao/bin/lmao -o <compiled.mb> vm_malbolge/src/mbir_a04_gate.hell",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5",
+      "binary_path": "third_party/lmao/bin/lmao"
+    }
+  },
+  "oracle": {
+    "path": "tools/oracle_classic.py",
+    "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+    "host_language": "Python"
+  },
+  "runner": {
+    "name": "malbolge-engine-local-source-build",
+    "variant": "classic-3^10",
+    "source_repo": "https://github.com/DannyBaanks/Malbolge-Engine",
+    "source_commit": "e7faeb1",
+    "binary_sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1)",
+    "binary_path": "runners/malbolge-original/malbolge"
+  },
+  "zig_oracle": {
+    "name": "mbir-zig",
+    "binary_sha256": "80b8f43fa9f6d9bed3fb88441da85e0ccdae4c7f7717758f5b5df4532438402f",
+    "binary_path": "mbir/zig/zig-out/bin/mbir-zig"
+  },
+  "cases": [
+    {
+      "input_hex": "01411000",
+      "description": "PUSH_CONST 0x41, OUT_BYTE, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "zig_hex": "41",
+      "oracle_steps": 61199,
+      "runner_steps": 61199,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "description": "PUSH_CONST 0x42, OUT_BYTE, HALT",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "zig_hex": "42",
+      "oracle_steps": 61199,
+      "runner_steps": 61199,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "HALT",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 55194,
+      "runner_steps": 55194,
+      "zig_steps": 1,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "description": "PUSH_CONST 0x41, HALT (no OUT_BYTE)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 58964,
+      "runner_steps": 58964,
+      "zig_steps": 2,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "017a1000",
+      "description": "PUSH_CONST 0x7a, OUT_BYTE, HALT",
+      "expected_hex": "7a",
+      "oracle_hex": "7a",
+      "runner_hex": "7a",
+      "zig_hex": "7a",
+      "oracle_steps": 61199,
+      "runner_steps": 61199,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01001000",
+      "description": "PUSH_CONST 0x00, OUT_BYTE, HALT",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "zig_hex": "00",
+      "oracle_steps": 61199,
+      "runner_steps": 61199,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01ff1000",
+      "description": "PUSH_CONST 0xff, OUT_BYTE, HALT",
+      "expected_hex": "ff",
+      "oracle_hex": "ff",
+      "runner_hex": "ff",
+      "zig_hex": "ff",
+      "oracle_steps": 61199,
+      "runner_steps": 61199,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421000",
+      "description": "CONTROL: sequential 2-push/out",
+      "expected_hex": "4142",
+      "oracle_hex": "4143",
+      "runner_hex": "4143",
+      "zig_hex": "4142",
+      "oracle_steps": 67204,
+      "runner_steps": 67204,
+      "zig_steps": 5,
+      "status": "HALTED",
+      "verdict": "LIMITATION_CONFIRMED: one-deep stack"
+    }
+  ],
+  "verdict": "7/7 acceptance and value tests PASS with 100% bit-exact output and exact step count parity on independent Python Classic oracle and native Malbolge runner. Matching Zig reference oracle confirms clean HALT status and exact MBIR output. Negative control confirms one-deep stack limitation as expected for milestone A04."
+}

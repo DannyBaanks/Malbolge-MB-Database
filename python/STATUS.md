@@ -6,9 +6,18 @@
 **Highest Milestone**: P2 (Python AST to MalPy bytecode — FRONTEND_DEMONSTRATED)
 **Primary Target**: Unshackled
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
-**Malbolge-hosted runtime**: `NOT_DEMONSTRATED` (A04 in progress — see vm_malbolge/A04_NEXT.md)
+**Malbolge-hosted runtime**: `PARTIAL_DEMONSTRATED` (A04 one-deep stack fetch loop demonstrated — see vm_malbolge/A04_STATUS.md)
 
 ## Session log
+
+Session of 2026-10-07:
+
+- Completed Milestone A04 acceptance gate:
+  - Implemented generator `vm_malbolge/tools/mbir_a04_gate_gen.py` and probe `vm_malbolge/src/mbir_a04_gate.hell`.
+  - Reconciled dispatch reset flag sequencing, symmetric `MOVED` restoration, and unconditional carry reset.
+  - Verified 7/7 vectors with 100% bit-exact output and exact step counts across Python Classic oracle, native Malbolge runner, and `mbir-zig`.
+  - Acceptance vectors: `01 41 10 00` -> `41` (61199 steps), `01 42 10 00` -> `42` (61199 steps), `00` -> empty (55194 steps), `01 41 00` -> empty (58964 steps).
+  - Recorded evidence in `vm_malbolge/evidence/mbir_a04_gate_smoke.json` and `vm_malbolge/evidence/mbir_zig_oracle_a04_gate.json`.
 
 Session of 2026-09-02 evening / 2026-09-03 (extends carries forward A00–A04):
 
@@ -39,7 +48,8 @@ byte level plus the cost-analysis). See `vm_malbolge/A04_NEXT.md`.
 |-------|-------|-------|
 | Malbolge rendering toolchain (LMAO) | WORKING | `third_party/lmao` built, smoke-tested on real runner |
 | Byte-level storage/recovery primitive | WORKING | `vm_malbolge/src/min3_echo1.hell` verified on classic runner (`runners/malbolge-original/malbolge.exe`) |
-| MBIR interpreter (dispatch, arith, control flow) | NOT_DEMONSTRATED | Beyond incremental proofs; A04 continuation needed |
+| MBIR one-deep stack fetch loop (A04) | DEMONSTRATED | `vm_malbolge/src/mbir_a04_gate.hell` + `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS, bit-exact on oracle, runner, and zig) |
+| MBIR interpreter (full stack, arith, control flow) | NOT_DEMONSTRATED | Beyond one-deep fetch loop; A05 continuation needed |
 
 ## Next Runtime Steps
 

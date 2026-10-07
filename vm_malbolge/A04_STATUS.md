@@ -20,15 +20,17 @@
 | Full 18-opcode MBIR dispatch (generated) | `vm_malbolge/tools/mbir_dispatch_gen.py` → `vm_malbolge/src/byte_dispatch18.hell` + `vm_malbolge/evidence/byte_dispatch18_smoke.json` — 21/21 OK on oracle AND runner: every MBIR_VERSION 0 opcode byte 0x00..0x11 takes a distinct handler (0x00 HALT; 0x01..0x11 → marker bytes; non-opcode → echo; EOF → empty). The dispatch is now generated mechanically (parameterized decrement-chain + N `SUBROUTINE_FLAGn` sites), not hand-written. This resolves the "byte-dispatch table" blocker at the classifier level. |
 | Partial `PUSH_CONST` operand path | `vm_malbolge/tools/mbir_dispatch_gen.py --opcodes 0001 --push-const-out` → `vm_malbolge/src/byte_push_const_out.hell` + `vm_malbolge/evidence/byte_push_const_out_smoke.json` — 4/4 OK on oracle AND runner: `01 xx` consumes the following byte and emits `xx`; `00` halts; unlisted `41` echoes. This demonstrates operand consumption/output behavior, but explicitly does not claim a stack or fetch loop. |
 | Zig MBIR oracle bridge | `vm_malbolge/tools/mbir_zig_oracle.py` + `evidence/mbir_zig_oracle_halt_v3.json` and `evidence/mbir_zig_oracle_push_const_v3.json` — the Zig backend (ZIG_MBIR_V0_DEMONSTRATED), Python Classic oracle and real Malbolge runner match for `00` and `01 41 10 00`. Harness uses normal LMAO layout, hashes source/binary/tool and requires Zig `HALTED` plus exact output equality. |
+| One-deep Malbolge stack fetch loop (`01 <operand> 10 00`) | `vm_malbolge/src/mbir_a04_gate.hell` + `vm_malbolge/tools/mbir_a04_gate_gen.py` + `vm_malbolge/evidence/mbir_a04_gate_smoke.json` — **DEMONSTRATED 7/7** on independent Classic Python oracle, real `malbolge-original` C runner, and `mbir-zig`: `01 41 10 00` -> `41` (61199 steps), `01 42 10 00` -> `42` (61199 steps), `00` -> empty (55194 steps), `01 41 00` -> empty (58964 steps), plus arbitrary byte operands (`7a`, `00`, `ff`). Bit-exact output and exact step count parity between oracle and runner. Resolves dispatch-state reset, dedicated stack-cell persistence across dispatch iterations, and separate `OUT_BYTE` vs `HALT` handlers in the fetch loop. |
 | First gradient boundary under the Zig oracle | `evidence/mbir_zig_oracle_twopush_mismatch_v3.json`: program `01 41 01 42 10 00` makes Zig emit `42`, while the current Malbolge probe emits `41`; the one-deep stack/fetch-loop gap is evidence-backed. `evidence/mbir_zig_oracle_push_const_missing_halt_v3.json` refuses a malformed stream where outputs agree but Zig status is `BAD_OPERAND`, so output-only agreement cannot bless malformed MBIR. |
 
 ## What is NOT demonstrated
 
 | item | obstacle |
 |---|---|
-| Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers, and a partial `PUSH_CONST` operand path is now demonstrated. What remains is a real value stack, separate `OUT_BYTE` handling, arithmetic, control flow, operand truncation/error behavior, and a fetch-loop over a multi-byte program, plus a stdin→cells loader. |
-| MBIR→HeLL code generator | for instructions: the dispatch *skeleton* generator now exists (`vm_malbolge/tools/mbir_dispatch_gen.py`, verified). A full MBIR-program → HeLL generator (loader + real handlers lowering through MBIR) is still open. |
-| Two-fetch `01 <operand> 10` probe | `vm_malbolge/evidence/byte_twofetch_negative.json` — WIP assembled, but station-2 cases disagreed between oracle and real runner (`014110`: oracle `471e26e5e5ffff`, runner empty). Generator/source were deleted; no second-fetch claim. |
+| Multi-deep stack & repeated pushes across iterations | Storing multiple operands in consecutive stack cells or reusing stack cells across independent push/out cycles beyond depth 1 requires multi-cell stack pointer indexing (boundary for milestone A05; confirmed by negative control `01411001421000`). |
+| Full MBIR VM in Malbolge | dispatch (classification) is DONE for all 18 opcodes as marker handlers, and one-deep stack fetch loop (`PUSH_CONST`, `OUT_BYTE`, `HALT`) is now demonstrated. What remains is a multi-word value stack, arithmetic, control flow, operand truncation/error behavior, and a multi-instruction fetch-loop over a multi-byte program loaded into consecutive cells. |
+| MBIR→HeLL code generator | for instructions: the dispatch *skeleton* generator now exists (`vm_malbolge/tools/mbir_dispatch_gen.py`, verified) and the A04 loop generator exists (`vm_malbolge/tools/mbir_a04_gate_gen.py`). A full MBIR-program → HeLL generator (loader + real handlers lowering through MBIR) is still open. |
+| Two-fetch `01 <operand> 10` probe (historical) | `vm_malbolge/evidence/byte_twofetch_negative.json` — Historical early WIP failed; now fully superseded and resolved by `vm_malbolge/src/mbir_a04_gate.hell` via symmetric MOVED restore and value reset. |
 | Adjacent second `IN` layout (historical negative) | `vm_malbolge/evidence/cell_two_read_negative.json` remains valid for the failed adjacent-IN layout: `0041`→`00` and `017a`→`01`, trace only one `IN`. The missing explicit label/MOVED return structure is now implemented and demonstrated separately by `cell_stack_second_read.hell`; the historical negative is preserved instead of rewritten. |
 
 ## Blockers to unblock next
@@ -36,30 +38,26 @@
 1. **Byte-dispatch table.** DONE 2026-09-11: full 18-opcode table generated (`mbir_dispatch_gen.py` → `byte_dispatch18.hell`, 21/21). Each opcode = one decrement + one `SUBROUTINE_FLAGn` site, trailing `R_SUBROUTINE_FLAGn` on non-last exit sites.
 2. **MBIR program from stdin.** Sequential input reuse is now demonstrated through a real EOF-terminated loop (`cell_stack_loop_echo.hell`, 8/8 up to 16 bytes). The missing pieces are to carry that loop into the generated dispatch state and to store program bytes into consecutive cells rather than echoing each byte immediately.
 
-## Next concrete step (lowest risk)
+## Next concrete step (Milestone A05)
 
-Dispatch is fully done (18 opcodes, generated, 21/21). A partial operand path
-passes 4/4, and the explicit-MOVED probe now demonstrates two sequential reads
-(12/12 differential cases). The dedicated stack-cell path now also survives an
-EOF-terminated multi-byte loop (8/8, up to 16 bytes). The next milestone is to
-carry that proven loop boundary into the generated dispatch and separate the two
-operations with the one-deep stack:
-
+Milestone A04 acceptance gate is **COMPLETED AND DEMONSTRATED** (`mbir_a04_gate.hell`,
+7/7 PASS, exact 61199/55194/58964 step parity on both Python oracle and native C runner).
+The one-deep stack fetch loop successfully implements:
 ```
 read opcode B
-B==0x00 HALT                  (this is exactly what dispatch already does)
-B==0x01 PUSH_CONST: read operand byte O, store O in stack cell, loop
-B==0x10 OUT_BYTE:   recover stack cell, OUT it, loop
+B==0x00 HALT                  (clean termination, no output: 55194 steps)
+B==0x01 PUSH_CONST: read operand byte O, store O in dedicated cell, loop
+B==0x10 OUT_BYTE:   recover dedicated cell, OUT it, loop
 EOF      HALT
 ```
+The dispatch-state reset, dedicated stack-cell persistence, and separate
+`OUT_BYTE` recovery are solved via end-of-cell reset chains and symmetric
+`MOVED` restores.
 
-Key remaining pieces vs the current classifier: (1) reset the generated
-value/value_C1/save dispatch cells safely when returning for the next opcode,
-(2) preserve a `PUSH_CONST` operand in the dedicated stack cell across that later
-dispatch, and (3) add a separate `OUT_BYTE` handler that recovers that stored
-value before looping again. The combined `byte_push_const_out.hell` probe is not
-evidence for separate stack semantics. `cell_stack_loop_echo.hell` demonstrates
-the reusable input/cell loop independently; dispatch-state reuse is still open.
+For **Milestone A05**, the frontier moves to:
+1. Multi-deep stack with stack pointer indexing (surpassing the one-deep limit shown in `01411001421000`).
+2. Arithmetic instructions (`ADD`, `SUB`) lowering onto digital root decrement/adder idioms.
+3. Multi-byte program loader from stdin into consecutive Malbolge memory cells.
 
 ## Toolchain traps (measured 2026-09-11, all on runners/malbolge-original)
 
