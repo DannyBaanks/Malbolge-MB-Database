@@ -1,0 +1,193 @@
+{
+  "schema": "alu-malbolge-unified/1",
+  "timestamp": "2026-10-08T20:22:41.559222+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge Unified ALU executing simultaneous ADD (0x02) and SUB (0x03) in the same stack machine binary, popping op2 from Slot 1, op1 from Slot 0, computing sum/difference, and pushing result back into Slot 0 with clean Slot 1 reset, preserving 2-slot LIFO properties and universal 3-crazy reset under the 59,049 limit.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_alu.hell",
+    "sha256": "5743a18ec0205c90e77f572f815f07d1ae3e1c0fbb160c29f23aab9e4c7876e2",
+    "generator": "vm_malbolge/tools/mbir_alu_gen.py",
+    "generator_sha256": "ceca66a28620bbea1d37390e62bd63aeadb11df73fe228c7fbdcdf675ed27b4d"
+  },
+  "artifact": {
+    "size_bytes": 54691,
+    "sha256": "b0fd908506d4e9d4368f66467ec7261c2e9f6003dba8e55c613b55e8525271a7",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    }
+  },
+  "cases": [
+    {
+      "name": "ADD 1 (2 + 3 = 5)",
+      "input_hex": "01020103021000",
+      "description": "ADD 2 + 3 = 5 (PUSH 2, PUSH 3, ADD, OUT, HALT)",
+      "expected_hex": "05",
+      "oracle_hex": "05",
+      "runner_hex": "05",
+      "oracle_steps": 70305,
+      "runner_steps": 70305,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 2 (4 + 3 = 7)",
+      "input_hex": "01040103021000",
+      "description": "ADD 4 + 3 = 7 (PUSH 4, PUSH 3, ADD, OUT, HALT)",
+      "expected_hex": "07",
+      "oracle_hex": "07",
+      "runner_hex": "07",
+      "oracle_steps": 69095,
+      "runner_steps": 69095,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 3 (1 + 1 = 2)",
+      "input_hex": "01010101021000",
+      "description": "ADD 1 + 1 = 2 (PUSH 1, PUSH 1, ADD, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 68600,
+      "runner_steps": 68600,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 4 (2 + 0 = 2)",
+      "input_hex": "01020100021000",
+      "description": "ADD 2 + 0 = 2 (PUSH 2, PUSH 0, ADD, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 68159,
+      "runner_steps": 68159,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 1 (4 - 2 = 2)",
+      "input_hex": "01040102031000",
+      "description": "SUB 4 - 2 = 2 (PUSH 4, PUSH 2, SUB, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 69509,
+      "runner_steps": 69509,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 2 (2 - 2 = 0)",
+      "input_hex": "01020102031000",
+      "description": "SUB 2 - 2 = 0 (PUSH 2, PUSH 2, SUB, OUT, HALT)",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 70722,
+      "runner_steps": 70722,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 3 (2 - 1 = 1)",
+      "input_hex": "01020101031000",
+      "description": "SUB 2 - 1 = 1 (PUSH 2, PUSH 1, SUB, OUT, HALT)",
+      "expected_hex": "01",
+      "oracle_hex": "01",
+      "runner_hex": "01",
+      "oracle_steps": 69177,
+      "runner_steps": 69177,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 4 (2 - 0 = 2)",
+      "input_hex": "01020100031000",
+      "description": "SUB 2 - 0 = 2 (PUSH 2, PUSH 0, SUB, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 68731,
+      "runner_steps": 68731,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Baseline 1 (push A, out)",
+      "input_hex": "01411000",
+      "description": "PUSH A, OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 60564,
+      "runner_steps": 60564,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Baseline 2 (2-slot LIFO)",
+      "input_hex": "01410142101000",
+      "description": "2-slot LIFO PUSH A, PUSH B, OUT, OUT, HALT",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 65217,
+      "runner_steps": 65217,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Baseline 3 (halt)",
+      "input_hex": "00",
+      "description": "HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 55905,
+      "runner_steps": 55905,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Chained 1 ((1 + 1) - 1 = 1)",
+      "input_hex": "01010101020101031000",
+      "description": "Chained arithmetic (1 + 1) - 1 = 1",
+      "expected_hex": "01",
+      "oracle_hex": "01",
+      "runner_hex": "01",
+      "oracle_steps": 77213,
+      "runner_steps": 77213,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Chained 2 ((1 + 1) - 2 = 0)",
+      "input_hex": "01010101020102031000",
+      "description": "Chained arithmetic (1 + 1) - 2 = 0",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 78758,
+      "runner_steps": 78758,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "Chained 3 ((2 - 1) + 1 = 2)",
+      "input_hex": "01020101030101021000",
+      "description": "Chained arithmetic (2 - 1) + 1 = 2",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 77213,
+      "runner_steps": 77213,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ such as native Malbolge, Rustbolge, Javolge, Pibolge, or other Bolge engines.
 This repository does **not** claim that MBIR is an omnilingual VM, nor that
 every backend must implement all source-language semantics.
 
+- **Milestone Unified ALU (`vm_malbolge/ALU_STATUS.md`)**: Complete Unified Arithmetic Logic Unit in Pure Malbolge executing both `ADD` (Opcode 0x02) and `SUB` (Opcode 0x03) simultaneously in the same binary image with 100% bit-exact step parity across 14/14 vectors (including cross-arithmetic chained sequential expressions), size 54,691 bytes (< 59,049 limit with 4,358 bytes headroom).
 - **Milestone P1 (`vm_malbolge/P1_STATUS.md`)**: Arithmetic Kernel executing `SUB` (Opcode 0x02), 2-phase operand popping and subtraction evaluation ($a - b$), 100% bit-exact step parity on 7/7 vectors.
 - **Milestone P0 (`vm_malbolge/P0_STATUS.md`)**: Arithmetic Kernel executing `ADD` (Opcode 0x02), 2-phase operand popping and ternary digital sum evaluation, 100% bit-exact step parity on 7/7 vectors.
 - **Milestone A05b (`vm_malbolge/A05_STATUS.md`)**: 2-Slot LIFO Stack Machine with dynamic depth tracking and multi-cycle execution sustaining clean LIFO popping order (`BA`).
