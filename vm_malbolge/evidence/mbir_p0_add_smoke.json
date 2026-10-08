@@ -1,0 +1,102 @@
+{
+  "schema": "p0-malbolge-add/1",
+  "timestamp": "2026-10-08T15:49:06.923662+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge arithmetic kernel executing opcode 0x02 (ADD) popping 2 operands from stack, computing ternary sum, and pushing result back onto stack, preserving 2-slot LIFO properties and universal 3-crazy reset.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_p0_add.hell",
+    "sha256": "f13314a58844983cbf2e8b031943eb6ad77a33924309ed05b4ab16923a738828",
+    "generator": "vm_malbolge/tools/mbir_p0_add_gen.py",
+    "generator_sha256": "f3eed19b132065f85f1dc2b54c5f778a996ac9ce8616c6ea0e2f4fe3e96bc135"
+  },
+  "artifact": {
+    "size_bytes": 57511,
+    "sha256": "8afc560bceeba7ce88d4da0fe852145d32f1a72c62ca844a519ba7f9156e8fbe",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01020103021000",
+      "description": "ADD 2 + 3 = 5 (PUSH 2, PUSH 3, ADD, OUT, HALT)",
+      "expected_hex": "05",
+      "oracle_hex": "05",
+      "runner_hex": "05",
+      "oracle_steps": 81360,
+      "runner_steps": 81360,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01040103021000",
+      "description": "ADD 4 + 3 = 7 (PUSH 4, PUSH 3, ADD, OUT, HALT)",
+      "expected_hex": "07",
+      "oracle_hex": "07",
+      "runner_hex": "07",
+      "oracle_steps": 79817,
+      "runner_steps": 79817,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01010101021000",
+      "description": "ADD 1 + 1 = 2 (PUSH 1, PUSH 1, ADD, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 79292,
+      "runner_steps": 79292,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020100021000",
+      "description": "ADD 2 + 0 = 2 (PUSH 2, PUSH 0, ADD, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 78752,
+      "runner_steps": 78752,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411000",
+      "description": "Baseline: PUSH A, OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 67195,
+      "runner_steps": 67195,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "description": "Baseline: 2-slot LIFO PUSH A, PUSH B, OUT, OUT, HALT -> BA",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 74232,
+      "runner_steps": 74232,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "Baseline: HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 60152,
+      "runner_steps": 60152,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}
