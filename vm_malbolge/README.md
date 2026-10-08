@@ -1,6 +1,6 @@
 # vm_malbolge — MBIR middleware boundary and Malbolge probes
 
-## Status (Milestones A05, A05b, and P0)
+## Status (Milestones A05, A05b, P0, and P1)
 
 The toolchain and primitives are verified on the real Malbolge name Classic
 runner and Python reference oracle. MBIR is a backend-neutral middleware boundary between language
@@ -9,6 +9,7 @@ such as native Malbolge, Rustbolge, Javolge, Pibolge, or other Bolge engines.
 This repository does **not** claim that MBIR is an omnilingual VM, nor that
 every backend must implement all source-language semantics.
 
+- **Milestone P1 (`vm_malbolge/P1_STATUS.md`)**: Arithmetic Kernel executing `SUB` (Opcode 0x02), 2-phase operand popping and subtraction evaluation ($a - b$), 100% bit-exact step parity on 7/7 vectors.
 - **Milestone P0 (`vm_malbolge/P0_STATUS.md`)**: Arithmetic Kernel executing `ADD` (Opcode 0x02), 2-phase operand popping and ternary digital sum evaluation, 100% bit-exact step parity on 7/7 vectors.
 - **Milestone A05b (`vm_malbolge/A05_STATUS.md`)**: 2-Slot LIFO Stack Machine with dynamic depth tracking and multi-cycle execution sustaining clean LIFO popping order (`BA`).
 - **Milestone A04 (`vm_malbolge/A04_STATUS.md`)**: In-register byte classification gate.

@@ -1,0 +1,102 @@
+{
+  "schema": "p1-malbolge-sub/1",
+  "timestamp": "2026-10-08T19:07:15.459645+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge arithmetic kernel executing opcode 0x02 (SUB) popping op2 from Slot 1, op1 from Slot 0, computing difference (op1 - op2), and pushing result back into Slot 0 with clean Slot 1 reset, preserving 2-slot LIFO properties and universal 3-crazy reset.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_p1_sub.hell",
+    "sha256": "e8e9080851e5c33e08595677302671c3df43dc188343b3c332ebd53459ebe12d",
+    "generator": "vm_malbolge/tools/mbir_p1_sub_gen.py",
+    "generator_sha256": "7e94a1c57cedac274e794a81f3f43418ee221d63f1bbe209a471eeb5f8dc0136"
+  },
+  "artifact": {
+    "size_bytes": 57511,
+    "sha256": "264c0d21954990ccdf69536e1baa4c1bbc60efd7bcc25e5ca21a216c39e04b5d",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01040102021000",
+      "description": "SUB 4 - 2 = 2 (PUSH 4, PUSH 2, SUB, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 79593,
+      "runner_steps": 79593,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020102021000",
+      "description": "SUB 2 - 2 = 0 (PUSH 2, PUSH 2, SUB, OUT, HALT)",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 81139,
+      "runner_steps": 81139,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020101021000",
+      "description": "SUB 2 - 1 = 1 (PUSH 2, PUSH 1, SUB, OUT, HALT)",
+      "expected_hex": "01",
+      "oracle_hex": "01",
+      "runner_hex": "01",
+      "oracle_steps": 79270,
+      "runner_steps": 79270,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020100021000",
+      "description": "SUB 2 - 0 = 2 (PUSH 2, PUSH 0, SUB, OUT, HALT)",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 78724,
+      "runner_steps": 78724,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411000",
+      "description": "Baseline: PUSH A, OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 67167,
+      "runner_steps": 67167,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "description": "Baseline: 2-slot LIFO PUSH A, PUSH B, OUT, OUT, HALT -> BA",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 74204,
+      "runner_steps": 74204,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "Baseline: HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 60124,
+      "runner_steps": 60124,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}
