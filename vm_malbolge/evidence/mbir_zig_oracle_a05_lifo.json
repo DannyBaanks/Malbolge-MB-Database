@@ -1,0 +1,47 @@
+{
+  "schema": "mbir-zig-malbolge-oracle/1",
+  "created_at": "2026-10-08T01:16:46.609358+00:00",
+  "verdict": "MATCH",
+  "note": "MATCH means the Zig VM halted and the observable output matched both Classic executions for this vector. It does not prove the Classic probe consumed or dispatched every input byte; use a negative control or input-consumption trace for that claim.",
+  "result": {
+    "hell_source": "/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_a05_lifo.hell",
+    "mbir_hex": "01410142101000",
+    "zig": {
+      "schema": "mbir-zig-result/1",
+      "status": "HALTED",
+      "error": null,
+      "steps": 5,
+      "output": [
+        66,
+        65
+      ],
+      "exit_code": 0,
+      "stderr": ""
+    },
+    "malbolge_oracle": {
+      "output": [
+        66,
+        65
+      ],
+      "steps": 65804,
+      "status": "HALTED"
+    },
+    "malbolge_runner": {
+      "output": [
+        66,
+        65
+      ],
+      "exit_code": 0,
+      "stderr": "steps: 65804 | status: HALTED\n"
+    },
+    "match": true,
+    "sources": {
+      "hell_sha256": "36ec275b8747bcd4fd5467d6c8afeadcb5e168e3ac8cb399a1b5cb4ba299f6ad",
+      "compiled_sha256": "525d32c7c81a94802648d060fd4f4b46b105311bc2c75e4965953e00526d126d",
+      "zig_runner_sha256": "722a6a89680887b9cc113ca431d935e67a93f74bec64c9220f8c2c0fc676dc41",
+      "malbolge_runner_sha256": "9a7ad87ec094ec0948974f5d600190c0d2debbea645f4781cd7eeeda7d679775",
+      "lmao_sha256": "ad39ba2904b5c967fb9b19a41ca44b3da96d3add0e780129896d626c6053cd23",
+      "oracle_tool_sha256": "e1c6e6a935fe62045b9e707fc8035087ecc83e2fcf4cb61926ffe9df11787ad6"
+    }
+  }
+}

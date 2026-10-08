@@ -1,0 +1,116 @@
+{
+  "schema": "a05b-malbolge-lifo/1",
+  "timestamp": "2026-10-07T23:30:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge 2-slot LIFO stack machine with dynamic stack pointer emulation (SLOT0_FLAG, SLOT1_FLAG), isolated slot cells, and multi-cycle execution sustaining clean LIFO popping order (BA) and stack top popping.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_a05_lifo.hell",
+    "sha256": "36ec275b8747bcd4fd5467d6c8afeadcb5e168e3ac8cb399a1b5cb4ba299f6ad",
+    "generator": "vm_malbolge/tools/mbir_a05_lifo_gen.py",
+    "generator_sha256": "89c09d0df097d067c982647a51e6b3f24f231bc62c8960285351658cfcd06364"
+  },
+  "artifact": {
+    "size_bytes": 51877,
+    "sha256": "7571212d269df62e6ee076d66585667ca8662f550134739930732670daa3719e",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01411000",
+      "description": "PUSH A, OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "zig_hex": "41",
+      "oracle_steps": 59752,
+      "runner_steps": 59752,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "description": "PUSH B, OUT, HALT",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "zig_hex": "42",
+      "oracle_steps": 59752,
+      "runner_steps": 59752,
+      "zig_steps": 3,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 53700,
+      "runner_steps": 53700,
+      "zig_steps": 1,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "description": "PUSH A, HALT (no out)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "zig_hex": "",
+      "oracle_steps": 57369,
+      "runner_steps": 57369,
+      "zig_steps": 2,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421000",
+      "description": "2 sequential pushes: PUSH A, OUT, PUSH B, OUT, HALT",
+      "expected_hex": "4142",
+      "oracle_hex": "4142",
+      "runner_hex": "4142",
+      "zig_hex": "4142",
+      "oracle_steps": 65804,
+      "runner_steps": 65804,
+      "zig_steps": 5,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "description": "2-slot LIFO: PUSH A, PUSH B, OUT, OUT, HALT -> BA",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "zig_hex": "4241",
+      "oracle_steps": 65804,
+      "runner_steps": 65804,
+      "zig_steps": 5,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "014101421000",
+      "description": "2-slot top pop: PUSH A, PUSH B, OUT, HALT -> B",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "zig_hex": "42",
+      "oracle_steps": 63421,
+      "runner_steps": 63421,
+      "zig_steps": 4,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}

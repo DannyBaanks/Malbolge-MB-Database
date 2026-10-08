@@ -54,7 +54,8 @@ NOT_DEMONSTRATED
 | **Toolchain Nativo Linux** | `WORKING` | Ensamblado y ejecución 100% nativa sin Wine | LMAO v0.6.0 (`third_party/lmao/bin/lmao`), Runner C (`runners/malbolge-original/malbolge`) |
 | **Malbolge VM Runtime (A04)** | `DEMONSTRATED` | **Bucle de ejecución y pila de 1 profundidad** | `vm_malbolge/src/mbir_a04_gate.hell`, `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS) |
 | **Malbolge VM Bucle Multi-Ciclo (A05)** | `DEMONSTRATED` | **Ejecución secuencial arbitraria sin corrupción ('AB', 'ABC', 'hello')** | `vm_malbolge/src/mbir_a05_multicycle.hell`, `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json` (8/8 PASS) |
-| **Malbolge VM Pila Concurrente / ADD (A05b/P0)** | `NOT_DEMONSTRATED` | En diseño | Pila concurrente multicelda y suma aritmética |
+| **Malbolge VM Pila LIFO de 2 Ranuras (A05b)** | `DEMONSTRATED` | **Pila LIFO concurrente de 2 ranuras ('BA' invertido)** | `vm_malbolge/src/mbir_a05_lifo.hell`, `vm_malbolge/evidence/mbir_a05_lifo_smoke.json` (7/7 PASS) |
+| **Malbolge VM Kernel Aritmético (P0 / ADD)** | `NOT_DEMONSTRATED` | En diseño | Sumador ternario de 2 operandos desapilados (`0x02`) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -89,15 +90,26 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_a05_multicycle.hell`](f
 - **Multiplexación de Flags**: Celdas de datos comparten sólo 3 flags en `.CODE`, respetando la física de Malbolge (un único ciclo de 2 elementos en XLAT2: `F <-> J`).
 - **Escalabilidad y Cero Deriva**: 8/8 vectores PASS con paridad bit a bit en el Oráculo Python, Runner C nativo y Zig (`mbir-zig`). Escala a exactamente **+6,046 pasos por iteración** sin deriva de fase, permitiendo secuencias arbitrarias de N caracteres (ej. "AB", "ABC", "hello").
 
-### 3. Tabla de Clasificación de los 18 Opcodes de MBIR
+### 3. Pila Concurrente LIFO de 2 Ranuras (Hito A05b)
+Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_a05_lifo.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_a05_lifo.hell)) a través del generador canónico ([`vm_malbolge/tools/mbir_a05_lifo_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_a05_lifo_gen.py)):
+- **Máquina de Estados de Profundidad de Pila (FSM)**: Mediante dos sitios de flag de código (`SLOT0_FLAG` y `SLOT1_FLAG`), la VM emula dinámicamente un puntero de pila de 2 posiciones:
+  - Nivel 0 (vacía): `SLOT0 = Nop, SLOT1 = Nop`
+  - Nivel 1 (1 elemento): `SLOT0 = MovD, SLOT1 = Nop` (ocupando Ranura 0: `stack_top`)
+  - Nivel 2 (2 elementos concurrentes): `SLOT0 = MovD, SLOT1 = MovD` (Ranura 0 y Ranura 1: `stack_top_1`)
+- **Inversión LIFO Genuina**: `PUSH 'A'`, `PUSH 'B'`, `OUT`, `OUT`, `HALT` (`01 41 01 42 10 10 00`) emite **`42 41` ("BA")** en riguroso orden LIFO.
+- **Preservación de Estado**: Desapilar el tope deja intacto el elemento de la ranura 0 (`01 41 01 42 10 00` -> `42`).
+- **Tamaño de Binario**: 51,877 bytes compilado con LMAO (cómodamente dentro del límite estricto de 59,049 palabras de Malbolge Classic).
+- **Paridad 7/7 MATCH** en Zig Oracle, Python Classic Oracle y Runner nativo C (`vm_malbolge/evidence/mbir_a05_lifo_smoke.json`).
+
+### 4. Tabla de Clasificación de los 18 Opcodes de MBIR
 - Generador mecánico ([`vm_malbolge/tools/mbir_dispatch_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_dispatch_gen.py)) que produce ensamblador HeLL para clasificar los 18 opcodes (`0x00`..`0x11`) en Malbolge puro usando cadenas de decremento digital root y sitios `SUBROUTINE_FLAGn` con paridad 21/21 verificada.
 
-### 4. Primitivas Celulares y de Entrada Secuencial Demostradas
+### 5. Primitivas Celulares y de Entrada Secuencial Demostradas
 - Sonda de segunda lectura explícita con retorno `MOVED` ([`vm_malbolge/src/cell_stack_second_read.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/cell_stack_second_read.hell), 12/12 PASS).
 - Bucle de entrada reutilizable hasta 16 bytes con parada en EOF ([`vm_malbolge/src/cell_stack_loop_echo.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/cell_stack_loop_echo.hell), 8/8 PASS).
 - Almacenamiento y recuperación mediante celdas dedicadas `stack_scratch` / `stack_top` independientes.
 
-### 5. Herramientas y Substratos Externos
+### 6. Herramientas y Substratos Externos
 - Binarios nativos compilados para Linux (LMAO, runner clásico, zig-oracle), eliminando dependencia de emulación Wine.
 - Registro consolidado de 13 motores externos de la familia `-bolge` en [`registry/substrates.json`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/registry/substrates.json) (Rustbolge, Swiftbolge, Javolge, Fortranbolge, Cobolge, Zigbolge, Pibolge, Pibolge19, Wasmbolge, MalbolgeEngineCPP, malbolge-free, malbolge-oracle, MalboGost).
 
@@ -105,14 +117,14 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_a05_multicycle.hell`](f
 
 ## Lo que FALTA por hacer (Roadmap / NOT_DEMONSTRATED)
 
-1. **Hito A05b: Pila Concurrente Multicelda (Profundidad > 1)**
-   - El soporte multi-ciclo permite N operaciones secuenciales `PUSH -> OUT`, pero almacenar múltiples elementos simultáneamente antes de hacer pop (`01 41 01 42 10 10 00` -> `BA`) requiere un puntero de pila sobre slots de memoria indexados.
-2. **Operaciones Aritméticas y Lógicas en Malbolge Puro**
-   - Implementar los manejadores operacionales para `ADD` (0x02) y `SUB` (0x03) en la VM HeLL/Malbolge reutilizando los patrones de sumador y acarreo ternario.
-3. **Cargador de Programa Completo desde Stdin**
+1. **Hito P0: Kernel Aritmético en Malbolge (`ADD` 0x02 / `SUB` 0x03)**
+   - Con dos operandos retenidos de forma simultánea y estable en `stack_top` (ranura 0) y `stack_top_1` (ranura 1), implementar la operación `0x02` (`ADD`): desapilar ambos, computar su suma mediante sumador de dígitos ternarios con acarreo, y apilar el resultado en la pila.
+2. **Cargador de Programa Completo desde Stdin a Memoria**
    - Actualmente las instrucciones se procesan en streaming directo desde stdin. Falta el cargador que lea N bytes de un binario MBIR completo a un array de memoria en Malbolge antes de transferir el control al contador de programa (`PC`).
-4. **Control de Flujo en Malbolge VM**
+3. **Control de Flujo en Malbolge VM**
    - Soporte para saltos (`JMP`, `JZ`, `JNZ`) y llamadas a subrutinas (`CALL`, `RET`) interpretando el bytecode desde el array de memoria.
+4. **Pila Dinámica de Profundidad > 2**
+   - Para expresiones complejas que requieran evaluar árboles sintácticos de mayor profundidad o direccionamiento indexado.
 5. **Frontends de Otros Lenguajes**
    - Pistas `swift/`, `rust/`, `java/`, `c/` marcadas como `NOT_STARTED`.
    - En la pista `python/`: P3 (variables y control de flujo en MalPy), P4 (funciones), P5 (recursión), P6 (lexer autónomo en Malbolge).
@@ -158,7 +170,33 @@ MALBOLGE-MB-DATABASE/
 
 ## Cómo Reproducir y Ejecutar
 
-### 1. Verificar el Oráculo Diferencial de A04
+### 1. Verificar la Pila LIFO de 2 Ranuras (Hito A05b)
+Para compilar la sonda HeLL y verificar la inversión LIFO y desapilado frente al oráculo Zig, oráculo Python y el runner C real:
+
+```bash
+# Vector Clave A05b: PUSH 'A', PUSH 'B', OUT, OUT, HALT -> Emite "BA" (4241) en orden LIFO
+python3 vm_malbolge/tools/mbir_zig_oracle.py \
+  --hell vm_malbolge/src/mbir_a05_lifo.hell \
+  --mbir-hex 01410142101000 \
+  --expect-match
+
+# Vector A05b: PUSH 'A', PUSH 'B', OUT, HALT -> Emite "B" (42) del tope de la pila
+python3 vm_malbolge/tools/mbir_zig_oracle.py \
+  --hell vm_malbolge/src/mbir_a05_lifo.hell \
+  --mbir-hex 014101421000 \
+  --expect-match
+```
+
+### 2. Verificar el Bucle Multi-Ciclo Reentrante (Hito A05)
+```bash
+# Vector Multi-Ciclo: PUSH 'A', OUT, PUSH 'B', OUT, HALT -> Emite "AB" (4142)
+python3 vm_malbolge/tools/mbir_zig_oracle.py \
+  --hell vm_malbolge/src/mbir_a05_multicycle.hell \
+  --mbir-hex 01411001421000 \
+  --expect-match
+```
+
+### 3. Verificar el Oráculo Diferencial de A04
 Para compilar la sonda HeLL y ejecutar los vectores de prueba frente al oráculo Zig, el oráculo Python y el runner C real:
 
 ```bash
@@ -183,7 +221,7 @@ python3 vm_malbolge/tools/mbir_zig_oracle.py \
   --mbir-hex 014100
 ```
 
-### 2. Ejecutar la Suite de Pruebas de MBIR
+### 4. Ejecutar la Suite de Pruebas de MBIR
 ```bash
 # Validar el encoder/decoder y conformidad de MBIR
 python3 -m unittest discover -s mbir/tests

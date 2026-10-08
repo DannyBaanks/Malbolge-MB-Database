@@ -6,7 +6,7 @@
 **Highest Milestone**: P2 (Python AST to MalPy bytecode — FRONTEND_DEMONSTRATED)
 **Primary Target**: Unshackled
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
-**Malbolge-hosted runtime**: `PARTIAL_DEMONSTRATED` (A04 one-deep stack fetch loop demonstrated — see vm_malbolge/A04_STATUS.md)
+**Malbolge-hosted runtime**: `PARTIAL_DEMONSTRATED` (A04/A05/A05b multi-cycle fetch loop & 2-slot LIFO stack demonstrated — see vm_malbolge/A05_STATUS.md)
 
 ## Session log
 
@@ -16,8 +16,16 @@ Session of 2026-10-07:
   - Implemented generator `vm_malbolge/tools/mbir_a04_gate_gen.py` and probe `vm_malbolge/src/mbir_a04_gate.hell`.
   - Reconciled dispatch reset flag sequencing, symmetric `MOVED` restoration, and unconditional carry reset.
   - Verified 7/7 vectors with 100% bit-exact output and exact step counts across Python Classic oracle, native Malbolge runner, and `mbir-zig`.
-  - Acceptance vectors: `01 41 10 00` -> `41` (61199 steps), `01 42 10 00` -> `42` (61199 steps), `00` -> empty (55194 steps), `01 41 00` -> empty (58964 steps).
   - Recorded evidence in `vm_malbolge/evidence/mbir_a04_gate_smoke.json` and `vm_malbolge/evidence/mbir_zig_oracle_a04_gate.json`.
+- Completed Milestone A05 re-entrant multi-cycle fetch loop:
+  - Discovered and proved Universal 3-Crazy Reset Theorem (`crz(C0, crz(C2, crz(C1, X))) == C1` for all 59,049 words).
+  - Streamlined data cell architecture (saved >12,000 bytes and ~20,000 init steps).
+  - Verified 8/8 vectors with arbitrary sequential output ('AB', 'ABC', 'hello') in `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json`.
+- Completed Milestone A05b 2-slot LIFO stack machine:
+  - Dynamic stack depth state machine (`SLOT0_FLAG`, `SLOT1_FLAG`).
+  - Isolated slot storage cells (`stack_top`, `stack_top_1`) and scratch cells.
+  - Verified 7/7 vectors including `01 41 01 42 10 10 00` -> `42 41` ("BA" LIFO order) bit-exact across Zig, Python Oracle, and native C runner.
+  - Recorded evidence in `vm_malbolge/evidence/mbir_a05_lifo_smoke.json` and `vm_malbolge/evidence/mbir_zig_oracle_a05_lifo.json`.
 
 Session of 2026-09-02 evening / 2026-09-03 (extends carries forward A00–A04):
 
@@ -38,9 +46,9 @@ Session of 2026-09-02 evening / 2026-09-03 (extends carries forward A00–A04):
 
 ## Remaining
 
-The next operational milestone: MBIR programs *as data interpreted* by a
-running Malbolge/SYSP (which requires the full MBIR VM once you drop to
-byte level plus the cost-analysis). See `vm_malbolge/A04_NEXT.md`.
+The next operational milestone: Arithmetic Kernel (Milestone P0 / `ADD` 0x02) popping
+operands from `stack_top_1` and `stack_top` and pushing the ternary digital-root sum,
+followed by in-memory bytecode loader. See `vm_malbolge/A05_STATUS.md`.
 
 ## Evidence-Backed Progress
 
@@ -50,7 +58,8 @@ byte level plus the cost-analysis). See `vm_malbolge/A04_NEXT.md`.
 | Byte-level storage/recovery primitive | WORKING | `vm_malbolge/src/min3_echo1.hell` verified on classic runner (`runners/malbolge-original/malbolge.exe`) |
 | MBIR one-deep stack fetch loop (A04) | DEMONSTRATED | `vm_malbolge/src/mbir_a04_gate.hell` + `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS, bit-exact on oracle, runner, and zig) |
 | MBIR re-entrant multi-cycle fetch loop (A05) | DEMONSTRATED | `vm_malbolge/src/mbir_a05_multicycle.hell` + `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json` (8/8 PASS, bit-exact sequential output 'AB', 'ABC', 'hello', exact 6,046 step scaling) |
-| MBIR interpreter (concurrent stack, arith, control flow) | NOT_DEMONSTRATED | Beyond sequential multi-cycle fetch loop; concurrent stack / ADD continuation needed |
+| MBIR 2-slot LIFO stack machine (A05b) | DEMONSTRATED | `vm_malbolge/src/mbir_a05_lifo.hell` + `vm_malbolge/evidence/mbir_a05_lifo_smoke.json` (7/7 PASS, bit-exact 'BA' LIFO inversion on oracle, runner, and zig) |
+| MBIR interpreter (arithmetic, control flow, in-memory loader) | NOT_DEMONSTRATED | P0 ADD arithmetic kernel and loader needed |
 
 ## Next Runtime Steps
 
