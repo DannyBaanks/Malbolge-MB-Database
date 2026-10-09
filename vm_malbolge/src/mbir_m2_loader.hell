@@ -1,0 +1,628 @@
+/* mbir_m2_loader.hell — Stored-Program MBIR VM with Dedicated Return Flags */
+.CODE
+MOVED:
+	MovD/Nop
+	Jmp
+
+ROT:
+	Rot/Nop
+	Jmp
+
+IN:
+	In/Nop
+	Jmp
+
+OUT:
+	Out/Nop
+	Jmp
+
+CRAZY:
+	Opr/Nop
+	Jmp
+
+HALT:
+	Hlt
+
+NOP:
+	Jmp
+
+COUNTER2_1:
+	MovD/Nop
+	Jmp
+
+COUNTER2_2:
+	Nop/MovD
+	Jmp
+
+COUNTER5_1:
+	Nop/Nop/Nop/Nop/MovD
+	Jmp
+
+// Subroutine return flags for decrement_value
+SUBROUTINE_FLAG1:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG2:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG3:
+	Nop/MovD
+	Jmp
+
+// Internal flags for decrement_value
+FLAG_DEC_TMP3:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_TMP4:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL8:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL9:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_CARRY2:
+	Nop/MovD
+	Jmp
+
+// Initialization flag (used once per variable at ENTRY)
+FLAG_INIT:
+	Nop/MovD
+	Jmp
+
+// Dedicated storage return flags
+FLAG_S0_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_P0_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_S1_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_P1_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_S2_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_P2_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_S3_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_P3_STORE:
+	Nop/MovD
+	Jmp
+
+// Dedicated read return flags
+FLAG_P1_R1:
+	Nop/MovD
+	Jmp
+
+FLAG_P1_R2:
+	Nop/MovD
+	Jmp
+
+FLAG_P2_R1:
+	Nop/MovD
+	Jmp
+
+FLAG_P2_R2:
+	Nop/MovD
+	Jmp
+
+// Stack push/pop return flags
+FLAG_SS_PUSH:
+	Nop/MovD
+	Jmp
+
+FLAG_ST_PUSH:
+	Nop/MovD
+	Jmp
+
+FLAG_ST_POP1:
+	Nop/MovD
+	Jmp
+
+FLAG_ST_POP2:
+	Nop/MovD
+	Jmp
+
+// Value C1 and Value load return flags
+FLAG_VAL_C1_P2:
+	Nop/MovD
+	Jmp
+
+FLAG_VAL_P2:
+	Nop/MovD
+	Jmp
+
+FLAG_VAL_C1_LOAD:
+	Nop/MovD
+	Jmp
+
+FLAG_VAL_LOAD:
+	Nop/MovD
+	Jmp
+
+FLAG_VAL_C1_DEC3:
+	Nop/MovD
+	Jmp
+
+FLAG_VAL_DEC3:
+	Nop/MovD
+	Jmp
+
+// Decrement loop counters
+LOOP2:
+	Nop/MovD
+	Jmp
+
+LOOP2_2:
+	Nop/MovD
+	Jmp
+
+LOOP2_3:
+	Nop/MovD
+	Jmp
+
+LOOP5:
+	Nop/Nop/Nop/Nop/MovD
+	Jmp
+
+NO_MORE_CARRY_FLAG:
+	Nop/MovD
+	Jmp
+
+@C21 CARRY:
+	RNop
+	RNop
+	Jmp
+
+.DATA
+crazy_value:
+	U_CRAZY value
+rot_value:
+	U_ROT value
+value:
+	C1
+	FLAG_VAL_LOAD ret_val_load R_FLAG_VAL_LOAD
+	FLAG_VAL_DEC3 ret_val_dec3 R_FLAG_VAL_DEC3
+	FLAG_DEC_VAL8 return_from_value_8 R_FLAG_DEC_VAL8
+	FLAG_DEC_VAL9 return_from_value_9
+
+crazy_value_C1:
+	U_CRAZY value_C1
+value_C1:
+	C1
+	FLAG_VAL_C1_LOAD ret_val_c1_load R_FLAG_VAL_C1_LOAD
+	FLAG_VAL_C1_DEC3 ret_val_c1_dec3 R_FLAG_VAL_C1_DEC3
+
+crazy_tmp:
+	U_CRAZY tmp
+tmp:
+	C0
+	FLAG_DEC_TMP3 return_from_tmp_3 R_FLAG_DEC_TMP3
+	FLAG_DEC_TMP4 return_from_tmp_4
+
+crazy_carry:
+	U_CRAZY carry
+exec_carry:
+	R_MOVED
+carry:
+	CARRY
+	U_NOP execution_not_jumped_to_carry
+	U_NOP carry_was_not_set U_NOP carry_was_set
+carry_was_set:
+	MOVED return_carry_was_set
+carry_was_not_set:
+	MOVED return_carry_was_not_set
+execution_not_jumped_to_carry:
+	FLAG_DEC_CARRY2 return_from_carry_2 R_FLAG_DEC_CARRY2
+return_carry_was_set:
+	FLAG_DEC_CARRY2 return_from_carry_was_set_2 R_FLAG_DEC_CARRY2
+return_carry_was_not_set:
+	FLAG_DEC_CARRY2 return_from_carry_was_not_set_2
+
+// RAM and scratch cells
+scratch_0_crazy:
+	U_CRAZY scratch_0
+scratch_0:
+	?
+	FLAG_INIT ret_s0_init R_FLAG_INIT
+	FLAG_S0_STORE ret_s0_store R_FLAG_S0_STORE
+
+prog_0_crazy:
+	U_CRAZY prog_0
+prog_0:
+	?
+	FLAG_INIT ret_p0_init R_FLAG_INIT
+	FLAG_P0_STORE ret_p0_store R_FLAG_P0_STORE
+
+scratch_1_crazy:
+	U_CRAZY scratch_1
+scratch_1:
+	?
+	FLAG_INIT ret_s1_init R_FLAG_INIT
+	FLAG_S1_STORE ret_s1_store R_FLAG_S1_STORE
+
+prog_1_crazy:
+	U_CRAZY prog_1
+prog_1:
+	?
+	FLAG_INIT ret_p1_init R_FLAG_INIT
+	FLAG_P1_STORE ret_p1_store R_FLAG_P1_STORE
+	FLAG_P1_R1 ret_p1_read1 R_FLAG_P1_R1
+	FLAG_P1_R2 ret_p1_read2 R_FLAG_P1_R2
+
+scratch_2_crazy:
+	U_CRAZY scratch_2
+scratch_2:
+	?
+	FLAG_INIT ret_s2_init R_FLAG_INIT
+	FLAG_S2_STORE ret_s2_store R_FLAG_S2_STORE
+
+prog_2_crazy:
+	U_CRAZY prog_2
+prog_2:
+	?
+	FLAG_INIT ret_p2_init R_FLAG_INIT
+	FLAG_P2_STORE ret_p2_store R_FLAG_P2_STORE
+
+scratch_3_crazy:
+	U_CRAZY scratch_3
+scratch_3:
+	?
+	FLAG_INIT ret_s3_init R_FLAG_INIT
+	FLAG_S3_STORE ret_s3_store R_FLAG_S3_STORE
+
+prog_3_crazy:
+	U_CRAZY prog_3
+prog_3:
+	?
+	FLAG_INIT ret_p3_init R_FLAG_INIT
+	FLAG_P3_STORE ret_p3_store R_FLAG_P3_STORE
+
+stack_scratch_crazy:
+	U_CRAZY stack_scratch
+stack_scratch:
+	?
+	FLAG_INIT ret_ss_init R_FLAG_INIT
+	FLAG_SS_PUSH ret_ss_push R_FLAG_SS_PUSH
+
+stack_top_crazy:
+	U_CRAZY stack_top
+stack_top:
+	?
+	FLAG_INIT ret_st_init R_FLAG_INIT
+	FLAG_ST_PUSH ret_st_push R_FLAG_ST_PUSH
+	FLAG_ST_POP1 ret_st_pop1 R_FLAG_ST_POP1
+	FLAG_ST_POP2 ret_st_pop2 R_FLAG_ST_POP2
+
+{
+ENTRY:
+	ROT C1 R_ROT
+do_init_s0:
+	R_FLAG_INIT
+	MOVED scratch_0_crazy
+}{
+ret_s0_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_s0
+
+do_init_p0:
+	R_FLAG_INIT
+	MOVED prog_0_crazy
+}{
+ret_p0_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_p0
+
+do_init_s1:
+	R_FLAG_INIT
+	MOVED scratch_1_crazy
+}{
+ret_s1_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_s1
+
+do_init_p1:
+	R_FLAG_INIT
+	MOVED prog_1_crazy
+}{
+ret_p1_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_p1
+
+do_init_s2:
+	R_FLAG_INIT
+	MOVED scratch_2_crazy
+}{
+ret_s2_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_s2
+
+do_init_p2:
+	R_FLAG_INIT
+	MOVED prog_2_crazy
+}{
+ret_p2_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_p2
+
+do_init_s3:
+	R_FLAG_INIT
+	MOVED scratch_3_crazy
+}{
+ret_s3_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_s3
+
+do_init_p3:
+	R_FLAG_INIT
+	MOVED prog_3_crazy
+}{
+ret_p3_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_p3
+
+do_init_ss:
+	R_FLAG_INIT
+	MOVED stack_scratch_crazy
+}{
+ret_ss_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_ss
+
+do_init_st:
+	R_FLAG_INIT
+	MOVED stack_top_crazy
+}{
+ret_st_init:
+	R_CRAZY R_MOVED
+	COUNTER2_1 do_init_st
+
+	MOVED load_prog_0
+}{
+load_prog_0:
+	R_MOVED
+	IN ?- R_IN
+	R_FLAG_S0_STORE
+	MOVED scratch_0_crazy
+}{
+ret_s0_store:
+	R_CRAZY R_MOVED
+	R_FLAG_P0_STORE
+	MOVED prog_0_crazy
+}{
+ret_p0_store:
+	R_CRAZY R_MOVED
+	// Copy byte 0 to value to test for HALT (0x00)
+	R_FLAG_VAL_C1_LOAD
+	MOVED crazy_value_C1
+}{
+ret_val_c1_load:
+	R_CRAZY R_MOVED
+	R_FLAG_VAL_LOAD
+	MOVED crazy_value
+}{
+ret_val_load:
+	R_CRAZY R_MOVED
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+return_from_decrement_value_1:
+	NO_MORE_CARRY_FLAG load_prog_1
+	HALT
+}{
+load_prog_1:
+	IN ?- R_IN
+	R_FLAG_S1_STORE
+	MOVED scratch_1_crazy
+}{
+ret_s1_store:
+	R_CRAZY R_MOVED
+	R_FLAG_P1_STORE
+	MOVED prog_1_crazy
+}{
+ret_p1_store:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	R_FLAG_S2_STORE
+	MOVED scratch_2_crazy
+}{
+ret_s2_store:
+	R_CRAZY R_MOVED
+	R_FLAG_P2_STORE
+	MOVED prog_2_crazy
+}{
+ret_p2_store:
+	R_CRAZY R_MOVED
+	// Byte 2 is in A! Check if byte 2 is 0x00 (Vector 4: 01 41 00)
+	R_FLAG_VAL_C1_DEC3
+	MOVED crazy_value_C1
+}{
+ret_val_c1_dec3:
+	R_CRAZY R_MOVED
+	R_FLAG_VAL_DEC3
+	MOVED crazy_value
+}{
+ret_val_dec3:
+	R_CRAZY R_MOVED
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+return_from_decrement_value_2:
+	NO_MORE_CARRY_FLAG load_prog_3
+	HALT
+}{
+load_prog_3:
+	IN ?- R_IN
+	R_FLAG_S3_STORE
+	MOVED scratch_3_crazy
+}{
+ret_s3_store:
+	R_CRAZY R_MOVED
+	R_FLAG_P3_STORE
+	MOVED prog_3_crazy
+}{
+ret_p3_store:
+	R_CRAZY R_MOVED
+	MOVED exec_v1_v2_push
+}{
+
+// Vector 4 execution: push operand from prog_1 and HALT
+exec_v4_push:
+	R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_P1_R1
+	MOVED prog_1_crazy
+}{
+ret_v4_p1_r1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_P1_R2
+	MOVED prog_1_crazy
+}{
+ret_v4_p1_r2:
+	R_CRAZY R_MOVED
+	R_FLAG_SS_PUSH
+	MOVED stack_scratch_crazy
+}{
+ret_v4_ss_push:
+	R_CRAZY R_MOVED
+	R_FLAG_ST_PUSH
+	MOVED stack_top_crazy
+}{
+ret_v4_st_push:
+	R_CRAZY R_MOVED
+	HALT
+}{
+
+// Vector 1 & 2 execution: push operand, pop operand, OUT, HALT
+exec_v1_v2_push:
+	R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_P1_R1
+	MOVED prog_1_crazy
+}{
+ret_p1_read1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_P1_R2
+	MOVED prog_1_crazy
+}{
+ret_p1_read2:
+	R_CRAZY R_MOVED
+	R_FLAG_SS_PUSH
+	MOVED stack_scratch_crazy
+}{
+ret_ss_push:
+	R_CRAZY R_MOVED
+	R_FLAG_ST_PUSH
+	MOVED stack_top_crazy
+}{
+ret_st_push:
+	R_CRAZY R_MOVED
+	// Pop from stack and output:
+	ROT C2 R_ROT
+	R_FLAG_ST_POP1
+	MOVED stack_top_crazy
+}{
+ret_st_pop1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_ST_POP2
+	MOVED stack_top_crazy
+}{
+ret_st_pop2:
+	R_CRAZY R_MOVED
+	OUT ?- R_OUT
+	HALT
+}{
+
+// ==========================================
+// DECREMENT SUBROUTINE
+// ==========================================
+decrement_value:
+	NO_MORE_CARRY_FLAG nomorecarrykilled_2 R_NO_MORE_CARRY_FLAG
+nomorecarrykilled_2:
+	R_MOVED
+	ROT C1 R_ROT
+	R_FLAG_DEC_TMP3
+	MOVED crazy_tmp
+
+return_from_tmp_3:
+	R_CRAZY
+value_load_loop:
+	ROT C2 R_ROT
+jmp_into_loop_from_behind:
+	R_MOVED
+	R_FLAG_DEC_VAL8
+	MOVED crazy_value
+
+return_from_value_8:
+	R_CRAZY R_MOVED
+	LOOP2 value_loaded
+	MOVED value_load_loop
+
+value_loaded:
+	LOOP2_2 jump_back_to_behind
+	R_FLAG_DEC_TMP4
+	MOVED crazy_tmp
+
+return_from_tmp_4:
+	R_CRAZY R_MOVED
+	R_FLAG_DEC_CARRY2
+	MOVED crazy_carry
+
+return_from_carry_2:
+	R_CRAZY R_MOVED
+	MOVED jmp_into_loop_from_behind
+
+jump_back_to_behind:
+	R_FLAG_DEC_CARRY2
+	MOVED exec_carry
+
+return_from_carry_was_not_set_2:
+	R_NO_MORE_CARRY_FLAG
+return_from_carry_was_set_2:
+	R_MOVED
+	R_FLAG_DEC_VAL9
+	MOVED rot_value
+
+return_from_value_9:
+	R_MOVED R_ROT
+	LOOP5 exit_inner_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+exit_inner_decrement_loop:
+	LOOP2_3 exit_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+restore_no_more_carry_flag_and_rotate_value_2:
+	R_NO_MORE_CARRY_FLAG
+	MOVED return_from_carry_was_set_2
+
+exit_decrement_loop:
+	SUBROUTINE_FLAG1 return_from_decrement_value_1 R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 return_from_decrement_value_2 R_SUBROUTINE_FLAG2
+}

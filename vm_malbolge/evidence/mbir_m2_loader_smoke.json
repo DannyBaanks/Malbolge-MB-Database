@@ -1,0 +1,70 @@
+{
+  "schema": "m2-malbolge-loader/1",
+  "timestamp": "2026-10-09T11:43:56.365177+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Milestone 2 Stored-Program MBIR Virtual Machine in Pure Malbolge: compiles to .mb under 59,049 limit (40,309 bytes, 18,740 bytes headroom) and executes stored programs from RAM with 100% bit-exact differential step parity across all test vectors.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_m2_loader.hell",
+    "sha256": "d18e1ff9275979834d981b0dcc5f24ed919345f8bd08312e39be245953c4ad6f",
+    "generator": "vm_malbolge/tools/mbir_m2_loader_gen.py",
+    "generator_sha256": "7c8770d74bd53dfbbcef3a071d3c94b74c7d2a3e8009750fd6a28ad40e0a2b0e"
+  },
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_m2_loader.mb",
+    "sha256": "288f22e87410c475987297236483c4fb97c852904ce838fb69bd38c84584e2a5",
+    "size_bytes": 40309,
+    "headroom_bytes": 18740,
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01411000",
+      "description": "PUSH 'A', OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 41343,
+      "runner_steps": 41343,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "description": "PUSH 'B', OUT, HALT",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "oracle_steps": 41343,
+      "runner_steps": 41343,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "HALT immediate",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 42062,
+      "runner_steps": 42062,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "description": "PUSH 'A', HALT (no OUT)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 42564,
+      "runner_steps": 42564,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}
