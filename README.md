@@ -108,7 +108,7 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_a05_lifo.hell`](file://
 ### 4. Kernel Aritmético y ALU Unificada (Hitos P0, P1 y ALU)
 Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_alu.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_alu.hell)) a través del generador canónico ([`vm_malbolge/tools/mbir_alu_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_alu_gen.py)):
 - **Hito P0 (`ADD` 0x02)**: Sumador ternario de 2 operandos desapilados concurrentemente de la pila LIFO, evaluando suma aritmética con acarreo y apilando el resultado en `stack_top` (7/7 PASS, [`vm_malbolge/P0_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/P0_STATUS.md)).
-- **Hito P1 (`SUB` 0x03)**: Restador ternario de 2 operandos desapilados ($a - b$), evaluando resta con detección de subdesbordamiento (7/7 PASS, [`vm_malbolge/P1_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/P1_STATUS.md)).
+- **Hito P1 (`SUB` 0x03)**: Restador ternario de 2 operandos desapilados (`a - b`), evaluando resta con detección de subdesbordamiento (7/7 PASS, [`vm_malbolge/P1_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/P1_STATUS.md)).
 - **ALU Unificada**: Cohabitación simultánea de `ADD` (0x02) y `SUB` (0x03) en la misma imagen ejecutable binaria ([`vm_malbolge/src/mbir_alu.mb`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_alu.mb)), pesando **54,691 bytes** (dejando 4,358 bytes de margen bajo el límite de 59,049 palabras).
 - **Despacho Secuencial de 5 Opcodes**: Clasificación unificada para `HALT` (0x00), `PUSH_CONST` (0x01), `ADD` (0x02), `SUB` (0x03) y `OUT_BYTE` (0x10).
 - **Expresiones Aritméticas Encadenadas**: Soporte verificado para secuencias continuas como `(1 + 1) - 1 = 1`, `(1 + 1) - 2 = 0` y `(2 - 1) + 1 = 2`.
@@ -116,20 +116,20 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_alu.hell`](file:///home
 
 ### 5. Kernel de Comparación Lógica: CMP_EQ (Hito P2)
 Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_p2_cmp.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_p2_cmp.hell)) a través de ([`vm_malbolge/tools/mbir_p2_cmp_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_p2_cmp_gen.py)):
-- **Evaluación Booleana de 2 Fases**: Desapila $op_2 = b$ de la ranura 1 y $op_1 = a$ de la ranura 0, evalúa igualdad binaria exacta ($a == b \implies 1$, $a \neq b \implies 0$) y apila el resultado booleano de 1 byte en la ranura 0 mientras restablece la ranura 1 a vacía.
+- **Evaluación Booleana de 2 Fases**: Desapila `op2 = b` de la ranura 1 y `op1 = a` de la ranura 0, evalúa igualdad binaria exacta (`a == b -> 1`, `a != b -> 0`) y apila el resultado booleano de 1 byte en la ranura 0 mientras restablece la ranura 1 a vacía.
 - **Propiedades de Igualdad Verificadas**:
-  - Reflexividad / Auto-igualdad: $2 == 2 \implies 1$ (`01`)
-  - Desigualdad de predecesor: $2 == 1 \implies 0$ (`00`)
-  - Desigualdad con cero: $2 == 0 \implies 0$ (`00`)
-  - Desigualdad multi-unidad: $4 == 2 \implies 0$ (`00`)
+  - Reflexividad / Auto-igualdad: `2 == 2 -> 1` (`01`)
+  - Desigualdad de predecesor: `2 == 1 -> 0` (`00`)
+  - Desigualdad con cero: `2 == 0 -> 0` (`00`)
+  - Desigualdad multi-unidad: `4 == 2 -> 0` (`00`)
 - **Tamaño de Binario y Margen**: **57,511 bytes** (< 59,049 con 1,538 bytes de margen) usando exactamente 6 flags de código reutilizados sin flags espurios.
 - **Paridad 7/7 PASS**: 100% coincidencia bit a bit ciclo por ciclo contra el runner C nativo y oráculo Python ([`vm_malbolge/evidence/mbir_p2_cmp_smoke.json`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/mbir_p2_cmp_smoke.json), [`vm_malbolge/P2_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/P2_STATUS.md)).
 
 ### 6. Stored-Program Loader y Ejecución Desacoplada por PC (Hito M2)
 Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_m2_loader.hell`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_m2_loader.hell)) a través de ([`vm_malbolge/tools/mbir_m2_loader_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_m2_loader_gen.py)):
-- **Celdas de RAM en Memoria (`prog_0..prog_3`)**: Los bytes del programa se leen primero de STDIN durante una fase dedicada de carga y se comprometen en celdas de RAM independientes usando el teorema de escritura Crazy dual incondicional ($\operatorname{crz}(\operatorname{crz}(B, C_1), C_1)$).
+- **Celdas de RAM en Memoria (`prog_0..prog_3`)**: Los bytes del programa se leen primero de STDIN durante una fase dedicada de carga y se comprometen en celdas de RAM independientes usando el teorema de escritura Crazy dual incondicional: `crz(crz(B, C1), C1)`.
 - **Desacoplamiento Total de Ejecución por PC**: STDIN se consume completamente hasta el delimitador de carga. Finalizada la carga, el Program Counter (`PC`) asume el control del despacho, leyendo secuencialmente los opcodes de la memoria RAM para gobernar la máquina de pila.
-- **Extracción de Operandos Inmediatos Doble-$C_2$**: Los operandos embebidos en el flujo de instrucciones se recuperan de las celdas de memoria de forma no destructiva aplicando la identidad conjugada ternaria $\operatorname{crz}(C_2, \operatorname{crz}(C_2, \text{cell})) \equiv B \pmod{256}$.
+- **Extracción de Operandos Inmediatos Doble-C2**: Los operandos embebidos en el flujo de instrucciones se recuperan de las celdas de memoria de forma no destructiva aplicando la identidad conjugada ternaria: `crz(C2, crz(C2, cell)) == B (mod 256)`.
 - **Tamaño de Binario y Eficiencia**: **40,309 bytes** (< 59,049 con un margen holgado de **18,740 bytes**).
 - **Paridad 4/4 PASS**: 100% coincidencia bit a bit ciclo por ciclo frente al runner C nativo y el oráculo Python ([`vm_malbolge/evidence/mbir_m2_loader_smoke.json`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/mbir_m2_loader_smoke.json), [`vm_malbolge/M2_LOADER_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/M2_LOADER_STATUS.md)).
 

@@ -6,7 +6,7 @@ Milestone 2 establishes a fully operational **Stored-Program MBIR Virtual Machin
 Unlike previous probes which dispatched instructions streaming directly from STDIN on-the-fly, Milestone 2 implements:
 1. **In-Memory RAM Cells (`prog_0..prog_3`)**: Program bytes are ingested during a dedicated Loader phase and committed to distinct memory cells using the verified Matthias Lutter double-crazy write theorem.
 2. **Program Counter (`PC`) Dispatch**: Execution decouples from standard input; opcodes and immediate operands are fetched sequentially from RAM cells, driving the stack machine and execution lifecycle.
-3. **Double-C2 Operand Extraction**: Operand bytes stored within memory cells are recovered non-destructively using the ternary digital conjugate identity $\operatorname{crz}(C_2, \operatorname{crz}(C_2, \text{cell})) \equiv \text{byte} \pmod{256}$.
+3. **Double-C2 Operand Extraction**: Operand bytes stored within memory cells are recovered non-destructively using the ternary digital conjugate identity `crz(C2, crz(C2, cell)) == byte (mod 256)`.
 4. **100% Bit-Exact Parity**: All 4 test vectors achieve bit-exact differential execution parity across both the reference Python oracle (`tools/oracle_classic.py`) and the native C Malbolge runtime (`runners/malbolge-original/malbolge`).
 
 ## Technical Metrics
@@ -27,6 +27,6 @@ Unlike previous probes which dispatched instructions streaming directly from STD
 
 ## Key Architectural Proofs
 
-1. **Storage Invariance**: For any byte $B \in [0, 255]$ and scratch cell $S$ initialized to $C_1$, executing $\operatorname{crz}(B, S)$ followed by $\operatorname{crz}(\operatorname{crz}(B, S), \text{cell})$ leaves $\text{cell} = \operatorname{crz}(\operatorname{crz}(B, C_1), C_1) \equiv B$.
+1. **Storage Invariance**: For any byte $B \in [0, 255]$ and scratch cell $S$ initialized to $C_1$, executing `crz(B, S)` followed by `crz(crz(B, S), cell)` leaves `cell = crz(crz(B, C1), C1) == B`.
 2. **Decoupled Flag Invariance**: Employing dedicated successor flags (`FLAG_P0_STORE`, `FLAG_P1_R1`, etc.) eliminates cross-subroutine flag contamination in Malbolge's XLAT2 rotation cycles.
 3. **Re-entrant Underflow Detection**: Ternary carry classification accurately identifies terminal opcodes (`0x00`) during both loading and execution phases without destructive accumulator decay.
