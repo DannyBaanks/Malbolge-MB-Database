@@ -1,0 +1,103 @@
+{
+  "schema": "mbir-p2-cmp/1",
+  "timestamp": "2026-10-09T11:53:40.943289+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Milestone P2 Comparison Kernel: Pure Malbolge boolean equality operator (CMP_EQ) with 2-phase operand popping, differential ternary evaluation (a == b), and 100% bit-exact step parity across all 7/7 test vectors.",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "path": "vm_malbolge/src/mbir_p2_cmp.hell",
+    "sha256": "61eb0d5f20ebae589eec5ca055ab455851f225a4850856c9fa43065ae1a9528a",
+    "generator": "vm_malbolge/tools/mbir_p2_cmp_gen.py",
+    "generator_sha256": "48c9c3885bbf0686b49a857797b424548af70931b60ae0aa90b9f4203cf7de44"
+  },
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_p2_cmp.mb",
+    "sha256": "b94210958b896d6731c51340ad664f43f3cabc91cbec4fa9f77d09efa3a0ff42",
+    "size_bytes": 57511,
+    "headroom_bytes": 1538,
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0"
+    }
+  },
+  "cases": [
+    {
+      "input_hex": "01020102021000",
+      "description": "Vector 1: CMP_EQ 2 == 2 -> 1 (true)",
+      "expected_hex": "01",
+      "oracle_hex": "01",
+      "runner_hex": "01",
+      "oracle_steps": 81069,
+      "runner_steps": 81069,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020101021000",
+      "description": "Vector 2: CMP_EQ 2 == 1 -> 0 (false)",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 79200,
+      "runner_steps": 79200,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01020100021000",
+      "description": "Vector 3: CMP_EQ 2 == 0 -> 0 (false)",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 78654,
+      "runner_steps": 78654,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01040102021000",
+      "description": "Vector 4: CMP_EQ 4 == 2 -> 0 (false)",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 79523,
+      "runner_steps": 79523,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01411000",
+      "description": "Baseline 1: PUSH 'A', OUT, HALT",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 67097,
+      "runner_steps": 67097,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "description": "Baseline 2: 2-slot LIFO PUSH 'A', PUSH 'B', OUT, OUT, HALT",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 74134,
+      "runner_steps": 74134,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "description": "Baseline 3: HALT (immediate)",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_hex": "",
+      "oracle_steps": 60054,
+      "runner_steps": 60054,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}
