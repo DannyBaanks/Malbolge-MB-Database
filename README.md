@@ -140,6 +140,15 @@ Una imagen aparte carga un programa de 7 bytes y ejecuta un solo `ADD` (0x02) o 
 - **Alcance**: un solo tiro. No es un restador general, no encadena operaciones y no cubre los 14 vectores de la ALU por STDIN.
 - Evidencia: [`vm_malbolge/evidence/mbir_m2_alu_smoke.json`](vm_malbolge/evidence/mbir_m2_alu_smoke.json), [`vm_malbolge/M2_ALU_STATUS.md`](vm_malbolge/M2_ALU_STATUS.md).
 
+### 6c. Salto, condicional y llamada sobre RAM (Hito M2 CF)
+Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`vm_malbolge/src/mbir_m2_cf.hell`](vm_malbolge/src/mbir_m2_cf.hell), [`vm_malbolge/tools/mbir_m2_cf_gen.py`](vm_malbolge/tools/mbir_m2_cf_gen.py)):
+- **JMP `0x0C`** emite el inmediato guardado en RAM. Dos inmediatos distintos (`0x41` y `0x58`) salen con el mismo número de pasos.
+- **JZ** (opcode `0x01`) emite un byte si la condición es 0 y otro si es 1.
+- **CALL `0x0E`** emite el byte del destino y después el byte que sigue a la llamada. Una sola trama.
+- **5/5 PASS** en el oráculo Python y el runner C. Tamaño 55,819 bytes (margen 3,230).
+- El destino del JMP no elige la instrucción, y no hay un contador de programa general.
+- Evidencia: [`vm_malbolge/evidence/mbir_m2_cf_smoke.json`](vm_malbolge/evidence/mbir_m2_cf_smoke.json), [`vm_malbolge/M2_CF_STATUS.md`](vm_malbolge/M2_CF_STATUS.md).
+
 ### 7. Tabla de Clasificación de los 18 Opcodes de MBIR
 - Generador mecánico ([`vm_malbolge/tools/mbir_dispatch_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_dispatch_gen.py)) que produce ensamblador HeLL para clasificar los 18 opcodes (`0x00`..`0x11`) en Malbolge puro usando cadenas de decremento digital root y sitios `SUBROUTINE_FLAGn` con paridad 21/21 verificada.
 
@@ -157,7 +166,7 @@ Una imagen aparte carga un programa de 7 bytes y ejecuta un solo `ADD` (0x02) o 
 ## Lo que FALTA por hacer (Roadmap / NOT_DEMONSTRATED)
 
 1. **Control de Flujo Completo en Malbolge VM**
-   - Saltos condicionales e incondicionales (`JMP`, `JZ`, `JNZ`) y llamadas a subrutinas (`CALL`, `RET`) operando sobre el array de programa en RAM ya demostrado en el Hito M2.
+   - Las cinco formas fijas de JMP, JZ y CALL ya están en el Hito M2 CF (5/5, 55,819 bytes). Sigue faltando un contador de programa general, usar el destino del JMP como selector, y una pila de llamadas de más de una trama.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
    - El Hito M2 ALU ya cubre un solo `ADD` o `SUB` cargado en RAM, con operandos en `{0,1,2,3,4}` (8/8, 56,361 bytes). Sigue faltando una sola imagen que cargue el programa y ejecute la ALU de 14 vectores (con cadenas) y el `CMP_EQ` del Hito P2, bajo el límite de 59,049. Esa imagen M2 ALU ya rechazó 15 celdas extra en el presupuesto de inicialización.
 3. **Pila Dinámica de Profundidad > 2**

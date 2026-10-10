@@ -32,4 +32,4 @@ Artifact SHA-256: `1c641b880d1b0bd1825546c494ce163e9ca2c336318831c7fef83d3bb37f7
 | Chained programs | The image stores one opcode and two operands. `(1+1)-1` does not fit this loader. |
 | The 14 streaming ALU vectors | Those run in `mbir_alu.mb`, which reads the instruction stream from STDIN. |
 | CMP_EQ in this image | P2 is a separate 57,511-byte binary. This image has 2,688 bytes of file headroom and the init budget already rejected a 15-cell addition. |
-| JMP, JZ, CALL, RET | No control-flow opcode is fetched from RAM. |
+| JMP, JZ, CALL, RET | This ALU image does not fetch them. Fixed shapes are a separate binary: `vm_malbolge/M2_CF_STATUS.md`. |

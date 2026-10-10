@@ -1,0 +1,771 @@
+/* mbir_m2_cf.hell — JUMP / JZ / CALL from a stored 11-byte program. */
+.CODE
+MOVED:
+	MovD/Nop
+	Jmp
+
+ROT:
+	Rot/Nop
+	Jmp
+
+IN:
+	In/Nop
+	Jmp
+
+OUT:
+	Out/Nop
+	Jmp
+
+CRAZY:
+	Opr/Nop
+	Jmp
+
+HALT:
+	Hlt
+
+NOP:
+	Jmp
+
+LOOP2:
+	Nop/MovD
+	Jmp
+
+LOOP2_2:
+	Nop/MovD
+	Jmp
+
+LOOP2_3:
+	Nop/MovD
+	Jmp
+
+LOOP5:
+	Nop/Nop/Nop/Nop/MovD
+	Jmp
+
+NO_MORE_CARRY_FLAG:
+	Nop/MovD
+	Jmp
+
+@C21 CARRY:
+	RNop
+	RNop
+	Jmp
+
+SF1:
+	Nop/MovD
+	Jmp
+
+SF2:
+	Nop/MovD
+	Jmp
+
+SF3:
+	Nop/MovD
+	Jmp
+
+SF4:
+	Nop/MovD
+	Jmp
+
+SF5:
+	Nop/MovD
+	Jmp
+
+SF6:
+	Nop/MovD
+	Jmp
+
+SF7:
+	Nop/MovD
+	Jmp
+
+SF8:
+	Nop/MovD
+	Jmp
+
+SF9:
+	Nop/MovD
+	Jmp
+
+SF10:
+	Nop/MovD
+	Jmp
+
+SF11:
+	Nop/MovD
+	Jmp
+
+SF12:
+	Nop/MovD
+	Jmp
+
+SF13:
+	Nop/MovD
+	Jmp
+
+SF14:
+	Nop/MovD
+	Jmp
+
+SF15:
+	Nop/MovD
+	Jmp
+
+SF16:
+	Nop/MovD
+	Jmp
+
+SF17:
+	Nop/MovD
+	Jmp
+
+FLAG_SCR:
+	Nop/MovD
+	Jmp
+
+FLAG_STORE:
+	Nop/MovD
+	Jmp
+
+FLAG_VR1:
+	Nop/MovD
+	Jmp
+
+FLAG_VR2:
+	Nop/MovD
+	Jmp
+
+FLAG_VR3:
+	Nop/MovD
+	Jmp
+
+FLAG_READ_A:
+	Nop/MovD
+	Jmp
+
+FLAG_READ_B:
+	Nop/MovD
+	Jmp
+
+FLAG_CP1_C:
+	Nop/MovD
+	Jmp
+
+FLAG_CP1_V:
+	Nop/MovD
+	Jmp
+
+FLAG_CP3_C:
+	Nop/MovD
+	Jmp
+
+FLAG_CP3_V:
+	Nop/MovD
+	Jmp
+
+FLAG_PATH_CALL:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_TMP3:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_TMP4:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL8:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL9:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_CARRY2:
+	Nop/MovD
+	Jmp
+
+
+.DATA
+crazy_value:
+	U_CRAZY value
+rot_value:
+	U_ROT value
+value:
+	C1
+	FLAG_VR1 ret_vr1 R_FLAG_VR1
+	FLAG_VR2 ret_vr2 R_FLAG_VR2
+	FLAG_VR3 ret_vr3 R_FLAG_VR3
+	FLAG_CP1_V ret_cp1_v R_FLAG_CP1_V
+	FLAG_CP3_V ret_cp3_v R_FLAG_CP3_V
+	FLAG_DEC_VAL8 return_from_value_8 R_FLAG_DEC_VAL8
+	FLAG_DEC_VAL9 return_from_value_9
+
+crazy_value_C1:
+	U_CRAZY value_C1
+value_C1:
+	C1
+	FLAG_VR1 ret_vrc1 R_FLAG_VR1
+	FLAG_VR2 ret_vrc2 R_FLAG_VR2
+	FLAG_VR3 ret_vrc3 R_FLAG_VR3
+	FLAG_CP1_C ret_cp1_c R_FLAG_CP1_C
+	FLAG_CP3_C ret_cp3_c R_FLAG_CP3_C
+
+crazy_tmp:
+	U_CRAZY tmp
+tmp:
+	C0
+	FLAG_DEC_TMP3 return_from_tmp_3 R_FLAG_DEC_TMP3
+	FLAG_DEC_TMP4 return_from_tmp_4
+
+crazy_carry:
+	U_CRAZY carry
+exec_carry:
+	R_MOVED
+carry:
+	CARRY
+	U_NOP execution_not_jumped_to_carry
+	U_NOP carry_was_not_set U_NOP carry_was_set
+carry_was_set:
+	MOVED return_carry_was_set
+carry_was_not_set:
+	MOVED return_carry_was_not_set
+execution_not_jumped_to_carry:
+	FLAG_DEC_CARRY2 return_from_carry_2 R_FLAG_DEC_CARRY2
+return_carry_was_set:
+	FLAG_DEC_CARRY2 return_from_carry_was_set_2 R_FLAG_DEC_CARRY2
+return_carry_was_not_set:
+	FLAG_DEC_CARRY2 return_from_carry_was_not_set_2
+
+
+scratch_0_crazy:
+	U_CRAZY scratch_0
+scratch_0:
+	C1
+	FLAG_SCR ret_scr_0 R_FLAG_SCR
+scratch_1_crazy:
+	U_CRAZY scratch_1
+scratch_1:
+	C1
+	FLAG_SCR ret_scr_1 R_FLAG_SCR
+scratch_4_crazy:
+	U_CRAZY scratch_4
+scratch_4:
+	C1
+	FLAG_SCR ret_scr_4 R_FLAG_SCR
+scratch_6_crazy:
+	U_CRAZY scratch_6
+scratch_6:
+	C1
+	FLAG_SCR ret_scr_6 R_FLAG_SCR
+scratch_7_crazy:
+	U_CRAZY scratch_7
+scratch_7:
+	C1
+	FLAG_SCR ret_scr_7 R_FLAG_SCR
+scratch_8_crazy:
+	U_CRAZY scratch_8
+scratch_8:
+	C1
+	FLAG_SCR ret_scr_8 R_FLAG_SCR
+
+
+prog_0_crazy:
+	U_CRAZY prog_0
+prog_0:
+	C1
+	FLAG_STORE ret_p0 R_FLAG_STORE
+	FLAG_READ_A ret_p0_a R_FLAG_READ_A
+	FLAG_READ_B ret_p0_b R_FLAG_READ_B
+prog_1_crazy:
+	U_CRAZY prog_1
+prog_1:
+	C1
+	FLAG_STORE ret_p1 R_FLAG_STORE
+	FLAG_READ_A ret_p1_a R_FLAG_READ_A
+	FLAG_READ_B ret_p1_b R_FLAG_READ_B
+prog_4_crazy:
+	U_CRAZY prog_4
+prog_4:
+	C1
+	FLAG_STORE ret_p4 R_FLAG_STORE
+	FLAG_READ_A ret_p4_a R_FLAG_READ_A
+	FLAG_READ_B ret_p4_b R_FLAG_READ_B
+prog_6_crazy:
+	U_CRAZY prog_6
+prog_6:
+	C1
+	FLAG_STORE ret_p6 R_FLAG_STORE
+	FLAG_READ_A ret_p6_a R_FLAG_READ_A
+	FLAG_READ_B ret_p6_b R_FLAG_READ_B
+prog_7_crazy:
+	U_CRAZY prog_7
+prog_7:
+	C1
+	FLAG_STORE ret_p7 R_FLAG_STORE
+	FLAG_READ_A ret_p7_a R_FLAG_READ_A
+	FLAG_READ_B ret_p7_b R_FLAG_READ_B
+prog_8_crazy:
+	U_CRAZY prog_8
+prog_8:
+	C1
+	FLAG_STORE ret_p8 R_FLAG_STORE
+	FLAG_READ_A ret_p8_a R_FLAG_READ_A
+	FLAG_READ_B ret_p8_b R_FLAG_READ_B
+
+{
+ENTRY:
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_0_crazy
+}{
+ret_scr_0:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_0_crazy
+}{
+ret_p0:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_1_crazy
+}{
+ret_scr_1:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_1_crazy
+}{
+ret_p1:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	IN ?- R_IN
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_4_crazy
+}{
+ret_scr_4:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_4_crazy
+}{
+ret_p4:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_6_crazy
+}{
+ret_scr_6:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_6_crazy
+}{
+ret_p6:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_7_crazy
+}{
+ret_scr_7:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_7_crazy
+}{
+ret_p7:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	R_FLAG_SCR
+	MOVED scratch_8_crazy
+}{
+ret_scr_8:
+	R_CRAZY R_MOVED
+	R_FLAG_STORE
+	MOVED prog_8_crazy
+}{
+ret_p8:
+	R_CRAZY R_MOVED
+	IN ?- R_IN
+	IN ?- R_IN
+start_dispatch:
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_0_crazy
+}{
+ret_p0_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_0_crazy
+}{
+ret_p0_b:
+	R_CRAZY R_MOVED
+	R_FLAG_CP1_C
+	MOVED crazy_value_C1
+}{
+ret_cp1_c:
+	R_CRAZY R_MOVED
+	R_FLAG_CP1_V
+	MOVED crazy_value
+}{
+ret_cp1_v:
+	R_CRAZY R_MOVED
+	R_SF1
+	MOVED decrement_value
+}{
+ret_op_1:
+	NO_MORE_CARRY_FLAG op_c1
+	MOVED halt_now
+}{
+op_c1:
+	R_SF2
+	MOVED decrement_value
+}{
+ret_op_2:
+	NO_MORE_CARRY_FLAG op_c2
+	MOVED family_01
+}{
+op_c2:
+	R_SF3
+	MOVED decrement_value
+}{
+ret_op_3:
+	NO_MORE_CARRY_FLAG op_c3
+	MOVED halt_now
+}{
+op_c3:
+	R_SF4
+	MOVED decrement_value
+}{
+ret_op_4:
+	NO_MORE_CARRY_FLAG op_c4
+	MOVED halt_now
+}{
+op_c4:
+	R_SF5
+	MOVED decrement_value
+}{
+ret_op_5:
+	NO_MORE_CARRY_FLAG op_c5
+	MOVED halt_now
+}{
+op_c5:
+	R_SF6
+	MOVED decrement_value
+}{
+ret_op_6:
+	NO_MORE_CARRY_FLAG op_c6
+	MOVED halt_now
+}{
+op_c6:
+	R_SF7
+	MOVED decrement_value
+}{
+ret_op_7:
+	NO_MORE_CARRY_FLAG op_c7
+	MOVED halt_now
+}{
+op_c7:
+	R_SF8
+	MOVED decrement_value
+}{
+ret_op_8:
+	NO_MORE_CARRY_FLAG op_c8
+	MOVED halt_now
+}{
+op_c8:
+	R_SF9
+	MOVED decrement_value
+}{
+ret_op_9:
+	NO_MORE_CARRY_FLAG op_c9
+	MOVED halt_now
+}{
+op_c9:
+	R_SF10
+	MOVED decrement_value
+}{
+ret_op_10:
+	NO_MORE_CARRY_FLAG op_c10
+	MOVED halt_now
+}{
+op_c10:
+	R_SF11
+	MOVED decrement_value
+}{
+ret_op_11:
+	NO_MORE_CARRY_FLAG op_c11
+	MOVED halt_now
+}{
+op_c11:
+	R_SF12
+	MOVED decrement_value
+}{
+ret_op_12:
+	NO_MORE_CARRY_FLAG op_c12
+	MOVED halt_now
+}{
+op_c12:
+	R_SF13
+	MOVED decrement_value
+}{
+ret_op_13:
+	NO_MORE_CARRY_FLAG op_c13
+	MOVED do_jmp
+}{
+op_c13:
+	R_SF14
+	MOVED decrement_value
+}{
+ret_op_14:
+	NO_MORE_CARRY_FLAG op_c14
+	MOVED halt_now
+}{
+op_c14:
+	R_SF15
+	MOVED decrement_value
+}{
+ret_op_15:
+	NO_MORE_CARRY_FLAG halt_now
+	MOVED do_call
+}{
+family_01:
+	R_MOVED
+	MOVED reset_values
+}{
+do_jmp:
+	R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_6_crazy
+}{
+do_call:
+	R_MOVED
+	R_FLAG_PATH_CALL
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_8_crazy
+}{
+reset_values:
+	R_MOVED
+	ROT C1 R_ROT
+	R_FLAG_VR1
+	MOVED crazy_value
+}{
+ret_vr1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_VR2
+	MOVED crazy_value
+}{
+ret_vr2:
+	R_CRAZY R_MOVED
+	ROT C0 R_ROT
+	R_FLAG_VR3
+	MOVED crazy_value
+}{
+ret_vr3:
+	R_CRAZY R_MOVED
+	ROT C1 R_ROT
+	R_FLAG_VR1
+	MOVED crazy_value_C1
+}{
+ret_vrc1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_VR2
+	MOVED crazy_value_C1
+}{
+ret_vrc2:
+	R_CRAZY R_MOVED
+	ROT C0 R_ROT
+	R_FLAG_VR3
+	MOVED crazy_value_C1
+}{
+ret_vrc3:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_1_crazy
+}{
+ret_p1_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_1_crazy
+}{
+ret_p1_b:
+	R_CRAZY R_MOVED
+	R_FLAG_CP3_C
+	MOVED crazy_value_C1
+}{
+ret_cp3_c:
+	R_CRAZY R_MOVED
+	R_FLAG_CP3_V
+	MOVED crazy_value
+}{
+ret_cp3_v:
+	R_CRAZY R_MOVED
+	R_SF16
+	MOVED decrement_value
+}{
+ret_jz_1:
+	NO_MORE_CARRY_FLAG jz_c1
+	MOVED out_taken
+}{
+jz_c1:
+	R_SF17
+	MOVED decrement_value
+}{
+ret_jz_2:
+	NO_MORE_CARRY_FLAG halt_now
+	MOVED out_not
+}{
+out_taken:
+	R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_8_crazy
+}{
+out_not:
+	R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_7_crazy
+}{
+ret_p6_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_6_crazy
+}{
+ret_p6_b:
+	R_CRAZY R_MOVED
+	OUT ?- R_OUT
+	HALT
+}{
+ret_p7_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_7_crazy
+}{
+ret_p7_b:
+	R_CRAZY R_MOVED
+	OUT ?- R_OUT
+	HALT
+}{
+ret_p8_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_8_crazy
+}{
+ret_p8_b:
+	R_CRAZY R_MOVED
+	OUT ?- R_OUT
+	FLAG_PATH_CALL out_caller
+	HALT
+}{
+out_caller:
+	ROT C2 R_ROT
+	R_FLAG_READ_A
+	MOVED prog_4_crazy
+}{
+ret_p4_a:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_FLAG_READ_B
+	MOVED prog_4_crazy
+}{
+ret_p4_b:
+	R_CRAZY R_MOVED
+	OUT ?- R_OUT
+	HALT
+}{
+halt_now:
+	HALT
+}{
+
+decrement_value:
+	NO_MORE_CARRY_FLAG nomorecarrykilled_2 R_NO_MORE_CARRY_FLAG
+nomorecarrykilled_2:
+	R_MOVED
+	ROT C1 R_ROT
+	R_FLAG_DEC_TMP3
+	MOVED crazy_tmp
+
+return_from_tmp_3:
+	R_CRAZY
+value_load_loop:
+	ROT C2 R_ROT
+jmp_into_loop_from_behind:
+	R_MOVED
+	R_FLAG_DEC_VAL8
+	MOVED crazy_value
+
+return_from_value_8:
+	R_CRAZY R_MOVED
+	LOOP2 value_loaded
+	MOVED value_load_loop
+
+value_loaded:
+	LOOP2_2 jump_back_to_behind
+	R_FLAG_DEC_TMP4
+	MOVED crazy_tmp
+
+return_from_tmp_4:
+	R_CRAZY R_MOVED
+	R_FLAG_DEC_CARRY2
+	MOVED crazy_carry
+
+return_from_carry_2:
+	R_CRAZY R_MOVED
+	MOVED jmp_into_loop_from_behind
+
+jump_back_to_behind:
+	R_FLAG_DEC_CARRY2
+	MOVED exec_carry
+
+return_from_carry_was_not_set_2:
+	R_NO_MORE_CARRY_FLAG
+return_from_carry_was_set_2:
+	R_MOVED
+	R_FLAG_DEC_VAL9
+	MOVED rot_value
+
+return_from_value_9:
+	R_MOVED R_ROT
+	LOOP5 exit_inner_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+exit_inner_decrement_loop:
+	LOOP2_3 exit_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+restore_no_more_carry_flag_and_rotate_value_2:
+	R_NO_MORE_CARRY_FLAG
+	MOVED return_from_carry_was_set_2
+
+exit_decrement_loop:
+	SF1 ret_op_1 R_SF1
+	SF2 ret_op_2 R_SF2
+	SF3 ret_op_3 R_SF3
+	SF4 ret_op_4 R_SF4
+	SF5 ret_op_5 R_SF5
+	SF6 ret_op_6 R_SF6
+	SF7 ret_op_7 R_SF7
+	SF8 ret_op_8 R_SF8
+	SF9 ret_op_9 R_SF9
+	SF10 ret_op_10 R_SF10
+	SF11 ret_op_11 R_SF11
+	SF12 ret_op_12 R_SF12
+	SF13 ret_op_13 R_SF13
+	SF14 ret_op_14 R_SF14
+	SF15 ret_op_15 R_SF15
+	SF16 ret_jz_1 R_SF16
+	SF17 ret_jz_2 R_SF17
+}

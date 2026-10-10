@@ -1,0 +1,103 @@
+{
+  "schema": "alu-malbolge-unified/1",
+  "timestamp": "2026-10-10T05:56:31+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge stored-program control flow for five fixed 11-byte shapes. The opcode and the bytes that are emitted are loaded from RAM. JMP (0x0C) emits prog_6. JZ (opcode 0x01, condition in prog_1) emits prog_8 when the condition is 0 and prog_7 when it is 1. CALL (0x0E) emits prog_8 and then prog_4. Same binary, both engines, matching step counts, under the 59049 limit.",
+  "claim_status": "DEMONSTRATED",
+  "scope": "These five shapes only. The JMP immediate is read from RAM; the jump target is not a selector, so landing on HALT is not demonstrated. JZ distinguishes only condition 0 from condition 1. CALL is one frame deep. Not a general program counter and not arbitrary MBIR.",
+  "source": {
+    "path": "vm_malbolge/src/mbir_m2_cf.hell",
+    "sha256": "8ee6209a0a8d0dce0a8413139306cd1f67f9ff144a98a896899b9b976fd46e8d",
+    "generator": "vm_malbolge/tools/mbir_m2_cf_gen.py",
+    "generator_sha256": "bb371ae33f77bb9d934b3cb336ec6daec4de8175f5fa22de975ed5bd422516d4"
+  },
+  "artifact": {
+    "size_bytes": 55819,
+    "sha256": "549d23b61b280b0eee7b3ff762c5b16df00df3cce568237f02e99ab4fdbb1ebd",
+    "limit_bytes": 59049,
+    "headroom_bytes": 3230,
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    },
+    "debug_path": "vm_malbolge/src/mbir_m2_cf.dbg",
+    "debug_sha256": "7b947025e89429dfc5b34d86ed1b6f2a6830b424c47234f8e3289d530a6604b8"
+  },
+  "environment": {
+    "os": "Linux 7.0.0-38-generic x86_64",
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge",
+    "max_steps": 500000
+  },
+  "cases": [
+    {
+      "name": "JMP skip HALT",
+      "input_hex": "0c05000000014110000000",
+      "description": "Opcode 0x0C emits prog_6 (0x41). The target byte is not classified.",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 65825,
+      "runner_steps": 65825,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JMP other immediate",
+      "input_hex": "0c05000000015810000000",
+      "description": "Same path with prog_6 = 0x58, so the emitted byte is the one loaded from RAM.",
+      "expected_hex": "58",
+      "oracle_hex": "58",
+      "runner_hex": "58",
+      "oracle_steps": 65825,
+      "runner_steps": 65825,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JZ taken",
+      "input_hex": "01000d0700000001421000",
+      "description": "Opcode 0x01 and prog_1 == 0 emits prog_8 (0x42).",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "oracle_steps": 61100,
+      "runner_steps": 61100,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JZ not taken",
+      "input_hex": "01010d0900000143100000",
+      "description": "Opcode 0x01 and prog_1 == 1 emits prog_7 (0x43).",
+      "expected_hex": "43",
+      "oracle_hex": "43",
+      "runner_hex": "43",
+      "oracle_steps": 61692,
+      "runner_steps": 61692,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "CALL then return byte",
+      "input_hex": "0e0700014110000142100f",
+      "description": "Opcode 0x0E emits prog_8 (0x42) and then prog_4 (0x41).",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 67037,
+      "runner_steps": 67037,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "not_demonstrated": [
+    "A general program counter that fetches arbitrary MBIR.",
+    "Using the JMP target as a selector. Landing on HALT is not in this image.",
+    "JZ for any condition other than 0 versus 1.",
+    "A call stack deeper than one frame.",
+    "The 14 streaming ALU vectors and CMP_EQ in this image."
+  ]
+}
