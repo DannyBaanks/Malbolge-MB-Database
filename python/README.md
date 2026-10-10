@@ -44,4 +44,4 @@ Key finding: **No project implements a Python interpreter that runs ON Malbolge.
 
 ## Status
 
-See `STATUS.md` for current state.
+P3 (`src/p3_compiler.py`) lowers assignment, `print`, modular arithmetic, comparisons, `if`/`else`/`elif`, and `while` to MBIR and runs them on the host reference VM. See `STATUS.md`. A Malbolge-hosted `python.mb` is not demonstrated.

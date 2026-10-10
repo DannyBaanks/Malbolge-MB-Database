@@ -127,6 +127,100 @@ for source, _ in test_cases:
     has_eval = any(isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id in ("eval", "exec") for n in ast.walk(tree))
     check(f"P2 no eval/exec in: {source}", not has_eval)
 
+# --- P3 Compiler Tests ---
+print("\n[P3] Python subset to MBIR")
+from p3_compiler import CASES, P3Compiler, run_mbir
+from mbir import mbir as MBIR
+
+p3 = P3Compiler()
+
+def p3_ops(blob):
+    return MBIR.decode(blob)
+
+for source, expected, desc in CASES:
+    blob = p3.compile(source)
+    result = run_mbir(blob)
+    observed = result["output"].encode("latin-1")
+    check(
+        f"P3 {desc}",
+        observed == expected and result["status"] == "HALTED" and result["stack"] == [],
+        f"got {observed.hex()} status={result['status']} stack={result['stack']}",
+    )
+
+add_blob = p3.compile("print(2 + 3)")
+add_ops = [item[0] for item in p3_ops(add_blob)]
+check(
+    "P3 add lowers to MBIR, not the MalPy opcode set",
+    add_ops == ["PUSH_CONST", "PUSH_CONST", "ADD", "OUT_BYTE", "HALT"]
+    and add_blob != bytes.fromhex("01020103020300"),
+)
+
+assign_blob = p3.compile("x = 5\nprint(x + 2)")
+assign_ops = [item[0] for item in p3_ops(assign_blob)]
+pushed = [item[1] for item in p3_ops(assign_blob) if item[0] == "PUSH_CONST"]
+check(
+    "P3 assignment stores and reloads, result is not folded",
+    assign_ops.count("STORE_LOCAL") == 1
+    and assign_ops.count("LOAD_LOCAL") == 1
+    and "ADD" in assign_ops
+    and pushed == [5, 2],
+)
+
+wrap_blob = p3.compile("print(200 + 100)")
+wrap_pushed = [item[1] for item in p3_ops(wrap_blob) if item[0] == "PUSH_CONST"]
+check("P3 wrapped add keeps both operands", wrap_pushed == [200, 100] and run_mbir(wrap_blob)["output_bytes"] == [44])
+
+sub_blob = p3.compile("print(1 - 2)")
+sub_pushed = [item[1] for item in p3_ops(sub_blob) if item[0] == "PUSH_CONST"]
+check("P3 wrapped sub keeps both operands", sub_pushed == [1, 2] and run_mbir(sub_blob)["output_bytes"] == [255])
+
+branch_blob = p3.compile("if 5 > 3:\n    print(7)\nelse:\n    print(9)")
+branch_ops = p3_ops(branch_blob)
+branch_names = [item[0] for item in branch_ops]
+branch_pushed = [item[1] for item in branch_ops if item[0] == "PUSH_CONST"]
+check(
+    "P3 if emits both arms and the comparison",
+    "CMP_GT" in branch_names
+    and "JUMP_IF_FALSE" in branch_names
+    and branch_pushed == [5, 3, 7, 9],
+)
+
+loop_blob = p3.compile("x = 3\nwhile x > 0:\n    print(x)\n    x = x - 1")
+loop_names = [item[0] for item in p3_ops(loop_blob)]
+loop_result = run_mbir(loop_blob)
+check(
+    "P3 while has one OUT_BYTE and a back edge",
+    loop_names.count("OUT_BYTE") == 1
+    and loop_names.count("JUMP") == 1
+    and loop_names.count("JUMP_IF_FALSE") == 1
+    and loop_result["steps"] > 3
+    and loop_result["output_bytes"] == [3, 2, 1],
+)
+
+taken = p3.compile("x = 1\nif x > 0:\n    print(7)\nelse:\n    print(9)")
+other = p3.compile("x = 0\nif x > 0:\n    print(7)\nelse:\n    print(9)")
+check(
+    "P3 same shape, local decides the arm",
+    run_mbir(taken)["output_bytes"] == [7]
+    and run_mbir(other)["output_bytes"] == [9]
+    and taken != other,
+)
+
+def raises_syntax(source):
+    try:
+        p3.compile(source)
+    except SyntaxError:
+        return True
+    return False
+
+check("P3 rejects an unbound name", raises_syntax("print(x)"))
+check("P3 rejects a one-arm assignment", raises_syntax("if 1 > 2:\n    y = 7\nprint(y)"))
+check("P3 rejects a function", raises_syntax("def add(a, b):\n    return a + b\n"))
+check("P3 rejects a chained comparison", raises_syntax("print(1 < 2 < 3)"))
+check("P3 rejects a float", raises_syntax("print(1.5)"))
+check("P3 rejects eval", raises_syntax('print(eval("1+2"))'))
+check("P3 rejects while-else", raises_syntax("while 0:\n    pass\nelse:\n    print(1)\n"))
+
 # --- Summary ---
 print(f"\n{'='*40}")
 print(f"PASS: {PASS}")

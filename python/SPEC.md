@@ -28,6 +28,8 @@ if 5 > 3:
 
 Operations: comparison, conditional branching.
 
+P3 (`python/src/p3_compiler.py`) lowers v0, v1, and v2, plus `elif` and `while`, to MBIR_VERSION 0. `print` emits the raw byte. Arithmetic wraps mod 256. The oracle is `mbir/mbir_ref.py`. The compiler does not constant-fold. Functions stay in v3.
+
 ### Subset v3 — Functions
 
 ```python

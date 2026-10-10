@@ -3,12 +3,19 @@
 ## Current State
 
 **Status**: `REFERENCE_FRONTEND`
-**Highest Milestone**: P2 (Python AST to MalPy bytecode — FRONTEND_DEMONSTRATED)
+**Highest Milestone**: P3 (Python subset → MBIR_VERSION 0 — FRONTEND_DEMONSTRATED on the host reference VM)
 **Primary Target**: Unshackled
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
 **Malbolge-hosted runtime**: `PARTIAL_DEMONSTRATED` (A04/A05/A05b multi-cycle fetch loop & 2-slot LIFO stack demonstrated — see vm_malbolge/A05_STATUS.md)
 
 ## Session log
+
+Session of 2026-10-10:
+
+- P3 frontend `python/src/p3_compiler.py` lowers assignment, `print`, modular `+` `-` `*`, one comparison, `if`/`else`/`elif`, and `while` to MBIR_VERSION 0.
+- 15/15 sources HALT on `mbir/mbir_ref.py` with the expected raw bytes. Recorded in `python/evidence/P3/run_p3_compiler.json`.
+- The compiler does not constant-fold: both `if` arms stay in the blob, and the `while` case has one `OUT_BYTE`.
+- Malbolge-hosted execution of this frontend remains NOT_DEMONSTRATED. Functions and `python.mb` were not started.
 
 Session of 2026-10-07:
 
@@ -74,7 +81,7 @@ followed by in-memory bytecode loader. See `vm_malbolge/A05_STATUS.md`.
 | P0 | Arithmetic Kernel | NOT_DEMONSTRATED | No verified Malbolge addition artifact (program_source=None) |
 | P1 | Stack VM (reference) | REFERENCE_DEMONSTRATED | Python reference VM, 5 bytecodes, 5 correct results |
 | P2 | MalPy Bytecode frontend | FRONTEND_DEMONSTRATED | Python AST -> bytecode -> REFERENCE VM -> correct output |
-| P3 | Variables + Control Flow | NOT_STARTED | — |
+| P3 | Variables + Control Flow | FRONTEND_DEMONSTRATED | `python/src/p3_compiler.py` → MBIR reference VM. 15 sources in `python/evidence/P3/run_p3_compiler.json`. Host only. |
 | P4 | Functions | NOT_STARTED | — |
 | P5 | Recursion | NOT_STARTED | — |
 | P6 | Python Lexer in Malbolge | NOT_STARTED | — |
@@ -85,23 +92,26 @@ followed by in-memory bytecode loader. See `vm_malbolge/A05_STATUS.md`.
 
 ```text
 PYTHON_REFERENCE_VM                = DEMONSTRATED (Python host)
-PYTHON_AST_TO_MALPY_BYTECODE       = DEMONSTRATED (restricted subset)
+PYTHON_AST_TO_MALPY_BYTECODE       = DEMONSTRATED (restricted subset, P2)
+PYTHON_SUBSET_TO_MBIR              = DEMONSTRATED (P3, host MBIR reference VM)
 MALBOLGE_HOSTED_MALPY_VM           = NOT_DEMONSTRATED
 PYTHON_MB_INTERPRETER              = NOT_DEMONSTRATED
 GENERAL_RUNTIME_ADDITION_IN_MALBOLGE = NOT_DEMONSTRATED (current impl)
 ```
 
 The P1 VM is a valid **reference VM / semantic oracle**. The P2 compiler is a
-valid **frontend**. Neither demonstrates the VM running inside Malbolge. Do not
-discard them; they are the oracle for the real runtime port (A04).
+valid **frontend** onto the old MalPy opcodes. The P3 compiler is a valid
+**frontend** onto MBIR_VERSION 0. None of them demonstrates the VM running
+inside Malbolge.
 
-## Blockers for P3+
+## Blockers for a Python completion claim
 
-1. A Malbolge-hosted MBIR VM must execute (A04) before any Python completion claim
-2. The MBIR contract is frozen (A02, MBIR_VERSION 0); the A03 reference VM must
-   implement and test its full semantic model
+1. A Malbolge-hosted MBIR VM must execute this frontend's programs before any
+   `python.mb` completion claim. P3 runs on `mbir/mbir_ref.py` only.
+2. The MBIR contract is frozen (A02, MBIR_VERSION 0). P3 encodes with
+   `mbir/mbir.py` and does not add a second bytecode.
 3. Classic Malbolge (3^10) is a design constraint for this track; Unshackled is the primary target by choice, not proven necessity
-4. Frontend needs to lower the Python subset to MBIR (not a second bytecode)
+4. P4 functions, P5 recursion, and P6–P8 (lexer, parser, `python.mb`) are not started.
 
 ## Shared MBIR
 
@@ -131,11 +141,13 @@ NOT_DEMONSTRATED.
 
 - `evidence/P0/` — crazy operation reference, Hello World trace, prototype (NOT_DEMONSTRATED for Malbolge arithmetic)
 - `evidence/P1/` — REFERENCE_MODEL VM execution (5 fixtures + underflow negatives)
-- `evidence/P2/` — FRONTEND Python compiler (6 sources)
-- `tests/test_harness.py` — 21/21 passing reference tests
+- `evidence/P2/` — FRONTEND Python compiler (6 sources, MalPy opcodes)
+- `evidence/P3/` — FRONTEND Python subset → MBIR (15 sources, host reference VM)
+- `tests/test_harness.py` — 50/50 passing reference tests
 
 ## Evidence kinds used
 
 - P1: `REFERENCE_MODEL` (host_language=Python)
-- P2: `FRONTEND` (host_language=Python)
-- No `MALBOLGE_RUNTIME` evidence exists yet — none is claimed.
+- P2: `FRONTEND` (host_language=Python, MalPy opcodes)
+- P3: `FRONTEND` (host_language=Python, MBIR_VERSION 0, oracle `mbir_ref.py`)
+- No `MALBOLGE_RUNTIME` evidence exists yet for this frontend — none is claimed.
