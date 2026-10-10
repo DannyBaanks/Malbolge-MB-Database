@@ -90,14 +90,21 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
    xlat2 cycles shift, and `SLOT1_FLAG` - which decides slot0-vs-slot1 in
    every OUT - flips. Adding the router line inside `lt_false` instead fails
    the build outright (init-code overlap).
-8. **Viable next moves**: (a) compensate the init length: change a second
+8. **`.OFFSET` pinning was tried and fails closed** (measured): pinning
+   `SLOT0_FLAG`/`SLOT1_FLAG` at their current addresses (57588/57592) makes the
+   build fail with "Memory usage conflict ... a .OFFSET directive may
+   conflict" - the pinned program blocks sit where the (now longer) init code
+   needs to reach, with or without the repoint. The program region is densely
+   packed (HALT 57435, OUT 57459, IN 57477, MOVD 57494, ROT 57497, NOP 57535,
+   SLOT0 57588, SLOT1 57592, ...), so there is no free gap to pin into.
+9. **Viable next moves**: (a) compensate the init length: change a second
    reference so the total init bytes stay constant while repointing SUB6
    (candidate pairs must be searched by build-and-test; ~30 candidate
-   reference sites in the compare section); (b) pin the flag placement with
-   `.OFFSET` directives so the trampolines stop moving; (c) accept 8/12 and
-   fix only the remaining push-encoding separately: in this layout the
-   true-push prints `02` instead of `01` (check `stack_scratch`'s prior
-   content at `diff_is_2` against EQ's), which is an independent defect.
+   reference sites in the compare section); (b) shrink the init code itself
+   so the pinned flags fit - e.g. drop atoms from the compare section until
+   the pin at 57588/57592 builds, then repoint; (c) fix the independent
+   push-encoding defect (in this layout the true-push prints `02` instead of
+   `01`; check `stack_scratch`'s prior content at `diff_is_2` against EQ's).
 
 ## Reproduce
 
