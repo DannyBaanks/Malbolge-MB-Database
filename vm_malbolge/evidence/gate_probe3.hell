@@ -1,0 +1,105 @@
+/* Probe 3: does an armed gate survive crazy-op chains (like reset_and_loop)? */
+.CODE
+G:
+	Nop/MovD
+	Jmp
+
+FLAG5:
+	Nop/MovD
+	Jmp
+
+RESET_FLAG1:
+	Nop/MovD
+	Jmp
+
+RESET_FLAG2:
+	Nop/MovD
+	Jmp
+
+RESET_FLAG3:
+	Nop/MovD
+	Jmp
+
+MOVED:
+	MovD/Nop
+	Jmp
+
+CRAZY:
+	Opr/Nop
+	Jmp
+
+ROT:
+	Rot/Nop
+	Jmp
+
+OUT:
+	Out/Nop
+	Jmp
+
+IN:
+	In/Nop
+	Jmp
+
+NOP:
+	Jmp
+
+HALT:
+	Hlt
+
+@C21 CARRY:
+	RNop
+	RNop
+	Jmp
+
+.DATA
+crazy_v:
+	U_CRAZY v
+v:
+	C1
+	FLAG5 ret_v_5 R_FLAG5
+	RESET_FLAG1 ret_v_r1 R_RESET_FLAG1
+	RESET_FLAG2 ret_v_r2 R_RESET_FLAG2
+	RESET_FLAG3 ret_v_r3 R_RESET_FLAG3
+
+{
+ENTRY:
+	MOVED start
+}{
+start:
+	R_G
+	MOVED mid
+}{
+mid:
+	R_MOVED
+	ROT C1 R_ROT
+	R_RESET_FLAG1
+	MOVED crazy_v
+}{
+ret_v_r1:
+	R_CRAZY R_MOVED
+	ROT C2 R_ROT
+	R_RESET_FLAG2
+	MOVED crazy_v
+}{
+ret_v_r2:
+	R_CRAZY R_MOVED
+	ROT C0 R_ROT
+	R_RESET_FLAG3
+	MOVED crazy_v
+}{
+ret_v_r3:
+	R_CRAZY R_MOVED
+	G survived R_G
+	ROT 'N' R_ROT
+	OUT ?- R_OUT
+	HALT
+}{
+ret_v_5:
+	R_CRAZY R_MOVED
+	MOVED mid
+}{
+survived:
+	ROT 'S' R_ROT
+	OUT ?- R_OUT
+	HALT
+}

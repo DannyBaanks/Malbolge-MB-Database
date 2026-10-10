@@ -1,0 +1,76 @@
+/* Gate semantics probe */
+.CODE
+G:
+	Nop/MovD
+	Jmp
+
+MOVED:
+	MovD/Nop
+	Jmp
+
+CRAZY:
+	Opr/Nop
+	Jmp
+
+ROT:
+	Rot/Nop
+	Jmp
+
+OUT:
+	Out/Nop
+	Jmp
+
+IN:
+	In/Nop
+	Jmp
+
+NOP:
+	Jmp
+
+HALT:
+	Hlt
+
+@C21 CARRY:
+	RNop
+	RNop
+	Jmp
+
+.DATA
+v:
+	C1
+
+{
+ENTRY:
+	MOVED start
+}{
+start:
+	R_G
+	MOVED probe1
+}{
+probe1:
+	G probe1_skip R_G
+	ROT 'X' R_ROT
+	OUT ?- R_OUT
+	HALT
+}{
+probe1_skip:
+	R_G
+	MOVED probe2
+}{
+probe2:
+	G probe2_skip R_G
+	ROT 'Y' R_ROT
+	OUT ?- R_OUT
+	HALT
+}{
+probe2_skip:
+	G probe3 R_G
+	ROT 'Z' R_ROT
+	OUT ?- R_OUT
+	HALT
+}{
+probe3:
+	ROT 'A' R_ROT
+	OUT ?- R_OUT
+	HALT
+}
