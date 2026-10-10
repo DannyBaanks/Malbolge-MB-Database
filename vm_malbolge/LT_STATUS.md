@@ -129,13 +129,29 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
     tail changes the trampolines' xlat2 cycles. 14 semantically-neutral
     dead-block permutations of the correct-routing source all gave 0/9, so
     the basin is stable per compare-section content, not per layout noise.
-12. **Viable next moves**: (a) shrink the compare section by ~10 atoms (the
-    section is at ~136 vs EQ's 130) and retry the routing fix inside that
-    smaller basin; (b) inspect `third_party/lmao/src/gen_init.c` to learn why
-    one cell's address value changes the init tail - a fix or a deterministic
-    mode upstream would unblock everything; (c) accept 8/12 and fix the
-    independent push-encoding defect (the true-push prints `02` instead of
-    `01` - check `stack_scratch`'s prior content at `diff_is_2` against EQ's).
+12. **The lottery-immune fix (measured, ready to implement)**: in a broken
+    basin every OUT pops Slot 1 - probed on the 0/9 image, all OUTs print
+    `59048` (the EOF/fill value of the cleared Slot 1) regardless of operand,
+    i.e. the slot choice is not data-dependent, it is purely the trampoline's
+    xlat2 cycle. Therefore the fix that does not depend on the basin at all:
+    **leave the compare result in BOTH slots.** The result push ends in
+    `add_push0_done`, which is exclusive to the compare path (the OUT-opcode
+    pop never passes through it - it goes `return_from_st1_4` ->
+    `ret_rst_st1_3` -> `reset_and_loop` directly), and its chain currently
+    RESETS Slot 1 to C1 (empty). Replacing that reset with a copy of Slot 0
+    (read Slot 0 with the double-`ROT C2 R_ROT` idiom into A, crazy it into
+    `stack_top_1`) costs roughly +8-10 atoms and makes the OUT print the
+    result whether it pops Slot 0 (working basin) or Slot 1 (broken basin).
+    Combined with the routing fix, this lands all 9 pairs.
+13. **Viable next moves**: (a) implement 12 (the copy in `add_push0_done`)
+    together with the `SUBROUTINE_FLAG6` repoint, accepting the atom cost and
+    cutting the ~10 atoms back from the EQ-verbatim push tail (`ROT C1 R_ROT`
+    in `diff_is_2` is the first candidate - it only pre-loads A for the
+    `stack_scratch` crazy); (b) shrink the compare section by ~10 atoms and
+    retry the routing fix alone inside that smaller basin; (c) inspect
+    `third_party/lmao/src/gen_init.c` for a deterministic mode; (d) accept
+    8/12 and fix the independent push-encoding defect (the true-push prints
+    `02` instead of `01`).
 
 ## Reproduce
 
