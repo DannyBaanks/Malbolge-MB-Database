@@ -97,14 +97,27 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
    needs to reach, with or without the repoint. The program region is densely
    packed (HALT 57435, OUT 57459, IN 57477, MOVD 57494, ROT 57497, NOP 57535,
    SLOT0 57588, SLOT1 57592, ...), so there is no free gap to pin into.
-9. **Viable next moves**: (a) compensate the init length: change a second
-   reference so the total init bytes stay constant while repointing SUB6
-   (candidate pairs must be searched by build-and-test; ~30 candidate
-   reference sites in the compare section); (b) shrink the init code itself
-   so the pinned flags fit - e.g. drop atoms from the compare section until
-   the pin at 57588/57592 builds, then repoint; (c) fix the independent
-   push-encoding defect (in this layout the true-push prints `02` instead of
-   `01`; check `stack_scratch`'s prior content at `diff_is_2` against EQ's).
+9. **It is not a layout shift after all** (measured, v25): the repointed
+   variant produces the SAME image size (57,517), the SAME trampoline
+   addresses (SLOT0 57588, SLOT1 57592, HALT 57435, OUT 57459) as the
+   working 8/12 variant. Only the init-code bytes inside LMAO's constant
+   generation differ (one cell's address value), yet the OUT's slot choice
+   flips for every vector including `(0,0)`, which never executes the
+   repointed line. Dropping the now-dead `OP1_FLAG` line at
+   `return_from_dec_op2_1` (-3 atoms, correct once both `dec#2` returns route
+   via the SUB6 line) does not help either. The breakage lives inside LMAO's
+   init-code generation, not in anything the HeLL source controls.
+10. **Viable next moves**: (a) stop routing the b-class `dec#2` through the
+    shared tail: give it a dedicated `dec#2` call site armed with a DIFFERENT
+    subroutine slot whose tail line can be repointed without touching the
+    value that breaks the OUT (candidate: split `lt_dec2` per class and let
+    the a-class `dec#2` keep SUB6, the b-class use SUB5 - both then land at
+    `return_from_dec_op2_1`, where the existing `OP1_FLAG` line already
+    routes correctly); (b) ask LMAO upstream / inspect `gen_init.c` to learn
+    why a single address value in one cell changes the OUT's trampoline
+    behaviour; (c) accept 8/12 and fix the independent push-encoding defect
+    (the true-push prints `02` instead of `01` - check `stack_scratch`'s
+    prior content at `diff_is_2` against EQ's).
 
 ## Reproduce
 
