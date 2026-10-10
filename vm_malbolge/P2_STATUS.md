@@ -30,6 +30,6 @@
 
 | item | obstacle |
 |---|---|
-| Full relational ordering (`CMP_LT`, `CMP_GT`) | Requires distinguishing sign of underflow rather than zero/non-zero delta. |
+| Full relational ordering (`CMP_LT`, `CMP_GT`) | Fork attempted in `mbir_cmp_lt.hell` / `mbir_cmp_lt_gen.py`; see `vm_malbolge/LT_STATUS.md` — builds within budget and the baselines hold, but the result byte is wrong (`NOT_DEMONSTRATED`). |
 | In-memory MBIR program loader integration | Combining multi-opcode ALU with Milestone 2 RAM loader in a unified image. |
 | Control Flow (`JMP`, `JZ`, `CALL`, `RET`) | Branching over an in-memory instruction stream driven by boolean ALU flags. |
