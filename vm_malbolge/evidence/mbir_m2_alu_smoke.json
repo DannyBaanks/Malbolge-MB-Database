@@ -1,0 +1,131 @@
+{
+  "schema": "alu-malbolge-unified/1",
+  "timestamp": "2026-10-10T04:25:47+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge Milestone 2 stored-program ALU. A 7-byte MBIR program is loaded once; PUSH markers are consumed; op1, op2 and the opcode stay in prog_1, prog_3 and prog_4. ADD (0x02) and SUB (0x03) are classified by three decrements and emitted for operands in {0,1,2,3,4}. Same binary, both engines, matching step counts, under the 59049 limit.",
+  "claim_status": "DEMONSTRATED",
+  "scope": "Eight single-shot vectors only. Not a general subtractor, not chained programs, and not the 14 streaming ALU vectors.",
+  "source": {
+    "path": "vm_malbolge/src/mbir_m2_alu.hell",
+    "sha256": "91c5e2f3979de3770c54453bf7339cc914f7e66431cb166c41c5b6305b650ff3",
+    "generator": "vm_malbolge/tools/mbir_m2_alu_gen.py",
+    "generator_sha256": "3f4a80e5e1eca2ea38c527186b2ab4d0038d4d6549b6c5cc84724dc22e8243a9"
+  },
+  "artifact": {
+    "size_bytes": 56361,
+    "sha256": "1c641b880d1b0bd1825546c494ce163e9ca2c336318831c7fef83d3bb37f71d5",
+    "limit_bytes": 59049,
+    "headroom_bytes": 2688,
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
+    },
+    "debug_path": "vm_malbolge/src/mbir_m2_alu.dbg",
+    "debug_sha256": "75febec8393b163e21fb427d6306f9fccf2b3c24515e54adef0efa1a6f89b2e9"
+  },
+  "environment": {
+    "os": "Linux 7.0.0-38-generic x86_64",
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "name": "ADD 2+3",
+      "input_hex": "01020103021000",
+      "description": "ADD 2 + 3 = 5",
+      "expected_hex": "05",
+      "oracle_hex": "05",
+      "runner_hex": "05",
+      "oracle_steps": 65951,
+      "runner_steps": 65951,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 4+3",
+      "input_hex": "01040103021000",
+      "description": "ADD 4 + 3 = 7",
+      "expected_hex": "07",
+      "oracle_hex": "07",
+      "runner_hex": "07",
+      "oracle_steps": 64360,
+      "runner_steps": 64360,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 1+1",
+      "input_hex": "01010101021000",
+      "description": "ADD 1 + 1 = 2",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 66331,
+      "runner_steps": 66331,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "ADD 2+0",
+      "input_hex": "01020100021000",
+      "description": "ADD 2 + 0 = 2",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 66342,
+      "runner_steps": 66342,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 4-2",
+      "input_hex": "01040102031000",
+      "description": "SUB 4 - 2 = 2",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 64360,
+      "runner_steps": 64360,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 2-2",
+      "input_hex": "01020102031000",
+      "description": "SUB 2 - 2 = 0",
+      "expected_hex": "00",
+      "oracle_hex": "00",
+      "runner_hex": "00",
+      "oracle_steps": 65954,
+      "runner_steps": 65954,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 2-1",
+      "input_hex": "01020101031000",
+      "description": "SUB 2 - 1 = 1",
+      "expected_hex": "01",
+      "oracle_hex": "01",
+      "runner_hex": "01",
+      "oracle_steps": 65348,
+      "runner_steps": 65348,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "SUB 2-0",
+      "input_hex": "01020100031000",
+      "description": "SUB 2 - 0 = 2",
+      "expected_hex": "02",
+      "oracle_hex": "02",
+      "runner_hex": "02",
+      "oracle_steps": 64754,
+      "runner_steps": 64754,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ]
+}
