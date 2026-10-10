@@ -168,7 +168,7 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 1. **Control de Flujo Completo en Malbolge VM**
    - Las cinco formas fijas de JMP, JZ y CALL ya están en el Hito M2 CF (5/5, 55,819 bytes). Sigue faltando un contador de programa general, usar el destino del JMP como selector, y una pila de llamadas de más de una trama.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
-   - El Hito M2 ALU ya cubre un solo `ADD` o `SUB` cargado en RAM, con operandos en `{0,1,2,3,4}` (8/8, 56,361 bytes). Sigue faltando una sola imagen que cargue el programa y ejecute la ALU de 14 vectores (con cadenas) y el `CMP_EQ` del Hito P2, bajo el límite de 59,049. Esa imagen M2 ALU ya rechazó 15 celdas extra en el presupuesto de inicialización.
+   - Sigue sin existir una sola imagen que cargue el programa en RAM y además ejecute la ALU de 14 vectores y el `CMP_EQ`. Una sonda sobre `mbir_alu.hell` (12 banderas y 8 celdas de scratch) no ensambló: el inicializador se quedó sin sitio en la celda 57855. Quince `C1` sueltos sí entraron. Detalle: [`vm_malbolge/M2_FULL_STATUS.md`](vm_malbolge/M2_FULL_STATUS.md).
 3. **Pila Dinámica de Profundidad > 2**
    - Para expresiones complejas que requieran evaluar árboles sintácticos de mayor profundidad o direccionamiento indexado.
 4. **Operadores de Orden Relacional (`CMP_LT`, `CMP_GT`)**
