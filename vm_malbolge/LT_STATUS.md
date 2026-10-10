@@ -20,22 +20,67 @@ encoding does not reproduce on the 9 ordered pairs of the domain).
 | VM core intact on the fork | Baselines 1-3 pass on BOTH engines with identical steps: `01 41 10 00` → `41` @67,337; `01 41 01 42 10 10 00` → `42 41` @74,374; `00` → empty @60,294 |
 | Compare flow reaches its decision | Oracle step trace: `dispatch_02 → reset → add_val_clean (pass 1, pop b) → dec#1 → lt_dec2 → dec#2 → lt_dec2_ret → lt_b_ge2 → reset → lt_a_pop (pass 2, pop a) → lt_p2_dec1 → dec#1 → lt_a_dec1_ret → lt_dec2 → dec#2 → lt_dec2_ret → lt_a_dec2_ret → lt_true/lt_false → diff_is_2 → result push → add_push0_done` for every b-class branch |
 
+
 ## What is NOT demonstrated
 
-| item | obstacle |
+| item | evidence |
 |---|---|
-| `CMP_LT` result on the 9 ordered pairs | The decision path runs and the push chain executes, but the pushed byte is not `01`/`00`: observed `54`/`55`, `a8`, empty output, or an EOF OUT-loop depending on the layout revision |
-| Engine parity on CMP vectors | In some revisions the oracle and the C runner diverge (the flow consumes one byte too many and hits EOF, where the two engines disagree on the EOF value: oracle `-1` vs runner `59048`) |
-| `2 < 4` and any value ≥ 3 | Out of the claimed domain {0,1,2} by design (values ≥ 3 share the class of 2) |
+| `CMP_LT` on the 9 ordered pairs | **8/12 pass** (all 6 false-valued pairs, all 3 baselines, perfect oracle/runner parity on every vector including the failures). The 3 remaining failures share one root cause below. |
+| Observed failure matrix | `(0,1)->00` (want `01`), `(0,2)->02`, `(1,2)->02` (want `01`), `(2,2)->02` (want `00`). Every `b>=1` case pushes without running pass 2. |
+| `2 < 4` and any value >= 3 | Out of the claimed domain {0,1,2} by design. |
 
-## Root-cause notes for the next attempt
+## Root cause (isolated, one line from fixed)
 
-1. **The HeLL gate model was established by controlled probes** (`/tmp/opencode/gate_probe*.hell`): `R_X` arms gate X; `X target R_X` patches X's slot to `target` and branches to it iff armed; a firing check consumes the arm; arms survive arbitrary crazy-op chains. This is proven, not inferred.
-2. **The decrement subroutine's return routing is layout-sensitive.** With EQ's layout, a `SUBROUTINE_FLAG6`-armed decrement returns via `return_from_dec_op2_2`; in the LT fork the same source returns via `return_from_dec_op2_1` (a stale `SUBROUTINE_FLAG5` arm fires first). The robust dispatcher used here (OP1 = dec#2-of-either-class, `PUSH_FLAG2` = a-dec#1, `PUSH_FLAG4` = pass-2 marker, checked at both return labels) is immune to which label fires.
-3. **Two lines that look vestigial are load-bearing** in the result push: `R_MOVD` at `lt_true`/`lt_false` and at `add_push_common`. Dropping them for size changes the pushed byte.
-4. **The `PUSH_FLAG5`-as-marker idea is unusable twice over**: its entry is first in `stack_scratch`'s dispatch block (a leftover arm hijacks the result push), and a "clear the marker with a dummy check at the push entry" fix patches PUSH5's slot into `diff_is_2`'s middle, which the later `add_push_common` push then also jumps to (silence, no output at all).
-5. **The marker must live on a virgin gate.** Probed on the EQ trace: after `add_push0_done` arms `SLOT1_FLAG`, EQ's OUT consumes it with no `SLOT1_FLAG` check in between — the "armed" state is the trampoline's xlat2 cycle position, which advances per execution. The fork's marker adds executions on `SLOT1_FLAG` (one dummy clear at the pass-1 entry, one arm, one check), shifting the cycle so the post-CMP OUT pops the cleared Slot 1 instead of Slot 0 and prints garbage (`a8`) in an EOF loop. A dedicated flag (2 cells + init, `LT_B1`) fixes the semantics but does not fit: the compare section may not exceed roughly +10 atoms over EQ's (130 atoms); the working build sits at 57,511 bytes / 1,538 headroom with the dispatcher at ~136 atoms.
-6. Remaining suspects for the wrong byte, in order: (a) the pushed value depends on `stack_scratch`'s prior content, which the fork's flow leaves in a different state than EQ's at `diff_is_2`; (b) the EQ pass-2 chain's per-stage OP1 re-patch (`return_from_dec_op1_1/_2` arming OP1 before each decrement) has no exact equivalent in the 2-decrement LT chain; (c) one byte of input is consumed by a leak into the PUSH-opcode path after the compare.
+The decrement tail's `SUBROUTINE_FLAG6` line is pointed at `lt_false` (a leftover
+from an earlier revision). The b-class `dec#2` is armed with `SUBROUTINE_FLAG6`,
+so its return lands on that line and pushes the boolean immediately, skipping
+the pass-2 transition entirely. Traced and confirmed: after `lt_dec2`'s
+`dec#2`, the tail's SUB6 line fires and control reaches `lt_false` at step
+~70,952 without any `reset_and_loop` between. The a-class `dec#2` (also armed
+SUB6 by the shared `lt_dec2`) returns to the same place, which is why every
+`b>=1` vector skips pass 2.
+
+**Why the obvious fix does not land:** repointing that line to `lt_dec2_ret`
+(the shared dispatcher that already separates pass 1 from pass 2 via
+`PUSH_FLAG4`) is semantically correct, but it changes an ADDRESS VALUE in the
+compiled image. LMAO's init-code generation is value-dependent (the
+data-module crazy chain for a constant has a value-dependent length), so the
+init code grows, the whole program re-lays-out, and the xlat2 cycle of the
+`SLOT1_FLAG` trampoline that the post-push OUT depends on shifts: the OUT then
+pops the cleared Slot 1 instead of Slot 0 and prints `a8` in an EOF loop.
+Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
+`(0,0)` which was passing.
+
+## Established facts for the next attempt
+
+1. **Single-pass is impossible**: exhaustive search over read orders x op
+   sequences (crz with C0/C1/C2/C20/C21, dec) x 3-dec signatures found zero
+   programs separating `a<b`, because `(0,0)` and `(0,1)` are
+   informationally identical after the standard pop idiom (both give
+   value=0, value_C1=29524).
+2. **The two-pass design with a marker is necessary and works** up to the
+   routing bug above.
+3. **The marker must be a virgin gate.** `SLOT1_FLAG` is consumed by the
+   post-push OUT path; extra executions on it (dummy clears, arms, checks)
+   shift its xlat2 cycle and the OUT starts popping Slot 1. The dedicated
+   `LT_B1` flag (added at 2 cells) fixes this and is what the current
+   revision uses.
+4. **The `OP1_FLAG` line at the head of `return_from_dec_op2_1` is
+   load-bearing**: removing it makes the b-class `dec#1` take the `lt_dec2`
+   branch even when `b==0` (traced: the NO_MORE_CARRY check fires after
+   `dec(0)`), which loops forever.
+5. **NO_MORE_CARRY polarity confirmed on EQ**: armed iff the pre-decrement
+   value was >= 1 (no borrow). EQ(2,0) falls through `NO_MORE_CARRY_FLAG
+   op2_nonzero` straight to `diff_is_2`.
+6. **The memory budget is knife-edged**: the compare section may not exceed
+   roughly +10 atoms over EQ's (130); 57,517 bytes with 1,532 headroom is the
+   current best, and a single reference-value change can push the init code
+   over.
+7. **Two viable next moves**: (a) find a compensating address change that
+   keeps the init-code size constant while repointing the SUB6 line; or (b)
+   give `return_from_dec_op2_2` a 1-line block (`MOVED lt_false`) and point
+   the SUB6 line there - the dispatcher then handles it - accepting that this
+   also shifts the layout and re-verifying the OUT behaviour each time.
 
 ## Reproduce
 
@@ -44,9 +89,9 @@ python3 vm_malbolge/tools/mbir_cmp_lt_gen.py          # writes .hell, .mb, .dbg
 printf '\x01\x01\x01\x02\x02\x10\x00' | ./runners/malbolge-original/malbolge vm_malbolge/src/mbir_cmp_lt.mb | xxd
 ```
 
-## Artifact hashes (this WIP revision)
+## Artifact hashes (this revision)
 
-- `vm_malbolge/tools/mbir_cmp_lt_gen.py` sha256 `2811083431de5dd3419f3e57de8d4155b7937a4b66d012d1c5ebda698ef6457a`
-- `vm_malbolge/src/mbir_cmp_lt.hell` sha256 `e99c937ac2eb57c8d77c6461d814a7efa2a4df2f7d5e758ed0f49161866866ef`
-- `vm_malbolge/src/mbir_cmp_lt.mb` sha256 `6f2e519c0f604fda239d296be82fca7e02d73650cd63ff68d98aaea75562e832`
-- `vm_malbolge/src/mbir_cmp_lt.dbg` sha256 `b084a55edcffcc8d716147f48a1d6503483e299da9b1d81cedecbe9ae4742435`
+- `vm_malbolge/tools/mbir_cmp_lt_gen.py` sha256 `bb663dcf773528afc310f42153da4493dc5ba279ba5b684dadc6045cda4703ea`
+- `vm_malbolge/src/mbir_cmp_lt.hell` sha256 `4839447fb38a45be75f2c0c871ef182672404386736ce531d2eae25d6544eea5`
+- `vm_malbolge/src/mbir_cmp_lt.mb` sha256 `df3fbfc4b358a16529dc7539f719850b9675b9ddf1665f29425b3bdc98f7bf52`
+- `vm_malbolge/src/mbir_cmp_lt.dbg` sha256 `d21bd14d60e3cc1cd5bb2335defe485b76bf74788cf87c58373c359a9da9cec9`

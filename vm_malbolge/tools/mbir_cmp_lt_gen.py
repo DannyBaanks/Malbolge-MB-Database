@@ -98,6 +98,10 @@ SUBROUTINE_FLAG6:
 	Nop/MovD
 	Jmp
 
+LT_B1:
+	Nop/MovD
+	Jmp
+
 SUBROUTINE_FLAG3:
 	Nop/MovD
 	Jmp
@@ -394,14 +398,11 @@ return_from_st1_2:
 	MOVED reset_and_loop
 }{
 dispatch_02:
-	R_MOVED
 	R_CLEAN_FLAG
 	MOVED reset_and_loop
 }{
 add_val_clean:
 	OP1_FLAG lt_a_pop R_OP1_FLAG
-	SLOT1_FLAG lt_push_b R_SLOT1_FLAG
-lt_push_b:
 	R_ADD_FLAG
 	ROT C2 R_ROT
 	R_PUSH_FLAG3
@@ -436,12 +437,13 @@ lt_dec2:
 lt_dec2_ret:
 	PUSH_FLAG4 lt_a_dec2_ret R_PUSH_FLAG4
 	NO_MORE_CARRY_FLAG lt_b_ge2
-	R_SLOT1_FLAG
-	R_OP1_FLAG
-	R_CLEAN_FLAG
-	MOVED reset_and_loop
+	R_LT_B1
+	MOVED lt_pass2
 }{
 lt_b_ge2:
+	MOVED lt_pass2
+}{
+lt_pass2:
 	R_OP1_FLAG
 	R_CLEAN_FLAG
 	MOVED reset_and_loop
@@ -470,7 +472,7 @@ lt_a_dec1_ret:
 }{
 lt_a_dec2_ret:
 	NO_MORE_CARRY_FLAG lt_false
-	SLOT1_FLAG lt_false R_SLOT1_FLAG
+	LT_B1 lt_false R_LT_B1
 	MOVED lt_true
 }{
 lt_true:
