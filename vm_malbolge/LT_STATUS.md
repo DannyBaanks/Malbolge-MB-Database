@@ -107,17 +107,35 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
    `return_from_dec_op2_1` (-3 atoms, correct once both `dec#2` returns route
    via the SUB6 line) does not help either. The breakage lives inside LMAO's
    init-code generation, not in anything the HeLL source controls.
-10. **Viable next moves**: (a) stop routing the b-class `dec#2` through the
-    shared tail: give it a dedicated `dec#2` call site armed with a DIFFERENT
-    subroutine slot whose tail line can be repointed without touching the
-    value that breaks the OUT (candidate: split `lt_dec2` per class and let
-    the a-class `dec#2` keep SUB6, the b-class use SUB5 - both then land at
-    `return_from_dec_op2_1`, where the existing `OP1_FLAG` line already
-    routes correctly); (b) ask LMAO upstream / inspect `gen_init.c` to learn
-    why a single address value in one cell changes the OUT's trampoline
-    behaviour; (c) accept 8/12 and fix the independent push-encoding defect
-    (the true-push prints `02` instead of `01` - check `stack_scratch`'s
-    prior content at `diff_is_2` against EQ's).
+10. **Both `dec#2`-via-`SUB5` variants hit a second, different bug** (v26,
+    v27, traced): routing both `dec#2` returns through
+    `return_from_dec_op2_1` (where the existing `OP1_FLAG` line routes them
+    correctly - verified in the trace at step ~71,042) makes the b-class
+    `dec#1` take the `lt_dec2` branch even when `b == 0`: the
+    `NO_MORE_CARRY_FLAG` check fires after `dec(0)`, which it must not (the
+    polarity is confirmed on EQ: armed iff the pre-decrement value was >= 1).
+    Splitting `lt_dec2` per class costs +6 atoms and does not fit the memory
+    budget (build fails). Combined with finding 9, the practical conclusion
+    is that **the routing cannot be moved inside this image at all**: any
+    reference/value change in the compare section lands in a different LMAO
+    init-code basin where either the OUT's slot choice or the
+    `NO_MORE_CARRY` semantics flips.
+11. **The byte-level mechanism is pinned down**: comparing a working and a
+    broken image of the same length shows the differing bytes are all in
+    57416-57512 - the tail of LMAO's init code, from which the interpreter's
+    crazy-fill derives the initial values of every cell after the file's end,
+    including the flag trampolines (`SLOT0_FLAG` 57588, `SLOT1_FLAG` 57592).
+    Trampoline opcodes are position-and-value dependent, so a different init
+    tail changes the trampolines' xlat2 cycles. 14 semantically-neutral
+    dead-block permutations of the correct-routing source all gave 0/9, so
+    the basin is stable per compare-section content, not per layout noise.
+12. **Viable next moves**: (a) shrink the compare section by ~10 atoms (the
+    section is at ~136 vs EQ's 130) and retry the routing fix inside that
+    smaller basin; (b) inspect `third_party/lmao/src/gen_init.c` to learn why
+    one cell's address value changes the init tail - a fix or a deterministic
+    mode upstream would unblock everything; (c) accept 8/12 and fix the
+    independent push-encoding defect (the true-push prints `02` instead of
+    `01` - check `stack_scratch`'s prior content at `diff_is_2` against EQ's).
 
 ## Reproduce
 
