@@ -76,18 +76,20 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
    roughly +10 atoms over EQ's (130); 57,517 bytes with 1,532 headroom is the
    current best, and a single reference-value change can push the init code
    over.
-7. **Decisive negative result (v19, v22, v23, all measured)**: the routing
+7. **Decisive negative result (measured 3 builds per variant)**: the routing
    fix cannot be a repoint. Repointing the tail's `SUBROUTINE_FLAG6` line to
    the dispatcher (`lt_dec2_ret`) - semantically correct, ZERO atom change -
-   still breaks every CMP vector (the OUT pops the cleared Slot 1 and loops on
-   EOF printing `a8`), and the LIFO baseline regresses to `42` (its second OUT
-   stops popping Slot 0). Cause: LMAO's init code is **value-dependent** (the
-   data-module constant chain for an address has a value-dependent length), so
-   changing one referenced address re-lays-out the image, and the xlat2 cycle
-   of the `SLOT1_FLAG` trampoline - which decides slot0-vs-slot1 in every OUT
-   - shifts with it. Same for adding the router line inside `lt_false`
-   (build fails on init-code overlap). The current layout (57,517 bytes,
-   1,532 headroom) is a working fixed point.
+   breaks EVERY CMP vector including `(0,0)`, which never executes that line:
+   all nine print `a8` in an EOF loop, and the LIFO baseline's second OUT
+   stops popping Slot 0 (`42` instead of `4241`). Repeating the build three
+   times gives the same 0/9, so it is not layout lottery. Cause: LMAO's init
+   code is **byte-determinative**: the data-module constant chain that writes
+   a cell's initial value has a value-dependent length, and the trampoline
+   cells' effective opcodes are position-dependent (`(mem[c]+c) % 94`), so
+   changing one referenced address changes the init bytes, the trampoline
+   xlat2 cycles shift, and `SLOT1_FLAG` - which decides slot0-vs-slot1 in
+   every OUT - flips. Adding the router line inside `lt_false` instead fails
+   the build outright (init-code overlap).
 8. **Viable next moves**: (a) compensate the init length: change a second
    reference so the total init bytes stay constant while repointing SUB6
    (candidate pairs must be searched by build-and-test; ~30 candidate
