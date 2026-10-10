@@ -133,6 +133,13 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_m2_loader.hell`](file:/
 - **Tamaño de Binario y Eficiencia**: **40,309 bytes** (< 59,049 con un margen holgado de **18,740 bytes**).
 - **Paridad 4/4 PASS**: 100% coincidencia bit a bit ciclo por ciclo frente al runner C nativo y el oráculo Python ([`vm_malbolge/evidence/mbir_m2_loader_smoke.json`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/mbir_m2_loader_smoke.json), [`vm_malbolge/M2_LOADER_STATUS.md`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/M2_LOADER_STATUS.md)).
 
+### 6b. ALU de programa almacenado (Hito M2 ALU)
+Una imagen aparte carga un programa de 7 bytes y ejecuta un solo `ADD` (0x02) o `SUB` (0x03) con operandos en `{0,1,2,3,4}` ([`vm_malbolge/src/mbir_m2_alu.hell`](vm_malbolge/src/mbir_m2_alu.hell), [`vm_malbolge/tools/mbir_m2_alu_gen.py`](vm_malbolge/tools/mbir_m2_alu_gen.py)):
+- **8/8 PASS** en el oráculo Python y el runner C, con el mismo número de pasos y el byte crudo esperado.
+- **Tamaño**: 56,361 bytes (margen 2,688 bajo 59,049).
+- **Alcance**: un solo tiro. No es un restador general, no encadena operaciones y no cubre los 14 vectores de la ALU por STDIN.
+- Evidencia: [`vm_malbolge/evidence/mbir_m2_alu_smoke.json`](vm_malbolge/evidence/mbir_m2_alu_smoke.json), [`vm_malbolge/M2_ALU_STATUS.md`](vm_malbolge/M2_ALU_STATUS.md).
+
 ### 7. Tabla de Clasificación de los 18 Opcodes de MBIR
 - Generador mecánico ([`vm_malbolge/tools/mbir_dispatch_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_dispatch_gen.py)) que produce ensamblador HeLL para clasificar los 18 opcodes (`0x00`..`0x11`) en Malbolge puro usando cadenas de decremento digital root y sitios `SUBROUTINE_FLAGn` con paridad 21/21 verificada.
 
@@ -152,7 +159,7 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_m2_loader.hell`](file:/
 1. **Control de Flujo Completo en Malbolge VM**
    - Saltos condicionales e incondicionales (`JMP`, `JZ`, `JNZ`) y llamadas a subrutinas (`CALL`, `RET`) operando sobre el array de programa en RAM ya demostrado en el Hito M2.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
-   - Unificar el cargador a RAM desacoplado por PC (M2) con la ALU unificada (P0/P1) y el evaluador booleano (P2) en una sola imagen de VM integrada bajo el estricto límite de 59,049 palabras de Malbolge Classic.
+   - El Hito M2 ALU ya cubre un solo `ADD` o `SUB` cargado en RAM, con operandos en `{0,1,2,3,4}` (8/8, 56,361 bytes). Sigue faltando una sola imagen que cargue el programa y ejecute la ALU de 14 vectores (con cadenas) y el `CMP_EQ` del Hito P2, bajo el límite de 59,049. Esa imagen M2 ALU ya rechazó 15 celdas extra en el presupuesto de inicialización.
 3. **Pila Dinámica de Profundidad > 2**
    - Para expresiones complejas que requieran evaluar árboles sintácticos de mayor profundidad o direccionamiento indexado.
 4. **Operadores de Orden Relacional (`CMP_LT`, `CMP_GT`)**
@@ -195,6 +202,7 @@ MALBOLGE-MB-DATABASE/
 │   ├── tools/             ← Generadores de código HeLL y scripts de prueba diferencial
 │   ├── evidence/          ← Manifiestos JSON con evidencia firmada y hashes SHA-256
 │   ├── M2_LOADER_STATUS.md ← Bitácora técnica y paridad del Hito M2 (Stored-Program Loader & PC)
+│   ├── M2_ALU_STATUS.md   ← Bitácora del ALU de programa almacenado (8/8, un solo tiro)
 │   ├── ALU_STATUS.md      ← Bitácora técnica y paridad de la ALU Unificada (ADD + SUB)
 │   ├── P2_STATUS.md       ← Bitácora técnica y paridad del Hito P2 (CMP_EQ)
 │   ├── P1_STATUS.md       ← Bitácora técnica y paridad del Hito P1 (SUB)
