@@ -76,11 +76,26 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
    roughly +10 atoms over EQ's (130); 57,517 bytes with 1,532 headroom is the
    current best, and a single reference-value change can push the init code
    over.
-7. **Two viable next moves**: (a) find a compensating address change that
-   keeps the init-code size constant while repointing the SUB6 line; or (b)
-   give `return_from_dec_op2_2` a 1-line block (`MOVED lt_false`) and point
-   the SUB6 line there - the dispatcher then handles it - accepting that this
-   also shifts the layout and re-verifying the OUT behaviour each time.
+7. **Decisive negative result (v19, v22, v23, all measured)**: the routing
+   fix cannot be a repoint. Repointing the tail's `SUBROUTINE_FLAG6` line to
+   the dispatcher (`lt_dec2_ret`) - semantically correct, ZERO atom change -
+   still breaks every CMP vector (the OUT pops the cleared Slot 1 and loops on
+   EOF printing `a8`), and the LIFO baseline regresses to `42` (its second OUT
+   stops popping Slot 0). Cause: LMAO's init code is **value-dependent** (the
+   data-module constant chain for an address has a value-dependent length), so
+   changing one referenced address re-lays-out the image, and the xlat2 cycle
+   of the `SLOT1_FLAG` trampoline - which decides slot0-vs-slot1 in every OUT
+   - shifts with it. Same for adding the router line inside `lt_false`
+   (build fails on init-code overlap). The current layout (57,517 bytes,
+   1,532 headroom) is a working fixed point.
+8. **Viable next moves**: (a) compensate the init length: change a second
+   reference so the total init bytes stay constant while repointing SUB6
+   (candidate pairs must be searched by build-and-test; ~30 candidate
+   reference sites in the compare section); (b) pin the flag placement with
+   `.OFFSET` directives so the trampolines stop moving; (c) accept 8/12 and
+   fix only the remaining push-encoding separately: in this layout the
+   true-push prints `02` instead of `01` (check `stack_scratch`'s prior
+   content at `diff_is_2` against EQ's), which is an independent defect.
 
 ## Reproduce
 
