@@ -50,7 +50,7 @@ NOT_DEMONSTRATED
 | **Contrato MBIR v0** | `DEMONSTRATED` | 18 opcodes congelados | `docs/MBIR_CONTRACT.md`, 23/23 tests `mbir/tests/test_mbir.py` |
 | **VM de Referencia MBIR (Python)** | `DEMONSTRATED` | Soporte fib(6), llamadas, saltos, I/O | `mbir/mbir_ref.py`, 28/28 tests `mbir/tests/test_mbir_ref.py` |
 | **Oráculo Nativo MBIR (Zig)** | `DEMONSTRATED` | Ejecución MBIR nativa y oráculo diferencial | `mbir/zig/` (`mbir-zig`) |
-| **Frontend Python (MalPy / MBIR)** | `FRONTEND_DEMONSTRATED` | P3 (subconjunto Python → MBIR en la VM de referencia del host). P2 sigue siendo el bytecode MalPy viejo. | `python/src/p3_compiler.py`, `python/evidence/P3/`, suite en `python/tests/` |
+| **Frontend Python (MalPy / MBIR)** | `FRONTEND_DEMONSTRATED` | P5 (recursión directa → `CALL`/`RETURN` en la VM de referencia del host). | `python/src/p5_compiler.py`, `python/evidence/P5/`, suite en `python/tests/` |
 | **Toolchain Nativo Linux** | `WORKING` | Ensamblado y ejecución 100% nativa sin Wine | LMAO v0.6.0 (`third_party/lmao/bin/lmao`), Runner C (`runners/malbolge-original/malbolge`) |
 | **Malbolge VM Runtime (A04)** | `DEMONSTRATED` | **Bucle de ejecución y pila de 1 profundidad** | `vm_malbolge/src/mbir_a04_gate.hell`, `vm_malbolge/evidence/mbir_a04_gate_smoke.json` (7/7 PASS) |
 | **Malbolge VM Bucle Multi-Ciclo (A05)** | `DEMONSTRATED` | **Ejecución secuencial arbitraria sin corrupción ('AB', 'ABC', 'hello')** | `vm_malbolge/src/mbir_a05_multicycle.hell`, `vm_malbolge/evidence/mbir_a05_multicycle_smoke.json` (8/8 PASS) |
@@ -167,9 +167,27 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 - Asignación a un nombre, `print` de una expresión, `+` `-` `*` con vuelta en 256, una comparación (`==`, `<`, `>`), `if` / `else` / `elif` y `while`.
 - `print` emite el byte crudo. `print(2 + 3)` da `05`. `print(200 + 100)` da `44`. `print(1 - 2)` da `255`.
 - `if 5 > 3` deja en el blob `CMP_GT`, `JUMP_IF_FALSE` y los bytes de los dos brazos. El `while` que imprime 3, 2 y 1 tiene una sola `OUT_BYTE` y para a los 40 pasos.
-- **15/15 HALT** en la VM de referencia. El harness de la pista queda en **50/50**.
+- **15/15 HALT** en la VM de referencia. Esos 15 casos siguen dentro del harness.
 - Esto corre en el host. No es un intérprete dentro de Malbolge, y no existe `python.mb`.
 - Evidencia: [`python/evidence/P3/run_p3_compiler.json`](python/evidence/P3/run_p3_compiler.json), [`python/STATUS.md`](python/STATUS.md).
+
+### 11. Frontend Python P4 (funciones, en el host)
+[`python/src/p4_compiler.py`](python/src/p4_compiler.py) añade `def`, la llamada y `return` encima de P3. El cuerpo es un marco nuevo: los parámetros son los locales 0..n-1 y `RETURN` deja el valor en la pila. Los cuerpos van antes del módulo porque la dirección de `CALL` es un byte. Una llamada directa a sí misma se rechaza.
+
+- `print(add(2, 3))` para en 10 pasos con el byte `05`. El blob es `JUMP`, dos `LOAD_LOCAL`, `ADD`, `RETURN`, `PUSH 2`, `PUSH 3`, `CALL`, `OUT_BYTE`, `HALT`.
+- Dos llamadas comparten ese único `ADD`.
+- **12/12 HALT** en la VM de referencia. Esos 12 casos siguen dentro del harness.
+- Esto corre en el host. La recursión es P5. No existe `python.mb`.
+- Evidencia: [`python/evidence/P4/run_p4_compiler.json`](python/evidence/P4/run_p4_compiler.json), [`python/STATUS.md`](python/STATUS.md).
+
+### 12. Frontend Python P5 (recursión, en el host)
+[`python/src/p5_compiler.py`](python/src/p5_compiler.py) permite que una función se llame a sí misma. Cada llamada tiene su marco. P4 sigue rechazando esa llamada.
+
+- `print(fib(6))` para en 251 pasos con el byte `08`. El blob tiene tres `CALL` y un `ADD`. El 8 no está empujado.
+- `fact(5)` conserva el `MUL` y saca el byte 120. `down(3)` emite `03 02 01 00` con un solo `OUT_BYTE` dentro de la función.
+- **8/8 HALT** en la VM de referencia. El harness de la pista queda en **85/85**.
+- Esto corre en el host. No hay lexer dentro de Malbolge, ni `python.mb`.
+- Evidencia: [`python/evidence/P5/run_p5_compiler.json`](python/evidence/P5/run_p5_compiler.json), [`python/STATUS.md`](python/STATUS.md).
 
 ---
 
@@ -185,7 +203,7 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
    - Clasificación ternaria del signo de subdesbordamiento para comparaciones por desigualdad estricta.
 5. **Frontends que todavía no existen**
    - Pistas `swift/`, `rust/`, `java/`, `c/` marcadas como `NOT_STARTED`.
-   - En Python siguen sin empezar P4 (funciones), P5 (recursión), P6 (lexer en Malbolge), P7 (parser) y P8 (`python.mb`). El corte P3 está en el host; ver la sección 10.
+   - En Python, P5 ya baja la recursión directa a MBIR en el host (sección 12). P6, el lexer dentro de Malbolge, se probó y no quedó demostrado: al volver a `ENTRY` el clasificador de un byte no emite el segundo token, y el runner C no coincide con el oráculo ([`python/P6_STATUS.md`](python/P6_STATUS.md)). P7 (parser) y P8 (`python.mb`) no se empezaron.
 6. **Conexión Operacional de los 13 Substratos -bolge**
    - Aunque los 13 substratos están indexados y referenciados, falta conectar adaptadores backend de emisión automática para cada uno.
 
@@ -195,7 +213,7 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 
 | Lenguaje | Archivo Target | Variante | Estado | Hito más alto | Evidencia |
 |---|---|---|---|---|---|
-| **Python** | `python.mb` | Unshackled (primario) | `REFERENCE_FRONTEND` | P3 (frontend en el host) | `python/STATUS.md`, `python/evidence/P3/` |
+| **Python** | `python.mb` | Unshackled (primario) | `REFERENCE_FRONTEND` | P5 (recursión en el host) | `python/STATUS.md`, `python/evidence/P5/` |
 | **Swift** | `swift.mb` | Unshackled (primario) | `NOT_STARTED` | — | — |
 | **Rust** | `rust.mb` | Unshackled (primario) | `NOT_STARTED` | — | — |
 | **Java** | `java.mb` | Unshackled (primario) | `NOT_STARTED` | — | — |
@@ -228,7 +246,7 @@ MALBOLGE-MB-DATABASE/
 │   ├── P0_STATUS.md       ← Bitácora técnica y paridad del Hito P0 (ADD)
 │   ├── A05_STATUS.md      ← Bitácora técnica de la Pila LIFO A05b y bucle A05
 │   └── A04_STATUS.md      ← Bitácora técnica y registro de paridad del Hito A04
-└── python/                ← Pista Python. P3: src/p3_compiler.py y evidence/P3/
+└── python/                ← Pista Python. P5: src/p5_compiler.py y evidence/P5/
 ```
 
 ---
@@ -303,10 +321,12 @@ python3 -m unittest discover -s mbir/tests
 ./mbir/zig/zig-out/bin/mbir-zig --help
 ```
 
-### 7. Verificar el frontend Python P3 (host)
-El compilador escribe de nuevo `python/evidence/P3/run_p3_compiler.json`. El harness cubre P1, P2 y P3.
+### 7. Verificar los frontends Python P3, P4 y P5 (host)
+Cada compilador escribe de nuevo su JSON de evidencia. El harness cubre P1, P2, P3, P4 y P5.
 
 ```bash
 python3 python/src/p3_compiler.py
+python3 python/src/p4_compiler.py
+python3 python/src/p5_compiler.py
 python3 python/tests/test_harness.py
 ```

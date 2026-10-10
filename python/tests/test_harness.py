@@ -221,6 +221,127 @@ check("P3 rejects a float", raises_syntax("print(1.5)"))
 check("P3 rejects eval", raises_syntax('print(eval("1+2"))'))
 check("P3 rejects while-else", raises_syntax("while 0:\n    pass\nelse:\n    print(1)\n"))
 
+# --- P4 Compiler Tests ---
+print("\n[P4] Python functions to MBIR")
+from p4_compiler import CASES as P4_CASES, P4Compiler
+from p3_compiler import P3Compiler as P3Again
+
+p4 = P4Compiler()
+
+def p4_ops(blob):
+    return MBIR.decode(blob)
+
+for source, expected, desc in P4_CASES:
+    blob = p4.compile(source)
+    result = run_mbir(blob)
+    observed = result["output"].encode("latin-1")
+    check(
+        f"P4 {desc}",
+        observed == expected and result["status"] == "HALTED" and result["stack"] == [],
+        f"got {observed.hex()} status={result['status']} stack={result['stack']}",
+    )
+
+spec_blob = p4.compile("def add(a, b):\n    return a + b\nprint(add(2, 3))")
+spec_ops = p4_ops(spec_blob)
+spec_names = [item[0] for item in spec_ops]
+spec_pushed = [item[1] for item in spec_ops if item[0] == "PUSH_CONST"]
+check(
+    "P4 add is a real call, not a folded byte",
+    spec_names.count("CALL") == 1
+    and spec_names.count("RETURN") == 1
+    and spec_names.count("ADD") == 1
+    and spec_pushed == [2, 3]
+    and run_mbir(spec_blob)["output_bytes"] == [5],
+)
+
+two_blob = p4.compile("def add(a, b):\n    return a + b\nprint(add(2, 3))\nprint(add(10, 20))")
+two_names = [item[0] for item in p4_ops(two_blob)]
+check(
+    "P4 two calls share one ADD",
+    two_names.count("CALL") == 2 and two_names.count("ADD") == 1 and two_names.count("RETURN") == 1,
+)
+
+plain = p4.compile("print(2 + 3)")
+check(
+    "P4 without a function matches P3 bytes",
+    plain == P3Again().compile("print(2 + 3)"),
+)
+
+def raises_p4(source):
+    try:
+        p4.compile(source)
+    except SyntaxError:
+        return True
+    return False
+
+check("P4 rejects direct recursion", raises_p4("def f(n):\n    return f(n - 1)\n"))
+check("P4 rejects a missing return", raises_p4("def f(n):\n    n = n + 1\n"))
+check("P4 rejects a bare return", raises_p4("def f(n):\n    return\n"))
+check("P4 rejects return outside a function", raises_p4("return 1\n"))
+check("P4 rejects the wrong arity", raises_p4("def add(a, b):\n    return a + b\nprint(add(1))\n"))
+check("P4 rejects a nested function", raises_p4("def f(n):\n    def g():\n        return n\n    return 1\n"))
+check("P4 rejects a call before the def", raises_p4("print(add(1, 2))\ndef add(a, b):\n    return a + b\n"))
+check("P4 rejects reading a module name inside a function", raises_p4("n = 5\ndef f():\n    return n\nprint(f())\n"))
+
+# --- P5 Compiler Tests ---
+print("\n[P5] Python recursion to MBIR")
+from p5_compiler import CASES as P5_CASES, DOWN, FACT, FIB, P5Compiler
+
+p5 = P5Compiler()
+
+def p5_ops(blob):
+    return MBIR.decode(blob)
+
+for source, expected, desc in P5_CASES:
+    blob = p5.compile(source)
+    result = run_mbir(blob)
+    observed = result["output"].encode("latin-1")
+    check(
+        f"P5 {desc}",
+        observed == expected and result["status"] == "HALTED" and result["stack"] == [],
+        f"got {observed.hex()} status={result['status']} stack={result['stack']}",
+    )
+
+fib_blob = p5.compile(FIB + "print(fib(6))")
+fib_ops = p5_ops(fib_blob)
+fib_names = [item[0] for item in fib_ops]
+fib_pushed = [item[1] for item in fib_ops if item[0] == "PUSH_CONST"]
+check(
+    "P5 fib(6) is a recursive call, not byte 8",
+    fib_names.count("CALL") == 3
+    and fib_names.count("ADD") == 1
+    and fib_names.count("RETURN") == 2
+    and 8 not in fib_pushed
+    and 6 in fib_pushed
+    and run_mbir(fib_blob)["output_bytes"] == [8],
+)
+
+fact_blob = p5.compile(FACT + "print(fact(5))")
+fact_ops = p5_ops(fact_blob)
+fact_pushed = [item[1] for item in fact_ops if item[0] == "PUSH_CONST"]
+check(
+    "P5 fact(5) keeps the multiply",
+    [item[0] for item in fact_ops].count("MUL") == 1
+    and 120 not in fact_pushed
+    and run_mbir(fact_blob)["output_bytes"] == [120],
+)
+
+down_blob = p5.compile(DOWN + "print(down(3))")
+down_names = [item[0] for item in p5_ops(down_blob)]
+down_result = run_mbir(down_blob)
+check(
+    "P5 countdown has one print in the body",
+    down_names.count("OUT_BYTE") == 2
+    and down_names.count("CALL") == 2
+    and down_result["output_bytes"] == [3, 2, 1, 0]
+    and down_result["steps"] > 4,
+)
+
+check(
+    "P5 accepts the recursion P4 rejects",
+    raises_p4(FIB + "print(fib(6))") and p5.compile(FIB + "print(fib(6))"),
+)
+
 # --- Summary ---
 print(f"\n{'='*40}")
 print(f"PASS: {PASS}")

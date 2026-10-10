@@ -44,4 +44,4 @@ Key finding: **No project implements a Python interpreter that runs ON Malbolge.
 
 ## Status
 
-P3 (`src/p3_compiler.py`) lowers assignment, `print`, modular arithmetic, comparisons, `if`/`else`/`elif`, and `while` to MBIR and runs them on the host reference VM. See `STATUS.md`. A Malbolge-hosted `python.mb` is not demonstrated.
+P5 (`src/p5_compiler.py`) lowers direct recursion, including `fib(6)`, to MBIR and runs it on the host reference VM. P4 remains the slice that rejects a self-call. See `STATUS.md`. A Malbolge-hosted `python.mb` is not demonstrated.

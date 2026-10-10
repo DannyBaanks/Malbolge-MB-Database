@@ -3,12 +3,26 @@
 ## Current State
 
 **Status**: `REFERENCE_FRONTEND`
-**Highest Milestone**: P3 (Python subset → MBIR_VERSION 0 — FRONTEND_DEMONSTRATED on the host reference VM)
+**Highest Milestone**: P5 (Python direct recursion → MBIR CALL/RETURN — FRONTEND_DEMONSTRATED on the host reference VM)
 **Primary Target**: Unshackled
 **Classic Path**: MBIR interpreter in progress via LMAO/HeLL
 **Malbolge-hosted runtime**: `PARTIAL_DEMONSTRATED` (A04/A05/A05b multi-cycle fetch loop & 2-slot LIFO stack demonstrated — see vm_malbolge/A05_STATUS.md)
 
 ## Session log
+
+Session of 2026-10-10 (P5):
+
+- P5 frontend `python/src/p5_compiler.py` allows a direct self-call on top of P4.
+- 8/8 sources HALT on `mbir/mbir_ref.py`. `print(fib(6))` is byte `08` in 251 steps, with three `CALL` instructions and no pushed 8. Recorded in `python/evidence/P5/run_p5_compiler.json`.
+- `fact(5)` is byte 120. `down(3)` emits `03 02 01 00` from one `OUT_BYTE` in the body.
+- Malbolge-hosted execution of this frontend remains NOT_DEMONSTRATED.
+
+Session of 2026-10-10 (P4):
+
+- P4 frontend `python/src/p4_compiler.py` lowers top-level `def`, calls, and `return` to MBIR `CALL` / `RETURN` on top of the P3 subset.
+- 12/12 sources HALT on `mbir/mbir_ref.py`. `print(add(2, 3))` is byte `05` in 10 steps. Recorded in `python/evidence/P4/run_p4_compiler.json`.
+- Two calls share one `ADD`. A direct self-call is rejected. Recursion stays P5.
+- Malbolge-hosted execution of this frontend remains NOT_DEMONSTRATED.
 
 Session of 2026-10-10:
 
@@ -82,9 +96,9 @@ followed by in-memory bytecode loader. See `vm_malbolge/A05_STATUS.md`.
 | P1 | Stack VM (reference) | REFERENCE_DEMONSTRATED | Python reference VM, 5 bytecodes, 5 correct results |
 | P2 | MalPy Bytecode frontend | FRONTEND_DEMONSTRATED | Python AST -> bytecode -> REFERENCE VM -> correct output |
 | P3 | Variables + Control Flow | FRONTEND_DEMONSTRATED | `python/src/p3_compiler.py` → MBIR reference VM. 15 sources in `python/evidence/P3/run_p3_compiler.json`. Host only. |
-| P4 | Functions | NOT_STARTED | — |
-| P5 | Recursion | NOT_STARTED | — |
-| P6 | Python Lexer in Malbolge | NOT_STARTED | — |
+| P4 | Functions | FRONTEND_DEMONSTRATED | `python/src/p4_compiler.py` → MBIR `CALL`/`RETURN` on the reference VM. 12 sources in `python/evidence/P4/run_p4_compiler.json`. Host only. Direct recursion rejected. |
+| P5 | Recursion | FRONTEND_DEMONSTRATED | `python/src/p5_compiler.py` → MBIR reference VM. 8 sources in `python/evidence/P5/run_p5_compiler.json`. Host only. |
+| P6 | Python Lexer in Malbolge | NOT_DEMONSTRATED | Looping `byte_dispatch18` did not emit a second token, and the C runner disagreed with the oracle. See `python/P6_STATUS.md`. |
 | P7 | Parser in Malbolge | NOT_STARTED | — |
 | P8 | python.mb Interpreter | NOT_STARTED | — |
 
@@ -94,6 +108,8 @@ followed by in-memory bytecode loader. See `vm_malbolge/A05_STATUS.md`.
 PYTHON_REFERENCE_VM                = DEMONSTRATED (Python host)
 PYTHON_AST_TO_MALPY_BYTECODE       = DEMONSTRATED (restricted subset, P2)
 PYTHON_SUBSET_TO_MBIR              = DEMONSTRATED (P3, host MBIR reference VM)
+PYTHON_FUNCTIONS_TO_MBIR           = DEMONSTRATED (P4, host MBIR reference VM, no direct recursion)
+PYTHON_RECURSION_TO_MBIR           = DEMONSTRATED (P5, host MBIR reference VM)
 MALBOLGE_HOSTED_MALPY_VM           = NOT_DEMONSTRATED
 PYTHON_MB_INTERPRETER              = NOT_DEMONSTRATED
 GENERAL_RUNTIME_ADDITION_IN_MALBOLGE = NOT_DEMONSTRATED (current impl)
@@ -111,7 +127,7 @@ inside Malbolge.
 2. The MBIR contract is frozen (A02, MBIR_VERSION 0). P3 encodes with
    `mbir/mbir.py` and does not add a second bytecode.
 3. Classic Malbolge (3^10) is a design constraint for this track; Unshackled is the primary target by choice, not proven necessity
-4. P4 functions, P5 recursion, and P6–P8 (lexer, parser, `python.mb`) are not started.
+4. P5 lowers direct recursion to MBIR on the host. P6, a lexer inside Malbolge, was probed and is NOT_DEMONSTRATED (`python/P6_STATUS.md`). P7 and P8 were not started.
 
 ## Shared MBIR
 
@@ -143,11 +159,15 @@ NOT_DEMONSTRATED.
 - `evidence/P1/` — REFERENCE_MODEL VM execution (5 fixtures + underflow negatives)
 - `evidence/P2/` — FRONTEND Python compiler (6 sources, MalPy opcodes)
 - `evidence/P3/` — FRONTEND Python subset → MBIR (15 sources, host reference VM)
-- `tests/test_harness.py` — 50/50 passing reference tests
+- `evidence/P4/` — FRONTEND Python functions → MBIR CALL/RETURN (12 sources, host reference VM)
+- `evidence/P5/` — FRONTEND Python direct recursion → MBIR (8 sources, host reference VM)
+- `tests/test_harness.py` — 85/85 passing reference tests
 
 ## Evidence kinds used
 
 - P1: `REFERENCE_MODEL` (host_language=Python)
 - P2: `FRONTEND` (host_language=Python, MalPy opcodes)
 - P3: `FRONTEND` (host_language=Python, MBIR_VERSION 0, oracle `mbir_ref.py`)
+- P4: `FRONTEND` (host_language=Python, MBIR CALL/RETURN, oracle `mbir_ref.py`)
+- P5: `FRONTEND` (host_language=Python, direct recursion, oracle `mbir_ref.py`)
 - No `MALBOLGE_RUNTIME` evidence exists yet for this frontend — none is claimed.

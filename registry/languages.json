@@ -12,16 +12,18 @@
       "host_compiler_allowed": true,
       "self_hosted_parser": false,
       "runtime_demonstrated": false,
-      "highest_milestone": "P3",
-      "milestones_completed": ["P1", "P2", "P3"],
+      "highest_milestone": "P5",
+      "milestones_completed": ["P1", "P2", "P3", "P4", "P5"],
       "milestones_status": {
         "P1": "REFERENCE_DEMONSTRATED",
         "P2": "FRONTEND_DEMONSTRATED",
         "P3": "FRONTEND_DEMONSTRATED",
+        "P4": "FRONTEND_DEMONSTRATED",
+        "P5": "FRONTEND_DEMONSTRATED",
         "P0": "NOT_DEMONSTRATED"
       },
       "runtime_artifact_registered": false,
-      "notes": "P1 reference VM and P2 MalPy frontend are host-only. P3 lowers assignment, print, modular + - *, comparisons, if/else/elif, and while to MBIR_VERSION 0 and runs on mbir_ref.py (python/evidence/P3/). python.mb is NOT_DEMONSTRATED."
+      "notes": "P1-P5 are host-only. P5 lowers direct recursion, including fib(6), to MBIR CALL/RETURN and runs on mbir_ref.py (python/evidence/P5/). python.mb is NOT_DEMONSTRATED."
     },
     {
       "id": "swift",

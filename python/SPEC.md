@@ -41,6 +41,8 @@ print(add(2, 3))
 
 Operations: function definition, call, arguments, return.
 
+P4 (`python/src/p4_compiler.py`) lowers this shape to MBIR `CALL` / `RETURN` on `mbir/mbir_ref.py`. The return value stays on the stack. A direct self-call is rejected. Recursion stays in v4.
+
 ### Subset v4 — Recursion
 
 ```python
@@ -53,6 +55,8 @@ print(fib(6))
 ```
 
 Operations: recursive calls, multiple returns.
+
+P5 (`python/src/p5_compiler.py`) lowers this shape to MBIR on `mbir/mbir_ref.py`. `print(fib(6))` emits byte 8. The call is not replaced by that byte.
 
 ## Bytecode — MBIR (frozen)
 
