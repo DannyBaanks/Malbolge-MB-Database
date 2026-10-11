@@ -368,3 +368,50 @@ rebinding is layout-fatal (26). **12/12 NOT_DEMONSTRATED remains.** Next step
 is not a patch of `a7a040e`: either a fresh minimal two-pass LT design that
 does not inherit the EQ drain/residual structure, or a HeLL-level budget
 technique (e.g. explicit `.OFFSET` layout control) before further probing.
+
+## 2026-10-11 (session 3) — P0/P1 mechanism probes
+
+**Finding 28 — LMAO non-determinism (correction to finding 22).** Rebuilding the
+same committed `.hell` (sha `4839447f…`) produces a different `.mb` each run
+(observed `98c0b436`, `b73ccd25`, `5e494eab`, `ec3a2ba2`). The generated
+CRC-encoded region varies per assembler run; decoded grid and behaviour are
+identical. Canonical evidence is therefore `.hell` sha + grid snapshot, not the
+`.mb` sha. The df3fbfc4≠rebuild discrepancy in finding 22 was this, not a stale file.
+
+**Finding 29 — P0 rerun reinterpretation.** Forcing the `return_from_dec_op2_1`
+landing `MOVED lt_false` -> `MOVED lt_true` (variant `p0_57517.mb`, sha not
+stable per finding 28) leaves every vector's output unchanged. Earlier read
+("the TRUE push does not exist") is withdrawn as unsupported: the edited line
+lies in a region that never executes (finding 30), so the probe was a no-op by
+construction. Counter-evidence for push feasibility: baseline `01411000` prints
+`41` through the same generic OUT chain, so OUT can emit arbitrary bytes; what
+is missing is the verdict *computation*, not a TRUE push mechanism.
+
+**Finding 30 — P1: the verdict chain is 100% dead on every vector.** Block-level
+traces of all 12 vectors (`a7base.mb`, grid-verified 8/12 by control sweep;
+traces `tr12_*.txt`) plus exact-landing cross-check against the full label
+table: **zero** jumps land on the head cells of `dispatch_01` `dispatch_02`
+`add_val_clean` `return_from_dec_op2_1` `lt_dec2` `lt_dec2_ret` `lt_p2_dec1`
+`lt_true` `lt_false` `diff_is_2` `load_diff_0` `decrement_value`. Naive
+range-attribution "landings" inside `dispatch_01`/`lt_b_ge2` were helper-label
+exact hits (`RESET_FLAG1`@57682, `RESET_FLAG2`@57686, `RESET_FLAG3`@57776,
+`PUSH_FLAG2`@57780, `PUSH_FLAG3`@57870) or padding (`lt_a_pop`+10@57869,
+57681 residual). Live traffic: the generic decrement machinery (jump table
+`MOVED`/`IN`/`ROT`/`CRAZY`/flag cells ~57458-57497), the `exit_decrement_loop`
+tail table (which repeatedly jumps to 29443 — a mid-grid ROT region, the drain
+loop), and `value`-cell push/read. Excision margin: 111 dead labels ≈ 658 cells
+— too small for the insertions falsified in findings 24/13, so excision is not
+the budget lever.
+
+**Finding 31 — live print path mapped.** OUT is reached via table cells reading
+targets (`…`@58151/58152 jump into the `OUT` head cell 57458); the digit echoed
+is the content of cell `value`@57640 (vector (x,2) leaves 2 there -> prints
+`02`). Therefore `01` is reachable purely through live cells; the minimal-LT
+problem reduces to computing `(a<b)` into `value`/slot chain before the push,
+using only size-neutral relabel edits of live jump-table lines (the b24-class
+edits that build). Scope of next battery: live cells only
+(`{57458..57497, 57607..57686, 57776..57780, 57869..57874, 58151..58152,
+58411..58438}` and their source lines).
+
+**State:** 12/12 remains `NOT_DEMONSTRATED`. Scripts/traces retained outside
+repo (`~/tmp_lt/`): `lt_trace.py`, `tr12_*.txt`, `gen_p0.py`, `batt4.py`.
