@@ -1,8 +1,10 @@
 # CMP_LT fork (WIP) — Milestone P2 relational ordering
 
-Status: **NOT_DEMONSTRATED** (fork builds and the VM core is intact; the compare
-path reaches its decision and result push under trace, but the final result
-encoding does not reproduce on the 9 ordered pairs of the domain).
+Status: **NOT_DEMONSTRATED** (8/12 on the harness; the VM core is intact and,
+under trace, a routing-fixed build reaches the boolean and the result-push
+automaton, but the `OUT` prints the popped-operand `b` rather than the compare
+result — see finding 14, which supersedes the earlier "init-basin lottery"
+framing of findings 7-12).
 
 ## What exists
 
@@ -25,8 +27,8 @@ encoding does not reproduce on the 9 ordered pairs of the domain).
 
 | item | evidence |
 |---|---|
-| `CMP_LT` on the 9 ordered pairs | **8/12 pass** (all 6 false-valued pairs, all 3 baselines, perfect oracle/runner parity on every vector including the failures). The 3 remaining failures share one root cause below. |
-| Observed failure matrix | `(0,1)->00` (want `01`), `(0,2)->02`, `(1,2)->02` (want `01`), `(2,2)->02` (want `00`). Every `b>=1` case pushes without running pass 2. |
+| `CMP_LT` on the 9 ordered pairs | **8/12 pass** (5 of the 6 false-valued pairs — `(2,2)` fails — plus all 3 baselines, with perfect oracle/runner parity on every vector including the failures). The 4 remaining failures share one root cause, refined below. |
+| Observed failure matrix | `(0,1)->00` (want `01`), `(0,2)->02`, `(1,2)->02` (want `01`), `(2,2)->02` (want `00`). Read as a function of `b` alone: `OUT` prints `00` for `b in {0,1}` and `02` for `b==2`, **independent of `a`** — see finding 14. |
 | `2 < 4` and any value >= 3 | Out of the claimed domain {0,1,2} by design. |
 
 ## Root cause (isolated, one line from fixed)
@@ -153,6 +155,42 @@ Confirmed experimentally (v19): the repoint breaks all 9 vectors, including
     8/12 and fix the independent push-encoding defect (the true-push prints
     `02` instead of `01`).
 
+## Findings added 2026-10-10 (new experiments, oracle==runner on every vector)
+
+Two further routing variants were built and run against the 12-vector harness.
+Both **fit** the memory budget and both reproduce `print == b`-derived value
+independent of `a` (7/12), which **falsifies the "basin / slot lottery" framing**
+of findings 7-12 as the primary blocker.
+
+14. **The blocker is result propagation, not the OUT slot lottery** (measured):
+    - `BASEC` = HEAD + `SUBROUTINE_FLAG6` repoint (H6) + dead-`OP1_FLAG` cut
+      (OP1DEAD): builds at **56,947 bytes**, harness **7/12**, oracle==runner.
+      Output is `00` for `b in {0,1}` and `02` for `b==2`, independent of `a`.
+    - `13(a)` = H6 routing fix **+** the both-slots copy chain (finding 12:
+      replace the `add_push0_done` Slot-1 reset with a Slot0->Slot1 copy via
+      `V10ROW/V10S1/V10S2/V10S3`). Builds at **57,517 bytes** (fits), harness
+      **7/12**, oracle==runner. The step trace (`lt_trace2.py` on `(0,2)`) shows
+      pass 2 now **completes**: `lt_a_pop -> lt_a_dec1_ret -> lt_a_dec2_ret ->
+      diff_is_2 -> add_rst0_done -> load_diff_1 -> add_push_common ->
+      add_push0_done -> return_from_stack_top_3` (steps ~26.9k-30.5k), i.e. the
+      compare reaches the boolean and the push automaton. **Yet `OUT` still
+      prints the `b`-derived value.** With the result present in BOTH slots
+      (the lottery-immune construction) the printed value is still wrong, so
+      making `OUT`'s slot choice irrelevant does **not** fix it.
+
+    Conclusion: the defect is upstream of the slot choice — the CMP result is
+    never landed into a cell whose value dominates the `OUT`'s printed `A`;
+    the printed value is governed by the popped operand `b` (pass-1 leftover),
+    not by the pass-2 boolean. The next attempt must target the value/encoding
+    of the result push and its interaction with the post-compare `OUT`
+    automaton (finding 13d), not the trampoline basin.
+    Artifacts (this session): `13(a)` `.mb` sha256
+    `a2e8cad66ba955e567cc685cdcd0c137f01ca294aeabccd184c394a0618626d4`
+    (57,517 bytes), retained outside the repo for reference. Debug tooling
+    added: `vm_malbolge/tests/lt_harness.py` (12-vector differential harness)
+    and `vm_malbolge/tools/lt_trace2.py` (label/op/MOVD/JMP control-flow
+    tracer over the `.dbg`).
+
 ## Reproduce
 
 ```
@@ -160,9 +198,13 @@ python3 vm_malbolge/tools/mbir_cmp_lt_gen.py          # writes .hell, .mb, .dbg
 printf '\x01\x01\x01\x02\x02\x10\x00' | ./runners/malbolge-original/malbolge vm_malbolge/src/mbir_cmp_lt.mb | xxd
 ```
 
-## Artifact hashes (this revision)
+## Artifact hashes (committed HEAD `8/12` revision — re-verified on disk 2026-10-10)
 
-- `vm_malbolge/tools/mbir_cmp_lt_gen.py` sha256 `bb663dcf773528afc310f42153da4493dc5ba279ba5b684dadc6045cda4703ea`
-- `vm_malbolge/src/mbir_cmp_lt.hell` sha256 `4839447fb38a45be75f2c0c871ef182672404386736ce531d2eae25d6544eea5`
-- `vm_malbolge/src/mbir_cmp_lt.mb` sha256 `df3fbfc4b358a16529dc7539f719850b9675b9ddf1665f29425b3bdc98f7bf52`
-- `vm_malbolge/src/mbir_cmp_lt.dbg` sha256 `d21bd14d60e3cc1cd5bb2335defe485b76bf74788cf87c58373c359a9da9cec9`
+`git checkout HEAD` of the four tracked artifacts yields the following sha256
+(the previous table listed `bb663dcf…`/`df3fbfc4…`, which did **not** match
+HEAD and are corrected here):
+
+- `vm_malbolge/tools/mbir_cmp_lt_gen.py` sha256 `cb3f59e4cc4262e513503ba0bbdc3215bcd95c885ab9512e2fa320538f2464f1`
+- `vm_malbolge/src/mbir_cmp_lt.hell` sha256 `dc0ffd40936cf97fbb08b0c330454763a38237dea6eafb12fbc4411cbf91b49b`
+- `vm_malbolge/src/mbir_cmp_lt.mb` sha256 `4a38722abab88e24038826a51a8cfbbb247de170cf3daa84b322926c822b7a0a`
+- `vm_malbolge/src/mbir_cmp_lt.dbg` sha256 `217d7f0bd695bac519fce7e7afcbabe169d9a9e4252a64def2d056f3ca915b0e`
