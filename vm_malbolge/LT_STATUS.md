@@ -297,3 +297,74 @@ HEAD and are corrected here):
 - `vm_malbolge/src/mbir_cmp_lt.mb` sha256 `4a38722abab88e24038826a51a8cfbbb247de170cf3daa84b322926c822b7a0a`
 - `vm_malbolge/src/mbir_cmp_lt.dbg` sha256 `217d7f0bd695bac519fce7e7afcbabe169d9a9e4252a64def2d056f3ca915b0e`
 - `vm_malbolge/tools/lt_slotprobe.py` sha256 `201bfa18fa52e937dc0e5c806c996867d3455ecafc6a621ea53a783632d9af78` (added 2026-10-11: prints step, `A` and the five slot/flag cells at every executed `OUT` for the 9 cmp vectors)
+## 2026-10-11 (session 2) — retarget/reorder/slot-swap battery: all size-neutral fixes falsified
+
+Scope: `vm_malbolge/src/mbir_cmp_lt.*` rebuilt from the a7a040e generator; every
+probe restores from it. Native runner sweeps (`runners/malbolge-original/malbolge`,
+subprocess raw-byte stdin) plus one full dual-engine harness run.
+
+**Finding 21 — attribution correction.** Commit `a28b894` (current HEAD) holds the
+V16 EQ-verbatim probe image, not the LT design. Its LT-harness grid is `01` only at
+`(2,2)` (the EQ transplant ceiling) and passes 8/12 only by coincidence. The LT
+8/12 artifact is the `a7a040e` lineage. Rebuilt today from generator sha256
+`bb663dcf773528afc310f42153da4493dc5ba279ba5b684dadc6045cda4703ea`
+(= `git show a7a040e:vm_malbolge/tools/mbir_cmp_lt_gen.py`): 57,517 cells; harness
+`8/12` with perfect oracle/runner parity, failures `(0,1)->00`,
+`(0,2)->02`, `(1,2)->02`, `(2,2)->02`, steps 79167/79167/78974 per row class.
+
+**Finding 22 — committed-hash chain is stale.** Today's rebuild produced
+`.hell 4839447fb38a45be75f2c0c871ef182672404386736ce531d2eae25d6544eea5` and
+`.dbg d21bd14d60e3cc1cd5bb2335defe485b76bf74788cf87c58373c359a9da9cec9` —
+byte-identical to the `a7a040e` blobs — but `.mb 98c0b436ca8fda837d3e6964f75623587ad753239180391192f6992fa2e790e9`,
+which differs from the `.mb` committed at `a7a040e`
+(`df3fbfc4b358a16529dc7539f719850b9675b9ddf1665f29425b3bdc98f7bf52`). The previous
+"Artifact hashes" table (`cb3f59e4…`/`4a38722ab…` "re-verified on disk") matches
+neither `a7a040e` nor `a28b894` blobs; it described an intermediate tree state and
+is superseded by this section. The harness-published 8/12 grid corresponds to the
+`.mb` sha `98c0b436…`.
+
+**Finding 23 — tail reorder is not a fix.** Four size-preserving tail variants
+repoint `SUBROUTINE_FLAG6 lt_false` -> `lt_dec2_ret` AND move that line off the
+last position (orders 6,1,2,3,4,5 / 1,2,3,6,5,4 / 1,2,3,4,6,5 / 6,5,4,3,2,1;
+variant scripts reproducible from the edits in `mk_b24` at hashes
+`ede4b56c…`,`0361f6bb…`,`4a52cd98…`,`44f98ddc…`): builds 57,511 x3 and 57,517;
+ALL produce `a8a80a` on every one of the 9 pairs (baselines pass). The
+"residual-D at the tail's last line poisons the EOF-drain trampolines" model
+explains B1/v19 but reordering cannot exploit it: any tail whose last line is
+not the original `lt_false` target derails the drain, whatever label it carries.
+
+**Finding 24 — dispatcher-line inserts bust the budget.** Retargeting SUB6 to
+`lt_b_ge2` and appending an `OP1_FLAG lt_a_dec2_ret R_OP1_FLAG` dispatcher line
+into `lt_b_ge2` (C1), or also redirecting `return_from_dec_op2_1`'s OP1 target to
+`lt_a_dec1_ret` (C1b): both "Memory usage conflict while generating
+initialization code".
+
+**Finding 25 — the transposed dispatcher builds but pass 2 never runs.** C1c
+(swap bodies of `lt_b_ge2` and `lt_dec2_ret` so the dispatcher fits with zero net
+line change, SUB6 -> `lt_b_ge2`) built at 57,517 and still gave `a8a80a` on all
+9 pairs. Trace of `(0,2)`: zero runtime jumps into any of
+`lt_p2_dec1 / lt_a_dec1_ret / lt_a_dec2_ret / lt_true / lt_false / diff_is_2`;
+the first (and repeatedly only) entry into the LT region is the FLAG9 drain
+trampoline jumping to D = the tail's residual label (address 57681 in that
+layout), which then spins RESET/dispatch forever. Confirms finding 20 from the
+other side: the verdict automaton is unreachable while the drain entry point is
+the tail's residual — only a verdict-terminator target is drain-safe, and that
+same slot is the one the routing fix needs to repurpose.
+
+**Finding 26 — slot swaps are layout-hostile.** Changing which subroutine cell
+`lt_dec2` arms (`R_SUBROUTINE_FLAG6` -> 4/1/2/3, identical token length, D5
+series, script hashes `1bf12a6c…`,`e4723e39…`,`86c3d168…`,`1915b6ae…`): all fail
+with "HeLL program overlaps with generated initialization code". HeLL's
+init-code placement is sensitive to flag-reference context, not only program
+size; "size-neutral" edits that change which flag cells a block touches are not
+available on this build.
+
+**Finding 27 — synthesis.** The routing fix (b-context dec2 return must continue
+into pass 2 instead of landing on `lt_false`) requires a new dispatcher block
+plus completion of the verdict push (finding 20), and every containment route
+found today is blocked: insertions bust the 59,049 init budget (24, and prior
+b12/b17), tail edits of any kind are drain-fatal (23, 25), and flag-cell
+rebinding is layout-fatal (26). **12/12 NOT_DEMONSTRATED remains.** Next step
+is not a patch of `a7a040e`: either a fresh minimal two-pass LT design that
+does not inherit the EQ drain/residual structure, or a HeLL-level budget
+technique (e.g. explicit `.OFFSET` layout control) before further probing.
