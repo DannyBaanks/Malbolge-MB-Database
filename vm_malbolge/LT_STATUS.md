@@ -191,6 +191,39 @@ of findings 7-12 as the primary blocker.
     and `vm_malbolge/tools/lt_trace2.py` (label/op/MOVD/JMP control-flow
     tracer over the `.dbg`).
 
+15. **Exact functional defect isolated (traced `13(a)` on `(0,2)`)**: the only
+    cell that ever executes opcode `OUT` (op 5) and prints is at step **73653**
+    with `A = 2` (= the operand `b`). Every other `JMP-> OUT @ 57476` is the
+    crazy-fill sweep passing over the OUT cell while it is not yet in its OUT
+    xlat2 phase (no print). Reading the slot cells at that step: `stack_top`
+    (Slot 0) = `0` (the operand `a`) and `stack_top_1` (Slot 1) = `2` (the
+    operand `b`). The two slots still hold the **original operands** — the
+    compare result `1` (correct, `lt_true` does fire at steps 73624/73642) is
+    never landed into Slot 0, and Slot 1 is never reset to empty. Because Slot
+    1 is non-empty, the `OUT` opcode takes the `return_from_st1_4` pop-Slot-1
+    branch and prints `b`.
+
+    Contrast with the frozen, working `CMP_EQ` (`P2_STATUS.md`): after its
+    compare the result is in Slot 0 and Slot 1 is cleared, so `OUT` falls to
+    pop-Slot-0 and prints the boolean. **The `CMP_LT` fork reaches the correct
+    verdict but does not reproduce that push/clear tail** — its push machinery
+    runs (`add_push_common`/`add_push0_done`/`ret_rst_st1_3` all execute, and
+    `lt_true` fires spuriously *during the push* at 73624/73642, indicating the
+    compare branch and the push automaton share routing state that should be
+    exclusive). This is a concrete, localizable target, not a lottery.
+
+16. **`gen_init.c` inspected (finding 13c) — no deterministic mode**: the init
+    tail length is inherently value-dependent by construction —
+    `load_constant_to_a_reg(..., constant, ..., rotations, crazy_C2_first, ...)`
+    emits a different instruction sequence per constant/address, and
+    `set_dreg` walks D to each target. There is no flag to make the codegen
+    basin-invariant; only patching vendored LMAO (out of scope, breaks
+    `third_party/PROVENANCE.md`) could change that. So finding 13c is a dead
+    end and finding 15 (fix the push/clear tail to match `CMP_EQ`) is the live
+    path. It must be re-verified for both the 12-vector result AND the memory
+    budget after every edit, because the same edits that fix the tail can
+    re-roll the basin (findings 7-11).
+
 ## Reproduce
 
 ```
