@@ -590,3 +590,29 @@ over {0,1,2} (residue classes needed: at least 3, currently the basin
 produces {0,2}). Evidence: trace files in `~/tmp_lt/` (shas recorded at
 finding 41 addendum context); generator `mbir_p2_cmp_gen.py` untouched since
 `9fd3979`. 12/12 remains `NOT_DEMONSTRATED`.
+
+
+**Finding 44 — decision point localized to the exit CRAZY-fold on `stack_top`
+(57664) with content = residue of `a`; basin fires only in the b==2 class.**
+Full 9-pair battery on `~/tmp_lt/eqk.mb` (`tr_eqk_v*.txt`): printed digit is
+1 ONLY at `(2,2)` (steps 77,646; all other pairs print `00`, `(x,0)`@75,231,
+`(x,1)`@75,777, `(x,2)`@77,642 — step counts depend on `b` ALONE). Refines
+finding 41: the 54-vs-48 pass count through 57681 is a `b`-classifier
+artifact, NOT the equality signal. The real decision window (diff of
+`(0,2)` vs `(2,2)` tails): exit chain `SLOT0_FLAG@57588 -> MOVED@57210 ->
+ROT (clears value->59048) -> PUSH_FLAG3@57870 -> COUNTER2_1@57121 ->
+MOVD->d stack_top_1(57659) -> dispatch_00@57609 -> CRAZY@57610 FOLD`, where
+the fold READS cell `stack_top`(57664) whose content at that moment equals
+the residue of `a` (`stack_top:0` on `(0,2)` vs `stack_top:2` on `(2,2)`);
+on nonzero content the fold chains an extra decrement round (`stack_top:2 ->
+... -> stack_top:1 -> print A=1`) while zero content prints 0 directly. Fold
+rounds fire only in the b==2 basin (the 54-pass class). So the observable
+verdict channel is: print = (content of 57664 at exit fold) decremented once
+per fold round, with basin entry gated by the b class. LT design target now
+concrete: (1) gate fold entry on b > 0 (instead of b==2 only), (2) have
+57664 hold a residue such that the decrement-round count yields 1 iff a<b
+over {0,1,2} — e.g. land `a` and make round count = b - a clipped, or land
+`2-a` and gate on b; both require changing only MOVD operands feeding the
+exit fold chain (cells 57588/57609-57612/57659/57664/57870/57121), which are
+address-stable targets of the classification phase, not HeLL blocks.
+12/12 remains `NOT_DEMONSTRATED`.
