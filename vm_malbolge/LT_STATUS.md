@@ -547,3 +547,17 @@ class (3 classes needed for LT), and land the digit-selection counters on
 domain-0 equality is NOT correct on all pairs; only the 7 P2_STATUS vectors
 are demonstrated. Evidence shas: see trace files in `~/tmp_lt/`.
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 42 — correction refining findings 38/41: the `stack_top` echo IS the
+verdict carrier (artifact/logic dichotomy was wrong).** Re-check on the
+canonical EQ image (`~/tmp_lt/eqk.mb`): `(1,2)` prints `00` @81,065 while
+`(2,2)` prints `01` @81,069 — same `b`, different `a` — so the value of the
+CRAZY-read cell `stack_top` (57664) at print time is NOT a pure function of
+`b`: the compare-phase table cycles (the 54-vs-48 passes through 57681) write
+the equality signal into 57664 and OUT echoes it. The decrement-mutation seen
+in finding 38 is the computation, not an accident. Design target for LT restated
+(one sentence): arrange the CMP_LT compare basin so the residue landed in the
+cell read by the printing CRAZY equals 1 iff a<b (0 otherwise) over {0,1,2} —
+the 8/12 a7 fork lands `b`'s residue there; shift the basin's decrement
+routing so it lands the ORDER residue instead.
+12/12 remains `NOT_DEMONSTRATED`.
