@@ -779,3 +779,54 @@ Corrections and consequences:
    misses come from.
 
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 49 — CRAZY is DIGIT-WISE over 10 ternary digits with a 3-map fold
+alphabet; the single-trit fold monoid is 17 elements and CANNOT realize the
+LT row for b=1; therefore any 12/12 design must use multi-trit encoding, and
+the a7 lineage's remaining failures are localized to b=1 being information-
+theoretically invisible at print time.**
+
+Oracle source read (`tools/oracle_classic.py crazy_op`): result digit k =
+`_CRAZY[content_trit_k][A_trit_k]`, table `_CRAZY = ((1,0,0),(1,0,2),(2,2,1))`
+indexed [y][x]. Consequences measured:
+
+1. For a fixed A-trit x, the fold is a map on the content trit:
+   P0: y->(1,1,2) (bump-zero), P1: y->(0,0,2) (class-2 clamp),
+   P2: y->(0,2,1) (involution). These are the ONLY ternary-preserving folds;
+   the earlier finding-48 rows C/I/F are exactly P1/P2/P0 relabeled.
+2. The composition monoid of {P0,P1,P2} has 17 elements; enumerated exhaustively.
+   The LT verdict rows as unary maps on a (digit printed = 1 iff a<b) are
+   g_0=(0,0,0) REACHABLE (P1∘P2∘P1), g_2=(1,1,0) REACHABLE (P2∘P1∘P2∘P0),
+   but g_1=(1,0,0) is NOT in the monoid. Proof: no composition of P0,P1,P2
+   maps 0->1 while mapping 1->0. Hence a one-trit channel cascade with
+   b-keyed fold selection cannot compute LT — structural, not an artifact of
+   the current image.
+3. Print-time matrices settle the a7 channel inventory: a7 (tr3_a7_v*.txt):
+   cell 57661 = a EXACTLY for all nine pairs; cell 57642 = [b==2]; every other
+   window cell pointer-invariant; (0,0) and (0,1) print-time states are
+   IDENTICAL — b=1 leaves no ternary-visible residue anywhere in
+   57560..57760 at print time. a7's observed behavior (print 2 on b==2,
+   0 otherwise) is fully explained: the printing fold reads 57642 with P2
+   (content 1 -> A 2 -> OUT byte 0x02).
+4. EQ image contrast (finding 48): same two channels but the printing fold
+   reads 57661 — the images differ only in the d-identity of the printing
+   fold; the a/b routing is the shared skeleton. This unifies the two
+   lineages: EQ = fold-on-slot0([a==2 AND b==2]); a7 = fold-on-slot1([b==2]).
+5. Design requirement sharpened for 12/12: the b-channel must become
+   multi-trit (b=1 distinguishable) by print time. Routes: (i) exploit the
+   digit-wise freedom — encode (a,b) in the trit positions of one counter
+   cell (e.g. the 57614 value cell seen cycling 1053/39366-class numbers) so
+   each fold applies a DIFFERENT P per position; printed byte = result mod 256,
+   a nonlinear cross-position read; (ii) lengthen the b=1 basin by exactly one
+   fold round so slot1 content 57642 reaches 2 for b==1 instead of 0 (P1∘P2
+   on raw b gives (0,2,0): b=1->2 while b=2->0 — an ANTI-signal usable with
+   involution parity). Route (ii) is a pure round-count edit in the b-chain
+   and is the cheapest experiment; it converts the channel from [b==2] to
+   [b==1], and combined with the a-signal at slot 0 gives channels
+   {a, [b==1]} — still insufficient alone, but stacking one more b round
+   class distinguishes all three b values across two cells:
+   57642: [b==2]-style parity, 57661: a. A full feasibility sweep over
+   (round-count edits) x (fold-cell identities) is the next computational
+   step; the monoid above bounds the search.
+
+12/12 remains `NOT_DEMONSTRATED`.
