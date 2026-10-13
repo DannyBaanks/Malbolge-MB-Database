@@ -482,3 +482,45 @@ resolve to verdict push 0/1 instead of the drain alias 57681.
 Artifacts: `~/tmp_lt/{p3a,p3b,p3c}.{mb,dbg}`, traces `tr_p3b_{22,01}.txt`,
 builders `trimgen.py` (make(trims, tag, repls)), probes `grid5.py`,
 `score9.py`. 12/12 remains `NOT_DEMONSTRATED`.
+
+### Session 4c — EQ-TRUE artifact confirmed; HeLL dispatch blocks are decorative
+
+**Finding 38 — the EQ probe's `01` is a classification-decrement artifact, not
+a TRUE push.** Traces of `a28b894` src (frozen as `~/tmp_lt/eqprobe.mb/.dbg`,
+`.hell` = `~/tmp_lt/eq.hell`, its dispatch_02 is also a stub): vec `22`
+prints its only byte at step 77646 (`OUT A=1`) reached through `CRAZY jmp
+A=1 CRAZY:70 stack_top:1` (cell 57664), and `stack_top` was last written by
+the opcode classification `MOVD->d stack_top (d=57664)` events at steps
+11426-12120. vec `01` never performs any `stack_top:1` CRAZY read (0
+occurrences) and prints `OUT A=0`. So "01 iff (2,2)" = echo of b mutated by
+decrements; no lineage (a7, EQ probe, e*, p3*) has ever executed a working
+TRUE push. Ground truth for verdict push does not exist and must be created.
+
+**Finding 39 — correction to Finding 37: the verdict chain still never
+executes.** In `p3c` (e7v base, dispatch_02 body -> `MOVED lt_a_pop`) traced
+on vec `12` (`tr_p3c_12.txt`, sha 556ab796...) and on baseline `b1`
+(`tr_p3c_b1.txt`, sha 165df924...): `JMP-> dispatch_02 @` and
+`JMP-> dispatch_01 @` occur **zero** times on every vector tested — including
+`b1` which correctly prints `41`. The apparent `JMP-> add_val_clean @ 57681`
+/ `JMP-> lt_dec2_ret @ 57681` "entries" are pass-throughs of the residual
+drain loop: FLAG1..FLAG9 jump-table chain (cells 58527-58814) lands on cell
+57681, whose runtime content is a `RESET_FLAG1`-style line that
+`MOVD->d reset_and_loop (d=58070)` and loops; the label name comes from
+HeLL-range resolution, not from executing that block.
+
+**Finding 40 — consequence: HeLL control flow is decorative in this lineage.**
+Runtime semantics (push, echo, halt) live in the MOVD-driven jump-table/init
+region inherited from the ADD template; the `.hell` blocks only *supply cells
+whose contents the tables read* (e.g. `? movd dispatch_02:29524`,
+`MOVD->d lt_false (d=57880)` are operand reads, not executions). This is why
+every patch acts as a layout lottery: it perturbs table operands, never
+control flow. P3-on-a7 is therefore closed; 12/12 requires a fresh minimal
+design (or direct init-table authoring), not further a7 excisions.
+
+Evidence SHAs: `tr_p3c_12.txt` 556ab79680f90b7a3ee361d961d7425748bfb8c3589f104d7daca474e6325231,
+`tr_p3c_b1.txt` 165df92444c84fcdfdd7cdcd817bc59793085adbc4b1d579995ec1132e7e769d,
+`tr_eq_01.txt` 3a66fc0db4877a1aa90f45682077e075874b79ad15cb1c264bae86e15c299393,
+`tr_eq_22.txt` 7bcde598b90620fad1ba6e92ce2ae4039d8ec10772c59848c3f44a3f154b5b81,
+`p3c.mb` fd09968418ae792d12bdea1ec21a46edf38b2b558a487415c8328ec3fc6a51ab,
+`p3c.dbg` 96a34903c3da71905c21d10cddfbe04ce1e91af26e215530838ada5b36c3f263.
+12/12 remains `NOT_DEMONSTRATED`.
