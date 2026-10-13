@@ -1565,3 +1565,149 @@ Consequence for earlier findings, stated plainly: any `.mb` sha recorded from a 
 claims in findings 43-55 are unaffected — every verdict cited here was measured by executing the file
 that is on disk in this working tree, and the dual-engine harness text (`f55_harness_11.txt`,
 `lt_head11_probe_harness.json`) is the primary evidence, not the hash.
+
+---
+
+# Finding 56 — the print-time decision is ONE pointer choice, and the a-class bit is provably erased before it: why no single-site edit can reach 12/12, and what the new image must add
+`[CURRENT]` measured 2026-10-13 (session 7) on the 11/12 image `head11crlf.mb`
+(`2838e63c…`, blob-equal) with `allfolds.py`, `classifier.py`, `seedtrace.py`. No rebuild was needed
+for any claim in this finding — every number below is a replay of the canonical oracle semantics.
+
+## 1. Method that finally localised it
+
+`allfolds.py` logs every fold (step, executing cell, `d`, pre, post, `A_in`) in a step window for one
+vector. Stripping step numbers and `diff`-ing the logs of `(0,1)` (fails) against `(0,2)` (passes) over
+the whole pre-print phase shows the two trajectories are **structurally identical** — same instruction
+cells, same fold targets, same length (843 events) — differing only in values, and converging to a
+chain of three folds. That replaced four hundred rebuilds.
+
+## 2. The print is a lossless carrier, so the verdict is decided upstream (law)
+
+Two consecutive folds at `c=57610` with `A_in = 59048` (all-2s) feed `OUT`. With the table indexed
+`[content_trit][A_trit]`, column `A=2` is `(_CRAZY[0][2], _CRAZY[1][2], _CRAZY[2][2]) = (0, 2, 1)`, so
+one fold maps trit values `0→0, 1→2, 2→1` and applying it twice is the identity on `{0,1,2}`
+(`1→2→1`, `2→1→2`). Measured in the trace: `… 1->2 … 2->1` then `OUT A%256=1`, and `… 0->0 … 0->0`
+then `OUT A%256=0`. **Consequence: the printed byte equals exactly the trit0 written by the classifier
+fold, and editing the print stage cannot change any verdict** (this is the mechanism behind the
+"encoder sites inert" measurement of finding 53).
+
+## 3. The classifier, measured on all 9 vectors (`f55_classifier.txt`)
+
+The classifier is `CRAZY c=57610 d=57661`, and its content is the **constant 29524 for all nine
+vectors** at that step; only `A_in` varies, and with content all-1s the fold reads row 1 = `(1,0,2)`,
+which is `post = 1` **iff `A_in == 29523`** (trit0 0, trits1-9 all 1):
+
+| vec | want | printed | steps | folds on 57563 | `A_in` at classifier | post |
+|---|---|---|---|---|---|---|
+| 00 | 00 | 00 | 78609 | 147 | 29524 | 0 |
+| **01** | **01** | **00** | 80280 | 153 | **29524** | **0** |
+| 02 | 01 | 01 | 80284 | 153 | **29523** | 1 |
+| 10 | 00 | 00 | 78609 | 147 | 29524 | 0 |
+| 11 | 00 | 00 | 80280 | 153 | 29524 | 0 |
+| 12 | 01 | 01 | 80284 | 153 | **29523** | 1 |
+| 20 | 00 | 00 | 78609 | 147 | 29524 | 0 |
+| 21 | 00 | 00 | 80280 | 153 | 29524 | 0 |
+| 22 | 00 | 00 | 80280 | 153 | 29524 | 0 |
+
+`A_in == 29523` **is** the machine's verdict register: it fires on exactly `{(0,2),(1,2)}`, i.e. the
+single AND-gate `b==2 AND a<2` of finding 55 section 3.
+
+## 4. What produces the 29523 — and the one pointer that decides it
+
+One fold earlier, cell **57719** is the combination point (content carries the a-class, `A_in` carries
+the b-class). Decisive windows (`f55_win_01.txt`, `f55_win_02.txt`, `f55_win_11.txt`, identical event
+count):
+
+```
+(0,2)  ROT  d=57926  3->1     A_in=29524   # a := 1
+       CRAZY d=57719 29524->29523 A_in=1   # 29523 = the verdict carrier
+       CRAZY d=57661 29524->1     A_in=29523  -> OUT 01   PASS
+
+(0,1)  ROT  d=57913  0->0     A_in=29524   # a := 0
+       CRAZY d=57719 29524->29524 A_in=0
+       CRAZY d=57661 29524->0     A_in=29524  -> OUT 00   FAIL
+```
+
+So with content `29524` the fold yields `29523` **only when `A_in == 1`**, and `A_in` at that moment is
+literally the ROT of one data cell: `57926` holds `3` (ROT → `1`) and `57913` holds `0` (ROT → `0`).
+**The entire print-time decision is which of those two cells `d` points at**, and that choice is made by
+the b-class alone.
+
+## 5. The a-class bit exists earlier and is destroyed before the classifier (the real blocker)
+
+`f56_abits.txt` (`allfolds.py` restricted to the two combination/classifier cells over steps
+69,000-73,680) shows the a-class is still live at both combination points, and names the exact folds
+that erase it:
+
+| step | event | content in (0,1) | content in (1,1) |
+|---|---|---|---|
+| 70106 | `CRAZY c=57610 d=57661` | `0->0` | **`1->2`** |
+| 70121 | `CRAZY c=57610 d=57661` | `0->0` | **`2->1`** |
+| 73512 | `CRAZY c=57610 d=57719` | **`29524->0`** | **`29523->0`** |
+| 73527 | `CRAZY c=57610 d=57719 0->0 A_in=59048` | 0 | 0 |
+| 73545 | `CRAZY c=57610 d=57719 0->29524 A_in=0` — **reset** | 29524 | 29524 |
+| 73611 | `CRAZY c=57610 d=57661 0->29524 A_in=0` — **reset** | 29524 | 29524 |
+| 73647 | `CRAZY c=57610 d=57719 29524->29524 A_in=0` | 29524 | 29524 |
+| 73656 | `CRAZY d=57661 29524->0 A_in=29524` — classifier | 0 | 0 |
+
+So the a-bit is carried as (i) trit0 of `57661` at steps 70106/70121 and (ii) the trit0-0-vs-1 variant
+of the 57719 content (`29524` for a==0, `29523` for a==1) at step 73512 — and **both** cells are then
+reset to constants by the two `A_in=0` folds at 73545 and 73611. From 73611 onward the two trajectories
+are byte-identical; `diff` of the pre-print windows of `(0,1)` and `(1,1)` touches only the lines that
+precede those resets. Therefore:
+
+1. Editing the **content** of `57913` (e.g. `0 -> 3`) cannot fix `(0,1)`: `(0,1)` and `(1,1)` read the
+   same cell with the same `A_in`, so the edit flips both and destroys the correct `00` of `(1,1)`.
+   Stated as a law: any edit applied at the classifier chain is either a no-op or affects the whole
+   `{a}`-column, because the a-class has already been erased there.
+2. The missing capability is an **a-conditioned selection of the pointer `d` fed to the ROT at
+   `c=57493`** — i.e. three distinct data targets: `1` for `(a==0 AND b in {1,2})`, `1` for
+   `(a==1 AND b==2)`, "not 1" otherwise. Since with content 29524 `A_in == 1 ⇔ post == 29523 ⇔ OUT 01`,
+   that pointer selection *is* the LT predicate: it must be computed **before** the fold, by the
+   plumbing, and no constant or destination edit inside the existing layout can express it. This is the
+   same conclusion finding 55 section 3 reached from the truth table, now localised to a cell and a step.
+3. This refines, and partially supersedes, the finding-52 census for this lineage: a combination fold
+   **does** exist here (cell 57719: a-class in the content, b-class in `A_in`) — it is simply positioned
+   *after* the last a-dependent write, so its a-input is constant at decision time. The fix is
+   **ordering/plumbing**, not the invention of a combination site.
+
+## 6. Search evidence consistent with section 5
+
+- 798 single destination rewrites over HELL 370-520 of HEAD (finding 55 section 4): **every** candidate
+  scoring >= 10 still fails `01`.
+- 136 ROT-constant rewrites over the 11/12 base: 50 at/above baseline, **0 at 12/12**, all 11/12
+  candidates keep failset exactly `01`.
+- Wide class (`wide_sweep.py`, all 117 jump sites x 165 labels = 19,188 candidates from the 11/12 base)
+  with the prefilter `(0,1) -> 01`: through job 2,004 the prefilter **does** fire — **15 hits, every one
+  scoring only 3/12 or 4/12** and breaking the baselines — i.e. they flip `(0,1)` by rewiring the
+  printer, not by adding a gate, exactly as section 5 predicts. Completed table is recorded when it
+  finishes.
+
+## 7. Design target handed to the generator (`vm_malbolge/tools/mbir_cmp_lt_gen.py`)
+
+The a-class must survive until the pointer that feeds the `c=57493` ROT on the 57719 chain is chosen.
+Minimum change surface, in the generator/layout (HeLL can only supply cell contents, and contents alone
+are proved insufficient by section 5.1):
+
+1. keep an a-flag cell that is *not* overwritten by the `A_in=0` resets at steps 73545 / 73611, and
+2. let that flag select between two pointer cells (one holding `3`, ROT→`1`; one holding `0`), and
+3. keep the b-counter's own contribution for `b==2` on the a==1 branch (already present).
+
+Until (1)-(3) exist, 11/12 is the ceiling of every measured edit class, and the ceiling is explained,
+not merely observed.
+
+Status: **12/12 remains `NOT_DEMONSTRATED`; measured best stays 11/12 (both engines).**
+
+Artifacts (sha256): `allfolds.py` `34cceadd8c34d3ed5977102cd115188101d3cd9c7791d0ee63203ff2f032ee57`,
+`classifier.py` `3e311821493d53ee0334b1367afc31af808e6ea03a55e0fcaccfd87f6b5bb17c`,
+`f55_classifier.txt` `e8775770808050680de62ecd006eca967daed1fbcf18ff16f41ecb69626397b8`,
+`seedtrace.py` `c1a43bd6b72d2aa24f6ab950b0d6da8c76fe5e6746a4b32bb26f66f32616e5c7`,
+`f55_seed_57563.txt` `a3cb5c581c4a06e7c1db0e71b3608bfa58c0c1e0a3657adf9d8fb74029680010`,
+`f55_win_01.txt` `e9f68e32090d6163ef642e7172624c3ad0673a51e981e1266f73d3e22a6782a3`,
+`f55_win_02.txt` `b7ee6ba35dc78d6ef54149a218af4fdd75629188260cc10b34de3062b5a7e1d0`,
+`f55_win_11.txt` `d3221619f65035b576895f81fe776f5ab76ebdbcbe32042245ace39326cd665a`,
+`f55_win_12.txt` `bfabc48a985b12cc6fbbef9330f9e3ef185f0d317341e76054cb7fb2c2a127ce`,
+`f55_folds_01.txt` `5fdb7c45042fe77e56ce3dc503fcb8b9f75801f4455fa6b557dd894ae393260a`,
+`f55_folds_02.txt` `a5a7de02afdee25e98920cf116a4d9a3fad2e1ecb90aaf9562d636c2e2b50ae2`,
+`f56_abits.txt` `97d59d5640f4f0790e15c8e60353fc16713d2b314fa31953894106a17113bcd8`,
+`wide_sweep.py` `b37e49241333e933f26603e330cdb40b1c1a869a88eadd42eea269e1344a5c04`.
