@@ -637,3 +637,53 @@ the exit-fold round count so that [SP lands 57664] AND [content lands 1]
 exactly on {(0,1),(0,2),(1,2)}. All levers are MOVD operand values in the
 classification/push chains (address-stable), zero HeLL-block edits.
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 46 — MOVD-semantics correction: MOVD never writes memory; the slot
+cell identities in findings 38/43-45 were bisect artifacts, and the true
+push-delivery of `a` lands at step 60709 via the CRAZY fold.**
+
+Instrumented re-trace of the canonical EQ image (`~/tmp_lt/eqk.mb`,
+traces `~/tmp_lt/tr2_eqk_v*.txt`, v22 sha `6e33f54af27f872a...`) falsifies
+the wording, not the behavior, of findings 38 and 43-45:
+
+1. MOVD (op 40) executes `d := mem[d]` — it moves the d-register POINTER and
+never writes memory. Every statement in earlier findings of the form "MOVD
+wrote / pushes into stack_top" is wrong. All slot content changes come from
+CRAZY (op 62) and ROT (op 39) folds executed while d happens to point at the
+slot; OUT-path reads are then content-of-fold echoes (consistent with 45).
+
+2. The tracer labels cells by greatest-label-address <= target, so the
+frequent `MOVD->d stack_top_1 (d=57659)` lines are MISNAMED: 57659 is not a
+label cell. True addresses from `eqk.dbg`: `stack_top_1 = 57642`,
+`stack_top_1_crazy = 57641`, `stack_top_crazy = 57660`, `stack_top = 57661`.
+The finding-45 gate cells (57659, 57664) are raw d-register VALUES inside the
+57642..57661 span, not the labeled slot storages. The 57646/57655/57664/57673
+"slots" probed in the tr2 run are jump-table cells (contents
+57869/57685/57780/57682, vector-invariant) — confirming finding 45's SP-select
+observation refers to d-pointer positions, which remain the correct lever.
+
+3. Push delivery measured identical on all 9 pairs: 60700 `JMP->
+return_from_stack_top_3 @ 57963`; 60706 `MOVD d := 57659` (invariant); 60709
+CRAZY fold leaves `stack_top` (57661) content exactly equal to the pushed
+first operand a (0 on v0x, 1 on v1x, 2 on v2x). At 11177 the same cell holds
+29524 (a return pointer) — the stack-head cell alternates link-data and
+operand-data; "content a" is written once and then decremented by the basin.
+
+4. The (1,2)-vs-(2,2) paradox resolves as predicted by 45: `stack_top` shows
+2->1 on BOTH (v12 at 71000/71015, v22 at 77617/77632), yet only v22 prints
+0x01. A content-1 on stack_top is NOT the verdict; the verdict is the
+identity of the d-position (57659 vs 57664) held at the printing CRAZY. The
+tail MOVD sequences of v12/v22 are identical modulo a 4-step shift
+(58391 -> 58400 -> 58410 -> 57740 -> 57606 -> HALT at 81173/81177), so the
+b-dependent divergence happens strictly between 60709 and the first OUT
+(~71k-77k) — the basin decay rounds, as finding 44 measured.
+
+Consequence for the LT construction problem (45's final form unchanged,
+vocabulary corrected): the levers are the d-register routing values produced
+by MOVD chains and the round count of the basin folds; the design target is
+that the FIRST printing CRAZY executes with d at the slot-0 position with
+fold-result 1 exactly on {(0,1),(0,2),(1,2)} and never otherwise. Next
+mechanistic step: re-trace v12/v22 with raw d printed at every CRAZY/ROT
+write to pin the d-position of the printing fold.
+
+12/12 remains `NOT_DEMONSTRATED`.
