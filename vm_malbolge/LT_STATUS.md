@@ -732,3 +732,50 @@ findings 44-46:
    over live cells; no HeLL block edits (findings 40-41 forbid those).
 
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 48 — fold-row semantics corrected and the print-time slot matrix
+measured on all 9 pairs: the basin vocabulary is (i) ternary INVOLUTION
+crazy(59048, .): 0->0, 1->2, 2->1 (not the decrement stated in finding 47),
+(ii) class-2 CLAMP crazy(29524, .): 0->0, 1->0, 2->2, and the print-time
+content matrix is rank-two: slot 57642 = [b==2] and slot 57661 =
+[a==2 AND b==2].**
+
+Writer traces tr3_eqk_v{00..22}.txt (v12 sha fdace527..., v22 sha 2b30f6a0...)
+plus the oracle row probe (raw table printed here as evidence):
+
+  crazy(29524, x) = [0,0,2,0,0,2][x]   (class-2 clamp)
+  crazy(59048, x) = [0,2,1,6,8,7][x]   (ternary digit involution)
+  crazy(29443, x) = [81,81,83,...]     (pointer bias)
+  crazy(81, x)    = [29443,...]        (pointer bias)
+
+Print-time content matrix (last W62 fold at each d before first OUT, window
+57640..57690, all 50 cells probed per vector; only 57642 and 57661 are
+a/b-varying — everything else holds pointer words 29443/29524/81/59047):
+
+  cell 57642: 0 0 1 / 0 0 1 / 0 0 1  over (a,b) rows — equals [b==2],
+              independent of a (the b-push chain classes b and nothing else)
+  cell 57661: 0 0 0 / 0 0 0 / 0 0 2  — equals 2 iff a==2 AND b==2
+  every other vector: print digit 0 (crazy(59048, content) with content 0/1
+              gives 0/2; only content 2 gives the printed byte 1)
+
+Corrections and consequences:
+
+1. Finding 47's "decrement crazy(59048,x)->x-1" is WITHDRAWN: the 1<->2
+   oscillations observed in v12/v22 near 70k-77k are the involution row being
+   applied twice, and the true zeroing is the clamp row (A=29524), which is
+   what collapsed v12's content 1 to 0 at 74459.
+2. The EQ image's verdict is therefore: content_57661(print) =
+   involution(clamp(involution(a))) chained by b-keyed round parity —
+   an AND of the two class-2 signals. Rank of the observable channel set is
+   exactly 2 (b-class at 57642, a-AND-b-class at 57661); no cell in the
+   window stores any other a/b-dependent residue at print time.
+3. LT target {(0,1),(0,2),(1,2)} is NOT realizable from the existing
+   single-fold print channel on these two cells alone (neither [b==2] nor
+   [a==2 AND b==2] equals a<b, and one fold = one cell). The a7 8/12 design
+   must have routed a THIRD channel (or changed the print fold's cell
+   identity per phase); the immediate next measurement is the identical
+   print-time matrix for the a7 LT lineage image (frozen build a7base.mb) to
+   see which cells it made a/b-varying and where its remaining 4-vector
+   misses come from.
+
+12/12 remains `NOT_DEMONSTRATED`.
