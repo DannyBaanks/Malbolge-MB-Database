@@ -830,3 +830,46 @@ indexed [y][x]. Consequences measured:
    step; the monoid above bounds the search.
 
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 50 — round-parity edits are insufficient for LT (measured
+exhaustive-negative): all vectors run exactly TWO P2 folds on slot 1 before
+OUT; b=0 and b=1 are bit-identical at print time (raw b is clamped to 0 by
+the push chain before drain), and neither the per-b-keyed fold monoid over
+slot-parity nor the per-a-keyed variant contains the required rows.**
+
+Extension of finding 49 with the dispatch mechanism and a bounded exhaustive
+search (`~/tmp_lt/` brute-forcing the two-cell fold algebra):
+
+1. Print-dispatch mechanism (a7, tr3_a7_v02): MOVD `d := 57640` (value cell),
+   the following JMP executes with d auto-incremented to 57641 and reads
+   `mem[57641] = 57609` (dispatch_00 CRAZY cell); at the fold step d has
+   incremented again to 57642 — so slot 1 is folded by CELL IDENTITY via the
+   d-register auto-increment race, exactly the structure EQ uses one cell
+   earlier. Fold rounds measured: 2 for every class; pre-fold contents
+   (2,1)->(0,0); b=2 -> (2,1); output digit = second-fold result (b=2 -> 2,
+   else 0). The drain-entry content of slot 1 is clamp(b) — raw b=1 has
+   already been clamped to 0 by the push chain, hence invisibility.
+
+2. Exhaustive negative results (algebra: cells {slot0=a-content, slot1=b-
+   clamp}, fold maps restricted to the ternary-preserving P0/P1/P2 plus
+   pointer-A rows; print = A % 256): (i) no shared fold sequence of length
+   <= 8 from state (a,b) realizes LT; (ii) allowing per-b-class sequences of
+   length <= 6 after a shared prefix <= 2 over all A0 inits {59048, 29524, 0}
+   still zero hits — the required rows are h_1 = (1,0,0) [not in the
+   17-element monoid] under any b-keyed round selection; (iii) ROT-output
+   values (19683k+) never reduce mod 256 to 1 or 0 with the small-digit
+   structure. Conclusion: within the current two-slot geometry, NO
+   size-neutral table edit of fold-round parity can reach 12/12 — the
+   missing capacity must come from the MULTI-TRIT counter chain (cell 57614
+   orbits 1053->351->117->39->13 observed before OUT in both lineages),
+   whose mod-256 readout is a nonlinear decoder outside the ternary algebra
+   searched above.
+
+3. Strategy update for task P2: reverse-engineer the counter chain of the
+   a7 8/12 image — which fold steps read/write 57614, how its trit pattern
+   encodes the partial LT verdict, and where the four failing vectors
+   ((0,1),(0,2),(1,2),(2,2) at print bytes) diverge from the target — then
+   propose table-cell relabel edits that shift the counter orbit for the
+   missing classes only.
+
+12/12 remains `NOT_DEMONSTRATED`.
