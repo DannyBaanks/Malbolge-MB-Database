@@ -415,3 +415,42 @@ edits that build). Scope of next battery: live cells only
 
 **State:** 12/12 remains `NOT_DEMONSTRATED`. Scripts/traces retained outside
 repo (`~/tmp_lt/`): `lt_trace.py`, `tr12_*.txt`, `gen_p0.py`, `batt4.py`.
+
+## 2026-10-12 (session 4) — excision lever unlocked (budget + rewiring)
+
+Method: per-block body-trim of the dead verdict region (keep `label:` + final
+`MOVED <original terminator>`, drop middle lines), rebuilt via the a7 generator,
+scored with a python-only 5-vector probe (`grid5`) and 9-vector scorer
+(`score9`), full dual-engine harness for promotion candidates. Images in
+`~/tmp_lt/` (`e1,e2,e3,e3c,e6,e7v,g1,g5,g6,g7,r1`, `.mb`+`.dbg`).
+
+**Finding 32 — grid-stable excisions exist.** Trim set `E3C =
+{lt_a_dec2_ret, lt_a_dec1_ret, lt_true, lt_p2_dec1, load_diff_0,
+check_diff_1_or_0, lt_dec2_ret}` builds (55,255 B, −2,262 vs a7) with
+identical grid5 profile (`00,00,02 + b1 41 + b2 4241`); `+ add_rst0_done`
+(e6, 54,973 B) also stable. This refutes the P1 "no budget lever" reading:
+40 lines of excision in E3C-class sets frees 1.7–2.9 KB of real image
+budget (init re-scales), while finding 24-class insertions at a7 size were
+impossible.
+
+**Finding 33 — excisions rewire verdict semantics.** `e7v = E3C +
+{add_rst0_done, add_val_clean}` (54,973 B) passes dual-engine harness at
+7/12: it FIXED `cmp_lt(0,1)->01` but now echoes `b` for b>=1
+((1,1)/(2,1)->01, (x,2)->02). Interpretation: dead-region line removals
+shift absolute cell addresses consumed by the live MOVd/d-register chains,
+so "dead" blocks participate positionally even when never branched to.
+Excision choice = layout lottery; scores observed: a7 5/9, g1(E3C) 5/9,
+e7v 4/9, r1 (e7v + rdo2_1 terminal retarget to lt_true) 4/9, all other
+tested trims 0/9 or hang.
+
+**Finding 34 — coupling map.** Trims that BREAK (any single addition to
+E3C/e6): `return_from_dec_op2_1`, `lt_dec2`, `dispatch_02`,
+`add_pop1_done`, `return_from_value_C1_5`, `add_push_common`,
+`dispatch_fallback`, `return_from_value_5`. These dead blocks' middle
+lines function as live data/layout cells.
+
+**Finding 35 — plan.** LT-Min P3 now has two proven ingredients: (i) a
+grid-stable base with budget slack (e6), (ii) OUT emits any A (b1 '41').
+Next: deterministic wiring of a two-slot comparison (a<b as borrow chain on
+slot contents) into e6's live value chain, chosen by design rather than by
+excision lottery; 12/12 remains `NOT_DEMONSTRATED`.
