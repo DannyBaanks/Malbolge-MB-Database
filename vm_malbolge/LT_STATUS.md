@@ -1509,3 +1509,59 @@ Status: **12/12 remains `NOT_DEMONSTRATED`.** New measured best **11/12, both en
 intact, non-degenerate** (`head11`, single-line HELL edit at 407 over HEAD). The blocker is now
 identified as a shape requirement (section 3) and confirmed experimentally (section 4: the missing
 vector `(0,1)` survives every single-site edit class tested).
+
+---
+
+# Finding 55 addendum (2026-10-13, same session) — dated correction of the recorded hashes, plus an EOL hazard for `.mb` evidence
+`[CURRENT]` measured with `git ls-files --eol`, `git show HEAD:<path> | sha256sum` on commit `bdcec9a`.
+
+## 1. Correction: `lt_head11_probe.hell` has two hashes and section 4.1 of finding 55 cited the working-tree one
+
+The repo is on `core.autocrlf=true` with **no** `.gitattributes`, so CRLF sources are normalised to LF
+on `git add`. For `vm_malbolge/evidence/lt_head11_probe.hell`:
+
+| identity | sha256 | line endings |
+|---|---|---|
+| working-tree file (what finding 55 section 4.1 recorded) | `30022b1a6ee6ff193b78a309dc8621d73b93834b7624f04645f034a6986a5bce` | CRLF (822 CR bytes, 15,433 bytes) |
+| git blob / `git show HEAD:vm_malbolge/evidence/lt_head11_probe.hell` | `26a1de53082415dfbed79e3273c09d3372cf1a6d0acc994740238ec6f968ff25` | LF (14,611 bytes) |
+
+Both are the SAME HeLL program — they differ only in line terminators, and LMAO builds either to an
+image that scores 11/12 on both engines (proved with `head11.mb` from the LF source and
+`head11crlf.mb` from the CRLF source; the two builds differ only in the trailing CRC region, first
+differing byte 56905). The canonical identity for an auditor pulling the commit is the **blob** hash
+`26a1de53…`; finding 55 section 4.1 is not rewritten, this table supersedes its `.hell` line.
+
+## 2. The other three evidence files are hash-stable
+
+`git show HEAD:<path> | sha256sum` equals the working-tree sha256 for all of them (no CR bytes in the
+worktree copies, so nothing was converted):
+
+| file | sha256 (worktree == blob) |
+|---|---|
+| `vm_malbolge/evidence/artifacts/lt_head11_probe.mb` | `2838e63c02507e85801de9fee010e95f72882f029ef8f91af77868a3ec0c26a1` |
+| `vm_malbolge/evidence/lt_head11_probe_harness.json` | `46b72f45f00e62ff4be3c28e4f2a0c012127e83eaac0e32951193fcda18702b2` |
+| `vm_malbolge/LT_STATUS.md` (at commit `bdcec9a`) | `48bf5780946f3810c17ab909855372b261edaf8b49146648b8d9442177018e1c` |
+
+## 3. Hazard recorded (NOT fixed — no authority taken)
+
+Because `core.autocrlf=true` applies a text conversion to files git does not classify as binary, a
+**checkout** of `*.mb` evidence under that setting converts its LF terminators to CRLF and therefore
+changes the byte string an evidence hash refers to. `git ls-files --eol` on this repo shows the
+canonical image already affected: `vm_malbolge/src/mbir_cmp_lt.mb` is `i/lf w/crlf` (index LF,
+working tree CRLF, 57,230 bytes, sha `1144598d759a89cca69c181ab07dc1ece2d1211528be3b3f356eac120e243499`),
+whereas the evidence copies I added are currently `i/lf w/lf`.
+
+Practical rule adopted for this milestone, effective immediately and used above:
+
+1. Cite the **blob** hash (`git show HEAD:<path> | sha256sum`) as the immutable identity of any
+   `.mb` / `.hell` evidence, and cite the working-tree hash only as the local build input.
+2. Where the two differ, say so (section 1) rather than silently choosing one.
+3. Do NOT "fix" this by adding `.gitattributes` or renormalising the index: that rewrites the byte
+   content of many tracked `.mb`/`.hell` files across the repo and would change hashes recorded in
+   earlier findings. It needs Danny's explicit decision, so it is reported as an open hazard instead.
+
+Consequence for earlier findings, stated plainly: any `.mb` sha recorded from a *working tree* on a
+`core.autocrlf=true` host is only reproducible on a host with the same checkout mode. The behaviour
+claims in findings 43-55 are unaffected — every verdict cited here was measured by executing the file
+that is on disk in this working tree, and the dual-engine harness text (`f55_harness_11.txt`,
+`lt_head11_probe_harness.json`) is the primary evidence, not the hash.
