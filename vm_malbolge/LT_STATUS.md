@@ -971,3 +971,117 @@ field — the classifier's input (A_in=0 vs A_in=1) — while its post-state is 
 (29525); `p57/v00` vs `p57/v10` are byte-identical (a never touches this cell). The 9 dumps
 collapse into 3 classes keyed by `b<2 | b=2`, i.e. 57537 carries at most 2 b-states.
 
+
+---
+
+# Finding 52 — the a7 lineage has NO combination site: a and b never meet in any fold
+`[CURRENT]` measured 2026-10-13, image `a7base.mb` (HEAD lineage of the a7a040e patch), python
+step-exact probe VM validated bit-identical to `tools/oracle_classic.run`.
+
+## 1. Instrument: probe VM, and what the four candidate edits actually score
+
+The probe VM replays `oracle_classic.run` step-for-step (incl. the post-execution `_ENC`
+translation of `mem[c]` and the unconditional `c`/`d` increments) and allows a runtime hook to
+rewrite a fold's target before any expensive `lmao` rebuild. Control, all 12 vectors:
+
+    cmp_lt(0,0)  want=00   sim=00     oracle=00     steps=79167/79167 identical=True
+    cmp_lt(0,2)  want=01   sim=02     oracle=02     steps=78974/78974 identical=True
+    baseline1    want=41   sim=41     oracle=41     steps=67563/67563 identical=True
+    baseline2    want=4241 sim=4241   oracle=4241   steps=74600/74600 identical=True
+    -> 12/12 identical=True on every vector (full log: f52_evidence.txt)
+
+Scoring the three levers left open by finding 51, plus the finding-50 hope, on
+9 cmp_lt vectors + 3 baselines:
+
+| edit | score | behaviour |
+|---|---|---|
+| redirect classifier folds 57537 -> 57536 (lever ii) | **1/12** | every vector HALTs at step **57404**; cell 57536 is live table data, so the "one-cell pointer edit" is not local at all |
+| force classifier content to bijective 29524 (lever i) | **8/12** | identical verdict *set* to HEAD — the b=1 loss moves downstream to the counter fold on all-2s content |
+| force counter folds (57614) to bijective 29524 (lever iii) | **7/12** | print becomes an **exact carrier of b**: output 00/01/02 for b=0/1/2 at uniform 71360 steps, all 3 baselines intact — and completely independent of a |
+| inject seed value V into 57614 (finding-50 "free decoder") | no V yields 01 | the printed digit is a whole-trajectory property, not a locally decodable field |
+
+## 2. Census: 909 aligned fold sites, zero of them see both inputs
+
+`fold_census2.py` records every ROT/CRAZY write after step 60000 per target cell, aligned **from
+the end** (b=2 vectors run 11 folds fewer than b!=2 — 909 vs 920 — so forward alignment is
+invalid; the tail is where the print channel lives). Over all 909 aligned sites:
+
+    CROSS sites (one input carries a, the other carries b): 0
+
+    per-cell dependency map (cA/cB = content varies with a/b, aA/aB = A_in varies with a/b):
+      d=57537: sites=17  cB=3  aB=3
+      d=57563: sites=111 cB=37 aB=36
+      d=57595: sites=4   cB=3  aB=3
+      d=57614: sites=437 cB=261 aB=260
+      d=57642: sites=9   cB=8  aB=8
+      d=57661: sites=2   cA=1 aA=2
+      d=57690: sites=63  cB=10 aB=10
+      d=57719: sites=2   cA=1 aA=2
+
+`fold_census3.py` repeats this from step 1 (18807 folds/vector) and the picture is the same, only
+sharper: **six cells carry b, two cells carry a, and the two sets are disjoint.** The last
+a-dependent fold anywhere in the machine is step **71178**; b-dependent folds continue to step
+**78965**, i.e. into the print channel.
+
+## 3. Mechanism of the a-loss (`window_trace.py`, steps 71169/71178, corrected A_in)
+
+    step 71169 c=57610 CRAZY d=57719 pre=29524 post=29524 A_in=0      (a=0)
+    step 71169 c=57610 CRAZY d=57719 pre=29523 post=29524 A_in=0      (a>=1)
+    step 71178 c=57610 CRAZY d=57661 pre=0     post=0     A_in=29524  (a=0)
+    step 71178 c=57610 CRAZY d=57661 pre=1     post=0     A_in=29524  (a>=1)
+
+`a` survives the classifier *only* as the low trit of two cell contents (29524 vs 29523, and 0 vs
+1) — and in both cases the fold that reads them maps the two a-states to the **same** post value.
+The a-signal is not lost downstream: it is crushed by the very fold addressed to it, twice,
+because the A register feeding both folds is a **constant** (0 and 29524). `w2_00.txt` vs
+`w2_01.txt` (b varies, a=0) differ in **zero** lines in this window: b never reaches here.
+
+`combine_check.py` exhausts the whole machine over all 59049 A values:
+
+    A values distinguishing (29524,29523): 19683/59049
+    A values distinguishing (0,1)        : 19683/59049
+      trit0 of distinguishing A = [2]; set == {A : trit0(A)=2}? True (19683 vs 19683)
+
+So the exact law is: **a CRAZY fold preserves the a-carrier iff trit0(A) = 2** (A mod 3 == 2).
+HEAD feeds it A = 0 (trit0 0) and A = 29524 (trit0 1) — it misses the condition in both folds, by
+different residues. A correct image must route a **b-dependent A with trit0 = 2** into an
+**a-carrying content cell**; that fold is then by construction a function of (a, b).
+
+## 4. The a7 classifier is provably not enough — 2-way a-discrimination cannot be routed around
+
+The surviving a-carrier distinguishes {a=0} from {a>=1} (nA=2 of 3 pairs; the a=1 vs a=2 pair is
+already merged). But the required verdicts on that merged class are contradictory:
+
+    (a=1, b=2) want 01   |   (a=2, b=2) want 00
+
+same a-class, same b, opposite verdict. No read-schedule, pointer or seed edit that preserves the
+2-way classifier can therefore reach 12/12 — this closes lever-by-lever what finding 51 left as
+"levers in ascending blast radius". The a7 patch lineage is **structurally finished**, not merely
+unlucky.
+
+## 5. Spec derived for the next design (three independent requirements)
+
+1. a **3-way** a-discriminator (the a7 classifier's {1,2} merge is fatal, §4);
+2. a **combination fold**: a-carrying content cell x b-carrying A with trit0(A)=2 (§3 law);
+3. a **bijective carrier** into print: content all-1s (29524), not all-2s (59048), on both the
+   classifier and the counter (finding 51 row law + §1 counter result, which already shows a
+   29524-seeded print path delivers b losslessly).
+
+Still NOT_DEMONSTRATED: any 12/12 image. No candidate built in this step; HEAD remains the EQ
+probe lineage.
+
+Artifacts (sha256, `~/tmp_lt/`):
+
+    a9c2bb5942b921b7c905842005e876841d410674bae1ca382f0e4952cc194992  f52_evidence.txt
+    d7c1d0c62948f5513cbfdb09c78830160a9304bcdde7248d836239b8c775d077  f52_run.py
+    6abe53a89fa74f7a49c93b1d25d71afa63e9ac56da716772c57a4183a879ea46  fold_census.py (v1, forward-aligned, invalid: KeyError at (57563,111))
+    116a98319e0eff1d4e5550bf1c29a7e131e36d7012917003b0c173032c0d3082  fold_census2.py
+    955e50ff1e815ae4c61d28c13be86f9723afe001fba8d13f500993a61b26db65  fold_census3.py
+    3faa3c6641a7cf1adb143f813f75222561d0cf348194f27a1daa3a0f08fe02b5  window_trace.py
+    d6ee4edfd352290217b938e024611b1130bb756ce29a8a56374bdc31e2405870  combine_check.py
+    bd82f26adc6fd5b0e69826ef16023b84bc1f8e99b4aa9090b404938abf1019d3  f52_census.txt
+    4cf33657fa1bc1a22efac3b0dc15db22ae88ce8c8a0176c985e7d6491e93e7e1  f52_census2.txt
+    db1a878f4121b4ac02c66d9fa70fef5aef7993b2a1c0f5f69949f132e9194e80  f52_census3.txt
+    6f1bb42dc0bcae20e32cb4aed6d01143116c1f6c1353e49aa5a022ec77dc27ff  f52_combine.txt
+    744223476a76381f40942c252d0845353f352ff2772a0d7825e0cc337ae4ec27  w2_00.txt (= w2_01.txt: b invisible in this window)
+    727f12f83d66f03b94d9bb2834ada92eb66e0c7f4df3f0b7a75e8511a8cd0750  w2_10.txt (= w2_11.txt)
