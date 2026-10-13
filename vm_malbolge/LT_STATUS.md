@@ -1085,3 +1085,167 @@ Artifacts (sha256, `~/tmp_lt/`):
     6f1bb42dc0bcae20e32cb4aed6d01143116c1f6c1353e49aa5a022ec77dc27ff  f52_combine.txt
     744223476a76381f40942c252d0845353f352ff2772a0d7825e0cc337ae4ec27  w2_00.txt (= w2_01.txt: b invisible in this window)
     727f12f83d66f03b94d9bb2834ada92eb66e0c7f4df3f0b7a75e8511a8cd0750  w2_10.txt (= w2_11.txt)
+
+---
+
+# Finding 53 — the collapse→bijection law is PREDICTIVE: one HELL constant edit gives 9/12 on both engines
+`[CURRENT]` measured 2026-10-13, HELL source of the a7a040e lineage, rebuilt with the in-repo
+`third_party/lmao/lmao` (v0.6.0), scored with `tools/oracle_classic.py` **and**
+`runners/malbolge-original/malbolge`.
+
+## 1. The toolchain is reproducible (this was the missing precondition)
+
+`lmao -d -o a7cand.mb a7cand.hell` on `git show a7a040e:vm_malbolge/src/mbir_cmp_lt.hell`
+regenerates an image behaviourally identical to `a7base.mb`: same 57,517 bytes, 82 byte-level
+differences confined to the trailing offset 57416+ region (the CRC/encoding tail), identical
+verdicts. So finding 51's three "levers" can now be tested as **real image edits in ~5 s**
+(0.3 s build + 12 vectors), instead of being argued about. That changes the epistemics of this
+milestone: from now on every claim about a lever is a measurement.
+
+## 2. Runtime cells now have HELL names (`a7cand.dbg` `:SOURCEPOSITIONS:`)
+
+| runtime cell | label | HELL line | role |
+|---|---|---|---|
+| 57537 | `value_C1` | 193 (`C1`) | classifier fold target (finding 51) |
+| 57563 | `tmp` | — | b-carrier |
+| 57614 | `value` | 179 (`C1`) | counter / scratch |
+| 57719 | **`stack_scratch`** | 241 (`C1`) | **slot-0 data = where `a` lives** |
+| 57661 | **`stack_top`** | 271 (`C1`) | **slot-0 pointer = second `a` carrier** |
+
+The constant cells that feed those folds: cell 57904 ← HELL **466** `ROT C1 R_ROT` (A = 29524),
+cell 57913 ← HELL **472** `ROT 0 R_ROT` (A = 0). These two lines are the `diff_is_2` /
+`add_rst0_done` pair of the LT verdict encoder (lines 464-482: 466 reset, 472/477 push-0,
+481 push-1). Finding 52 §3 said the a-carrier is crushed because the fold receives a *constant*
+A; the debugger now names the exact statements that choose that constant.
+
+## 3. Prediction from the law, confirmed on both engines
+
+Finding 52 law: a fold preserves a carrier iff **trit0(A) = 2**; content C2 (all-2s, 59048) is a
+collapsing row, C1 (all-1s, 29524) is the bijective row. HELL line 384 (`add_val_clean` — the
+slot-1/b pop: `ROT C2 R_ROT; R_PUSH_FLAG3; MOVED stack_top_1_crazy`) therefore sits a collapsing
+constant in front of a fold that carries b. Swapping exactly that token, `384: C2 -> C1`, and
+rebuilding gives **`a7c9`**:
+
+    cmp_lt(0,0) PASS   cmp_lt(0,1) FAIL(00)  cmp_lt(0,2) FAIL(00)  cmp_lt(1,0) PASS
+    cmp_lt(1,1) PASS   cmp_lt(1,2) FAIL(00)  cmp_lt(2,0) PASS      cmp_lt(2,1) PASS
+    cmp_lt(2,2) PASS   baseline1 41 PASS     baseline2 4241 PASS   baseline3 empty PASS
+    == 9/12, oracle == runner on every vector, all 3 baselines intact
+
+This is the first *gained* vector in this milestone since the lineage forked: (2,2), which HEAD
+wrongly printed as 02, is now correct. The remaining 3 failures are exactly the 3 true pairs, all
+printing 00 — i.e. the machine now has **all six false verdicts right** and is missing only the
+positive direction, which finding 52 proved needs a combination fold (a-carrying content x
+b-carrying A with trit0(A)=2) that this architecture never schedules: the verdict encoder loads A
+from constants (lines 466/472/477/481) immediately before the slot-0 folds, so no b-derived value
+is ever in the register at that moment.
+
+## 4. Single-site exhaustive ROT-constant sweep (33 sites x 4 alternatives = 129 rebuilds)
+
+Every `ROT <const> R_ROT` statement in the a7 HELL was replaced by each of the other four
+constants, rebuilt and scored (log `f53_sweep.txt`, per-site table `f53_sites_summary.md`).
+Baseline a7 = 8/12. Score distribution over the 129 candidates:
+
+| score | # candidates | meaning |
+|---|---|---|
+| 8/12 | 77 | exact no-op (identical failset 01,02,12,22) |
+| **9/12** | **2** | the only gains: 384 `C2->C1` (fails 01,02,12 — all baselines intact) and 560 `C2->C1` (fails 01,22,**bl2**) |
+| 6/12 | 8 | 502, 508 (slot-1 pointer folds) |
+| 3/12 | 6 | 384's other 3 alternatives |
+| 2/12 | 15 | 560/566/621/639/645/673 non-C1 alternatives |
+| 1/12 | 17 | arithmetic core and encoder-mutating choices |
+| 0/12 | 4 | 748 `C1->C2`, 755 `C2->C0/0/3` |
+
+Three structural facts fall out of the table, all consistent with finding 52 and none of them
+arguable any more because they are measured:
+
+1. **The LT verdict encoder is inert.** HELL lines 466, 472, 477, 481 (the `diff_is_2` /
+   `add_rst0_done` / push-0 / push-1 block that finding 52 named as the decoder) give 8/12 with
+   the *identical* failset under **all 15** alternatives. Changing the constant that feeds the
+   slot-0 folds changes nothing, which is exactly what "that fold's content never carries `b`"
+   predicts. The encoder is not the bottleneck; the missing combination fold is.
+2. **`C2 -> C1` is the only productive token swap**, and it works at precisely the two folds whose
+   content is a live `b` carrier (384 `add_val_clean` = slot-1 pop, 560 `pop_slot_1`). Replacing a
+   collapsing row by the bijective row is worth exactly one vector each.
+3. **The arithmetic core is a cliff.** 748/755 (increment/decrement carry rotation) drop to 0-1/12
+   for every alternative, so the bijection heuristic is scoped to data folds — it must not be
+   applied to the carry chain.
+
+Only 384's 9/12 preserves the three baselines, so **`a7c9` is the canonical new best**; 560's 9/12
+is not a milestone candidate (it prints `1b41` where `bl2` must be `4241`).
+
+Appendix — complete per-site score table (`*` = site whose alternatives are not all the 8/12 no-op).
+Format `from->to:score`:
+
+| HELL line | 4 alternatives |
+|---|---|
+| 384 * | C2->0:3 C2->3:3 C2->C0:3 C2->C1:9 |
+| 432 | C2->0:8 C2->3:8 C2->C0:8 C2->C1:8 |
+| 466 | C1->0:8 C1->3:8 C1->C0:8 C1->C2:8 |
+| 472 | 0->C0:8 0->C1:8 0->C2:8 |
+| 477 | 0->C0:8 0->C1:8 0->C2:8 |
+| 481 | 3->0:8 3->C0:8 3->C1:8 3->C2:8 |
+| 492 | C1->0:8 C1->3:8 C1->C0:8 C1->C2:8 |
+| 502 * | C2->0:6 C2->3:6 C2->C0:6 C2->C1:6 |
+| 508 * | C2->0:6 C2->3:6 C2->C0:6 C2->C1:6 |
+| 519 | C1->0:8 C1->3:8 C1->C0:8 |
+| 525 | C2->0:8 C2->3:8 C2->C0:8 C2->C1:8 |
+| 531 | C0->0:8 C0->3:8 C0->C1:8 C0->C2:8 |
+| 537 | C1->0:8 C1->3:8 C1->C0:8 C1->C2:8 |
+| 543 | C2->0:8 C2->3:8 C2->C0:8 C2->C1:8 |
+| 549 | C0->0:8 C0->3:8 C0->C1:8 C0->C2:8 |
+| 560 * | C2->0:2 C2->3:2 C2->C0:2 C2->C1:9 |
+| 566 * | C2->0:2 C2->3:2 C2->C0:2 C2->C1:8 |
+| 577 | C1->0:8 C1->3:8 C1->C0:8 C1->C2:8 |
+| 583 | C2->0:8 C2->3:8 C2->C0:8 C2->C1:8 |
+| 589 | C0->0:8 C0->3:8 C0->C1:8 C0->C2:8 |
+| 595 | C1->0:8 C1->3:8 C1->C0:8 C1->C2:8 |
+| 601 | C2->0:8 C2->3:8 C2->C0:8 C2->C1:8 |
+| 607 | C0->0:8 C0->3:8 C0->C1:8 C0->C2:8 |
+| 621 * | C1->0:2 C1->3:1 C1->C0:2 C1->C2:1 |
+| 627 * | C2->0:1 C2->3:1 C2->C0:1 C2->C1:1 |
+| 633 * | C0->0:8 C0->3:8 C0->C1:3 C0->C2:1 |
+| 639 * | C1->0:1 C1->3:2 C1->C0:1 C1->C2:2 |
+| 645 * | C2->0:2 C2->3:2 C2->C0:2 C2->C1:2 |
+| 651 * | C0->0:8 C0->3:8 C0->C1:3 C0->C2:3 |
+| 657 * | 3->0:8 3->C0:8 3->C1:8 3->C2:1 |
+| 673 * | C1->0:1 C1->3:2 C1->C0:1 C1->C2:1 |
+| 748 * | C1->0:1 C1->3:1 C1->C0:1 C1->C2:0 |
+| 755 * | C2->0:0 C2->3:0 C2->C0:0 C2->C1:1 |
+
+## 5. Hill-climb: both 9/12 bases are hard plateaus
+
+Re-running the full 33x4 sweep from each 9/12 image (`f53_h9.txt` from `a7c9.hell`, `f53_h560.txt`
+from `a7c560.hell`), i.e. every *pair* containing a known-good edit:
+
+| base | candidates | keep base score | strictly better | max |
+|---|---|---|---|---|
+| `a7c9` (384 C2->C1) | 132 | 79 | **0** | 9/12 |
+| `a7c560` (560 C2->C1) | 131 | 78 | **0** | 9/12 |
+
+Combined total in this step: **392 rebuilt-and-scored images, none above 9/12**; the two good edits
+are mutually exclusive (applying 560 on top of 384 regresses to 8/12). Within the
+ROT-constant-edit class the reachable set is therefore {8, 9} and 9 is maximal: the remaining three
+vectors (01, 02, 12 — the true pairs) cannot be obtained by choosing a different A constant,
+because finding 52 proved no A constant carries `b` and this sweep now proves no A constant is even
+*read* by the encoder.
+
+## 6. Consequence for the milestone
+
+`9/12` dual-engine is the new measured best and it is **not** 12/12: milestone P2 stays
+`NOT_DEMONSTRATED`. The edit class that can close it is now pinned by two independent negatives:
+a fold must receive a **`b`-dependent `a` register**, which in Classic is produced only by ROT
+(`oracle_classic.py:76-79`: `mem[d] = rotate(mem[d]); a = mem[d]`) or by a previous CRAZY. That
+means redirecting which **cell** the ROT at the verdict-encoder steps points at (a `MOVED`/pointer
+edit in the HeLL), not which constant it names. Next step (finding 54): sweep the ROT-preceding
+`MOVED <label>` targets at the encoder/decoder steps over the live carrier cells.
+
+Artifacts (sha256, `~/tmp_lt/` unless repo-pathed):
+- `a7cand.hell` `4839447f…`, `a7cand.mb` `b601f8d6…`, `a7cand.dbg` `6564b2ed…` (reproducible a7 rebuild)
+- `a7c9.hell` `c97f8c9f12e53640458666098b5c38eba8b0ba0d4225875a75fa13c31cb3e537`, `a7c9.mb` `21680622b6a3d1653af205c30010cedac17687f48366a5cdd24a65723aa31375`
+- `a7c560.hell` `25a4579be55d60fa787cce597a01a4c81d7e3fdc303bce6b7d24c0f81dd2d711`
+- logs: `f53_sweep.txt` `bcb883cde6ea51e73b3baad3182b8b403da95661ee89b1e27b4b010a1930b48c`, `f53_h9.txt` `98105a8cc9566f1b39187bb1ec13d9345bb4cf5f88e53b8743d6c42793802b8c`, `f53_h560.txt` `edda4fd6baf9c35340b4f862c5090ea1acfe4ea09d1ad81df967f47c820fd030`, `f53_sites_summary.md` `e632d112a693d78ab244314900350189114b2e3fc69ebe1cbebca9403aec5cdd`
+- tools: `rot_sweep.py` `bcd71f90b9bc3a29d30563822b0009c3fb0e98303c90a763c90b01c7c0d91745`, `rot_edit.py` `93503fb42748e33618dd89ba673b12cebb0e0cfc23e8bd87fa9f995a251dbac4`, `emit_evidence.py` `0b12587289b5b520cdc2f4406bf0ba21d7bf5f33e360ca7b9171bfdf67a8a137`, `window_trace.py` `3faa3c6641a7cf1adb143f813f75222561d0cf348194f27a1daa3a0f08fe02b5`
+- repo evidence (new, additive; HEAD image untouched): `vm_malbolge/evidence/lt_a7c9_probe.hell` `c97f8c9f…`,
+  `vm_malbolge/evidence/artifacts/lt_a7c9_probe.mb` `21680622…`,
+  `vm_malbolge/evidence/lt_a7c9_probe_harness.json` `32f1440803e367079ea4fd359b4d1f7414e7818188ee48338872dc6af35828d3`
+  (12 vectors, `oracle_output == runner_output` on every vector, score 9/12, ts 2026-10-13T21:49:57Z)

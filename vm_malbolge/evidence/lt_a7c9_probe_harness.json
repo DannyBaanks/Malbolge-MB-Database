@@ -1,0 +1,140 @@
+{
+  "ts": "2026-10-13T21:49:57Z",
+  "milestone": "P2 CMP_LT",
+  "finding": 53,
+  "status": "NOT_DEMONSTRATED for 12/12; new measured best for the a7 lineage",
+  "candidate": "vm_malbolge/evidence/artifacts/lt_a7c9_probe.mb",
+  "generated_from_hell": "vm_malbolge/evidence/lt_a7c9_probe.hell",
+  "build": "LMAO v0.6.0 (third_party/lmao/lmao) -d -o <mb> <hell>",
+  "single_edit_vs_a7a040e": "vm_malbolge/src/mbir_cmp_lt.hell line 384: 'ROT C2 R_ROT' -> 'ROT C1 R_ROT' (add_val_clean, slot-1 push)",
+  "sha256_mb": "21680622b6a3d1653af205c30010cedac17687f48366a5cdd24a65723aa31375",
+  "baseline_head_score": "8/12",
+  "candidate_score": "9/12",
+  "engines": {
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge"
+  },
+  "vectors": [
+    {
+      "label": "cmp_lt(0,0)",
+      "input": "0x01000100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(0,1)",
+      "input": "0x01000101021000",
+      "want": "01",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": false
+    },
+    {
+      "label": "cmp_lt(0,2)",
+      "input": "0x01000102021000",
+      "want": "01",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": false
+    },
+    {
+      "label": "cmp_lt(1,0)",
+      "input": "0x01010100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,1)",
+      "input": "0x01010101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,2)",
+      "input": "0x01010102021000",
+      "want": "01",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": false
+    },
+    {
+      "label": "cmp_lt(2,0)",
+      "input": "0x01020100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,1)",
+      "input": "0x01020101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,2)",
+      "input": "0x01020102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline1 push+out",
+      "input": "0x01411000",
+      "want": "41",
+      "oracle_output": "41",
+      "oracle_steps": 67547,
+      "runner_output": "41",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline2 lifo",
+      "input": "0x01410142101000",
+      "want": "4241",
+      "oracle_output": "4241",
+      "oracle_steps": 74584,
+      "runner_output": "4241",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline3 halt",
+      "input": "0x00",
+      "want": "",
+      "oracle_output": "",
+      "oracle_steps": 60504,
+      "runner_output": "",
+      "parity": true,
+      "pass": true
+    }
+  ],
+  "note": "Swapping the collapsing ternary row C2 (59048 = 2222222222_3) for the bijective row C1 (29524 = 1111111111_3) at the slot-1 push fold recovers the (2,2) false positive. The three remaining failures are the three TRUE pairs: this architecture never folds a b-derived value into an a-carrying cell (finding 52 census: 0 combination sites out of 909), and single-site sweeps from both 9/12 bases plateau at 9/12."
+}
