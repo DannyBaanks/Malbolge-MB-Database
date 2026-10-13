@@ -616,3 +616,24 @@ over {0,1,2} — e.g. land `a` and make round count = b - a clipped, or land
 exit fold chain (cells 57588/57609-57612/57659/57664/57870/57121), which are
 address-stable targets of the classification phase, not HeLL blocks.
 12/12 remains `NOT_DEMONSTRATED`.
+
+
+**Finding 45 — the exit fold prints 1 IFF the CRAZY reads cell 57664 itself
+(identity gate), not merely a nonzero content; SP-select table measured over
+all 9 pairs.** Last labeled fold read before print on `eqk.mb`: `(x,0)` ->
+`stack_top(57664):0`; `(x,1)` -> `stack_top_1(57659-60):0`; `(0,2)`,`(1,2)` ->
+`stack_top_1:1` (content 1, PRINTS 0); `(2,2)` -> `stack_top:2` then
+`stack_top:1` (PRINTS 1). So content-1 at the WRONG cell prints 0 while
+content-1 at 57664 prints 1: the OUT-phase CRAZY's operand cell address is
+itself part of the verdict channel — the dynamic stack pointer must point at
+slot 0 (57664) AND its content must be the nonzero residue. Observed
+EQ-image semantics reduced: print1 = [SP->57664 at exit fold] AND [content
+1], and the measured SP-select over the 9 pairs is SP=57664 iff a==2&b==2 —
+i.e. the image computes the CONJUNCTION of the two classes, with the classes
+carried by the two push chains' MOVD d-register targets (writes observed at
+steps 10841-12120, d in {57655, 57659, 57664}). LT construction problem in
+final form: choose the d-register routing of the two operand-push chains and
+the exit-fold round count so that [SP lands 57664] AND [content lands 1]
+exactly on {(0,1),(0,2),(1,2)}. All levers are MOVD operand values in the
+classification/push chains (address-stable), zero HeLL-block edits.
+12/12 remains `NOT_DEMONSTRATED`.
