@@ -524,3 +524,26 @@ Evidence SHAs: `tr_p3c_12.txt` 556ab79680f90b7a3ee361d961d7425748bfb8c3589f104d7
 `p3c.mb` fd09968418ae792d12bdea1ec21a46edf38b2b558a487415c8328ec3fc6a51ab,
 `p3c.dbg` 96a34903c3da71905c21d10cddfbe04ce1e91af26e215530838ada5b36c3f263.
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 41 — EQ ground truth: the boolean rides on jump-table PASS COUNTS,
+not on block branches (independent confirmation of finding 40 in the working
+lineage).** Rebuilt the canonical CMP_EQ source (`src/mbir_p2_cmp.hell`,
+committed since `9fd3979`, untouched by the LT fork) with `lmao -d` as
+`~/tmp_lt/eqk.{mb,dbg}` and traced `(2,2)` TRUE, `(0,1)`, `(1,0)` FALSE
+(`tr_eqk_{v22,v01,v10}.txt`). Zero jumps execute any HeLL verdict block in
+the WORKING EQ image too (`diff_is_0/1`, `op2_*`, `add_rst0_done`,
+`check_diff_1_or_0`, `load_diff_0`: 0 occurrences). The ONLY per-vector
+control-flow difference found: passes through cell **57681** resolving to
+`diff_is_2_from_phase2`: 54 on `(2,2)` vs 48 on both FALSE vectors; the 6
+extra passes cluster in the compare phase (steps 77,764-77,935). So in the
+demonstrated kernel the verdict is a *cycle-count in the table basin around
+57681*, and the digit (1/0) is selected downstream from that count (the
+LOOP5/LOOP2_3 exit counters). This retires finding 15's "reproduce the push/
+clear tail (by block edits)" framing: blocks cannot be reproduced to fix it
+because blocks are not what runs. The viable design target is: make the
+compare-phase pass count through the 57681 basin be a function of the ORDER
+class (3 classes needed for LT), and land the digit-selection counters on
+1 iff a<b. `(0,0)` on the EQ image prints `00` (steps 78,654) — EQ's own
+domain-0 equality is NOT correct on all pairs; only the 7 P2_STATUS vectors
+are demonstrated. Evidence shas: see trace files in `~/tmp_lt/`.
+12/12 remains `NOT_DEMONSTRATED`.
