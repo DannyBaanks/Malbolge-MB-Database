@@ -454,3 +454,31 @@ grid-stable base with budget slack (e6), (ii) OUT emits any A (b1 '41').
 Next: deterministic wiring of a two-slot comparison (a<b as borrow chain on
 slot contents) into e6's live value chain, chosen by design rather than by
 excision lottery; 12/12 remains `NOT_DEMONSTRATED`.
+
+### Session 4b — opcode classification decoded; CMP_LT entry wired
+
+**Finding 36 — `dispatch_02` was a no-op stub.** Byte classification (source
+lines 300-342): `got_byte` sets value=B+1, then three `decrement_value`
+subroutine calls route on `NO_MORE_CARRY_FLAG`: B==0 -> `dispatch_00` (HALT),
+B==1 -> `dispatch_01` (PUSH imm), B==2 -> `dispatch_02` (CMP_LT entry),
+B>=3 -> `dispatch_fallback` (pop+OUT echo). The `a7a040e` generator wired
+`dispatch_02: R_CLEAN_FLAG / MOVED reset_and_loop` — CMP_LT was NEVER
+dispatched into the verdict chain in this lineage; all harness outputs were
+fallback echoes of the popped slot top. This also explains the 7/12 of `e7v`
+(echo of b) as the natural fallback behavior.
+
+**Finding 37 — entry wiring executes the chain.** Retargeting the stub
+(`MOVED reset_and_loop` -> `MOVED add_val_clean`; size-identical token swap
+class that builds) on bare a7 (p3a), e6 (p3b) and `MOVED lt_a_pop` on e7v
+(p3c): all build and run; traces of p3b confirm `dispatch_02`,
+`add_val_clean`, `lt_a_pop`, `lt_dec2` cells executing for the first time.
+Score unchanged (5/9): the dec2 phase then spins on a
+`JMP-> lt_dec2_ret @ 57681` table cell (residual-drain aliasing) and the
+final verdict push still emits the echoed operand, not the borrow result.
+The remaining problem is precisely: make the borrow-chain returns
+(`return_from_dec_op2_1` / `lt_a_dec1_ret` / `lt_a_dec2_ret` table cells)
+resolve to verdict push 0/1 instead of the drain alias 57681.
+
+Artifacts: `~/tmp_lt/{p3a,p3b,p3c}.{mb,dbg}`, traces `tr_p3b_{22,01}.txt`,
+builders `trimgen.py` (make(trims, tag, repls)), probes `grid5.py`,
+`score9.py`. 12/12 remains `NOT_DEMONSTRATED`.
