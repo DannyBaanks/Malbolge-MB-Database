@@ -1711,3 +1711,123 @@ Artifacts (sha256): `allfolds.py` `34cceadd8c34d3ed5977102cd115188101d3cd9c7791d
 `f55_folds_02.txt` `a5a7de02afdee25e98920cf116a4d9a3fad2e1ecb90aaf9562d636c2e2b50ae2`,
 `f56_abits.txt` `97d59d5640f4f0790e15c8e60353fc16713d2b314fa31953894106a17113bcd8`,
 `wide_sweep.py` `b37e49241333e933f26603e330cdb40b1c1a869a88eadd42eea269e1344a5c04`.
+
+---
+
+# Finding 57 — the eraser is named: the ROT at step 73506 overwrites the live a-register, the verdict carrier `1` has exactly one preimage (`3`) in all of 3^10, and `trit0(A)==0` can never emit `0` — the obstruction is a table law, so 12/12 needs a re-encoded a-class plus one inserted write
+`[CURRENT]` measured 2026-10-13 (session 7) on the 11/12 image `head11crlf.mb`
+(`2838e63c…`, blob-equal) with `memdiff.py`, `threemap.py`, `movd.py`, `writes.py`, `lemmas57.py`.
+No rebuild was needed: every number is a replay of the canonical oracle semantics
+(`tools/oracle_classic.py`).
+
+## 1. Only four cells in 59,049 still distinguish `(0,1)` from `(1,1)` at the decision
+
+`memdiff.py` snapshots the whole machine at step 73,511 (one step before the combination fold) for
+`(a,b) = (0,1)` and `(1,1)`: **4 differing cells**, and `a`, `c`, `d` are identical
+(`a=29524, c=57610, d=57719`):
+
+| cell | (0,1) | (1,1) | ROT image (0,1) | ROT image (1,1) |
+|---|---|---|---|---|
+| 57537 | 29524 | 29523 | 29524 | 9841 |
+| 57614 | 59046 | 59047 | 19682 | 39365 |
+| 57661 | 0 | 1 | 0 | 19683 |
+| 57719 | 29524 | 29523 | 29524 | 9841 |
+
+(`f57_diff_01_11.txt`.) So the a-class has already been compressed into four cells, and none of them
+is read by the decision fold with an `A_in` that can use it.
+
+## 2. The eraser, instruction by instruction
+
+`writes.py` on the cell the decision ROT actually reads, `57904`:
+
+```
+(0,1)  step 27168 c=27265 CRAZY d=57904 29443->29524 A_in=0        # uniform write
+       step 73506 c=57493 ROT   d=57904 29524->29524 A_in=59046    # <-- a carried 59046 (a==0)
+(1,1)  step 27168 … same … A_in=0
+       step 73506 c=57493 ROT   d=57904 29524->29524 A_in=59047    # <-- a carried 59047 (a==1)
+(2,1)  step 73506 … ROT   d=57904 29524->29524 A_in=59047
+```
+
+`ROT` is the only opcode that assigns `a := rot(mem[d])` — a function of **memory only**, never of the
+incoming `a`. At step 73506 the incoming `a` is exactly the live a-class (`59046` / `59047`, the values
+`threemap.py` reports at step 73,500: `(0,1)->59046`, `(1,1)->59047`, `(2,1)->59047`, `(0,2)->59048`,
+`(1,2)->59048`, `(2,2)->59046`, `b==0 -> 39367`) and the outgoing `a` is the constant `29524` for all
+three `b==1` vectors. **That single instruction is the erasure finding 56 §5 inferred from the window
+diff.** Two consequences: (i) the a-signal is present one instruction earlier than the classifier
+chain, so the fix is ordering, not invention; (ii) the current encoding already merges `a==1` with
+`a==2` (`59047`), which is harmless for `b==1` (both must print `00`) but fixes what the generator may
+assume later.
+
+## 3. The carrier `1` has a unique preimage, and there is exactly one cell holding it
+
+`lemmas57.py` brute-forces all of `3^10`:
+
+- **L1** `rot(v) == 1` **iff** `v == 3` — over the entire address space, one solution.
+- **L2** trit0 of `crazy_op(x, C)` as a function of `x`'s trit0:
+  `x0=0 -> {1,2}` · `x0=1 -> {0,2}` · `x0=2 -> {0,1,2}`.
+
+`threemap.py` (all 9 vectors, step 73,500) finds **exactly one cell containing `3`: cell `57926`**, the
+`b==2` pointer target, and its content is a build constant, identical for every vector. So the
+`A_in == 1` verdict carrier of finding 56 §4 can only ever come from that one constant cell, reached
+by a pointer that (measured in `f57_movd_decision.txt`) is loaded identically for all three `b==1`
+vectors: `step 73502 MOVD c=57404 src=57680 d:=57900` for `(0,1)`, `(1,1)` and `(2,1)` alike.
+
+## 4. Why no content edit anywhere on that chain can work (closed form)
+
+Two applications of L2 to the measured values:
+
+1. The a==0 class reaches the eraser with `a = 59046`, whose trit0 is `0`; by L2 an `A_in` with
+   trit0 `0` **can never write a `0` trit** into any cell, at trit0 or anywhere else the fold touches.
+   The carrier `29523 = (0,1,1,1,1,1,1,1,1,1)` and the value `3 = (0,1,0,0,0,0,0,0,0,0)` both begin
+   with trit0 `0`. Therefore the a==0 class **cannot manufacture the carrier or the preimage cell by
+   any CRAZY write from the encoding it currently has** — no choice of source content `C` helps.
+2. Symmetrically, at the classifier fold (`content 29524 = all-1s`, `A_in = 29524`, trit0 `1`), L2 says
+   the output trit0 is in `{0,2}` — never `1`. So cell `57719` cannot become `29523` under a content
+   edit either, which is the closed-form version of finding 56 §5.1.
+
+That is the obstruction as a table law, not as a search result: with the a-class encoded as
+`{59046, 59047}` and one constant `3`-cell, every combination of content edits, ROT-constant edits and
+jump rewirings is excluded, because all three act downstream of an `A_in` whose trit0 is already fixed
+to a column that cannot emit the required trit.
+
+## 5. Constructive spec for the generator (`vm_malbolge/tools/mbir_cmp_lt_gen.py`)
+
+The measurements give the minimal fix as three coordinated changes, all expressible in the layout:
+
+1. **Re-encode the a-class** so the `a==0` branch arrives at the eraser with trit0 `1` or `2` instead of
+   `0` (L2 makes trit0 `0` the dead column for producing a `0`-headed carrier; trit0 `2` is the only
+   surjective column).
+2. **Insert one CRAZY write before step 73506** that consumes that `a` and writes the ROT's future
+   target: either the measured cell `57904` (currently written once, at step 27168 with a uniform
+   `A_in=0`) or a new cell reached by retargeting the `MOVD src=57680` pointer chain. Its content must
+   be a `v` with `rot(v)` equal to the carrier-producing `A_in` for the pass cases only.
+3. **Set trit9 of the `57719` content** (trit9 is the first trit the ROT shifts out of reach — it
+   receives the *dropped* trit0, so it is the only position carrying an a-vs-b discrimination created
+   by step 2) so that `crazy_op` yields `29523` exactly for the pass combination and leaves the
+   `b==2` path of finding 56 §4 untouched.
+
+Items 1-3 are a layout/dataflow change in the generator, not a HeLL constant edit; the `(1,1)`/`(2,1)`
+vectors must keep their current `A_in=29524` classifier input, so the change must be confined to the
+`b==1` pointer chain.
+
+## 6. Search state consistent with sections 1-5
+
+- Wide class from the 11/12 base (`wide_sweep.py`, 117 jump sites x 165 labels = 19,188 candidates),
+  prefilter `(0,1) -> 01`: through job 4,417/19,188 the best prefilter hit scores **8/12**
+  (`line 376 -> value`, fails `02,11,12,bl2`) — i.e. rewiring *can* flip `(0,1)`, and does so by
+  breaking the `b==2` and baseline vectors, exactly the column-wide effect section 4 predicts. Full
+  table is recorded when the sweep finishes.
+- Branch class from the 11/12 base (`branch_sweep.py`, 38 conditional/MOVED sites): through site
+  35/38, every candidate that reaches 11/12 keeps failset exactly `01`; no candidate has reached 12/12.
+
+Status: **12/12 remains `NOT_DEMONSTRATED`; measured best stays 11/12 (both engines).** The ceiling is
+now explained by a table law (section 4) and reduced to a three-item generator spec (section 5).
+
+Artifacts (sha256): `memdiff.py` `ad6d59fed05ae16353cf9a362c24b48e6a66c493c2ffd7559f7d24a7ca1fee7b`,
+`threemap.py` `30f717f862b804c8f976daafd257c5ad3b620a8b366d62529be2bbdb29f6e435`,
+`movd.py` `722f49afb5ded3fffeb1b93ade84756d0df7d9d0e9d3b0a73cb495ffe3682d0f`,
+`lemmas57.py` `2b5ae6493ed4ed88455ca6448fd286519a101b418852a9b074eeb9daed5263de`,
+`f57_diff_01_11.txt` `156d7dfda36fee0c4b1d2e9f40d262648b26689beef3bc106aecce0c80afb469`,
+`f57_three_73500.txt` `371aa451a9a725771d5ac89d7afb7e01a3ed241c83053af17fa66c8c6a9f70af`,
+`f57_movd_decision.txt` `b3faee8d77f3c6aabea8abe2fffd735fe7ab4f8fe99f1de034e4d603329df3cd`,
+`f57_lemmas.txt` `0d1183934bbba839d2249011cc42bc5067787f1c14625dd1236e11754d14a8fc`.
