@@ -687,3 +687,48 @@ mechanistic step: re-trace v12/v22 with raw d printed at every CRAZY/ROT
 write to pin the d-position of the printing fold.
 
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 47 — the verdict channel is fully pinned: printed digit = content
+of `stack_top` (57661) at the printing fold; EQ image = a minus a b-gated
+decrement round count; the CRAZY-writer trace confirms every slot write and
+the tr3 W-lines record PRE-fold state.**
+
+Writer-instrumented traces `~/tmp_lt/tr3_eqk_v{12,22}.txt` (sha `fdace527...`
+and `2b30f6a0...`) on the canonical EQ image, plus per-vector content
+correlation over the tr2 set, close the mechanism question opened by
+findings 44-46:
+
+1. Execution is BIT-IDENTICAL across vectors through step 60690; the first
+   divergence is the IN reading a (v12 A=1 vs v22 A=2 at 60691). All 59k
+   steps of table build/init are vector-independent (as expected).
+
+2. Every write to the slot window 57580..57700 is a CRAZY (op 62) fold at the
+   current d; W-line format records the PRE-fold state. The decrement fold is
+   `crazy(59048, x) -> x-1` (observed as A=59048 lines stepping content down);
+   `crazy(29524, x) -> 29524` restores the pointer word. The printed byte
+   appears at OUT with A equal to the post-fold content of 57661.
+
+3. Measured single verdict law over all 9 pairs — printed digit = the content
+   of `stack_top` 57661 at the first OUT:
+   preOUT content is 1 ONLY for (2,2); 0 for the other eight pairs, i.e.
+   `print1 = [a - decay(b) == 1]` with decay(0)=decay(1)>=a-max, decay(2)=1.
+   (2,0) and (2,1) decay to 0 before OUT (v21 shows content 1 at 72615 then a
+   further decrement before OUT 79308); (2,2) decays exactly once (2->1 at
+   77616-77631, OUT 1 at 77646). The tails of v12/v22 differ only by WHICH
+   decay round the drain loop has completed when the OUT-table pass arrives —
+   consistent with finding 44's step counts (drain rounds keyed to b) and
+   45's identity gate, now without ambiguity: the "identity" that matters is
+   d == 57661 at the printing fold.
+
+4. Consequence for LT construction: the channel available for free is
+   SUBTRACTIVE (a minus b-keyed round count); {(0,1),(0,2),(1,2)} is NOT a
+   sublevel set of a-k(b) (0-k=1 impossible). Therefore LT needs either (i) a
+   ternary CRAZY-table fold at the printing position — arrange (A, content)
+   at 57661 so crazy_op lands on a 1-producing cell exactly for a<b (the
+   a7 8/12 lineage does precisely this for 8 of 12 vectors) — or (ii) an
+   early round-count crossover so the DECAY itself is a-keyed for one operand
+   and b-keyed for the other, making preOUT content 1 on the strict-lower
+   pairs. Both routes keep all levers in MOVD d-routing + fold-round counts
+   over live cells; no HeLL block edits (findings 40-41 forbid those).
+
+12/12 remains `NOT_DEMONSTRATED`.
