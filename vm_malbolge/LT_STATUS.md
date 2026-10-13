@@ -1249,3 +1249,107 @@ Artifacts (sha256, `~/tmp_lt/` unless repo-pathed):
   `vm_malbolge/evidence/artifacts/lt_a7c9_probe.mb` `21680622…`,
   `vm_malbolge/evidence/lt_a7c9_probe_harness.json` `32f1440803e367079ea4fd359b4d1f7414e7818188ee48338872dc6af35828d3`
   (12 vectors, `oracle_output == runner_output` on every vector, score 9/12, ts 2026-10-13T21:49:57Z)
+---
+
+# Finding 54 — dated correction to finding 53's row/column vocabulary, plus the HEAD lineage measured (identical plateau)
+`[CURRENT]` measured 2026-10-13. This finding **corrects prose** of finding 53 and adds the HEAD
+lineage sweep. No measurement of finding 53 is retracted: the image `lt_a7c9_probe.mb` still scores
+9/12 with `oracle_output == runner_output` on all 12 vectors and all three baselines intact.
+
+## 1. Correction: which constant preserves what (finding 53 §3-§4 and the probe JSON `note` are inverted)
+
+The oracle folds `mem[d] = crazy_op(a, mem[d])` (`tools/oracle_classic.py:82-84`) and the table is
+indexed `_CRAZY[content_trit][A_trit]` with `_CRAZY = ((1,0,0),(1,0,2),(2,2,1))`
+(`oracle_classic.py:28-36`). Reading the rows correctly, there are **two orthogonal injectivity laws**,
+and finding 53 conflated them:
+
+| law | condition | verified |
+|---|---|---|
+| **column law — the fold preserves CONTENT** | `trit0(A) == 2`, i.e. `A % 3 == 2` | `content_trit -> result_trit0` is `[1,1,2]` for trit0(A)=0, `[0,0,2]` for 1, `[0,2,1]` (a permutation) for 2 |
+| **row law — the fold preserves the A value** | content = all-1s = 29524 | row 1 = `(1,0,2)` is a permutation in `A_trit`; rows 0 and 2 are not |
+
+ROT leaves the three carriers fixed (`rotate(0)=0`, `rotate(29524)=29524`, `rotate(59048)=59048`), and
+`C2 = 59048 = 2222222222_3` has **trit0 = 2**, while `C1 = 29524 = 1111111111_3` has trit0 = 1.
+
+So finding 53's productive edit `C2 -> C1` at `add_val_clean` does **not** "replace a collapsing row by
+the bijective row"; it does the opposite: it **destroys** the distinction that the preserving constant
+C2 was carrying through that fold. The (2,2) false positive disappears precisely because the fold stops
+publishing the `b == 2` class into the slot-1 cell. The same wording appears in
+`vm_malbolge/evidence/lt_a7c9_probe_harness.json` → `note`; that file is committed evidence of the run
+and is **left byte-identical**, and this section is the correction. The law itself (finding 52
+"trit0(A)==2") was right; only the labels attached to `C1`/`C2` were swapped.
+
+Lesson recorded for the design: **maximising bijectivity is the wrong heuristic here.** The verdict
+encoder's job is to *collapse* to two byte classes (00/01), so edits are judged by which class map they
+induce, not by information preservation.
+
+## 2. HEAD and the historical a7a040e lineage are behaviourally identical
+
+`vm_malbolge/src/mbir_cmp_lt.hell` at HEAD is sha `9a30a700…` (822 lines) and differs from
+`git show a7a040e:…` (817 lines) in every line, yet:
+
+```
+headcand.mb (rebuilt from HEAD by lmao)   8/12  fails=01,02,12,22
+mbir_cmp_lt.mb (committed HEAD image)     8/12  fails=01,02,12,22
+a7cand.mb    (rebuilt from a7a040e)       8/12  fails=01,02,12,22
+```
+
+and `headcand.mb` differs from the committed image only past offset ~57058 (the CRC/encoding tail) —
+the reproducibility result of finding 53 §1 holds for HEAD too, so **HEAD is also just the EQ probe**
+(plus the (2,2) artifact). Consequence: sweeping HEAD instead of a7 is not a second chance at the same
+edit class; it is the same classifier reached by two source texts.
+
+## 3. HEAD single-site ROT sweep: 34 sites, 136 rebuilds, max 9/12
+
+`f54_head_sweep.txt`, distribution `0:7 1:24 2:7 3:9 5:5 6:17 7:11 8:49 9:7`, `12/12 candidates: []`.
+Only three sites are productive and they all move the score from 8 to 9 by removing the (2,2) false
+positive (failset becomes exactly the three TRUE pairs):
+
+| HELL line | statement | alternatives reaching 9/12 |
+|---|---|---|
+| 386 `add_val_clean` | `ROT C2 R_ROT` (slot-1 pop fold) | `->C1` only (others 6/12) |
+| 427 `add_val_clean_op1` | `ROT C2 R_ROT` (slot-0 pop fold) | **all four** (`C1, C0, 0, 3`) |
+| 486 `add_pop0_done` | `ROT 3 R_ROT` (verdict value) | `->0`, `->C0` (others stay 8/12) |
+
+Line 427 is the strongest structural datum of the whole milestone: *any* non-C2 constant there gives
+9/12, i.e. it is not the value that matters but the **loss of the C2-preserving fold**.
+
+## 4. Every combination of the productive sites converges to one machine
+
+Measured with `rot_edit.py` on HEAD (5 runs): `427=C1&486=0`, `386=C1&486=0`, `427=C1&386=C1`,
+`427=C1&386=C1&486=0`, `486=0&427=C0` — **all five give the identical verdict table**
+
+    00=00 01=00 02=00 10=00 11=00 12=00 20=00 21=00 22=00  bl1=41 bl2=4241 bl3=(empty)   == 9/12
+
+i.e. the machine is then the **constant-00 kernel** on the whole LT domain. The `01` verdict is not
+"mis-routed for three pairs"; after the false positive is removed it is **unreachable**. Trace of the
+still-broken HEAD (`window_trace.py`, steps 78000-81300): `a=2,b=2` executes 1505 more events than
+`a=2,b=1` (2542 vs 1037 window lines, 81177 vs 79308 total steps) — the extra ~1.5k events are the
+counter-orbit chain that produces the byte `01`, so the 01 route exists and fires only on that one
+class. **Therefore 12/12 requires making that route fire on {(0,1),(0,2),(1,2)} and stay silent
+elsewhere: a branch-gating problem, not a constant problem.**
+
+## 5. New edit class opened: branch rewiring (in progress)
+
+`branch_sweep.py` rewrites the **destinations** inside the handler window (370-520): every
+`MOVED <label>` and every conditional `<FLAG> <label>` whose target is one of the 22 labels defined in
+that window (`diff_is_0/1/2`, `op2_nonzero`, `op2_is_2`, `load_diff_0`, `check_diff_1_or_0`,
+`add_push_common`, …). 38 branch sites x 21 targets = **798 rebuilt candidates**
+(`f54_branch_head.txt`), scored with the oracle. First results (through site 5) already show rewirings
+at 9/12 (`384 OP1_FLAG add_val_clean_op1 -> dec_op1 / diff_is_2_from_phase2 / return_from_dec_op1_1 /
+return_from_dec_op1_2`, `388 MOVED stack_top_1_crazy -> add_val_clean_op1`), none above 9 yet. The
+completed table and any 10+/12 candidate are recorded as finding 55.
+
+Status: **12/12 remains `NOT_DEMONSTRATED`.** New measured best stays 9/12 (dual-engine, baselines
+intact); the HEAD lineage is swept and is the same plateau; the productive direction is now pinned to
+the verdict-branch gate rather than to constants.
+
+Artifacts (sha256): `headcand.hell` `9a30a70056e6a5876391224e2002c04aa07563f004c5f911ec5e45b7b8d13d38`
+(= HEAD `vm_malbolge/src/mbir_cmp_lt.hell`), `headcand.mb`
+`d0080ba09736c142dfdaa855cfc9a27affd124fbae99b5dae1186504ecd5a800`, `headcand.dbg`
+`0e8e7b6561e5f594f4c412e378ee10816ac2027858f494db10b41f9090c3d799`,
+`f54_head_sweep.txt` `43a95ff20339b6df49daf81cc08047bd9091d4409796b1afedaadde7a58c37ba`,
+`path_trace.py` `48e8fc5b523520ccf89a5b0669b7eec3ff7908060888060385686be1b1e69664`,
+`branch_sweep.py` `9f5e6e2b5681c94598511cd257e3553e585c0f85ead0a8b49a14cb7da2465bb1`,
+`tr54_22.txt` `e57220531b256efead3a32fa8a325881e6e053234619f6712c0fefd4ebeb7814`,
+`tr54_21.txt` `330da3922a27cc0bcf35e27f6298697b95e6eda9635cb71bfa8011c747403f79`
