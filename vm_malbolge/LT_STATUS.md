@@ -561,3 +561,32 @@ cell read by the printing CRAZY equals 1 iff a<b (0 otherwise) over {0,1,2} —
 the 8/12 a7 fork lands `b`'s residue there; shift the basin's decrement
 routing so it lands the ORDER residue instead.
 12/12 remains `NOT_DEMONSTRATED`.
+
+**Finding 43 — complete MOVD cell map of the EQ verdict channel (the design
+surface for LT).** From `tr_eqk_{v22,v01,v10}.txt` the compare basin is a
+cycle through cells {COUNTER2_1@57121, MOVED@57122, ROT@57210/57211,
+dispatch_00@57609, CRAZY@57610/57611, crazy_value MOVD@57612,
+RESET_FLAG2@57687, crazy_carry MOVD@57688, add-area@57869-57874,
+SUBROUTINE_FLAG1 MOVD d=57969, return group @58345-58410
+(value_load_loop, value_loaded, nomorecarrykilled_2, return_from_tmp_3/4,
+jmp_into_loop_from_behind, return_from_value_8/9, return_from_carry_2,
+return_from_carry_was_not_set_2@58387, jump_back_to_behind@58386,
+return_from_carry_was_set_2@58391, return_from_value_9@58400,
+exit_inner_decrement_loop@58407, restore_...@58410), FLAG1-9 chain
+@58434-58814, LOOP2@58903, LOOP2_3@58997, NO_MORE_CARRY_FLAG@58998,
+CARRY@59047}. Writes to `stack_top` (57664) are IDENTICAL across vectors
+(steps 11426-12120, classification phase) — they set the cell address chain,
+not the digit. The digit channel is exactly one: at basin exit the final
+`ROT rot A=<residue>` value (2 on `(2,2)`, 0 on `(0,1)`/`(1,0)`) flows
+`PUSH_FLAG4@57874 -> COUNTER2_1@57121 -> MOVD->d stack_top_1(57659) ->
+dispatch_00@57609 -> CRAZY (folds; on residue 2 it reads stack_top:1 ->
+A=1) -> RESET_FLAG3@57779 -> PUSH_FLAG2@57780 -> add_pop0_done@57869 ->
+PUSH_FLAG3@57870/57873 -> MOVD->d SUBROUTINE_FLAG1(57969) -> CRAZY@57610 ->
+MOVED@57122 -> ret_rst_val_c1_1@58151 -> ADD_FLAG@58152 -> HALT@57082 ->
+OUT`. Exit sequences are cell-for-cell identical between TRUE and FALSE
+vectors; ONLY the residue value differs. LT requirement reduced to: land a
+residue in the basin-exit ROT such that the CRAZY fold yields A=1 iff a<b
+over {0,1,2} (residue classes needed: at least 3, currently the basin
+produces {0,2}). Evidence: trace files in `~/tmp_lt/` (shas recorded at
+finding 41 addendum context); generator `mbir_p2_cmp_gen.py` untouched since
+`9fd3979`. 12/12 remains `NOT_DEMONSTRATED`.
