@@ -873,3 +873,101 @@ search (`~/tmp_lt/` brute-forcing the two-cell fold algebra):
    missing classes only.
 
 12/12 remains `NOT_DEMONSTRATED`.
+
+# Finding 51 (2026-10-13, session 5d) — the single b=1 information-loss site is localized: cell 57537 classifier fold reads a non-injective CRAZY row
+
+Lineage under measurement: a7 LT image `a7base.mb` (sha256 `b73ccd25275f6292…`, commit
+`a7a040e` generator output, 8/12). All 9 cmp vectors, python oracle semantics, step-exact.
+
+## 1. Where raw b enters the decision, and what it lands on
+
+Verified writer trace (`~/tmp_lt/p57/v*.txt`, probe `probe57.py`, exact oracle semantics
+incl. post-execution cell translation and d auto-increment):
+
+    69853  W62 d=57537  pre=29525  A_in=b  ->  post = 29525 (b=0, b=1) | 29524 (b=2)
+
+Cell 57537 is the third cell of the NOP pointer table (static alternating 29443/81 across
+57528-57545; 57537 static = 81). The fold target is reached by `MOVD d := 57535` at step
+69851 plus two d auto-increments (57536, 57537). Six cells hold the pointer value 57537's
+source 57535 at that moment: 57581, 57819, 57878, 58140, 58148, 58165 (`scan51.py`).
+
+57537's whole write history is VECTOR-INDEPENDENT up to 69853 — identical for all 9 vectors
+(probe dumps `p57/`):
+
+    1920   81 -> 29524          (A=0)
+    57327  29524 -> 29523        (A=1)
+    61186/61204/61225/61281: 29523 -> 0 -> 0 -> 29524 -> 29523   (A = 29524, 59048, 0, 1)
+    65138/65156/65177/65233: 29523 -> 0 -> 0 -> 29524 -> 29525   (A = 29524, 59048, 0, 2)
+    69853  29525 -> crazy(b, 29525)                              <-- classifier
+
+So the content presented to the classifier is fixed at 29525 = trits [2,1,1,1,1,1,1,1,1,1].
+
+## 2. Why that content is fatal — row table
+
+`_CRAZY[y][x]`, rows keyed by content trit y, columns by A trit x:
+
+    y=0 -> (1,0,0)   collapses {1,2}
+    y=1 -> (1,0,2)   BIJECTION (injective in x)
+    y=2 -> (2,2,1)   collapses {0,1}
+
+Trit 0 of 57537 at 69853 is y=2, hence b=0 and b=1 both map to 29525 and b=2 to 29524.
+This is the ONLY place raw b is consumed for the verdict, and it is the complete
+explanation of the a7 failure set: b=1 is bit-identical to b=0 from step 69853 onward
+(measured earlier: v00/v01 print states identical). Corollary of the same law: had the
+content been 29524 (y=1 trit 0), the fold would have produced 29524 / 29523 / 29525 for
+b = 0 / 1 / 2 — a full 3-class readout. The bump law on an all-1s cell is
+`crazy(x, 29524) = bijection of x's trits`, and the image already manufactures 29524 from
+`crazy(0, 0)` (steps 61225, 65177) — the bijective constant is producible in-image.
+
+## 3. The bump that destroys injectivity comes from the harness tail byte
+
+57537 is pushed from 29524 to 29525 at step 65233 by `A = 2`, and that 2 is INPUT: the run
+executes exactly 7 IN instructions, consuming the harness framing
+`01 {a} 01 {b} 02 10 00` in order at steps 57321, 61048, 61275, 65001, 65227, ~727xx/728xx,
+~757xx/759xx (`grep -E "^ *[0-9]+ +IN +IN" tr3_a7_v*.txt`). So the fixed tail constants
+0x02 / 0x10 / 0x00 are program-visible control values: they bump 57537 at 65233 / 72890 /
+75974 (16 -> 29517, 0 -> 29524). The classifier row is therefore chosen by the *read
+schedule*, not by an immutable property of the image.
+
+## 4. Second bottleneck (must be fixed together)
+
+Even with 57537 bijective, the next fold writes the counter cell 57614 with content
+59048 = trits all-2 (row y=2, `crazy(x, 59048)` maps x-trit 0 and 1 both to 2, only 2 -> 1).
+Verified: at 69866 A_in is 29525 (b<2) vs 29524 (b=2) -> post 59047 vs 59048, which is the
+orbit divergence localized in finding 50 at counter index 211 / step 69909. So a 3-class
+classifier feeding an all-2 counter re-collapses {0,1} at one step. Any LT design needs
+BOTH the classifier cell and the counter seed cell on all-1s (29524-type) content at their
+respective folds, i.e. two row-selection edits, not one.
+
+## 5. Consequences for the design route
+
+- The a7 lineage's 4 failures are not a distribution of bad luck across the pipeline; they
+  are one row selection (content trit 0 = 2 at step 69853) plus its echo at 57614.
+- Levers, in ascending blast radius: (i) change which byte the 65233 bump consumes
+  (read-schedule edit; A=0 there leaves 57537 = 29524 -> injective), (ii) change the
+  pointer cell that supplies d=57535 at 69851 so the classifier folds a different cell
+  (12 table cells hold 29524 at that instant: 57595, 57719, 57904, 57937, 57979, 58003,
+  58073, 58089, 58112, 58136, 58257, 58351), (iii) rebuild with the counter seed also on
+  29524. Each of (i)/(ii) perturbs the shared 4-write cycle used by all later rounds, so
+  they must be scored on all 9 vectors + 3 baselines, not reasoned about locally.
+- Still NOT_DEMONSTRATED: any 12/12 image. No candidate built in this step; HEAD remains
+  the EQ probe lineage.
+
+Artifacts (sha256, `~/tmp_lt/`):
+
+    8d8a515439bd046c573a1e51990641b02ac3c38664b59fdf64cc94d90774ff2f  probe57.py
+    7a81f31c8bc3105b5adfe8124926510f7c80e70a5aa45a9e61d105efe4ba3599  scan51.py
+    b73ccd25275f6292f74e2d4843e32e24dfe6191e00d0504868c60449937dfd63  a7base.mb
+    d21bd14d60e3cc1cd5bb2335defe485b76bf74788cf87c58373c359a9da9cec9  a7base.dbg
+    ef727acea6a8e0f3aa6321c457a912a7c21eef5d27f8b7f58a64bb151658cbf5  p57/v00.txt (= v10 = v20)
+    564d7e0bdf4a8bca074c4b567d1c5295dc54a173cd2111652d054f21e4abb973  p57/v01.txt (= v11)
+    fa86fd76b9ccc3c3d3b50f00de074036506d498133787f71c8fe4e05428f0c69  p57/v02.txt (= v12 = v22)
+    fc244819a0fa00049fc81e43491a3c1739da3ef9fb37bb799c36edcf8d8d5255  tr3_a7_v00.txt
+    136b6074a63ef36a59e4e63825537b154d2b489e65a828d78ac0021d3788c848  tr3_a7_v01.txt
+    ebcc62dfe43c23fb465c406895e1f5d49484dd1b2ac98b7c834ffff487d40a8a  tr3_a7_v02.txt
+
+The dump diff is the whole result in one line: `p57/v00` vs `p57/v01` differ in exactly one
+field — the classifier's input (A_in=0 vs A_in=1) — while its post-state is byte-identical
+(29525); `p57/v00` vs `p57/v10` are byte-identical (a never touches this cell). The 9 dumps
+collapse into 3 classes keyed by `b<2 | b=2`, i.e. 57537 carries at most 2 b-states.
+
