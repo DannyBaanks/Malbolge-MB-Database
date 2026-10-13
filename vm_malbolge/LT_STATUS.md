@@ -1353,3 +1353,159 @@ Artifacts (sha256): `headcand.hell` `9a30a70056e6a5876391224e2002c04aa07563f004c
 `branch_sweep.py` `9f5e6e2b5681c94598511cd257e3553e585c0f85ead0a8b49a14cb7da2465bb1`,
 `tr54_22.txt` `e57220531b256efead3a32fa8a325881e6e053234619f6712c0fefd4ebeb7814`,
 `tr54_21.txt` `330da3922a27cc0bcf35e27f6298697b95e6eda9635cb71bfa8011c747403f79`
+
+---
+
+# Finding 55 — the 9/12 images are DEGENERATE (constant-`00` kernels); branch rewiring gives the first NON-degenerate gain: **11/12, both engines**; and LT on 3x3 is provably not a rectangle
+`[CURRENT]` measured 2026-10-13 (session 7). Tools: `domain_map.py`, `branch_sweep.py`,
+`branch_edit.py`, `rot_sweep.py`; logs `f55_domain.txt`, `f54_branch_head.txt`,
+`f55_rot_from11.txt`, `f55_harness_11.txt`.
+
+## 1. Why the score was misleading
+
+`lt_harness.py` probes `a,b in {0,1,2}` only: 9 points, six of which want `00`. A kernel that prints
+`00` for everything already scores 6/9 + 3/3 baselines = **9/12**. Score therefore cannot distinguish
+"computes LT" from "stopped producing verdicts". `domain_map.py` re-probes the same framing over
+`a,b in {0..7}` (64 points) to see the actual function.
+
+## 2. Measured functions (`01`-producing points listed; everything else prints `00`)
+
+| image | sha256 (first 16) | score | function on the 64-point domain |
+|---|---|---|---|
+| `headcand.mb` (rebuild of HEAD `src/mbir_cmp_lt.hell`) | `d0080ba09736c142` | 8/12 | **`01 <=> a==2 AND b>=2`** — exactly six non-`00` points: (2,2),(2,3),(2,4),(2,5),(2,6),(2,7) |
+| `a7cand.mb` (rebuild of `a7a040e`) | `b601f8d667f4270a` | 8/12 | **b-only**: prints `02` for `b in {2,5}` and `06` for `b in {6,7}`, independent of `a` (32 non-`00` points) — never emits byte `01` at all |
+| `a7c9.mb` (committed 9/12 best) | `21680622b6a3d165` | 9/12 | **empty function**: zero non-`00` outputs on all 64 points |
+| `headc427.mb` (HEAD + `427 C2->C1`, also 9/12) | `27ce8ed17ca65934` | 9/12 | **empty function**: zero non-`00` outputs on all 64 points |
+
+Corrections that follow, stated explicitly:
+
+1. Findings 53 and 54 reported 9/12 as a new measured best. The number is a true harness measurement
+   and the committed evidence is untouched, but as LT kernels those images are **strictly worse than
+   HEAD**: they gained the (2,2) false positive by destroying the machine's only `01` route. 9/12 must
+   not be read as progress toward the milestone.
+2. HEAD's kernel is a product set `{2} x {>=2}`; a7's kernel does not depend on `a`. Neither shape can
+   become LT by re-labelling outputs.
+3. The trace asymmetry of finding 54 section 4 (81177 vs 79308 steps) is the `01` route firing on the
+   `a==2` column only — consistent with the map, not with a mis-routed branch.
+
+## 3. Shape theorem (no search needed)
+
+LT on the harness domain is `T = {(0,1),(0,2),(1,2)}`. `T` is **not a rectangle**: `T = A x B` with
+`(0,1),(1,2) in T` forces `0,1 in A` and `1,2 in B`, hence `(1,1) in T`, but `1<1` is false. So no
+single class-of-a x class-of-b gate — which is exactly what both lineages implement — can realise LT.
+`T` **is** a union of two rectangles: `{0}x{1,2} U {1}x{2}`. The minimal structural requirement is a
+verdict push gated by the **OR of two class-product tests** (equivalently a real magnitude/borrow
+test). The lineage already has both 3-way class tests and a flag-plumbing stage
+(`check_diff_1_or_0` / `load_diff_0`), but the plumbing composes them as one AND. That is a
+**control-flow** target, which is why every constant sweep (findings 53-54: 265 + 136 rebuilds)
+plateaus.
+
+## 4. The branch-rewiring class, measured (HEAD base, 8/12 -> 11/12)
+
+`branch_sweep.py` rewrites destinations only, inside HELL lines 370-520: every `MOVED <label>` and
+every conditional `<FLAG> <label>`, retargeted to each of the 22 labels defined in the window —
+**38 sites x 21 targets = 798 rebuilt-and-scored candidates** (`f54_branch_head.txt`).
+
+Score histogram over the 798: `1:37 2:36 3:147 4:1 5:37 6:103 7:41 8:327 9:63 10:30 11:2 12:0`
+(baseline 8/12; 396 candidates at or above baseline; **no 12/12**).
+
+Every candidate at >= 10/12, with its failset:
+
+| site | rewrite | score | fails |
+|---|---|---|---|
+| 401 | `OP1_FLAG dec_op1 -> return_from_dec_op1_1` | 10/12 | 01,02 |
+| 401 | `OP1_FLAG dec_op1 -> return_from_dec_op1_2` | 10/12 | 01,12 |
+| 406 | `OP1_FLAG return_from_dec_op1_1 -> return_from_dec_op1_2` | 10/12 | 01,02 |
+| **407** | **`NO_MORE_CARRY_FLAG op2_nonzero -> add_val_clean_op1`** | **11/12** | **01** |
+| 407 | `NO_MORE_CARRY_FLAG op2_nonzero -> return_from_dec_op1_1` | 10/12 | 01,22 |
+| 416 | `NO_MORE_CARRY_FLAG op2_is_2 -> return_from_dec_op1_2` | 10/12 | 01,22 |
+| 429 | `MOVED stack_top_crazy -> stack_top_1_crazy` | 10/12 | 01,22 |
+| 438 | `MOVED decrement_value -> dec_op1` | 10/12 | 01,02 |
+| 438 | `MOVED decrement_value -> op2_nonzero` | 10/12 | 01,12 |
+| 438 | `MOVED decrement_value -> return_from_dec_op1_1` | 10/12 | 01,12 |
+| 443 | `MOVED decrement_value -> op2_nonzero` | 10/12 | 01,02 |
+| 443 | `MOVED decrement_value -> return_from_dec_op1_1` | 10/12 | 01,02 |
+| 448 | `MOVED decrement_value -> diff_is_2` | 10/12 | 01,22 |
+| 448 | `MOVED decrement_value -> return_from_dec_op1_2` | 10/12 | 01,02 |
+| 455 | `MOVED diff_is_2 -> check_diff_1_or_0` | 10/12 | 01,22 |
+| 455 | `MOVED diff_is_2 -> diff_is_0` | 10/12 | 01,22 |
+
+**Two facts of weight.** (a) The gain at line 407 is the first NON-degenerate improvement found in the
+whole search: the resulting image still emits `01` — `domain_map.py` puts it at
+(0,2),(0,3),(0,5),(1,2),(1,3),(1,5),(6,2),(6,6),(7,2),(7,6) — so it is a real (if wrong-shaped)
+kernel, not a silenced printer. (b) **`01` is in the failset of every single candidate scoring >= 10**;
+the missing vector is `(0,1)`, i.e. exactly the first rectangle of section 3 that the plumbing cannot
+express.
+
+### 4.1 11/12 verified on BOTH engines
+
+`vm_malbolge/evidence/artifacts/lt_head11_probe.mb` (57,511 bytes, `2838e63c02507e85801de9fee010e95f72882f029ef8f91af77868a3ec0c26a1`),
+built by LMAO v0.6.0 from `vm_malbolge/evidence/lt_head11_probe.hell`
+(`30022b1a6ee6ff193b78a309dc8621d73b93834b7624f04645f034a6986a5bce`), which differs from HEAD
+`vm_malbolge/src/mbir_cmp_lt.hell` (`9a30a70056e6a5876391224e2002c04aa07563f004c5f911ec5e45b7b8d13d38`)
+in **one line only** (407). Full dual-engine result in
+`vm_malbolge/evidence/lt_head11_probe_harness.json` (`46b72f45f00e62ff4be3c28e4f2a0c012127e83eaac0e32951193fcda18702b2`),
+raw harness text `f55_harness_11.txt`; a second build from a line-ending-normalised copy of the same
+source (`head11.mb`, `bca2df75a22b5a41667b09390522e9a7870ebbcc0857499cd142bb2fe35ecdc6`) scores the same
+11/12 on both engines, differing only in the trailing CRC region (first differing byte 56905) — the
+reproducibility law of findings 44/47 holds again.
+
+| vector | want | oracle | runner | verdict |
+|---|---|---|---|---|
+| cmp_lt(0,0) | 00 | 00 | 00 | PASS |
+| **cmp_lt(0,1)** | **01** | **00** | **00** | **FAIL (only failure)** |
+| cmp_lt(0,2) | 01 | 01 | 01 | PASS |
+| cmp_lt(1,0) | 00 | 00 | 00 | PASS |
+| cmp_lt(1,1) | 00 | 00 | 00 | PASS |
+| cmp_lt(1,2) | 01 | 01 | 01 | PASS |
+| cmp_lt(2,0) | 00 | 00 | 00 | PASS |
+| cmp_lt(2,1) | 00 | 00 | 00 | PASS |
+| cmp_lt(2,2) | 00 | 00 | 00 | PASS |
+| baseline1 push+out | 41 | 41 | 41 | PASS |
+| baseline2 lifo | 4241 | 4241 | 4241 | PASS |
+| baseline3 halt | (empty) | (empty) | (empty) | PASS |
+
+Engine parity holds on all 12 vectors (including the failing one: 00 == 00), step counts identical.
+
+### 4.2 Hill-climb from the 11/12 base does not reach 12/12
+
+Re-running the ROT-constant class on `head11.hell` (34 sites x 4 alternatives = 136 candidates,
+`f55_rot_from11.txt`) yields 50 candidates at or above the 11/12 baseline and **zero at 12/12**; every
+candidate that keeps 11 still has failset exactly `01`. The branch class from the same base is running
+as finding 56 work. Conclusion for section 4: single-site edits — constant OR branch — are exhausted in
+both directions; the remaining vector needs a second, structurally distinct gate.
+
+## 5. Dated correction to the commit record (append-only; evidence untouched)
+
+Commit `9863f76` (finding 54) states in its message that the post-append sha256 of
+`vm_malbolge/LT_STATUS.md` is `115a406d...`. Recomputed on disk immediately before this append, the
+sha256 of the committed file at `9863f76` is
+`626d90701284f8afb4cebc9e288b520dfe004e38daed938c50d262b1c6cdc4d7`. The message was wrong; the file and
+its content are correct and unmodified. Recorded here rather than rewritten, per the append-only rule.
+
+## 6. Artifacts (sha256)
+
+Scratch dir `/home/danny/tmp_lt/` (scratch, not evidence):
+`domain_map.py` `d330e6f8dae58d37a1497c55be57f33c8c22eaee182749d7b8087ffa123def52`,
+`branch_sweep.py` `9f5e6e2b5681c94598511cd257e3553e585c0f85ead0a8b49a14cb7da2465bb1`,
+`branch_edit.py` `b9c6b6ea82592a40daf0c7fd802c2b06f566a0bc2c7b48f533f936a068c8d860`,
+`rot_sweep.py` `bcd71f90b9bc3a29d30563822b0009c3fb0e98303c90a763c90b01c7c0d91745`,
+`rot_edit.py` `93503fb42748e33618dd89ba673b12cebb0e0cfc23e8bd87fa9f995a251dbac4`,
+`f55_domain.txt` `d36ee63b1ff40d380261b0c8aa14f4ca389278f7281fe3b353bd0b177b73a586`,
+`f54_branch_head.txt` `d32d903233c827ce1f698e89b81b5d9e0e452682a0f41c5b77910fe29b111694`,
+`f55_rot_from11.txt` `ed1cc9c9634fd0b9c225c90fdf41b1df28de410379b225ea471d8dd00503d8ad`,
+`f55_harness_11.txt` `2ab9c3541de13dba9ff5d6ab1955e6ac40713f874eca4c4d9db7775ceececae5`,
+`head11.hell` `26a1de53082415dfbed79e3273c09d3372cf1a6d0acc994740238ec6f968ff25` (LF copy),
+`head11.mb` `bca2df75a22b5a41667b09390522e9a7870ebbcc0857499cd142bb2fe35ecdc6`,
+`head11crlf.hell` `30022b1a6ee6ff193b78a309dc8621d73b93834b7624f04645f034a6986a5bce`,
+`head11crlf.mb` `2838e63c02507e85801de9fee010e95f72882f029ef8f91af77868a3ec0c26a1`,
+`head11crlf.dbg` `9d21749d3a1e72560c9b9793826efeea1726cea97240b50b025f8f4ef5940594`.
+
+Repo evidence added by this finding: `vm_malbolge/evidence/lt_head11_probe.hell`,
+`vm_malbolge/evidence/artifacts/lt_head11_probe.mb`,
+`vm_malbolge/evidence/lt_head11_probe_harness.json` (shas in section 4.1).
+
+Status: **12/12 remains `NOT_DEMONSTRATED`.** New measured best **11/12, both engines, baselines
+intact, non-degenerate** (`head11`, single-line HELL edit at 407 over HEAD). The blocker is now
+identified as a shape requirement (section 3) and confirmed experimentally (section 4: the missing
+vector `(0,1)` survives every single-site edit class tested).

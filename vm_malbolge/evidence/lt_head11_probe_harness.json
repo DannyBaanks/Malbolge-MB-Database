@@ -1,0 +1,141 @@
+{
+  "ts": "2026-10-13T23:12:39Z",
+  "milestone": "P2 CMP_LT",
+  "finding": 55,
+  "status": "NOT_DEMONSTRATED for 12/12; new measured best 11/12 for the HEAD lineage via branch rewiring",
+  "candidate": "vm_malbolge/evidence/artifacts/lt_head11_probe.mb",
+  "generated_from_hell": "vm_malbolge/evidence/lt_head11_probe.hell",
+  "build": "LMAO v0.6.0 (third_party/lmao/lmao) -d -o <mb> <hell>",
+  "single_edit": "vm_malbolge/src/mbir_cmp_lt.hell line 407: 'NO_MORE_CARRY_FLAG op2_nonzero' -> 'NO_MORE_CARRY_FLAG add_val_clean_op1' (return_from_dec_op2_1 gate redirect)",
+  "edit_base_hell_sha256": "9a30a70056e6a5876391224e2002c04aa07563f004c5f911ec5e45b7b8d13d38",
+  "sha256_mb": "2838e63c02507e85801de9fee010e95f72882f029ef8f91af77868a3ec0c26a1",
+  "baseline_head_score": "8/12",
+  "candidate_score": "11/12",
+  "engines": {
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge"
+  },
+  "vectors": [
+    {
+      "label": "cmp_lt(0,0)",
+      "input": "0x01000100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78609,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(0,1)",
+      "input": "0x01000101021000",
+      "want": "01",
+      "oracle_output": "00",
+      "oracle_steps": 80280,
+      "runner_output": "00",
+      "parity": true,
+      "pass": false
+    },
+    {
+      "label": "cmp_lt(0,2)",
+      "input": "0x01000102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 80284,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,0)",
+      "input": "0x01010100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78609,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,1)",
+      "input": "0x01010101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 80280,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,2)",
+      "input": "0x01010102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 80284,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,0)",
+      "input": "0x01020100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78609,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,1)",
+      "input": "0x01020101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 80280,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,2)",
+      "input": "0x01020102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 80280,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline1 push+out",
+      "input": "0x01411000",
+      "want": "41",
+      "oracle_output": "41",
+      "oracle_steps": 67052,
+      "runner_output": "41",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline2 lifo",
+      "input": "0x01410142101000",
+      "want": "4241",
+      "oracle_output": "4241",
+      "oracle_steps": 74089,
+      "runner_output": "4241",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline3 halt",
+      "input": "0x00",
+      "want": "",
+      "oracle_output": "",
+      "oracle_steps": 60009,
+      "runner_output": "",
+      "parity": true,
+      "pass": true
+    }
+  ],
+  "note": "Redirecting the NO_MORE_CARRY branch of return_from_dec_op2_1 to add_val_clean_op1 instead of op2_nonzero converts the single AND-of-class gate into a two-route verdict push; the image then produces 01 exactly on (0,2) and (1,2) plus all three baselines, losing only cmp_lt(0,1). This is the first NON-DEGENERATE gain in the search: the 9/12 images print 00 on all 64 extended-domain points (finding 55), while this one still emits 01 (domain map: 01 at (0,2),(0,3),(0,5),(1,2),(1,3),(1,5),(6,2),(6,6),(7,2),(7,6))."
+}
