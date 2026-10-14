@@ -4605,3 +4605,49 @@ barrido de pareja de semillas la carga subió a 12,6 sobre 12 núcleos y **se pa
 reproducen el recuento de pasos y la salida del propio oráculo para su vector (`80879 / \x02` en `(2,2)` sobre A,
 `80885 / \x02` sobre D), de modo que el orden del bucle de las sondas está validado contra
 `tools/oracle_classic.py`, no supuesto.
+
+## 10. Adendum fechado — 2026-10-14 · Cierre del barrido de semillas sobre A y verificación del relleno perezoso C
+
+### 10.1. Tally final del barrido de semillas sobre Base A (`sweep123.py`)
+
+El barrido de las **8.835 variantes** de semillas (`57508` y `57509`, base `'R','Q'`) anunciado en §6b
+como EN CURSO ha concluido (`f73_seed_A.done`, reporte `f73_seed_A_report.txt`):
+
+- **Pares registrados**: 8.835 (espacio completo de pares nuevos 94x94 - 1).
+- **Supervivientes etapa 1 (`(2,2) -> 00`)**: **0**.
+- **Aciertos de dos vectores**: **0**.
+- **Distribución de salidas para `(2,2)`**: 8.810 variantes mueren sin emitir salida (`''`), 19
+  permanecen inertes en `02` (la salida de la base sin cambio), y 6 emiten `66`.
+- **Conclusión**: la vía de variación de semillas sobre la Base A queda **definitivamente cerrada**
+  para la pantalla de dos vectores (0 candidatos).
+
+### 10.2. Verificación de relleno perezoso del motor C (`probe124.py`)
+
+A raíz de la auditoría de procedencia del binario nativo `runners/malbolge-original/malbolge`
+(ELF sha `3257f1ae…`, BuildID `6f2014e9…`, construido desde `Malbolge-Engine` `src/{malbolge.c,vm.c}`),
+se examinó la condición de divergencia potencial: `vm.c` rellena las celdas `>= NCHARS` de forma
+perezosa a partir de las dos últimas celdas de programa al momento del primer acceso, mientras que
+`oracle_classic.load_memory` las deriva estáticamente del contenido inicial.
+
+La sonda `probe124.py` midió el instante del primer toque al relleno y las escrituras a las celdas
+semilla (`57508`, `57509`) a lo largo de los 9 vectores de prueba en las tres bases 11/12 (`A`, `C`, `D`):
+
+- **Primer acceso a celda `>= NCHARS`**: paso 1.467 en todos los vectores y en las tres bases.
+- **Escrituras a celdas semilla antes del relleno**: **ninguna** (`None` en todas las corridas).
+- **Escrituras a celdas semilla durante toda la ejecución**: **ninguna** (`None` en todas las corridas).
+- **Total de condiciones de divergencia de relleno perezoso**: **0** en A, en C y en D.
+- **Tabla `_ENC` vs `ENCRYPT[95]`**: coincidencia idéntica (94/94 bytes) entre `oracle_classic._ENC`
+  y la constante `ENCRYPT[95]` de `vm.h` en el rango de caracteres imprimibles (33..126).
+
+Ambos motores ejecutan semánticas de memoria idénticas sobre las tres bases 11/12.
+
+### 10.3. Cadena de evidencia añadida
+
+| fichero | sha256 | papel |
+|---|---|---|
+| `probe124.py` | `b534e2d35d582af74e8b3341272c229ebec3715bf4ac04ed6d12f86e04040ec0` | sonda de liveness y divergencia de relleno perezoso |
+| `f73_probe124_lazyfill.txt` | `61be7a02c8552232761345be1761ff4e78e53debd0a8af0c3a9269437315585b` | salida de verificación perezosa en A, C y D (0 riesgos) |
+| `f73_seed_A.log` | `dfc91256921d3c4933a8803ef8abe55a5cea9a285caa1825089ddbe472f6673f` | log del barrido de 8.835 pares en A |
+| `f73_seed_A.stdout` | `9d79b4c3447803c1d3087bb71616f8e1a98cc7a7ce5ef84f0502100add17e6ae` | salida por consola del barrido de semillas |
+| `f73_seed_A_report.txt` | `62458f4e181f027c667c215354a67d29037a5ca88d8ccfe4f957d24f2a5b6f4f` | reporte de conteo y distribución de `sweep123.py` |
+| `f73_seed_A.jsonl` | `5dd2a37f7443e0bda526e88c2549dc6e6b2e19a8a0b3ce4d9a1aaf118bbf6562` | registro individual de los 8.835 pares evaluados |
