@@ -2920,3 +2920,218 @@ launched by `run_legal68.sh` `3f24d1e9c066df3ee6ac8b9b6384e55c1d15d47c5636c25f39
 lines 28-36 and 39-`62` region as read on 2026-10-14. Chain-family witnesses from `foldrot64.py`
 `3c6f1abb79150eb206bbfc20f6625d08e047cf82413152476857b00456b824ff` verified by `chain67.py`
 `2beb15a0d1214ac747dfa6d173a7b503924c77c09feba718304d9dd898e396d2`.
+
+# Finding 65 — PROBE-STREAM DEFECT: las sondas de los hallazgos 58-64 alimentaron 6 bytes donde el harness
+# empuja 7; toda la tabla DEC, todos los snapshots y ambos censos de plegado miden una ejecución que el
+# harness nunca realiza. `[CURRENT]` falsificación medida 2026-10-14 (sesión 8) sobre la imagen
+`cand58_C.mb` (`f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`), sin reconstruir nada:
+son reprocesos del oracle canónico. Corrección fechada y añadida; no se reescribe ninguna evidencia previa.
+
+## 0. El defecto, literal
+
+`verdict_scan.py` (linaje de hallazgo 58) y `snapoff72.py` (ventanas de hallazgo 64 §6.1) construyen la
+entrada así:
+
+```python
+sin = iter(bytes.fromhex("01%s01%s021000" % (vec[0], vec[1])).decode("latin-1"))
+```
+
+con `vec` como cadena de dígitos. `%s` inserta el carácter `'0'`/`'1'`/`'2'`, de modo que la cadena hex
+queda `"010011021000"` para el par `(0,1)`: **6 bytes**, `[0x01, 0x00, 0x11, 0x02, 0x10, 0x00]`. El harness
+(`vm_malbolge/tests/lt_harness.py`, `VECTORS`) usa
+
+```python
+f"01{a:02x}01{b:02x}021000"      # (0,1) -> "01000101021000" -> 7 bytes
+```
+
+o sea `[0x01, a, 0x01, b, 0x02, 0x10, 0x00]`. El byte 3 de la sonda (`0x11`) es el dígito de `b`
+desplazado dentro del nibble del tag `0x01`; a partir de la posición 2 las sondas alimentaron una secuencia
+que no existe en ningún test.
+
+## 1. Discriminante: pasos del oracle como verificación cruzada
+
+`calib75b.py` reproduce la máquina a mano con ambas corrientes y compara con `oracle_classic.run`
+(HALT-step y bytes). Environment: linux, python3, `LT_TOOLS=<repo>/tools`. Salida `f75_calib.txt`, y la
+tabla decisiva (salida cruda de `calib75b.py` sobre `cand58_C.mb`):
+
+```
+(0,0) oracle_steps=78625 out=00 | faithful-replay=78625/HALTED matches=True
+     | probe-stream(010010021000)=77381/HALTED bytes=[0, 84] SAME_AS_TRUE=False
+(0,1) oracle_steps=79790 out=01 | faithful-replay=79790/HALTED matches=True
+     | probe-stream(010011021000)=78023/HALTED bytes=[0, 84] SAME_AS_TRUE=False
+```
+
+- **Control positivo:** el replay fiel coincide con el oracle en los 9 pares (pasos y bytes, salvo `(2,2)`
+  donde el oracle imprime `01` porque la imagen está mal); luego el bucle de replay es correcto y lo único
+  erróneo era la corriente de entrada.
+- La corriente de sonda HALTA ~1.200 pasos antes, ejecuta **dos** OUT (`0x00`, `0x84`) en vez de uno, y
+  recorre otra memoria.
+
+## 2. Qué queda inválido (lista literal, sin reescribir nada)
+
+Quedan **HISTÓRICOS y no utilizables para empalmar**: la tabla `DEC = {00:71983, 01:73148, 02:71413, …}`
+(los anclajes reales son 74503…76259, véase hallazgo 66 §1); los 9 `f58_snap_<vec>.pkl` y los 9
+`f58_snap_head_<vec>.pkl`; los 63 `f72_off<k>_<vec>.pkl`; el censo de tres pliegues de hallazgo 63; los
+negativos de profundidad 0 y 1 y el positivo "69 cadenas de dos pliegues verificadas" de hallazgo 64 §5;
+el censo de ventanas `f72b_depth2_off{4,6,8,12,16,20,26}.txt` y el presupuesto de pasos `step73.py`; y por
+tanto la ley de hallazgo 58 §1 ("el byte impreso es función del contenido de la celda que lee el ROT de
+decisión"), que se midió bajo el defecto.
+
+No se ve afectado: la gramática de instrucciones de hallazgo 64 §0 (se leyó del intérprete, no se midió),
+el lema de robustez de instancia de build (hallazgo 62), y el estado del hito: las imágenes siguen puntuando
+11/12 bajo el harness real, que nunca usó las sondas.
+
+## 3. Lección operativa `[BINDING para esta línea]`
+
+Un snapshot de sonda solo es elegible si el replay que lo produce reproduce **el paso de HALT y los bytes
+del oracle para el mismo vector**. Ninguna herramienta de esta línea verificaba esa condición; ahora sí se
+verifica dentro de la propia herramienta (`fold79.py`, `window77.py`).
+
+## 4. Artefactos
+
+Scratch `/home/danny/tmp_lt/`. `calib75.py`
+`4f0742b97cbb631bece77cf78c4fb363063d8de10c171df67f642470000f496b` (salida `f75_calib.txt`
+`db7970289eae99be3cb801d10273e090f59cdc8ecc423cbc007f5cedc1c8337d`), `calib75b.py`
+`74239927b9abceab5fcf14214ff9ed06e4d829d72ca3672d3a285a8b122a1302`, `reanchor76.py`
+`7043ffcfe3bf5e1066ca74247d810012420015916b06e55ac05ed5bc82ce7a5c` (salida `f76_reanchor.txt`
+`d60757300817faea431e24175c70a090a1347a993dda2245af6e040dfd722e3e`).
+
+# Finding 66 — la ley del veredicto medida en la ejecución real: el bit LT ya está en la celda de veredicto
+# 3.123 pasos antes de leerla y dos CRAZY en la celda de código 57610 lo borran; ningún edit en o después
+# del paso 73.281 puede dar 12/12 `[CURRENT]` medido 2026-10-14 (sesión 8) sobre `cand58_C.mb`, sin
+reconstrucción; los pasos y bytes están cruzados contra `tools/oracle_classic.py` en cada vector.
+
+## 1. Anclaje fiel (una sola OUT por vector)
+
+`window77.py` (`f77_window.txt` `b3bd2ea641d4bf1fccd9bdc52c997c96d990a5da71a258c08be2c73345ae93b4`,
+anclajes en `f77_anchor.json` `946fe65cc8a083db4d3ae6e86c3016fbdae586673a4118a3a215bab5d4aea8c8`):
+
+| vec | OUT@ | bytes | want | oracle HALT | vs harness |
+|---|---|---|---|---|---|
+| 00 | 75094 | 00 | 00 | 78625 | PASS |
+| 01 | 76259 | 01 | 01 | 79790 | PASS |
+| 02 | 74524 | 01 | 01 | 78055 | PASS |
+| 10 | 75094 | 00 | 00 | 78625 | PASS |
+| 11 | 76253 | 00 | 00 | 79784 | PASS |
+| 12 | 74524 | 01 | 01 | 78055 | PASS |
+| 20 | 75094 | 00 | 00 | 78625 | PASS |
+| 21 | 76253 | 00 | 00 | 79784 | PASS |
+| 22 | 76259 | 01 | **00** | 79790 | **FAIL** |
+
+Los grupos de paso son `{00,10,20}`, `{02,12}`, `{11,21}`, `{01,22}`: la máquina despacha por caminos y
+solo el último grupo mezcla un par con veredictos opuestos. Eso es exactamente el 11/12.
+
+## 2. La ley del veredicto, restituida
+
+Traza de la ventana (rel 0 = la OUT), vector 00, salida cruda `f77_window.txt`:
+
+```
+#  -21  75073  57493  57955   39 ROT    mem[d]=59048   a:=59048
+#  -15  75079  57610  57661   62 CRAZY  mem[d]=0       a:=0
+#   +0  75094  57365  57976    5 OUT                   a=0
+```
+
+Entre el CRAZY de `rel -15` y la OUT no hay ningún otro escritor de `a` (solo JMP/PTR), así que
+
+> **byte impreso = `crazy_op(59048, mem[57661]) % 256`**, con `a` entrando = 59048 en los **nueve**
+> vectores (medido: columna `a-values (59048, 59048)` en `f79_fold.txt`).
+
+Con la matriz `_CRAZY` indexada `[tritcontenido][trita]` y `trita = 2` en las 10 posiciones:
+contenido `0 → 00`, `1 → 02`, `2 → 01`. La tabla de contenidos de 57661 en el instante del plegado
+(`fold79.py`, `f79_fold.txt` `7092e1defdcb88d050a2a6c72dbff8fecc07eb80121441209257448d0b21dc24`) es
+
+| vec | 00 | 01 | 02 | 10 | 11 | 12 | 20 | 21 | **22** |
+|---|---|---|---|---|---|---|---|---|---|
+| `mem[57661]` en el plegado | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 0 | **2** |
+| LT quiere | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | **0** |
+| contenido necesario | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 0 | **0** |
+
+o sea: **el único valor equivocado del sistema es `mem[57661] = 2` en `(2,2)`, donde hace falta `0`**.
+Esto sustituye la ley de hallazgo 58 §1, que atribuía el byte impreso al ROT de `rel -21`; ese ROT fija
+`a = 59048` (punto fijo de 59048) y no discrimina nada.
+
+## 3. Colisión 01/22: los dos estados son byte-idénticos en el plegado
+
+`lockstep80.py` (`f80_lockstep_01_22.txt` `036e1ddf9590ec77b761064d2fc8d5ae57f7357fddc44696e63590f538aac4d2`)
+replaya `01` y `22` en paralelo manteniendo el conjunto de celdas distintas:
+
+- primer paso con diferencia: **60.562** (celda 57719);
+- máximo: 6 celdas distintas en 69.566 `{57537, 57595, 57614, 57642, 57661, 57719}`;
+- la conjunto se vacía por goteo: 57719 muere en 73.055, **57661 muere en 73.121**, 57595 en 73.215,
+  57642 en **73.281**;
+- desde el paso 73.281 hasta el plegado en 76.244: **0 celdas distintas, y `a`, `c` y `d` también iguales**
+  (línea final cruda: `AT STEP 76244: ndiff=0 a-differ=False c-differ=False d-differ=False`).
+
+Lo mismo ocurre en los pares que comparten camino: `(02,12)`, `(11,21)`, `(00,10)`, `(10,20)` dan `ndiff=0`
+en el plegado — pero esos pares piden el **mismo** veredicto, así que no son un fallo; `(01,22)` pide
+veredictos opuestos.
+
+### Corolario (negativo estructural, no "no encontrado")
+
+Cualquier edit cuyo efecto empiece en un paso `≥ 73.281` produce estados idénticos para `01` y `22`, luego
+imprime el mismo byte para ambos. **Ninguna edición en o después del paso 73.281, y en particular ninguna
+cadena de pliegues en el instante de decisión ni en su ventana, puede alcanzar 12/12.** Esto clausura por
+imposibilidad el programa de búsqueda de hallazgos 63/64/65 (que además estaba medido con la corriente
+errónea): no es que las cadenas no aparezcan en el censo, es que la función que piden no está en la
+memoria del instante de decisión.
+
+## 4. El borrado, celda a celda
+
+`coll81.py` volcando el instante (`f81_verdictcell_erase_01_22.txt`
+`ecaae13d93820e9ac43080b63dc5fe4b3fc36e90e24f5aff728174b3eb621d4e`; salida cruda de los pasos 73.116-73.124):
+
+```
+# 73120  ops 4/4   c 57610 d 57661 a 0/0   diffs {57595:(29523,29525), 57642:(1,2), 57661:(0,1)}
+# 73121  ops 62/62 c 57611 d 57662 a 29524/29524  wrote 57661/57661  diffs {57595:…, 57642:…}
+```
+
+y tres líneas después del mismo patrón (73.272-73.284, `f81_coll_01_22.txt`
+`3f02644385ea09c6bae63fec292e60051191645b1892e3dca17d05f949bcd18b`):
+
+```
+# 73280  ops 4/4   c 57610 d 57642 a 0/0   diffs {57642:(0,1)}
+# 73281  ops 62/62 c 57611 d 57643 a 29524/29524  wrote 57642/57642  diffs {}
+```
+
+Mecánica: en el paso 73.120 la **celda de veredicto 57661 ya contiene el discriminator** (`0` para `01`,
+`1` para `22`); en el paso 73.121 la misma celda de código `57610` ejecuta CRAZY sobre `d = 57661` con
+`a = 0` en ambos runs, y como `_CRAZY[0][0] = _CRAZY[1][0] = 1`, ambos valores se convierten en `29524`
+(trit 1 en las 10 posiciones). Tres pasos más tarde (`73.215`, `73.281`) el mismo código `57610` remata las
+dos celdas restantes. La máquina calcula el bit correcto y lo tira 3.123 pasos antes de leerlo.
+
+## 5. Lo que un fix tiene que hacer, planteado con la tabla exacta
+
+El par de contenidos necesario en el plegado es `(01 → 2, 22 → 0)`; el par superviviente en 73.120 es
+`(0, 1)`. Con `a` fija en el pliegado (59048, trit 2) el CRAZY del veredicto mapea `{0,1} → {0,2}` —
+invertido y rechazado (`02`). Las tres columnas posibles de una sola plegada son:
+
+| trit de `a` | contenido 0 | contenido 1 | contenido 2 |
+|---|---|---|---|
+| 0 | 1 | 1 | 2 |
+| 1 | 0 | 0 | 2 |
+| 2 | 0 | 2 | 1 |
+
+Ninguna columna envía `0 → 2` y `1 → 0`, así que **conservar la celda tal cual tampoco basta**: hace falta
+una segunda transformación (otra plegada, o un ROT que mueva el trit) entre 73.120 y el plegado. Las rutas
+elegibles son, agotadas: (i) editar el camino en `[60.562, 73.281)` para que el bit llegue a 57661 en la
+forma `(2, 0)`; (ii) editar para que `(0,1)` sobreviva en una celda que el plegado lea tras una segunda
+plegada que complete el mapa. Ninguna está construida ni demostrada.
+
+## 6. Estado del hito
+
+`CMP_LT 12/12`: **NOT_DEMONSTRATED**. Mejor actual 11/12 sin cambios: `cand58_C.mb` falla `(2,2)`,
+`head11crlf.mb` falla `(0,1)` (8/9 + 3 baselines cada uno, medido con `oracle_classic` en esta sesión;
+el runner nativo `runners/malbolge-original/malbolge` **no** se re-ejecutó hoy — NOT_DEMONSTRATED para la
+paridad nativa de esta sesión, aunque sigue en evidencia commiteada previa).
+
+## 7. Artefactos
+
+`window77.py` `8b121e8211fc51fd2aa65cc1e59a3b82765e6aadbd9d343e8f876b0609f51fa6`, `fold79.py`
+`ab2be2b82997fa6b0ad024ba782c7c3c9593dd97ccc546c7fd07170bd9c85c53`, `lockstep80.py`
+`f8cd4e9289671669c163e4a29c60043e76ead7c3f737e6607873cc7af8d93c2e`, `coll81.py`
+`efbcca67ce8d04dc3b24adc8784008883709ca3f967c4be5fe27cef249b1ccd6`. Los 9 snapshots fieles del instante del
+plegado `f79_fold_<vec>.pkl` (hash de la concatenación ordenada
+`60dcd3900a7d7b774db288ba368801ccaade5e0ee0f388390bb5374d4af5b971`). Comandos de reproducción, desde
+`/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y `LT_MB=<scratch>/cand58_C.mb`:
+`python3 window77.py` · `python3 fold79.py` · `X=01 Y=22 UNTIL=76244 python3 lockstep80.py` ·
+`X=01 Y=22 FROM=73116 TO=73124 python3 coll81.py`. Escala: un solo proceso por barrido, sin paralelismo.
