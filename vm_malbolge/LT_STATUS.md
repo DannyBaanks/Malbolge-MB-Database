@@ -3135,3 +3135,93 @@ plegado `f79_fold_<vec>.pkl` (hash de la concatenación ordenada
 `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y `LT_MB=<scratch>/cand58_C.mb`:
 `python3 window77.py` · `python3 fold79.py` · `X=01 Y=22 UNTIL=76244 python3 lockstep80.py` ·
 `X=01 Y=22 FROM=73116 TO=73124 python3 coll81.py`. Escala: un solo proceso por barrido, sin paralelismo.
+
+---
+
+# Finding 67 — 2026-10-14 · Historia de escritura fiel de la celda del veredicto: LA INSTRUCCIÓN
+# DE DECISIÓN ES UN CRAZY REL −3092 Y SU SALIDA SÓLO DEPENDE DE `a` (contenido all-1)
+
+Halla `writelog83.py` (`sha256` `7ab6cece50ba4287362b4e21b1a20755f392a143591c8dd628a67e8b40861ebd`):
+replay fiel de la corriente del ARNÉS (stdin de 7 bytes, [0x01,a,0x01,b,0x02,0x10,0x00]) que registra,
+para cada uno de los 9 vectores, TODA escritura sobre la celda del veredicto 57661, con el instante
+`OUT` anclado en la ejecución real y el acumulador **entrante** capturado antes del pliegue. Salidas
+crudas: `f83_writes_57661.txt` (`071fb7c5d42a8ae5f491e7c203e4ccecec41375fdd45a17c8796e4eca52f7ce0`,
+v1 SIN `a_in`, conservada como evidencia cruda) y `f83b_writes_57661.txt` (`c2b08b4bf93bca226b9d4cad805bc08c7bbd825dfc7b62d29e86dbc3acd6777c`,
+v2 correcta). Volcado lockstep del ventan: `f84_diffs_01_22_73100_73170.txt`
+(`f99d027127df6910f96db19140aeffc26a24ba9673a4024a1ba42b0f2c16018f`,
+`X=01 Y=22 FROM=73100 TO=73170 python3 coll81.py`).
+
+## 1. Quién escribe 57661
+
+En las 9 ejecuciones, 57661 recibe 11 escrituras (vectores `00`,`10`,`20`) o 13 (los demás). TODAS
+menos una salen de la MISMA celda de código `57610` con `op=62` (CRAZY); la excepción es la carga en
+el paso `11107` desde `code_c=11204`, que convierte el `81` inicial en `29524` (`all-1`). Ninguna
+escritura es ROT. Es decir: **la celda del veredicto no es un acumulador de suma, es una hoja de
+pliegue simple cuyo único autor de valor es el CRAZY de `57610`**.
+
+## 2. La escritura de decisión y su ley exacta
+
+La última escritura ANTES del `OUT` ocurre siempre en `OUT − 3092` (paso `71432` para `{02,12}`,
+`72002` para `{00,10,20}`, `73160` para `{11,21}`, `73167` para `{01,22}`). En los 9 casos el contenido
+entrante es `29524` = todos los trit = 1, porque 46 pasos antes (`OUT − 3138`) un CRAZY con `a_in = 0`
+la devuelve a `all-1` desde cualquier valor que tuviera — y ese borrado es **incondicional**:
+`_CRAZY[0][0] = _CRAZY[1][0] = 1`, así que borra la diferencia `0` vs `1` que aún había en `{01,22}`
+(paso `73121`, ver Hallazgo 66 §2). Por tanto el valor de decisión es `crazy_op(a_in, 29524)`, que
+trit a trit vale `_CRAZY[1][trit_i(a_in)]`, y la fila 1 de la tabla (`1,0,2`) es inyectiva:
+
+    trit0(a_in)=0 ⇒ escribe 1 (bandera VERDADERO)   trit0(a_in)=1 ⇒ escribe 0 (bandera FALSO)
+    trit0(a_in)=2 ⇒ escribe 2 (valor que el arnés no admite como salida)
+
+Los pliegues posteriores en `OUT − 30` y `OUT − 15` (ambos con `a_in=59048`) hacen `1→2→1` y `0→0→0`,
+de modo que **el byte impreso es `01` syssy si el paso de decisión escribió `1`** — coherente con la
+ley del Hallazgo 66, ahora con el autor y la ley local medida.
+
+## 3. Tabla de decisión fiel (la única cosa equivocada del sistema)
+
+    vec  want  paso  a_in    trit0  escribe  byte  ¿ok?
+    00   F     72002 29524     1      0      00    ok
+    01   V     73167 29523     0      1      01    ok
+    02   V     71432 29523     0      1      01    ok
+    10   F     72002 29524     1      0      00    ok
+    11   F     73160 29524     1      0      00    ok
+    12   V     71432 29523     0      1      01    ok
+    20   F     72002 29524     1      0      00    ok
+    21   F     73160 29524     1      0      00    ok
+    22   F     73167 29523     0      1      01    MALO
+
+Ocho de nueve llegan al CRAZY de decisión con el acumulador correcto. El noveno, `(2,2)`, llega con
+`29523` (bandera V) pegado paso a paso a `(0,1)`.
+
+## 4. De dónde sale ese `a_in` — y por qué el arreglo NO puede ser un pliegue local
+
+En `{01,22}` el acumulador `29523` nace en el paso `73158`: `op=62` en `code_c=57611`,
+`d=57720`, con `a` entrante `= 1` en AMBOS vectores, y `mem[57720]` idéntico en ambos (no está en el
+conjunto de diferencia). Antes: `a=1` desde `73148` (ROT `c=57494`) y `a=29524` desde `73121`
+(CRAZY `c=57611`, `d=57662`). Los portadores que sí discriminan en ese instante son exactamente dos
+(Hallazgo 66: mueren en `73215` y `73281`, o sea VIVOS en el momento de decisión):
+
+    57595 = (29523, 29525)    57642 = (1, 2)
+
+Y hay una **obstrucción algebraica dura** para el camino obvio: con acumulador entrante `1`
+(trits `1,0,0,…,0`) ninguna celda puede producir `29524`, porque el trit 0 del resultado es
+`_CRAZY[y][1] ∈ {0,0,2}` — nunca `1`. Así que no basta con reescribir `mem[57720]`: hace falta
+cambiar TAMBIÉN el acumulador que entra a `73158`, es decir una cadena de dos pliegues.
+
+## 5. Enunciado exacto del objetivo (syssy suficiente, no heurístico)
+
+`12/12` exige que en `(2,2)` el acumulador que entra al CRAZY de `73167` sea **exactamente `29524`**,
+sin mover ningún otro vector. Por §2 esa condición es necesaria y suficiente. Por §4 debe construirse
+llegando desde `{57595, 57642}` (o sus antecesores previos a `73121`) hasta el par
+`(a, mem[57720])` del paso `73158`, con las dos primitivas de escritura legals de la máquina
+(`mem[d]` por CRAZY/ROT y auto-traducción de `mem[c]`), y con la restricción de que `01` conserve
+`29523` — lo que convierte el problema en **un encaminamiento condicional de un solo trit**, no en
+otro censo de plegados. Queda pendiente: perfil de alcanzabilidad de `57595`/`57642` bajo esas
+primitivas y la carrera contrarreloj contra `73281`.
+
+Estado del hito: **`12/12` NO ESTÁ DEMOSTRADO** — no se ha añadido ningún candidato nuevo en este
+hallazgo; el mejor sigue siendo `11/12` (`cand58_C`, falla `(2,2)`). Paridad con el nativo
+`runners/malbolge-original/malbolge`: **NO_DEMONSTRATED en esta sesión** (no se re-ejecutó).
+
+Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools`:
+`python3 writelog83.py` · `X=01 Y=22 FROM=73100 TO=73170 python3 coll81.py`.
+Escala: un proceso por barrido, sin paralelismo.
