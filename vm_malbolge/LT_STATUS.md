@@ -2483,3 +2483,42 @@ and must not be compared digit-for-digit with this table.
 Artifacts (sha256): `robust62.py` `6e3e1bb3bfd1e97f6e11683656a75e263947e42701d79d905a830080eb480fc8`, `f62_robust_head11.txt` `aeae45fdf9dbd335848fdc8658c2bf4055feb375303b330ecd401ac16b4591f6`,
 `tailreach62.py` `db0f43a3cf31eed52296b99a3ee3bb34217e9cece9924926a0ce320c35de93fa`, `f62_tailreach_head11.txt` `5d90219720c3f93bb56841a0fb4092d5d236f2d53f301f40fefa56a0257ef8c1`, `emit61.py` `62dab4068e5a172e950ffb2cc3b0378277c10d36c74c02c7cfc25a55a0ca2154`,
 `emit61_batch.py` `1b83c31fadff0880df7789a73958e5a2cbe7e2aa66249216bef3c3dfc3641660`.
+
+---
+
+# Erratum to Finding 62 section 5 — the CRLF caveat applies to the canonical parent, not to the six
+# committed images (appended the same session, 2026-10-13, without touching the original text)
+
+The heading of the section-5 table said "`.hell` sha256 (worktree, CRLF canonical)". That label is wrong
+for the six files this finding committed: for every one of them the object store and the working tree
+agree, because they were added as LF and `core.autocrlf` normalises on *add* —
+
+| committed image | `.hell` blob == worktree | `.mb` blob == worktree == `sha256_mb` in its JSON |
+|---|---|---|
+| `lt_f59_cand_A` | `e88759700e873543…` | `a96dd7615a6e8d60…` |
+| `lt_f59_cand_B` | `26e9e4100266b999…` | `4c1a9b1a9300bec5…` |
+| `lt_f59_cand_C` | `e4b12ee9ec328332…` | `b7bb3a82d55e5f4f…` |
+| `lt_f59_cand_D` | `65f5a1d6750fe50b…` | `1f7b7bdc534019e2…` |
+| `lt_f62_line448_decop1` | `935f67c5252d3cb3…` | `f1420e49584fddb9…` |
+| `lt_f62_line448_rfcwns2` | `e01e666c3508a73b…` | `9bbfb6692ead5d9a…` |
+
+The CRLF split is a property of the pre-existing canonical parent only:
+
+| file | blob (`git show HEAD:<path> \| sha256sum`) | working tree |
+|---|---|---|
+| `vm_malbolge/evidence/lt_head11_probe.hell` | `26a1de53082415df…` | `30022b1a6ee6ff19…` |
+
+and the blob value `26a1de53082415df…` is *exactly* the sha256 of the scratch base `head11.hell` that
+every sweep of Findings 59-62 used as `BASE`. That is the lineage proof, and it holds at the only stable
+level (the object store). It also means the `edit_base_hell_sha256` field written into
+`lt_f62_line448_*_harness.json` (`30022b1a…`) is a checkout-dependent number, not a source identity, and
+must be read as such.
+
+**Machine rule adopted for this milestone while `core.autocrlf=true` and no `.gitattributes` pins
+`*.hell` / `*.mb`:** cite evidence hashes as blob hashes, never as working-tree hashes. Combined with
+Finding 62 section 1 this gives the full picture — an `.mb` hash is *instance*-bound (lmao pads the tail
+nondeterministically) and a `.hell` working-tree hash is *encoding*-bound, so the build-stable identity of
+a candidate is the pair (`sha256` of the `.hell` **blob**, 12-vector behaviour signature), which is why
+section 5 records both. Proposed follow-up, deliberately NOT done here because it is a repo-wide config
+change for another session to authorise: a `.gitattributes` with
+`*.hell text eol=lf` and `*.mb text eol=lf`.
