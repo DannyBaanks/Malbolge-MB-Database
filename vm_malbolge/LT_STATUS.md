@@ -3846,3 +3846,496 @@ Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y `LT_MB` 
     python3 pair100.py                        # sondas de la cascada de impresion (modelo inyectado)
 
 Escala: un proceso por corrida, sin paralelismo; cada corrida de los nueve vectores tarda minutos.
+
+---
+
+# Finding 72 — 2026-10-14 · `(0,1)` y `(2,2)` no son dos cálculos que coinciden: son UN solo cálculo. Los dos
+punteros recorren idénticos los 79.790 pasos, el único órgano selectivo por valor vive más allá de la última
+letra del programa, y en la familia hay dos imágenes (A y D) donde `(2,2)` **sí** está ya separado.
+
+## 0. Pregunta y método
+
+continuación de F69/F70/F71, sobre el candidato `cand58_C.mb` (11/12), que es la base con la que están medidos
+todos los pasos citados. Longitud del programa: **57.510** caracteres no blancos (el fichero tiene 57.511
+caracteres), por lo que la región cargada de `load_memory` son las celdas `0..57509` y el relleno empieza en
+`57510`. Nota de convención: F71 §6c numeró esa frontera por desplazamiento de byte en el fichero; aquí se
+numera por **índice de celda**, así que los dos últimos caracteres son `57508` y `57509` y un edito localizado
+es cualquier celda `<= 57507`. Es la misma frontera, no una corrección.
+
+Todas las medidas corren bajo el oráculo python `tools/oracle_classic.py` y, donde se dice, bajo el motor nativo
+`runners/malbolge-original/malbolge`. Seis sondas nuevas, cada una re-implementación fiel del bucle del oráculo
+(salto resuelto ANTES de traducir la siguiente celda, traducción de `mem[c]` ANTES del incremento
+`c = (c+1) % MEM`, de modo que un `JMP` hacia `tgt` traduce `tgt` y ejecuta `tgt+1`):
+
+| sonda | pregunta |
+|---|---|
+| `diff113.py` | dentro del par que colisiona, ¿qué celdas se LEEN con contenidos DISTINTOS en las dos corridas, y estaba el contenido inicial aún vivo? |
+| `live114.py` | ¿qué celdas del programa puede alcanzar en absoluto un edito localizado simple (lectura directa en vivo, antes de cualquier escritura)? |
+| `live120.py` | ¿cuánto mide la región tocada y la clase «traducida antes de ejecutada», es decir el tamaño real del espacio de un edito? |
+| `diff116.py` | ¿lee alguna corrida una celda editable viva en un índice que la otra NO lee (lecturas asimétricas)? |
+| `diff118.py` | ¿divergen en algún paso los punteros `c`/`d` de las dos corridas (sin filtros)? |
+| `diff117.py` | ¿qué celdas se pliegan con CRAZY en un paso donde los acumuladores difieren — el único canal por el que un edito simétrico puede volverse asimétrico? |
+
+`sweep115.py` filtra después cada edito de un carácter del conjunto candidato contra el único vector equivocado,
+`(2,2)`, en el motor nativo; `confirm119.py` revisa cualquier acierto en **ambos** motores y registra el recuento
+de pasos; `probe121.py` corre las seis imágenes 11/12 commiteadas sobre los doce vectores en el motor nativo.
+Scripts y salidas están hasheados en §11, con las órdenes de reproducción al lado.
+
+## 1. La colisión, recordada
+
+De `diff112.py` (§8 de F71, reproducido aquí):
+
+    A = 01000101021000  (0,1)  quiere VERDADERO
+    B = 01020102021000  (2,2)  quiere FALSO
+    pasos en lockstep comparados: 79790
+    pasos divergentes: 722   primero = 60553   último = 73281
+    sufijo proyectado idéntico tras la última divergencia: 6509 pasos
+    OUT de A = [(76259, 1)]    OUT de B = [(76259, 1)]
+
+Los dos vectores que deben imprimir veredictos **opuestos** imprimen `01` en el *mismo* paso. Todo lo que sigue
+es la anatomía de esa coincidencia.
+
+## 2. Las dos corridas son idénticas de puntero durante todo el cálculo (`diff118.py`)
+
+`f118_ptrdiff_01v22.txt`:
+
+    # vectorA=01000101021000 vectorB=01020102021000 steps=79790
+    # steps where c disagrees: 0; where d disagrees: 0; first index divergence: None
+    # cells executed as code by exactly one run: 0; of those in the editable region: 0
+    # cells visited as data by exactly one run: 0; of those editable: 0
+
+`(2,2)` no se limita a *coincidir* con `(0,1)` al final: recorre **la misma secuencia de instrucciones y la
+misma pista de punteros de datos durante los 79.790 pasos**. `(2,2)` no es un cálculo que dé la respuesta
+equivocada; es el cálculo de `(0,1)` re-entrado con otras bytes en el acumulador.
+
+Dos controles, misma sonda, otros pares:
+
+| par | pasos con `c` divergente | pasos con `d` divergente | primera divergencia |
+|---|---|---|---|
+| `(2,1)` vs `(2,2)` | 9144 | 9362 | 70364 |
+| `(0,1)` vs `(2,1)` | 9144 | 9362 | 70364 |
+
+El paso 70364 es el despacho de F71 §4 (lectura de `mem[58156]`: `74` inerte → cadena FALSA frente a `70` SETD →
+cadena VERDADERA). Las celdas de código de la región editable que lee la cadena FALSA y que `(2,2)` no lee nunca:
+
+    0  57341  57365  57366  57383  57384  57404  57405  57493  57494
+
+Diez celdas, y `(2,2)` no ejecuta ninguna.
+
+## 3. Dónde difiere la memoria del paseo compartido (`diff113.py`)
+
+`f113_separating_reads_01v22.txt`:
+
+    # source length (program region) = 57510 cells; cells >= 57510 are filler (no source char)
+    # CODE reads (executed cell) with different contents: 0 cells, 0 reads
+    # DATA reads (d-pointer cell) with different contents: 6 cells, 32 reads
+       cell 57614  n=  15  steps 69609..70167  vA=0 vB=1   initial_still_live_at_first_read=False
+       cell 57642  n=   5  steps 69521..73281  vA=0 vB=1   initial_still_live_at_first_read=False
+       cell 57661  n=   5  steps 70122..73121  vA=0 vB=1   initial_still_live_at_first_read=False
+       cell 57595  n=   3  steps 73182..73215  vA=0 vB=1   initial_still_live_at_first_read=False
+       cell 57719  n=   3  steps 73022..73055  vA=0 vB=1   initial_still_live_at_first_read=False
+       cell 57537  n=   1  steps 70154..70154  vA=29523 vB=29525  initial_still_live_at_first_read=False
+    # CANDIDATE CELLS (program region, values differ AND initial content still live): 0
+
+Dos hechos, y los dos hacen falta más abajo:
+
+1. **Ninguna celda ejecutada contiene jamás valores distintos** en las dos corridas (`0 cells, 0 reads`): la
+   secuencia de códigos de operación es idéntica byte a byte, que es la formulación en memoria de §2.
+2. Los únicos contenidos que difieren son seis celdas `>= 57510` — **más allá de la última letra del programa** —
+   y cada una se lee sólo *después* de que un pliegue CRAZY/ROT ya la haya sobrescrito
+   (`initial_still_live_at_first_read=False` en las seis). Son `57661` (la celda del veredicto de F70/F71),
+   `57719` (su productor de `a_in`), y `57614`/`57642`/`57595`/`57537` (la misma cadena un pliegue antes).
+
+El par, por tanto, **no tiene ninguna lectura separante con contenido inicial vivo**: la condición de «lectura
+separante» de F71 §6c no es sólo que la base actual no la satisfaga, es que es **insatisfrible dentro de este
+par**.
+
+## 4. Lema del canal separante (`diff117.py`)
+
+Como las dos corridas cargan la *misma* imagen de memoria (§3) y visitan los *mismos* índices (§2), un edito en
+una celda del programa es leído con el mismo contenido editado por ambas. El edito puede aún así partir el
+veredicto, pero sólo a través de una instrucción cuyo resultado dependa del acumulador además de la memoria
+— `CRAZY: mem[d] = crazy(a, mem[d])` (y `ROT`, que re-fasea las columnas del pliegue porque fija `a` desde
+`mem[d]`). Condición necesaria, entonces, para que un edito de un carácter actúe asimétricamente *sobre el par
+observado*:
+
+> la celda editada tiene que plegarse en un paso donde los acumuladores de las dos corridas difieran.
+
+`f117_afold_01v22.txt` mide exactamente ese conjunto:
+
+    # CRAZY folds at an a-divergent step: 7 cells (0 in editable program region, 7 in filler >= 57510)
+       cell  57537 n=   2 steps 69553..70154 aA=0     aB=2
+       cell  57563 n=   1 steps 69664..69664 aA=1     aB=2
+       cell  57595 n=   1 steps 64517..64517 aA=1     aB=2
+       cell  57614 n=   1 steps 69566..69566 aA=29523 aB=29525
+       cell  57642 n=   1 steps 64526..64526 aA=29523 aB=29525
+       cell  57661 n=   1 steps 60571..60571 aA=29524 aB=29525
+       cell  57719 n=   1 steps 60562..60562 aA=0     aB=2
+    # ROT writes at an a-divergent step: 15 cells, 0 editable
+
+**Las siete celdas de pliegue a-divergente están en la región de relleno** (`>= 57510`, sin letra propia) y
+ninguna celda editable se pliega nunca con los acumuladores distintos. La ventana a-divergente es
+`60553..73281` y sus destinos de pliegue son la propia cadena del veredicto: el único órgano selectivo por valor
+de la máquina está fuera del alcance de un edito localizado. Alcanzar los contenidos *iniciales* de esas celdas
+exige mover toda la cadena de relleno, o sea editar uno de los dos últimos caracteres, que reescribe a la vez la
+celda del flag de despacho `58156` y las celdas puntero `57887..57926` (F71 §6c). Esa vía está medida en §6
+etapa 3: es una palanca global y no voltea ningún vector aislado.
+
+**Alcance del lema.** Es una afirmación sobre el par *observado*: un edito que reescriba una lectura de
+*gobierno* (despacho de código, destino de `JMP`/`SETD`) cambia a la vez la secuencia de instrucciones de las dos
+corridas, y a partir de ahí el conjunto de pasos divergentes se recalcula desde cero y la selectividad por valor
+puede aparecer en otra celda. El lema es por tanto un **filtro sobre dónde puede sentarse un arreglo**, no una
+prueba de imposibilidad; §5–§7 someten empíricamente la frontera de ese filtro.
+
+## 5. Lo que alcanza un edito localizado simple: subconjunto vivo directo y tamaño real del espacio (`live114.py`, `live120.py`)
+
+Un edito en la celda `i <= 57507` cambia **sólo** `mem[i]` en la carga (la cadena de relleno arranca de las dos
+últimas letras, así que `57508/57509` quedan fuera: re-permutan las 1.539 celdas de relleno). `live114.py` se
+queda con las celdas cuyo contenido inicial se lee *antes de cualquier escritura* — como código o como operando
+`d` — que es el subconjunto donde el edito actúa como reemplazo limpio de un solo valor. Ese conjunto es **la
+misma lista de 60 celdas para `(2,2)`, `(0,1)` y `(2,1)`** (listas idénticas, md5 `14fee829…`):
+
+    cabecera (leídas como DATOS, pasos 1..985):
+      0  1  2  33 34 35 36 37 38 39 40 42 43 44 45 46 47 50 53 54 55 56 57 58 59 60 61 62 63 64 65
+      66 67 68 69 70 73 76 77 78 79 80 81 83 84 85 86 88 89 90 91 92 93 94 95 97
+    cola (ejecutadas como CÓDIGO, pasos 56822..56856):
+      56919  57384  57405  57494
+    (excluidas, primera lectura después del OUT en 76259: 57341, 57366)
+
+`live120.py` mide el resto, para que el subconjunto no se confunda con el espacio entero:
+
+    # distinct program cells visited as CODE: 56831; as DATA: 68; union touched: 56898
+    # of the touched union, initial content still live at first read (direct subset): 62
+    #   of those, first read is an execution (opcode): 7
+    # translation-only-before-read cells in the union (edit still changes the executed op): 56836
+    # full localised edit space = 56898 cells x 92 chars = 5234616 variants = 3926.0 CPU-hours at 1 worker,
+    #                            1308.7 h at 3 workers
+    # direct subset sweep space  = 62 cells x 92 = 5704 variants = 0.96 h at 3 workers
+
+(la constante `92` de `live120.py` cuenta 92 caracteres de reemplazo por celda; contando las `93` alternativas
+reales — los `94` imprimibles menos el carácter vigente — el espacio entero sería `56.898 x 93 = 5.291.514`. La
+cifra citada es por tanto una cota inferior, y el coste una estimación a `2,7 s` por corrida.)
+
+Dos lecturas, las dos hacen falta:
+
+1. **Casi todo el programa se ejecuta** (`56.831` de `57.508` celdas aparecen alguna vez como puntero de código)
+   y, como el oráculo traduce la celda que va a ejecutarse *al final del paso anterior*, `56.836` de esas celdas
+   se escriben una vez antes de su primera lectura. Un edito en ellas cambia el código de operación que luego se
+   ejecuta, así que es una palanca legal — simplemente no está en el subconjunto vivo directo.
+2. Eso hace que el espacio completo de un solo edito localizado sea `5.234.616` variantes, unas `3.926`
+   horas-CPU a velocidad nativa (`2,7 s` por corrida). **Un barrido entero está fuera de alcance**; los `5.580`
+   de la pantalla siguiente son una sonda dirigida de la clase más limpia, no una búsqueda exhaustiva, y el lema
+   de §4 se lee con la misma reserva.
+
+## 6. Barrido 115 — `(2,2)` filtrado en el motor nativo
+
+`sweep115.py`, 3 trabajadores, un barrido a la vez, motor nativo con `max_steps = 200000`; se registra acierto
+sólo si los bytes impresos son exactamente `00` (el veredicto que falta).
+
+Etapa 1, las 4 celdas de cola (`f115_sweep_tail.log`): **372 variantes, 0 aciertos**.
+
+    # DONE variants=372 hits=0 outputs={'': 367, 'cf': 3, '01': 1, '54': 1}
+
+367 de 372 ediciones en `56919/57384/57405/57494` dejan la máquina sin imprimir nada: las celdas tardías son
+portantes, no hay código de operación de sobra ahí.
+
+Etapa 2, las 56 celdas de cabecera (`f115_sweep_head.log`): **5.208 variantes, 1 acierto — y el acierto es
+degenerado** (§7).
+
+    # DONE variants=5208 hits=1 outputs={'': 2520, '00': 1, '51': 3, 'd8': 2, '2a': 2, '6a': 1, '39': 1, '54': 1,
+    #   '01': 2627, 'd2': 4, 'a8': 2, '04': 2, '72c9': 8, 'cf': 23, 'a8c9': 4, 'cfcf': 2, '64644d': 2,
+    #   'cfcf96fa01': 1, '35': 2}
+
+Forma del veredicto sobre la pantalla directa completa (5.580 variantes = 372 + 5.208):
+
+| imprime `(2,2)` | variantes | significado |
+|---|---|---|
+| nada | 2.887 (52 %) | máquina destruida (llega al tope de 200.000 pasos) |
+| `01` | 2.628 | máquina intacta, veredicto **sin cambiar** (sigue equivocado) |
+| basura (`51`, `cf`, `72c9`, `d8`, …) | 64 | máquina a medio vivir, sin veredicto válido |
+| `00` | **1** | el `cell 0 -> 'c'` degenerado, que halta en el paso 2 |
+
+Dentro de la clase limpia de reemplazo de un valor hay por tanto **exactamente una** variante que imprime el
+`00` pedido para `(2,2)`, y lo imprime porque no calcula nada. Cero arreglos viables de un carácter en esta clase.
+
+Etapa 3, los dos caracteres **semilla** del relleno (`f115_sweep_seed.log`) — la única vía por la que un edito
+simple puede alcanzar las celdas de pliegue a-divergente de §4, porque re-permuta la cadena entera en vez de una
+celda. **186 variantes, 0 aciertos**:
+
+    # variants=186 cells=[57508, 57509]
+    # DONE variants=186 hits=0 outputs={'cf': 12, '': 155, '01': 19}
+
+155 de 186 destruyen la máquina, 12 imprimen basura y las 19 que sobreviven enteras imprimen `01` para `(2,2)`
+**sin cambiar**: la semilla es una palanca global que reescribe toda la cadena de relleno de golpe y no voltea
+ningún vector aislado. Este es el recuento variante a variante que hay detrás del punto 2 de F71 §6c, que ya
+documentó la vía barrida con mejor resultado `11/12`. Total barrido sobre esta base: **5.766 variantes**
+(372 + 5.208 + 186); arreglos viables de un carácter: **cero**.
+
+## 6b. La familia: el candidato C está bloqueado, los candidatos A y D no (`probe121.py`)
+
+El mismo motor nativo sobre las seis imágenes 11/12 commiteadas (`f121_family_native.txt`, `steps:` por la salida
+de error del corredor, todos los vectores `HALTED`). Las seis puntúan 11/12, pero la entrada que falla no es la
+misma en todas: `(2,2)` en A/C/D, `(1,2)` en B y `(0,1)` en las dos imágenes de F62:
+
+| imagen | entrada que falla | imprime | pasos de la entrada fallida | pasos de `(0,1)` | ¿bloqueada con `(0,1)`? |
+|---|---|---|---|---|---|
+| `lt_f59_cand_A` | `(2,2)` | `02` | 80879 | 80879 | mismo recuento, **símbolo distinto** |
+| `lt_f59_cand_B` | `(1,2)` | `00` | 78838 | 82312 | no aplica — `(1,2)` y `(0,1)` caen en clases distintas |
+| `lt_f59_cand_C` | `(2,2)` | `01` | 79790 | 79790 | **sí — veredicto idéntico, este hallazgo** |
+| `lt_f59_cand_D` | `(2,2)` | `02` | 80885 | 80885 | mismo recuento, **símbolo distinto** |
+| `lt_f62_line448_decop1` | `(0,1)` | `00` | 80325 | 80325 | **sí — espejo: aquí `(2,2)` hereda la respuesta correcta** |
+| `lt_f62_line448_rfcwns2` | `(0,1)` | `00` | 80294 | 80294 | **sí — espejo** |
+
+Salen dos cosas, y apuntan en direcciones opuestas:
+
+1. En C y en las dos imágenes de F62 el par `{(0,1), (2,2)}` comparte todo su cálculo, de modo que la entrada
+   errónea es *cualquiera* de los dos que el cálculo compartido decida: `01` en C (donde falla `(2,2)`) y `00` en
+   `decop1`/`rfcwns2` (donde falla `(0,1)` y `(2,2)` pasa por herencia). Reorientar el bifurcador mueve el error
+   entre los dos miembros del par bloqueado y no más allá — la razón medida de que el bifurcador quíntuple de
+   F61 en la línea 448 «mueva *cuál* entrada está mal, pero nunca elimine el error».
+2. En los candidatos **A y D** `(2,2)` **ya está distinguido**: su símbolo impreso es un tercer valor, `02`. Lo
+   que cuesta eso se ve en las clases de pasos: en A los nueve `cmp_lt` caen en sólo dos clases, y dentro de la
+   grande seis vectores comparten un cálculo imprimiendo tres símbolos distintos:
+
+   | imagen | clase de pasos | miembros y símbolos impresos |
+   |---|---|---|
+   | A | 78616 | `(0,0) 00` `(1,0) 00` `(2,0) 00` |
+   | A | **80879** | `(0,1) 01` `(0,2) 01` `(1,1) 00` `(1,2) 01` `(2,1) 00` **`(2,2) 02`** |
+   | D | 78619 | `(0,0) 00` `(1,0) 00` `(2,0) 00` |
+   | D | 80294 | `(0,2) 01` `(1,2) 01` |
+   | D | **80885** | `(0,1) 01` `(1,1) 00` `(2,1) 00` **`(2,2) 02`** |
+
+   O sea: en A y D el flujo de control de `(0,1)` y `(2,2)` sigue compartido (un solo recuento de pasos, como en
+   C), pero **la celda del veredicto se lee con contenidos distintos**, porque el símbolo impreso sale de esa
+   lectura por la ley de F58 (`v=0 -> "00"`, `3 -> "01"`, `6 -> "02"`): `(2,2)` llega al `ROT:` compartido con
+   trit0 `2`, mientras `(2,1)`/`(1,1)` llegan con trit0 `0` y `(0,1)`/`(0,2)`/`(1,2)` con trit0 `1`. Cinco de las
+   seis entradas estrictas de esa clase son correctas. A y D no calculan la respuesta *correcta* para `(2,2)`,
+   pero sí calculan una respuesta *selectivamente distinta* para él — exactamente el recurso que a C le falta.
+
+## 7. Los aciertos degenerados no son arreglos
+
+El primer acierto de la etapa 2, celda `0` (`'b'` -> `'c'`), imprime `00` para `(2,2)` — porque la máquina editada
+halta después de **2 pasos** e imprime `00` para *todos* los vectores:
+
+    native cell=0 ch='c' vec=01020102021000 out=00 :: steps: 2 | status: HALTED
+    oracle cell=0 ch='c' vec=01020102021000 out=00 steps=2 status=HALTED
+
+`lt_harness.py` sobre esa variante puntúa `6/12` (`f72_harness_cell0c.txt`, volcado completo en §11): pasan las
+seis entradas FALSAS de `cmp_lt` sólo porque la máquina imprime `00` para todas sin calcular, y fallan las tres
+VERDADERAS y las tres líneas base — incluida `baseline3`, que debe imprimir vacío y también imprime `00`, con
+`steps=2` en las doce entradas y oráculo y nativo de acuerdo.
+Consecuencia de método: la pantalla sobre `(2,2)` hay que leerla **junto con el recuento de pasos**, y un arreglo
+creíble tiene que conservar el `OUT` tardío (la base intacta imprime en el paso 76259 tras ~79.790 pasos).
+`confirm119.py` registra ambos motores y el recuento de pasos para cualquier acierto.
+
+## 8. Paridad de motores sobre la base 11/12
+
+`lt_harness.py <scratch>/cand58_C.mb` (`f72_harness_base_dualengine.txt`), 2026-10-14:
+
+    cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=79790 PASS
+    cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=79790 FAIL
+    baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67068 PASS
+    baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74105 PASS
+    baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60025 PASS
+    == 11/12
+
+El oráculo python y el motor C nativo concuerdan en **las doce entradas**, incluida la equivocada: las dos
+imprimen `01` para `(2,2)`. Esto **no** cierra el `NOT_DEMONSTRATED` de paridad de F71 §10, que era la paridad
+**de un 12/12** y sigue sin tener 12/12 con el que comparar; lo que cierra es la objeción más barata: el veredicto
+equivocado no es un artefacto del modelo python, el motor nativo lo imprime exactamente igual. El hito no está
+bloqueado por el comportamiento del motor, está bloqueado por el predicado de la máquina. (La columna `steps` es
+el recuento del oráculo; la línea del motor nativo para `(2,2)` es `steps: 79790 | status: HALTED`, idéntica.)
+
+El harness corrobora §2 por su cuenta: los recuentos caen en cuatro clases
+`{78055: (0,2),(1,2) · 78625: (0,0),(1,0),(2,0) · 79784: (1,1),(2,1) · 79790: (0,1),(2,2)}` — `(0,1)` y `(2,2)`
+son los únicos habitantes de su clase, que es exactamente lo que predice un cálculo compartido.
+
+## 9. Consecuencias
+
+1. `(2,2)` comparte su cálculo **entero** con `(0,1)`: mismos códigos de operación, misma pista de datos, mismo
+   paso de impresión. Todo edito que actúe sobre ese flujo compartido actúa sobre los dos veredictos;
+   separarlos exige un edito cuyo efecto sea *selectivo por valor*, y sobre el par observado el órgano selectivo
+   — los siete pliegues a-divergentes — vive pasado el último carácter del programa. Esto **fortalece el lema de
+   re-convergencia de F59**: F59 midió el par byte-idéntico en el condicional de decisión (paso 73.143, exactamente
+   dos celdas distintas, `57595 = 29523 + a` y `57642 = b`, con trit0 de `rot()` igual); F72 mide el mismo par
+   idéntico de puntero durante los 79.790 pasos, no sólo en la decisión.
+2. El espacio **completo** de editos localizados de un carácter sobre esta base es `5.234.616` variantes
+   (`56.898` celdas tocadas `x 92` caracteres de reemplazo), unas `3.926` horas-CPU a velocidad nativa: un barrido
+   entero no es alcanzable. Las `5.766` variantes barridas aquí son la clase vivo-directa (`5.580`) más los dos
+   caracteres semilla (`186`). La cadena de relleno, donde están todas las palancas selectivas por valor de §4, es
+   intocable salvo por esas dos semillas, y §6 etapa 3 mide esa vía: reescribe la cadena de golpe y no voltea ningún
+   vector aislado.
+3. **Los editos de un carácter están cerrados en el candidato C, en toda clase que este hallazgo puede alcanzar.**
+   5.580 variantes sobre el conjunto vivo-directo completo: 52 % destruyen la máquina, 47 % dejan el veredicto
+   errado intacto, y la única variante que imprime `00` para `(2,2)` (`cell 0 -> 'c'`) lo hace haltando a 2 pasos —
+   puntúa 6/12. Sumadas las 186 variantes de semilla, el recuento de arreglos viables sigue siendo cero. La clase
+   ancha (`56.836` celdas traducidas-antes-de-ejecutadas, `5,2` millones de variantes) no es alcanzable por coste
+   de pantalla, y §4 dice que cualquier arreglo ahí tiene que reformar el patrón de a-divergencia, no simplemente
+   mover un valor.
+4. Léase junto con el censo de inexistencia de F59 (ninguna celda de la imagen de `3^10` codifica la tabla LT
+   sobre los nueve pares, ni siquiera con desplazamiento uno) y el lema del techo de F63 (el pliegue completador
+   sólo puede refinar un acumulador que **ya** separa las clases; `9` firmas de contenido completador en C, ninguna
+   separante): el cuadro es coherente — **al candidato C no le falta una vía hacia el discriminador, le falta el
+   discriminador.** §6b es la formulación familiar medida de ese mismo hecho: reorientar la línea 448 mueve el
+   error entre los dos miembros del par bloqueado `{(0,1),(2,2)}` (`01` en C, `00` en `decop1` y `rfcwns2`) y nunca
+   lo elimina.
+5. Lo que §6b añade, y es la parte accionable: los candidatos **A y D ya separan `(2,2)`** — el par
+   `{(0,1),(2,2)}` *no* está bloqueado ahí, `(2,2)` imprime el tercer símbolo `02` (trit0 `ROT` = `2`) mientras
+   las otras cinco entradas estrictas de su clase son correctas. En esas imágenes el problema del hito deja de ser
+   «crear un discriminador contra una corrida idéntica a la de `(0,1)`» y pasa a ser «mapear un resultado que ya
+   es selectivo `2 -> 0`», que es un problema distinto y mucho más pequeño. Este hallazgo no lo resuelve; lo
+   localiza.
+6. Vías de búsqueda que este hallazgo **no** excluye: (i) composiciones de dos editos donde el primero reescribe
+   el control para que alguna celda *editable* se vuelva a-divergente y el segundo seleccione sobre ella;
+   (ii) la **pareja** de semillas del relleno — `93 x 93 ~= 8.649` combinaciones, cambiar los dos caracteres a la
+   vez (§12; la etapa de semilla simple ya está medida: 0/186); (iii) síntesis — escribir los perfiles completadores
+   ausentes en una celda libre con `mem[d] := crazy(A, mem[d])` / `mem[d] := rot(mem[d])` como especificó F63, que
+   es tarea de generador, no de edito; (iv) la vía A/D del punto 5, que es la única dirección de aquí que parte de
+   una máquina que ya distingue `(2,2)`.
+
+## 10. Estado del hito
+
+    CMP_LT 12/12                                 NOT_DEMONSTRATED
+    mejor artefacto                              11/12  cand58_C.mb  sha256 f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9
+    oráculo python vs nativo en la base 11/12    12/12 entradas concuerdan, incluida la equivocada  [MEDIDO]
+    paridad nativa de un 12/12                   NOT_DEMONSTRATED (sigue en pie: no hay 12/12 que comparar — F71 §10)
+    divergencia de punteros (0,1) vs (2,2)       0 pasos de 79790  [MEDIDO]
+    celdas de pliegue a-divergente editables     0 de 7  [MEDIDO]
+    editos de un carácter que arreglan (2,2)     0 viables de 5.766 barridos (1 acierto, degenerado: halta en 2 pasos, 6/12)
+    espacio entero de un edito localizado        5.234.616 variantes ~= 3.926 horas-CPU nativas — SIN BARRER
+    (2,2) en A y D                               símbolo propio `02` (trit0 2) — [MEDIDO; no es un arreglo, es el recurso que falta]
+
+## 11. Artefactos, hashes y reproducción
+
+Raíz de scratch `S = /home/danny/tmp_lt`, repositorio `R = "$(echo /home/danny/Development/ISyCo*/MALBOLGE-MB-DATABASE)"`
+(la ruta lleva un espacio), base `S/cand58_C.mb`. El scratch **no** se commitea (vive fuera del repositorio);
+estos hashes son la cadena de evidencia. Todos los valores son sha256 del fichero tal como estaba cuando se
+leyeron los números de arriba (2026-10-14).
+
+Sondas (python; cada una re-implementa el bucle del oráculo y está validada contra `tools/oracle_classic.py`):
+
+| fichero | sha256 |
+|---|---|
+| `diff113.py` | `d7efe84cfdd72a0851c3758fa02ff3739fa38cc21032dc4769fe2f143dee39d4` |
+| `diff116.py` | `6836cd3f77152b88f622c58ed5ddb3b36943650b9fd5a033808f84eb67af48ed` |
+| `diff117.py` | `714541390008d9d1aadd11e796f4d13d3d6ea2e56d27111f24aa6d3e98fe6332` |
+| `diff118.py` | `ccdfe47f42aa8bff5b2fee2686f79c10c91e56548dabc2851d42fd815a018ebc` |
+| `live114.py` | `e8294ce4fe76f5c0810173918987ee56be8168213a748f797f17e8774eac9413` |
+| `live120.py` | `f07a4c234ea2057171fa687b135fffa5518d0ec6e5890080c56d8e62915fe2ce` |
+| `sweep115.py` | `1a08161cda23ae467aa80370acddc08e3bff38b74f36b56704e5452688e1d873` |
+| `confirm119.py` | `8b5af83b13a7399ea8adc6447d89a39d1c2717da61457d9235f85d04db0ad256` |
+| `probe121.py` | `c9d0b4173e56e178fcedc17cfa6d7bf850fa1f2b826461ef1e7bbeb5b59439a6` |
+
+Salidas medidas (§2–§8):
+
+| fichero | sha256 |
+|---|---|
+| `f113_separating_reads_01v22.txt` | `54f71e9f561988bbc83e656788be4192665449e5ddeeeefacef0e3027dbb1e00` |
+| `f116_asym_01v22.txt` | `858947d294a3ef2833ca02154df9d6b7220a942ab0426700b8c3f4bb66f45eb0` |
+| `f117_afold_01v22.txt` | `1bb8726aca8aa7e872f1799abf746c02a8e12a560b8d57954f71fa2a57be602e` |
+| `f118_ptrdiff_01v22.txt` | `fa8dbc0a383f9239a546b57ea5b634da7ffd545986fc9363996227ed9d3281a5` |
+| `f118_ptrdiff_01v21.txt` (control) | `4ff704ecd7ac14039244b6f95dba1d7ae9a732d114cecd25520a9b082f0c0085` |
+| `f118_ptrdiff_21v22.txt` (control) | `bf43b2992fda6db7fdcfe1bdb36bec29379c52ca44aa777d726f0d9c4d1e37e1` |
+| `f114_live_01020102021000.txt` | `623654c806a79a07c2beeeb397d0c9f50c7c76f93088d583972efefb1c5c9403` |
+| `f114_live_01000101021000.txt` | `245fc1a0743f75eb9c981a1411a198dbf3d8041f72fe280b16ce8f5a672b250b` |
+| `f114_live_01020101021000.txt` | `9a51b60fcce1c94f49031851b03c2ab76bfd53e6c71e236a603efa8ec403932a` |
+| `f120_touchsize_22.txt` | `ecfcdfa779ab22c98aa83d713a93405c04a329083a5b8834229de1be9c171b63` |
+| `f115_cells.txt` (60) | `7ddffd0858af04d038fb492b4a70fb8dcd59e9c850c0ffba80da2085021329cb` |
+| `f115_cells_tail.txt` (4) | `d1ef8407cf772b24b16a6140c8b3cad81e7a3d19298152e84b6ea6ee4a19f956` |
+| `f115_cells_head.txt` (56) | `19171f0fa9c5e5b7a2233b391ad9ffbd2136b59ff3ded99467833861430ef2ef` |
+| `f115_cells_seed.txt` (2) | `f5d57e58da7a8bb35791d731e96a6f4601019ad686354e38018635aa8bf4d8d3` |
+| `f115_sweep_tail.log` (372) | `6fe180f60e14c527255fb1b9512cf2926189a6851955350fad252194b2de7097` |
+| `f115_sweep_head.log` (5.208) | `b506bed3ae7ad5a9aac39dea9ab3ee022fb105ab4ea9299a4b4f87d1c7b9c1fe` |
+| `f115_sweep_seed.log` (186) | `9f490521ec0f3096d8eaea0dbcb7372c5d35976905af6ea275f8e6ea6732b784` |
+| `f115_sweep_seed.stdout` | `f95111e8c61f3ed9edcb82f06f37fc9d56b9d714b494a40afd38fbfbe91605ad` |
+| `f121_family_native.txt` | `e9c146afd759b7f74ce9d98e9538d989a08189e42804ffb3a75f96aa60b43a7c` |
+| `f72_degenerate_log.txt` | `31d405dc42cc1aa4a3fb7f587200bab90bbd0973f66d2909616069420520b955` |
+| `f72_harness_cell0c.txt` (6/12) | `7c28af413c859f7d10d8454fa82f545aeb084b9b71c3564b28a90f91a164ce80` |
+| `f72_harness_base_dualengine.txt` (11/12) | `28babb3e768b97bb166717bb42cfe3071f9ed9faf826428a93f6bb69a78191a9` |
+
+Máquinas:
+
+| fichero | sha256 | papel |
+|---|---|---|
+| `cand58_C.mb` | `f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9` | la base 11/12 (hash del fichero de trabajo; ver la regla autocrlf abajo) |
+| `cand72_cell0_c.mb` | `044d998027ca2b2bb96bb57c8efe92e4ef8ddec8418d17916f0deb878bf8650e` | la variante degenerada `cell 0 'b'->'c'`, 6/12 — conservada como artefacto negativo |
+| `in22.bin` | `4a245ed4c494b6f5a5e4fa97920799b8d9636996304fd3c0ed13b582d5d88bf1` | bytes de stdin del vector `(2,2)` |
+
+**Disciplina de hashes.** El repositorio tiene `core.autocrlf=true`, así que el hash de un fichero no es estable
+entre checkouts; para cualquier artefacto commiteado hay que citar el hash del **blob**
+(`git show HEAD:<ruta> | sha256sum`) junto al del fichero de trabajo, conforme a F62.
+
+Reproducción, desde `S` con `LT_TOOLS=<repo>/tools` y `LT_MB` apuntando al candidato:
+
+    export LT_TOOLS="$R/tools" LT_MB="$S/cand58_C.mb"
+    export LT_RUNNER="$R/runners/malbolge-original/malbolge"
+
+    # 1. anatomía de la colisión
+    IN1=01000101021000 IN2=01020102021000 python3 diff113.py > f113_separating_reads_01v22.txt
+    IN1=01000101021000 IN2=01020102021000 python3 diff118.py > f118_ptrdiff_01v22.txt
+    IN1=01020101021000 IN2=01020102021000 python3 diff118.py > f118_ptrdiff_21v22.txt   # control (2,1) vs (2,2)
+    IN1=01000101021000 IN2=01020101021000 python3 diff118.py > f118_ptrdiff_01v21.txt   # control (0,1) vs (2,1)
+    IN1=01000101021000 IN2=01020102021000 python3 diff116.py > f116_asym_01v22.txt
+    IN1=01000101021000 IN2=01020102021000 python3 diff117.py > f117_afold_01v22.txt
+
+    # 2. conjunto editable alcanzable (60 celdas), tamaño del espacio y barridos
+    IN=01020102021000 python3 live114.py > f114_live_01020102021000.txt
+    IN=01000101021000 python3 live114.py > f114_live_01000101021000.txt
+    IN=01020101021000 python3 live114.py > f114_live_01020101021000.txt
+    python3 live120.py > f120_touchsize_22.txt                  # tamaño del tocado, vector (2,2)
+    printf '\x01\x02\x01\x02\x02\x10\x00' > in22.bin
+    IN_BIN=in22.bin CELLS=f115_cells_tail.txt JOBS=3 OUT=f115_sweep_tail.log python3 sweep115.py
+    IN_BIN=in22.bin CELLS=f115_cells_head.txt JOBS=3 OUT=f115_sweep_head.log python3 sweep115.py
+    IN_BIN=in22.bin CELLS=f115_cells_seed.txt JOBS=3 OUT=f115_sweep_seed.log python3 sweep115.py
+
+    # 3. confirmar una variante en AMBOS motores, con el recuento de pasos
+    python3 confirm119.py 0 c 01020102021000
+
+    # 4. verificación del hito con doble motor
+    ( cd "$R" && python3 vm_malbolge/tests/lt_harness.py "$S/cand58_C.mb" )
+    ( cd "$R" && python3 vm_malbolge/tests/lt_harness.py "$S/cand72_cell0_c.mb" )   # la degenerada -> 6/12
+
+    # 5. la familia: los doce vectores en el motor nativo sobre las seis imágenes 11/12
+    ( cd "$R" && python3 "$S/probe121.py" \
+        vm_malbolge/evidence/artifacts/lt_f59_cand_A.mb \
+        vm_malbolge/evidence/artifacts/lt_f59_cand_B.mb \
+        vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb \
+        vm_malbolge/evidence/artifacts/lt_f59_cand_D.mb \
+        vm_malbolge/evidence/artifacts/lt_f62_line448_decop1.mb \
+        vm_malbolge/evidence/artifacts/lt_f62_line448_rfcwns2.mb > "$S/f121_family_native.txt" )
+
+Cada corrida de `live114.py` reproduce el recuento de pasos y la salida del propio oráculo para su vector
+(`79790 / \x01` en `(2,2)`), de modo que el orden del bucle de la sonda está verificado contra
+`tools/oracle_classic.py`, no supuesto. Escala: un barrido a la vez y como máximo 3 trabajadores (lección de la
+sesión anterior: 6 trabajadores saturaron la máquina).
+
+## 12. Siguientes experimentos acotados
+
+Lo que este hallazgo deja medido y cerrado sobre `cand58_C.mb`: los 5.580 editos vivo-directos y los 186 editos
+de semilla simple. Lo que queda abierto, en orden de coste:
+
+1. **Pareja de semillas** sobre la misma base: `93 x 93 ~= 8.649` variantes (~2 h a 3 trabajadores). Cambia los
+   dos caracteres a la vez, o sea la única palanca que puede poner contenido separante en `58156` y en la cadena
+   de pliegues de §4. Predicción por §6 etapa 3 y F71 §6c: es un cambio global del relleno, así que o mata la
+   máquina o mueve todos los veredictos a la vez; si produjera una máquina que conserva correctas las otras ocho
+   `cmp_lt` y las tres líneas base y voltea sólo `(2,2)`, el libro de paridad no sería uniforme y el hito volvería
+   a ser alcanzable desde esta base.
+2. **La vía A/D** (§9 punto 5), la accionable. En `lt_f59_cand_A` y `lt_f59_cand_D` el par `{(0,1),(2,2)}` **no**
+   está bloqueado: `(2,2)` llega al `ROT:` con trit0 `2` e imprime `02`, mientras cinco de las seis entradas
+   estrictas de su clase son correctas. El procedimiento es transferir la batería de este hallazgo a esas bases:
+   `LT_MB` = la imagen A, y repetir `diff118` / `diff113` / `diff117` / `live114` sobre el par
+   `(0,1)`–`(2,2)`, que ahora sí tiene lecturas con contenidos distintos; la condición de lectura separante de
+   F71 §6c, insatisfrible en C (§3), es comprobable en A. Después, barrer el conjunto vivo-directo de A con una
+   pantalla **de dos vectores**: acierto sólo si `(2,2) -> 00` **y** `(0,1) -> 01` (dos corridas por variante,
+   o sea ~2× el coste de §6; unos 3 h a 3 trabajadores para 5.580 variantes). Este hallazgo no ha corrido nada
+   de eso: lo localiza.
+3. Composiciones de dos editos donde el primero reescribe el control (una de las diez celdas de la cadena FALSA
+   de §2, o el `JMP` de `57405` con `d = 57893` de F71 §6b) para que alguna celda editable se vuelva a-divergente
+   y el segundo seleccione sobre ella — la única forma de burlar el lema de §4 sin salir de la región editable.
