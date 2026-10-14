@@ -1985,3 +1985,119 @@ Artifacts (sha256): `ptr_table.py` `ef986ddafe144ae28cb6f1e5ca7901acbc5516bb8d0b
 `f58_ptr_table.txt` `4e28263b4cb6489a2b6954ca4b54b5e333ccf3e09b37bef04a404313faa9a52c`, `f58_walk3.txt` `8ad57e4d4f7ba9b78adfc9c3a1bcca25e835d5e6a3732a8440bcf9d008031a8c`, `f58_trit1_01.txt` `cae1cc70e35aefe84265aa517481204eaa11be72ec7466023d34ad2f8aeefea4`,
 `f58_writer.txt` `dbbd6e5a5c2844c71312cf969130cfe3d49ac79eaed0a3f43915ce2b67c6b132`, `f58_reach.txt` `da5eda6e3ca4a8d1d810b506354e8789ecd8db1c8e01135037b82fc2f4cddca0`, `f58_design_probe4.txt` `abe498bc4655f478a8ab7cbf4054d12c40586cdd791fe7f53a7b2014ff4094ee`,
 `f58_six_01.txt` `437d3c263517c3a5d8bfbaede617366fce34ebd33101a699016cc10c0d788e35`, `f58_wide_partial.txt` (frozen snapshot of the still-growing `f55_wide_from11.txt`, 11,000/19,188 jobs at record time) `d5fa15129660ae0840d80b74a7d7ed7048cd68169a2cac1d408a1e27e25680a4`, `f55_branch_from11.txt` `97b19955af678beabbb2bf572cf89a9ffd8d44a70b5558c1fd4ab4940f8119a7`.
+---
+
+# Finding 59 — the four 11/12 routes are now images, `(0,1)` and `(2,2)` reconverge to a two-cell
+# difference at the leaf, and no cell anywhere in 3^10 encodes the LT table at decision time
+`[CURRENT]` measured 2026-10-13 (session 7) with `dispatch58.py`, `trace58.py`, `reconverge58.py`,
+`memdiff.py`, `w2sites.py`, `verdict_scan.py`, `check58621.py` on the four materialised 11/12
+candidates and on the canonical `head11crlf.mb` (`2838e63c…`).
+
+## 1. The four 11/12 routes are real images now, and their full verdict tables are known
+
+`emit58.py` rewrote one dispatch site in `head11.hell` (`26a1de53…`), rebuilt with lmao and scored all
+12 vectors on the oracle. All four reach 11/12, and each fails a *different* entry:
+
+| candidate | site -> new target | score | failing vector | what it prints |
+|---|---|---|---|---|
+| A | 337 -> `jmp_into_loop_from_behind` | 11/12 | `(2,2)` | `02` |
+| B | 448 -> `dispatch_02` | 11/12 | `(1,2)` | `00` |
+| C | 448 -> `restore_no_more_carry_flag_and_rotate_value_2` | 11/12 | `(2,2)` | `01` |
+| D | 451 -> `jmp_into_loop_from_behind` | 11/12 | `(2,2)` | `02` |
+
+The base itself fails only `(0,1)` (prints `00`), so each of A/C/D is a *fix for `(0,1)` that breaks
+`(2,2)`* and B is a fix for `(0,1)` that breaks `(1,2)`. Baselines `41`/`4241`/empty pass in all four.
+
+## 2. The leaf is a shared `ROT:` instruction; the dispatch is a choice of *how many dereferences
+the arrival chain executes*, and the two shapes are now attributed to HeLL lines
+
+`trace58.py` maps every instruction address to its source line through the lmao `.dbg`
+`:SOURCEPOSITIONS:` section. Candidate C, decision fold (`CRAZY` on `stack_scratch` 57719):
+
+* **false shape** (`00,10,20,11,21`): `MOVD` gadget at line 23 (`RESET_FLAG3`) -> `MOVD` gadget at
+  line 64 (`ADD_FLAG`) installs `d := 57908`; `d` auto-increments to **57913** by the time the shared
+  `ROT:` (line 152) executes -> content `0` -> `00`.
+* **true shape** (`01,02,12,22`): `MOVD` gadget at line 68 (`OP1_FLAG`) -> line 72
+  (`SUBROUTINE_FLAG4`) installs `d := 57924`; auto-increment lands the same `ROT:` on **57926** ->
+  content `3` -> `01`.
+
+So the verdict is not chosen by a comparison at all: it is chosen by *which pair of flag gadgets the
+arrival chain walks*, and the two constant cells 57913/57926 are 13 apart because the chains differ
+by that many `d`-increments.
+
+## 3. Reconvergence lemma — downstream of step 73,143 nothing can separate `(0,1)` from `(2,2)`
+
+`reconverge58.py` replays two vectors with an O(1) rolling memory checksum. Candidate C, `(0,1)` vs
+`(2,2)`: **memory is identical up to step 60,561**, first divergence at **60,562** (one `CRAZY` on
+57720 with `A_in` 29524 vs 29525 — the single point where the `a`-difference enters the state), and
+`memdiff.py` at step 73,143 — one instruction before the `OP1_FLAG` conditional of the leaf — reports
+`a`, `c`, `d` **equal** and exactly **two** differing cells out of 59,049:
+
+| cell | `(0,1)` | `(2,2)` | `trit0(rot(·))` |
+|---|---|---|---|
+| 57595 `stack_scratch_1` | 29523 | 29525 | 1 / 1 |
+| 57642 `stack_top_1` | 1 | 2 | 0 / 0 |
+
+Note what 57595 is: **`29523 + a`** — the identity a-encoding that the finding-58 design needed, alive
+in the machine at decision time. But `rot(29523) = 9841` and `rot(29525) = 49207` both have trit0 `1`,
+and `rot(1) = 19683`, `rot(2) = 39366` both have trit0 `0`: neither cell, read directly, produces the
+needed *bit*, so the residue exists but is not in the format the verdict consumes.
+
+**Consequence (bound on the search):** any second edit whose effect begins at or after step 73,143
+cannot fix `(2,2)` without moving `(0,1)`. The composition search is therefore only meaningful
+*upstream*, where the arrival chain is still input-dependent.
+
+## 4. Negative existence result — the verdict data is not in memory at decision time
+
+`verdict_scan.py` snapshots the whole 3^10 memory two steps before each vector's own decision `ROT`
+and scans every cell for the signature `trit0(rot(content)) == [a<b]` over all nine pairs (the
+harness accepts only 0/1, so a `2` is a failure). Result:
+
+* candidate C (`f67ec678…`): **0 cells** match, and 0 cells match but for one vector.
+* canonical `head11crlf.mb` (`2838e63c…`): **0 cells** match, and 0 cells match but for one vector.
+  Its `A_in` signature at decision time is `0,0,1,0,0,1,0,0,1` — a pure function of `b`, which is
+  exactly the `(0,1)` failure.
+
+So **no pointer retarget — installing the decision `ROT` on any existing cell of the image — can
+produce 12/12.** A 12/12 image must *compute* the discriminator into a cell before the decision
+(a fold history that does not exist today), which is precisely why the search is over control-flow
+compositions and not over the constant pool. This closes, by exhaustion rather than by argument, the
+"just aim the pointer better" family that finding 58 §6 left open.
+
+## 5. Search space reduced by the divergence window
+
+`w2sites.py` keeps only editable sites (`MOVED <label>` / `<FLAG> <label> R_<FLAG>`) whose compiled
+DATA cell is read inside the divergence window of the failing vector: C/`(2,2)` window 60,562..73,280
+-> 96 of 117 sites; B/`(1,2)` window 60,571..78,837 -> 98 of 117. Round 1 (single edits over
+`head11.hell`, 19,188 jobs) was stopped at 13,000 jobs to spend the CPU on composition; the four
+routes above are already the census's payload.
+
+## 6. Status and next
+
+`12/12` remains **`NOT_DEMONSTRATED`**. Measured best is 11/12 (both engines) with four distinct
+routes; §4 proves the fifth edit cannot be a read-only retarget, and the composition sweeps over
+C (`PREF 22->00`) and B (`PREF 12->01`) are the live search.
+
+Artifacts (sha256): `emit58.py` `820d88cc270f1708381a9325586e276140740bc92229ed3a71764f1d1ecc0259`, `dispatch58.py` `2e85a02357f4789009ddb4ff8eba99c654ecedee503a41385a7e0c78de80d8dd`,
+`trace58.py` `24e5961d64fd4654089701aefab9efc5a88fdfe8a0688448c19651102d6f697b`,
+`sites58.py` `269af1074f8da57028ceaec4c9c66d812bfe723370f0b4677b1162143ec9a961`,
+`reconverge58.py` `79513dd7f7625f235aeed3df40405b83dee5e9cf0219751f22b306d6bc8835d9`,
+`w2sites.py` `bc3c43e55834fa00ea7ca8d6ad9bf34d7def98d67b91f9c4b061fbb59e9ad5ac`,
+`verdict_scan.py` `eb03e29ed524c6458faa792ac23e8970f46160a3234a39607c7ee16d20ae6483`,
+`check58621.py` `3c6cf956d1bc99b7c2d2a24626a099c9a7f9c899156c82d9b6f306f11d3dd744`,
+`wide_sweep.py` (now with `SITES`/`LABELS_FILE` filters) `a90be541c659949d253858a93f9c5a783a3e2e85e51b1595681fc7331eeb5d14`,
+`f58_disp_B.txt` `bcf4b3d5800b0990b2a53fd0fb2e554ed0aeb4410672955c9db45144c696bc7c`,
+`f58_disp_C.txt` `a6cb7b439071db371227dbfeb72a71c9b9db3b96c7a59f889502d5cf284ff655`,
+`f58_memdiff_01_22_C.txt` `063c226a880cddf01ece73a926347fdbd156074062d5c5b6d1179d88fe5d132a`,
+`f58_memdiff_12_22.txt` `46f442eeef0c800f2bef3ae353e626d5d26dd21cfd865c68d0cd0ef9c1e1389f`,
+`f58_wide_r1_stopped.txt` `16aecc70c1947960e599a26894c534eff8f1e50f08f534eb60afbe34189b78a5`,
+`w2sites_22.txt` `ba7f85d861a7cad58588faa90503ae480b8c36c54293930738a1c7f00e558dda`,
+`w2sites_12.txt` `584c0444646e4738f33ba3fdd86fc82ca31bb72b49f9e88a3c3485cd7a389440`,
+candidate `.hell` A `e88759700e873543c6be00d502278c7309f75c12ae5c21ec2b925996f406496f`,
+B `26e9e4100266b9997ffe1c37bb326bc790ef47e7cec856157859944ae975ff3d`,
+C `e4b12ee9ec328332867f5b945c0fd4b1031b3511fea5cf34c1b5b50de3926907`,
+D `65f5a1d6750fe50b83c83f7bb1053243443eff466691d037aeffc219d13eb621`;
+candidate `.mb` A `b11ae3533865f5d5b5f1d23a46aebc8a184c40cd3df5fcaea6509571ab7916ca`,
+B `29cad72bf545e42d3d7a213a091f29a9bcfd02e352a1e512315e344a48a8d652`,
+C `f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`,
+D `08c96a65fd224092e3474a917473d1699c199acf5d45af1552cf46552481b717`.
