@@ -3465,3 +3465,145 @@ Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y
     WATCH=57926 python3 writelog83.py      # y WATCH=57934
 
 Escala: un proceso por corrida, sin paralelismo.
+---
+
+# Hallazgo 70 — Ley del acumulador separante: la vía de contenido en el decisor natural está cerrada por estructura
+
+Fecha: 2026-10-14. Continuación del Hallazgo 69 §4. Herramienta: modelo fiel `tools/oracle_classic.py` (el runner nativo
+no interviene en este hallazgo). Escala: un proceso por corrida, sin paralelismo. Todo lo afirmado aquí es
+census exacto sobre los 59.049 valores o inversión algebraica posición a posición; no hay muestreo.
+
+## 0. Pregunta
+
+El Hallazgo 69 dejó dos vías para partir la familia de control `{01,22}`: mover el **acumulador** que entra al
+pliegue de decisión (`a_in`, vía ya demostrada: ley del portador con `x=2`, Hallazgo 68) o mover el **contenido**
+de la celda leída (`57661`). `enum96.py` censó la vía de contenido y obtuvo `n=0` en los diez pares vivos
+medidos, en ambas orientaciones y tanto en una como en dos etapas. Este hallazgo convierte ese negativo en
+**teorema** y, al hacerlo, entrega la condición exacta que cualquier intento futuro debe satisfacer.
+
+## 1. Estructura de las clases impresas (evidencia: `f97`, `f97b`, `f99`)
+
+Tras el pliegue de decisión, la cascada imprimible es `f(v) = crazy(59048, crazy(59048, v)) % 256`. Sean
+`F1 = f^-1(1)` (TRUE) y `F0 = f^-1(0)` (FALSE). Censo completo:
+
+- `|F0| = |F1| = 231`.
+- **Identidad de conjuntos verificada: `F1 == {w + 1 : w ∈ F0}`** (`f97b` check1 = `True`; recíprocamente, los
+  231 valores de `F1` tienen `v-1 ∈ F0`).
+- Dentro de `F0` aparecen los tres valores de trit0 (`{0,1,2}`); los de trit0 = 1 son **77** (`f99`).
+- Censo de adyacencia con delta firmada (`f97` §2): para cada posición de trit `i` y cada `delta ∈ {±3^i, ±2·3^i}`,
+  el número de `v` con `f(v)=1` y `f(v+delta)=0` (o al revés) es **0 en todas partes salvo en `i=0`**, donde
+  `d=-1` da 231 y `d=+1` da 231 (el mismo hecho desde cada lado) y `d=±2` da 0.
+
+Consecuencia inmediata: **dos salidas del pliegue de decisión solo pueden imprimir veredictos opuestos si son
+enteros consecutivos `w` (FALSE) y `w+1` (TRUE) con `w ∈ F0`, y esa adyacencia solo puede realizarse en trit0.**
+Un delta de 2 en trit0 (contenido `0` vs `2`) nunca separa; cualquier diferencia en trit `i ≥ 1` nunca separa.
+
+## 2. Columnas de CRAZY y condición necesaria y suficiente
+
+`_CRAZY = ((1,0,0),(1,0,2),(2,2,1))` indexado por `[trit de contenido][trit de acumulador]`. Para un acumulador
+uniforme `x`, la columna elegida en cada posición es `x_i`, y su imagen sobre los trits de contenido es:
+
+| trit de `x` | mapa contenido→salida | imagen |
+|---|---|---|
+| 0 | `(1,1,2)` | `{1,2}` |
+| 1 | `(0,0,2)` | `{0,2}` |
+| 2 | `(0,2,1)` | `{0,1,2}` (bijección) |
+
+La única columna que envía un par de contenidos `(1,2)` a una salida adyacente `(1,2)` es la **columna 0**. Por
+tanto separar dos contenidos que difieren en un solo trit exige:
+
+1. `trit0(a_in) = 0`;
+2. el contenido del vector FALSE con trit0 `1` y el del vector TRUE con trit0 `2` (misma dirección fija:
+   TRUE es el valor alto);
+3. para cada posición `i ≥ 1`, `trit_i(w) ∈ imagen(columna trit_i(a_in))`, donde `w` es la salida FALSE.
+
+`enum99.py` invierte la condición posición a posición, construye todos los `(a_in, w, contenido)` y **verifica
+cada par anunciado contra el modelo**: 158.932 pares, **0 fallos**. El conjunto de acumuladores uniformes que
+admiten separación por contenido tiene **19.569 elementos**; la re-derivación independiente sobre los 59.049
+valores (`f99b`) devuelve el mismo número, 19.569.
+
+## 3. El decisor natural no está en ese conjunto — y eso explica el `n=0` de `enum96`
+
+`f99b` (membresía explícita, conteo de `w` separables):
+
+    a_in=     0  trits=[0,0,0,0,0,0,0,0,0,0]  n= 0
+    a_in=     1  trits=[1,0,0,0,0,0,0,0,0,0]  n= 0
+    a_in=     2  trits=[2,0,0,0,0,0,0,0,0,0]  n= 0
+    a_in=     3  trits=[0,1,0,0,0,0,0,0,0,0]  n= 4
+    a_in=     6  trits=[0,2,0,0,0,0,0,0,0,0]  n= 4
+    a_in=     9  trits=[0,0,1,0,0,0,0,0,0,0]  n= 2
+    a_in= 29523  trits=[0,1,1,1,1,1,1,1,1,1]  n= 0   <-- el valor medido en la familia {01,22}
+    a_in= 29524  trits=[1,1,1,1,1,1,1,1,1,1]  n= 0
+    a_in= 29525  trits=[2,1,1,1,1,1,1,1,1,1]  n= 0
+    a_in= 59046  trits=[0,2,2,2,2,2,2,2,2,2]  n=77   <-- admite TODOS los w posibles
+    a_in= 59047  trits=[1,2,2,2,2,2,2,2,2,2]  n= 0
+    a_in= 59048  trits=[2,2,2,2,2,2,2,2,2,2]  n= 0
+
+**Lema (via de contenido muerta en el decisor natural).** Los diez pares vivos medidos en la ventana de decisión
+(`f86b`, `f94b`) difieren todos en un solo trit, y ese trit es el trit0: `(29523,29525)`, `(1,2)`, `(0,2)`. Todo
+pliegue es posicional, así que cualquier cadena de pliegues intermedios conserva la propiedad "difieren en ≤1
+trit". En el decisor con `a_in = 29523` la condición 3 falla para los 77 `w` candidatos (sus trits altos incluyen
+`1`, y la columna 1 sólo emite `{0,2}`), luego **ningún par de contenidos puede separarse**, con una o con diez
+etapas intermedias. El `n=0` exhaustivo de `enum96.py` (`f96_content_route.txt`) deja de ser un dato: es un
+corolario. Igual conclusión para `a_in ∈ {0,1,2,29524,29525,59047,59048}`; `enum98.py` (`f98`) ya había medido
+`n=0` en esos diez valores, y ahora se sabe por qué: ninguno es acumulador separante.
+
+## 4. Tamaños de preimagen por acumulador (`f97` §1)
+
+Con `C1`/`C0` los contenidos que el pliegue con ese `a_in` envía a `F1`/`F0`:
+
+    a_in=    0: |C1|= 136  |C0|=  32
+    a_in=    1: |C1|=  64  |C0|= 168
+    a_in=    2: |C1|= 100  |C0|= 100   <-- el portador del Hallazgo 68: balance exacto
+    a_in=29523: |C1|=1408  |C0|= 148   <-- el decisor natural
+    a_in=29524: |C1|=   0  |C0|=1556   <-- |C1|=0: por eso la fuerza de identidad colapsa todo a FALSE
+    a_in=29525: |C1|= 704  |C0|= 852
+    a_in=59048: |C1|= 231  |C0|= 231
+
+`|C1| > 0` no basta: la separación requiere además que `C1` y `C0` compartan un patrón de trits altos
+(`f97b` check6 = `[]` en `a_in=29523`, check7 = 0 pares adyacentes), que es exactamente la condición 3.
+
+## 5. Objetivo aritmético concreto que deja este hallazgo
+
+Para que el pliegue de decisión `code_c=57610` sobre `57661` imprima `00` para `(2,2)` y `01` para `(0,1)` **por
+contenido**, en el modelo hacen falta simultáneamente:
+
+- (a) `a_in ∈ separantes` (19.569 candidatos; `59046` es el más permisible: admite los 77 `w`), y
+- (b) contenidos de `57661` de la forma `(c, c+1)` con `trit0(c)=1` y trits altos codificando un `w ∈ F0` con
+  `trit0(w)=1` compatible con (a). Ejemplo verificado (`a_in=3`): `c=4447` → salida `31744 ∈ F0` (FALSE) y
+  `c+1=4448` → salida `31745 ∈ F1` (TRUE).
+
+Ninguna de las dos condiciones está alcanzada hoy por la máquina: lo medido es `a_in = 29523` constante en la
+familia `{01,22}` y contenido `57661` idéntico (todo-1) en ambos vectores. **No está demostrado** que el paseo
+de `JMP`/`SETD` pueda entregar ese par `(a_in, contenido)` sin desplazar el paseo de `d` que la cascada de
+impresión necesita después de `P` (Hallazgo 69 §3). Este hallazgo no realiza el encaminamiento; entrega el
+contracto que debe cumplir.
+
+## 6. Estado del hito
+
+**`12/12` NOT_DEMONSTRADO.** Best ejecutable: `11/12` (`cand58_C.mb`, falla `(2,2)`). Paridad con el runner
+nativo: **NOT_DEMONSTRATED** (no re-ejecutada en esta sesión ni en la del Hallazgo 69). Negativos duraderos
+añadidos: la vía de contenido en `a_in=29523` está cerrada por teorema, no por búsqueda; y cualquier reenciso
+por contenido exige un decisor con `trit0(a_in)=0`.
+
+## 7. Artefactos (sha256, scratch `/home/danny/tmp_lt`)
+
+    4b42a7bc9fcf3bdf149631396b82c9a1646a98707473152c6dae6ff92b627ce6  enum96.py
+    969167d7a6d17280cf7a38dbbe2c4b3808b92923035e9eb2f9bbad6efde2047c  f96_content_route.txt
+    4946b0bcb21e9cc7a7c7991f67f14d6e469905ab342d55d59fb1c751e799f4ba  enum97.py
+    e25547d34e550551d3f906545ed3baa9fb5d9f39f90c27f069924fef679ee9b0  f97_preimage_adjacency.txt
+    276ec4de706d84f9c9011056d664aa13b8a0090aef8746473a69bf664990cbe3  f97b_structure_checks.txt
+    dec00dbcb7a14b1bded88d90a0176155770dcd5bf8f13993dcee3be32f008c91  enum98.py
+    1851678f312ddde83aab3598cba4aa2d5c682f88d4738dc9bb2611197f9ebb5a  f98_ain_separability.txt
+    eb9fa3548188d1327213ad145128ee1bfd0c5e4734c198b02b8a7dac500ad384  enum99.py
+    7cb2eef51be737befac78d96291423bca29c9513c820eba5487d6cf210f8fabb  f99_separating_ain.txt
+    291c9f5b9b01fb7c1f3a898e2555ae4afc4ba5c37619030448d9114ceb6ea295  f99b_membership.txt
+
+Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools`:
+
+    python3 enum96.py          # censos de la via de contenido (n=0), 10 pares vivos, 2 y 1 etapa
+    python3 enum97.py          # |C1|,|C0| por a_in + censo de adyacencia con delta firmada
+    python3 enum98.py          # separabilidad por trit0 en 10 acumuladores de referencia (todos 0)
+    python3 enum99.py          # inversion posicional + verificacion de 158.932 pares (0 fallos)
+
+Escala: un proceso por corrida, sin paralelismo.
