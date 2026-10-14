@@ -3225,3 +3225,137 @@ hallazgo; el mejor sigue siendo `11/12` (`cand58_C`, falla `(2,2)`). Paridad con
 Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools`:
 `python3 writelog83.py` · `X=01 Y=22 FROM=73100 TO=73170 python3 coll81.py`.
 Escala: un proceso por barrido, sin paralelismo.
+
+# Finding 68 — 2026-10-14 · Aritmética fiel del tramo de decisión, census uniforme y LA RECETA:
+# `a_in = 2` sobre un portador de trit0 discriminatorio sí produce VERDADERO/FALSO en el modelo —
+# `(2,2)` se dirige a `00` por primera vez; `12/12` sigue **NOT_DEMONSTRATED** `[CURRENT]` medido
+# 2026-10-14 (sesión 9) sobre `cand58_C.mb` (`f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`),
+# oracle `tools/oracle_classic.py`; el nativo `runners/malbolge-original/malbolge` NO se re-ejecutó.
+
+## 0. Erratum datado (no se reescribe nada anterior)
+
+Los pasos citados en Hallazgo 67 §4/§5 con `code_c=57611`, `d=57720` usan la `c`/`d` POST-incremento
+del registro de sondas. La traza fiel (una sola pasada, sin stream de sondeo, `trace87.py`) da los
+números verdaderos: el pliegue de precursión es `op=62` en `code_c=57610`, `d=57719` (paso `73158`) y
+la decisión es `op=62` en `code_c=57610`, `d=57661` (paso `73167`). El mismo defecto existed en
+`route86.py` v1 (archivo `f86_flow_01_22.txt`, conservado como evidencia cruda); corregido y re-ejecu-
+tado como `f86b_flow_01_22.txt`, que es el artefacto que se cita abajo.
+
+## 1. Aritmética exacta del tramo (fiel, `f87_trace_predec.txt`)
+
+    73146 SETD  c=57405 d=57918 mem[d]=57924   -> d(73147)=57925
+    73148 ROT   c=57493 d=57926 mem[d]=3       -> a := ROT(3) = 1        (ROT IGNORA el acumulador)
+    73156 SETD  c=57404 d=57934 mem[d]=57717   -> d(73157)=57718, d(73158)=57719
+    73158 CRAZY c=57610 d=57719 mem[d]=29524 a_in=1      -> a = crazy(1, all-1) = 29523
+    73167 CRAZY c=57610 d=57661 mem[d]=29524 a_in=29523  -> escribe 1 -> OUT imprime 01
+
+En `{01,22}` el estado de control `(c,d)` es idéntico y también `a_in=1` y el contenido `29524` en
+`73158`: el pliegue que alimenta la decisión NO discrimina nada, y por eso ambos imprimen `01`.
+
+## 2. Alcance conductual de las dos celdas que el tramo lee (`f90_writehist_critical.txt`)
+
+Las celdas `57926` (valor `3`) y `57934` (valor `57717`) NO son constantes de imagen: las escribe la
+propia máquina — `57926 ← 3` en el paso `28767` (`code_c=28864`, `a_in=29521`, antes `29443`) y
+`57934 ← 57717` en el paso `29216` (`code_c=29313`, `a_in=57127`, antes `29443`). Son, por tanto,
+blancos legales en principio: cambiar su contenido es una pregunta de layout/seed, no de trampa.
+Esto cierra parcialmente el pendiente abierto de Hallazgo 67 §5 (perfil de alcanzabilidad).
+
+## 3. Census completo de acumuladores uniformes (`enum91.py` → `f91_enum_pairs.txt`)
+
+Censo de los 59.049 valores de acumulador (no muestreo): `|F1| = |F0| = 231`. La LEY DEL PORTADOR,
+con `a_in = 2` (trits: trit0 `2`, resto `0`) plegando contenido `v`:
+
+    trit0(result) = _CRAZY[v0][2] = (v0=0 -> 0, v0=1 -> 2, v0=2 -> 1)
+    trit_i>=1(result) = _CRAZY[vi][0] = (0 -> 1, 1 -> 1, 2 -> 2)
+
+    VERDADERO (portador 29523) ⇔ v0 = 0 y vi ∈ {0,1} para i ≥ 1
+    FALSO     (portador 29524) ⇔ v0 = 2 y vi ∈ {0,1} para i ≥ 1
+
+`x = 2` es el ÚNICO acumulador uniforme que envía una clase de contenido a ese par de portadores;
+las dos clases admitidas son `(29523, 29525)` (la celda-discriminador `57595`, nace en `64517`) y
+`(0, 2)` (la celda `57719`, nace en `73022`). Ninguna otra `x` de las 59.049 funciona, en ningún
+orden. La máquina actual usa `uniforme(1)` sobre contenido all-1 → `(29523, 29523)`, es decir el
+mismo portador para ambos vectores: de ahí la colisión `01/22`.
+
+## 4. Auditoría de flujo de diferencias, corregida (`route86.py` v2 → `f86b_flow_01_22.txt`)
+
+`{01,22}`: 23 pasos CRAZY con entrada distinta antes de la decisión, 18 con salida distinta. El lazo
+`57610 → 57719` pliega CUATRO veces la misma celda en el tramo final y ahí vive la ventana:
+
+    73022 d=57719 contenido=(29524,29525) a_in=(29524,29524) -> (0,2)   DIFF-OUT   ← NACE el discriminator
+    73037 d=57719 contenido=(0,2)        a_in=(59048,59048) -> (0,1)   DIFF-OUT   ← se degrada
+    73055 d=57719 contenido=(0,1)        a_in=(0,0)         -> (29524,29524)      ← SE BORRA
+    73158 d=57719 contenido=(29524,29524) a_in=(1,1)        -> (29523,29523)      ← pliegue sin dato
+
+Celdas con valor distinto re-leídas por un pliegue antes de la decisión: `57537` (re-leída 70154),
+`57614` (cadena 69609-69736), `57642` (69521, 69536), `57661` (70122, 70137, 73076, 73097, 73121,
+**73167**), `57719` (73022, 73037, 73055, **73158**). Los tres pliegues que alimentan la decisión son
+exactamente `(73148 ROT 57926)`, `(73158 CRAZY 57719)`, `(73167 CRAZY 57661)`.
+
+## 5. La receta (enunciado de diseño, tres condiciones uniformes sobre el lazo de `57719`)
+
+1. `a_in = 29524` en el pliegue del paso `73037`: con trits de `x` todos `1`, la fila es `0->0, 1->0,
+   2->2`, i.e. IDENTIDAD sobre contenidos de trits `{0,2}` ⇒ la ventana `(0,2)` sobrevive.
+2. `a_in = 29524` en el pliegue del paso `73055`: borra el `1` y preserva `0`/`2` ⇒ el contenido llega
+   al precursión como `0` (vector `01`) o `2` (vector `22`).
+3. `a_in = 2` en el pliegue del paso `73158`: por §3 produce portador `29523` para `01` y `29524` para
+   `22`; la decisión (`73167`, contenido all-1) escribe `1` / `0` ⇒ imprime `01` / `00`.
+
+## 6. Medición del receta en el modelo (`pair88.py` con fuerza de acumulador → `f92_recipe_score.txt`)
+
+`EDITS="73037:-1:29524;73055:-1:29524;73158:-1:2"` (fuerza del acumulador entrante ANTES del paso:
+sólo diagnóstico, no es una edición legal):
+
+    vec=00 00 PASS · vec=01 01 PASS · vec=02 01 PASS · vec=10 00 PASS · vec=11 85 FAIL
+    vec=12 01 PASS · vec=20 00 PASS · vec=21 85 FAIL · vec=22 00 PASS · baselines 41/4241/empty PASS
+    SCORE 9/12
+
+Primer hecho positivo: **`(2,2)` se dirige a `00` y `(0,1)` conserva `01` en el mismo sistema**, con la
+ley de §2/§3 y sin tocar la decisión. El mecanismo del portador está vivo. Los dos efectos colaterales
+son medibles y explicados: las familias `11/21` recorren el tramo con desfase de `7` pasos (su decisión
+es `73160`, su precursión `73151`), así que una fuerza anclada a paso ABSOLUTO cae en otro sitio de
+código; y aun anclándala al sitio relativo, la cadena natural de `11` en `57719` es
+`29523 ->(29524) 0 ->(59048) 0 ->(0) 29524` y termina all-1: forzar identidad allí la deja en `0`, que
+bajo `x=2` da portador `29523` = VERDADERO, el valor equivocado. La receta completa exige, entonces,
+que la LEY DEL PORTADOR (§3) se cumpla en cada familia de vectores, no sólo en `{01,22}`.
+
+Otras mediciones de la misma sesión (mismo modelo, edición de celda en paso acotado):
+`73148:57926:6` ⇒ `10/12` (`01`/`22` imprimen `02`); `73156:57934:57593` ⇒ `10/12` (`01`/`22` pierden
+la OUT: el pliegue escribe sobre `57595` y destruye el discriminador que necesita el cascado de OUT);
+ambas juntas ⇒ `10/12`; sobre-escribir la imagen cargada (`0:57926:6;0:57934:57593`) ⇒ `3/12`.
+
+## 7. Estado del hito
+
+**`12/12` NO ESTÁ DEMOSTRADO.** El mejor candidato ejecutable sigue siendo `11/12` (`cand58_C`, falla
+`(2,2)`); la receta de §5 no es todavía una edición legal: está expresada como tres valores de
+acumulador entrante que la máquina debe construir desde la seed/layout, y §6 demuestra que la
+versión anclada por paso absolute rompe las familias `11/21`. Paridad con el runner nativo:
+**NOT_DEMONSTRATED** en esta sesión (no re-ejecutado). Siguiente paso concreto: expresar las tres
+condiciones como cadena de pliegues sobre `57719`/`57661` alcanzable desde la derivación final de
+`load_memory` (longitud + dos últimos caracteres), y verificar la ley del portador familia por familia.
+
+## 8. Artefactos (sha256, scratch `/home/danny/tmp_lt`)
+
+    0420fc7cd1afde212913eb86e53d822b9996816bf9d5d3729c953428dd3aaf04  route85.py
+    60b2aa2f2681d5da6f89be351b0889574316b1bdbce41420cd486a9ae240923b  f85_route_01_22.txt
+    b335d8dec392cf41bd3ed79128beca52017763f6e9fa42c620454c7a8368253f  route86.py (v2, off-by-one corregido)
+    0aaf80466ad4d314ada55d6183357fcbf0da39f78583ed96254edea7f63a3e11  f86_flow_01_22.txt (v1 DEFECTUOSA, evidencia cruda)
+    630c4be12582de68444d76d6660f330ebe0fe29c3f173d01aedf1cc88ceeda65  f86b_flow_01_22.txt (canónica)
+    144586b2498715b0d9ce00e618e126665770bb7828ecd20502a814ca59b6e9cf  trace87.py
+    22035e7e156043efd5269e388621f68ed39efcc6f6df4584e50c8a3ea0cbbe96  f87_trace_predec.txt
+    41c44a1106829d05192bc36bf9daaaa130642dd29f2a7a9357d87d2e62616501  pair88.py (con fuerza de acumulador)
+    3cb107a6b383f6144aa8a8b6739b2f41bc7af184fd2269421aee10c971ee52c2  trace89.py
+    f50ffb91a2ecc50709b64b1fc56794475013935a846dc9742121e065927938a5  f90_writehist_critical.txt
+    a39a4f1639c53413cb59f2f58a98f4574567b43c50a23b848737c5e5afa97aa3  enum91.py
+    6ced75ca187eaf0fd8997a8c3d6fb09b22e25e04d99b5cbeb54b7f86be3e0b40  f91_enum_pairs.txt
+    402bfc072739af482719c47e614fdc0d5879d4c83c26e6e15d97b62255e10e7a  f92_recipe_score.txt
+
+Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y
+`LT_MB=/home/danny/tmp_lt/cand58_C.mb`:
+
+    python3 route86.py > f86b_flow_01_22.txt
+    FROM=73100 TO=73180 python3 trace87.py
+    EDITS="73037:-1:29524;73055:-1:29524;73158:-1:2" python3 pair88.py
+    python3 enum91.py > f91_enum_pairs.txt
+
+Escala: un proceso por barrido, sin paralelismo (lección de la caída de máquina).
