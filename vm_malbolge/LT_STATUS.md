@@ -2733,3 +2733,190 @@ reproduces the 677,013-accumulator figure that §3 quotes. §6: `near65.py`
 `f66_gap_<prefix>_<A_MODE>.txt`. Every number in §§1-7 is a pure function of the saved snapshots
 `f58_snap_*.pkl` / `f58_snap_head_*.pkl` (decision-aligned, finding 58) and `oracle_classic._CRAZY`.
 
+
+# Finding 64 — the machine-legal fold census: no `29523+a` exists at the decision instant, and 69
+# two-fold chains do
+`[CURRENT]` measured 2026-10-14 (session 10) on the saved decision-aligned snapshots `f58_snap_*.pkl`
+(cand C) and `f58_snap_head_*.pkl` (canonical head11), offline against `oracle_classic._CRAZY` /
+`oracle_classic.crazy_op` — no rebuild, no run of any image. Every number is a pure function of those
+two snapshot sets. `12/12` remains `NOT_DEMONSTRATED`; best demonstrated is still 11/12.
+
+## 0. What the instruction grammar actually permits
+
+Read from `tools/oracle_classic.py`:
+
+```
+elif op == 39:  v = mem[d]; mem[d] = (v // 3) + (v % 3) * (3 ** 9); a = mem[d]     # ROT
+elif op == 40:  d = mem[d]                                                        # MOV
+elif op == 62:  mem[d] = crazy_op(a, mem[d]); a = mem[d]                           # CRAZY
+```
+
+Only `IN`, `CRAZY` and `ROT` write `a`, and both `CRAZY` and `ROT` read a CELL and write it back. Three
+consequences, each of which decides which chain shapes are free:
+
+1. **A rotated operand is not free.** Folding `X` while `a` holds `z` needs `X` to already hold the wanted
+   trits; inserting a `ROT` at `X` first replaces `a` by `rot(X)` and destroys `z`. This is why the 11
+   ROT-closed chains reported in finding 63 §8 are leads, not designs.
+2. **A rotated accumulator is free.** After the fold at `X` the value sits both in `a` and in cell `X`, so
+   `q` ROTs on `X` give `a := rot^q(z)` (and rewrite `X`, which is harmless once `X` is never read again).
+3. **A rotated starting accumulator is free but needs a carrier.** To enter the chain with `a = rot^p(V)`
+   some cell must already hold `V`, and the prefix destroys it, so the carrier must differ from every
+   operand. There is no instruction that loads a cell into `a` without rotating it, but `rot` has period
+   10 (verified in §5 on every carrier/vector pair actually used), so `p = 0` is reached by 10 ROTs.
+
+So the reachable accumulator at a given instant is exactly
+
+    A in { rot^p(V) : V a real cell value at that instant, p in 0..9 }  U  { the a already held }   (R)
+
+and the implementable fold word is
+
+    [p ROTs on carrier V] ; CRAZY X1 ; [q ROTs on X1] ; CRAZY X2 ; [r ROTs on X2] ; CRAZY X3 …
+
+with `V, X1, X2, X3` pairwise distinct.
+
+## 1. Correction to finding 63: the identity mode mixes two instants (append-only)
+
+`legal68.py` runs exactly that word over `A0 = 29523 + a` (the identity a-encoding, trit0 `a`, trits 1..9
+`1`) for `p, q in 0..9`, with unrotated operands only, and it reproduces finding 63 §2 at `p=q=0`:
+6,252 qualifying accumulators on cand C, 6,293 on head11, 297 and 268 in snapshot mode, 0 chains. Over the
+100 settings it returns **7 chains per image, all at `p=9, q=0`** (`f68_legal_f58_snap__identity.txt`,
+`f68_legal_f58_snap_head__identity.txt`; the snapshot runs return 0 in both images).
+
+`verify69.py` then killed them. Setting up the `p=9` prefix needs a cell holding `A0` at the instant the
+chain starts, and `carrier70.py` searches all 59,049 cells of both layouts for it:
+
+| image | cells holding `29523+a` | holding `rot^m(29523+a)`, shared `m=1..9` | holding *some* rotation per vector |
+|---|---|---|---|
+| cand C | 0 | 0 | 0 |
+| head11 | 0 | 0 | 0 |
+
+`cell 57595 = [29524]*9` at the snapshot instant — the all-ones pointer word, not the identity carrier.
+This does not contradict finding 59, which measured `57595 = 29523 + a` (`29523`/`29525` for `(0,1)`/`(2,2)`)
+at **step 73,143**, i.e. a different instant: the snapshots are taken *two steps before each vector's own
+decision `ROT`* (`verdict_scan.py`, finding 58 §4). In between the cell becomes the all-ones word, which is
+exactly what a fold with `A_in = 29524` does (`crazy(29524, x) -> 29524`, the pointer-word law of finding 47;
+the individual write was not traced here - only the two endpoint values are measured).
+
+**Therefore:** every identity-mode figure in finding 63 §§2-6 describes a state the machine cannot be in —
+the accumulator of the input-read instant combined with the layout of the decision instant. The internally
+consistent figures of that finding are the **snapshot-mode** ones: 297 (cand C) and 268 (head11) qualifying
+accumulators, 0 chains, and `gap66`'s best chain right on 1/10 positions and 6/9 vectors. The `foldrot64`
+witnesses (11 + 3) remain valid as statements about ROT-closed class universes, and per §0.1 they were
+never implementable. Recorded as a correction by supersession, nothing above is deleted.
+
+## 2. The complete legal accumulator set at the decision instant
+
+`depth70.py` / `depth70b.py` build (R) from the real classes: 338 classes × 10 rotations dedupe to
+**3,098 distinct legal accumulator profiles on cand C**, 333 classes to **3,058 on head11**. The profile the
+program already holds (`As`) is *not* among them in either image (it is a fold output, not a rotation of any
+cell value) — note `depth70.py`'s `As` line was wrong (it compared a transposed buffer) and `depth70b.py`
+supersedes it; the `As`-independence of the conclusion is unaffected because every profile is entered through
+a `ROT` prefix anyway.
+
+## 3. Depth 0 — the verdict is not already sitting in a cell
+
+Target value-vector for the printable verdict (finding 58 §1: the cell the shared `ROT` reads must hold 0 for
+`00`, 3 for `01`): `(0, 3, 3, 0, 0, 3, 0, 0, 0)` over the nine `cmp` vectors.
+
+* cand C: **0 cells** hold it. head11: **0 cells**.
+* control (same scan, sanity): the all-zero vector IS present — 12 cells on cand C, 13 on head11.
+
+So no pure `d`-routing edit can print LT: some fold is necessary. This closes the "just point the print step
+at the right cell" hope that the branch-rewiring sweeps were implicitly testing.
+
+## 4. Depth 1 — one inserted fold is not enough
+
+For all 3,098 (cand C) / 3,058 (head11) legal profiles and all 338/333 real operand cells, with the carrier
+forced distinct from the operand, the number of single folds landing the accumulator on the verdict vector is
+**0 in both images**.
+
+## 5. Depth 2 — 69 verified chains on cand C, 0 on head11
+
+`depth70b.py` tests `[p ROTs on V] ; CRAZY X1 ; [q ROTs on X1] ; CRAZY X2` over the whole legal set, pruning
+by the necessary branch-law condition on the accumulator entering the last fold (result trit 0 needs `A in
+{1,2}`, result trit 1 needs `A in {0,2}`, so `rot^q(z1)` must already lie in that box) and then checking the
+full 90-slot target exactly. Result: **cand C 69 chains, head11 0** (`f70b_depth2_f58_snap_.txt`,
+`f70b_depth2_f58_snap_head_.txt`).
+
+`verify71.py` re-executes all 69 in plain Python using `oracle_classic.crazy_op` as the only fold semantics
+(plus `rot^10 == identity` checked on every carrier/vector pair) and asserts the verdict law per vector:
+
+```
+# VERIFIED depth-2 chains: 69/69
+# failing witnesses: []
+# X2 (the cell the decision ROT must read) counts: {33: 43, 58169: 26}
+# minimal ROT prefix steps: {1: 7, 5: 59, 9: 2, 10: 1}
+# intermediate ROT counts q at cell X1: {0: 1, 1: 2, 5: 59, 9: 7}
+```
+
+Structure of the 69:
+
+* **the carrier is always cell 58621** (`V = [106, 86, 39, 106, 99, 39, 106, 99, 109]` before rotation);
+* **`p + q = 10` for all 69** (reading `p = 0` as 10). That is not an accident: writing the chain trit-wise,
+  `z2_j = C[X2_j][ C[X1_{j+q}][ V_{j+q+p} ] ]`, so `p + q ≡ 0 mod 10` is exactly the condition that makes the
+  middle fold read `V` **unrotated**; every other split would require a rotated operand, which §0.1 forbids.
+  In other words the whole family is one shape — an unrotated two-fold chain — expressed at the rotation
+  level where a real cell supplies the starting `A`;
+* 41 distinct `X1` cells, all in the `57545..58423` slot window except cells 35, 36, 74;
+* `X2 ∈ {33, 58169}` — and `X2` is the cell that must be the one the shared decision `ROT` reads.
+
+Example (the majority shape `p=5, q=5`, `X1 = 57603`, `X2 = 33`):
+
+```
+A  [25758, 20898, 9477, 25758, 24057, 9477, 25758, 24057, 26487]
+z1 [56740, 57226, 57469, 56740, 56011, 57469, 56740, 56011, 58198]
+A3 [29636, 29638, 29639, 29636, 29633, 29639, 29636, 29633, 29642]
+z2 [   0,    3,    3,    0,    0,    3,    0,    0,    0]      -> 00 01 01 / 00 00 01 / 00 00 00 = LT
+```
+
+## 6. What is still between a chain and an image (stated honestly)
+
+The census fixes the **data** side; it does not prove the **control** side. Three conditions must hold at once:
+
+1. **Splice window.** The snapshots are two steps before the decision `ROT`, so a chain whose values are the
+   ones measured here must finish there. A 10-`ROT` + 2-`CRAZY` word is 12 instructions plus the `MOV`s that
+   move `d` between `V`, `X1`, `X2` — it cannot be inserted into a 2-step window. The census must therefore be
+   re-run on a layout snapshotted ~12-16 `ROT`/`CRAZY` steps *earlier*, with the cells that the removed tail
+   used to overwrite holding their pre-tail values (`probe_writer.py` / the W-lines already log those writes).
+2. **`d`-steering** to 58621, then to an `X1` in the 57xxx window, then to `X2 ∈ {33, 58169}` — three distinct
+   destinations inside the leaf, which is the known-hard part (findings 54-56: every rewiring class measured so
+   far tops out at 11/12).
+3. **Print routing**: the shared decision `ROT` must read `X2` — `X2 = 33` is a program-region cell, so a fold
+   there rewrites an instruction word; `X2 = 58169` is in the slot window and is the preferable target.
+
+## 7. Status and next
+
+`12/12`: **`NOT_DEMONSTRATED`**, best 11/12. Closed by this finding: the ROT-closed chains of finding 63 §8
+as designs (§0.1), the identity mode of finding 63 §§2-6 as a description of a reachable machine state (§1),
+"the verdict already exists in a cell and only routing is missing" (§3), and depth 1 (§4). Opened by this
+finding: **69 verified two-fold chains on the cand C lineage** — the first positive completion target in this
+line, and the reason head11 should be dropped as the base for fold work (0 chains at depth 2, 0 at depth 1,
+and the same 0 at depth 0). Next, in order: (a) the splice-window census of §6.1, which decides whether any
+of the 69 survives at a reachable insertion depth; (b) depth-3 on the same window if (a) is empty; (c) if a
+chain survives, engineer it on `cand58_C` — `MOVD` into 58621, `ROT` ×5, `CRAZY` at the `X1` cell, `ROT` ×5 at
+`X1`, `CRAZY` at 58169, then route the print `ROT` to 58169.
+
+## 8. Artifacts
+
+Scratch `/home/danny/tmp_lt/`, offline (no build needed to re-derive). `legal68.py`
+`5fdbcf9aefdafb2ef8a49d267214850ea6600c179af96a4beae7be6208b8da16` with outputs
+`f68_legal_f58_snap__identity.txt` `4aae6b257501882483c8a08c6de80ae592164e4fd7f685e255e98652a250a299`,
+`f68_legal_f58_snap_head__identity.txt` `d55b251fc56584a94ff0b21b2db38092724d3a2ec68cba82a43cbdbe1e13577e`,
+`f68_legal_f58_snap__snapshot.txt` `e3c5fb978e635f0df8326bc18ee577409dc2c3fa4319b770729086f7cae9d340`,
+`f68_legal_f58_snap_head__snapshot.txt` `73e31c3f5d30c7771a046213da52e0ac3d422a9e70cdaf8442d5714ec0fe4242`,
+launched by `run_legal68.sh` `3f24d1e9c066df3ee6ac8b9b6384e55c1d15d47c5636c25f395085912f9bf22b`.
+`verify69.py` `300d9b109f8c845602fb833ac59359e9a2226a51156018434c98d93348ab7a8e` (output
+`f69_verify.txt` `5b4a0b96b936e1cb0d17f33916b782c835a21f6ccbabcac4899bdade416eb16b`). `carrier70.py`
+`597343f47bc504e80da03481969cadbdfbdbe43cae63d0e1c32d192fdb2ebdc6` (`f70_carrier.txt`
+`a7f64021763812803549763dcf72d8cf14f92bcc67f58243bf846b6010510310`). `depth70.py`
+`bf594fcda9c09ee259ec504b85de52e90512a73d1f2274cf403e3db99cfe58e2` (`f70_depth.txt`
+`d41b799e9de323281d724caeafee0cd0f95bae5a485feed4f6b2552db159c85d`; its `As` line is defective as noted in
+§2, chain counts unaffected). `depth70b.py` `64e34ad321f9501853ce3ae85fef5f0dc1ebbfd255d7cc4678e3bc4d62145776`
+(`f70b_depth2_f58_snap_.txt` `7f8fbe7ff2bec8f945219e9bfa3a94db562ab63a52a08e15e74237eb4b8cf609`,
+`f70b_depth2_f58_snap_head_.txt` `e04b04da2cf816ef55451a24766bd7c004588038f3ed913caa14ddb53f91a55b`).
+`verify71.py` `ac3522f62a44bc0e21c514162fa2797ea7e2ef890b3c42b3b8d826a9827ada2f` (`f71_verify.txt`
+`20ef685605f88c63b23bc548d832e112616d85f594afe86d3917d5fb280d143b`, `run_verify71.sh`
+`650376dd01a9ab69ff222b60120a908cadb43086d7a06197a32fe10951b30f36`). §0 quotes `tools/oracle_classic.py`
+lines 28-36 and 39-`62` region as read on 2026-10-14. Chain-family witnesses from `foldrot64.py`
+`3c6f1abb79150eb206bbfc20f6625d08e047cf82413152476857b00456b824ff` verified by `chain67.py`
+`2beb15a0d1214ac747dfa6d173a7b503924c77c09feba718304d9dd898e396d2`.
