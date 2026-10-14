@@ -2101,3 +2101,123 @@ candidate `.mb` A `b11ae3533865f5d5b5f1d23a46aebc8a184c40cd3df5fcaea6509571ab791
 B `29cad72bf545e42d3d7a213a091f29a9bcfd02e352a1e512315e344a48a8d652`,
 C `f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`,
 D `08c96a65fd224092e3474a917473d1699c199acf5d45af1552cf46552481b717`.
+
+---
+
+# Finding 60 — the read-only ceiling holds at *every* fold depth: no cell encodes the LT table in
+# any of its ten trits at decision time, `{(0,1),(2,2)}` is the irreducible confusion pair, and even
+# the two-level (pointer-of-pointer) read is empty
+
+`[CURRENT]` measured 2026-10-13 (session 8) **offline** — no new VM run, no rebuild — by
+`trit_scan.py` over the decision-aligned memory snapshots that `verdict_scan.py` had already saved for
+finding 59.
+
+## 1. Why finding 59 §4 was not yet the closure
+
+`ROT` is a *cyclic rotation of the ten trits* of a cell value, so for any cell `x`
+
+```
+trit0(rot^m(x)) = trit_m(x)        (m <= 9),   rot^10 = identity      [3^10 = 3 * 3^9]
+```
+
+(proof: `rot(v) = (v//3) + (v%3)*3^9`, hence `rot(v) % 3 = (v//3) % 3 = trit1(v)`; iterate.)
+Finding 58/59 showed the verdict leaf installs `d` by walking *m* dereference `MOVD` gadgets and then
+applies the shared `ROT`, i.e. **the number of folds is itself a routable quantity**. A scan of
+`trit0(rot(content))` therefore tests only `m = 1`. A retarget that changes the *chain length* could
+reach any other trit position, so the honest version of the negative result must quantify over all
+ten positions. This finding does that.
+
+## 2. Method
+
+* Images (unchanged from finding 59): canonical 11/12 evidence image
+  `vm_malbolge/evidence/artifacts/lt_head11_probe.mb` = local `head11crlf.mb`, blob
+  `2838e63c02507e85801de9fee010e95f72882f029ef8f91af77868a3ec0c26a1`, and candidate C
+  `cand58_C.mb` `f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`.
+* Nine decision-aligned snapshots per image, taken by `verdict_scan.py`
+  (`eb03e29ed524c6458faa792ac23e8970f46160a3234a39607c7ee16d20ae6483`) two steps before each vector's
+  own decision `ROT`; e.g. `f58_snap_head_01.pkl` `ebee63080f79d9eab157c4293f9d0cc538ea25d4cddd3b041a85f390cff2a118`,
+  `f58_snap_01.pkl` `79835264385397313d92574df8dbcfa7c8eb7729976435b0c92da0ae537e5de1`.
+* `trit_scan.py` `54f720eada23d9dc14745d2a02ee7a672122436ace46a9276a4ade02522f96ae` scans, for every
+  cell and every `m in 0..9`, the nine-vector signature `trit_m(content)` against
+  `LT = [0,1,1,0,0,1,0,0,0]` in vector order `00,01,02,10,11,12,20,21,22`, reports exact matches,
+  off-by-one matches, and the best achievable score (separately restricted to signatures containing
+  no `2`, because the harness accepts only `00`/`01` and a `2` trit prints `02`). It additionally
+  tests the two-level read (cell content used as an address, raw `trit0` of the target) and the `A`
+  register itself at trit 0/1/2.
+
+## 3. Result — exhaustive over chain length
+
+Canonical 11/12 image (`f59b_trit_head.txt` `58bdbc43a24539e3029c1d23eef601de877bfce1e3f50dd3950253ad335a1d24`):
+
+| depth `m` | exact-LT cells | off-by-one | best (no `2` in sig) | representative cell | missing vectors |
+|---|---|---|---|---|---|
+| 0 | 0 | 0 | 7/9 x1 | 57614 | `{01,22}` |
+| 1 | 0 | 0 | 7/9 x1 | 58907 | `{01,22}` |
+| 2 | 0 | 0 | 7/9 x2 | 57563 | `{01,22}` |
+| 3 | 0 | 0 | 7/9 x1 | 58433 | `{01,22}` |
+| 4 | 0 | 0 | 7/9 x1 | 58057 | `{01,22}` |
+| 5 | 0 | 0 | 6/9 x58191 | 0 | `{01,02,12}` |
+| 6 | 0 | 0 | 6/9 x58202 | 0 | `{01,02,12}` |
+| 7, 8, 9 | 0 | 0 | 6/9 x57950 each | 0 | `{01,02,12}` |
+
+The local `head11crlf.mb` is byte-identical to that committed blob (same sha256), so the
+autocrlf hazard recorded in the findings does not affect this measurement.
+
+Candidate C (`f59b_trit_C.txt` `052fa239ae99e8dd2bdf57c70a0589c32ab879f607aa3dd17bee0f2a6bcceca4`):
+
+| depth `m` | exact-LT cells | off-by-one | best (no `2` in sig) | representative cell | missing vectors |
+|---|---|---|---|---|---|
+| 0 | 0 | 0 | 6/9 x20189 (7/9 if `2`s allowed: cell 58625) | 5 | `{01,02,12}` |
+| 1 | 0 | 0 | 7/9 x2 | 57608 | `{11,21}` |
+| 2 | 0 | 0 | 6/9 x19039 (7/9: 57403) | 6 | `{01,02,12}` |
+| 3 | 0 | 0 | 7/9 x1 (58621) | 58621 | `{01,22}` |
+| **4** | **0** | **2** | **8/9 x2** | **57560, 58903** | **`{01}` only** |
+| 5 | 0 | 0 | 6/9 x58191 | 0 | `{01,02,12}` |
+| 6 | 0 | 0 | 6/9 x58202 | 0 | `{01,02,12}` |
+| 7, 8, 9 | 0 | 0 | 6/9 x57950 each | 0 | `{01,02,12}` |
+
+* **Zero** cells encode the LT table at **any** fold depth on **either** image. The finding-59
+  negative result was not an artifact of testing one depth: it is closed for all chain lengths.
+* **Zero** cells satisfy the two-level read either (`content` = address, raw `trit0` of the target)
+  on both images, so "aim at a pointer that points at the discriminator" is empty too.
+* The `A` register is not a hidden carrier: at decision time its `trit0` signature is
+  `0,0,1,0,0,1,0,0,1` (canonical) / `0,0,0,0,0,0,0,0,1` (C) — functions of `b` (and of the pass
+  count), never of `a < b`.
+* Best read-only routing known anywhere: **8/9** — candidate C, depth 4, cells `57560`/`58903`,
+  missing only `(0,1)`. For reference, the *actual* leaf of C already achieves 8/9 (it fails only
+  `(2,2)`), and `57563` (canonical depth-2 best) is the same cell that session 7 identified as the
+  `CRAZY d=57563 0->29523` seed of the true-shape constant.
+
+## 4. The lemma this buys: `{(0,1),(2,2)}` is irreducible for reads
+
+On the canonical image the *unique* best cell at every meaningful depth misses **exactly**
+`{(0,1),(2,2)}` — the same pair that finding 59 §3 proved reconverge to a two-cell difference at
+step 73,143 (`stack_scratch_1 = 29523 + a`, `stack_top_1 = b`), whose `rot` trit0 agree for both.
+The depth scan shows that this is not a coincidence of depth 1: over **all ten trits of all 3^10
+cells** there is no read that separates that pair while keeping the other seven. So the pair
+`((0,1) true, (2,2) false)` is the structural obstruction for *every* read-only image in this
+family, and the four 11/12 routes are just the four ways of paying for it on a different vector.
+
+## 5. Consequence for the search
+
+12/12 is **not** a routing problem. Any image that reaches it must make the machine *write* an
+LT-consistent cell before its own decision `ROT` — i.e. add a fold/compare sequence to the
+generator, not retarget a pointer. That is outside every edit family measured so far
+(117-site x 165-label single edits; 96/98-site x 165/65-label two-edit compositions; ROT-constant
+sweeps; `a7` lineage census). The running composition sweeps are the empirical test of that claim
+inside the two-edit space; the prediction from §3/§4 is 0 winners.
+
+## 6. Status and next
+
+`12/12` remains **`NOT_DEMONSTRATED`**; measured best is still 11/12 (dual-engine, canonical
+evidence committed). Next actions, in order: harvest the two composition censuses
+(`f58_comp_C.txt`, `f58_comp_B.txt`); if, as §3 predicts, neither yields 12/12, the only remaining
+route is a generator-level change that computes the comparator (`{0}x{1,2} U {1}x{2}` needs the OR
+of two gates) before the verdict, which means editing `vm_malbolge/tools/mbir_cmp_lt_gen.py` / the
+HELL source structure rather than retargeting labels.
+
+Artifacts (sha256): `trit_scan.py` `54f720eada23d9dc14745d2a02ee7a672122436ace46a9276a4ade02522f96ae`,
+`f59b_trit_head.txt` `58bdbc43a24539e3029c1d23eef601de877bfce1e3f50dd3950253ad335a1d24`,
+`f59b_trit_C.txt` `052fa239ae99e8dd2bdf57c70a0589c32ab879f607aa3dd17bee0f2a6bcceca4`,
+`f58_snap_head_01.pkl` `ebee63080f79d9eab157c4293f9d0cc538ea25d4cddd3b041a85f390cff2a118`,
+`f58_snap_01.pkl` `79835264385397313d92574df8dbcfa7c8eb7729976435b0c92da0ae537e5de1`.
