@@ -2221,3 +2221,141 @@ Artifacts (sha256): `trit_scan.py` `54f720eada23d9dc14745d2a02ee7a672122436ace46
 `f59b_trit_C.txt` `052fa239ae99e8dd2bdf57c70a0589c32ab879f607aa3dd17bee0f2a6bcceca4`,
 `f58_snap_head_01.pkl` `ebee63080f79d9eab157c4293f9d0cc538ea25d4cddd3b041a85f390cff2a118`,
 `f58_snap_01.pkl` `79835264385397313d92574df8dbcfa7c8eb7729976435b0c92da0ae537e5de1`.
+
+---
+
+# Finding 61 — the discriminator is never computed: no single `CRAZY` fold and no fold that the
+# program actually executes encodes `a<b`, exactly one *unprintable* two-fold solution exists on
+# candidate C, and the composition census produced six new 11/12 routes but no 12/12
+
+`[CURRENT]` measured 2026-10-13 (session 8) with `fold_census2.py`, `fold2_census.py`,
+`clean2_census.py`, `foldhist.py` + `foldhist_scan.py` on the decision-aligned snapshots and the full
+CRAZY-fold histories of the canonical 11/12 image and candidate C, plus the (interrupted) two-edit
+composition censuses `f58_comp_C.txt` / `f58_comp_B.txt`.
+
+## 1. Methodological trap first: an "arbitrary 3x3 gate" is not the machine
+
+`fold_pair_census.py` asks, for every pair of trit-signature classes `(u, w)`, whether *some* gate
+`G` satisfies `G[u_k][w_k] = LT_k`. On candidate C that returns **611 separable pairs** (27 of them
+with an A-carrier class that also contains the A register itself, over 47 distinct content cells) —
+which looks like a 12/12 route and is **not**: the CRAZY table is fixed,
+
+```
+_CRAZY = ((1, 0, 0), (1, 0, 2), (2, 2, 1))     # tools/oracle_classic.py:28-36, row = content trit, column = A trit
+```
+
+and it is not surjective onto the gates the separability test assumes. Every census below uses the
+real table. Recorded so no future session re-derives the 611-pair mirage (`f61_fp_C.txt`,
+`f61_fp_head.txt`).
+
+## 2. One fold, real table, any rotation: empty on both images
+
+`fold_census2.py` enumerates `trit_j(crazy(A, mem[X])) = _CRAZY[trit_j(X)][trit_j(A)]` for every cell
+`X` and every depth `j = 0..9`, using the A register each vector actually holds at its decision step:
+
+* candidate C (`f61_f1_C.txt`): **0** cells at any depth; best coverage **7/9** (depths 1 and 2).
+* canonical 11/12 image (`f61_f1_head.txt`): **0** cells at any depth; best coverage **7/9** (depths 2, 3).
+
+So "fold one cell and read any trit of the result" cannot produce the verdict — closing the family
+that finding 60 left open for reads.
+
+## 3. Two folds: exactly one solution in the whole machine, and it is not printable-by-value
+
+`fold2_census.py` composes two folds the way the runtime does (`a <- crazy(a, mem[Y'])`, then
+`a <- crazy(a, mem[Y])`) over all cell-pairs grouped by trit signature, at every starting depth:
+
+* canonical image: **0** solutions at any depth.
+* candidate C: **one** solution class, at depth 3:
+
+```
+Y' = 58625  (trit3 = 2,0,2,2,2,2,2,2,2)     Y = 57608  (trit3 = 0,0,2,0,0,2,0,0,0)
+A trit3 at decision = 1,1,1,1,1,1,1,1,0
+trit3(crazy(crazy(A, mem[58625]), mem[57608])) = 0,1,1,0,0,1,0,0,0 = LT   [MATCH = True]
+```
+
+verified vector by vector against the real oracle in `f61_verify_pair.txt` (`a26379a6…`).
+The three inputs partition the work: `A_3` is what kills `(2,2)`, `58625_3` is what kills `(0,1)`,
+`57608_3` is what passes `(0,2)` and `(1,2)`.
+
+But `clean2_census.py` asks the question the print path actually poses — is there a pair `(Y', Y)`
+leaving the second cell holding one of the **clean verdict constants** `0/3/6` (the only values the
+leaf renders as `00`/`01`/`02`, finding 58)? Enumerating all value-classes exhaustively
+(338 x 338 on C, 333 x 333 on the canonical image, `f61_clean2_candC.txt`, `f61_clean2_head.txt`):
+**zero pairs on both images**. The two-fold solution exists only as a deep trit of a large value,
+which the current leaf cannot print.
+
+## 4. The program never computes it anywhere, at any step
+
+`foldhist.py` logs **every** `CRAZY` fold of all nine runs (about 8,000 folds per vector,
+`f61_fh_{C,head}_*.json`); `foldhist_scan.py` aligns them per cell, counted from the end of that
+cell's own fold history (the session-7 alignment lesson), and compares the post-fold value across
+the nine vectors:
+
+| image | cells folded in all 9 runs | aligned (cell, back) slots compared | slots whose post value has ANY trit = LT | slots with a clean 0/3/6 = LT |
+|---|---|---|---|---|
+| candidate C | 845 | 7,953 | **0** | **0** |
+| canonical 11/12 | 845 | 7,999 | **0** | **0** |
+
+(`f61_scan_C.txt`, `f61_scan_head.txt`.) This is the strongest form of the negative result so far:
+it is not about the decision step anymore — over the whole executed history of both images, no fold
+ever produces the comparator on all nine pairs. Together with finding 60 (no read at any depth) this
+means `12/12` requires **new arithmetic** in the program, not a better aim.
+
+## 5. Composition census: six new 11/12 routes, no 12/12, and a resource lesson
+
+The two-edit compositions launched from the finding-59 bases were **killed before completion**
+(both stdout logs are empty, `e3b0c442…`; no traceback — 10 concurrent probe-VM workers on a 15 GB
+box exhausted memory). What they had written is frozen and hashed:
+
+* `f58_comp_C.txt` (`cfc82ba8…`): `BASE=cand58_C.hell sites=96 labels=165 jobs=15744 prefilter=22->00`,
+  killed at job index **5,725/15,744** (36 %, highest index present in the log). Score histogram of
+  the 125 prefilter-passing candidates:
+  66x9, 43x7, 6x8, 6x6, **4x11**, 0x12.
+* `f58_comp_B.txt` (`24bc587e…`): `BASE=cand58_B.hell sites=98 labels=65 jobs=6324 prefilter=12->01`,
+  killed at job index **3,583/6,324** (57 %). 52 candidates: 21x9, 10x6, 7x3, 4x5, 4x4, **2x11**, 2x10, 1x8, 1x7, 0x12.
+
+The 11/12 rows are new routes, and they cluster on **line 448** (the `MOVED decrement_value` site):
+
+```
+C + 448 -> dispatch_02                          fails 12
+C + 448 -> dec_op1                              fails 01
+C + 448 -> decrement_value                      fails 01
+C + 448 -> return_from_carry_was_not_set_2      fails 01
+B + 448 -> restore_no_more_carry_flag_and_rotate_value_2   fails 22   (= candidate C itself)
+B + 448 -> return_from_carry_was_not_set_2      fails 01
+```
+
+The fifth line is an independent confirmation of finding 58's routing model: C is one edit away from
+B, reachable through a different site. Three of the six land on the *same* residual failure `(0,1)`,
+which is the vector the shape theorem said is hardest to admit without a second gate.
+
+## 6. Status and next
+
+`12/12` remains **`NOT_DEMONSTRATED`**; measured best is still 11/12 (dual-engine, committed
+evidence). §2-§4 say a retarget-only search is structurally empty; §5 says the two-edit space was
+only 36 %/57 % surveyed and yielded six more 11/12 images, so the next moves are: (a) materialise the
+new 11/12 bases as `.hell`/`.mb` and hill-climb a third edit from *their* live sites against *their*
+failing vector, with **at most 4 workers and one sweep at a time** (memory lesson), and (b) in
+parallel, start the generator-level question of §4 — where in `vm_malbolge/tools/mbir_cmp_lt_gen.py`
+a second gate (the `{0}x{1,2} union {1}x{2}` decomposition) could be inserted so that the comparator
+is *computed* into a clean `0/3/6` cell before the leaf.
+
+Artifacts (sha256): `fold_pair_census.py` `eaa3d64129c5c15b55dc3d33e6117a8e1c85e4dcdf591b7f23e2f731186c5cfc`,
+`f61_fp_C.txt` `2318cfbac10bb36399eb43e564d70033eb2a4c0e3cd23ae9b0eb6b21e440f3f2`,
+`f61_fp_head.txt` `e0578ad57b1e7aa9a13b90c615862a5da9a7dba86636bea57dcb910e38748cc9`,
+`fold_census2.py` `148ee9b83b8ebe91794ef928274a974f8c8c4426c7484e68766e7bc62f1b4c5d`,
+`f61_f1_C.txt` `7a1afe303a223592bfa58a5d082cf95d92d75c80b8275bf4d712f2ece3b61f96`,
+`f61_f1_head.txt` `4c1f07515942291a336ca351d09814fe37d4180db04674d90ba8b7f2988d4403`,
+`fold2_census.py` `b32b0fcc3952f7ab531a87662a5f07396954060b46fd0428772e2f2033eb88f9`,
+`f61_f2_C.txt` `4f5ef353fa0c474fc6f1bbf1cc96e8500899b24041616ee77979d6a622c4d857`,
+`f61_f2_head.txt` `7b4cbcaf8f82c62c3a725ec934116cb94eb4db226a8b4f5327853dcf39306908`,
+`clean2_census.py` `c4159272ae40bc9db3fd416c354e9cbd8bd3f1235c48aed7ecd9e9ee83dde3fd`,
+`f61_clean2_candC.txt` `62956be6df5901ff4762d1d26938b59c746ed835107ee594779686ee2419144b`,
+`f61_clean2_head.txt` `04f0d514543855f00d585d6588d111ee309020719b37c0c64b0075f39fd03453`,
+`f61_verify_pair.txt` `a26379a683a6ff7a848dd09e4e5682453823a67847f8fc3cef194bd8edd84c12`,
+`foldhist.py` `4d876ef2586b1d6b24b20d0d3a451242b7ed978fd75fa1bf73cdfe822583d397`,
+`foldhist_scan.py` `7f8d923f1820e21151bd4c5810168ad8ccc0ddb5952b175451e16000263ec207`,
+`f61_scan_C.txt` `5b7b1dadcc79b2b2dd5c47ff1a66313151ac7a0ab44465511d49ee7966e34563`,
+`f61_scan_head.txt` `13f1e6ded83ce07b770ca9e8fdde74c1fcdc1926ac569075b47872c76e47493a`,
+`f58_comp_C.txt` `cfc82ba8bfd4c4f0266797d6f609b85c356f31dfd549174d2d7c3a7335c060e4`,
+`f58_comp_B.txt` `24bc587eebe669c3ae0f3072f5a5376483dc15a4659fecbd55b0503bc0747330`.
