@@ -3607,3 +3607,242 @@ Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools`:
     python3 enum99.py          # inversion posicional + verificacion de 158.932 pares (0 fallos)
 
 Escala: un proceso por corrida, sin paralelismo.
+
+---
+
+# Finding 71 — 2026-10-14 · El veredicto `a<b` NO es dato en la celda del fallo: es el contenido del propio
+código en `58156`, leído como instrucción. La cadena se decide `70 -> SETD -> rama VERDADERA` vs
+`74 -> inerte -> rama FALSA`; 8 de 9 vectores enrutan bien y sólo `(2,2)` llega al despacho con `70`.
+
+Continuación de F69/F70. Escrito sobre el candidato `cand58_C.mb` (11/12 en el modelo), que es la base con
+la que se han medido todos los pasos citados. Un proceso por corrida, sin paralelismo.
+
+## 0. Pregunta y método
+
+F70 cerró por teorema la vía de contenido en el paso de decisión y dio la lista de los 19.569 acumuladores
+separantes. Quedaba por saber DÓNDE se produce el `a_in` del decisor. Este hallazgo mide la cadena hacia
+atrás, paso a paso, con cuatro sondas independientes:
+
+    trace111.py  volcado crudo de instrucciones de una ventana de pasos para un vector (VEC, S0, S1)
+    trace108.py  ventana de instrucción entre el JMP compartido y el ROT de rama (los 9 vectores)
+    trace109.py  censos de llegadas a la celda 58156, con el valor leído en cada una
+    trace110.py  registro de escrituras/traducciones de 58156 (quién escribe el flag y cuántas traducciones
+                 hay entre esa escritura y la lectura del despacho)
+    diff106.py / diff107.py  primera divergencia de CONTROL y de ESTADO entre (2,1) y (2,2)
+
+## 1. Corrección de anclaje respecto de F68 (errata, no reescritura)
+
+F68 §5 ancló el "paso de decisión" en un pliegue situado a `OUT-3092`. Medido el historial de escrituras de
+`57661` (`route102.py`, `f102_writehist.txt`), el pliegue que FIJA el veredicto impreso es el último CRAZY
+sobre `57661` estrictamente anterior al primer OUT, a distancia constante **`OUT-15`** en los nueve vectores
+(`f100b_probe_cascade.txt`, líneas `out-dec=15`); el pliegue de `OUT-3092` es un eslabón aguas arriba, no el
+decisor impreso. La tabla de anclajes canónica es:
+
+    vec=00 dec=75079 OUT=75094 | vec=01 dec=76244 OUT=76259 | vec=02 dec=74509 OUT=74524
+    vec=10 dec=75079 OUT=75094 | vec=11 dec=76238 OUT=76253 | vec=12 dec=74509 OUT=74524
+    vec=20 dec=75079 OUT=75094 | vec=21 dec=76238 OUT=76253 | vec=22 dec=76244 OUT=76259
+
+`pair100.py` en su primera ejecución ancló en el último pliegue de TODO el correr (76367 > OUT) y publicó un
+11/12 espurio con `vec=22` fallando; ese volcado se conserva crudo como evidencia (`f100_probe_cascade.txt`)
+y la versión corregida (`f100b_probe_cascade.txt`) es la citable. Regla de registro: se corrige hacia
+adelante, nunca se reescribe la evidencia cruda.
+
+## 2. Cadena causal medida, hacia atrás, idéntica en los nueve vectores
+
+`trace104.py` (`f104_producer.txt`):
+
+    veredicto impreso  <- CRAZY code_c=57610 sobre 57661 con contenido todo-1 (29524):
+                         a_in=29524 escribe 0 (FALSO) | a_in=29523 escribe 1 (VERDADERO)
+      a_in             <- CRAZY sobre 57719, contenido todo-1
+        a_in            <- ROT 57913: mem=0  -> a=0   (rama FALSA)
+                          ROT 57926: mem=3  -> a=1   (rama VERDADERA)
+
+Tabla de resumen (los nueve vectores, `f104_producer.txt`):
+
+    vec=00 a_in=29524 wrote=0 want=FALSE | vec=01 a_in=29523 wrote=1 want=TRUE
+    vec=02 a_in=29523 wrote=1 want=TRUE  | vec=10 a_in=29524 wrote=0 want=FALSE
+    vec=11 a_in=29524 wrote=0 want=FALSE | vec=12 a_in=29523 wrote=1 want=TRUE
+    vec=20 a_in=29524 wrote=0 want=FALSE | vec=21 a_in=29524 wrote=0 want=FALSE
+    vec=22 a_in=29523 wrote=1 want=FALSE  <-- el unico error
+
+## 3. Consecuencia algebraica sobre la "ley del porteador" de F68 §5
+
+Los dos valores forzados por esa ley no son un grado de libertad: `29524 = trits(1,1,...,1)` y
+`29523 = trits(0,1,...,1)` son exactamente `crazy(0, 29524)` y `crazy(1, 29524)`, porque la columna de
+acumulador `0` fija todo-1 y la columna `1` lleva el trit0 `1 -> 0`. Es decir: en cuanto la rama está elegida,
+el contenido y el acumulador de los tres pliegues quedan **determinados**, no diseñables. Todo el margen de
+maniobra del que hablaban F68/F70 vive entonces en un único sitio: qué ROT se ejecuta.
+
+## 4. El despacho: la instrucción de rama ES la celda que guarda el flag
+
+`trace108.py` (`f108_dispatch_window.txt`) recorta la ventana entre el JMP compartido
+(`code_c=58153`, `d=57909`, destino `58155`) y el ROT de rama, y agrupa los nueve corriendo por la secuencia
+`(c, op)`:
+
+    group 0: 00 10 11 20 21   ->  58156:inerte(44) 58157:JMP ...      -> ROT 57913 (FALSO)
+    group 1: 01 02 12 22      ->  58156:SETD(40)    58157:JMP 58246:SETD 58247:JMP -> ROT 57926 (VERDADERO)
+
+El primer paso en el que difieren los nueve es el MISMO paso para todos, y el estado es idéntico salvo un
+componente:
+
+    c=58156  d=57910  mem[d]=57916  a=29524   en los nueve vectores
+    mem[58156] = 74 (vectores 00,10,11,20,21)  |  70 (vectores 01,02,12,22)
+
+Como `58156 % 94 = 64`, se lee `op = (mem + 64) % 94`, luego `74 -> 44` (opcode inerte: sigue de largo y la
+caminata conserva `d=57911`, que conduce al ROT `57913`) y `70 -> 40` (`SETD`: `d := mem[57910] = 57916`, el
+apuntador salta a la segunda copia `58246/58247` y termina en el ROT `57926`). **La comparación `a<b` está
+almacenada, bit a bit, en el contenido de la celda de código que la ejecuta.** Ese es el punto único que una
+edición legal debe cambiar, y sólo para `(2,2)`.
+
+## 5. Corolario estructural: la celda del flag no es editable y su valor inicial no importa
+
+`_ENC[70]=74` y `_ENC[74]=70` (involución, `'F'<->'J'`). Dos hechos cierran la puerta a los intentos ingenuos:
+
+1. `cand58_C.mb` mide 57.511 caracteres, así que la celda `58156` **no tiene carácter de fuente**: vive en el
+   relleno generado por la recurrencia. No existe "editar el bit de la comparación" directamente.
+2. Aunque existiera, sería inocuo: `trace110` midió que el contenido inicial (`29443`) es sobreescrito en el
+   paso 41692 con `74` **para los nueve vectores por igual**, y desde ahí el valor sólo se invierte por
+   traducciones. Por lo tanto el valor leído en el despacho depende exclusivamente de la PARIDAD del número
+   de traducciones entre 41692 y el despacho; cualquier edito que desplace esa paridad en uno para todos los
+   vectores invierte las dos ramas en bloque (predicción derivada, no medida: `1/9` en `cmp_lt`).
+
+El espacio de reparación queda entonces acotado a ediciones que cambien la paridad **de un solo vector**.
+
+## 6. El flag se escribe UNA sola vez, con el mismo acumulador en los nueve vectores; el resto es paridad
+
+`trace110.py` (`f110_flag_writer.txt`, y el volcado extendido `f110b_21v22_events.txt`) registra todo lo que
+puede cambiar `mem[58156]`: pliegues CRAZY/ROT con `d = 58156`, y traducciones (que en esta semántica caen
+sobre la celda que se va a ejecutar a continuación, así que un `JMP` hacia `58156` la traduce y ejecuta
+`58157`). Resultado, idéntico en los nueve vectores:
+
+    paso 41692  CRAZY code_c=41789  contenido 29443 -> 74   a_in=29561[1111112212]
+
+Es decir: **la escritura del flag no distingue entradas** (el mismo paso, la misma celda de código, el mismo
+acumulador, el mismo resultado 74 en los nueve). Todo el discriminatorio vive después, en la paridad de
+traducciones hasta la lectura del despacho:
+
+    vec   lecturas_antes_del_despacho  traducciones_hasta_la_lectura   leido_en_despacho   rama
+    00,10,20        5                            9 (=8 antes de leer)        74            FALSA
+    11,21           9                            17 (=16 antes de leer)       74            FALSA
+    01,02,12,22     9                            18 (=17 antes de leer)       70            VERDADERA
+
+(y `41692` deja 74, `_ENC[74]=70`: par de traducciones ante la lectura -> 74, nones -> 70; la cuenta incluye
+la traducción del propio paso del despacho, por eso se resta una). `(2,2)` cae en el bloque VERDADER porque
+su contador es **uno mayor** que el de `(2,1)`, que es correcto.
+
+## 6b. Dónde aparece esa traducción extra: otra celda-par `58998`
+
+`f110b_21v22_events.txt` muestra que `(2,1)` y `(2,2)` comparten idéntica prefijación de llegadas hasta el
+paso 70177 y que ambos leen `58156` nueve veces; la diferencia es una única traducción adicional de `(2,2)`
+en el paso 73009. `trace111.py` (volcados `f111_vec21_tail.txt`, `f111_vec22_tail.txt`, ventana 72960..73160)
+pone nombre a la instrucción que la produce:
+
+    73003 ambos:  ejecuta 58156 (contenido 70) -> SETD d:=mem[57756]=57887; traduce 58156 70->74
+    73004 ambos:  58157 JMP d=57888 mem=58997 -> 58998
+    vec=21 (a=59048): 58998 mem=74 -> op 40 SETD -> d := mem[57889] = 57678
+                                    -> 58999 JMP, 57404 SETD d:=mem[57680]=57900 -> 57405 JMP a 58152
+                                    -> 58153 JMP mem[57903]=57492 -> 57493 ROT d=57913 (mem=0, a=0) = FALSA
+    vec=22 (a=59047): 58998 mem=70 -> op 36 inerte -> d NO cambia (57889)
+                                    -> 58999 JMP mem[57890]=57403 -> 57404 SETD d:=mem[57891]=57891
+                                    -> 57405 JMP mem[57892]=57404, 57405 JMP mem[57893]=58156: RE-ENTRA
+                                       en la celda flag y la traduce 74->70 (paso 73009)
+                                    -> 58157 JMP mem[57894]=58246 -> 58247 JMP mem[57895]=57403 -> ...
+                                    -> llega al despacho del paso 73144 leyendo 70 -> rama VERDADERA
+
+`58998` es otra celda del par `F`/`J` (`58998 % 94 = 60`, `74 -> 40 SETD`, `70 -> 36 inerte`) y su contenido
+distingue `a=59048` de `a=59047`, que es exactamente el acumulado que separa `b=1` de `b=2` en la zona final.
+El bug queda localizado a un único objeto medible: **el contador de traducciones de `58156` entre el paso
+41692 y el despacho**, y el punto de control es si la caminata re-entra o no por `57893 -> 58156`.
+
+## 6c. Restricción de layout que acota el espacio de edición legal
+
+`tools/oracle_classic.py::load_memory` carga `mem[i] = ord(fuente[i])` para `i < 57511` (longitud de
+`cand58_C.mb`) y completa `i >= 57511` con la recurrencia clásica `mem[i] = crazy(mem[i-1], mem[i-2])`. Por
+eso `mem[58156]` vale inicialmente `29443` (material de relleno, no letra del programa) y por eso el flag es
+necesariamente escrito por la máquina. Consecuencias para la búsqueda de un edito:
+
+1. Un carácter de fuente en `j <= 57508` cambia **sólo** `mem[j]`.
+2. Los dos últimos caracteres (`j = 57509, 57510`) son la frontera de la recurrencia: cambiarlos reescribe
+   **todo** el relleno `>= 57511`, incluidas `58156` y las celtas puntero `57887..57926`. Es la palanca
+   global, y ya fue barrida en sesiones previas con mejor resultado 11/12.
+3. Como `58156` recibe su valor por escritura y sólo alterna 74/70 por traducción, la forma de arreglar
+   `(2,2)` sin tocar los otros ocho es **cambiar en uno la paridad de llegadas a `58156` en ese caso**, lo
+   que por 6b significa: que el `JMP` de `57405` con `d=57893` no apunte a `58156` cuando `a=2, b=2`.
+
+## 7. La vía de contenido de F70 sí funciona en el modelo (diagnóstico, no edición)
+
+`pair100.py` (`f100b_probe_cascade.txt`) inyecta en el paso de decisión un acumulador separante y un par de
+contenidos adyacentes `(w, w+1)` (construcción de F70: `trit0(a_in)=0`, contenidos en las imágenes de las
+columnas elegidas). Once sondas distintas — `c_false` 511, 1396, 2011, 4447, 5995, 13663, 41311, 44395 y sus
+`c_true = c_false+1` — producen **12/12 dentro del modelo inyectado**, incluidas las tres líneas base. La
+cascada de impresión `57661 -> 57719 -> 57610 -> OUT` acepta, por tanto, cualquier par separante legal: el
+cuello de botella no es la impresión, es el despacho de §4. Forzar `a` no es una edición legal; esto mide
+compatibilidad, no produce candidato.
+
+## 8. Dónde divergen (2,1) y (2,2): en la lectura de la entrada, no en un cálculo
+
+`diff106.py` (`f106_first_divergence.txt`): primera divergencia de CONTROL en el paso 70364 (tras 70363
+pasos de control idénticos), en la zona final `c ~ 59047/59048`, `d ~ 57691..57715`, con `a=0` vs `a=2`.
+`diff107.py` (`f107_first_content_diff.txt`): primera divergencia de ESTADO en el paso 64507, y el estado
+difieren **sólo en `a`** (`a=1` vs `a=2`) con `c=57384`, `mem[c]=54`, `d=57764`, `mem[d]=57383` idénticos. El
+paso 64506 es un `IN` en `code_c=57383`, `d=57763`: es la lectura del byte divergente de la propia entrada
+(`...01 01...` frente a `...01 02...`). No hay en la máquina ningún "cálculo" previo que se pueda arreglar:
+la señal viaja de ese `a` al contenido de `58156` (§4) y ése es el eslabón que falla en `(2,2)`.
+
+## 9. Lectura funcional del bug (inferencia consistente con las nueve rutas medidas)
+
+El conjunto que toma la rama VERDADERA es `{(0,1),(0,2),(1,2),(2,2)}`, que es exactamente
+`b >= min(a+1, 2)`: el predicado implementado compara `b` contra un **sucesor saturado** de `a`, y en trits
+no existe el `3`, de modo que `(2,2)` satura a `2` y se lee como VERDADERO. Coincide con los nueve casos
+medidos y con la forma en que §4 almacena el resultado como un bit de traducción. Es una inferencia sobre la
+tabla de rutas, no una medición de la fórmula.
+
+## 10. Estado del hito y etiquetas
+
+- `CMP_LT` **12/12: `NOT_DEMONSTRATED`.**
+- Mejor artefacto `.mb` en el modelo: **11/12**, base `cand58_C.mb` (falla `(2,2)`).
+- Paridad con el motor nativo `runners/malbolge-original/malbolge` para un 12/12: **`NOT_DEMONSTRATED`**
+  (no hay 12/12 que comparar; la sonda dual de esta sesión queda pendiente).
+- Negativos duraderos añadidos por este hallazgo: (i) el edito en `58156` está prohibido por simetría (§5);
+  (ii) no hay cálculo previo a la lectura de entrada que reparar (§8); (iii) la cascada de impresión no es el
+  cuello de botella (§7); el blanco único es la paridad de escrituras/traducciones que deja `70` en `(2,2)`.
+
+## 11. Artefactos (sha256, scratch `/home/danny/tmp_lt`)
+
+    51b560ef056a280866166c7eceb488c1120e91da21446da6e11fcdecb6b04386  trace108.py
+    52e31914c1f7008d9509e7f2070005491cdd392ca97081a670200c93b37ea94e  f108_dispatch_window.txt
+    68bbf3d3041d9d46fd84e03fa4c32874c0359a0b57ee1e8ecf3330c4348c3fad  trace109.py
+    4c16753592b16ec5c0aca4050d26b95a388e4f83b56e75e970555a22e7387b99  f109_parity_dispatch.txt
+    ed0a79f36082f136dc8c64a5f691cae951a958bc9417d4070641ef138c8a3cc7  trace110.py
+    fb8219b8f8207159e3c9d49690c28ec38cf1f024b4ff219a2c9b3b2ccc013791  f110_flag_writer.txt
+    750d1236fc41e683503b2eaf91979ade6e0edf0304502a0543acaf1855013dee  f110b_21v22_events.txt
+    4235ce20d241f32130ca2144483a3938ef75fd990ac9b54222c98f572f77f838  trace111.py
+    0aa779631352f6bcbb47d6d45da208e5d126fd9d7c1c37ae944632256782a9e5  f111_vec21_tail.txt
+    aa5d0fcb7d02f78870cdfd2d10546df5ac75437eb4bf96e583458bf9b0151c1f  f111_vec22_tail.txt
+    9fecbf5970d538c0a5c5d34833081d38462f77537293bc990d34cfcc44c88c93  diff106.py
+    4746dbd1951c96a87fca5143e84f7b414333582ad8b40d53e4ba4cfbcc7714dd  f106_first_divergence.txt
+    d92360b5ec9049c01b18340c2e728c4bf17af034e95b7aa034a1af682f89f4a5  diff107.py
+    28e75b4bdd92c696c50626f8934b016c7ae12d903e35cd9255b01b81862a9d6d  f107_first_content_diff.txt
+    d31b3f3e3b117eb543cd8601676fe5aebd5835cd88a245f34240774181e2fd85  route102.py
+    5d62bcb4c60d41bb197e15a49875013d307c7439f6746eece42b5d18961f4c2f  f102_writehist.txt
+    bd94fc3990979e7d28b39c45bd69a2312656daf01ca5d66b2de72deeb110a980  trace104.py
+    ac49e8692ee96941f68f6f0d1bf916d93a471a8c92a09cbf491b9376a2caed11  f104_producer.txt
+    1b315105e79c12f081280e3d31da50a15ed1758015fe4f7f2b3385b8c9c02374  trace105.py
+    ffd7f44b3309643e344948c0d3469784633f2f8ca92ebefd807f81ceef120fda  f105_branch_dispatch.txt
+    6666d4b148cf2c3646076a2489bfccd6d4d2f2eb34364e1019991ca7105ef08e  pair100.py
+    50a569f8caab370f764d6afee7fdba71c407bdac9202390a9201768d0b7c1799  f100_probe_cascade.txt
+    1053b3a593607465d35055f159495654e5dd892ac55fb5b2b8c21df3259de93c  f100b_probe_cascade.txt
+
+Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y `LT_MB` apuntando al candidato:
+
+    python3 trace104.py                       # quien produce el a_in del veredicto (9 vectores)
+    python3 trace105.py                       # ROT de rama y tabla de eventos alineada
+    python3 trace108.py                       # ventana de instrucción del despacho
+    python3 trace109.py                       # llegadas a 58156 y valor leido
+    python3 trace110.py                       # escrituras/traducciones de 58156 (VECFILT, NREC)
+    VECFILT=21,22 NREC=40 python3 trace110.py # volcado extendido de los dos vectores
+    VEC=22 S0=72960 S1=73160 python3 trace111.py   # crudo de instrucciones de una ventana
+    python3 diff106.py ; python3 diff107.py   # primera divergencia de control y de estado
+    python3 pair100.py                        # sondas de la cascada de impresion (modelo inyectado)
+
+Escala: un proceso por corrida, sin paralelismo; cada corrida de los nueve vectores tarda minutos.
