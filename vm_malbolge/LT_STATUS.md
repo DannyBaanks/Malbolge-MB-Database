@@ -2522,3 +2522,214 @@ a candidate is the pair (`sha256` of the `.hell` **blob**, 12-vector behaviour s
 section 5 records both. Proposed follow-up, deliberately NOT done here because it is a repo-wide config
 change for another session to authorise: a `.gitattributes` with
 `*.hell text eol=lf` and `*.mb text eol=lf`.
+
+---
+
+# Finding 63 — the three-fold ceiling: the accumulator is abundant, the finishing cell does not exist
+
+Status: `12/12` remains **`NOT_DEMONSTRATED`**; measured best is still 11/12. This finding closes the
+"compute the comparator with a longer fold chain" reading of Finding 61 §6 and produces, for the
+first time, a **positive design target** instead of another routing negative. All measurements are
+offline (saved decision-aligned snapshots + the real `_CRAZY` table), so they are reproducible
+without a build.
+
+`[CURRENT]` measured 2026-10-13 (session 10) with `tritlaw63.py`, `clean3_census.py`, `where63.py`,
+`ceiling63.py`, `compsig63.py`, `near65.py` and `gap66.py` on the decision-aligned snapshots
+`f58_snap_*.pkl` (cand C) and `f58_snap_head_*.pkl` (canonical head11) saved by `verdict_scan.py` in
+Finding 58.
+
+## 0. A derivation correction (recorded before the new numbers, not after)
+
+A fold lands on result trit **1** in *two* ways, not one: `_CRAZY[content][A] = ((1,0,0),(1,0,2),(2,2,1))`
+gives 1 from `(content ∈ {0,1}, A = 0)` **and** from `(content = 2, A = 2)` — the entry
+`_CRAZY[2][2] = 1`. Result trit 0 needs `A ∈ {1,2}` (content `{0,1}` for `A = 1`, content `0` for
+`A = 2`); result trit 2 needs `(content = 1, A = 2)` or `(content = 2, A ∈ {0,1})`. A first draft of
+the filter used in this finding kept only the first branch for trit 1 and therefore *pruned the whole
+search space to zero*; the corrected filter is what every number below uses. No committed claim in
+this ledger relied on the missing branch — the table and its `A = 2` column are stated correctly at
+§"the real table" entries (lines 790, 907, 1262, 1587 of this file), so nothing earlier needs an
+erratum. The lesson is kept because it changes the *shape* of the answer: with the wrong filter the
+three-fold chain looked dead at the accumulator, and it is not.
+
+## 1. Is a three-fold chain even algebraically possible? Yes, per position
+
+`tritlaw63.py` decides each trit position independently (CRAZY never mixes trits, and the print digit
+is `trit1` of the verdict cell). Requiring the chain result to be exactly `0` (a ≥ b) or `3` (a < b):
+
+| position | requirement | feasible? | per-vector option counts |
+|---|---|---|---|
+| trit0 | end at 0 | yes | `[5,5,5,13,13,13,9,9,9]` |
+| trit1 | end at LT | yes | `[13,5,5,13,13,5,13,13,13]` |
+| trits 2–9 | end at 0 | yes | 13 each |
+
+So no position is individually impossible; the question is whether **real cells** carry the required
+profiles jointly.
+
+## 2. The exact census over real cells: accumulators plentiful, chains zero
+
+`clean3_census.py` enumerates every `(Y1, Y2)` pair of value-classes (a class = one cell's content in
+each of the nine runs) from the saved decision-aligned snapshots, keeps pairs whose derived
+accumulator `z2 = crazy(crazy(A0, Y1), Y2)` satisfies the corrected necessary profile at **all ten
+positions**, and then asks whether any real class `Y3` finishes the chain to a clean `0/3`.
+
+| image | first-fold A | classes | `(Y1,Y2)` with a fully correct accumulator | complete `(Y1,Y2,Y3)` chains |
+|---|---|---|---|---|
+| cand C (`f58_snap_`) | identity `29523+a` | 338 | **6,252** of 114,244 | **0** |
+| cand C | snapshot A | 338 | 297 | 0 |
+| head11 (`f58_snap_head_`) | identity | 333 | 6,293 of 110,889 | 0 |
+| head11 | snapshot A | 333 | 268 | 0 |
+
+`where63.py` locates the shortage: per position the number of qualifying pairs on cand C / identity is
+33,477 (trit0), 32,842 (trit1) and 87,256–106,344 (trits 2–9), and some pairs cover **10 of 10**
+positions at once. The accumulator side of the design is therefore *not* the obstacle: the layout
+already produces, by folding twice, a value whose ten trit positions are exactly what a last fold
+would need. What is missing is a **cell to fold it with**.
+
+## 3. Closing that gap by force: ROT-images of the layout
+
+ROT is a cyclic 10-trit rotation and mutates its cell in place, so the machine can read any cell in
+any rotated version — a resource the census above ignored. `y3need63.py` closes the resource universe
+under it (338 → 3,098 classes on cand C, 333 → 3,058 on head11) and first filters finishing-cell
+candidates by the necessary condition "trit 2 confined to position 1 on the a<b vectors": 183 of 3,098
+(cand C) and 192 of 3,058 (head11) resources pass, spread over all ten rotation amounts. Even with
+that tenfold-enlarged pool and ~6×10⁵ qualifying accumulators, the exhaustive run returns **zero**
+complete chains: no finishing cell agrees with a reachable accumulator at all ten positions
+simultaneously. This is a *joint-profile* obstruction, not a shortage of candidates on either side.
+
+## 4. The trit1 signature fixpoint: folding can restate the comparator, never make it
+
+Because positions are independent, the trit1 question is decidable exactly and **without a depth
+bound**. A fold only ever applies `g(x, a) = _CRAZY[x][a]` to (trit1 signature of the folded cell,
+trit1 signature of the accumulator), so the reachable accumulator signatures are the fixpoint of
+`R0 = {sig(A0)}`, `R_{t+1} = R_t ∪ {g(s_cell, s)}` over the signatures real cells carry. `ceiling63.py`
+computes it (at most 3⁹ = 19,683 signatures):
+
+| image | real trit1 signatures | **full fixpoint** | LT-refining accumulators reachable | content signatures that can complete | ceiling of a last fold |
+|---|---|---|---|---|---|
+| cand C | 34 | **243** | 32 | **9** (none separates the two LT classes) | **9/9 vectors** |
+| head11 | 22 | **81** | 8 | **0** | **8/9**, misses `(0,1)` |
+
+Both rows are independent of which accumulator starts the chain (`A_MODE=identity` and `A_MODE=snapshot`
+give the same fixpoint, the same 9 or 0 completing signatures and the same ceiling for their image).
+(`trit1_closure63.py` stops the instant LT appears, so its "121"/"103" are *partial* sets; the figures
+above are completed fixpoints from `ceiling63.py` and `compsig63.py`.)
+
+Three consequences, and the first is **not** what a naive reading suggests.
+
+1. **The comparison must sit in the accumulator, not in the folded cell.** Among cand C's 9 completing
+   content signatures, *zero* separate the a≥b runs from the a<b runs - the signature
+   `(0,0,0,0,0,0,0,0,0)`, constant across all nine runs, completes against the reachable accumulator
+   `(1,0,0,1,1,0,1,1,1)`. Algebraically the last fold needs `A ∈ {0,2}` on a<b and `A ∈ {1,2}` on a≥b,
+   i.e. an accumulator that already **refines** LT (trit value 2 acting as don't-care), while the cell
+   it folds may be a constant. Folding therefore shifts the burden one link back, inductively to the
+   chain's data: this is the exact general form of Finding 61's "the comparator is never computed".
+2. **head11 is capped by its data, not by its routes.** Its fixpoint contains 8 LT-refining
+   accumulators but **no real cell can finish any of them** (0 completing signatures), which is
+   strictly stronger than its 8/9 ceiling and than every sweep result so far: no fold chain of any
+   length over head11's own memory prints `01` on `(0,1)` while keeping the other eight. Any completion
+   search that keeps head11's layout is capped below 12/12 regardless of how many folds it inserts;
+   cand C-family images, which do have finishing cells, are the only admissible parents.
+3. **and yet cand C still yields zero chains** (§2, §3): it has both halves - 32 refining accumulators
+   and 9 completing cells - but never at the same time, because a printable verdict needs *all ten*
+   positions clean and the nine non-printing positions demand `A ∈ {1,2}` there. That is the precise
+   shape of the remaining gap: not "no comparator", not "no accumulator", not "no finishing cell", but
+   no single cell whose **ten-position** profile matches a single reachable accumulator's
+   ten-position profile.
+
+## 5. Positive design target: the profiles the layout lacks
+
+The same fixpoint answers the constructive question. For each reachable accumulator signature,
+`ceiling63.py` lists the trit1 profiles that would complete the verdict and are **absent** from the
+layout: **271** on cand C with the a-constant (408 with the snapshot accumulator), **80** on head11 in
+both modes. Example (head11): the missing cell signature `(0,2,0,0,0,0,0,0,0)` completes against
+reachable accumulators such as `(1,2,0,1,2,0,1,2,1)` at depth 2–3.
+
+That converts Finding 61 §6's vague "insert a second gate" into a checkable specification: a
+generator edit must **write**, from `(a,b)`, one of these profiles into a spare cell before the leaf —
+using the only two write primitives the machine has, `mem[d] := crazy(A, mem[d])` and
+`mem[d] := rot(mem[d])` — and then fold it. The next measurement is therefore reachability of the
+listed profiles under those two primitives, not further retarget sweeps.
+
+## 6. How far is the best real chain from a clean verdict? Not one position - the whole function
+
+`gap66.py` scores, for every one of the 6,252 fully-shaped cand C accumulators, each real class `Y3` by
+how many of the ten positions its final fold already gets right, and - the decision-relevant reading -
+by how many of the nine **vectors** it prints completely correctly:
+
+| measure (cand C, identity, 338 classes, all 6,252 qualifying accumulators) | result |
+|---|---|
+| best `Y3` position-score, out of 10 | **1** for 6,249 pairs (trit1 only), **0** for 3 pairs |
+| pairs whose best `Y3` is right on 9 of 10 positions | **0** |
+| best `Y3` per-vector score, out of 9 | **6** for every single pair |
+| which vectors stay wrong | exactly `{01, 02, 12}` - the three `a<b` vectors |
+| best `Y3` slot-score, out of 90 | 63 (= 6 clean vectors + trit1 of the three `a<b` ones) |
+
+So the gap is not a near-miss that one more position-edit could close: the **best three-fold chain this
+layout can build is correct on precisely the six vectors where the constant `00` is correct and wrong on
+all three where `01` is required** - i.e. its best instantiation is the degenerate function the
+SCORE TRAP warns about, reached not by routing but by algebra. Read together with §4 (the completing
+content signatures are real but never *separating*) this is the strongest form of the finding: **no fold
+chain over this data computes LT; the fold monoid's fixed point is the trivial verdict.** The narrowest
+open question §6(c) of an earlier draft left - "can the nine non-printing positions be repaired
+one at a time?" - is closed by the "9 of 10 positions = 0 pairs" row: there is no single-position repair
+to search for.
+
+`near65.py` states the same fact from the trit1 side, so the two measurements pin the obstruction to
+different places: over the 32 x 34 = 1,088 `(refining accumulator, real cell signature)` pairs the
+distance in wrong trit1 positions distributes `{0: 37, 1: 66, 2: 93, 3: 159, ...}` - **37 pairs are
+distance 0**, i.e. a real cell profile would print the right digit on all nine vectors (e.g. the constant
+`(0,0,0,0,0,0,0,0,0)`, carried by 19,771 cells, against accumulator `(1,0,0,1,1,0,1,1,1)`), and the 66
+distance-1 pairs are wrong at `(0,1)` (37) or `(2,2)` (29). Per accumulator, 28 of the 32 have a
+distance-0 real cell. The information is therefore NOT missing from the trit1 layer; it is destroyed by
+the requirement that the same cell also keep the other nine positions clean. That is why §5's target is
+a **cell whose full ten-trit profile** is written, not a cell whose trit1 is edited.
+
+## 7. Status and next
+
+`12/12`: **`NOT_DEMONSTRATED`**, best 11/12. Closed by this finding: three-fold chains over the
+existing cells (zero chains, also after closing the layout under ROT), any chain whose *last* fold is
+supposed to create the comparison (the comparison must already refine LT in the accumulator, and on
+head11 no cell can finish one at all), the admissibility of head11 as a parent for fold-based completion
+work, and - by §6 - the "repair one position at a time" reading: no pair is one position from a clean
+verdict. Open: (a) the accumulator-rotation extension of the census, `foldrot64.py` (reported in §8);
+(b) **profile-reachability under the two write primitives** for the absent profiles of §5 - after §6 this
+is the only surviving route, because it is the only one that changes what the layout *has* rather than
+what it *points at*.
+
+## 7. Status and next
+
+`12/12`: **`NOT_DEMONSTRATED`**, best 11/12. Closed by this finding: three-fold chains over the existing
+cells (zero chains, also after closing the layout under ROT at the accumulator, both first-fold
+accumulators, all ten rotation amounts - for the rotated-accumulator result itself see Finding 64), any
+chain whose *last* fold is supposed to create the comparison (the comparison must already refine LT in the
+accumulator, and on head11 no cell can finish one at all), the admissibility of head11 as a parent for
+fold-based completion work, and - by §6 - the "repair one position at a time" reading: across all 6,252
+qualifying accumulators there is **no** pair one position away from a clean verdict, and the best chain
+the layout can build is the degenerate function (correct on exactly the six `a>=b` vectors).
+
+Open, and it is now a single question: **profile-reachability under the two write primitives** for the
+absent profiles of §5 - the only route that changes what the layout *has* rather than what it *points at*.
+
+Artifacts (sha256, scratch `/home/danny/tmp_lt/`, offline - no build needed to re-derive): `tritlaw63.py`
+`66c6e9180652ce29d46ce5e93b922f665e4bb6fbe242bf9a66204295dce4e5a7` (§1), `clean3_census.py`
+`4d78a004891e5a64a7b13101ce557c229501235028517866ef4a0c8df85db118` (§2; re-run on 2026-10-13 23:27 into
+`f63_recheck.txt` and it reproduces 6,252 / 297 / 6,293 / 268 accumulators with 0 chains), `where63.py`
+`2943173cc4540e319587217bf7c3ae2fd7cec180d432284e544fe634d6555bc4` (§2), `ceiling63.py`
+`2b8746d32d4db63d360667858076b98cbdb339564062c209189407082c1261f1` (§4/§5), `trit1_closure63.py`
+`a65f29ad90356cb1e5c2e22043307fd34aaf9ef6b4e96478f2090c18dbbe2aa3` (partial-depth version, see §4 note),
+`compsig63.py` `a0cbdbe9f4d36928e74369eb715b5404b3bfa99794b70b285a99c6b83859bb6b` with outputs
+`f63_compsig_f58_snap__identity.txt` `83a8c50691a8adb774867b1f394e196ede98c017c9b94358ea523254ff2ba241`,
+`f63_compsig_f58_snap__snapshot.txt` `97649eee7c343f8cdcddb81d0f1724d55ffd61d40c361eb3c304454d038d7304`,
+`f63_compsig_f58_snap_head__identity.txt` `b373a2e444a35b019d2154712566ec74b8c7235bcc9bddf7ebf56dba2dc1d3f1`,
+`f63_compsig_f58_snap_head__snapshot.txt` `2f7f79d531369901234aadf55fd0cc45cc5f7b74eb99e6c1a5cb93d981520ffa`.
+§3 was produced by `y3need63.py` at its **pre-fix** hash
+`05f0d3206cf40cbf654bd00353ba2eed81e5754df57f24eef4c1605c3880b2ff` (outputs
+`f63_y3_f58_snap__identity.txt`, `f63_y3_f58_snap_head__identity.txt`); the file was then repaired for
+snapshot-mode accumulator loading and now hashes `fe3d0039f7956467be829b2c88c145972f1890ba5a9364d689a671ccf7c3c29b`
+- the fix cannot move an identity-mode number, and `foldrot64.py` `m=0`/`ROTCLOSE=1` independently
+reproduces the 677,013-accumulator figure that §3 quotes. §6: `near65.py`
+`062a8e0ef5078e8182c36a4877dc9c505df2b503695c1e6c84b0b5118d14c1d3`, `gap66.py`
+`bb0b1f865c04b1cc4aa9f84edc5145e20b7265f4287e3e67e8a11c2ce8a60a64` with outputs
+`f66_gap_<prefix>_<A_MODE>.txt`. Every number in §§1-7 is a pure function of the saved snapshots
+`f58_snap_*.pkl` / `f58_snap_head_*.pkl` (decision-aligned, finding 58) and `oracle_classic._CRAZY`.
+
