@@ -3359,3 +3359,109 @@ Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y
     python3 enum91.py > f91_enum_pairs.txt
 
 Escala: un proceso por barrido, sin paralelismo (lección de la caída de máquina).
+
+# Finding 69 — 2026-10-14 · El flag `a<b` NO viaja en los datos del pliegue de precursión: viaja en la
+# FAMILIA de control. La receta anclada por sitio da un sistema coherente (`22` a `00`, un solo OUT por
+# vector, tres baselines intactos) y simultáneamente demuestra que editar `57926`/`57934` no puede
+# separar `01` de `22` `[CURRENT]` medido 2026-10-14 (sesión 9) sobre `cand58_C.mb`
+# (`f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9`), oracle `tools/oracle_classic.py`;
+# nativo `runners/malbolge-original/malbolge` NO re-ejecutado.
+
+## 0. Relación con Hallazgo 68 (rectificación datada; nada anterior se reescribe)
+
+La receta de F68 §5, probada con fuerzas ancladas a paso ABSOLUTO, dio `9/12` pero rompió `{11,21}` por el
+desfase de 7 pasos de su familia. Re-anclada a la estructura de datos (`pair93.py`) vuelve `9/12` con una
+máquina COHERENTE — y al mismo tiempo muestra que la receta de F68 §5 NO es la forma correcta del problema:
+las dos fuerzas de identidad sobre `E3`/`E2` no son inocuas (`crazy(29524, 1) = 0` borra el `1`) y el sitio
+`P` natural no contiene ningún dato discriminante que haya que preservar. El objetivo correcto está en §4.
+
+## 1. Tabla de verdad medida en el sitio de precursión `P` (`foldtab94.py` → `f94b_depmap.txt`)
+
+Las cuatro familias de control y su paso `P` (último CRAZY sobre `57719` antes de la primera OUT):
+
+    {00,10,20} -> P=71993    {02,12} -> P=71423    {11,21} -> P=73151    {01,22} -> P=73158
+
+En `P`, y para los NUEVE vectores, el contenido leído es idéntico y el flag está enteramente en el
+acumulador entrante:
+
+    content before P : 29524 (all-1) para los nueve                     dep = const
+    a_in at P        : 0 1 1 0 0 1 0 0 1  (orden 00..22)                dep = a+b
+    written at P     : 29524 29523 29523 29524 29524 29523 29524 29524 29523
+    veredicto        : F T T F F T F F T  = la tabla LT exacta SALVO (2,2)
+
+Y la razón mecanística (§1 de F68 lo suponía dato): las dos celdas que fabrican ese `a_in` en la familia
+`{01,22}` no transportan NINGUNA información de entrada — `57926` se escribe UNA sola vez en toda la
+ejecución (paso `28767`, `code_c=28864`, `a_in=29521`, antes `29443`, después `3`) con la TRIPLE
+`(a_in, antes, después)` idéntica para los nueve vectores, y lo mismo `57934` (paso `29216`,
+`code_c=29313`, `a_in=57127`, antes `29443`, después `57717`) — ver `f95_writehist_57926.txt` y
+`f95_writehist_57934.txt`. Por lo tanto editar la imagen de esas celdas cambia el flag para TODA la
+familia y **nunca** puede separar `01` de `22`. Esto cierra el pendiente de F67 §5 con resultado negativo
+para la vía "contenido del sitio `P`".
+
+## 2. Receta anclada por sitio de datos (`pair93.py` → `f93_anchored_recipe.txt`, trits en `f93b_anchored_verbose.txt`)
+
+Ancla: `P` = último CRAZY sobre `57719` antes de la primera OUT; `E3`/`E2` = los dos CRAZY previos sobre la
+misma celda. Fuerzas (diagnóstico, no edición legal): `a_in := 29524` en `E3` y `E2`; `a_in := 2` en `P`.
+
+    SCORE 9/12 · una sola OUT por vector en los nueve · baselines 41, 4241, empty PASS
+    PASS: 01->01  02->01  12->01  20->00  21->00  22->00
+    FAIL: 00->01  10->01  11->01   (los tres querían 00)
+
+Es la primera vez que el modelo dirige `(2,2)` a `00` **sin** romper el camino de impresión. El contenido
+de `57719` que queda en `P` bajo esa receta mide `0` para `{00,01,02,10,11,12}` y `2` para `{20,21,22}`:
+`trit0` se volvió `a == 2`, no `a < b`, porque la fuerza de identidad colapsa el `1` de la familia
+`{11,21}` a `0`. Aritmética verificada contra el oracle:
+
+    crazy(2,0)=29523 (V)   crazy(2,2)=29524 (F)   crazy(2,1)=29525 -> escribe 2 -> imprime 02
+    crazy(2,29523)=29523 (V)   crazy(2,29525)=29524 (F)   crazy(2,29524)=29525 -> 02
+
+## 3. La vía del codificador de `b`, y por qué se estrella con la impresora
+
+En la ventana de decisión existen exactamente dos celdas cuyo valor depende de `b`: `57595` =
+`29524/29523/29525` para `b=0/1/2` y `57642` = `0/1/2` para `b=0/1/2` (`f94b_depmap.txt`). Sólo la clase de
+`57595` satisface la ley del portador con `x = 2` (`29523 -> V`, `29525 -> F`); `57642` no sirve, su `b=1`
+vale `1` y `crazy(2,1)=29525` imprime `02`. Pero `57595` está VIVA después de `P`: el cascado la pliega en
+`P+24`, `P+39`, `P+57`. Medido (`pair88.py`, `EDITS="73148:57926:6;73156:57934:57593"` y su variante con
+`73156:57934:57593` sola): `01` y `22` se quedan SIN OUT y el run sigue hasta `81607`. La razón no es sólo
+que el pliegue sobrescriba el codificador: `d` es un puntero que sigue caminando, así que redirigir `P`
+desplaza TODO el cascado posterior (`57596, 57597, …`) y la ruta de impresión deja de existir.
+
+## 4. Enunciado correcto del objetivo para `12/12` (necesario y suficiente, desde §1)
+
+El veredicto es `crazy(a_in@P, all-1)`, y `a_in@P` está fijo por familia de control. Luego `12/12` es
+equivalente a: **partir la familia `{01,22}`** de modo que `22` caiga en una familia cuyo `a_in@P` sea `0`
+(o, en su defecto, conseguir un portador de clase `(0,2)` que codifique `b` y que esté MUERTO después de
+`P` — y §3 mide que hoy no existe tal celda en la ventana), sin mover `{00,10,20} -> F`, `{02,12} -> V`,
+`{11,21} -> F`, `{01} -> V`. Como las secuencias `(c,d)` de `01` y `22` son idénticas hasta la OUT
+(Hallazgo 66/67), el punto donde hay que actuar es el **primer branch** de la cadena de `JMP`/`SETD` que
+todavía no usa el flag de `b`; eso es un problema de encaminamiento de control (los `JMP` leen punteros
+`mem[d]` construidos desde los bytes leídos por `IN`), no un problema de contenido de pliegue. Nada en
+este hallazgo realiza ese encaminamiento.
+
+## 5. Estado del hito
+
+**`12/12` NOT_DEMONSTRADO.** Best ejecutable: `11/12` (`cand58_C`, falla `(2,2)`). Lo que este hallazgo
+sí establece con evidencia: (i) el flag está en la familia de control y no en `57926`/`57934` (negativo
+duradero para esa vía), (ii) la ley del portador con `x=2` es exacta y verificada, (iii) existe una
+configuración del modelo que imprime `00` para `(2,2)` e `01` para `(0,1)` conservando un solo OUT y los
+tres baselines. Paridad con el runner nativo: **NOT_DEMONSTRATED** (no re-ejecutado en esta sesión).
+
+## 6. Artefactos (sha256, scratch `/home/danny/tmp_lt`)
+
+    1d4a01e019618e1d2f02caacab0d889e1a45ff2f63ee307650ea5e6d4f81bc12  pair93.py
+    45d07d244cb70ede071d9b128f4593d1fcce5e5f7d0f5d6eec8739b892712459  f93_anchored_recipe.txt
+    e64a206711f99e543c0df8ddfbc4fcbb4f08ac592d7504cf108869c9006c6919  f93b_anchored_verbose.txt
+    d3a9b36a7de591a51c9cf6e0e1539b5067888f32dc7d63fbb373724cad83290c  foldtab94.py
+    40f4c680b1ee0c98b79f28c7c03d36fec555a24042c8dbfe21265e8b877a9120  f94_depmap.txt (etiquetas off-by-one, evidencia cruda)
+    4ecbd0f84e8c852a6ea9254dff95a5f9742822f2fcf016bac542f112a33fb904  f94b_depmap.txt (canónica)
+    d4dd7e1f5c0d4bd9a6281d6411a17e2fcb4b40b8787951d5029c79c99f7cbf1f  f95_writehist_57926.txt
+    eef9c4ea107e31b3b3d0407257f50ec7ea36a2d64d08420f075703f6d995394a  f95_writehist_57934.txt
+
+Reproducción, desde `/home/danny/tmp_lt` con `LT_TOOLS=<repo>/tools` y
+`LT_MB=/home/danny/tmp_lt/cand58_C.mb`:
+
+    python3 pair93.py                      # VERBOSE=1 para la vista por trits
+    python3 foldtab94.py
+    WATCH=57926 python3 writelog83.py      # y WATCH=57934
+
+Escala: un proceso por corrida, sin paralelismo.
