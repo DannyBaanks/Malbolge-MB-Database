@@ -1831,3 +1831,157 @@ Artifacts (sha256): `memdiff.py` `ad6d59fed05ae16353cf9a362c24b48e6a66c493c2ffd7
 `f57_three_73500.txt` `371aa451a9a725771d5ac89d7afb7e01a3ed241c83053af17fa66c8c6a9f70af`,
 `f57_movd_decision.txt` `b3faee8d77f3c6aabea8abe2fffd735fe7ab4f8fe99f1de034e4d603329df3cd`,
 `f57_lemmas.txt` `0d1183934bbba839d2249011cc42bc5067787f1c14625dd1236e11754d14a8fc`.
+---
+
+# Finding 58 — the verdict byte is a pure function of ONE cell the shared ROT reads, the layout already
+# rotates the three needed constants, and `(0,1)` is the single wrong entry in that table
+`[CURRENT]` measured 2026-10-13 (session 7) on the 11/12 image `head11crlf.mb` (`2838e63c…`,
+blob-equal) with `ptr_table.py`, `design_probe.py`, `probe_walk2.py`, `probe_trit1.py`,
+`probe_writer.py`, `reach58.py`. No rebuild was needed; every number is a replay of the canonical
+oracle semantics.
+
+## 1. The verdict-value law (the result that collapsed the problem)
+
+`ptr_table.py` rewrites, for each cmp vector, the content of the cell that the decision `ROT`
+reads, to each `v ∈ {0,3,6}`, restoring it immediately after so only the fold's `A_in` changes.
+The printed byte is **identical for all nine pairs**:
+
+| pointer-source content `v` | `rot(v)` | printed |
+|---|---|---|
+| 0 | 0 | `00` |
+| 3 | 1 | `01` |
+| 6 | 2 | `02` |
+
+Measured output table (`f58_ptr_table.txt`, rows = vectors, columns = `v = 0, 3, 6`): every row is
+`00 01 02`. So at decision time the machine has degenerated to
+
+> **OUT = f(content of the cell that the single shared ROT instruction reads)** — the `a`-class
+> contributes *nothing* any more.
+
+This is the mechanical reason the a-class edits of findings 56/57 all failed, and it turns the
+milestone from "build a gate" into "route one pair to the right cell".
+
+## 2. One shared instruction, three constants, one wrong entry
+
+`probe_walk2.py` + `head11crlf.dbg` show the decision is reached through the *same* instruction
+cells in every vector: `RESET_FLAG3`(57776) → `ADD_FLAG`(58152) → [`OP1_FLAG`(58156) →
+`SUBROUTINE_FLAG4`(58246)] → `ROT:`(57493) → `CRAZY:`(57610) on `stack_scratch`(57719) → `CRAZY:` on
+`stack_top`(57661). Only the **`d`-register landing cell** of `ROT:` differs, chosen by how many
+dereference steps the arrival chain took:
+
+| arrival | walk | `ROT:` reads | content | verdict |
+|---|---|---|---|---|
+| (a,0) all a | 57908 +5 | **57913** | 0 | `00` |
+| (a,1) all a | 57908 +5 | **57913** | 0 | `00` |
+| (0,2), (1,2) | →57916 →57924 +2 | **57926** | 3 | `01` |
+| (2,2) | 57908 +5 | **57913** | 0 | `00` |
+
+Needed (LT): `3` exactly for {(0,1),(0,2),(1,2)}, `0` for the other six. Comparing the two tables,
+**exactly one entry differs: `(0,1)` must land on the 3-cell instead of the 0-cell.** The image is
+11/12 because its dispatch table is already pair-aware for `(2,2)` and is wrong for exactly one
+pair — the same conclusion the truth-table analysis gave, now reduced to a single routing edge.
+
+## 3. The layout already rotates the three constants — they are the cascade's leaves
+
+`head11crlf.hell` lines 475-489 (verbatim):
+
+```
+add_rst0_done:                 # DATA label @57909
+	OP1_FLAG check_diff_1_or_0 R_OP1_FLAG
+	ROT 0 R_ROT
+	MOVED add_push_common
+}{
+check_diff_1_or_0:             # @57917
+	SUBROUTINE_FLAG4 load_diff_0 R_SUBROUTINE_FLAG4
+	ROT 0 R_ROT
+	MOVED add_push_common
+}{
+load_diff_0:                   # @57925
+	ROT 3 R_ROT
+	MOVED add_push_common
+```
+
+so the three "data cells" of section 2 are the slack cells after these DATA labels, and their
+contents are written by the HeLL `ROT 0 / ROT 0 / ROT 3` lines — the constant pool already holds
+`0` and `3`, in the right order for a three-outcome cascade. `probe_writer.py` confirms the writes:
+`57913 ← 0` at step 27830 (`c=27927`), `57921 ← 0` at 28407, `57926 ← 3` at 28751. The third leaf's
+fall-through is line 452 `MOVED diff_is_0`, i.e. the machine's TRUE leaf is "difference == 0"
+(CMP_EQ heritage, cf. the generator docstring), and the LT milestone is a re-routing of that leaf.
+No new constant is required: `6` (the only cell that would print `02`) exists **nowhere** in 3^10
+at decision time (`f58_six_01.txt`: `cells==6: n=0`, `cells==3: [57926]`, `cells==2: n=0`), and it
+is not needed — LT only ever requires `{0,3}`.
+
+## 4. Why no data-format edit can express the fix (two independent arguments)
+
+1. **Same-instruction argument.** The `(0,1)` and `(1,1)` arrivals execute literally the same
+   instruction stream at the same step numbers (73632 `ADD_FLAG`, 73637 `ROT:` d=57913, 73647 fold):
+   indistinguishable programs. Any edit of content, `A_in` or destination at that point is shared by
+   the whole `{a}`-column for fixed `b` — which is the finding-56 law, now seen as control flow
+   rather than data.
+2. **Encoding-closure argument.** `gate_closure.py` (finding 57) showed the only single-stage
+   classifier realising LT needs the carrier to hold `29523 + a` (identity a-encoding) with
+   `X(b) = (0,2,1)` and the classifier content trit0 `0`. `reach58.py` closes the carrier's trit0
+   under the fold alphabet available to a data-format design — `m_j(u) = CRAZY[u][j]` for `j ∈
+   {0,1,2}` (constant `A_in`) and `A(q)(a) = CRAZY[q(a)][a]` (`A_in = a`) — and the identity is
+   **not in the closure** (the swap `(1,0,2) = m0 ∘ A` is, and is what the image actually builds).
+   Enumerating all `(q, X, c2)` for the two-fold chain shape `(decision, print-classifier)` gives
+   exactly **one** viable triple, `q = identity`, and it is unreachable ⇒ *no* value-format change
+   can produce LT; only the dispatch (§2) can.
+
+## 5. Value-space simulation of the design: 12/12
+
+`design_probe.py` (two-pass: pass 1 locates, per vector, the last pre-`OUT` fold on `stack_scratch`
+and the following fold on `stack_top`; pass 2 re-runs with the routing constant applied only to the
+nine cmp vectors) reproduces LT exactly:
+
+```
+00 00 PASS   01 01 PASS   02 01 PASS
+10 00 PASS   11 00 PASS   12 01 PASS
+20 00 PASS   21 00 PASS   22 00 PASS      design probe score = 12/12
+bl1 41 PASS  bl2 4241 PASS  bl3 (empty) PASS
+```
+
+with the single routing injection `57913 := 6` at the `(a,1)` arrival step and `:= 0` at the
+`(a,0)` arrival step (`STEP="73637:57913:6,73638:57913:0"`, i.e. "the b==1 walk reads a different
+cell than the b==0 walk"). **Caveat:** this is a *value-space* proof that the routing change is
+sufficient — the injections stand in for control-flow edges; no image was rebuilt and no dual-engine
+harness was run, so it is not a 12/12 result.
+
+## 6. Edit census completed since finding 57 (all from the 11/12 base `head11.hell`)
+
+* **ROT-constant class** (136 candidates): 50 at/above baseline, **0 at 12/12**, every 11/12 keeps
+  failset exactly `01`.
+* **Branch/jump-target class** (`f55_branch_from11.txt`, 38 sites, table now complete): baseline
+  11/12, **151 at or above**, **0 at 12/12**.
+* **Wide class** (`f55_wide_from11.txt`, 117 jump sites × 165 labels = 19,188 candidates, prefilter
+  `(0,1) → 01`): through job 10,611 the best scores are **four candidates at 11/12**, none at 12/12:
+
+  | job | line | rewired target | failset |
+  |---|---|---|---|
+  | 2,703 | 337 `OP1_FLAG return_from_dec_op1_3 R_OP1_FLAG` | `jmp_into_loop_from_behind` | `22` |
+  | 7,619 | 448 `MOVED decrement_value` | `dispatch_02` | `12` |
+  | 7,651 | 448 `MOVED decrement_value` | `restore_no_more_carry_flag_and_rotate_value_2` | `22` |
+  | 7,786 | 451 `NO_MORE_CARRY_FLAG diff_is_2_from_phase2` | `jmp_into_loop_from_behind` | `22` |
+
+  All four sites are inside the decrement/diff cascade of §3, and three of them fail **only `22`**
+  while fixing `01` — i.e. there are now several distinct 11/12 routes with *complementary* single
+  failures. That makes a two-edit composition (a second routing edge on top of one of these) the
+  cheapest remaining path to 12/12, and it is the search launched next.
+
+## 7. Design target handed to the generator (`vm_malbolge/tools/mbir_cmp_lt_gen.py`)
+
+1. keep the carrier/classifier value formats exactly as they are (they are provably not the blocker,
+   §1/§4), and
+2. add one routing edge so that the `(a==0, b==1)` arrival walks to the `ROT 3` leaf (cell 57926 /
+   `load_diff_0`) instead of the `ROT 0` leaf (57913 / `add_rst0_done`), without moving `(2,2)`, and
+3. express it in the cascade branches (HeLL lines 337 / 448 / 451-452 are the measured edges), not
+   in the constant pool.
+
+Status: **12/12 remains `NOT_DEMONSTRATED` as an image; measured best stays 11/12 (both engines),
+with four distinct 11/12 routes now known.**
+
+Artifacts (sha256): `ptr_table.py` `ef986ddafe144ae28cb6f1e5ca7901acbc5516bb8d0b43d1a79a8b12c4b1c6b9`, `design_probe.py` `b0b11dad9f246e67a9583dfacdd4782f67ee007408d728262117a8332fdaa505`, `probe_walk2.py` `409640fa75faf06bf883018e7e9d3c96d97617624fcbafd756ea752e665c1836`,
+`probe_trit1.py` `e8700df320ccc3cb1ff7dc2d7c5277f8a5a03871704f2196d9aac8712680d2c6`, `probe_writer.py` `ad29e46b970443c08846f097304f3e4dcb99296bd43350429c4b2eb582207aa7`, `reach58.py` `0e8bbe5f4b3c6a42039fef982eb4c19e7078be6b6e5076d698a06578378f8b2e`,
+`f58_ptr_table.txt` `4e28263b4cb6489a2b6954ca4b54b5e333ccf3e09b37bef04a404313faa9a52c`, `f58_walk3.txt` `8ad57e4d4f7ba9b78adfc9c3a1bcca25e835d5e6a3732a8440bcf9d008031a8c`, `f58_trit1_01.txt` `cae1cc70e35aefe84265aa517481204eaa11be72ec7466023d34ad2f8aeefea4`,
+`f58_writer.txt` `dbbd6e5a5c2844c71312cf969130cfe3d49ac79eaed0a3f43915ce2b67c6b132`, `f58_reach.txt` `da5eda6e3ca4a8d1d810b506354e8789ecd8db1c8e01135037b82fc2f4cddca0`, `f58_design_probe4.txt` `abe498bc4655f478a8ab7cbf4054d12c40586cdd791fe7f53a7b2014ff4094ee`,
+`f58_six_01.txt` `437d3c263517c3a5d8bfbaede617366fce34ebd33101a699016cc10c0d788e35`, `f58_wide_partial.txt` (frozen snapshot of the still-growing `f55_wide_from11.txt`, 11,000/19,188 jobs at record time) `d5fa15129660ae0840d80b74a7d7ed7048cd68169a2cac1d408a1e27e25680a4`, `f55_branch_from11.txt` `97b19955af678beabbb2bf572cf89a9ffd8d44a70b5558c1fd4ab4940f8119a7`.
