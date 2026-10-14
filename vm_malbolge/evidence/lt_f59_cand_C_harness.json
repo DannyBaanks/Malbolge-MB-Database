@@ -1,0 +1,141 @@
+{
+  "ts": "2026-10-14T04:42:09Z",
+  "milestone": "P2 CMP_LT",
+  "finding": 61,
+  "status": "12/12 remains NOT_DEMONSTRATED; this image is 11/12 on both engines",
+  "candidate": "vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb",
+  "generated_from_hell": "vm_malbolge/evidence/lt_f59_cand_C.hell",
+  "build": "LMAO v0.6.0 (third_party/lmao/lmao) -d -o <mb> <hell>",
+  "single_edit": "lt_f59_cand_C.hell line 448: 'MOVED decrement_value' -> 'MOVED restore_no_more_carry_flag_and_rotate_value_2'",
+  "edit_base_hell_sha256": "30022b1a6ee6ff193b78a309dc8621d73b93834b7624f04645f034a6986a5bce",
+  "sha256_mb": "b7bb3a82d55e5f4f4ec5f8e322194951710cfea4fb96e1f620c57f7724ecc63e",
+  "baseline_head_score": "11/12",
+  "candidate_score": "11/12",
+  "engines": {
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge"
+  },
+  "vectors": [
+    {
+      "label": "cmp_lt(0,0)",
+      "input": "0x01000100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78625,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(0,1)",
+      "input": "0x01000101021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 79790,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(0,2)",
+      "input": "0x01000102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 78055,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,0)",
+      "input": "0x01010100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78625,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,1)",
+      "input": "0x01010101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79784,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(1,2)",
+      "input": "0x01010102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 78055,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,0)",
+      "input": "0x01020100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78625,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,1)",
+      "input": "0x01020101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 79784,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_lt(2,2)",
+      "input": "0x01020102021000",
+      "want": "00",
+      "oracle_output": "01",
+      "oracle_steps": 79790,
+      "runner_output": "01",
+      "parity": true,
+      "pass": false
+    },
+    {
+      "label": "baseline1 push+out",
+      "input": "0x01411000",
+      "want": "41",
+      "oracle_output": "41",
+      "oracle_steps": 67068,
+      "runner_output": "41",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline2 lifo",
+      "input": "0x01410142101000",
+      "want": "4241",
+      "oracle_output": "4241",
+      "oracle_steps": 74105,
+      "runner_output": "4241",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline3 halt",
+      "input": "0x00",
+      "want": "",
+      "oracle_output": "",
+      "oracle_steps": 60025,
+      "runner_output": "",
+      "parity": true,
+      "pass": true
+    }
+  ],
+  "note": "11/12 parent image materialised by the Finding 59 rebuild. See LT_STATUS.md finding 61 addendum."
+}

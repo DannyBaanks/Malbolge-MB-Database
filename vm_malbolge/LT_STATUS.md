@@ -2359,3 +2359,127 @@ Artifacts (sha256): `fold_pair_census.py` `eaa3d64129c5c15b55dc3d33e6117a8e1c85e
 `f61_scan_head.txt` `13f1e6ded83ce07b770ca9e8fdde74c1fcdc1926ac569075b47872c76e47493a`,
 `f58_comp_C.txt` `cfc82ba8bfd4c4f0266797d6f609b85c356f31dfd549174d2d7c3a7335c060e4`,
 `f58_comp_B.txt` `24bc587eebe669c3ae0f3072f5a5376483dc15a4659fecbd55b0503bc0747330`.
+
+---
+
+# Finding 62 — `lmao` is byte-nondeterministic: six builds of ONE `.hell` source give six different
+# images, all of which execute identically, so every `.mb` hash in this ledger is an *instance* hash
+# and reproducibility must be cited as `.hell` hash + behaviour signature
+
+`[CURRENT]` measured 2026-10-13 (session 8) with `robust62.py` and `tailreach62.py` on
+`head11.hell`, which is byte-identical modulo CRLF to the canonical
+`vm_malbolge/evidence/lt_head11_probe.hell`.
+
+## 1. The measurement
+
+Six consecutive builds of the *same* source with the *same* binary
+(`third_party/lmao/bin/lmao -d -o <mb> <hell>`, LMAO v0.6.0):
+
+| build | image sha256 (first 16) | length | 12-vector behaviour signature |
+|---|---|---|---|
+| 0 | `d304d59836870ed7` | 57511 | `5229b401ff3b2cf7` |
+| 1 | `ae85f945b4d7365f` | 57511 | `5229b401ff3b2cf7` |
+| 2 | `31e16b82dda3ee43` | 57511 | `5229b401ff3b2cf7` |
+| 3 | `df6a283f618b6ffd` | 57511 | `5229b401ff3b2cf7` |
+| 4 | `d1f6c84bc7907c63` | 57511 | `5229b401ff3b2cf7` |
+| 5 | `662fce4d8eded83c` | 57511 | `5229b401ff3b2cf7` |
+
+Six distinct images, one behaviour: the signature is the sha256 of the concatenation
+`label=oracle_output@oracle_steps` over all twelve CMP_LT vectors, so **outputs and step counts are
+bit-stable across instances** (11/12 for every instance).
+
+Pairwise diff of build 0 vs build 1: **519 differing byte positions, all inside `56904..57507`** — the
+last 607 cells of the image, i.e. the data/stack tail past the assembled code. No position in the
+code region ever differs.
+
+## 2. Why the differing cells cannot matter (`tailreach62.py`)
+
+For each of the nine `cmp_lt` vectors the run was replayed while classifying *every* touch of a
+differing position:
+
+| vector | steps | pc lands on a differing cell | `d` of ROT/MOVD/CRAZY on a differing cell | `d` of JMP (reading the target) on a differing cell | jumps *landing on* a differing cell |
+|---|---|---|---|---|---|
+| 00 | 78609 | 0 | 0 | 0 | 1368 |
+| 01 | 80280 | 0 | 0 | 0 | 1468 |
+| 02 | 80284 | 0 | 0 | 0 | 1469 |
+| 10 | 78609 | 0 | 0 | 0 | 1368 |
+| 11 | 80280 | 0 | 0 | 0 | 1468 |
+| 12 | 80284 | 0 | 0 | 0 | 1469 |
+| 20 | 78609 | 0 | 0 | 0 | 1368 |
+| 21 | 80280 | 0 | 0 | 0 | 1468 |
+| 22 | 80280 | 0 | 0 | 0 | 1468 |
+
+The only contact class is the last one: a `JMP` computes `c = target` and the oracle then advances
+`c = (c+1) % 3^10`, so what actually executes is `target+1`, never `target`. The differing cell is
+touched once more by the post-execution `_ENC` translation, which *writes* it in place; since it is
+never the pc and never the operand of a data instruction afterwards, the write is inert. That is the
+mechanism, not a coincidence: **the nondeterministic tail is unreachable code and unread data.**
+
+## 3. Consequences for this milestone's evidence discipline
+
+1. `sha256` of a `.mb` identifies a BUILD INSTANCE, not a program. Rebuilding
+   `vm_malbolge/evidence/lt_head11_probe.hell` will never reproduce `2838e63c…`; the same is true of
+   the candidate hashes already recorded (`f67ec678…` for candidate C, `cand58_*.mb` in scratch).
+   Nothing in the ledger is invalidated — every recorded harness JSON scores the very instance it
+   hashes — but a claim of the form "rebuild and you get this hash" would be FALSE.
+2. Canonical identity for a HeLL candidate is therefore the triple
+   (`sha256` of the `.hell`, 12-vector behaviour signature, recorded instance `.mb` `sha256`). The
+   addendum to Finding 61 commits images together with both of the first two.
+3. A second hazard compounds it: `vm_malbolge/evidence/*.hell` files are stored with CRLF in the
+   working tree (repo `core.autocrlf`), while scratch bases are LF. `head11.hell` ==
+   `lt_head11_probe.hell` only modulo line endings (`diff --strip-trailing-cr`), and lmao accepts
+   both. Any hash comparison across that boundary must strip CR first, and the lineage checks below
+   were all done that way.
+4. Positive outcome: because behaviour is instance-invariant, the F59 candidates — measured in
+   Finding 59 with the oracle only — are now re-measured on BOTH engines and they reproduce exactly
+   (A fails `(2,2)`, B fails `(1,2)`, C fails `(2,2)`, D fails `(2,2)`; all baselines pass; oracle and
+   runner agree on all twelve vectors in all four images).
+
+## 4. Addendum to Finding 61 — what the "six new 11/12 routes" actually are
+
+The composition sweep log lines were single-edit rewirings of one fork site, line 448. After
+materialising them with `emit61.py` and comparing sources modulo CRLF, the six are **two new images
+plus four restorations of images already in the record**:
+
+| sweep log line | resulting source | identity | score | failing vector |
+|---|---|---|---|---|
+| `C + 448 -> decrement_value` | `MOVED decrement_value` | **the canonical base itself** | 11/12 | `(0,1)` |
+| `C + 448 -> dispatch_02` | `MOVED dispatch_02` | **candidate B** (byte-identical source) | 11/12 | `(1,2)` |
+| `B + 448 -> restore_no_more_carry_flag_and_rotate_value_2` | that target | **candidate C** (byte-identical source) | 11/12 | `(2,2)` |
+| `C + 448 -> dec_op1` | `MOVED dec_op1` | **NEW** `lt_f62_line448_decop1` | 11/12 | `(0,1)` |
+| `C + 448 -> return_from_carry_was_not_set_2` | same target from B *or* C | **NEW** `lt_f62_line448_rfcwns2` (one source, both parents) | 11/12 | `(0,1)` |
+
+So the honest count of *new* 11/12 images from the whole interrupted composition census is **two**,
+not six — and both fail the *same* vector as the base, `(0,1)`. Line 448 is now a measured five-way
+fork whose residuals are `(0,1)` (base, `dec_op1`, `return_from_carry_was_not_set_2`), `(1,2)`
+(`dispatch_02`) and `(2,2)` (`restore_no_more_carry_flag_and_rotate_value_2`): retargeting that site
+moves *which* entry is wrong but never removes the error, which is the same ceiling Finding 60 proved
+for every read-only pointer.
+
+The two new images and the four F59 parents are committed as
+`vm_malbolge/evidence/lt_f62_line448_decop1.{hell,_harness.json}`,
+`…/lt_f62_line448_rfcwns2.{hell,_harness.json}`,
+`…/lt_f59_cand_{A,B,C,D}.{hell,_harness.json}` with their build instances in
+`…/artifacts/*.mb` (12/12 remains `NOT_DEMONSTRATED`).
+
+
+## 5. Source-bound identity of every image committed by this finding
+
+| image | `.hell` sha256 (worktree, CRLF canonical) | build-instance `.mb` sha256 | 12-vector behaviour signature | score |
+|---|---|---|---|---|
+| `lt_f59_cand_A` | `e88759700e873543` | `a96dd7615a6e8d60` | `17ae8e38b326d8bf` | 11/12 |
+| `lt_f59_cand_B` | `26e9e4100266b999` | `4c1a9b1a9300bec5` | `6723d5d335af00b0` | 11/12 |
+| `lt_f59_cand_C` | `e4b12ee9ec328332` | `b7bb3a82d55e5f4f` | `529b389e6d0dc973` | 11/12 |
+| `lt_f59_cand_D` | `65f5a1d6750fe50b` | `1f7b7bdc534019e2` | `d7ae1274c642695a` | 11/12 |
+| `lt_f62_line448_decop1` | `935f67c5252d3cb3` | `f1420e49584fddb9` | `fb94f5fab8c57da4` | 11/12 |
+| `lt_f62_line448_rfcwns2` | `e01e666c3508a73b` | `9bbfb6692ead5d9a` | `f710b8ad72f71ee1` | 11/12 |
+
+The signature is `sha256` of the twelve `label=oracle_output@oracle_steps` fields joined by `|`,
+using the label strings of each harness JSON; under that convention the canonical committed instance
+`lt_head11_probe.mb` (`2838e63c…`) is `ac007e521887f6af`. The six-build experiment in section 1 used
+`robust62.py`'s own short labels, which is why its common value is printed there as `5229b401ff3b2cf7`
+and must not be compared digit-for-digit with this table.
+
+Artifacts (sha256): `robust62.py` `6e3e1bb3bfd1e97f6e11683656a75e263947e42701d79d905a830080eb480fc8`, `f62_robust_head11.txt` `aeae45fdf9dbd335848fdc8658c2bf4055feb375303b330ecd401ac16b4591f6`,
+`tailreach62.py` `db0f43a3cf31eed52296b99a3ee3bb34217e9cece9924926a0ce320c35de93fa`, `f62_tailreach_head11.txt` `5d90219720c3f93bb56841a0fb4092d5d236f2d53f301f40fefa56a0257ef8c1`, `emit61.py` `62dab4068e5a172e950ffb2cc3b0378277c10d36c74c02c7cfc25a55a0ca2154`,
+`emit61_batch.py` `1b83c31fadff0880df7789a73958e5a2cbe7e2aa66249216bef3c3dfc3641660`.
