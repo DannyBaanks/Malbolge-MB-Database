@@ -1,0 +1,119 @@
+CMP_LT re-measurement 2026-10-14 (raw harness output, verbatim)
+Purpose: the root README section 5b and vm_malbolge/README.md cite today's numbers;
+this file is their raw evidence. Harness: vm_malbolge/tests/lt_harness.py, run from the
+repository root. Engines: tools/oracle_classic.py (python) and
+runners/malbolge-original/malbolge (native C, Linux ELF). LMAO v0.6.0.
+No vector was re-run twice for a nicer number: every block below is the first and only
+run of that image in this session, quoted without edits.
+
+==============================================================================
+## base 11/12 del Hallazgo 72 (instancia de trabajo, NO commiteada)
+path: /home/danny/tmp_lt/cand58_C.mb
+bytes: 57511
+sha256(working file): f67ec678d56db73c627ffdcb6c27e6a464b1a091d95dc0372a8cac2a26cbb8e9
+sha256(blob at HEAD): n/a — copy outside the repository; the committed instance of the
+same behaviour class is the block below.
+
+    cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=79790 PASS
+    cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=79790 FAIL
+    baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67068 PASS
+    baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74105 PASS
+    baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60025 PASS
+    == 11/12
+
+==============================================================================
+## imagen commiteada lt_f59_cand_C.mb (blob == fichero de trabajo)
+path: vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb
+bytes: 57511
+sha256(working file): b7bb3a82d55e5f4f4ec5f8e322194951710cfea4fb96e1f620c57f7724ecc63e
+sha256(blob at HEAD): b7bb3a82d55e5f4f4ec5f8e322194951710cfea4fb96e1f620c57f7724ecc63e
+recorded manifest: vm_malbolge/evidence/lt_f59_cand_C_harness.json (candidate_score=11/12, sha256_mb=b7bb3a82d55e5f4f4ec5f8e322194951710cfea4fb96e1f620c57f7724ecc63e)
+
+
+==============================================================================
+## tercera instancia: recompilacion de LMAO del mismo .hell commiteado
+path: /home/danny/tmp_lt/readme_build_test.mb
+bytes: 57511
+sha256(working file): fb0a775d16657dcd0c0055c713095f931be0b9f9669ac0b158f26d88d0b7a3d9
+sha256(blob at HEAD): n/a — build product outside the repository (deliberate: no evidence
+output path in this repo is reused). Source of the build, verbatim command:
+    ./third_party/lmao/bin/lmao -d -o <out.mb> vm_malbolge/evidence/lt_f59_cand_C.hell
+Diffs from the committed instance in exactly 503 bytes, all inside the window
+56920..57507 (Finding 62's unread tail), and shares its output+steps signature below.
+
+    cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=79790 PASS
+    cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=78055 PASS
+    cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78625 PASS
+    cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=79784 PASS
+    cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=79790 FAIL
+    baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67068 PASS
+    baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74105 PASS
+    baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60025 PASS
+    == 11/12
+
+==============================================================================
+## imagen canonica de la forquilla: vm_malbolge/src/mbir_cmp_lt.mb
+path: vm_malbolge/src/mbir_cmp_lt.mb
+bytes: 57230
+sha256(working file): 1144598d759a89cca69c181ab07dc1ece2d1211528be3b3f356eac120e243499
+sha256(blob at HEAD): 96f05288b1858344bc12eb283f632b1277c4740e7bbcd74c8cda74e1fb126dc8
+Aviso: este par blob/fichero NO coincide (trailing CRLF bajo `core.autocrlf=true`), y el
+harness ejecuta el FICHERO DE TRABAJO — o sea la medida de abajo corresponde al sha
+1144598d…, no al blob. Tamaño y firma de comportamiento son de esta instancia; el registro
+original de la forquilla cita 57.518 bytes para el build commiteado en su momento
+(`LT_STATUS.md`, cabecera), cifra de instancia segun Finding 62.
+
+    cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78762 PASS
+    cmp_lt(0,1)          in=01000101021000   want=01     oracle=00     runner=00     steps=79308 FAIL
+    cmp_lt(0,2)          in=01000102021000   want=01     oracle=00     runner=00     steps=81173 FAIL
+    cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78762 PASS
+    cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=79308 PASS
+    cmp_lt(1,2)          in=01010102021000   want=01     oracle=00     runner=00     steps=81173 FAIL
+    cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78762 PASS
+    cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=79308 PASS
+    cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=81177 FAIL
+    baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67205 PASS
+    baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74242 PASS
+    baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60162 PASS
+    == 8/12
+
+
+==============================================================================
+## Que establecen estas cuatro corridas
+
+1. **Paridad de motores sobre la base 11/12**, re-medida hoy: en los doce vectores el
+   oraculo Python y el runner nativo C dan la MISMA salida y el MISMO numero de pasos,
+   incluida la unica entrada que falla (`cmp_lt(2,2)` -> `01` con 79.790 pasos en ambos).
+   La hipotesis "los dos motores discrepan / el modelo esta mintiendo" queda descartada
+   como explicacion del 11/12. No demuestra paridad sobre una imagen 12/12 (no existe) ni
+   sobre las doce entradas de las otras imagenes de la familia.
+2. **Lema de instancia de build (Finding 62) vuelve a medirse**: tres instancias del MISMO
+   `.hell` — la commiteada (`b7bb3a82…`), la copia de trabajo del Hallazgo 72 (`f67ec678…`)
+   y la recompilacion de hoy (`fb0a775d…`) — con tres sha256 distintos y una unica firma de
+   los doce vectores (salidas y pasos identicos en las dos corridas de arriba), todas 11/12.
+   Un sha de `.mb` es hash de instancia, no identidad.
+3. **La imagen canonica de la forquilla sigue en 8/12** (`vm_malbolge/src/mbir_cmp_lt.mb`,
+   instance `1144598d…`): fallan `(0,1)`, `(0,2)`, `(1,2)` (imprimen `00`) y `(2,2)` (imprime
+   `01`), con paridad entre motores en las cuatro. O sea el registro de la cabecera de
+   `LT_STATUS.md` se reproduce sobre el build actual; los 11/12 no viven en el `.hell`
+   de la forquilla sino en las imagenes de `vm_malbolge/evidence/artifacts/`.
+
+## NOT_DEMONSTRATED
+
+- `CMP_LT` 12/12 en cualquier imagen de este repo: **NOT_DEMONSTRATED**.
+- Que la paridad medida aqui se extienda a una imagen 12/12 (no existe tal imagen):
+  **NOT_DEMONSTRATED**.
+- Que las tres instancias 11/12 sean la unica clase de comportamiento del `.hell`: no se
+  han barrido otras instancias ni otros vectores; solo se afirma igualdad de firma entre
+  las tres corridas.

@@ -33,3 +33,12 @@
 | Full relational ordering (`CMP_LT`, `CMP_GT`) | Fork attempted in `mbir_cmp_lt.hell` / `mbir_cmp_lt_gen.py`; see `vm_malbolge/LT_STATUS.md` — builds within budget and the baselines hold, but the result byte is wrong (`NOT_DEMONSTRATED`). |
 | In-memory MBIR program loader integration | Combining multi-opcode ALU with Milestone 2 RAM loader in a unified image. |
 | Control Flow (`JMP`, `JZ`, `CALL`, `RET`) | Branching over an in-memory instruction stream driven by boolean ALU flags. |
+
+## Erratum — 2026-10-14 (append; the row above is left as written)
+
+The `Full relational ordering (CMP_LT, CMP_GT)` obstacle row above records the state at the time of writing
+(the fork built, the baselines held, the result byte was wrong on 8/12 vectors of the harness). Since then the
+`CMP_LT` fork has been driven to **11/12 with exact oracle/native parity** and characterised structurally, while
+**12/12 remains `NOT_DEMONSTRATED`** and `CMP_GT` has not been started. Authoritative ledger:
+`vm_malbolge/LT_STATUS.md` (Findings 1-72), harness `vm_malbolge/tests/lt_harness.py`, per-image manifests
+`vm_malbolge/evidence/lt_*_harness.json`. Summary: root `README.md` section 5b.
