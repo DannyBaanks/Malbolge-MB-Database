@@ -1,0 +1,126 @@
+{
+  "schema": "alu-malbolge-unified/1",
+  "timestamp": "2026-10-15T19:32:07.180516+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Pure Malbolge stored-program control flow with in-memory relational equality comparison (CMP_EQ) for seven fixed 11-byte shapes. The opcode and the operands/branches that are emitted are loaded from RAM. JMP (0x0C) emits prog_6. JZ (0x01, condition in prog_1) emits prog_8 when 0 and prog_7 when 1. CALL (0x0E) emits prog_8 then prog_4. CMP_EQ (0x04) compares prog_1 against prog_4 in memory, emitting prog_8 (0x42) when 1==1 and prog_7 (0x43) when 1!=2. Same binary, both engines, matching step counts, strictly under the 59049 limit.",
+  "claim_status": "DEMONSTRATED",
+  "scope": "These seven shapes only. The JMP immediate is read from RAM; JZ distinguishes condition 0 from 1; CALL is one frame deep; CMP_EQ compares equality with in-memory operand 1 and operand 2. Not a general program counter and not arbitrary MBIR.",
+  "source": {
+    "path": "vm_malbolge/src/mbir_m2_cf_cmp.hell",
+    "sha256": "bafd0c7746e7a43f29121c8fefcd516530fceb8b89d0c648a6e402f3687863c9",
+    "generator": "vm_malbolge/tools/mbir_m2_cf_cmp_gen.py",
+    "generator_sha256": "f0d523e4a83537f2fdcd654362c26096c514e80b41c40595ff0c79e6a79e644d"
+  },
+  "artifact": {
+    "size_bytes": 56947,
+    "sha256": "5f6f0eb33ee7a8c9ffbf581bc4af43d6271cb5670829ff5226f7aa6c6f4e331d",
+    "limit_bytes": 59049,
+    "headroom_bytes": 2102,
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "LMAO",
+      "version": "0.6.0",
+      "binary_sha256": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44"
+    },
+    "debug_path": "vm_malbolge/src/mbir_m2_cf_cmp.dbg",
+    "debug_sha256": "3075926cb215c38696cf5afd7dc72675d53159bc7e62c6887e7d56f8d3cd931f"
+  },
+  "environment": {
+    "os": "Linux x86_64",
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge",
+    "max_steps": 500000
+  },
+  "cases": [
+    {
+      "name": "JMP skip HALT",
+      "input_hex": "0c05000000014110000000",
+      "description": "Opcode 0x0C emits prog_6 (0x41). The target byte is not classified.",
+      "expected_hex": "41",
+      "oracle_hex": "41",
+      "runner_hex": "41",
+      "oracle_steps": 66846,
+      "runner_steps": 66846,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JMP other immediate",
+      "input_hex": "0c05000000015810000000",
+      "description": "Same path with prog_6 = 0x58, so the emitted byte is the one loaded from RAM.",
+      "expected_hex": "58",
+      "oracle_hex": "58",
+      "runner_hex": "58",
+      "oracle_steps": 66846,
+      "runner_steps": 66846,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JZ taken",
+      "input_hex": "01000d0700000001421000",
+      "description": "Opcode 0x01 and prog_1 == 0 emits prog_8 (0x42).",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "oracle_steps": 62123,
+      "runner_steps": 62123,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "JZ not taken",
+      "input_hex": "01010d0900000143100000",
+      "description": "Opcode 0x01 and prog_1 == 1 emits prog_7 (0x43).",
+      "expected_hex": "43",
+      "oracle_hex": "43",
+      "runner_hex": "43",
+      "oracle_steps": 62718,
+      "runner_steps": 62718,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "CALL then return",
+      "input_hex": "0e0700014110000142100f",
+      "description": "Opcode 0x0E emits prog_8 (0x42) and then prog_4 (0x41).",
+      "expected_hex": "4241",
+      "oracle_hex": "4241",
+      "runner_hex": "4241",
+      "oracle_steps": 68060,
+      "runner_steps": 68060,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "CMP_EQ taken (1==1)",
+      "input_hex": "0401000001000043420000",
+      "description": "Opcode 0x04 with prog_1 == 1 and prog_4 == 1. Branch taken, emits prog_8 (0x42).",
+      "expected_hex": "42",
+      "oracle_hex": "42",
+      "runner_hex": "42",
+      "oracle_steps": 64572,
+      "runner_steps": 64572,
+      "status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "name": "CMP_EQ not taken (1!=2)",
+      "input_hex": "0401000002000043420000",
+      "description": "Opcode 0x04 with prog_1 == 1 and prog_4 == 2. Branch not taken, emits prog_7 (0x43).",
+      "expected_hex": "43",
+      "oracle_hex": "43",
+      "runner_hex": "43",
+      "oracle_steps": 65124,
+      "runner_steps": 65124,
+      "status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "not_demonstrated": [
+    "A general program counter that fetches arbitrary MBIR in a cycle.",
+    "Using the JMP target as an arbitrary runtime selector (landing on HALT is not in this image).",
+    "CMP_EQ with arbitrary width or multi-trit comparison operands beyond the demonstrated relational domain.",
+    "A call stack deeper than one frame."
+  ]
+}
