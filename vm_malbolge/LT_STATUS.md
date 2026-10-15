@@ -4651,3 +4651,56 @@ Ambos motores ejecutan semánticas de memoria idénticas sobre las tres bases 11
 | `f73_seed_A.stdout` | `9d79b4c3447803c1d3087bb71616f8e1a98cc7a7ce5ef84f0502100add17e6ae` | salida por consola del barrido de semillas |
 | `f73_seed_A_report.txt` | `62458f4e181f027c667c215354a67d29037a5ca88d8ccfe4f957d24f2a5b6f4f` | reporte de conteo y distribución de `sweep123.py` |
 | `f73_seed_A.jsonl` | `5dd2a37f7443e0bda526e88c2549dc6e6b2e19a8a0b3ce4d9a1aaf118bbf6562` | registro individual de los 8.835 pares evaluados |
+
+## 11. HITO CONSEGUIDO — 2026-10-14 · CMP_LT 12/12 DEMONSTRATED en ambos motores
+
+### 11.1 Causa raíz del bloqueo y resolución arquitectónica (Hallazgo 74)
+
+El bloqueo histórico en 11/12 y los fallos de despacho en las tentativas de bifurcación previa quedaron completamente resueltos y comprendidos mediante trazado fino a nivel de celda e instrucción:
+
+1. **Causa raíz de la fuga de estado en el bucle de opcodes**:
+   En las tentativas de bifurcación aritmética para $b=1$, se había reutilizado `SUBROUTINE_FLAG3` como variable de condición. Sin embargo, en el núcleo del VM (`exit_decrement_loop`), `SUBROUTINE_FLAG3` está reservado para gobernar el retorno del tercer decremento en la decodificación de opcodes (`return_from_decrement_value_3`). Cuando la comparación de $b=1$ concluía, `SUBROUTINE_FLAG3` permanecía en estado `MovD` (opcode 40), provocando que en la siguiente lectura de opcode (`0x10` = OUT) el bucle de decremento de la VM saltara espuriamente a `return_from_decrement_value_3`, corrompiendo el despacho general de la máquina.
+
+2. **Aislamiento mediante flag dedicado `LT_B1`**:
+   Se introdujo un flag dedicado e independiente `LT_B1` (`Nop/MovD; Jmp`) en la sección `.CODE`. Al mismo tiempo, se eliminó el símbolo obsoleto e inerte `COUNTER2_1` (definido pero jamás referenciado en todo el programa), resolviendo limpiamente el conflicto de colocación de memoria (*Memory usage conflict while generating initialization code*) en el ensamblador LMAO v0.6.0.
+
+3. **Mecanismo de comparación y enrutamiento limpio**:
+   - Para $b=0$: el primer decremento en `return_from_dec_op2_1` detecta subdesbordamiento vía `NO_MORE_CARRY_FLAG` y salta inmediatamente a `diff_is_2` (`00`).
+   - Para $b=1$: el segundo decremento en `return_from_dec_op2_2` subdesborda, cayendo a `diff_is_1` donde se arma el flag dedicado `R_LT_B1`.
+   - Para $b=2$: no hay subdesbordamiento en el segundo decremento; salta a `op2_is_2` dejando `LT_B1` limpio en estado `Nop`.
+   - En la fase de decremento de $a$ (`return_from_dec_op1_1`), la presencia de `LT_B1` bifurca limpiamente:
+     - Si $b=1$ (`LT_B1` activo): salta a `check_b1`, donde `NO_MORE_CARRY_FLAG diff_is_2_trampoline` evalúa si $a$ subdesbordó en su primer decremento ($a=0 \implies 01$; $a \ge 1 \implies 00$).
+     - Si $b=2$ (`LT_B1` inerte): continúa el decremento hacia `return_from_dec_op1_2` y `return_from_dec_op1_3`, discriminando $a < 2 \implies 01$, $a = 2 \implies 00$.
+   - Al finalizar, todos los flags de subrutina del VM permanecen en su estado canónico inerte, permitiendo a `next_opcode` despachar `0x10` (OUT) e imprimir el resultado de forma perfecta.
+
+### 11.2 Resultados de verificación con `lt_harness.py`
+
+Ejecutado sobre `vm_malbolge/src/mbir_cmp_lt.mb` (57.511 bytes; 1.538 bytes de headroom bajo el límite de 59.049):
+
+```
+cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=81977 PASS
+cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=81317 PASS
+cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=80238 PASS
+cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=81317 PASS
+cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=80238 PASS
+cmp_lt(2,2)          in=01020102021000   want=00     oracle=00     runner=00     steps=81309 PASS
+baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67340 PASS
+baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74398 PASS
+baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60276 PASS
+== 12/12 PASS
+```
+
+El estado de `CMP_LT 12/12` pasa de `NOT_DEMONSTRATED` a **`DEMONSTRATED`** con paridad estricta entre el oráculo de referencia Python y el ejecutor nativo Classic en C.
+
+### 11.3 Cadena de evidencia y artefactos finales
+
+| fichero | sha256 | papel |
+|---|---|---|
+| `vm_malbolge/src/mbir_cmp_lt.hell` | `dd72cc08770ffbded4960b1f51dd2a301d670516cf75cbffd62c28547a9a8b96` | código fuente canónico HeLL con flag dedicado `LT_B1` |
+| `vm_malbolge/src/mbir_cmp_lt.mb` | `79160ecf906ce3a44a90aed9320954890e04b9444a3da30ad9c88e7cbecb61d2` | imagen binaria Malbolge 12/12 canónica (57.511 B) |
+| `vm_malbolge/src/mbir_cmp_lt.dbg` | `6841e5aafe1fb7c6c645efcc4849bfeb1e683d39dc0ed27e2bfc97cf70dd3755` | símbolos y mapa de direcciones LMAO |
+| `vm_malbolge/evidence/artifacts/lt_pass12.mb` | `79160ecf906ce3a44a90aed9320954890e04b9444a3da30ad9c88e7cbecb61d2` | copia inmutable de artefacto 12/12 |
+| `vm_malbolge/evidence/lt_12_12_harness.json` | `9fce1d8eabae9e44486abe037a5e67833898a191ce7de8d27fd4a81b6c507fd3` | manifiesto de verificación diferencial 12/12 |

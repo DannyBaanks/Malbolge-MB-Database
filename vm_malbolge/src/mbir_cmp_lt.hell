@@ -23,9 +23,7 @@ RESET_FLAG3:
 	Nop/MovD
 	Jmp
 
-COUNTER2_1:
-	MovD/Nop
-	Jmp
+
 
 
 // tmp4 will be brought to C20 if it was not C2 (EOF), otherwise it will be C21.
@@ -77,6 +75,10 @@ SUBROUTINE_FLAG5:
 	Jmp
 
 SUBROUTINE_FLAG6:
+	Nop/MovD
+	Jmp
+
+LT_B1:
 	Nop/MovD
 	Jmp
 
@@ -300,10 +302,7 @@ return_from_value_2:
 }{
 return_from_increment_value_1:
 	NO_MORE_CARRY_FLAG got_byte
-	MOVED got_eof
-}{
-got_eof:
-	HALT
+	MOVED dispatch_00
 }{
 got_byte:
 	// value=B+1. dec(site1) -> B.
@@ -414,8 +413,8 @@ op2_nonzero:
 return_from_dec_op2_2:
 	OP1_FLAG return_from_dec_op1_2 R_OP1_FLAG
 	NO_MORE_CARRY_FLAG op2_is_2
-	MOVED diff_is_1
-}{
+diff_is_1:
+	R_LT_B1
 op2_is_2:
 	R_OP1_FLAG
 	R_CLEAN_FLAG
@@ -438,6 +437,7 @@ dec_op1:
 	MOVED decrement_value
 }{
 return_from_dec_op1_1:
+	LT_B1 check_b1 R_LT_B1
 	R_OP1_FLAG
 	R_SUBROUTINE_FLAG6
 	MOVED decrement_value
@@ -448,10 +448,15 @@ return_from_dec_op1_2:
 	MOVED decrement_value
 }{
 return_from_dec_op1_3:
-	NO_MORE_CARRY_FLAG diff_is_2_from_phase2
+	NO_MORE_CARRY_FLAG diff_is_0_trampoline
+	MOVED diff_is_2
+}{
+check_b1:
+	NO_MORE_CARRY_FLAG diff_is_2_trampoline
+diff_is_0_trampoline:
 	MOVED diff_is_0
 }{
-diff_is_2_from_phase2:
+diff_is_2_trampoline:
 	MOVED diff_is_2
 }{
 diff_is_0:
@@ -460,11 +465,7 @@ diff_is_0:
 	R_SUBROUTINE_FLAG4
 	MOVED diff_is_2
 }{
-diff_is_1:
-	R_MOVED
-	R_OP1_FLAG
-	MOVED diff_is_2
-}{
+
 diff_is_2:
 	R_MOVED
 	R_ADD_FLAG
@@ -617,9 +618,7 @@ ret_rst_st1_3:
 	R_CRAZY R_MOVED
 	MOVED reset_and_loop
 }{
-return_from_increment_value_2:
-	HALT
-}{
+
 
 reset_and_loop:
 	R_MOVED
@@ -741,7 +740,7 @@ restore_no_more_carry_flag_and_rotate_value:
 
 exit_increment_loop:
 	SUBROUTINE_FLAG1 return_from_increment_value_1 R_SUBROUTINE_FLAG1
-	SUBROUTINE_FLAG2 return_from_increment_value_2
+	SUBROUTINE_FLAG2 dispatch_00
 }
 {
 decrement_value:
@@ -813,10 +812,10 @@ restore_no_more_carry_flag_and_rotate_value_2:
 	MOVED return_from_carry_was_set_2
 
 exit_decrement_loop:
+	SUBROUTINE_FLAG5 return_from_dec_op2_1 R_SUBROUTINE_FLAG5
 	SUBROUTINE_FLAG1 return_from_decrement_value_1 R_SUBROUTINE_FLAG1
 	SUBROUTINE_FLAG2 return_from_decrement_value_2 R_SUBROUTINE_FLAG2
 	SUBROUTINE_FLAG3 return_from_decrement_value_3 R_SUBROUTINE_FLAG3
 	SUBROUTINE_FLAG4 return_from_decrement_value_4 R_SUBROUTINE_FLAG4
-	SUBROUTINE_FLAG5 return_from_dec_op2_1 R_SUBROUTINE_FLAG5
 	SUBROUTINE_FLAG6 return_from_dec_op2_2 R_SUBROUTINE_FLAG6
 }
