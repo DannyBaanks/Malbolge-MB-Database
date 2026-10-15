@@ -1,0 +1,142 @@
+{
+  "ts": "2026-10-15T03:07:24Z",
+  "milestone": "P2 CMP_GT 12/12 DEMONSTRATED",
+  "finding": 75,
+  "status": "12/12 DEMONSTRATED with exact dual-engine bit parity (oracle_classic + malbolge-original runner)",
+  "candidate": "vm_malbolge/src/mbir_cmp_gt.mb",
+  "artifact_copy": "vm_malbolge/evidence/artifacts/gt_pass12.mb",
+  "generated_from_hell": "vm_malbolge/src/mbir_cmp_gt.hell",
+  "build": "LMAO v0.6.0 (third_party/lmao/lmao) -d -o <mb> <hell>",
+  "sha256_mb": "1f17062a9585bbbb5b23ab2383f1b22fd60614e1b84bace32c52fa9e40f52f50",
+  "sha256_hell": "477d5408a1e0e26a88a06b9b5f5f9486eb752bb0571dea6692b190f601706897",
+  "size_bytes": 57511,
+  "headroom_bytes": 1538,
+  "engines": {
+    "oracle": "tools/oracle_classic.py",
+    "runner": "runners/malbolge-original/malbolge"
+  },
+  "score": "12/12",
+  "vectors": [
+    {
+      "label": "cmp_gt(0,0)",
+      "input": "0x01000100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 81611,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(0,1)",
+      "input": "0x01000101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 82151,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(0,2)",
+      "input": "0x01000102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 77893,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(1,0)",
+      "input": "0x01010100021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 79884,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(1,1)",
+      "input": "0x01010101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 82691,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(1,2)",
+      "input": "0x01010102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 77893,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(2,0)",
+      "input": "0x01020100021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 79884,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(2,1)",
+      "input": "0x01020101021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 80964,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "cmp_gt(2,2)",
+      "input": "0x01020102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 77893,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline1 push+out",
+      "input": "0x01411000",
+      "want": "41",
+      "oracle_output": "41",
+      "oracle_steps": 67520,
+      "runner_output": "41",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline2 lifo",
+      "input": "0x01410142101000",
+      "want": "4241",
+      "oracle_output": "4241",
+      "oracle_steps": 74578,
+      "runner_output": "4241",
+      "parity": true,
+      "pass": true
+    },
+    {
+      "label": "baseline3 halt",
+      "input": "0x00",
+      "want": "",
+      "oracle_output": "",
+      "oracle_steps": 60456,
+      "runner_output": "",
+      "parity": true,
+      "pass": true
+    }
+  ],
+  "note": "Milestone CMP_GT 12/12 fully demonstrated. All 9 vectors over {0,1,2}^2 and all 3 baselines PASS on both engines."
+}
