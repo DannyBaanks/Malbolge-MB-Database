@@ -65,6 +65,7 @@ NOT_DEMONSTRATED
 | **Malbolge VM Stored-Program Loader & PC (M2)** | `DEMONSTRATED` | **Cargador a RAM (`prog_0..3`) y ejecución desacoplada por PC** | `vm_malbolge/M2_LOADER_STATUS.md`, `vm_malbolge/evidence/mbir_m2_loader_smoke.json` (4/4 PASS) |
 | **Malbolge VM ALU de programa almacenado (M2 ALU)** | `DEMONSTRATED` | **Un programa de 7 bytes cargado y un único `ADD`/`SUB` (8/8, un solo tiro)** | `vm_malbolge/M2_ALU_STATUS.md`, `vm_malbolge/evidence/mbir_m2_alu_smoke.json` |
 | **Malbolge VM Salto/Condicional/Llamada en RAM (M2 CF)** | `DEMONSTRATED` | **Cinco formas fijas de `JMP`/`JZ`/`CALL` sobre bytecode cargado (5/5)** | `vm_malbolge/M2_CF_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_smoke.json` |
+| **Malbolge VM Control Flow + Relacional (M2 CF + CMP_EQ)** | `DEMONSTRATED` | **Siete formas de `JMP`/`JZ`/`CALL`/`CMP_EQ` en memoria con paridad dual (7/7)** | `vm_malbolge/M2_CF_CMP_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_cmp_smoke.json` (7/7 PASS) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -181,6 +182,18 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 - El destino del JMP no elige la instrucción, y no hay un contador de programa general.
 - Evidencia: [`vm_malbolge/evidence/mbir_m2_cf_smoke.json`](vm_malbolge/evidence/mbir_m2_cf_smoke.json), [`vm_malbolge/M2_CF_STATUS.md`](vm_malbolge/M2_CF_STATUS.md).
 
+### 6d. Control de Flujo con Comparación Relacional en RAM (Hito M2 CF + CMP_EQ)
+Imagen canónica que unifica flujo de control almacenado con comparación relacional de igualdad en memoria ([`vm_malbolge/src/mbir_m2_cf_cmp.hell`](vm_malbolge/src/mbir_m2_cf_cmp.hell), [`vm_malbolge/tools/mbir_m2_cf_cmp_gen.py`](vm_malbolge/tools/mbir_m2_cf_cmp_gen.py), [`vm_malbolge/tests/m2_cf_cmp_harness.py`](vm_malbolge/tests/m2_cf_cmp_harness.py)):
+- **JMP `0x0C`**: Emite el inmediato cargado en RAM saltando HALT (`0x41` y `0x58` pasan en 66,846 pasos).
+- **JZ / JNZ `0x01`**: Salto condicional evaluando `prog_1` (`0` -> `prog_8` en 62,123 pasos; `1` -> `prog_7` en 62,718 pasos).
+- **CALL `0x0E`**: Invoca subrutina emitiendo `prog_8` ('B') y retorna emitiendo `prog_4` ('A') en 68,060 pasos.
+- **CMP_EQ `0x04`**: Compara en memoria `prog_1` contra `prog_4`:
+  - `1 == 1` toma el salto y emite `prog_8` (0x42 'B', 64,572 pasos).
+  - `1 != 2` no toma el salto y emite `prog_7` (0x43 'C', 65,124 pasos).
+- **7/7 PASS con Paridad Dual 100% Bit-Exacta**: Tanto en el oráculo Python (`oracle_classic.py`) como en el runner C nativo (`malbolge`).
+- **Tamaño y Margen**: 56,947 bytes (**2,102 bytes de margen** bajo el límite de 59,049 de Malbolge clásico $3^{10}$).
+- Evidencia: [`vm_malbolge/evidence/mbir_m2_cf_cmp_smoke.json`](vm_malbolge/evidence/mbir_m2_cf_cmp_smoke.json), [`vm_malbolge/M2_CF_CMP_STATUS.md`](vm_malbolge/M2_CF_CMP_STATUS.md).
+
 ### 7. Tabla de Clasificación de los 18 Opcodes de MBIR
 - Generador mecánico ([`vm_malbolge/tools/mbir_dispatch_gen.py`](file:///home/danny/Development/ISyCo%20Git/MALBOLGE-MB-DATABASE/vm_malbolge/tools/mbir_dispatch_gen.py)) que produce ensamblador HeLL para clasificar los 18 opcodes (`0x00`..`0x11`) en Malbolge puro usando cadenas de decremento digital root y sitios `SUBROUTINE_FLAGn` con paridad 21/21 verificada.
 
@@ -226,7 +239,7 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 ## Lo que FALTA por hacer (Roadmap / NOT_DEMONSTRATED)
 
 1. **Control de Flujo Completo en Malbolge VM**
-   - Las cinco formas fijas de JMP, JZ y CALL ya están en el Hito M2 CF (5/5, 55,819 bytes). Sigue faltando un contador de programa general, usar el destino del JMP como selector, y una pila de llamadas de más de una trama.
+   - JMP, JZ, CALL y la comparación relacional `CMP_EQ` en RAM ya están demostrados en el Hito M2 CF + CMP_EQ (7/7, 56,947 bytes). Sigue faltando un contador de programa general para código arbitrario, usar el destino del JMP como selector dinámico arbitrario, y una pila de llamadas de más de una trama.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
    - Sigue sin existir una sola imagen que cargue el programa en RAM y además ejecute la ALU de 14 vectores y el `CMP_EQ`. Una sonda sobre `mbir_alu.hell` (12 banderas y 8 celdas de scratch) no ensambló: el inicializador se quedó sin sitio en la celda 57855. Quince `C1` sueltos sí entraron. Detalle: [`vm_malbolge/M2_FULL_STATUS.md`](vm_malbolge/M2_FULL_STATUS.md).
 3. **Pila Dinámica de Profundidad > 2**
