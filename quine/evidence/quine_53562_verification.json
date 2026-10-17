@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-17",
+  "artifact": {
+    "id": "quine-classic-m281",
+    "path": "quine/quine_53562_m281.mb",
+    "language": "malbolge-classic",
+    "size_bytes": 53562,
+    "sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+    "content_note": "52,828 caracteres de programa (33..126) + 734 bytes 0x0A que la quine imprime como parte de su propia fuente; el cargador Classic ignora whitespace."
+  },
+  "claim": "Quine Malbolge clasica que imprime su propia fuente byte a byte; 53,562 bytes, 6,290 bytes menor que la quine de referencia de Matthias Lutter (59,852 B) y 572 bytes menor que el record anterior propio (m=284, 54,134 B).",
+  "claim_scope": "Menor que la referencia Lutter, el record anterior propio y la escalera propia; sin barrido externo exhaustivo de todas las quines clasicas publicadas.",
+  "verification": [
+    {
+      "engine": "runners/malbolge-original/malbolge",
+      "engine_origin": "este repositorio (runner C nativo)",
+      "date": "2026-10-17",
+      "command": "./runners/malbolge-original/malbolge quine/quine_53562_m281.mb > /tmp/opencode/runner_final.out",
+      "exit_code": 0,
+      "wall_ms": 1313770,
+      "steps": 62239852,
+      "status": "HALTED",
+      "output_bytes": 53563,
+      "output_sha256": "2d96749e2f860f10b09dcbbb8c120d59081b8181e91231d0dd6d73b4f6af9fb0",
+      "parity": "primeros 53,562 bytes identicos a la fuente (cmp -n 53562 = 0 diferencias); el runner anade 1 byte 0x0A de convencion propia al final (byte 53,563 = 0x0A; observado tambien en los vectores M2 del README)",
+      "parity_check": "cmp -n 53562 /tmp/opencode/runner_final.out quine/quine_53562_m281.mb"
+    },
+    {
+      "engine": "mb_ref",
+      "engine_origin": "BolgeForge (monorepo ISyCo), oraculo C independiente",
+      "date": "2026-10-17",
+      "command": "./mb_ref candidate_m281_53562b.mal > /tmp/opencode/output_m281.mal",
+      "exit_code": 0,
+      "wall_ms": 146,
+      "steps": 62239847,
+      "steps_note": "medido por busqueda binaria sobre max_steps: minimo que produce la salida completa de 53,562 bytes (el ultimo byte se emite en el paso 62,239,847); el runner del DB cuenta 62,239,852 pasos totales hasta HALT - los 5 pasos tras la ultima emision no son observables en mb_ref via salida/rc",
+      "output_bytes": 53562,
+      "output_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+      "parity": "salida byte-identica completa (0 bytes de diferencia, sin convenciones)"
+    }
+  ],
+  "ladder": [
+    {
+      "m": 284,
+      "path": "quine/quine_54134_m284.mb",
+      "size_bytes": 54134,
+      "sha256": "1808fd4d862a274abc6b9f7b8965d1eee65fc11aa2424c23a8077040876b483c",
+      "verified": "record anterior (2026-10-16, doble motor); regression byte-exacta con synthesize_v2.py v3 el 2026-10-17 (sha identico 1808fd4d...)",
+      "note": "récord anterior; conservado como escalón"
+    },
+    {
+      "m": 287,
+      "path": "quine/ladder/quine_54706_m287.mb",
+      "size_bytes": 54706,
+      "sha256": "3da997b9e559230d43acf828188269d441afc03d773e71a83f49ae7e9d663efb",
+      "verified": "mb_ref 0-byte diff 2026-10-16"
+    },
+    {
+      "m": 293,
+      "path": "quine/ladder/quine_55850_m293.mb",
+      "size_bytes": 55850,
+      "sha256": "1719515d85fa2d5dfc0c36cdcc935eefd363fca0a435b2588ef36a1509b1b2ea",
+      "verified": "mb_ref 0-byte diff 2026-10-16"
+    },
+    {
+      "m": 308,
+      "path": "quine/ladder/quine_58709_m308.mb",
+      "size_bytes": 58709,
+      "sha256": "67628cf1cd8befe907c39aac6476d31927499f0421013c34195891f2ec4ca071",
+      "verified": "mb_ref 0-byte diff 2026-10-16",
+      "note": "NOTES.md del sintetizador registra sha 2fbdfb82... para un build anterior de m=308; el artefacto adoptado y verificado es el de este registro"
+    }
+  ],
+  "reference": {
+    "lutter_quine_bytes": 59852,
+    "delta_bytes": -6290,
+    "previous_record_bytes": 54134,
+    "delta_vs_previous_record_bytes": -572
+  },
+  "provenance": {
+    "synthesizer": "BolgeForge synthesize_v2.py (version 2026-10-17 con fallback composite de la macro inc)",
+    "synthesizer_sha256": "56088d2c49f1c8311db563a918beeffe0d4323a43dd490991e3b2d155c16056b",
+    "synthesizer_previous_sha256": "f94cf10c0f0353010e324831f7be3342aa24750c40f020dd318c23fb9de7bd4c",
+    "monorepo_path": "workspace/assembly/malbolge/bolge_forge/artifacts/quine_experiment/m299_resynthesis/",
+    "docs": "NOTES.md (bitacora de sintesis: triage de m, regla m≡2 mod 3, fix EDGES[19..21], composite inc); REVERSE_SELF_MODIFICATION/ (B0 ley X, B1 byte imposible 0xFD)",
+    "composite_inc_note": "do_composite_inc: fallback constructivo de 2 escrituras V->W->V+9 para valores inc muertos (trit2==2, sin preimagen de 1 escritura); usado 1 vez en m=281 (V=26235, W=3276, 68 ops); solo se activa donde la version anterior fallaba; regression m=284 byte-exacta"
+  },
+  "environment": {
+    "host_os": "Ubuntu 24.04 (Linux)",
+    "date": "2026-10-17",
+    "runner_convention_note": "malbolge-original anade un 0x0A final a la salida; para comparar usar cmp -n <tamano_de_la_fuente>"
+  }
+}

@@ -2,7 +2,7 @@
 
 Base de datos reproducible y laboratorio de investigación para programas Malbolge sustanciales, runtimes de lenguajes de alto nivel alojados sobre Malbolge, y el middleware **MBIR** (*Malbolge Bytecode Intermediate Representation*) que conecta frontends con substratos de ejecución.
 
-> **Récord vigente (2026-10-16): quine clásica de 54,134 bytes** — la quine más pequeña producida y verificada por este ecosistema, **5,718 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con doble motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
+> **Récord vigente (2026-10-17): quine clásica de 53,562 bytes** — la quine más pequeña producida y verificada por este ecosistema, **6,290 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con doble motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
 
 ---
 
@@ -49,7 +49,7 @@ NOT_DEMONSTRATED
 
 | Componente | Estado | Hito Actual | Evidencia Canónica |
 |---|---|---|---|
-| **Quine Clásica (BolgeForge)** | `DEMONSTRATED` | **Quine de 54,134 B que imprime su propia fuente (récord: −5,718 B vs la referencia Lutter de 59,852 B)** | [`quine/quine_54134_m284.mb`](quine/quine_54134_m284.mb), [`quine/evidence/quine_54134_verification.json`](quine/evidence/quine_54134_verification.json) |
+| **Quine Clásica (BolgeForge)** | `DEMONSTRATED` | **Quine de 53,562 B que imprime su propia fuente (récord: −6,290 B vs la referencia Lutter de 59,852 B)** | [`quine/quine_53562_m281.mb`](quine/quine_53562_m281.mb), [`quine/evidence/quine_53562_verification.json`](quine/evidence/quine_53562_verification.json) |
 | **Contrato MBIR v0** | `DEMONSTRATED` | 18 opcodes congelados | `docs/MBIR_CONTRACT.md`, 23/23 tests `mbir/tests/test_mbir.py` |
 | **VM de Referencia MBIR (Python)** | `DEMONSTRATED` | Soporte fib(6), llamadas, saltos, I/O | `mbir/mbir_ref.py`, 28/28 tests `mbir/tests/test_mbir_ref.py` |
 | **Oráculo Nativo MBIR (Zig)** | `DEMONSTRATED` | Ejecución MBIR nativa y oráculo diferencial | `mbir/zig/` (`mbir-zig`) |
@@ -239,23 +239,24 @@ Imagen canónica que unifica flujo de control almacenado con comparación relaci
 
 ---
 
-## Hito: Quine Clásica Más Pequeña — 54,134 B (BolgeForge)
+## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
 
-**La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 54,134 bytes, 5,718 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **doble motor C independiente**.
+**La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 53,562 bytes, 6,290 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **doble motor C independiente**. Supera al récord anterior del mismo ecosistema (m=284, 54,134 B) por **572 bytes** e inaugura el descenso por debajo de m=284, que estaba en `NOT_DEMONSTRATED`.
 
 | m | Artefacto | Bytes | Δ vs Lutter | SHA-256 |
 |---|---|---|---|---|
-| **284** | [`quine/quine_54134_m284.mb`](quine/quine_54134_m284.mb) **(récord)** | **54,134** | **−5,718** | `1808fd4d…` |
+| **281** | [`quine/quine_53562_m281.mb`](quine/quine_53562_m281.mb) **(récord)** | **53,562** | **−6,290** | `96b670b8…` |
+| 284 | [`quine/quine_54134_m284.mb`](quine/quine_54134_m284.mb) (récord anterior) | 54,134 | −5,718 | `1808fd4d…` |
 | 287 | [`quine/ladder/quine_54706_m287.mb`](quine/ladder/quine_54706_m287.mb) | 54,706 | −5,146 | `3da997b9…` |
 | 293 | [`quine/ladder/quine_55850_m293.mb`](quine/ladder/quine_55850_m293.mb) | 55,850 | −4,002 | `1719515d…` |
 | 308 | [`quine/ladder/quine_58709_m308.mb`](quine/ladder/quine_58709_m308.mb) | 58,709 | −1,143 | `67628cf1…` |
 
-- Las cuatro quines fueron re-verificadas el 2026-10-16: `mb_ref` coincide **byte a byte** (0 diferencias) y el runner C de este repositorio coincide en los **primeros N bytes** (añade un `0x0A` final de convención propia, igual que en los vectores M2); `steps` reportados en stderr (`steps: 62902924 | status: HALTED` para el récord, ~22 min).
-- Procedencia: BolgeForge `synthesize_v2.py` — grafo de 26 macros de auto-modificación verificadas puras encadenadas por Dijkstra, generador analítico de constantes y búsqueda runtime de la macro `inc`; bitácora completa en `NOTES.md` del monorepo ISyCo.
-- Alrededor de la escalera corre el programa de investigación **REVERSE_SELF_MODIFICATION**: la traza del récord (B0) muestra que 24,009 de 24,090 celdas ejecutadas terminan en `final == X^k(init)` con `X = xlat2` (LCM 3,060), y el demo B1 de 44 bytes imprime un byte **imposible** (0xFD) mediante auto-modificación de una sola celda.
+- El récord vigente (m=281, verificado 2026-10-17) y el anterior (m=284, 2026-10-16) fueron verificados con doble motor C independiente: `mb_ref` coincide **byte a byte** (0 diferencias) y el runner C de este repositorio coincide en los **primeros N bytes** (añade un `0x0A` final de convención propia, igual que en los vectores M2); `steps` reportados en stderr (`steps: 62239852 | status: HALTED` para el récord, ~22 min). La escalera m=287/293/308 está verificada con `mb_ref` (0 diferencias).
+- Procedencia: BolgeForge `synthesize_v2.py` — grafo de 26 macros de auto-modificación verificadas puras encadenadas por Dijkstra, generador analítico de constantes y búsqueda runtime de la macro `inc` (candidatos duros → BFS acotado → **fallback composite constructivo de 2 escrituras** para valores muertos, añadido 2026-10-17); bitácora completa en `NOTES.md` del monorepo ISyCo.
+- Alrededor de la escalera corre el programa de investigación **REVERSE_SELF_MODIFICATION**: la traza del build m=284 (B0) muestra que 24,009 de 24,090 celdas ejecutadas terminan en `final == X^k(init)` con `X = xlat2` (LCM 3,060), y el demo B1 de 44 bytes imprime un byte **imposible** (0xFD) mediante auto-modificación de una sola celda.
 - Detalles completos, protocolo de verificación, mapa técnico de la construcción y límites: [`quine/README.md`](quine/README.md).
 
-> **Alcance del claim (anti-fake):** la comparación es contra la referencia Lutter (59,852 B) y la escalera propia; no hay barrido externo exhaustivo de todas las quines clásicas publicadas. Descenso por debajo de m=284: `NOT_DEMONSTRATED` (piso del stream sintetizado; caminos de rescate en `NOTES.md` §Next steps).
+> **Alcance del claim (anti-fake):** la comparación es contra la referencia Lutter (59,852 B) y la escalera propia; no hay barrido externo exhaustivo de todas las quines clásicas publicadas. El descenso por debajo de m=284 quedó **DEMONSTRATED** hasta m=281 (composite constructivo de la macro `inc`); por debajo de m=281: `NOT_DEMONSTRATED` (m=278 sigue bloqueado por el piso del stream sintetizado; el DP de cadena por sí solo no basta; candidatos inc-dead y palancas en `NOTES.md` §Next steps).
 
 ---
 
@@ -303,7 +304,7 @@ MALBOLGE-MB-DATABASE/
 ├── runners/               ← Entornos y runners reproducibles de Malbolge (Classic, Unshackled)
 ├── third_party/           ← Herramientas externas (compilador LMAO)
 ├── tools/                 ← Utilidades de pruebas cruzadas y oráculo clásico en Python
-├── quine/                 ← Quine clásica récord 54,134 B (BolgeForge): artefacto, escalera y evidencia
+├── quine/                 ← Quine clásica récord 53,562 B (BolgeForge): artefacto, escalera y evidencia
 ├── vm_malbolge/           ← Implementación de la VM en ensamblador HeLL/Malbolge
 │   ├── src/               ← Código fuente HeLL y binarios .mb (m2_loader, alu, p2_cmp, a05_lifo...)
 │   ├── tools/             ← Generadores de código HeLL y scripts de prueba diferencial
@@ -417,14 +418,14 @@ python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_f59_ca
 ./third_party/lmao/bin/lmao -d -o /tmp/imagen.mb vm_malbolge/evidence/lt_f59_cand_C.hell
 ```
 
-### 9. Verificar la Quine Clásica Récord (54,134 B)
+### 9. Verificar la Quine Clásica Récord (53,562 B)
 
 La quine imprime su propio código fuente byte a byte; la verificación es un `cmp` entre la salida del runner y el archivo. El runner C de este repositorio añade un `0x0A` final de convención propia (igual que en los vectores M2), así que se comparan los primeros N bytes con `cmp -n`.
 
 ```bash
-# Salida identica en los primeros 54,134 bytes (los pasos van en stderr: steps: 62902924 | status: HALTED)
-./runners/malbolge-original/malbolge quine/quine_54134_m284.mb > /tmp/quine.out
-cmp -n 54134 /tmp/quine.out quine/quine_54134_m284.mb   # 0 bytes de diferencia
+# Salida identica en los primeros 53,562 bytes (los pasos van en stderr: steps: 62239852 | status: HALTED)
+./runners/malbolge-original/malbolge quine/quine_53562_m281.mb > /tmp/quine.out
+cmp -n 53562 /tmp/quine.out quine/quine_53562_m281.mb   # 0 bytes de diferencia
 
 # Escalera completa (m=287, 293, 308): mismo protocolo
 for f in quine/ladder/*.mb; do

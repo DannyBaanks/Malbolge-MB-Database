@@ -82,10 +82,11 @@ see `runners/README.md` → "External Substrates" and `registry/substrates.json`
 
 | Artifact | Size | Note |
 |---|---|---|
-| `quine/quine_54134_m284.mb` | 54,134 B | Classic quine record (m=284, BolgeForge): smallest verified in the ecosystem, 5,718 B below the Lutter reference (59,852 B) |
+| `quine/quine_53562_m281.mb` | 53,562 B | Classic quine record (m=281, BolgeForge, 2026-10-17): smallest verified in the ecosystem, 6,290 B below the Lutter reference (59,852 B) and 572 B below the previous record |
+| `quine/quine_54134_m284.mb` | 54,134 B | Previous record (m=284, 2026-10-16), kept as ladder step |
 | `quine/ladder/` | 54,706–58,709 B | Verified ladder m=287/293/308 |
 
-See `quine/README.md` and `quine/evidence/quine_54134_verification.json`.
+See `quine/README.md` and `quine/evidence/quine_53562_verification.json`.
 
 ## Evidence Lifecycle
 

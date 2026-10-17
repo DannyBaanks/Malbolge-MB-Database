@@ -41,6 +41,23 @@
         "cmp -n 54134 /tmp/quine.out quine/quine_54134_m284.mb"
       ],
       "notes": "Quine clasica de 54,134 bytes (m=284) que imprime su propia fuente; 5,718 bytes menor que la referencia Lutter (59,852 B). Sintetizada por BolgeForge (monorepo ISyCo); ladder m=287/293/308 en quine/ladder/. Verificacion 2026-10-16: mb_ref byte-identico completo; malbolge-original (steps: 62902924 | HALTED, ~22 min) identico en los primeros 54,134 bytes (anade 0x0A final de convencion propia). Evidencia completa: quine/evidence/quine_54134_verification.json."
+    },
+    {
+      "id": "quine-classic-m281",
+      "kind": "classic_quine",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "quine/quine_53562_m281.mb",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "quine/evidence/quine_53562_verification.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge quine/quine_53562_m281.mb > /tmp/quine.out",
+        "cmp -n 53562 /tmp/quine.out quine/quine_53562_m281.mb"
+      ],
+      "notes": "Quine clasica de 53,562 bytes (m=281) que imprime su propia fuente; record vigente, 6,290 bytes menor que la referencia Lutter (59,852 B) y 572 B menor que el record anterior m=284 (54,134 B, conservado como escalon). Sintetizada por BolgeForge (monorepo ISyCo) con el fallback composite de la macro inc (2 escrituras V->W->V+9; usado 1 vez, 68 ops); ladder m=284/287/293/308. Verificacion 2026-10-17: mb_ref byte-identico completo (0.15 s); malbolge-original (steps: 62239852 | HALTED, ~22 min) identico en los primeros 53,562 bytes (anade 0x0A final de convencion propia). Evidencia completa: quine/evidence/quine_53562_verification.json."
     }
   ]
 }
