@@ -23,7 +23,7 @@ del mismo ecosistema (m=284, 54,134 B, 2026-10-16) por **572 bytes**.
 | Sintetizador | **BolgeForge** `synthesize_v2.py` (ver Procedencia) |
 | Dialecto | Classic (3^10 = 59,049 celdas), char set 33..126, whitespace ignorado por el cargador |
 
-### Verificación en este repositorio (doble motor C independiente)
+### Verificación en este repositorio (tres motores C independientes)
 
 ```bash
 # Motor 1: runner C de este repositorio (malbolge-original)
@@ -34,19 +34,30 @@ cmp -n 53562 /tmp/quine.out quine/quine_53562_m281.mb    # 0 bytes de diferencia
 
 # Motor 2: oráculo mb_ref de BolgeForge (implementación C independiente)
 #   ./mb_ref quine_53562_m281.mb > /tmp/mbref.out   →  0-byte diff completo, exit 0 (~0.15 s)
+
+# Motor 3 (ruta rápida reproducible, sin depender de mb_ref ni del runner de 22 min):
+gcc -O2 -o /tmp/mb quine/evidence/mb_classic_indep.c
+/tmp/mb quine/quine_53562_m281.mb | cmp - quine/quine_53562_m281.mb   # 0 bytes de diferencia (~0.25 s)
 ```
 
 | Motor | Fecha | Resultado | Detalle |
 |---|---|---|---|
 | `runners/malbolge-original/malbolge` (este repo) | 2026-10-17 | **idéntica en los primeros 53,562 bytes** | `steps: 62239852 | HALTED`, 1,323 s de pared; añade `0x0A` final de convención propia (byte 53,563). Evidencia completa en [`evidence/quine_53562_verification.json`](evidence/quine_53562_verification.json) |
-| `mb_ref` (BolgeForge, C) | 2026-10-17 | **byte-idéntica completa**, exit 0 | ~0.15 s de pared; ≈62.2M pasos (Δ1 en el conteo vs el runner del repo, por convención del paso de HALT) |
+| `mb_ref` (BolgeForge, C) | 2026-10-17 | **byte-idéntica completa**, exit 0 | ~0.15 s de pared; 62,239,847 pasos hasta la última emisión (5 pasos más hasta HALT, no observables vía salida/rc) |
+| [`evidence/mb_classic_indep.c`](evidence/mb_classic_indep.c) (auditoría externa) | 2026-10-17 | **byte-idéntica completa**, exit 0 | 253 ms de pared; 62,239,852 pasos, `HALTED`; calibrado contra `tools/fixtures/hello_world_40.mb` (40 pasos). Escrito desde la especificación, sin código del runner ni de `mb_ref` |
 
-Ambos motores son implementaciones C **independientes** del dialecto Classic (semántica de
-Ben Olmstead; whitespace saltado en carga). `mb_ref` reproduce la salida íntegra —incluidos los
-734 `\n`— byte a byte; el runner del repositorio coincide en los primeros 53,562 bytes y añade
-su `0x0A` final de convención.
+Los tres motores son implementaciones C **independientes** del dialecto Classic (semántica de
+Ben Olmstead; whitespace saltado en carga). `mb_ref` y el oráculo de auditoría reproducen la
+salida íntegra —incluidos los 734 `\n`— byte a byte; el runner del repositorio coincide en los
+primeros 53,562 bytes y añade su `0x0A` final de convención. El hueco de 5 pasos entre la última
+emisión (62,239,847) y el `HALT` (62,239,852) explica la diferencia de conteo entre motores.
 
-## Escalera verificada (0 bytes de diferencia en `mb_ref`; récord vigente con doble motor el 2026-10-17)
+La línea base **también se mide**: la quine de Lutter descargada de `lutter.cc/malbolge/quine.mal`
+es de 59,852 B (sha256 `dca8476f…`, m=314, 820 `\n`) y el oráculo la reproduce byte a byte. De los
+6,290 B de ventaja, **6,204 son programa** (33 bloques de 2×94 al bajar m de 314 a 281) y 86 son
+saltos de línea: el 98.6% de la ganancia es estructural, no de formato.
+
+## Escalera verificada (0 bytes de diferencia; récord vigente con triple motor el 2026-10-17)
 
 | m | Archivo | Bytes | Δ vs Lutter (59,852) | SHA-256 |
 |---|---|---|---|---|

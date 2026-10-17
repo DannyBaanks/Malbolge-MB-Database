@@ -2,7 +2,7 @@
 
 Base de datos reproducible y laboratorio de investigación para programas Malbolge sustanciales, runtimes de lenguajes de alto nivel alojados sobre Malbolge, y el middleware **MBIR** (*Malbolge Bytecode Intermediate Representation*) que conecta frontends con substratos de ejecución.
 
-> **Récord vigente (2026-10-17): quine clásica de 53,562 bytes** — la quine más pequeña producida y verificada por este ecosistema, **6,290 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con doble motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
+> **Récord vigente (2026-10-17): quine clásica de 53,562 bytes** — la quine más pequeña producida y verificada por este ecosistema, **6,290 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con triple motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
 
 ---
 
@@ -241,7 +241,7 @@ Imagen canónica que unifica flujo de control almacenado con comparación relaci
 
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
 
-**La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 53,562 bytes, 6,290 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **doble motor C independiente**. Supera al récord anterior del mismo ecosistema (m=284, 54,134 B) por **572 bytes** e inaugura el descenso por debajo de m=284, que estaba en `NOT_DEMONSTRATED`.
+**La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 53,562 bytes, 6,290 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **triple motor C independiente** (incluye un oráculo que se distribuye en `quine/evidence/mb_classic_indep.c` y verifica en ~0.25 s). Supera al récord anterior del mismo ecosistema (m=284, 54,134 B) por **572 bytes** e inaugura el descenso por debajo de m=284, que estaba en `NOT_DEMONSTRATED`.
 
 | m | Artefacto | Bytes | Δ vs Lutter | SHA-256 |
 |---|---|---|---|---|
@@ -251,7 +251,7 @@ Imagen canónica que unifica flujo de control almacenado con comparación relaci
 | 293 | [`quine/ladder/quine_55850_m293.mb`](quine/ladder/quine_55850_m293.mb) | 55,850 | −4,002 | `1719515d…` |
 | 308 | [`quine/ladder/quine_58709_m308.mb`](quine/ladder/quine_58709_m308.mb) | 58,709 | −1,143 | `67628cf1…` |
 
-- El récord vigente (m=281, verificado 2026-10-17) y el anterior (m=284, 2026-10-16) fueron verificados con doble motor C independiente: `mb_ref` coincide **byte a byte** (0 diferencias) y el runner C de este repositorio coincide en los **primeros N bytes** (añade un `0x0A` final de convención propia, igual que en los vectores M2); `steps` reportados en stderr (`steps: 62239852 | status: HALTED` para el récord, ~22 min). La escalera m=287/293/308 está verificada con `mb_ref` (0 diferencias).
+- El récord vigente (m=281, verificado 2026-10-17) y el anterior (m=284, 2026-10-16) fueron verificados con doble motor C independiente (el récord, con un tercero adicional distribuido en el repo): `mb_ref` coincide **byte a byte** (0 diferencias) y el runner C de este repositorio coincide en los **primeros N bytes** (añade un `0x0A` final de convención propia, igual que en los vectores M2); `steps` reportados en stderr (`steps: 62239852 | status: HALTED` para el récord, ~22 min). La escalera m=287/293/308 está verificada con `mb_ref` (0 diferencias).
 - Procedencia: BolgeForge `synthesize_v2.py` — grafo de 26 macros de auto-modificación verificadas puras encadenadas por Dijkstra, generador analítico de constantes y búsqueda runtime de la macro `inc` (candidatos duros → BFS acotado → **fallback composite constructivo de 2 escrituras** para valores muertos, añadido 2026-10-17); bitácora completa en `NOTES.md` del monorepo ISyCo.
 - Alrededor de la escalera corre el programa de investigación **REVERSE_SELF_MODIFICATION**: la traza del build m=284 (B0) muestra que 24,009 de 24,090 celdas ejecutadas terminan en `final == X^k(init)` con `X = xlat2` (LCM 3,060), y el demo B1 de 44 bytes imprime un byte **imposible** (0xFD) mediante auto-modificación de una sola celda.
 - Detalles completos, protocolo de verificación, mapa técnico de la construcción y límites: [`quine/README.md`](quine/README.md).

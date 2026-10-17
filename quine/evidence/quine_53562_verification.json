@@ -38,6 +38,25 @@
       "output_bytes": 53562,
       "output_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
       "parity": "salida byte-identica completa (0 bytes de diferencia, sin convenciones)"
+    },
+    {
+      "engine": "quine/evidence/mb_classic_indep.c",
+      "engine_origin": "auditoria externa 2026-10-17: interprete Classic 3^10 escrito desde la especificacion publicada (xlat1 + crazy/rot + skip de whitespace en carga), sin codigo del runner del repo ni de mb_ref; se distribuye con esta evidencia (2,764 B) para que la verificacion rapida sea local y reproducible",
+      "build": "gcc -O2 -o mb_classic_indep quine/evidence/mb_classic_indep.c",
+      "date": "2026-10-17",
+      "command": "./mb_classic_indep quine/quine_53562_m281.mb 200000000 > /tmp/indep.out",
+      "exit_code": 0,
+      "wall_ms": 253,
+      "steps": 62239852,
+      "status": "HALTED",
+      "output_bytes": 53562,
+      "output_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+      "parity": "salida byte-identica completa con el artefacto (0 bytes de diferencia, incluidos los 734 \\n); sin byte 0x0A de convencion porque no usa el wrapper del repo",
+      "parity_check": "cmp /tmp/indep.out quine/quine_53562_m281.mb",
+      "calibration": "el mismo binario sobre tools/fixtures/hello_world_40.mb produce 'Hello World!' en 40 pasos, HALTED (vector conocido ajeno al artefacto)",
+      "step_breakdown": "53,562 impresiones; ultima emision en el paso 62,239,847 y HALT en 62,239,852 (hueco de 5), lo que reconcilia el conteo del runner con el minimo observable en mb_ref",
+      "code_cells_executed": 25554,
+      "code_cells_executed_note": "celdas de codigo distintas ejecutadas, medidas con el mismo instrumentador; la quine de Lutter (m=314) usa 27,293"
     }
   ],
   "ladder": [
@@ -76,7 +95,18 @@
     "lutter_quine_bytes": 59852,
     "delta_bytes": -6290,
     "previous_record_bytes": 54134,
-    "delta_vs_previous_record_bytes": -572
+    "delta_vs_previous_record_bytes": -572,
+    "lutter_reference_reverified": {
+      "date": "2026-10-17",
+      "url": "https://lutter.cc/malbolge/quine.mal",
+      "size_bytes": 59852,
+      "sha256": "dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98",
+      "program_bytes": 59032,
+      "newlines": 820,
+      "m": 314,
+      "self_print_verified": "el oraculo de esta evidencia reproduce la quine de Lutter byte a byte (salida sha256 identica al archivo; HALTED en 69,547,437 pasos), asi que la linea base de 59,852 B se mide, no se cita",
+      "delta_decomposition": "6,290 B = 6,204 caracteres de programa (33 bloques de 2x94 al bajar m de 314 a 281) + 86 saltos de linea; el 98.6% de la ganancia es estructural, no de formato"
+    }
   },
   "provenance": {
     "synthesizer": "BolgeForge synthesize_v2.py (version 2026-10-17 con fallback composite de la macro inc)",
@@ -89,6 +119,7 @@
   "environment": {
     "host_os": "Ubuntu 24.04 (Linux)",
     "date": "2026-10-17",
-    "runner_convention_note": "malbolge-original anade un 0x0A final a la salida; para comparar usar cmp -n <tamano_de_la_fuente>"
+    "runner_convention_note": "malbolge-original anade un 0x0A final a la salida; para comparar usar cmp -n <tamano_de_la_fuente>",
+    "fast_reproduction": "gcc -O2 -o /tmp/mb quine/evidence/mb_classic_indep.c && /tmp/mb quine/quine_53562_m281.mb | cmp - quine/quine_53562_m281.mb  (~0.25 s, sin depender del runner de 22 min ni de mb_ref)"
   }
 }
