@@ -24,6 +24,23 @@
         "py mbir/zig/tests/differential.py --manifest mbir/zig/evidence/m3_differential_second.json"
       ],
       "notes": "MBIR_VERSION 0 semantics, external file runner and two independent 22/22 differential runs. Scope excludes source-language frontends and Malbolge-hosted execution."
+    },
+    {
+      "id": "quine-classic-m284",
+      "kind": "classic_quine",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "quine/quine_54134_m284.mb",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "quine/evidence/quine_54134_verification.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge quine/quine_54134_m284.mb > /tmp/quine.out",
+        "cmp -n 54134 /tmp/quine.out quine/quine_54134_m284.mb"
+      ],
+      "notes": "Quine clasica de 54,134 bytes (m=284) que imprime su propia fuente; 5,718 bytes menor que la referencia Lutter (59,852 B). Sintetizada por BolgeForge (monorepo ISyCo); ladder m=287/293/308 en quine/ladder/. Verificacion 2026-10-16: mb_ref byte-identico completo; malbolge-original (steps: 62902924 | HALTED, ~22 min) identico en los primeros 54,134 bytes (anade 0x0A final de convencion propia). Evidencia completa: quine/evidence/quine_54134_verification.json."
     }
   ]
 }

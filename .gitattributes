@@ -1,0 +1,3 @@
+# Artefactos byte-exactos del corpus quine: nunca normalizar fin de linea.
+quine/**/*.mb binary
+quine/*.mb binary

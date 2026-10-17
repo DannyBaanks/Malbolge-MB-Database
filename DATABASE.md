@@ -78,6 +78,15 @@ malbolge-free, malbolge-oracle, MalboGost) are registered **by reference** —
 see `runners/README.md` → "External Substrates" and `registry/substrates.json`
 (13 CLAIM manifests, no binaries vendored; the MBIR backends you hand MBIR to).
 
+## Quine Corpus
+
+| Artifact | Size | Note |
+|---|---|---|
+| `quine/quine_54134_m284.mb` | 54,134 B | Classic quine record (m=284, BolgeForge): smallest verified in the ecosystem, 5,718 B below the Lutter reference (59,852 B) |
+| `quine/ladder/` | 54,706–58,709 B | Verified ladder m=287/293/308 |
+
+See `quine/README.md` and `quine/evidence/quine_54134_verification.json`.
+
 ## Evidence Lifecycle
 
 ```
