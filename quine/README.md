@@ -161,6 +161,23 @@ Contexto del ecosistema (traza B0 y contraste de motores):
 | Ejecución Classic de 62M pasos | `mb_ref` (~0.15 s) | `runners/malbolge-original/malbolge` (~22 min) |
 | Paridad de salida | byte-idéntica completa | idéntica en los primeros 53,562 bytes (+`0x0A` de convención del runner) |
 
+## Barrido de quines publicadas (universo declarado)
+
+Ver [`SWEEP_QUINES.md`](SWEEP_QUINES.md): barrido sistemático sobre **22 fuentes** (esolangs,
+malbolge.org, lutter.cc, Rosetta Code, Code Golf SE, Hacker News, archive.org, Wayback, GitHub
+code/repo search, archivos de la comunidad). Resultado: solo existen **dos** quines Classic
+publicadas, ambas de Matthias Lutter, y ambas son **mayores** que la de este repositorio en las
+convenciones de conteo posibles:
+
+| Artefacto | Bytes totales | Bytes programa | ¿Menor que este repo? |
+|---|---|---|---|
+| `quine-2012.mal` (Lutter) | 59,032 | 59,032 | no (−5,470 / −6,204) |
+| `quine.mal` (Lutter) | 59,852 | 59,032 | no (−6,290 / −6,204) |
+
+Ninguna de las 22 fuentes contiene una quine Classic menor. Lo **no** cubierto (IRC, mailing list
+histórica, repos borrados, `esotericarchives.com` caído) está listado en §5 del barrido: la
+afirmación respaldada es "no existe una menor en estas 22 fuentes", no "no existe en internet".
+
 ## Límites (KNOWN_LIMIT / NOT_DEMONSTRATED)
 
 - El claim de récord es **acotado**: menor que la referencia Lutter y la escalera propia; no se
