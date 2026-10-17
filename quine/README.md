@@ -84,6 +84,10 @@ tabla (`67628cf1…`).
 La quine fue sintetizada por **BolgeForge**, el subsistema de síntesis del monorepo ISyCo:
 
 - `REPO` (monorepo ISyCo, privado, fuera de este repositorio): `workspace/assembly/malbolge/bolge_forge/`
+- Herramienta pública: [BolgeForge](https://github.com/DannyBaanks/BolgeForge) — sintetizador
+  portable v3.1 (sha256 `e401dec1…`, `python3 synthesize.py <m>`), oráculo `mb_ref` y récord +
+  escalera commiteados; la CI reproduce el récord byte a byte. Regresión del port: m=281 →
+  `96b670b8…`, m=284 → `1808fd4d…` (byte-exacta, 2026-10-17).
 - Corrida activa: `…/bolge_forge/artifacts/quine_experiment/m299_resynthesis/`
 - `SINTETIZADOR`: `synthesize_v2.py` — sha256 `56088d2c49f1c8311db563a918beeffe0d4323a43dd490991e3b2d155c16056b` (versión 2026-10-17 con fallback composite; la anterior, `f94cf10c…`, construyó m=284/287/293/308)
 - `BITÁCORA`: `NOTES.md` (síntesis, triage de m, hallazgos de capacidad y correcciones)
