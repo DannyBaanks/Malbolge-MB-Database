@@ -167,9 +167,10 @@ Contexto del ecosistema (traza B0 y contraste de motores):
 
 ## Barrido de quines publicadas (universo declarado)
 
-Ver [`SWEEP_QUINES.md`](SWEEP_QUINES.md): barrido sistemático sobre **22 fuentes** (esolangs,
+Ver [`SWEEP_QUINES.md`](SWEEP_QUINES.md): barrido sistemático sobre **25 fuentes** (esolangs,
 malbolge.org, lutter.cc, Rosetta Code, Code Golf SE, Hacker News, archive.org, Wayback, GitHub
-code/repo search, archivos de la comunidad). Resultado: solo existen **dos** quines Classic
+code/repo search, archivos de la comunidad, y los **289 meses completos de logs IRC** de
+`#esoteric`/`#esolangs` de 2002 a 2026). Resultado: solo existen **dos** quines Classic
 publicadas, ambas de Matthias Lutter, y ambas son **mayores** que la de este repositorio en las
 convenciones de conteo posibles:
 
@@ -178,9 +179,11 @@ convenciones de conteo posibles:
 | `quine-2012.mal` (Lutter) | 59,032 | 59,032 | no (−5,470 / −6,204) |
 | `quine.mal` (Lutter) | 59,852 | 59,032 | no (−6,290 / −6,204) |
 
-Ninguna de las 22 fuentes contiene una quine Classic menor. Lo **no** cubierto (IRC, mailing list
-histórica, repos borrados, `esotericarchives.com` caído) está listado en §5 del barrido: la
-afirmación respaldada es "no existe una menor en estas 22 fuentes", no "no existe en internet".
+Ninguna de las 25 fuentes contiene una quine Classic menor, y en 24 años de logs del canal de la
+comunidad nadie publicó ni anunció una alternativa (solo 23 líneas mencionan `quine` junto a
+Malbolge, ninguna con un artefacto nuevo). Lo que **sigue sin cubrir** es la lista de correo
+histórica `lang@esoteric.sange.fi`, cuyo archivo no es navegable hoy: la afirmación respaldada es
+"no existe una menor en estas 25 fuentes", no "no existe en internet".
 
 ## Límites (KNOWN_LIMIT / NOT_DEMONSTRATED)
 

@@ -32,7 +32,7 @@ Para cada candidata:
 La doble convención importa: se podría "ganar" el récord recortando saltos de línea sin cambiar
 el programa. Por eso la comparación se hace con ambas cifras.
 
-## 2. Universo consultado (N = 22 fuentes)
+## 2. Universo consultado (N = 25 fuentes)
 
 | # | Fuente | Qué se miró | Resultado |
 |---|---|---|---|
@@ -58,6 +58,9 @@ el programa. Por eso la comparación se hace con ambas cifras.
 | 20 | `kenrube/Esopoly` (polyglot 7 lenguajes) | `sources/Malbolge/source.mb` (150 B) | imprime "Malbolge program" — no es quine |
 | 21 | `TryItOnline/malbolge`, `nstarke/malbolge-examples` | árbol completo | sin quines |
 | 22 | `esotericarchives.com` | archivo esotérico histórico | dominio caído / 404 (ver §5) |
+| 23 | **`logs.esolangs.org/freenode-esoteric`** | **logs IRC completos, 223 meses (2002-12 → 2021-06)** | **223/223 meses descargados, 0 fallos; 188 con menciones a malbolge** |
+| 24 | **`logs.esolangs.org/libera-esolangs`** | **logs IRC completos, 66 meses (2021-05 → hoy)** | **66/66 meses descargados, 0 fallos; 45 con menciones a malbolge** |
+| 25 | **Wayback: `matthias-ernst.eu/malbolge/quine.mb`** | **snapshots 2013–2017 (URL citada en IRC que hoy da 404)** | **2 artefactos, hashes idénticos a #7/#8; sin tercera variante** |
 
 ## 3. Candidatas verificadas
 
@@ -87,6 +90,65 @@ mismos 59,032 bytes de programa más 820 saltos de línea añadidos para legibil
 "formato bonito" de 2015 costó 820 B y no cambió el programa. Esto valida la decisión de comparar
 en dos convenciones: el récord de este repo gana en ambas, sin depender de ese truco.
 
+## 3-bis. Barrido de los logs IRC completos (24 años de #esoteric / #esolangs)
+
+El hueco más grande del barrido inicial eran los logs del canal. Se cerró: el propio
+[portal de la comunidad](https://esolangs.org/wiki/Esolang:Community_portal) documenta que los logs
+viven en **`logs.esolangs.org`**, con dos archivos (`freenode-esoteric`, `libera-esolangs`).
+
+### Cobertura
+
+| Canal | Rango | Meses | Descargados | Fallos | Con menciones |
+|---|---|---|---|---|---|
+| `freenode-esoteric` | 2002-12 → 2021-06 | 223 | **223** | 0 | 188 |
+| `libera-esolangs` | 2021-05 → 2026-10 | 66 | **66** | 0 | 45 |
+| **Total** | **2002-12 → 2026-10** | **289** | **289** | **0** | **233** |
+
+Filtro aplicado por streaming sobre cada fichero mensual (`grep -i malbolge`), sin descargar los
+~600 MB completos. Resultado: **2,269 líneas** con menciones a `malbolge` en 24 años de canal.
+Verificación de cobertura independiente: se re-pidió el código HTTP y el tamaño de los 289 ficheros
+→ **289/289 = HTTP 200, 0 vacíos**. Los 56 meses sin menciones están contados, no asumidos.
+
+### Qué se encontró
+
+De 2,269 líneas, solo **23** mencionan `quine` junto a Malbolge. Ninguna anuncia una quine nueva,
+ninguna da un tamaño, y ninguna es posterior a la de Lutter:
+
+| Fecha aprox. | Quién | Qué dijo | Lectura |
+|---|---|---|---|
+| pre-2012 | Keymaker, kipple, malaprop, pgimeno, ihope, owt | "¿hay una quine de Malbolge?", apuestas y bromas | **antes** de que existiera ninguna: confirma que Lutter fue el primero |
+| 2012-12 | (contexto) | publicación de la quine de Lutter | coherente con `quine-2012.mal` |
+| ~2015 | `oerjan` (autor de Malbolge Unshackled) | `!malbolge http://matthias-ernst.eu/malbolge/quine.mb` | **la URL ya muerta** que se rescató en §3-bis |
+| 2017-08 | `Malbranche` (vía bot de wiki) | añade la quine de **Unshackled** a `List of quines` | otro dialecto (ver abajo) |
+| 2019-03 | `int-e` | "Oh, there is a malbolge quine." | descubrimiento tardío, no una nueva |
+| 2026 | `Dragoneater67mobile` | edita `List of quines` § Unshackled (+13 B) | sigue siendo la misma de Unshackled |
+
+**Nadie, en 24 años, publicó ni discutió una quine Classic mejor que la de Lutter.** Y hay evidencia
+negativa útil: antes de 2012 varios usuarios del canal daban por hecho que una quine de Malbolge era
+prácticamente imposible ("*I'm pretty sure I won't see a quine in Malbolge*", pgimeno). No existía
+una quine anterior y más pequeña escondida en el canal.
+
+### La URL muerta que sí valió la pena
+
+La línea de `oerjan` apuntaba a `matthias-ernst.eu/malbolge/quine.mb`, hoy **404**. Se recuperó de
+Wayback: snapshots de 2013 a 2017 con **dos digests distintos**. Descargados y comparados:
+
+| Snapshot | Bytes | SHA-256 | Idéntico a |
+|---|---|---|---|
+| 2013-04-28 | 59,032 | `419e274e3fa7f635…` | `quine-2012.mal` (byte a byte) |
+| 2015-09-14 | 59,852 | `dca8476f8b70c846…` | `quine.mal` (byte a byte) |
+
+Es decir: **no hay una tercera variante**. El sitio de Ernst alojaba exactamente los mismos dos
+artefactos que `malbolge.org`, cosa que solo se puede afirmar habiéndolos bajado. El de 2013 se
+ejecutó igualmente: se autorreproduce (`HALTED`, 69,031,648 pasos).
+
+### Malbolge Unshackled (otro dialecto, descartado por tamaño)
+
+La quine de Unshackled que `Malbranche` enlazó en 2017 se recuperó de Wayback
+(`malbolgeunshackled/quine.mb`, snapshot 2017-08-16): **913,047 B**, 3^19, y no carga en un
+intérprete Classic ("too long": el límite son 59,049 celdas). Es **17× mayor** que la de este
+repositorio y de otro dialecto, así que no compite por el récord Classic.
+
 ## 4. Programas Classic grandes descartados (no son quines)
 
 Se ejecutaron con tope de pasos; ninguno se autorreproduce:
@@ -106,10 +168,13 @@ no su fuente.
 
 Declarado explícitamente para no inflar el claim:
 
-- **Foros no indexados / IRC**: `#esoteric` en Freenode/Libera y los logs históricos del canal no
-  fueron rastreados. Es el sitio más probable donde alguien habría publicado una quine alternativa
-  sin dejar rastro indexable.
-- **Mailing list de esolangs**: los archivos históricos no se recorrieron.
+- ~~**Foros no indexados / IRC**: logs de `#esoteric` / `#esolangs`~~ → **CERRADO** (§3-bis):
+  289/289 meses descargados y filtrados, 2002-12 → 2026-10, 0 fallos. No hay quine nueva en 24 años.
+- ~~**Wayback de `matthias-ernst.eu`**~~ → **CERRADO**: recuperados los snapshots 2013/2015; son los
+  mismos dos artefactos, sin tercera variante (§3-bis).
+- **Mailing list de esolangs** (`lang@esoteric.sange.fi`): **sigue abierta**. El dominio devuelve 404
+  y no aparece un archivo navegable en Wayback; los mensajes de 1998–2012 con adjuntos de programas
+  no se pudieron recorrer. Es el último hueco con posibilidad real de albergar algo.
 - **Repositorios privados o borrados**: GitHub solo indexa lo público y vivo.
 - **`esotericarchives.com`**: el dominio responde con certificado TLS expirado y las rutas
   intentadas dan 404. El archivo esotérico histórico **no pudo consultarse**.
@@ -121,8 +186,9 @@ Declarado explícitamente para no inflar el claim:
   BolgeForge, no de este barrido).
 
 **Consecuencia para el claim:** el README puede afirmar con respaldo "no existe ninguna quine
-Classic publicada menor **en las 22 fuentes enumeradas**". No puede afirmar "no existe en internet".
-La diferencia es real y conviene no borrarla.
+Classic publicada menor **en las 25 fuentes enumeradas**, incluidos los 289 meses completos de logs
+IRC del canal de la comunidad". No puede afirmar "no existe en internet", porque la lista de correo
+histórica sigue sin cubrir. La diferencia es real y conviene no borrarla.
 
 ## 6. Reproducir este barrido
 
@@ -139,7 +205,16 @@ gcc -O2 -o /tmp/mb quine/evidence/mb_classic_indep.c
 # 3. Verificar el récord del repo
 /tmp/mb quine/quine_53562_m281.mb | cmp - quine/quine_53562_m281.mb && echo "record OK"
 
-# 4. Contar en las dos convenciones
+# 4. Repetir el barrido de logs IRC (289 meses, ~6 min con 8 hilos)
+./quine/tools/sweep_irc_logs.sh hits.txt
+# Salida esperada (2026-10-17): TOTAL meses: 289 / con menciones: 233 / lineas: 2269
+
+# 5. Verificar la URL muerta de matthias-ernst.eu en Wayback
+curl -sS "http://web.archive.org/cdx/search/cdx?url=matthias-ernst.eu/malbolge/quine.mb&output=json&fl=timestamp,statuscode,digest"
+curl -sSL "http://web.archive.org/web/20130428104606id_/http://www.matthias-ernst.eu/malbolge/quine.mb" -o wb2013.mb
+sha256sum wb2013.mb   # = 419e274e... (idéntico a quine-2012.mal)
+
+# 6. Contar en las dos convenciones
 for f in quine.mal quine-2012.mal quine/quine_53562_m281.mb; do
   printf '%-30s total=%s prog=%s\n' "$f" "$(wc -c <"$f")" "$(tr -d ' \t\n\r\v\f' <"$f" | wc -c)"
 done
@@ -152,7 +227,7 @@ done
 | Las dos quines Classic publicadas son de Lutter y miden 59,852 / 59,032 B | `DEMONSTRATED` (descargadas y ejecutadas) |
 | Este repo tiene una quine Classic de 53,562 B (52,828 B de programa) | `DEMONSTRATED` (triple motor, ver `README.md`) |
 | La de este repo es menor en **ambas** convenciones de conteo | `DEMONSTRATED` (−6,290 / −6,204 B) |
-| No existe ninguna quine Classic publicada menor en las 22 fuentes enumeradas | `DEMONSTRATED` |
+| No existe ninguna quine Classic publicada menor en las 25 fuentes enumeradas (incl. 289 meses de logs IRC) | `DEMONSTRATED` |
 | No existe ninguna quine Classic publicada menor en todo internet | `NOT_DEMONSTRATED` (§5) |
 
 Barrido realizado el 2026-10-17. Todos los hashes de este documento son SHA-256 y se pueden
