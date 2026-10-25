@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "BOSS2",
+  "description": "Boss 2: Turing Completeness via Brainfuck Execution Engine on Low-Memory cells [65..69]",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "id": "boss2_brainfuck",
+      "artifact": "pureepoch/programs/boss2_brainfuck.mal",
+      "sha256": "ac46c907fc219724e0bd60694a7549dc04995df75879f568d9a15b720e1cc8db",
+      "stdin": "",
+      "expected_stdout_hex": "01010201020a",
+      "expected_steps": 1205,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

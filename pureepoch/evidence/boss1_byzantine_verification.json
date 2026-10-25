@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "BOSS1",
+  "description": "Boss 1: Byzantine Fault Tolerance with nested cascading recovery (J1 -> J2)",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "id": "boss1_byzantine",
+      "artifact": "pureepoch/programs/boss1_byzantine.mal",
+      "sha256": "63802e3cf211e733c33b075703681757f0ba2a3f637f95c138b8ef67cbdfe8dd",
+      "stdin": "11",
+      "expected_stdout": "Q\n",
+      "expected_steps": 1286,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

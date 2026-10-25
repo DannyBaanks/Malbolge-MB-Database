@@ -61,6 +61,213 @@
         "/tmp/mb quine/quine_53562_m281.mb | cmp - quine/quine_53562_m281.mb"
       ],
       "notes": "Quine clasica de 53,562 bytes (m=281) que imprime su propia fuente; record vigente, 6,290 bytes menor que la referencia Lutter (59,852 B) y 572 B menor que el record anterior m=284 (54,134 B, conservado como escalon). Sintetizada por BolgeForge (monorepo ISyCo) con el fallback composite de la macro inc (2 escrituras V->W->V+9; usado 1 vez, 68 ops); ladder m=284/287/293/308. Verificacion 2026-10-17 (triple motor, incluido un oraculo Classic independiente que se distribuye en quine/evidence/mb_classic_indep.c y verifica la paridad total en ~0.25 s): mb_ref byte-identico completo (0.15 s); malbolge-original (steps: 62239852 | HALTED, ~22 min) identico en los primeros 53,562 bytes (anade 0x0A final de convencion propia). Evidencia completa: quine/evidence/quine_53562_verification.json."
+    },
+    {
+      "id": "pureepoch-m1a-rot10",
+      "kind": "pureepoch_reversible_mutation",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m1a_rot10.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m1_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/m1a_rot10.mal 1000 < /dev/null"
+      ],
+      "notes": "Mutaci\u00f3n reversible de 10 rotaciones en Malbolge Classic sin colapso de c\u00f3digo; emite byte 37 (%) y detiene en 43 pasos."
+    },
+    {
+      "id": "pureepoch-m1b-checkpoint",
+      "kind": "pureepoch_checkpoint_journal",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m1b_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m1_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/m1b_normal.mal 1000 < /dev/null"
+      ],
+      "notes": "Checkpoint interno en diario sin asistencia de host; salva estado en memoria y detiene en 14 pasos."
+    },
+    {
+      "id": "pureepoch-m1c-rollback",
+      "kind": "pureepoch_in_band_rollback",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m1c_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m1_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"1\" | ./runners/malbolge-original/malbolge pureepoch/programs/m1c_normal.mal 100000"
+      ],
+      "notes": "Decisi\u00f3n in-band y rollback ante error; valida candidatos y restaura estado desde diario en 66 pasos."
+    },
+    {
+      "id": "pureepoch-m1e-prior-recovery",
+      "kind": "pureepoch_prior_recovery",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m1e_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m1_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"1\" | ./runners/malbolge-original/malbolge pureepoch/programs/m1e_normal.mal 100000"
+      ],
+      "notes": "Recuperaci\u00f3n con dependencia de estado anterior; restaura y reintenta candidato de transici\u00f3n en 570 pasos."
+    },
+    {
+      "id": "pureepoch-m2-two-epoch",
+      "kind": "pureepoch_multi_epoch_chain",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m2_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m2_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"11\" | ./runners/malbolge-original/malbolge pureepoch/programs/m2_normal.mal 200000"
+      ],
+      "notes": "Continuaci\u00f3n aut\u00f3noma de dos \u00e9pocas continuas; re-arma portales de salto y transiciona a \u00e9poca 2 emitiendo Q en 1276 pasos."
+    },
+    {
+      "id": "pureepoch-m3-three-epoch",
+      "kind": "pureepoch_multi_epoch_chain",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/m3_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m3_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"111\" | ./runners/malbolge-original/malbolge pureepoch/programs/m3_normal.mal 300000"
+      ],
+      "notes": "Cadena de 3 \u00e9pocas consecutivas con reversibilidad de estado; procesa secuencia completa en 7349 pasos."
+    },
+    {
+      "id": "pureepoch-quine94-ceiling",
+      "kind": "pureepoch_quine_probe",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/quine94_ceiling_probe.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/m3_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/quine94_ceiling_probe.mal 1000 < /dev/null"
+      ],
+      "notes": "Sonda de techo quine de 94 bytes; emite Q y detiene en 36 pasos."
+    },
+    {
+      "id": "pureepoch-torus-t2",
+      "kind": "pureepoch_toroidal_borrow",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/torus_borrow_e_t2.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/torus_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/torus_borrow_e_t2.mal 50000 < /dev/null"
+      ],
+      "notes": "Pr\u00e9stamo de celdas en el espacio muerto D \\ C \\ E; almacena estado transitorio y detiene limpiamente en 203 pasos."
+    },
+    {
+      "id": "pureepoch-torus-t3",
+      "kind": "pureepoch_toroidal_borrow",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/torus_e_t3_normal.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/torus_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/torus_e_t3_normal.mal 100000 < /dev/null"
+      ],
+      "notes": "Pr\u00e9stamo y devoluci\u00f3n completa inter-\u00e9poca; restaura las celdas prestadas a su contenido inicial en 260 pasos."
+    },
+    {
+      "id": "pureepoch-boss1-byzantine",
+      "kind": "pureepoch_byzantine_fault_tolerance",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/boss1_byzantine.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/boss1_byzantine_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"11\" | ./runners/malbolge-original/malbolge pureepoch/programs/boss1_byzantine.mal 200000"
+      ],
+      "notes": "Boss 1: Falla Bizantina en cascada con recuperaci\u00f3n escalonada (J1 -> J2); sobrevive a la corrupci\u00f3n inyectada y emite Q en 1286 pasos."
+    },
+    {
+      "id": "pureepoch-boss2-turing-brainfuck",
+      "kind": "pureepoch_turing_machine",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/boss2_brainfuck.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/boss2_brainfuck_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "./runners/malbolge-original/malbolge pureepoch/programs/boss2_brainfuck.mal 200000 < /dev/null | xxd"
+      ],
+      "notes": "Boss 2: M\u00e1quina de Turing universal mediante int\u00e9rprete Brainfuck en memoria baja [65..69]; emite 01 01 02 01 02 en 1205 pasos."
+    },
+    {
+      "id": "pureepoch-boss3-autonomous-loop",
+      "kind": "pureepoch_autonomous_loop",
+      "language": "malbolge-classic",
+      "mbir_version": null,
+      "status": "demonstrated",
+      "path": "pureepoch/programs/boss3_autonomous_loop.mal",
+      "runner": "runners/malbolge-original/malbolge",
+      "evidence": [
+        "pureepoch/evidence/boss3_autonomous_loop_verification.json",
+        "pureepoch/evidence/hashes.json"
+      ],
+      "verification": [
+        "echo -n \"3\" | ./runners/malbolge-original/malbolge pureepoch/programs/boss3_autonomous_loop.mal 50000",
+        "echo -n \"0\" | ./runners/malbolge-original/malbolge pureepoch/programs/boss3_autonomous_loop.mal 50000",
+        "echo -n \"7\" | ./runners/malbolge-original/malbolge pureepoch/programs/boss3_autonomous_loop.mal 50000",
+        "./runners/malbolge-original/malbolge pureepoch/programs/boss3_autonomous_loop.mal 50000 < /dev/null"
+      ],
+      "notes": "Boss 3 (El Santo Grial): Bucle din\u00e1mico autonomous while x > 0 en Malbolge Classic sin ninguna intervenci\u00f3n externa de memoria. Despacho ternario universal rot(crazy(N, 67)) y generador in-band de constantes; 100% bit-exact en 3 or\u00e1culos."
     }
   ]
 }

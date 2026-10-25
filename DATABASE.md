@@ -88,6 +88,25 @@ see `runners/README.md` → "External Substrates" and `registry/substrates.json`
 
 See `quine/README.md` and `quine/evidence/quine_53562_verification.json`.
 
+## PureEpoch Corpus (Stateful Execution & Autonomous Loops)
+
+| Artifact | Size | Description |
+|---|---|---|
+| `pureepoch/programs/m1a_rot10.mal` | 98 B | M1A: Mutación reversible de 10 rotaciones |
+| `pureepoch/programs/m1b_normal.mal` | 308 B | M1B: Checkpoint interno en diario |
+| `pureepoch/programs/m1c_normal.mal` | 29,526 B | M1C: Decisión in-band y rollback ante error |
+| `pureepoch/programs/m1e_normal.mal` | 29,531 B | M1E: Recuperación con dependencia de estado anterior |
+| `pureepoch/programs/m2_normal.mal` | 55,770 B | M2: Continuación autónoma de dos épocas continuas |
+| `pureepoch/programs/m3_normal.mal` | 55,770 B | M3: Cadena de 3 épocas consecutivas |
+| `pureepoch/programs/quine94_ceiling_probe.mal` | 94 B | M3: Sonda de techo quine de 94 bytes |
+| `pureepoch/programs/torus_borrow_e_t2.mal` | 677 B | Torus T2: Préstamo de celdas en espacio muerto D \ C \ E |
+| `pureepoch/programs/torus_e_t3_normal.mal` | 29,842 B | Torus T3: Préstamo y devolución completa inter-época |
+| `pureepoch/programs/boss1_byzantine.mal` | 29,531 B | Boss 1: Falla Bizantina en cascada (J1 -> J2) |
+| `pureepoch/programs/boss2_brainfuck.mal` | 1,303 B | Boss 2: Máquina de Turing / Intérprete Brainfuck en memoria baja [65..69] |
+| `pureepoch/programs/boss3_autonomous_loop.mal` | 50,000 B | **Boss 3 (El Santo Grial):** Bucle autónomo dinámico while x > 0 sin trucos de host |
+
+See `pureepoch/README.md` and `pureepoch/evidence/boss3_autonomous_loop_verification.json`.
+
 ## Evidence Lifecycle
 
 ```

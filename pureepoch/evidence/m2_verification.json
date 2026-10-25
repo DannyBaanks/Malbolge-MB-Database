@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "M2",
+  "description": "PureEpoch M2: Two-epoch continuous autonomous execution across boundary with preserved state",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "id": "m2_normal",
+      "artifact": "pureepoch/programs/m2_normal.mal",
+      "sha256": "3ec16fd60b5298a83f30dddf340bdc962a6fe981c4a05379c446bcb92a8748d6",
+      "stdin": "11",
+      "expected_stdout": "Q\n",
+      "expected_steps": 1276,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

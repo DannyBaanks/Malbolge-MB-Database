@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "M3",
+  "description": "PureEpoch M3: Three-epoch proposal chain with autonomous state preservation and quine 94-byte ceiling probe",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "id": "m3_normal",
+      "artifact": "pureepoch/programs/m3_normal.mal",
+      "sha256": "7f95770a4786132dd148ccbf4af328d6e62be68ed6732754b2f50c5019114689",
+      "stdin": "111",
+      "expected_stdout": "\n",
+      "expected_steps": 7349,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "id": "quine94_ceiling_probe",
+      "artifact": "pureepoch/programs/quine94_ceiling_probe.mal",
+      "sha256": "65722e4a4566207e66e86c1ce8f464c5b9e94103729fb365951c4f37f7546e59",
+      "stdin": "",
+      "expected_stdout": "Q\n",
+      "expected_steps": 36,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

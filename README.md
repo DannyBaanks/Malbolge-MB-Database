@@ -69,6 +69,7 @@ NOT_DEMONSTRATED
 | **Malbolge VM ALU de programa almacenado (M2 ALU)** | `DEMONSTRATED` | **Un programa de 7 bytes cargado y un único `ADD`/`SUB` (8/8, un solo tiro)** | `vm_malbolge/M2_ALU_STATUS.md`, `vm_malbolge/evidence/mbir_m2_alu_smoke.json` |
 | **Malbolge VM Salto/Condicional/Llamada en RAM (M2 CF)** | `DEMONSTRATED` | **Cinco formas fijas de `JMP`/`JZ`/`CALL` sobre bytecode cargado (5/5)** | `vm_malbolge/M2_CF_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_smoke.json` |
 | **Malbolge VM Control Flow + Relacional (M2 CF + CMP_EQ)** | `DEMONSTRATED` | **Siete formas de `JMP`/`JZ`/`CALL`/`CMP_EQ` en memoria con paridad dual (7/7)** | `vm_malbolge/M2_CF_CMP_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_cmp_smoke.json` (7/7 PASS) |
+| **PureEpoch Suite (M1..M3, Torus, Boss 1..3)** | `DEMONSTRATED` | **12 artefactos: bucle autónomo `while x > 0` sin trucos de host, máquina de Turing, cascada bizantina, préstamo toroidal y checkpoints in-band** | [`pureepoch/README.md`](pureepoch/README.md), 18/18 tests [`pureepoch/tests/test_pureepoch.py`](pureepoch/tests/test_pureepoch.py) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -236,6 +237,15 @@ Imagen canónica que unifica flujo de control almacenado con comparación relaci
 - **8/8 HALT** en la VM de referencia. El harness de la pista queda en **85/85**.
 - Esto corre en el host. No hay lexer dentro de Malbolge, ni `python.mb`.
 - Evidencia: [`python/evidence/P5/run_p5_compiler.json`](python/evidence/P5/run_p5_compiler.json), [`python/STATUS.md`](python/STATUS.md).
+
+### 13. PureEpoch: Ejecución Stateful, Bucles Autónomos y Tolerancia Bizantina
+La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados en Malbolge Classic:
+- **Boss 3 (El Santo Grial de Malbolge):** Bucle dinámico `while x > 0` autónomo ([`pureepoch/programs/boss3_autonomous_loop.mal`](pureepoch/programs/boss3_autonomous_loop.mal)). No requiere modificación de memoria desde Python (`vm.mem[...] = ...` auditado y eliminado). Despacho ternario universal `rot(crazy(N, 67))` y generación in-band de la constante `'1'`. Pasa 100% bit-exacto en los oráculos C nativo e histórico en todos los vectores ($N \in \{0, 1, 2, 3, 7, \text{EOF}\}$).
+- **Boss 2 (Turing-completo en Malbolge):** Intérprete Brainfuck ejecutable sobre celdas `[65..69]` de memoria baja ([`pureepoch/programs/boss2_brainfuck.mal`](pureepoch/programs/boss2_brainfuck.mal)).
+- **Boss 1 (Tolerancia a Fallas Bizantinas):** Cascada jerárquica con recuperación escalonada en diarios anidados ($J_1 \to J_2$) ante mutación hostil ([`pureepoch/programs/boss1_byzantine.mal`](pureepoch/programs/boss1_byzantine.mal)).
+- **Torus G-T2 & G-T3:** Préstamo y devolución de celdas en el espacio muerto $\mathcal{D} \setminus \mathcal{C} \setminus \mathcal{E}$ entre límites de épocas ([`pureepoch/programs/torus_borrow_e_t2.mal`](pureepoch/programs/torus_borrow_e_t2.mal), [`pureepoch/programs/torus_e_t3_normal.mal`](pureepoch/programs/torus_e_t3_normal.mal)).
+- **Épocas M1..M3:** Involución de mutación de 10 rotaciones, checkpoints en diario y encadenamiento autónomo de 2 y 3 fases continuas.
+- Suite verificada en [`pureepoch/tests/test_pureepoch.py`](pureepoch/tests/test_pureepoch.py) (18/18 PASS).
 
 ---
 

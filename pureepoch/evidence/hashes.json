@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-25",
+  "track": "pureepoch",
+  "hashes": {
+    "boss1_byzantine.mal": "63802e3cf211e733c33b075703681757f0ba2a3f637f95c138b8ef67cbdfe8dd",
+    "boss2_brainfuck.mal": "ac46c907fc219724e0bd60694a7549dc04995df75879f568d9a15b720e1cc8db",
+    "boss3_autonomous_loop.mal": "d2d6b91d5f4df1f64890174cbe22599e71b37041aeb3677d2845f95ae01263bc",
+    "m1a_rot10.mal": "188f8e9ed4d24079a773aba4d809ce168f002d28f05e62ac8844d6dc89735148",
+    "m1b_normal.mal": "80e5cf6a208ccc2fe714d6fdf6c9e348b4c4ad0ef6323aa63f8193ea7d58c551",
+    "m1c_normal.mal": "17ff6f326c3205fa92bae9eeeba4c8ecf0229a722c55491e2fa5e0cd4d7b7985",
+    "m1e_normal.mal": "dc9ed4d81ef7200d5b5e1dc2c3f161bd4b01be39b58ca43bc87db410461e9f53",
+    "m2_normal.mal": "3ec16fd60b5298a83f30dddf340bdc962a6fe981c4a05379c446bcb92a8748d6",
+    "m3_normal.mal": "7f95770a4786132dd148ccbf4af328d6e62be68ed6732754b2f50c5019114689",
+    "quine94_ceiling_probe.mal": "65722e4a4566207e66e86c1ce8f464c5b9e94103729fb365951c4f37f7546e59",
+    "torus_borrow_e_t2.mal": "c60a9b5bfd93512e7a68d2464d9701d94baaae4259c09baed85f4b7d55121a0e",
+    "torus_e_t3_normal.mal": "14347b8d35f5bea86616099010a4d074420bf9d0fe0eaf9d4a419543aa286ac3"
+  }
+}

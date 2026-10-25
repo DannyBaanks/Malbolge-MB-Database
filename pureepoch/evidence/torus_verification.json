@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "TORUS",
+  "description": "PureEpoch Torus Track: Cell borrowing in dead space D \\ C \\ E across epoch boundaries and full loan return",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "cases": [
+    {
+      "id": "torus_borrow_e_t2",
+      "artifact": "pureepoch/programs/torus_borrow_e_t2.mal",
+      "sha256": "c60a9b5bfd93512e7a68d2464d9701d94baaae4259c09baed85f4b7d55121a0e",
+      "stdin": "",
+      "expected_stdout": "\n",
+      "expected_steps": 203,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "id": "torus_e_t3_normal",
+      "artifact": "pureepoch/programs/torus_e_t3_normal.mal",
+      "sha256": "14347b8d35f5bea86616099010a4d074420bf9d0fe0eaf9d4a419543aa286ac3",
+      "stdin": "",
+      "expected_stdout": "\n",
+      "expected_steps": 260,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

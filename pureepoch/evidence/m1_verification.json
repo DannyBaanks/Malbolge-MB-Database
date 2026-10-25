@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "M1",
+  "description": "PureEpoch M1 Suite: Involutive Reversible Mutation (M1A), Checkpoint/Journal Save (M1B), In-Band Decision & Rollback (M1C), and Prior-Dependent Recovery (M1E)",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge",
+    "sha256": "runners/malbolge-original/manifest.json"
+  },
+  "cases": [
+    {
+      "id": "m1a_rot10",
+      "artifact": "pureepoch/programs/m1a_rot10.mal",
+      "sha256": "188f8e9ed4d24079a773aba4d809ce168f002d28f05e62ac8844d6dc89735148",
+      "stdin": "",
+      "expected_stdout": "%\n",
+      "expected_steps": 43,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "id": "m1b_normal",
+      "artifact": "pureepoch/programs/m1b_normal.mal",
+      "sha256": "80e5cf6a208ccc2fe714d6fdf6c9e348b4c4ad0ef6323aa63f8193ea7d58c551",
+      "stdin": "",
+      "expected_stdout": "\n",
+      "expected_steps": 14,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "id": "m1c_normal",
+      "artifact": "pureepoch/programs/m1c_normal.mal",
+      "sha256": "17ff6f326c3205fa92bae9eeeba4c8ecf0229a722c55491e2fa5e0cd4d7b7985",
+      "stdin": "1",
+      "expected_stdout": "\n",
+      "expected_steps": 66,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "id": "m1e_normal",
+      "artifact": "pureepoch/programs/m1e_normal.mal",
+      "sha256": "dc9ed4d81ef7200d5b5e1dc2c3f161bd4b01be39b58ca43bc87db410461e9f53",
+      "stdin": "1",
+      "expected_stdout": "\n",
+      "expected_steps": 570,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

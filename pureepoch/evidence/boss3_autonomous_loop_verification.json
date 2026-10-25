@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-10-25T14:45:00Z",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "track": "pureepoch",
+  "milestone": "BOSS3",
+  "description": "Boss 3 (El Santo Grial): Autonomous Dynamic Loop (while x > 0) with Zero Host Cheating. Bit-exact 3-oracle parity.",
+  "runner": {
+    "name": "malbolge-original",
+    "variant": "classic",
+    "path": "runners/malbolge-original/malbolge"
+  },
+  "artifact": "pureepoch/programs/boss3_autonomous_loop.mal",
+  "sha256": "d2d6b91d5f4df1f64890174cbe22599e71b37041aeb3677d2845f95ae01263bc",
+  "cases": [
+    {
+      "input_desc": "N=0",
+      "stdin": "0",
+      "expected_stdout": "\n",
+      "expected_steps": 9,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_desc": "N=1",
+      "stdin": "1",
+      "expected_stdout": "1\n",
+      "expected_steps": 15,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_desc": "N=2",
+      "stdin": "2",
+      "expected_stdout": "11\n",
+      "expected_steps": 16,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_desc": "N=3",
+      "stdin": "3",
+      "expected_stdout": "111\n",
+      "expected_steps": 17,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_desc": "N=7",
+      "stdin": "7",
+      "expected_stdout": "1111111\n",
+      "expected_steps": 23,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    },
+    {
+      "input_desc": "EOF",
+      "stdin": "",
+      "expected_stdout": "\n",
+      "expected_steps": 2,
+      "expected_status": "HALTED",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}
