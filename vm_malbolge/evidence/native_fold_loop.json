@@ -1,0 +1,146 @@
+{
+  "imagen": "vm_malbolge/src/mbir_native_fold_loop.mb",
+  "bytes": 130,
+  "sha256": "fd0a1263925fea7067e9004ffc38a6b7c76cd6f433696f1933f391cb4ca53ce5",
+  "slot_celda": 93,
+  "slot_valor_inicial": 33,
+  "layout": {
+    "trabajo": {
+      "IN": 43,
+      "MOVD": 64,
+      "CRAZY": 82,
+      "OUT": 119
+    },
+    "jmp": [
+      44,
+      61,
+      65,
+      83,
+      120
+    ],
+    "bootstrap": [
+      0,
+      1,
+      2
+    ],
+    "punteros": {
+      "41": 68,
+      "68": 64,
+      "69": 42,
+      "71": 43,
+      "72": 59,
+      "73": 90,
+      "91": 60,
+      "92": 81,
+      "93": 33,
+      "94": 82,
+      "95": 118,
+      "97": 119,
+      "98": 63,
+      "99": 67
+    },
+    "punteros_no_validos": [
+      41,
+      68,
+      69,
+      71,
+      72,
+      73,
+      91,
+      92,
+      93,
+      94,
+      95,
+      97,
+      98,
+      99
+    ]
+  },
+  "casos": [
+    {
+      "stdin": "41",
+      "esperado": "68",
+      "oraculo": "68",
+      "runner_c": "68",
+      "pasos_oraculo": 19,
+      "status": "EOF",
+      "stderr_runner": "steps: 19 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "4142",
+      "esperado": "684e",
+      "oraculo": "684e",
+      "runner_c": "684e",
+      "pasos_oraculo": 34,
+      "status": "EOF",
+      "stderr_runner": "steps: 34 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "414243",
+      "esperado": "684e68",
+      "oraculo": "684e68",
+      "runner_c": "684e68",
+      "pasos_oraculo": 49,
+      "status": "EOF",
+      "stderr_runner": "steps: 49 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "48454c4c4f",
+      "esperado": "694b624762",
+      "oraculo": "694b624762",
+      "runner_c": "694b624762",
+      "pasos_oraculo": 79,
+      "status": "EOF",
+      "stderr_runner": "steps: 79 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "3132333435",
+      "esperado": "323230322f",
+      "oraculo": "323230322f",
+      "runner_c": "323230322f",
+      "pasos_oraculo": 79,
+      "status": "EOF",
+      "stderr_runner": "steps: 79 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 4,
+      "status": "EOF",
+      "stderr_runner": "steps: 4 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "000102",
+      "esperado": "575656",
+      "oraculo": "575656",
+      "runner_c": "575656",
+      "pasos_oraculo": 49,
+      "status": "EOF",
+      "stderr_runner": "steps: 49 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20",
+      "esperado": "56565756565456534b4a4a4847474847474b4a4a484747484747393838363535",
+      "oraculo": "56565756565456534b4a4a4847474847474b4a4a484747484747393838363535",
+      "runner_c": "56565756565456534b4a4a4847474847474b4a4a484747484747393838363535",
+      "pasos_oraculo": 484,
+      "status": "EOF",
+      "stderr_runner": "steps: 484 | status: HALTED",
+      "acuerdo": true
+    }
+  ],
+  "volumen_4096": {
+    "acuerdo": true,
+    "sha_esperado": "fb2602ad154b6ac4c17fa61fcf2732bf7b3f6ed9ce6982830322a6e4a9f8eed5"
+  },
+  "veredicto": "BUCLE_DE_FETCH_CON_ESTADO_DEMOSTRADO"
+}
