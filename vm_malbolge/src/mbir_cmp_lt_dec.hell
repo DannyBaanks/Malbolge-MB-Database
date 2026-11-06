@@ -71,6 +71,14 @@ SUBROUTINE_FLAG3:
 	Nop/MovD
 	Jmp
 
+PHASE_A:
+	Nop/MovD
+	Jmp
+
+PHASE_B:
+	Nop/MovD
+	Jmp
+
 LOOP2:
 	Nop/Nop/Nop/MovD
 	Jmp
@@ -142,13 +150,15 @@ return_from_value_C1_1:
 }{
 return_from_value_1:
 	R_CRAZY R_MOVED
-	// Clasificar A por decrementos: carry en dec N  =>  A == N-1
+	// Fase A: PHASE_A se arma aqui y NO se limpia en la compuerta de salida,
+	// para que enrute TODOS los retornos de la fase. Se limpia al final.
+	R_PHASE_A
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
 ret_A_d1:
 	NO_MORE_CARRY_FLAG A_ge_1
-	MOVED read_digit_B
+	MOVED A_class_done
 }{
 A_ge_1:
 	R_SUBROUTINE_FLAG2
@@ -156,13 +166,17 @@ A_ge_1:
 }{
 ret_A_d2:
 	NO_MORE_CARRY_FLAG A_ge_2
-	MOVED read_digit_B
+	MOVED A_class_done
 }{
 A_ge_2:
 	R_SUBROUTINE_FLAG3
 	MOVED decrement_value
 }{
 ret_A_d3:
+	MOVED A_class_done
+}{
+A_class_done:
+	R_PHASE_A
 	MOVED read_digit_B
 }{
 read_digit_B:
@@ -178,12 +192,13 @@ return_from_value_C1_2:
 }{
 return_from_value_2:
 	R_CRAZY R_MOVED
+	R_PHASE_B
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
 ret_B_d1:
 	NO_MORE_CARRY_FLAG B_ge_1
-	MOVED compare
+	MOVED B_class_done
 }{
 B_ge_1:
 	R_SUBROUTINE_FLAG2
@@ -191,13 +206,17 @@ B_ge_1:
 }{
 ret_B_d2:
 	NO_MORE_CARRY_FLAG B_ge_2
-	MOVED compare
+	MOVED B_class_done
 }{
 B_ge_2:
 	R_SUBROUTINE_FLAG3
 	MOVED decrement_value
 }{
 ret_B_d3:
+	MOVED B_class_done
+}{
+B_class_done:
+	R_PHASE_B
 	MOVED compare
 }{
 compare:
@@ -306,7 +325,21 @@ restore_no_more_carry_flag_and_rotate_value_2:
 	MOVED return_from_carry_was_set_1
 
 exit_decrement_loop:
-	SUBROUTINE_FLAG1 ret_A_d1 R_SUBROUTINE_FLAG1
-	SUBROUTINE_FLAG2 ret_B_d1 R_SUBROUTINE_FLAG2
+	// Compuerta de fase SIN R_: no consume la bandera, para que enrute todos
+	// los retornos de la fase. Se limpia solo en el bloque terminal de la fase.
+	PHASE_A exit_phase_A
+	PHASE_B exit_phase_B
+	SUBROUTINE_FLAG1 ret_mut_d1 R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 ret_mut_d1 R_SUBROUTINE_FLAG2
 	SUBROUTINE_FLAG3 ret_mut_d1 R_SUBROUTINE_FLAG3
+}{
+exit_phase_A:
+	SUBROUTINE_FLAG1 ret_A_d1 R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 ret_A_d2 R_SUBROUTINE_FLAG2
+	SUBROUTINE_FLAG3 ret_A_d3 R_SUBROUTINE_FLAG3
+}{
+exit_phase_B:
+	SUBROUTINE_FLAG1 ret_B_d1 R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 ret_B_d2 R_SUBROUTINE_FLAG2
+	SUBROUTINE_FLAG3 ret_B_d3 R_SUBROUTINE_FLAG3
 }

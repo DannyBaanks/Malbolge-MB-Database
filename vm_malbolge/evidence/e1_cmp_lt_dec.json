@@ -2,42 +2,45 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "MALBOLGE_RUNTIME",
-  "claim": "The fresh from-scratch E1 program assembles at 18,031 bytes using the documented ENTRY-in-.DATA entry mechanism and genuinely classifies the SECOND decimal-digit operand read from stdin (the third output byte is 0, 1, 2 for inputs (0,0), (0,1), (0,2)). The FIRST operand's class does not reach the comparison. The phase-gate fix that was supposed to carry A's class across was implemented and assembled at 20,494 bytes, but it made the output fully constant, so it was reverted and the one-operand state is preserved.",
-  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (first operand lost; phase-gate fix measured and reverted)",
+  "claim": "The phase gate now works: with the exit-block phase test NOT clearing the flag (no R_), every decrement return of a phase is routed to that phase's own labels, and the second operand is genuinely classified ((0,0)->0, (0,1)->1, (0,2)->2, (0,3)->3). The first operand's class is still lost, and the cause is now precise: nothing STORES it. The classification consumes the shared `value` cell, so A's class is destroyed before B is read and nothing carries it to the comparison.",
+  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (routing fixed; first class never stored)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 312
+    "lines": 345
   },
   "artifact": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-    "size_bytes": 18031,
-    "headroom_bytes": 41018,
+    "size_bytes": 20481,
+    "headroom_bytes": 38568,
     "variant": "classic-3^10"
   },
+  "fix_applied_this_turn": {
+    "change": "the exit_decrement_loop phase test no longer carries R_, so it does not consume the phase flag on the first exit and instead routes every decrement return of the phase to that phase's own labels (exit_phase_A / exit_phase_B)",
+    "previous_attempt": "the same gate WITH R_ consumed the flag on the first return, so the second and third decrements of a phase fell through to the main block and the output became fully constant",
+    "result": "the image assembles at 20,481 bytes and the routing is correct: the second operand is classified over 0, 1, 2, 3"
+  },
+  "precise_remaining_cause": {
+    "symptom": "(0,0), (1,0), (2,0), (3,0) produce identical output; only b appears in the result",
+    "cause": "A's classification decrements the shared `value` cell and never writes the resulting class anywhere. B's classification then overwrites `value`, so by the time `compare` runs, A's class no longer exists in the machine.",
+    "why_the_routing_was_not_enough": "the routing fix makes each phase's returns reach the right labels, but no label in phase A stores the class; the phase only decides when to stop decrementing."
+  },
   "verified_result": {
-    "grid": "16 pairs shown, digits 0..3 x 0..3",
-    "second_operand": "classified: (0,0)->0, (0,1)->1, (0,2)->2 in the third output byte",
-    "first_operand": "lost: (0,0) and (1,0) produce identical output",
+    "grid": "16 pairs, digits 0..3 x 0..3",
+    "second_operand": "classified: outputs 5 0x30/0x31/0x32/0x33 for b = 0/1/2/3",
+    "first_operand": "not stored: (0,0) and (1,0) identical",
     "PASS": 0,
     "engines_agree": 0,
     "oracle_output": "emits bytes",
     "runner_output": "empty"
   },
-  "phase_gate_attempt": {
-    "design": "arm PHASE_A / PHASE_B before each classification pass, and bifurcate exit_decrement_loop into exit_phase_A / exit_phase_B so the same subroutine slot means different labels per phase",
-    "assembly": "OK at 20,494 bytes",
-    "result": "the output became FULLY constant (identical bytes for all 16 pairs), i.e. the phase gate broke the flow rather than carrying A's class",
-    "decision": "reverted; the one-operand state (18,031 bytes) is preserved as the best measured state",
-    "likely_cause": "clearing the phase flag (R_PHASE_A at A_class_done) fires while a decrement return is still pending, or the gate consumes the flag on the first exit instead of routing every return of the phase"
-  },
   "what_is_demonstrated": [
-    "The ENTRY-in-.DATA mechanism plus a from-scratch design produces an ASSEMBLED E1 image with 41,018 bytes of headroom.",
-    "A decimal digit read from stdin is classified: values 0, 1, 2 are distinguishable in the emitted bytes.",
-    "The phase-gate fix for the second operand was implemented, assembled, measured, and reverted with its failure mode recorded."
+    "The phase-gate routing bug is fixed and measured: the second operand's classification reaches the output.",
+    "A fresh from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 38,568 bytes of headroom.",
+    "The remaining defect is localized to a missing store, not to the entry, the layout or the budget."
   ],
   "what_remains": [
-    "Route the decrement returns per phase without consuming the phase flag on the first exit.",
+    "Store A's class in a dedicated cell at the end of phase A (for example write a class marker cell), then read it in `compare`.",
     "Resolve the engine disagreement on the emitted bytes.",
     "Then the 100-vector grid and the verified evidence JSON."
   ],
