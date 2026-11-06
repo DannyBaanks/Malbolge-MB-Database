@@ -134,6 +134,30 @@ FLAG_ST_POP:
 	Nop/MovD
 	Jmp
 
+FLAG_D2_TMP3:
+	Nop/MovD
+	Jmp
+
+FLAG_D2_TMP4:
+	Nop/MovD
+	Jmp
+
+FLAG_D2_VAL8:
+	Nop/MovD
+	Jmp
+
+FLAG_D2_VAL9:
+	Nop/MovD
+	Jmp
+
+FLAG_D2_CARRY2:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE2_FLAG1:
+	Nop/MovD
+	Jmp
+
 LOOP2:
 	Nop/Nop/Nop/MovD
 	Jmp
@@ -173,6 +197,41 @@ stack_top:
 	C1
 	FLAG_ST_PUSH ret_st_push R_FLAG_ST_PUSH
 	FLAG_ST_POP ret_st_pop R_FLAG_ST_POP
+
+crazy_value2:
+	U_CRAZY value2
+rot_value2:
+	U_ROT value2
+value2:
+	C1
+	FLAG_D2_VAL8 return_from_value2_8 R_FLAG_D2_VAL8
+	FLAG_D2_VAL9 return_from_value2_9
+
+crazy_tmp2:
+	U_CRAZY tmp2
+tmp2:
+	C0
+	FLAG_D2_TMP3 return_from_tmp2_3 R_FLAG_D2_TMP3
+	FLAG_D2_TMP4 return_from_tmp2_4
+
+crazy_carry2:
+	U_CRAZY carry2
+exec_carry2:
+	R_MOVED
+carry2:
+	CARRY
+	U_NOP execution_not_jumped_to_carry2
+	U_NOP carry2_was_not_set U_NOP carry2_was_set
+carry2_was_set:
+	MOVED return_carry2_was_set
+carry2_was_not_set:
+	MOVED return_carry2_was_not_set
+execution_not_jumped_to_carry2:
+	FLAG_D2_CARRY2 return_from_carry2_2 R_FLAG_D2_CARRY2
+return_carry2_was_set:
+	FLAG_D2_CARRY2 return_from_carry2_was_set_1 R_FLAG_D2_CARRY2
+return_carry2_was_not_set:
+	FLAG_D2_CARRY2 return_from_carry2_was_not_set_1 R_FLAG_D2_CARRY2
 
 crazy_tmp:
 	U_CRAZY tmp
@@ -316,39 +375,33 @@ compare:
 }{
 ret_st_pop:
 	R_CRAZY R_MOVED
-	// A está en value; B quedó en value_C1. Traer B a value y comparar.
-	R_FLAG2
-	MOVED crazy_value_C1
+	// A pasa a value2 (decrementable por la segunda subrutina); B queda en value.
+	R_FLAG_D2_VAL8
+	MOVED crazy_value2
 }{
-ret_b_restore:
+ret_a_in_val2:
 	R_CRAZY R_MOVED
-	R_FLAG2
-	MOVED crazy_value
-}{
-ret_b_val:
-	R_CRAZY R_MOVED
-	// decrementos mutuos: value=B, y A estaba en el acumulador
+	// Alternancia: primero B (value), luego A (value2).
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
-ret_mut_d1:
-	NO_MORE_CARRY_FLAG mut_ge_1
+ret_dec_B:
+	NO_MORE_CARRY_FLAG B_still
+	// B llegó a cero antes que A  =>  A >= B  =>  falso
+	MOVED result_false
+}{
+B_still:
+	R_SUBROUTINE2_FLAG1
+	MOVED decrement_value2
+}{
+ret_dec_A:
+	NO_MORE_CARRY_FLAG A_still
+	// A llegó a cero antes que B  =>  A < B  =>  verdadero
 	MOVED result_true
 }{
-mut_ge_1:
-	R_SUBROUTINE_FLAG2
+A_still:
+	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
-}{
-ret_mut_d2:
-	NO_MORE_CARRY_FLAG mut_ge_2
-	MOVED result_true
-}{
-mut_ge_2:
-	R_SUBROUTINE_FLAG3
-	MOVED decrement_value
-}{
-ret_mut_d3:
-	MOVED result_true
 }{
 result_true:
 	R_MOVED
@@ -363,7 +416,78 @@ result_false:
 print:
 	OUT ?- R_OUT
 	HALT
-}{
+}
+
+// ==========================================
+// SEGUNDA SUBRUTINA DE DECREMENTO (ligada a value2): bloque autonomo
+// ==========================================
+{
+decrement_value2:
+	NO_MORE_CARRY_FLAG nomorecarrykilled_d2 R_NO_MORE_CARRY_FLAG
+nomorecarrykilled_d2:
+	R_MOVED
+	ROT C1 R_ROT
+	R_FLAG_D2_TMP3
+	MOVED crazy_tmp2
+
+return_from_tmp2_3:
+	R_CRAZY
+value2_load_loop:
+	ROT C2 R_ROT
+jmp_into_loop_from_behind_d2:
+	R_MOVED
+	R_FLAG_D2_VAL8
+	MOVED crazy_value2
+
+return_from_value2_8:
+	R_CRAZY R_MOVED
+	LOOP2 value2_loaded
+	MOVED value2_load_loop
+
+value2_loaded:
+	LOOP2_2 jump_back_to_behind_d2
+	R_FLAG_D2_TMP4
+	MOVED crazy_tmp2
+
+return_from_tmp2_4:
+	R_CRAZY R_MOVED
+	R_FLAG_D2_CARRY2
+	MOVED crazy_carry2
+
+return_from_carry2_2:
+	R_CRAZY R_MOVED
+	MOVED jmp_into_loop_from_behind_d2
+
+jump_back_to_behind_d2:
+	R_FLAG_D2_CARRY2
+	MOVED exec_carry2
+
+return_from_carry2_was_not_set_1:
+	R_NO_MORE_CARRY_FLAG
+return_from_carry2_was_set_1:
+	R_MOVED
+	R_FLAG_D2_VAL9
+	MOVED rot_value2
+
+return_from_value2_9:
+	R_MOVED R_ROT
+	LOOP5 exit_inner_decrement_loop_d2
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_d2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value2
+
+exit_inner_decrement_loop_d2:
+	LOOP2_3 exit_decrement_loop_d2
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_d2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value2
+
+restore_no_more_carry_flag_and_rotate_value_d2:
+	R_NO_MORE_CARRY_FLAG
+	MOVED return_from_carry2_was_set_1
+
+exit_decrement_loop_d2:
+	SUBROUTINE2_FLAG1 ret_dec_A R_SUBROUTINE2_FLAG1
+}
+{
 decrement_value:
 	NO_MORE_CARRY_FLAG nomorecarrykilled_2 R_NO_MORE_CARRY_FLAG
 nomorecarrykilled_2:
@@ -431,9 +555,9 @@ exit_decrement_loop:
 	// los retornos de la fase. Se limpia solo en el bloque terminal de la fase.
 	PHASE_A exit_phase_A
 	PHASE_B exit_phase_B
-	SUBROUTINE_FLAG1 ret_mut_d1 R_SUBROUTINE_FLAG1
-	SUBROUTINE_FLAG2 ret_mut_d1 R_SUBROUTINE_FLAG2
-	SUBROUTINE_FLAG3 ret_mut_d1 R_SUBROUTINE_FLAG3
+	SUBROUTINE_FLAG1 ret_dec_B R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 ret_dec_B R_SUBROUTINE_FLAG2
+	SUBROUTINE_FLAG3 ret_dec_B R_SUBROUTINE_FLAG3
 }{
 exit_phase_A:
 	SUBROUTINE_FLAG1 ret_A_d1 R_SUBROUTINE_FLAG1
