@@ -50,10 +50,18 @@ VALID = frozenset("ji*p</vo")
 C_BRANCH = 85
 ROTATIONS = 7
 
-# The two routes: entry byte -> (meaning, target bytes to print).
-ROUTES = {
+# Milestone M2 Native, two-route image: d=0 -> ADD, d=1 -> CMP_EQ.
+ROUTES_2 = {
     0: ("ADD 2 + 3 = 5", b"5\n"),
     1: ("CMP_EQ 2 == 2 -> 1", b"1\n"),
+}
+
+# Milestone M2 Native, three-route image: the third route is the relational
+# comparator CMP_LT, i.e. the same operation set the unified image (b) needs.
+ROUTES_3 = {
+    0: ("ADD 2 + 3 = 5", b"5\n"),
+    1: ("CMP_EQ 2 == 2 -> 1", b"1\n"),
+    2: ("CMP_LT 2 < 3 -> 1", b"1\n"),
 }
 
 
@@ -299,14 +307,23 @@ def main():
     ap = argparse.ArgumentParser(description="Native two-route Classic builder")
     ap.add_argument("--mb", type=Path,
                     default=ROOT / "vm_malbolge/src/mbir_native_2routes.mb")
-    ap.add_argument("--hell", type=Path, default=None,
-                    help="optional HeLL-style source for provenance (not used by the emitter)")
-    ap.add_argument("--json", type=Path,
-                    default=ROOT / "vm_malbolge/evidence/native_2routes_build.json")
+    ap.add_argument("--routes", type=int, choices=(2, 3), default=2,
+                    help="2 routes (ADD + CMP_EQ) or 3 routes (ADD + CMP_EQ + CMP_LT)")
     ap.add_argument("--mb-ref", type=Path, default=None,
                     help="path to the strict-loader C oracle (mb_ref); if given, "
                          "every case is also verified by this third engine")
+    ap.add_argument("--json", type=Path, default=None,
+                    help="evidence JSON path (default: evidence/native_<N>routes_build.json)")
     args = ap.parse_args()
+
+    ROUTES = ROUTES_3 if args.routes == 3 else ROUTES_2
+
+    if args.json is None:
+        name = "native_2routes_build.json" if args.routes == 2 else "native_3routes_build.json"
+        args.json = ROOT / "vm_malbolge/evidence" / name
+    if args.mb is None or str(args.mb).endswith("mbir_native_2routes.mb"):
+        args.mb = ROOT / ("vm_malbolge/src/mbir_native_2routes.mb" if args.routes == 2
+                          else "vm_malbolge/src/mbir_native_3routes.mb")
 
     targets = {d: ROUTES[d][1] for d in sorted(ROUTES)}
     digits = sorted(targets)
