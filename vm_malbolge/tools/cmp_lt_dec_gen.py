@@ -277,12 +277,12 @@ read_digit_A:
 	// Leer un digito: copiarlo a value_C1 y luego a value.
 	R_MOVED
 	IN ?- R_IN
-	R_FLAG2
+	R_FLAG1
 	MOVED crazy_value_C1
 }{
 return_from_value_C1_1:
 	R_CRAZY R_MOVED
-	R_FLAG2
+	R_FLAG1
 	MOVED crazy_value
 }{
 ret_push_ss:
