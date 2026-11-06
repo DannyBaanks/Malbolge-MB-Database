@@ -1,6 +1,12 @@
-# Malbolge MB Database
+# Malbolge MB Database v2.0 — Base de Datos Reproducible y Laboratorio MBIR
+
+[![Version](https://img.shields.io/badge/version-2.0-blue.svg)](https://github.com/DannyBaanks/Malbolge-MB-Database)
+[![Quine Record](https://img.shields.io/badge/record-53562%20bytes%20quine-brightgreen.svg)]()
+[![MBIR](https://img.shields.io/badge/IR-MBIR%20v0%20(18%20opcodes)-blueviolet.svg)]()
 
 Base de datos reproducible y laboratorio de investigación para programas Malbolge sustanciales, runtimes de lenguajes de alto nivel alojados sobre Malbolge, y el middleware **MBIR** (*Malbolge Bytecode Intermediate Representation*) que conecta frontends con substratos de ejecución.
+
+Núcleo de almacenamiento y catálogo de la **Suite de Datos y Runtimes v2.0** del ecosistema Malbolge de ISyCo.
 
 > **Récord vigente (2026-10-17): quine clásica de 53,562 bytes** — la quine más pequeña producida y verificada por este ecosistema, **6,290 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con triple motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
 
