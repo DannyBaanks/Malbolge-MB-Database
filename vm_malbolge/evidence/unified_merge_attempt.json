@@ -1,0 +1,59 @@
+{
+  "schema": "unified-merge-attempt/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The merged unified image was attempted by extending mbir_m2_alu.hell (the image that already loads a 7-byte stored program and runs ADD/SUB, 8/8) with a CMP_EQ dispatch case. The patch applies cleanly to 9 regions and introduces no new code flags beyond the two the budget probe allows, but LMAO still rejects the result: the dispatch code itself does not fit in the remaining initializer budget.",
+  "claim_status": "NOT_BUILT (attempted, boundary measured)",
+  "generator": "vm_malbolge/tools/unified_gen.py",
+  "base_image": {
+    "path": "vm_malbolge/src/mbir_m2_alu.hell",
+    "built_bytes": 56361,
+    "headroom_bytes": 2688,
+    "demonstrated": "loads a 7-byte stored program and executes ADD/SUB, 8/8 on both engines"
+  },
+  "patch_applied": {
+    "regions": 9,
+    "new_code_flags": [
+      "OPCODE_PHASE",
+      "CMP_MODE"
+    ],
+    "changes": [
+      "OPCODE_PHASE armed before the opcode classification's first decrement",
+      "opcode classification extended from 3 to 5 decrements to distinguish 0x02/0x03/0x04",
+      "exit_decrement_loop bifurcated by OPCODE_PHASE (the opcode phase reuses SUBROUTINE_FLAG4/5, which op2 later reuses, because each flag is cleared when consumed)",
+      "CMP_MODE branches added at the op1 classification tail",
+      "cmp_op1_is_0 / _1 / _2 / _ge_3 blocks reusing FLAG_OP2_IS_1/2/3 and the existing res_is_0 / res_is_1 output blocks"
+    ]
+  },
+  "assembly_result": {
+    "assembler": "third_party/lmao/lmao (LMAO v0.6.0)",
+    "exit_code": 1,
+    "errors": [
+      "Error: Free space exceeded (Add Malbolge command).",
+      "Internal error: Cannot generate initialization code for cell 58955.",
+      "Error: Memory usage conflict while generating initialization code."
+    ],
+    "note": "cell 58955 is 94 cells short of the 59049 limit"
+  },
+  "measured_budget": {
+    "source": "m2_alu_budget probe on the same base image",
+    "flags_only": "1 flag + 4 cells -> OK (55,443 B); 2 flags + 4 cells -> OK (56,007 B); 3 flags -> FAIL",
+    "data_cells": "1..8 cells -> OK; 16 cells -> OK (55,819 B)",
+    "conclusion": "The two flags the design needs DO fit. What does not fit is the dispatch code itself: the extended opcode classification, the second exit block and the CMP_EQ result blocks together need roughly 40-80 more cells than the 3,042-cell margin that remains after the two flags."
+  },
+  "what_this_means_for_b": [
+    "mbir_m2_alu.hell is already the unified image for the arithmetic half: one image, stored program loaded into RAM, ADD and SUB executed (8/8).",
+    "Adding CMP_EQ to that same image is blocked by the initializer budget, not by semantics: the code needs ~40-80 cells more than remain.",
+    "The constructive route is the other side of the same measurement: mbir_m2_loader.hell has 18,740 bytes of headroom and admits 512 data cells and 8 new code flags (loader_budget_probe.json). The unified image should be built on the loader's andamio, which is where the room is, not by extending the arithmetic image that is already 96% full."
+  ],
+  "what_remains_not_demonstrated": [
+    "One image that loads a stored program AND executes ADD/SUB/CMP_EQ (this attempt).",
+    "The comparator inside that same image.",
+    "Two variable operands (cmp2_two_operand_blocker.json).",
+    "A borrow-propagating HeLL comparator with the 5+2 xlat2 technique (E1 design, never built)."
+  ],
+  "scope_limits": [
+    "Only the CMP_EQ dispatch was attempted; CMP_LT was not added.",
+    "The patch is a proof of mechanism, not a tuned image; a leaner encoding of the same dispatch might fit, but was not searched."
+  ]
+}
