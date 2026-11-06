@@ -150,6 +150,10 @@ FLAG_D2_VAL9:
 	Nop/MovD
 	Jmp
 
+FLAG_D2_READ:
+	Nop/MovD
+	Jmp
+
 FLAG_D2_CARRY2:
 	Nop/MovD
 	Jmp
@@ -202,7 +206,7 @@ crazy_value2_C1:
 	U_CRAZY value2_C1
 value2_C1:
 	C1
-	FLAG_D2_VAL8 return_from_value2_C1_1 R_FLAG_D2_VAL8
+	FLAG_D2_READ return_from_value2_C1_1 R_FLAG_D2_READ
 
 crazy_value2:
 	U_CRAZY value2
@@ -210,6 +214,7 @@ rot_value2:
 	U_ROT value2
 value2:
 	C1
+	FLAG_D2_READ compare R_FLAG_D2_READ
 	FLAG_D2_VAL8 return_from_value2_8 R_FLAG_D2_VAL8
 	FLAG_D2_VAL9 return_from_value2_9
 
@@ -336,12 +341,12 @@ A_class_done:
 read_digit_B:
 	R_MOVED
 	IN ?- R_IN
-	R_FLAG_D2_VAL8
+	R_FLAG_D2_READ
 	MOVED crazy_value2_C1
 }{
 return_from_value2_C1_1:
 	R_CRAZY R_MOVED
-	R_FLAG_D2_VAL9
+	R_FLAG_D2_READ
 	MOVED crazy_value2
 }{
 return_from_value_2:
