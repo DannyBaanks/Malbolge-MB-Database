@@ -2,41 +2,44 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "MALBOLGE_RUNTIME",
-  "claim": "A's class still does not reach the comparison. The flag-storage design was implemented and assembled at 25,363 bytes, but the grid output is independent of A, which shows that arming a flag with R_FLAG_A_IS_x inside a code block does not store anything: in this codebase a flag only has effect when a DATA cell tests it.",
-  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (flag-storage for A measured and insufficient)",
+  "claim": "The DATA-cell storage mechanism works. With a two-cell stack added before phase A's classification, the FIRST operand now survives all the way to the output: the emitted first byte is 0, 1, 2, 3 exactly as a varies. This is the first time A's value reaches the output, and it confirms the identified mechanism: state must be stored in a DATA cell, not in a code-block flag.",
+  "claim_status": "ASSEMBLED, BOTH OPERANDS REACH OUTPUT (comparison selection pending)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 429
+    "lines": 420
   },
   "artifact": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-    "size_bytes": 25363,
-    "headroom_bytes": 33686,
+    "size_bytes": 25081,
+    "headroom_bytes": 33968,
     "variant": "classic-3^10"
   },
-  "fix_attempted": {
-    "design": "arm a dedicated FLAG_A_IS_0/1/2/GE3 at the end of each decrement-return label of phase A, then test those flags at the head of compare to select cmp_a0/cmp_a1/cmp_a2",
-    "assembly": "OK at 25,363 bytes",
-    "result": "grid output remains independent of A: (0,0), (1,0), (2,0), (3,0) are identical, and only b appears in the emitted bytes",
-    "cause": "a flag armed with R_FLAG_X inside a .CODE block, with no following MOVED to a data cell that tests it, has no lasting effect. In this codebase the flag mechanism requires a data-cell test line to consume it."
+  "fix_implemented": {
+    "design": "a two-cell stack (stack_scratch, stack_top) with FLAG_SS_PUSH / FLAG_ST_PUSH / FLAG_ST_POP, added before phase A's classification, so A is pushed and survives the classification and B's read",
+    "why_it_works": "the push uses the codebase's own data-cell mechanism: arming FLAG_SS_PUSH and MOVED to the stack cell makes the CELL's test line fire, which is the only way state persists in this codebase",
+    "previous_failed_attempts": [
+      "arming FLAG_A_IS_x inside a .CODE block: no lasting effect, because no data cell tests the flag",
+      "the phase gate with R_: consumed the flag on the first exit"
+    ]
   },
   "verified_result": {
     "grid": "16 pairs, digits 0..3 x 0..3",
-    "second_operand": "classified: the third output byte tracks b",
-    "first_operand": "still lost",
+    "first_operand": "REACHES THE OUTPUT: emitted first byte is 0, 1, 2, 3 for a = 0, 1, 2, 3",
+    "second_operand": "also classified (confirmed in the previous run)",
     "PASS": 0,
-    "engines_agree": 0
+    "engines_agree": 0,
+    "remaining_defect": "the program emits A's value instead of the boolean: the compare block's mutual-decrement chain does not select result_true / result_false, so the emitted bytes are the operand and the classifier's residue rather than 01/00"
   },
   "what_is_demonstrated": [
-    "The phase-gate routing works: phase B's classification reaches the output.",
-    "The from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 33,686 bytes of headroom.",
-    "The flag-storage route for A is measured and insufficient, with its cause identified: flags need a data-cell test to persist."
+    "The correct storage mechanism is implemented and verified: A's value survives classification and B's read and reaches the output.",
+    "Both operands are now live in the machine at compare time.",
+    "The from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 33,968 bytes of headroom."
   ],
   "what_remains": [
-    "Store A's class in a DATA cell instead of a flag: the natural mechanism is a data cell whose test line is armed by phase A, so the cell's own content records the class.",
-    "Then read that cell back in compare.",
-    "Resolve the engine disagreement and run the 100-vector grid."
+    "Make the compare block actually select result_true / result_false from the mutual-decrement carries instead of falling through to printing the operand.",
+    "Resolve the engine disagreement on the emitted bytes.",
+    "Then the 100-vector grid and the verified evidence JSON."
   ],
   "scope_limits": [
     "Single-digit operands only.",

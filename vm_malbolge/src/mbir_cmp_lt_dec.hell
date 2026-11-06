@@ -95,6 +95,18 @@ FLAG_A_IS_GE3:
 	Nop/MovD
 	Jmp
 
+FLAG_SS_PUSH:
+	Nop/MovD
+	Jmp
+
+FLAG_ST_PUSH:
+	Nop/MovD
+	Jmp
+
+FLAG_ST_POP:
+	Nop/MovD
+	Jmp
+
 LOOP2:
 	Nop/Nop/Nop/MovD
 	Jmp
@@ -114,13 +126,26 @@ rot_value:
 	U_ROT value
 value:
 	C1
-	FLAG1 return_from_value_1 R_FLAG1
+	FLAG1 return_from_value_3 R_FLAG1
 
 crazy_value_C1:
 	U_CRAZY value_C1
 value_C1:
 	C1
 	FLAG1 return_from_value_C1_1 R_FLAG1
+
+crazy_ss:
+	U_CRAZY stack_scratch
+stack_scratch:
+	C1
+	FLAG_SS_PUSH ret_ss_push R_FLAG_SS_PUSH
+
+crazy_st:
+	U_CRAZY stack_top
+stack_top:
+	C1
+	FLAG_ST_PUSH ret_st_push R_FLAG_ST_PUSH
+	FLAG_ST_POP ret_st_pop R_FLAG_ST_POP
 
 crazy_tmp:
 	U_CRAZY tmp
@@ -164,10 +189,19 @@ return_from_value_C1_1:
 	R_FLAG2
 	MOVED crazy_value
 }{
-return_from_value_1:
+ret_push_ss:
 	R_CRAZY R_MOVED
-	// Fase A: PHASE_A se arma aqui y NO se limpia en la compuerta de salida,
-	// para que enrute TODOS los retornos de la fase. Se limpia al final.
+	R_FLAG_ST_PUSH
+	MOVED crazy_st
+}{
+ret_ss_push:
+	R_CRAZY R_MOVED
+	R_FLAG_ST_PUSH
+	MOVED crazy_st
+}{
+ret_st_push:
+	R_CRAZY R_MOVED
+	// Fase A: A ya está guardado en la pila. Clasificar value.
 	R_PHASE_A
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
@@ -248,18 +282,25 @@ B_class_done:
 	MOVED compare
 }{
 compare:
-	// Leer la clase de A almacenada en fase A y decidir.
-	FLAG_A_IS_0 cmp_a0 R_FLAG_A_IS_0
-	FLAG_A_IS_1 cmp_a1 R_FLAG_A_IS_1
-	FLAG_A_IS_2 cmp_a2 R_FLAG_A_IS_2
-	// A >= 3: no determinado con esta clasificacion
-	MOVED result_false
-}{
-cmp_a0:
-	// A == 0: A < B sii B >= 1. BStay clasificada: su clase vive en value
-	// (decrementada una vez por clase). Se comprueba con un decremento.
+	// Recuperar A de la pila (stack_top) y comparar por decrementos mutuos.
 	R_MOVED
-	ROT C1 R_ROT
+	R_FLAG_ST_POP
+	MOVED crazy_st
+}{
+ret_st_pop:
+	R_CRAZY R_MOVED
+	// A está en value; B quedó en value_C1. Traer B a value y comparar.
+	R_FLAG2
+	MOVED crazy_value_C1
+}{
+ret_b_restore:
+	R_CRAZY R_MOVED
+	R_FLAG2
+	MOVED crazy_value
+}{
+ret_b_val:
+	R_CRAZY R_MOVED
+	// decrementos mutuos: value=B, y A estaba en el acumulador
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
@@ -280,56 +321,6 @@ mut_ge_2:
 	MOVED decrement_value
 }{
 ret_mut_d3:
-	MOVED result_true
-}{
-cmp_a1:
-	R_MOVED
-	ROT C1 R_ROT
-	R_SUBROUTINE_FLAG1
-	MOVED decrement_value
-}{
-ret_c1_d1:
-	NO_MORE_CARRY_FLAG c1_ge_1
-	MOVED result_true
-}{
-c1_ge_1:
-	R_SUBROUTINE_FLAG2
-	MOVED decrement_value
-}{
-ret_c1_d2:
-	NO_MORE_CARRY_FLAG c1_ge_2
-	MOVED result_true
-}{
-c1_ge_2:
-	R_SUBROUTINE_FLAG3
-	MOVED decrement_value
-}{
-ret_c1_d3:
-	MOVED result_true
-}{
-cmp_a2:
-	R_MOVED
-	ROT C1 R_ROT
-	R_SUBROUTINE_FLAG1
-	MOVED decrement_value
-}{
-ret_c2_d1:
-	NO_MORE_CARRY_FLAG c2_ge_1
-	MOVED result_true
-}{
-c2_ge_1:
-	R_SUBROUTINE_FLAG2
-	MOVED decrement_value
-}{
-ret_c2_d2:
-	NO_MORE_CARRY_FLAG c2_ge_2
-	MOVED result_true
-}{
-c2_ge_2:
-	R_SUBROUTINE_FLAG3
-	MOVED decrement_value
-}{
-ret_c2_d3:
 	MOVED result_true
 }{
 result_true:
