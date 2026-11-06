@@ -282,44 +282,12 @@ stack_top:
 {
 // ==========================================
 // E1: comparador de digitos decimales sobre el layout verbatim de
-// mbir_cmp_lt.hell. NO se añade ninguna celda: se reusan LOOP5 (ciclo de 5,
-// ya presente en la base) y cualquier bandera (Nop/MovD = ciclo de 2).
-// El lector reusa next_opcode de la base para leer y copiar a value, y la
-// clasificacion reusa las tres ranuras SUBROUTINE_FLAG4/5/6 secuencialmente
-// (la base las usa para op2 DESPUES, y cada flag se limpia al consumirse).
+// mbir_cmp_lt.hell. NO se añade ninguna celda. El lector reusa next_opcode
+// de la base (lee un byte de stdin y lo copia a value).
 // ==========================================
 dec_read_digit:
-	// la base ya lee un byte y lo copia a value en next_opcode
 	R_MOVED
 	MOVED next_opcode
-}{
-ret_dec_c1:
-	R_CRAZY R_MOVED
-	R_SUBROUTINE_FLAG4
-	MOVED decrement_value
-}{
-ret_dec_d1:
-	NO_MORE_CARRY_FLAG dec_ge_1
-	MOVED dec_done
-}{
-dec_ge_1:
-	R_SUBROUTINE_FLAG5
-	MOVED decrement_value
-}{
-ret_dec_d2:
-	NO_MORE_CARRY_FLAG dec_ge_2
-	MOVED dec_done
-}{
-dec_ge_2:
-	R_SUBROUTINE_FLAG6
-	MOVED decrement_value
-}{
-ret_dec_d3:
-	MOVED dec_done
-}{
-dec_done:
-	R_MOVED
-	MOVED LT_B1
 }
 {
 ENTRY:

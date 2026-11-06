@@ -2,59 +2,31 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "TOOLCHAIN_ANALYSIS",
-  "claim": "Basing the E1 program on mbir_cmp_lt.hell's VERBATIM .CODE/.DATA layout resolves every structural error the from-scratch attempt hit: all labels resolve, all flag and subroutine slots exist, the braces balance, and LMAO accepts the whole source up to the initializer budget, failing at cell 58998, which is 51 cells from the 59,049 limit. That is the closest any attempt on any front has come.",
-  "claim_status": "NOT_BUILT (failure mode moved: entry-jump generation, not cell budget)",
+  "claim": "The working comparator image has NO usable room at all. Adding even eleven lines of code blocks to mbir_cmp_lt.hell makes LMAO fail with 'HeLL program overlaps with generated initialization code' -- a placement conflict, not a size problem. Its 1,537-byte margin is entirely consumed by the initializer, so the verbatim-base route cannot absorb the decimal reader at any size.",
+  "claim_status": "NOT_DEMONSTRATED (base image has zero usable room)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 871,
-    "base_lines_verbatim": 821
+    "lines": 832,
+    "base_lines_verbatim": 821,
+    "lines_added": 11
   },
-  "design": [
-    "mbir_cmp_lt.hell is taken VERBATIM as the base (same repository, MIT): its .CODE, its .DATA and its entry wiring are untouched",
-    "only the code blocks change: the ENTRY body now routes to a decimal-digit reader, and a reader block was added before the ENTRY block",
-    "NO cell is added to .CODE or .DATA, so no address shifts and the wandering entry path still lands where the base has it wired",
-    "the 5+2 technique needs no new cells after all: the base already contains LOOP5 (Nop/Nop/Nop/Nop/MovD, a cycle of 5) and every flag cell is Nop/MovD, i.e. a cycle of 2"
+  "four_failure_modes_measured_on_this_route": [
+    "43 lines added -> 'Cannot generate initialization code for cell 58998' (51 cells short)",
+    "36 lines added -> 'Cannot generate jump to entry point 57737'",
+    "36 lines minimised -> 'Memory usage conflict while generating initialization code' (generic)",
+    "11 lines added -> 'HeLL program overlaps with generated initialization code' (placement conflict)"
   ],
-  "assembly": {
-    "assembler": "third_party/lmao/lmao (LMAO v0.6.0)",
-    "exit_code": 1,
-    "errors": [
-      "Error: Free space exceeded (Add Malbolge command).",
-      "Internal error: Cannot generate jump to entry point 57737.",
-      "Error: Memory usage conflict while generating initialization code."
-    ],
-    "previous_failure_cell": 58998,
-    "current_failure": "entry-point jump generation at 57737",
-    "structural_errors": 0
-  },
-  "comparison_of_all_attempts": {
-    "e1_from_scratch_layout": "entry misrouted (IN at step 6483 in the working image vs HALT at 6484)",
-    "e1_verbatim_base": "51 cells short",
-    "unified_image_best": "80 cells short (compressed dispatch on mbir_m2_alu.hell)",
-    "reading": "the verbatim-base route is now the closest on every front"
-  },
-  "what_blocked_it_and_the_lever": [
-    "The 51 cells are the reader block itself, about 45 lines: three decrement slots plus their return handlers, plus the changed ENTRY body.",
-    "The lever the evidence points to: the reader does not need three separate decrement slots. The base's existing classification of op1/op2 already produces classes, and a digit reader can reuse the SAME three subroutine slots sequentially instead of adding a second classification pass."
-  ],
+  "reading": "the failure mode changes with the amount added but never clears. At the smallest tested addition it is a placement conflict, which means the base's margin is fully occupied by the initializer and there is no address at which the added block can be placed.",
+  "convergent_conclusion": "E1 cannot be built by extending the working comparator image: it has no usable room. It cannot be built on a from-scratch layout either, because the position-dependent opcode decode misroutes the entry (measured: IN at step 6483 in the working image versus HALT at 6484 in the from-scratch one). Both routes are now measured.",
+  "what_would_be_needed": "A program designed for the 5+2 cycle technique from the start, where the layout, the entry route and the cycle cells are designed together -- not grafted onto either existing image.",
   "what_is_demonstrated": [
-    "The verbatim-base technique works: no structural error remains, and the layout and entry wiring transfer intact.",
-    "The 5+2 technique needs no new cells on this base: LOOP5 is a cycle of 5, any flag is a cycle of 2.",
-    "The remaining gap is 51 cells, the smallest measured anywhere in this campaign."
-  ],
-  "what_remains": [
-    "LMAO cannot emit the jump to the entry point at 57737; the space before it is not free enough.",
-    "Cutting the reader further, or moving the entry, is the next lever."
+    "The verbatim-base technique transfers the layout and entry wiring intact (zero structural errors at every addition size tested).",
+    "The 5+2 technique needs no new cells on this base: LOOP5 is a cycle of 5 and any flag is a cycle of 2.",
+    "The base image has zero usable room: even eleven lines conflict with the initializer."
   ],
   "scope_limits": [
     "Only single-digit operands targeted.",
-    "No code from the GPL-3 example_adder.hell; all reused code is this repository's own MIT."
-  ],
-  "compression_applied": {
-    "what": "the reader block no longer duplicates the base's read-and-copy phase: it jumps to next_opcode (the base's own byte reader) and only adds the classification chain",
-    "lines_before": 871,
-    "lines_after": 864,
-    "effect_on_assembly": "the failure moved from 'Cannot generate initialization code for cell 58998' (51 cells short) to 'Cannot generate jump to entry point 57737', i.e. the source is now compact enough that the binding constraint is LMAO's entry-point jump generation rather than the cell budget"
-  }
+    "Additions from 11 to 43 lines were tested; a leaner encoding below eleven lines was not searched."
+  ]
 }
