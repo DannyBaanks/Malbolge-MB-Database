@@ -1,0 +1,50 @@
+{
+  "schema": "unified-convergent-bound/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The two routes to the unified image converge on the same wall, and the wall is the Classic 59,049-cell tape. The arithmetic-image route fails CLOSEST to the limit; the loader route fails further away, and grafting the tuned arithmetic body onto the loader would make it worse, not better.",
+  "claim_status": "NOT_DEMONSTRATED (convergent bound measured)",
+  "measurements": {
+    "route_arithmetic_image": {
+      "base": "vm_malbolge/src/mbir_m2_alu.hell (56,361 B, margin 2,688)",
+      "failure_cell": 58969,
+      "cells_from_limit": 80,
+      "attempts": "two, 94 then 80 cells short after compression"
+    },
+    "route_loader_andamio": {
+      "base": "vm_malbolge/src/mbir_m2_loader.hell (40,309 B, margin 18,740)",
+      "failure_cell": 57619,
+      "cells_from_limit": 1430,
+      "note": "the failure cell is FURTHER from the limit than the arithmetic route's, so this route is further from fitting, not closer"
+    },
+    "graft_prediction": {
+      "tuned_body_lines": 230,
+      "compact_body_lines": 130,
+      "conclusion": "the tuned body of mbir_m2_alu.hell is 100 lines LARGER than the compact from-scratch body already on the loader route, so grafting it would add cells and worsen the 1,430 shortfall"
+    }
+  },
+  "corrected_reading": [
+    "A failure at cell N means the initializer ran out of room N cells into the address space; the closer N is to 59,049, the closer the image was to fitting.",
+    "The arithmetic-image route reached cell 58,969 (80 from the limit); the loader route reached 57,619 (1,430 from the limit). The arithmetic route is therefore the closer one, by a factor of about 18.",
+    "My previous message described the loader route as '56 times closer'; that was backwards. The loader route is further from fitting."
+  ],
+  "why_both_routes_converge": [
+    "mbir_m2_alu.hell is ALREADY built on the same scaffold: loader-style init, 7-byte load, decrement_value, CARRY, value/value_C1. Its 56,361 bytes are the scaffold plus the tuned arithmetic plus the ADD/SUB dispatch.",
+    "The loader's 18,740-byte margin is exactly what the arithmetic engine consumes (56,361 - 40,309 = 16,052), leaving the same 2,688 the arithmetic image has.",
+    "Adding one more opcode's dispatch costs more than that margin in either place."
+  ],
+  "what_would_actually_be_needed": [
+    "A leaner arithmetic engine: the current one spends 5 result constants (res_is_0/1/2/5/7) selected by flags, plus separate op1/op2 classifications. A comparator that reuses one classification instead of adding a second dispatch would cost less.",
+    "Or a smaller domain: the demonstrated operand domain is {0,1,2,3,4}; a comparator restricted to {0,1,2} could share the existing op2 classification instead of adding a 4th/5th opcode decrement.",
+    "Or accepting the 59,049-cell limit as the binding constraint and declaring the unified image NOT_DEMONSTRATED, which is what the evidence now supports."
+  ],
+  "what_is_demonstrated_for_b": [
+    "The arithmetic half as its own image: mbir_m2_alu.hell loads a 7-byte stored program into RAM and executes ADD/SUB, 8/8 on both engines.",
+    "The loader half as its own image: mbir_m2_loader.hell loads prog_0..3 and runs them by PC, 4/4.",
+    "Both the load extension to 7 bytes and the opcode dispatch structure assemble on the loader's andamio (unified_loader_gen.py, 9 regions, all structural checks pass)."
+  ],
+  "scope_limits": [
+    "'Cells from the limit' is the repo's working interpretation of the initializer failure cell; it is a relative measure, not an exact byte count.",
+    "No variant of the arithmetic engine was tuned for size; only the dispatch was varied."
+  ]
+}
