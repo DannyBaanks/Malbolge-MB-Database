@@ -1,0 +1,43 @@
+# Repo Engine exceptions for MALBOLGE-MB-DATABASE.
+#
+# Scope: accept the local-workstation path in the two files below, and nothing else.
+#
+# Why: `vm_malbolge/LT_STATUS.md` records, verbatim and as historical evidence,
+# the exact shell commands of Findings 71-73, and those commands embed the
+# author's workstation path. The Repo Engine pre-commit hook was installed on
+# this repository on 2026-10-16, i.e. AFTER the last commit that touched that
+# ledger, so the engine had never seen this content before. Its gate scans the
+# whole staged blob (not the diff), so every future commit touching the ledger
+# was blocked by a pre-existing, informational finding (LOCAL_PATH_001_DOC,
+# severity: info) that the change itself did not introduce.
+#
+# The ledger is append-only by repository convention and its command blocks are
+# evidence: redacting the path inside a historical finding would rewrite
+# history. The finding is accepted instead, narrowly and per-path.
+#
+# The self-entry below is required because this file necessarily spells out the
+# term it exempts (same pattern as the sibling repos' exceptions files).
+#
+# Known remaining condition (not exempted here, deliberately out of scope):
+# 13 other tracked files still carry the same workstation path:
+#   vm_malbolge/evidence/mbir_zig_oracle_a04_gate.json
+#   vm_malbolge/evidence/mbir_zig_oracle_a05_lifo.json
+#   vm_malbolge/evidence/mbir_zig_oracle_a05_twopush_match.json
+#   vm_malbolge/evidence/mbir_zig_oracle_alu.json
+#   vm_malbolge/evidence/mbir_zig_oracle_p0_add.json
+#   vm_malbolge/evidence/mbir_zig_oracle_p1_sub.json
+#   vm_malbolge/evidence/push_const_cell_operand_smoke.json
+#   vm_malbolge/evidence/push_const_dispatch_cell_smoke.json
+#   vm_malbolge/evidence/push_const_later_fetch_smoke.json
+#   vm_malbolge/src/mbir_a05_lifo.dbg
+#   vm_malbolge/src/mbir_m2_alu.dbg
+#   vm_malbolge/src/mbir_m2_cf.dbg
+#   vm_malbolge/src/mbir_m2_cf_cmp.dbg
+# Staging any of those would raise the same rule (critical for the .dbg files,
+# which are not documentation extensions). Each one needs its own decision.
+
+[exceptions]
+documented_local_evidence = [
+  "vm_malbolge/LT_STATUS.md:/home/danny/development/isyco",
+  ".repo-engine-exceptions.toml:/home/danny/development/isyco",
+]

@@ -135,11 +135,15 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_p2_cmp.hell`](vm_malbol
 - **Tamaño de Binario y Margen**: **57,511 bytes** (< 59,049 con 1,538 bytes de margen) usando exactamente 6 flags de código reutilizados sin flags espurios.
 - **Paridad 7/7 PASS**: 100% coincidencia bit a bit ciclo por ciclo contra el runner C nativo y oráculo Python ([`vm_malbolge/evidence/mbir_p2_cmp_smoke.json`](vm_malbolge/evidence/mbir_p2_cmp_smoke.json), [`vm_malbolge/P2_STATUS.md`](vm_malbolge/P2_STATUS.md)).
 
-### 5b. Kernel de Orden Relacional: CMP_LT (Hito P2 relacional) — **PARCIAL, mejor 11/12**
-Herramientas y forquilla propias: ensamblador HeLL [`vm_malbolge/src/mbir_cmp_lt.hell`](vm_malbolge/src/mbir_cmp_lt.hell) con su generador [`vm_malbolge/tools/mbir_cmp_lt_gen.py`](vm_malbolge/tools/mbir_cmp_lt_gen.py) (bifurcación de `mbir_p2_cmp_gen.py`; la imagen `CMP_EQ` congelada no se tocó), y el harness diferencial [`vm_malbolge/tests/lt_harness.py`](vm_malbolge/tests/lt_harness.py): **9 pares ordenados sobre `{0,1,2}`** (imprime `01` sii `a < b`, si no `00`) **más 3 líneas base** (`PUSH`/`OUT` → `41`, LIFO → `4241`, `HALT` → vacío). Cada vector corre en los dos motores — oráculo Python [`tools/oracle_classic.py`](tools/oracle_classic.py) y runner nativo C [`runners/malbolge-original/malbolge`](runners/malbolge-original/malbolge) — y se compara salida **y** número de pasos.
+### 5b. Kernel de Orden Relacional: CMP_LT (Hito P2 relacional) — **12/12 DEMONSTRATED**
+Herramientas y forquilla propias: ensamblador HeLL [`vm_malbolge/src/mbir_cmp_lt.hell`](vm_malbolge/src/mbir_cmp_lt.hell) con su generador [`vm_malbolge/tools/mbir_cmp_lt_gen.py`](vm_malbolge/tools/mbir_cmp_lt_gen.py) (bifurcación de `mbir_p2_cmp_gen.py`; la imagen `CMP_EQ` congelada no se tocó), y el harness diferencial [`vm_malbolge/tests/lt_harness.py`](vm_malbolge/tests/lt_harness.py): **9 pares ordenados sobre `{0,1,2}`** (imprime `01` sii `a < b`, si no `00`) **más 3 líneas base** (`PUSH`/`OUT` → `41`, LIFO → `4241`, `HALT` → vacío). Cada vector corre en los dos motores — oráculo Python [`tools/oracle_classic.py`](tools/oracle_classic.py) y runner nativo C [`runners/malbolge-original/malbolge`](runners/malbolge-original/malbolge) — se compara salida **y** número de pasos.
 
-**Lo que está demostrado (medido, con hash):**
-- **Techo actual: 11/12 con paridad exacta entre motores.** Ocho imágenes `.mb` commiteadas, cada una con su manifiesto JSON de harness en [`vm_malbolge/evidence/`](vm_malbolge/evidence/):
+**Estado vigente (2026-11-05): `12/12 DEMONSTRATED` en ambos motores.** Imagen canónica [`vm_malbolge/src/mbir_cmp_lt.mb`](vm_malbolge/src/mbir_cmp_lt.mb) (57.511 B, 1.538 B de margen bajo el límite de 59.049), construida con LMAO v0.6.0 desde `mbir_cmp_lt.hell`, blob sha256 `79160ecf906ce3a4…`, copia inmutable en [`vm_malbolge/evidence/artifacts/lt_pass12.mb`](vm_malbolge/evidence/artifacts/lt_pass12.mb). Manifiesto de referencia: [`vm_malbolge/evidence/lt_12_12_harness.json`](vm_malbolge/evidence/lt_12_12_harness.json) (Finding 74, 2026-10-14). Reverificación independiente de hoy: [`vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`](vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json) — 12/12 en ambos motores con **los mismos recuentos de pasos** que el manifiesto original (78.906 / 81.977 / 81.317 / …).
+
+**Causa raíz del bloqueo y su resolución (Finding 74).** La fuga de estado estaba en la rama `b=1`: el flag `SUBROUTINE_FLAG3`, reutilizado allí como variable de condición, está reservado por el núcleo de la VM (`exit_decrement_loop`) para gobernar el retorno del tercer decremento de la decodificación de opcodes; al quedar en estado `MovD` (opcode 40) perturbaba el despacho del `OUT` siguiente. La resolución fue un flag dedicado e independiente `LT_B1` en `.CODE` (más la purga del símbolo inerte `COUNTER2_1`, que además liberaba el conflicto de colocación de memoria en LMAO) y un enrutamiento por subdesbordamiento limpio: `b=0` → `diff_is_2` (`00`); `b=1` → `diff_is_1` arma `LT_B1`; `b=2` → `op2_is_2` deja `LT_B1` inerte; y en la fase de `a` el flag decide entre `a=0` (`01`) y `a≥1` (`00`) para `b=1`, o `a<2` (`01`) frente a `a=2` (`00`) para `b=2`. Bitácora completa y append-only: [`vm_malbolge/LT_STATUS.md`](vm_malbolge/LT_STATUS.md) §11.
+
+**Recorrido histórico hasta el 11/12 (conservado; fue la base de la resolución):**
+- **Techo de esa etapa: 11/12 con paridad exacta entre motores.** Ocho imágenes `.mb` commiteadas, cada una con su manifiesto JSON de harness en [`vm_malbolge/evidence/`](vm_malbolge/evidence/):
 
 | imagen | sha256 (blob == fichero de trabajo) | resultado | entrada(s) que falla(n) |
 |---|---|---|---|
@@ -155,12 +159,15 @@ Herramientas y forquilla propias: ensamblador HeLL [`vm_malbolge/src/mbir_cmp_lt
 - **Las tres líneas base pasan en los dos motores sobre la bifurcación**, o sea el núcleo de la VM (bucle de despacho, pila LIFO de 2 ranuras, `OUT`) sigue intacto; el fallo es de clasificación/salida del comparador, no del intérprete.
 - **Paridad de motores re-medida el 2026-10-14** sobre la imagen base del Hallazgo 72: los doce vectores dan la misma salida y el mismo número de pasos en ambos motores **incluida la entrada que falla** (`cmp_lt(2,2)` → `01` con 79.790 pasos en el oráculo y en el nativo). La discordancia de modelos queda descartada como explicación del 11/12.
 - **El lema de instancia de build (F62) vuelve a medirse el 2026-10-14:** recompilar `vm_malbolge/evidence/lt_f59_cand_C.hell` con LMAO v0.6.0 produce una tercera instancia (`fb0a775d16657dcd…`) que difiere de la commiteada (`b7bb3a82d55e5f4f…`) en los mismos 503 bytes de la cola `56920..57507`, y el harness la puntúa **11/12 con la firma idéntica de salida y pasos en los doce vectores**. Tres instancias distintas — commiteada, copia de trabajo de F72 (`f67ec678d56db73c…`) y recompilación de hoy — una sola clase de comportamiento.
-- **Evidencia cruda de las re-medidas de hoy:** [`vm_malbolge/evidence/lt_recheck_2026-10-14.txt`](vm_malbolge/evidence/lt_recheck_2026-10-14.txt) (sha256 `4f41eb03aa61c9dc…`) — salida verbatim del harness sobre las cuatro imágenes, con hash de fichero de trabajo y de blob en cada una. Ahí queda medido además que **la imagen canónica de la bifurcación `vm_malbolge/src/mbir_cmp_lt.mb` sigue en 8/12** (fallan `(0,1)`, `(0,2)`, `(1,2)` → `00` y `(2,2)` → `01`, con paridad entre motores en las cuatro): los 11/12 no viven en el `.hell` de la bifurcación sino en las imágenes de `vm_malbolge/evidence/artifacts/`.
+- **Evidencia cruda de las re-medidas de esa etapa:** [`vm_malbolge/evidence/lt_recheck_2026-10-14.txt`](vm_malbolge/evidence/lt_recheck_2026-10-14.txt) (sha256 `4f41eb03aa61c9dc…`) — salida verbatim del harness sobre las cuatro imágenes, con hash de fichero de trabajo y de blob en cada una. Ahí quedó medido que, **en aquel entonces**, la imagen canónica de la bifurcación `vm_malbolge/src/mbir_cmp_lt.mb` seguía en 8/12 (fallaban `(0,1)`, `(0,2)`, `(1,2)` → `00` y `(2,2)` → `01`, con paridad entre motores en las cuatro): los 11/12 de esa etapa no vivían en el `.hell` de la bifurcación sino en las imágenes de `vm_malbolge/evidence/artifacts/`. La imagen canónica de hoy es **otra** (Finding 74): 12/12.
 - **Leyes estructurales verificadas** (cada una con su censo o su ejecución, en [`vm_malbolge/LT_STATUS.md`](vm_malbolge/LT_STATUS.md)): ley del veredicto — el dígito impreso es función pura del contenido de la única celda que lee el `ROT` compartido (`0/3/6 → 00/01/02`), F47/F48/F56/F58; techo de tabla — `trit0(A)=0` no puede emitir un trit `0`, F57; escaneo exhaustivo de los 3^10 valores — ninguna celda codifica la tabla `LT` en el instante de decisión, F59; techo de solo-lectura a toda profundidad de pliegue y colapso a constante del mejor encaje, F60/F63; **el comparador nunca se calcula** — ni un pliegue ni una composición de dos reproducen `a+b·LT` sobre los nueve pares con la tabla `_CRAZY` real, F61; lema de instancia de build — seis compiladas seguidas del mismo `.hell` dan seis `.mb` con sha distintos y una única firma de comportamiento (los 503 bytes que distinguen a `lt_f59_cand_C.mb` de la copia de trabajo están todos en la cola `56920..57507`, que nunca es `pc` ni operando de lectura), F62; ley del acumulador separante, F70; el veredicto no viaja en los datos sino en la **paridad de traducción** de la celda de código 58156, y el flag se escribe una sola vez con el mismo `a_in` en los nueve vectores, F71; `(0,1)` y `(2,2)` **son un solo cálculo** — 0 pasos de divergencia de punteros en 79.790 y los 7 pliegues `a`-divergentes caen íntegros en el relleno (0 en región editable), F72.
 - **Negativos cuantificados y conservados:** el espacio completo de ediciones de un carácter sobre la base 11/12 es 5.234.616 variantes (cota inferior; ≈3.900 CPU-horas) y **no se ha barrido**; sí están barridas y cerradas las 5.580 ediciones vivo-directas y las 186 ediciones de semilla simple (5.766 variantes, **0 arreglos**), con un único acierto aparente que resultó degenerado — halta en 2 pasos e imprime `00` a los doce vectores, o sea 6/12 — y la palanca global de semilla invertida en bloque (155 variantes matan la máquina, 12 basura, 19 conservan el `01` errado).
 - **Redirección del problema abierto:** en las imágenes A y D el vector `(2,2)` **ya imprime el símbolo propio `02`**, así que en esas bases lo que falta es mapear un `2` ya selectivo a `0`, no construir la tabla.
 
-**Lo que NO está demostrado:** `12/12` — **`NOT_DEMONSTRATED`**. No existe imagen que pase los doce vectores; no se ha barrido el espacio completo de una edición ni la pareja de semillas del relleno; la batería del Hallazgo 72 todavía no se ha transferido a las bases A y D; y `CMP_GT` no se ha empezado. El acuerdo entre los dos motores sobre la base 11/12 no demuestra paridad de la familia entera ni cierra la objeción de F71 §10.
+**Lo que NO está demostrado (hoy):** el dominio fuera de `{0,1,2}^2` — cualquier operando ≥ 3 — sigue **`NOT_DEMONSTRATED`** por diseño del hito: el kernel clasifica $b$ en tres clases (`0`, `1`, `2`) sobre aritmética ternaria, así que `a<b` con operandos mayores exige otro comparador. Tampoco está demostrado que `CMP_LT` conviva en una **sola imagen** con la ALU de 14 vectores y el `CMP_EQ` (ver "Lo que FALTA", punto 2). Todo el resto de aquella etapa quedó **cerrado por medida** y se conserva como negativo, no como tarea abierta: barridos de ediciones de un carácter y de la pareja de semillas (F72, F73), transferencia íntegra de la batería de F72 a las bases A y D, y el lema de familia de F73 §7 (`(0,1)` y `(2,2)` son un solo cálculo en las tres bases 11/12).
+
+### 5c. Kernel de Orden Relacional: CMP_GT (Hito P2 relacional inverso) — **12/12 DEMONSTRATED**
+Imagen canónica [`vm_malbolge/src/mbir_cmp_gt.mb`](vm_malbolge/src/mbir_cmp_gt.mb) (57.511 B, 1.538 B de margen), construida con LMAO v0.6.0 desde `mbir_cmp_gt.hell` con su generador [`vm_malbolge/tools/mbir_cmp_gt_gen.py`](vm_malbolge/tools/mbir_cmp_gt_gen.py), y harness propio [`vm_malbolge/tests/gt_harness.py`](vm_malbolge/tests/gt_harness.py): 9 pares ordenados sobre `{0,1,2}` (imprime `01` sii `a > b`, si no `00`) más las mismas 3 líneas base. **12/12 en ambos motores** con paridad bit a bit, Finding 75 (2026-10-15); blob sha256 `1f17062a9585beb…`, copia inmutable en [`vm_malbolge/evidence/artifacts/gt_pass12.mb`](vm_malbolge/evidence/artifacts/gt_pass12.mb) y manifiesto en [`vm_malbolge/evidence/gt_12_12_harness.json`](vm_malbolge/evidence/gt_12_12_harness.json). Reverificación independiente de hoy: [`vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`](vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json). Arquitectura (flag dedicado `GT_B1`, enrutamiento simétrico por subdesbordamiento) y evidencia completa: [`vm_malbolge/GT_STATUS.md`](vm_malbolge/GT_STATUS.md).
 
 ### 6. Stored-Program Loader y Ejecución Desacoplada por PC (Hito M2)
 Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_m2_loader.hell`](vm_malbolge/src/mbir_m2_loader.hell)) a través de ([`vm_malbolge/tools/mbir_m2_loader_gen.py`](vm_malbolge/tools/mbir_m2_loader_gen.py)):
@@ -279,8 +286,7 @@ La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados 
 3. **Pila Dinámica de Profundidad > 2**
    - Para expresiones complejas que requieran evaluar árboles sintácticos de mayor profundidad o direccionamiento indexado.
 4. **Operadores de Orden Relacional (`CMP_LT`, `CMP_GT`)**
-   - `CMP_LT` ya no es "sin comenzar": está bifurcado, con harness propio de 12 vectores y **11/12 como mejor resultado medido en ambos motores** (sección 5b). Lo que falta es el último vector, y `12/12` sigue **`NOT_DEMONSTRATED`**: las rutas de solo-lectura, de pliegue único/doble y de semilla simple están cerradas por medida (F57, F59-F63, F70-F72), no por opinión.
-   - `CMP_GT` (clasificación ternaria del signo de subdesbordamiento para la desigualdad estricta inversa) no se ha empezado.
+   - Ambos están **DEMONSTRATED 12/12** en los dos motores: `CMP_LT` (Finding 74, sección 5b) y `CMP_GT` (Finding 75, sección 5c). Lo que sigue abierto **no es el hito**, sino su extensión: (a) dominio de operandos ≥ 3 — la comparación de tres clases cubre `{0,1,2}` y nada más; (b) una imagen única que cargue el programa en RAM y además ejecute el comparador relacional junto a la ALU de 14 vectores y el `CMP_EQ` (mismo objetivo que el punto 2).
 5. **Frontends que todavía no existen**
    - Pistas `swift/`, `rust/`, `java/`, `c/` marcadas como `NOT_STARTED`.
    - En Python, P5 ya baja la recursión directa a MBIR en el host (sección 12). P6, el lexer dentro de Malbolge, se probó y no quedó demostrado: al volver a `ENTRY` el clasificador de un byte no emite el segundo token, y el runner C no coincide con el oráculo ([`python/P6_STATUS.md`](python/P6_STATUS.md)). P7 (parser) y P8 (`python.mb`) no se empezaron.
@@ -323,7 +329,8 @@ MALBOLGE-MB-DATABASE/
 │   ├── M2_ALU_STATUS.md   ← Bitácora del ALU de programa almacenado (8/8, un solo tiro)
 │   ├── ALU_STATUS.md      ← Bitácora técnica y paridad de la ALU Unificada (ADD + SUB)
 │   ├── P2_STATUS.md       ← Bitácora técnica y paridad del Hito P2 (CMP_EQ)
-│   ├── LT_STATUS.md       ← Bitácora del Hito P2 relacional (CMP_LT): Findings 1-72, mejor 11/12, 12/12 NOT_DEMONSTRATED
+│   ├── LT_STATUS.md       ← Bitácora del Hito P2 relacional (CMP_LT): Findings 1-73 + §11, 12/12 DEMONSTRATED
+│   ├── GT_STATUS.md       ← Bitácora del Hito P2 relacional inverso (CMP_GT): Finding 75, 12/12 DEMONSTRATED
 │   ├── P1_STATUS.md       ← Bitácora técnica y paridad del Hito P1 (SUB)
 │   ├── P0_STATUS.md       ← Bitácora técnica y paridad del Hito P0 (ADD)
 │   ├── A05_STATUS.md      ← Bitácora técnica de la Pila LIFO A05b y bucle A05
@@ -413,19 +420,37 @@ python3 python/src/p5_compiler.py
 python3 python/tests/test_harness.py
 ```
 
-### 8. Verificar el Orden Relacional CMP_LT (Hito P2 relacional, mejor 11/12)
+### 8. Verificar el Orden Relacional CMP_LT (Hito P2 relacional, 12/12)
 El harness corre los 12 vectores (9 pares ordenados + 3 líneas base) en el oráculo Python **y** en el runner
 nativo C, y compara salida y número de pasos. Tarda un minuto porque el oráculo es un intérprete en Python.
 
 ```bash
-# Imagen commiteada de la base 11/12 (Hallazgo 59/62). Sale 0 sólo si se alcanza 12/12.
+# Imagen canónica 12/12 (Finding 74). Sale 0 sólo si se alcanza 12/12.
+python3 vm_malbolge/tests/lt_harness.py vm_malbolge/src/mbir_cmp_lt.mb
+
+# Copia inmutable de evidencia (blob sha256 79160ecf906ce3a4…).
+python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_pass12.mb
+
+# Reconstruir desde el HeLL canónico (LMAO v0.6.0, modo normal con depuración). Los builds son
+# byte-nodeterministas pero invariantes en comportamiento (Finding 62): el hash identifica una instancia.
+./third_party/lmao/bin/lmao -d -o /tmp/imagen.mb vm_malbolge/src/mbir_cmp_lt.hell
+
+# Imágenes históricas de la etapa 11/12 (cada una falla UNA sola entrada distinta): negativo conservado.
 python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb
+```
 
-# Cualquier otra imagen de la familia: A, B, D y las dos rutas F62 fallan UNA sola entrada distinta.
-python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_f59_cand_A.mb
+### 8b. Verificar el Orden Relacional CMP_GT (Hito P2 relacional inverso, 12/12)
+Mismo contrato de harness: 9 pares ordenados + 3 líneas base, salida y número de pasos en los dos motores.
 
-# Reconstruir desde el HeLL de una imagen de evidencia (LMAO v0.6.0, modo normal con depuración)
-./third_party/lmao/bin/lmao -d -o /tmp/imagen.mb vm_malbolge/evidence/lt_f59_cand_C.hell
+```bash
+# Imagen canónica 12/12 (Finding 75).
+python3 vm_malbolge/tests/gt_harness.py vm_malbolge/src/mbir_cmp_gt.mb
+
+# Copia inmutable de evidencia (blob sha256 1f17062a9585beb…).
+python3 vm_malbolge/tests/gt_harness.py vm_malbolge/evidence/artifacts/gt_pass12.mb
+
+# Reconstruir desde el HeLL canónico (misma nota de no-determinismo de bytes).
+./third_party/lmao/bin/lmao -d -o /tmp/gt.mb vm_malbolge/src/mbir_cmp_gt.hell
 ```
 
 ### 9. Verificar la Quine Clásica Récord (53,562 B)

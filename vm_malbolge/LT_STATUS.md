@@ -1,10 +1,19 @@
-# CMP_LT fork (WIP) — Milestone P2 relational ordering
+# CMP_LT — Milestone P2 relational ordering
 
-Status: **NOT_DEMONSTRATED** (8/12 on the harness; the VM core is intact; the
-compare automaton reaches its verdict but the classification exit never hands
-control to the boolean push blocks, so `OUT` re-pops Slot 1 and prints the
-operand `b` — findings 14-20. The "init-basin lottery" framing of findings
-7-12 is **superseded**: the defect is deterministic (finding 17)).
+Status: **12/12 DEMONSTRATED** (Finding 74, §11 below; re-verified independently on
+2026-11-05 on both engines with identical outputs and identical step counts —
+`vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`).
+
+> The narrative below (Findings 1-73) is the historical ledger of the long 11/12
+> plateau and of the measurements that closed it. Its per-finding "12/12 remains
+> NOT_DEMONSTRATED" statements record the state **as of that finding** and are
+> left as written (append-only); §11 is the resolution.
+
+Historical status at the time of findings 14-20 — **NOT_DEMONSTRATED** (8/12 on the
+harness; the VM core is intact; the compare automaton reaches its verdict but the
+classification exit never hands control to the boolean push blocks, so `OUT`
+re-pops Slot 1 and prints the operand `b`. The "init-basin lottery" framing of
+findings 7-12 is **superseded**: the defect is deterministic (finding 17)).
 
 ## What exists
 
@@ -4704,3 +4713,91 @@ El estado de `CMP_LT 12/12` pasa de `NOT_DEMONSTRATED` a **`DEMONSTRATED`** con 
 | `vm_malbolge/src/mbir_cmp_lt.dbg` | `6841e5aafe1fb7c6c645efcc4849bfeb1e683d39dc0ed27e2bfc97cf70dd3755` | símbolos y mapa de direcciones LMAO |
 | `vm_malbolge/evidence/artifacts/lt_pass12.mb` | `79160ecf906ce3a44a90aed9320954890e04b9444a3da30ad9c88e7cbecb61d2` | copia inmutable de artefacto 12/12 |
 | `vm_malbolge/evidence/lt_12_12_harness.json` | `9fce1d8eabae9e44486abe037a5e67833898a191ce7de8d27fd4a81b6c507fd3` | manifiesto de verificación diferencial 12/12 |
+
+---
+
+## 12. Reverificación independiente — 2026-11-05 · 12/12 reproducido en ambos motores
+
+### 12.1 Qué se ejecutó
+
+Desde la raíz del repositorio `MALBOLGE-MB-DATABASE` (host Linux, Ubuntu 24.04):
+
+```
+python3 vm_malbolge/tests/lt_harness.py vm_malbolge/src/mbir_cmp_lt.mb
+python3 vm_malbolge/tests/gt_harness.py vm_malbolge/src/mbir_cmp_gt.mb
+```
+
+Ambos harnesses terminan con `== 12/12` y código de salida `0`. Salida verbatim de `CMP_LT`:
+
+```
+cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=81977 PASS
+cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=81317 PASS
+cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=80238 PASS
+cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=81317 PASS
+cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78906 PASS
+cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=80238 PASS
+cmp_lt(2,2)          in=01020102021000   want=00     oracle=00     runner=00     steps=81309 PASS
+baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67340 PASS
+baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74398 PASS
+baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60276 PASS
+== 12/12
+```
+
+La salida verbatim de `CMP_GT` queda en `vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`
+(campo `raw_harness`), con los mismos pasos por clase de `b` que su manifiesto de origen.
+
+### 12.2 Resultado
+
+| vector | want | oracle | runner | pasos (hoy) | pasos (manifiesto 2026-10-15) | veredicto |
+|---|---|---|---|---|---|---|
+| `cmp_lt(0,0)` | `00` | `00` | `00` | 78.906 | 78.906 | PASS |
+| `cmp_lt(0,1)` | `01` | `01` | `01` | 81.977 | 81.977 | PASS |
+| `cmp_lt(0,2)` | `01` | `01` | `01` | 81.317 | 81.317 | PASS |
+| `cmp_lt(1,0)` | `00` | `00` | `00` | 78.906 | 78.906 | PASS |
+| `cmp_lt(1,1)` | `00` | `00` | `00` | 80.238 | 80.238 | PASS |
+| `cmp_lt(1,2)` | `01` | `01` | `01` | 81.317 | 81.317 | PASS |
+| `cmp_lt(2,0)` | `00` | `00` | `00` | 78.906 | 78.906 | PASS |
+| `cmp_lt(2,1)` | `00` | `00` | `00` | 80.238 | 80.238 | PASS |
+| `cmp_lt(2,2)` | `00` | `00` | `00` | 81.309 | 81.309 | PASS |
+| `baseline1 push+out` | `41` | `41` | `41` | 67.340 | 67.340 | PASS |
+| `baseline2 lifo` | `4241` | `4241` | `4241` | 74.398 | 74.398 | PASS |
+| `baseline3 halt` | (vacío) | (vacío) | (vacío) | 60.276 | 60.276 | PASS |
+
+**Los doce recuentos de pasos coinciden vector a vector con `lt_12_12_harness.json`** (ts `2026-10-15T02:19:31Z`), y lo mismo para `CMP_GT` frente a `gt_12_12_harness.json` (ts `2026-10-15T03:07:24Z`). No hay deriva de comportamiento: el estado `DEMONSTRATED` se sostiene hoy.
+
+### 12.2b Control negativo — el harness discrimina
+
+Para descartar que el harness estampe verde por construcción, se corrió el **mismo** harness sobre una imagen histórica de la etapa 11/12 (`lt_f59_cand_C.mb`), que según el Finding 59 falla exactamente un vector:
+
+```
+python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb
+```
+
+```
+cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=79790 FAIL
+...
+== 11/12
+```
+
+Resultado: **11/12, código de salida 1**, con el fallo único en `(2,2)` (`01` en vez de `00`) y las otras once entradas — incluidas las tres líneas base — en `PASS`. El 12/12 de la imagen canónica es por tanto discriminante y no un artefacto del instrumento.
+
+### 12.3 Identidad de los artefactos verificados
+
+| fichero | sha256 blob (`git show HEAD:<ruta>`) | sha256 fichero de trabajo | nota |
+|---|---|---|---|
+| `vm_malbolge/src/mbir_cmp_lt.mb` | `79160ecf906ce3a44a90aed9320954890e04b9444a3da30ad9c88e7cbecb61d2` | `252abb9e7030429c9ff49d5615f1596f562565dde8923152ff4f77e2ef4b7ee7` | `i/lf w/crlf` |
+| `vm_malbolge/src/mbir_cmp_lt.hell` | `dd72cc08770ffbded4960b1f51dd2a301d670516cf75cbffd62c28547a9a8b96` | `f1063fe26b75a149f79a6d93c3ff790bda924da40be0e1de559daafb45ce7fe4` | `i/lf w/crlf` |
+| `vm_malbolge/evidence/artifacts/lt_pass12.mb` | `79160ecf…` | `79160ecf…` | `i/lf w/lf`, copia inmutable |
+| `vm_malbolge/src/mbir_cmp_gt.mb` | `1f17062a9585bbbb5b23ab2383f1b22fd60614e1b84bace32c52fa9e40f52f50` | `1f17062a9585bbbb…` | idéntico en blob y trabajo |
+| `vm_malbolge/evidence/artifacts/gt_pass12.mb` | `1f17062a…` | `1f17062a…` | `i/lf w/lf`, copia inmutable |
+
+La diferencia entre blob y fichero de trabajo de `mbir_cmp_lt.mb` es **un único byte final** (`0x0A` → `0x0D`) producido por la conversión de fin de línea de `core.autocrlf=true`, no una imagen distinta: el comportamiento medido (salida y pasos) es idéntico al del blob. Es el hazard ya registrado en el adenda del Finding 55, aplicado aquí a un artefacto canónico.
+
+### 12.4 Manifiestos de esta reverificación
+
+- `vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`
+- `vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`
+
+Estado tras esta sección: `CMP_LT 12/12` = **DEMONSTRATED**, `CMP_GT 12/12` = **DEMONSTRATED**, ambos con paridad dual verificada el 2026-11-05. Sigue `NOT_DEMONSTRATED`: el dominio de operandos ≥ 3 y la integración del comparador relacional con la ALU en una imagen única.

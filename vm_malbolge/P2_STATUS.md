@@ -42,3 +42,14 @@ The `Full relational ordering (CMP_LT, CMP_GT)` obstacle row above records the s
 **12/12 remains `NOT_DEMONSTRATED`** and `CMP_GT` has not been started. Authoritative ledger:
 `vm_malbolge/LT_STATUS.md` (Findings 1-72), harness `vm_malbolge/tests/lt_harness.py`, per-image manifests
 `vm_malbolge/evidence/lt_*_harness.json`. Summary: root `README.md` section 5b.
+
+## Erratum — 2026-11-05 (append)
+
+The 2026-10-14 erratum above recorded `CMP_LT` at 11/12 with `12/12 NOT_DEMONSTRATED` and `CMP_GT` not
+started. As of Finding 74 (2026-10-14, `vm_malbolge/LT_STATUS.md` §11) `CMP_LT` is **12/12 DEMONSTRATED**
+with exact oracle/native parity, and as of Finding 75 (2026-10-15, `vm_malbolge/GT_STATUS.md`) `CMP_GT` is
+**12/12 DEMONSTRATED** with exact oracle/native parity. Both were re-verified independently on this host on
+2026-11-05, with identical outputs and identical step counts to the original manifests:
+`vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json` and
+`vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`. The obstacle row and the erratum above are left
+as written, per this file's append-only convention. Summary: root `README.md` sections 5b and 5c.

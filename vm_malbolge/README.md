@@ -31,8 +31,10 @@ source program -> frontend/adapter -> MBIR boundary -> backend adapter -> substr
 ### Verified artifacts
 
 - `tools/oracle_classic.py`: Classic 3^10 Malbolge interpreter (outputs run 1:1
-  with the native runner, re-verified 2026-10-14 on all twelve `CMP_LT` vectors
-  of the 11/12 base — identical output and identical step count).
+  with the native runner, re-verified 2026-11-05 on all twelve `CMP_LT` vectors of
+  the canonical 12/12 image and all twelve `CMP_GT` vectors — identical output and
+  identical step count; see `vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`
+  and `vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`).
 - `runners/malbolge-original/malbolge`: the **Linux** native C runner, used by
   `vm_malbolge/tests/lt_harness.py` and by every differential manifest recorded in
   `LT_STATUS.md`. The sibling `malbolge.exe` is the historical Windows build; the
@@ -102,7 +104,8 @@ will be made without green runner evidence.
 
 - Toolchain evidence: `docs/TOOLCHAIN.md`, `third_party/PROVENANCE.md`.
 - A04 findings/action items: `vm_malbolge/A04_NEXT.md`.
-- `CMP_LT` ledger (Findings 1-72, append-only, best 11/12): `vm_malbolge/LT_STATUS.md`;
-  per-image manifests in `vm_malbolge/evidence/` and images in
+- `CMP_LT` ledger (Findings 1-73 + §11 milestone, append-only, 12/12 DEMONSTRATED):
+  `vm_malbolge/LT_STATUS.md`; per-image manifests in `vm_malbolge/evidence/` and images in
   `vm_malbolge/evidence/artifacts/`.
+- `CMP_GT` ledger (Finding 75, 12/12 DEMONSTRATED): `vm_malbolge/GT_STATUS.md`.
 - Repository-level summary of what is demonstrated: root `README.md` (section 5b).

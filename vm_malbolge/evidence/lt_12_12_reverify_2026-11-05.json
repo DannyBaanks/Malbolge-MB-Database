@@ -1,0 +1,249 @@
+{
+  "ts": "2026-11-05T23:26:53-06:00",
+  "ts_utc": "2026-11-06T05:26:53Z",
+  "date_local": "2026-11-05",
+  "milestone": "P2 CMP_LT",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "title": "CMP_LT 12/12 — independent re-verification on both engines",
+  "status": "12/12 DEMONSTRATED — dual-engine bit parity (tools/oracle_classic.py + runners/malbolge-original/malbolge)",
+  "verdict": "PASS",
+  "scope": "Relational strict less-than over {0,1,2}^2 (9 ordered pairs) plus 3 baselines, executed as Malbolge Classic on the native C runner and on the Python reference oracle. No claim is made outside this domain.",
+  "command": "python3 vm_malbolge/tests/lt_harness.py vm_malbolge/src/mbir_cmp_lt.mb",
+  "exit_code": 0,
+  "environment": {
+    "os": "Linux 7.0.0-42-generic x86_64",
+    "distro": "Ubuntu 24.04",
+    "timezone": "America/Mexico_City (UTC-06:00)",
+    "python": "Python 3.12.3",
+    "repo_head": "ab8d34e049cb6c55606df7a99083932097866e9c"
+  },
+  "candidate": "vm_malbolge/src/mbir_cmp_lt.mb",
+  "artifact_copy": "vm_malbolge/evidence/artifacts/lt_pass12.mb",
+  "generated_from_hell": "vm_malbolge/src/mbir_cmp_lt.hell",
+  "build": "LMAO v0.6.0 (third_party/lmao/lmao) -d -o <mb> <hell>",
+  "sha256_mb_blob": "79160ecf906ce3a44a90aed9320954890e04b9444a3da30ad9c88e7cbecb61d2",
+  "sha256_mb_worktree": "252abb9e7030429c9ff49d5615f1596f562565dde8923152ff4f77e2ef4b7ee7",
+  "sha256_hell_blob": "dd72cc08770ffbded4960b1f51dd2a301d670516cf75cbffd62c28547a9a8b96",
+  "sha256_hell_worktree": "f1063fe26b75a149f79a6d93c3ff790bda924da40be0e1de559daafb45ce7fe4",
+  "size_bytes": 57511,
+  "headroom_bytes": 1538,
+  "eol_note": "core.autocrlf=true on this host: the working-tree .mb differs from the blob in exactly one trailing byte (0x0A -> 0x0D), 57512 vs 57511 bytes. The harness executed the working-tree file; outputs and step counts are identical to the blob-built manifest. Known hazard, Finding 55 addendum.",
+  "engines": {
+    "oracle": {
+      "name": "oracle_classic",
+      "path": "tools/oracle_classic.py",
+      "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf",
+      "kind": "REFERENCE_MODEL",
+      "host_language": "Python 3.12.3"
+    },
+    "runner": {
+      "name": "malbolge-original",
+      "path": "runners/malbolge-original/malbolge",
+      "sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+      "kind": "MALBOLGE_RUNTIME",
+      "variant": "Classic 3^10 (59049 cells)",
+      "binary": "ELF 64-bit LSB pie executable, x86-64"
+    },
+    "harness": {
+      "path": "vm_malbolge/tests/lt_harness.py",
+      "sha256": "b3de988867287845bd4b7e20dc3671a7a8533a08fbcee3bc9bde5b9eec29a231"
+    }
+  },
+  "score": "12/12",
+  "vectors": [
+    {
+      "label": "cmp_lt(0,0)",
+      "input": "0x01000100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78906,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 78906
+    },
+    {
+      "label": "cmp_lt(0,1)",
+      "input": "0x01000101021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 81977,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 81977
+    },
+    {
+      "label": "cmp_lt(0,2)",
+      "input": "0x01000102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 81317,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 81317
+    },
+    {
+      "label": "cmp_lt(1,0)",
+      "input": "0x01010100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78906,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 78906
+    },
+    {
+      "label": "cmp_lt(1,1)",
+      "input": "0x01010101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 80238,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 80238
+    },
+    {
+      "label": "cmp_lt(1,2)",
+      "input": "0x01010102021000",
+      "want": "01",
+      "oracle_output": "01",
+      "oracle_steps": 81317,
+      "runner_output": "01",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 81317
+    },
+    {
+      "label": "cmp_lt(2,0)",
+      "input": "0x01020100021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 78906,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 78906
+    },
+    {
+      "label": "cmp_lt(2,1)",
+      "input": "0x01020101021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 80238,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 80238
+    },
+    {
+      "label": "cmp_lt(2,2)",
+      "input": "0x01020102021000",
+      "want": "00",
+      "oracle_output": "00",
+      "oracle_steps": 81309,
+      "runner_output": "00",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 81309
+    },
+    {
+      "label": "baseline1 push+out",
+      "input": "0x01411000",
+      "want": "41",
+      "oracle_output": "41",
+      "oracle_steps": 67340,
+      "runner_output": "41",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 67340
+    },
+    {
+      "label": "baseline2 lifo",
+      "input": "0x01410142101000",
+      "want": "4241",
+      "oracle_output": "4241",
+      "oracle_steps": 74398,
+      "runner_output": "4241",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 74398
+    },
+    {
+      "label": "baseline3 halt",
+      "input": "0x00",
+      "want": "",
+      "oracle_output": "",
+      "oracle_steps": 60276,
+      "runner_output": "",
+      "parity": true,
+      "pass": true,
+      "steps_reference_2026_10_15": 60276
+    }
+  ],
+  "raw_harness": [
+    "cmp_lt(0,0)          in=01000100021000   want=00     oracle=00     runner=00     steps=78906 PASS",
+    "cmp_lt(0,1)          in=01000101021000   want=01     oracle=01     runner=01     steps=81977 PASS",
+    "cmp_lt(0,2)          in=01000102021000   want=01     oracle=01     runner=01     steps=81317 PASS",
+    "cmp_lt(1,0)          in=01010100021000   want=00     oracle=00     runner=00     steps=78906 PASS",
+    "cmp_lt(1,1)          in=01010101021000   want=00     oracle=00     runner=00     steps=80238 PASS",
+    "cmp_lt(1,2)          in=01010102021000   want=01     oracle=01     runner=01     steps=81317 PASS",
+    "cmp_lt(2,0)          in=01020100021000   want=00     oracle=00     runner=00     steps=78906 PASS",
+    "cmp_lt(2,1)          in=01020101021000   want=00     oracle=00     runner=00     steps=80238 PASS",
+    "cmp_lt(2,2)          in=01020102021000   want=00     oracle=00     runner=00     steps=81309 PASS",
+    "baseline1 push+out   in=01411000         want=41     oracle=41     runner=41     steps=67340 PASS",
+    "baseline2 lifo       in=01410142101000   want=4241   oracle=4241   runner=4241   steps=74398 PASS",
+    "baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(empty) steps=60276 PASS",
+    "== 12/12"
+  ],
+  "claims": [
+    {
+      "claim": "CMP_LT prints 01 iff a < b over {0,1,2}^2, on the Malbolge Classic runtime",
+      "status": "DEMONSTRATED",
+      "evidence": "9/9 ordered pairs correct on both engines, bit-exact outputs and identical step counts"
+    },
+    {
+      "claim": "The VM core is intact on the CMP_LT image (push/out, 2-slot LIFO order, halt)",
+      "status": "DEMONSTRATED",
+      "evidence": "3/3 baselines correct on both engines"
+    },
+    {
+      "claim": "The 2026-10-15 result is reproducible and has not drifted",
+      "status": "DEMONSTRATED",
+      "evidence": "all 12 step counts identical to lt_12_12_harness.json (ts 2026-10-15T02:19:31Z)"
+    },
+    {
+      "claim": "CMP_LT is correct for operands >= 3",
+      "status": "NOT_DEMONSTRATED",
+      "evidence": "out of the claimed domain by design; the kernel classifies b into three ternary classes"
+    },
+    {
+      "claim": "CMP_LT co-executes with the 14-vector ALU and CMP_EQ in a single stored-program image",
+      "status": "NOT_DEMONSTRATED",
+      "evidence": "no such image exists (M2_FULL_STATUS.md); separate images only"
+    }
+  ],
+  "negative_control": {
+    "purpose": "prove the harness discriminates instead of rubber-stamping green",
+    "command": "python3 vm_malbolge/tests/lt_harness.py vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb",
+    "artifact": "vm_malbolge/evidence/artifacts/lt_f59_cand_C.mb",
+    "expected": "11/12, failing exactly one vector ((2,2))",
+    "observed": "11/12 — cmp_lt(2,2) prints 01 (want 00), oracle and runner agree; the other 11 vectors PASS",
+    "failing_vector": "cmp_lt(2,2)",
+    "observed_output": "01",
+    "exit_code": 1,
+    "raw_harness": [
+      "cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01     steps=79790 FAIL",
+      "== 11/12"
+    ]
+  },
+  "references": [
+    "vm_malbolge/evidence/lt_12_12_harness.json (original manifest, 2026-10-15)",
+    "vm_malbolge/LT_STATUS.md §11 (Finding 74, root cause and resolution) and §12 (this re-verification)",
+    "vm_malbolge/GT_STATUS.md (symmetric CMP_GT milestone, Finding 75)"
+  ],
+  "note": "Independent re-verification of the CMP_LT 12/12 milestone on this host, 20 days after the original run. No image was rebuilt: the committed canonical image was executed as-is. The LMAO build non-determinism (Finding 62) does not apply here — no rebuild was performed."
+}
