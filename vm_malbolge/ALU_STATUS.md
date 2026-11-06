@@ -32,16 +32,51 @@
 | `01 01 01 01 02 01 02 03 10 00` | Chained 2: $(1 + 1) - 2 = 0$ | `00` | 78,758 | 78,758 | **MATCH (PASS)** |
 | `01 02 01 01 03 01 01 02 10 00` | Chained 3: $(2 - 1) + 1 = 2$ | `02` | 77,213 | 77,213 | **MATCH (PASS)** |
 
+## Domain Limit: operandos $\ge 3$ no están cubiertos (2026-11-06)
+
+Medido con `vm_malbolge/tests/alu_domain_harness.py` sobre el binario
+comprometido (`vm_malbolge/src/mbir_alu.mb`, sha256 `b0fd9085…`, 54,691 bytes),
+dual-engine (oráculo Python `tools/oracle_classic.py` + runner C
+`runners/malbolge-original/malbolge`), grid `{0..4}²` para `ADD` (0x02) y
+`SUB` (0x03), más 14 vectores de control contra la evidencia registrada:
+
+- **Fidelidad de control:** 14/14 vectores registrados reproducen outputs **y**
+  recuentos de pasos exactos — el binario comprometido sigue siendo el que
+  emitió la evidencia original.
+- **Dominio acotado:** ADD reproduce aritmética entera en 5/25 pares del
+  grid `{0..4}²` y SUB en 4/25. Los outcomes observables son ADD {00,01,02,05,07}
+  y SUB {00,01,02} — casi todo el dominio diverge de la suma/resta entera.
+- **No es función pura de $(a,b)$:** `ADD 2+3 → 0x05` pero `ADD 3+2 → 0x07`
+  (no conmutativo; la aritmética entera sí lo es). Un `PUSH_CONST` extra dejado
+  en la pila cambia el resultado (`ADD 2+3 → 0x54` con un push extra `0x41`),
+  aunque los operandos sean idénticos.
+- **Mecanismo en el fuente:** `mbir_alu.hell` líneas 495-512 seleccionan el
+  resultado con tres flags (`SUBROUTINE_FLAG4/5/6`) y lo materializan con
+  `ROT` de constantes fijas (`load_sum_7 → ROT 21`, `load_diff_1 → ROT 3`,
+  `load_diff_0 → ROT 0`, …). La magnitud del operando no entra en el resultado.
+- **Paridad de motores:** 0 divergencias oráculo-vs-runner en cada caso medido.
+  Es una **limitación semántica del programa**, no una divergencia de
+  implementación entre los dos motores.
+
+Esto explica por qué los 8 vectores aritméticos documentados pasan (caen en
+el subconjunto donde la tabla coincide con la aritmética entera) y por qué
+cualquier operando $\ge 3$ — y de hecho casi todo el dominio de un byte —
+produce un resultado fuera de la suma/resta entera. El dominio acotado
+`{0,1,2}` de `CMP_LT`/`CMP_GT` es la misma clase de límite heredada por este
+kernel.
+
 ## Differential Bridge Evidence
 
 - `vm_malbolge/evidence/mbir_alu_smoke.json`: Complete 14-vector test suite results with SHA-256 hashes of generator, source, and binary artifacts.
 - `vm_malbolge/evidence/mbir_zig_oracle_alu.json`: Differential verification across Zig VM, Python Oracle, and C Runner on vector `01411000`.
+- `vm_malbolge/evidence/mbir_alu_domain_limit.json`: Domain-limit differential measurement over `{0..4}²` for `ADD` and `SUB` (2026-11-06).
 
 ## What is NOT demonstrated
 
 | item | obstacle |
 |---|---|
 | Arbitrary Signed / Negative Arithmetic | Subtractions producing negative results ($a < b$) underflow into Malbolge modulus ($59049$). |
+| Bounded operand domain / general ADD($\ge 3$) / SUB($\ge 3$) | The kernel classifies $b$ into three classes and materialises results with fixed `ROT` constants; integer arithmetic is only reproduced on a bounded operand subset. Operands $\ge 3$ are **not** covered. |
 | Multiplication / Division (`MUL`, `DIV`) | Multi-cycle shift-and-add algorithms require iterative quotient registers. |
 | In-memory MBIR program loader | Pre-loading bytecode stream into Malbolge RAM before program dispatch. |
 | Control Flow (`JMP`, `JZ`, `CALL`, `RET`) | Branching over an in-memory instruction stream. |

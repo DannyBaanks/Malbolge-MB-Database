@@ -123,6 +123,7 @@ Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_alu.hell`](vm_malbolge/
 - **Despacho Secuencial de 5 Opcodes**: Clasificación unificada para `HALT` (0x00), `PUSH_CONST` (0x01), `ADD` (0x02), `SUB` (0x03) y `OUT_BYTE` (0x10).
 - **Expresiones Aritméticas Encadenadas**: Soporte verificado para secuencias continuas como `(1 + 1) - 1 = 1`, `(1 + 1) - 2 = 0` y `(2 - 1) + 1 = 2`.
 - **Paridad 14/14 PASS**: Paridad diferencial bit a bit ciclo por ciclo entre el runner de C nativo y el oráculo Python ([`vm_malbolge/evidence/mbir_alu_smoke.json`](vm_malbolge/evidence/mbir_alu_smoke.json)).
+- **Límite de dominio (2026-11-06)**: el kernel clasifica el segundo operando en tres clases y materializa el resultado con constantes `ROT` fijas, por lo que la aritmética entera se reproduce solo en un subconjunto acotado del dominio; los operandos $\ge 3$ no están cubiertos. Véase la sección "Domain Limit" de [`vm_malbolge/ALU_STATUS.md`](vm_malbolge/ALU_STATUS.md) y la medida [`vm_malbolge/evidence/mbir_alu_domain_limit.json`](vm_malbolge/evidence/mbir_alu_domain_limit.json).
 
 ### 5. Kernel de Comparación Lógica: CMP_EQ (Hito P2)
 Implementado en ensamblador HeLL ([`vm_malbolge/src/mbir_p2_cmp.hell`](vm_malbolge/src/mbir_p2_cmp.hell)) a través de ([`vm_malbolge/tools/mbir_p2_cmp_gen.py`](vm_malbolge/tools/mbir_p2_cmp_gen.py)):
