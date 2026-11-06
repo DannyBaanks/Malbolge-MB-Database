@@ -2,47 +2,41 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "MALBOLGE_RUNTIME",
-  "claim": "The phase gate now works: with the exit-block phase test NOT clearing the flag (no R_), every decrement return of a phase is routed to that phase's own labels, and the second operand is genuinely classified ((0,0)->0, (0,1)->1, (0,2)->2, (0,3)->3). The first operand's class is still lost, and the cause is now precise: nothing STORES it. The classification consumes the shared `value` cell, so A's class is destroyed before B is read and nothing carries it to the comparison.",
-  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (routing fixed; first class never stored)",
+  "claim": "A's class still does not reach the comparison. The flag-storage design was implemented and assembled at 25,363 bytes, but the grid output is independent of A, which shows that arming a flag with R_FLAG_A_IS_x inside a code block does not store anything: in this codebase a flag only has effect when a DATA cell tests it.",
+  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (flag-storage for A measured and insufficient)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 345
+    "lines": 429
   },
   "artifact": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-    "size_bytes": 20481,
-    "headroom_bytes": 38568,
+    "size_bytes": 25363,
+    "headroom_bytes": 33686,
     "variant": "classic-3^10"
   },
-  "fix_applied_this_turn": {
-    "change": "the exit_decrement_loop phase test no longer carries R_, so it does not consume the phase flag on the first exit and instead routes every decrement return of the phase to that phase's own labels (exit_phase_A / exit_phase_B)",
-    "previous_attempt": "the same gate WITH R_ consumed the flag on the first return, so the second and third decrements of a phase fell through to the main block and the output became fully constant",
-    "result": "the image assembles at 20,481 bytes and the routing is correct: the second operand is classified over 0, 1, 2, 3"
-  },
-  "precise_remaining_cause": {
-    "symptom": "(0,0), (1,0), (2,0), (3,0) produce identical output; only b appears in the result",
-    "cause": "A's classification decrements the shared `value` cell and never writes the resulting class anywhere. B's classification then overwrites `value`, so by the time `compare` runs, A's class no longer exists in the machine.",
-    "why_the_routing_was_not_enough": "the routing fix makes each phase's returns reach the right labels, but no label in phase A stores the class; the phase only decides when to stop decrementing."
+  "fix_attempted": {
+    "design": "arm a dedicated FLAG_A_IS_0/1/2/GE3 at the end of each decrement-return label of phase A, then test those flags at the head of compare to select cmp_a0/cmp_a1/cmp_a2",
+    "assembly": "OK at 25,363 bytes",
+    "result": "grid output remains independent of A: (0,0), (1,0), (2,0), (3,0) are identical, and only b appears in the emitted bytes",
+    "cause": "a flag armed with R_FLAG_X inside a .CODE block, with no following MOVED to a data cell that tests it, has no lasting effect. In this codebase the flag mechanism requires a data-cell test line to consume it."
   },
   "verified_result": {
     "grid": "16 pairs, digits 0..3 x 0..3",
-    "second_operand": "classified: outputs 5 0x30/0x31/0x32/0x33 for b = 0/1/2/3",
-    "first_operand": "not stored: (0,0) and (1,0) identical",
+    "second_operand": "classified: the third output byte tracks b",
+    "first_operand": "still lost",
     "PASS": 0,
-    "engines_agree": 0,
-    "oracle_output": "emits bytes",
-    "runner_output": "empty"
+    "engines_agree": 0
   },
   "what_is_demonstrated": [
-    "The phase-gate routing bug is fixed and measured: the second operand's classification reaches the output.",
-    "A fresh from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 38,568 bytes of headroom.",
-    "The remaining defect is localized to a missing store, not to the entry, the layout or the budget."
+    "The phase-gate routing works: phase B's classification reaches the output.",
+    "The from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 33,686 bytes of headroom.",
+    "The flag-storage route for A is measured and insufficient, with its cause identified: flags need a data-cell test to persist."
   ],
   "what_remains": [
-    "Store A's class in a dedicated cell at the end of phase A (for example write a class marker cell), then read it in `compare`.",
-    "Resolve the engine disagreement on the emitted bytes.",
-    "Then the 100-vector grid and the verified evidence JSON."
+    "Store A's class in a DATA cell instead of a flag: the natural mechanism is a data cell whose test line is armed by phase A, so the cell's own content records the class.",
+    "Then read that cell back in compare.",
+    "Resolve the engine disagreement and run the 100-vector grid."
   ],
   "scope_limits": [
     "Single-digit operands only.",
