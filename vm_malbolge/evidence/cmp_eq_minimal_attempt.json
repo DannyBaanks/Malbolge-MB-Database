@@ -1,0 +1,74 @@
+{
+  "schema": "cmp-eq-minimal-attempt/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The cheapest possible CMP_EQ dispatch -- one extra opcode decrement reusing a free subroutine slot, a two-line gate instead of a second exit block, reuse of the existing op1/op2 classification, and only two new flags -- still does not assemble. All four routes to the unified image now fail, and the failure cell does not track the amount of code added: the minimal patch fails FURTHER from the limit than the larger one did.",
+  "claim_status": "NOT_BUILT (all four routes fail)",
+  "generator": "vm_malbolge/tools/cmp_eq_minimal_gen.py",
+  "patch": {
+    "regions": 9,
+    "new_flags": [
+      "CMP_GATE",
+      "CMP_RESULT"
+    ],
+    "design": [
+      "one extra opcode decrement (dec4) reusing SUBROUTINE_FLAG4, which the op2 phase uses later and which is cleared when consumed",
+      "the exit block's FLAG4 line redirected to a two-line gate (ret_dec_gate) that tests CMP_GATE and otherwise runs the original ret_op2_dec1 body -- not a second exit block",
+      "result selection reuses the existing op1 and op2 classifications (FLAG_OP2_IS_1/2/3 and the op1 decrement carries); the {0,1,2} domain makes those exact, so equality needs one test per op1 class",
+      "CMP_RESULT branches added at the four op1 classification tails"
+    ]
+  },
+  "assembly_result": {
+    "assembler": "third_party/lmao/lmao (LMAO v0.6.0)",
+    "exit_code": 1,
+    "errors": [
+      "Error: Free space exceeded (Add Malbolge command).",
+      "Internal error: Cannot generate initialization code for cell 58152.",
+      "Error: Memory usage conflict while generating initialization code."
+    ],
+    "failure_cell": 58152
+  },
+  "all_four_attempts": [
+    {
+      "route": "arithmetic image, uncompressed",
+      "failure_cell": 58955,
+      "from_limit": 94
+    },
+    {
+      "route": "arithmetic image, compressed",
+      "failure_cell": 58969,
+      "from_limit": 80,
+      "note": "closest so far"
+    },
+    {
+      "route": "loader andamio, from-scratch evaluation",
+      "failure_cell": 57619,
+      "from_limit": 1430
+    },
+    {
+      "route": "arithmetic image, minimal CMP_EQ dispatch",
+      "failure_cell": 58152,
+      "from_limit": 897
+    }
+  ],
+  "finding": [
+    "The failure cell does not track added code: the minimal dispatch (~60 lines, 2 flags) fails at 58,152 while a larger dispatch failed at 58,969. LMAO's initializer layout is non-monotonic, so predicting which patch fits is not possible without assembling.",
+    "What is stable across all four: the unified image does not assemble. The binding constraint is the Classic 59,049-cell tape together with LMAO's initializer, and no dispatch variant tried fits.",
+    "The closest attempt remains the compressed one on the arithmetic image (80 cells from the limit), so if a fifth variant is tried, varying that patch is the best starting point."
+  ],
+  "what_is_demonstrated_for_b": [
+    "The arithmetic half alone: mbir_m2_alu.hell loads a 7-byte stored program and executes ADD/SUB, 8/8 on both engines.",
+    "The loader half alone: mbir_m2_loader.hell loads prog_0..3 and runs them by PC, 4/4.",
+    "The 7-byte load extension and the opcode dispatch structure assemble on the loader's andamio (unified_loader_gen.py)."
+  ],
+  "what_remains_not_demonstrated": [
+    "One image that loads a stored program and executes ADD/SUB/CMP_EQ: four measured attempts, all rejected.",
+    "CMP_LT dispatch.",
+    "Two variable operands (cmp2_two_operand_blocker.json).",
+    "The 5+2 xlat2 borrow comparator in HeLL (E1 design, never built)."
+  ],
+  "scope_limits": [
+    "The 'from the limit' column is the repo's working interpretation of the failure cell; it is a relative measure, not an exact byte count.",
+    "Only the dispatch was varied; the arithmetic engine itself was never tuned for size."
+  ]
+}
