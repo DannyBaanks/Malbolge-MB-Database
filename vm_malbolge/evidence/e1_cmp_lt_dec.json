@@ -2,40 +2,53 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "TOOLCHAIN_ANALYSIS",
-  "claim": "Both routes to E1 are now measured and blocked. Route 1, a from-scratch .CODE layout, misroutes the entry (localized to one instruction: the working image reads stdin at step 6483, the new one HALTs at 6484). Route 2, basing the program on the working mbir_cmp_lt.hell layout, is blocked by the initializer: adding the eight cycle cells the 5+2 technique needs makes LMAO reject the image outright, even appended at the very end of .CODE.",
-  "claim_status": "NOT_DEMONSTRATED (both routes measured and blocked)",
+  "claim": "Basing the E1 program on mbir_cmp_lt.hell's VERBATIM .CODE/.DATA layout resolves every structural error the from-scratch attempt hit: all labels resolve, all flag and subroutine slots exist, the braces balance, and LMAO accepts the whole source up to the initializer budget, failing at cell 58998, which is 51 cells from the 59,049 limit. That is the closest any attempt on any front has come.",
+  "claim_status": "NOT_BUILT (51 cells short; structurally complete)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
-  "artifact": {
-    "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-    "size_bytes": 21487,
-    "note": "assembles, but the entry is misrouted so no stdin is ever read"
+  "source": {
+    "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
+    "lines": 871,
+    "base_lines_verbatim": 821
   },
-  "route_1_from_scratch_layout": {
-    "symptom": "100-vector grid 0/100, constant output, engines disagree",
-    "localized": "the instrumented trace shows the working mbir_cmp_lt.mb executes IN at step 6483 while mbir_cmp_lt_dec.mb executes HALT at step 6484, having walked an identical wandering path",
-    "cause": "the position-dependent opcode decode (op = (cell + c) % 94) routes the path to the new program's HALT cell"
-  },
-  "route_2_working_layout": {
-    "experiment": "take mbir_cmp_lt.hell verbatim and append the eight cycle cells the 5+2 technique needs (two HIGH/LOW pairs per operand) at the very END of .CODE, so no earlier address shifts",
-    "result": "LMAO rejects the image: 'The program may be too large, or a .OFFSET directive may conflict'",
-    "reading": "the working comparator image has 1,537 bytes of margin, and that margin is not usable: the initializer cost of even eight extra cells exceeds it. Appending at the end of .CODE does not help because the cost is the initializer, not the raw cell count."
-  },
-  "convergence_with_b": [
-    "E1 and the unified image hit the same wall: the Classic 59,049-cell tape together with LMAO's initializer.",
-    "For E1 the wall is specifically that the only image whose entry wiring works cannot absorb the cells the 5+2 technique requires.",
-    "For (b) the wall is that the image whose arithmetic works cannot absorb a comparison dispatch. Five attempts measured (cells 58,955 / 58,969 / 57,619 / 58,152, plus a 6-line dead-code prune against an ~80-cell gap)."
+  "design": [
+    "mbir_cmp_lt.hell is taken VERBATIM as the base (same repository, MIT): its .CODE, its .DATA and its entry wiring are untouched",
+    "only the code blocks change: the ENTRY body now routes to a decimal-digit reader, and a reader block was added before the ENTRY block",
+    "NO cell is added to .CODE or .DATA, so no address shifts and the wandering entry path still lands where the base has it wired",
+    "the 5+2 technique needs no new cells after all: the base already contains LOOP5 (Nop/Nop/Nop/Nop/MovD, a cycle of 5) and every flag cell is Nop/MovD, i.e. a cycle of 2"
   ],
-  "what_would_be_needed": [
-    "A working entry wiring in an image that still has room for the cycle cells, i.e. a program built for the 5+2 technique from the start rather than grafted onto either existing image.",
-    "That means designing the .CODE/.DATA layout together with the entry route, which is the multi-week work the repository recorded as 73 findings for the {0,1,2} comparator."
+  "assembly": {
+    "assembler": "third_party/lmao/lmao (LMAO v0.6.0)",
+    "exit_code": 1,
+    "errors": [
+      "Error: Free space exceeded (Add Malbolge command).",
+      "Internal error: Cannot generate initialization code for cell 58998.",
+      "Error: Memory usage conflict while generating initialization code."
+    ],
+    "cells_from_limit": 51,
+    "structural_errors": 0,
+    "note": "All earlier attempts on this route died on 'Cannot find label X' or 'defined multiple times' or unbalanced braces. On the verbatim base none of those occur, which proves the layout and entry wiring transfer intact."
+  },
+  "comparison_of_all_attempts": {
+    "e1_from_scratch_layout": "entry misrouted (IN at step 6483 in the working image vs HALT at 6484)",
+    "e1_verbatim_base": "51 cells short",
+    "unified_image_best": "80 cells short (compressed dispatch on mbir_m2_alu.hell)",
+    "reading": "the verbatim-base route is now the closest on every front"
+  },
+  "what_blocked_it_and_the_lever": [
+    "The 51 cells are the reader block itself, about 45 lines: three decrement slots plus their return handlers, plus the changed ENTRY body.",
+    "The lever the evidence points to: the reader does not need three separate decrement slots. The base's existing classification of op1/op2 already produces classes, and a digit reader can reuse the SAME three subroutine slots sequentially instead of adding a second classification pass."
   ],
   "what_is_demonstrated": [
-    "The generator, the HeLL source and a 21,487-byte image that assembles.",
-    "The entry failure localized to one instruction with a side-by-side trace.",
-    "That the working comparator image cannot absorb the eight cells the technique needs."
+    "The verbatim-base technique works: no structural error remains, and the layout and entry wiring transfer intact.",
+    "The 5+2 technique needs no new cells on this base: LOOP5 is a cycle of 5, any flag is a cycle of 2.",
+    "The remaining gap is 51 cells, the smallest measured anywhere in this campaign."
+  ],
+  "what_remains": [
+    "Cut about 51 cells from the reader block, most simply by reusing the base's existing classification instead of adding a second pass.",
+    "Then trace to confirm IN is reached, re-run the 100-vector grid, and resolve the engine disagreement."
   ],
   "scope_limits": [
-    "Only single-digit operands were targeted.",
-    "Eight cells is the minimum for two HIGH/LOW cycle pairs; a leaner encoding was not searched."
+    "Only single-digit operands targeted.",
+    "No code from the GPL-3 example_adder.hell; all reused code is this repository's own MIT."
   ]
 }
