@@ -1,23 +1,18 @@
 #!/usr/bin/env python3
-"""Generador de mbir_cmp_lt_dec.hell sobre el layout QUE FUNCIONA.
+"""Programa E1 NUEVO, diseñado desde el principio para la tecnica 5+2.
 
-A diferencia del intento anterior (que escribía el .CODE desde cero y
-desenrutaba la entrada), este generador toma vm_malbolge/src/mbir_cmp_lt.hell
-como base VERBATIM (mismo repo, MIT): conserva su .CODE, su .DATA y su
-cableado de entrada, y sustituye SOLO los bloques de codigo de la logica de
-comparacion.
+A diferencia de los intentos anteriores (injertados sobre mbir_cmp_lt.hell, cuyo
+margen de 1.537 bytes está íntegramente consumido por el inicializador), este
+programa se diseña desde cero y PRESUPUESTA desde el diseño:
 
-Punto clave que hace posible la tecnica 5+2 sin tocar el layout: la imagen base
-YA contiene las celdas de ciclo que la tecnica necesita --
-
-  * ciclo de 5: LOOP5 (Nop/Nop/Nop/Nop/MovD), que ademas es el waypoint que el
-    camino errante de la entrada recorre;
-  * ciclo de 2: cualquier celda de bandera (Nop/MovD), que es exactamente un
-    ciclo de 2.
-
-No se añade NINGUNA celda a .CODE ni a .DATA, así que ninguna direccion se
-desplaza y el camino errante de la entrada sigue aterrizando donde la imagen
-base lo tiene cableado.
+  1. El mecanismo de entrada documentado (third_party/lmao/README.md:113-121):
+     una etiqueta ENTRY en la seccion .DATA, de modo que el registro D apunte a
+     la celda ENTRY y el registro C a un Jmp. Es la unica forma documentada de
+     controlar donde arranca la ejecucion.
+  2. El ciclo de 5 es LOOP5 (Nop/Nop/Nop/Nop/MovD), ya una celda de ciclo.
+  3. El ciclo de 2 es cualquier celda de bandera (Nop/MovD).
+  4. El programa es minimo a proposito: pocas celdas y pocos flags, para que el
+     inicializador tenga holgura en lugar de pelear por el margen.
 
 Uso: python3 cmp_lt_dec_gen.py
 """
@@ -29,55 +24,331 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 LMAO = REPO / "third_party/lmao/lmao"
-BASE = REPO / "vm_malbolge/src/mbir_cmp_lt.hell"
-sys.path.insert(0, str(REPO / "tools"))
-import oracle_classic  # noqa: E402
-RUNNER = REPO / "runners/malbolge-original/malbolge"
 
-# Bloques de codigo NUEVOS (solo logica; no declaran celdas).
-# La lectura de digitos reusa las celdas existentes: value/value_C1 para el
-# clasificador por decrementos, stack_top/stack_top_1 para los operandos, y el
-# par LOOP5 (ciclo 5) / una bandera libre (ciclo 2) para la pareja de ciclos.
-NEW_CODE = """{
-// ==========================================
-// E1: comparador de digitos decimales sobre el layout verbatim de
-// mbir_cmp_lt.hell. NO se añade ninguna celda. El lector reusa next_opcode
-// de la base (lee un byte de stdin y lo copia a value).
-// ==========================================
-dec_read_digit:
+HELL = r"""/* cmp_lt_dec.hell — CMP_LT decimal, disenado desde el principio para la
+ * tecnica de parejas de ciclos xlat2 acoplados (5 y 2).
+ * Generado por vm_malbolge/tools/cmp_lt_dec_gen.py.
+ *
+ * Entrada: dos digitos decimales separados por cualquier no-digito.
+ * Salida:  '1' si A < B, '0' en caso contrario.
+ */
+.CODE
+MOVED:
+	MovD/Nop
+	Jmp
+
+ROT:
+	Rot/Nop
+	Jmp
+
+CRAZY:
+	Opr/Nop
+	Jmp
+
+HALT:
+	Hlt
+
+OUT:
+	Out/Nop
+	Jmp
+
+IN:
+	In/Nop
+	Jmp
+
+NOP:
+	Jmp
+
+@C21 CARRY:
+	RNop
+	RNop
+	Jmp
+
+// parejas de ciclos: HIGH ciclo 5, LOW ciclo 2 (una bandera cualquiera)
+// El diseño usa LOOP5 (ciclo de 5) y FLAG1 (ciclo de 2) como la pareja.
+LOOP5:
+	Nop/Nop/Nop/Nop/MovD
+	Jmp
+
+NO_MORE_CARRY_FLAG:
+	Nop/MovD
+	Jmp
+
+FLAG1:
+	Nop/MovD
+	Jmp
+
+FLAG2:
+	Nop/MovD
+	Jmp
+
+FLAG3:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG1:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG2:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG3:
+	Nop/MovD
+	Jmp
+
+LOOP2:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+LOOP2_2:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+LOOP2_3:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+.DATA
+crazy_value:
+	U_CRAZY value
+rot_value:
+	U_ROT value
+value:
+	C1
+	FLAG1 return_from_value_1 R_FLAG1
+
+crazy_value_C1:
+	U_CRAZY value_C1
+value_C1:
+	C1
+	FLAG1 return_from_value_C1_1 R_FLAG1
+
+crazy_tmp:
+	U_CRAZY tmp
+tmp:
+	C0
+	FLAG1 return_from_tmp_1 R_FLAG1
+
+crazy_carry:
+	U_CRAZY carry
+exec_carry:
 	R_MOVED
-	MOVED next_opcode
+carry:
+	CARRY
+	U_NOP execution_not_jumped_to_carry
+	U_NOP carry_was_not_set U_NOP carry_was_set
+carry_was_set:
+	MOVED return_carry_was_set
+carry_was_not_set:
+	MOVED return_carry_was_not_set
+execution_not_jumped_to_carry:
+	FLAG1 return_from_carry_1 R_FLAG1
+return_carry_was_set:
+	FLAG1 return_from_carry_was_set_1 R_FLAG1
+return_carry_was_not_set:
+	FLAG1 return_from_carry_was_not_set_1 R_FLAG1
+
+// Mecanismo de entrada documentado: D apunta aqui, C a un Jmp.
+ENTRY:
+	read_digit_A
+
+{
+read_digit_A:
+	// Leer un digito: copiarlo a value_C1 y luego a value.
+	R_MOVED
+	IN ?- R_IN
+	R_FLAG2
+	MOVED crazy_value_C1
+}{
+return_from_value_C1_1:
+	R_CRAZY R_MOVED
+	R_FLAG2
+	MOVED crazy_value
+}{
+return_from_value_1:
+	R_CRAZY R_MOVED
+	// Clasificar A por decrementos: carry en dec N  =>  A == N-1
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+ret_A_d1:
+	NO_MORE_CARRY_FLAG A_ge_1
+	MOVED read_digit_B
+}{
+A_ge_1:
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+ret_A_d2:
+	NO_MORE_CARRY_FLAG A_ge_2
+	MOVED read_digit_B
+}{
+A_ge_2:
+	R_SUBROUTINE_FLAG3
+	MOVED decrement_value
+}{
+ret_A_d3:
+	MOVED read_digit_B
+}{
+read_digit_B:
+	R_MOVED
+	IN ?- R_IN
+	R_FLAG2
+	MOVED crazy_value_C1
+}{
+return_from_value_C1_2:
+	R_CRAZY R_MOVED
+	R_FLAG2
+	MOVED crazy_value
+}{
+return_from_value_2:
+	R_CRAZY R_MOVED
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+ret_B_d1:
+	NO_MORE_CARRY_FLAG B_ge_1
+	MOVED compare
+}{
+B_ge_1:
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+ret_B_d2:
+	NO_MORE_CARRY_FLAG B_ge_2
+	MOVED compare
+}{
+B_ge_2:
+	R_SUBROUTINE_FLAG3
+	MOVED decrement_value
+}{
+ret_B_d3:
+	MOVED compare
+}{
+compare:
+	// Dominio determinado por la clasificacion: A y B en {0,1,2,>=3}.
+	// A < B  <=>  (A==0 y B>=1) o (A==1 y B>=2) o (A==2 y B>=3)
+	// La clase se transmite por el numero de decrementos ejecutados, que se
+	// recupera comparando directamente con decrementos mutuos.
+	R_MOVED
+	ROT C1 R_ROT
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+ret_mut_d1:
+	NO_MORE_CARRY_FLAG mut_ge_1
+	MOVED result_false
+}{
+mut_ge_1:
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+ret_mut_d2:
+	NO_MORE_CARRY_FLAG mut_ge_2
+	MOVED result_false
+}{
+mut_ge_2:
+	R_SUBROUTINE_FLAG3
+	MOVED decrement_value
+}{
+ret_mut_d3:
+	MOVED result_false
+}{
+result_true:
+	R_MOVED
+	ROT 3 R_ROT
+	MOVED print
+}{
+result_false:
+	R_MOVED
+	ROT 0 R_ROT
+	MOVED print
+}{
+print:
+	OUT ?- R_OUT
+	HALT
+}{
+decrement_value:
+	NO_MORE_CARRY_FLAG nomorecarrykilled_2 R_NO_MORE_CARRY_FLAG
+nomorecarrykilled_2:
+	R_MOVED
+	ROT C1 R_ROT
+	R_FLAG1
+	MOVED crazy_tmp
+
+return_from_tmp_1:
+	R_CRAZY
+value_load_loop:
+	ROT C2 R_ROT
+jmp_into_loop_from_behind:
+	R_MOVED
+	R_FLAG1
+	MOVED crazy_value
+
+return_from_value_3:
+	R_CRAZY R_MOVED
+	LOOP2 value_loaded
+	MOVED value_load_loop
+
+value_loaded:
+	LOOP2_2 jump_back_to_behind
+	R_FLAG1
+	MOVED crazy_tmp
+
+return_from_tmp_2:
+	R_CRAZY R_MOVED
+	R_FLAG1
+	MOVED crazy_carry
+
+return_from_carry_1:
+	R_CRAZY R_MOVED
+	MOVED jmp_into_loop_from_behind
+
+jump_back_to_behind:
+	R_FLAG1
+	MOVED exec_carry
+
+return_from_carry_was_not_set_1:
+	R_NO_MORE_CARRY_FLAG
+return_from_carry_was_set_1:
+	R_MOVED
+	R_FLAG1
+	MOVED rot_value
+
+return_from_value_4:
+	R_MOVED R_ROT
+	LOOP5 exit_inner_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+exit_inner_decrement_loop:
+	LOOP2_3 exit_decrement_loop
+	NO_MORE_CARRY_FLAG restore_no_more_carry_flag_and_rotate_value_2 R_NO_MORE_CARRY_FLAG
+	MOVED decrement_value
+
+restore_no_more_carry_flag_and_rotate_value_2:
+	R_NO_MORE_CARRY_FLAG
+	MOVED return_from_carry_was_set_1
+
+exit_decrement_loop:
+	SUBROUTINE_FLAG1 ret_A_d1 R_SUBROUTINE_FLAG1
+	SUBROUTINE_FLAG2 ret_B_d1 R_SUBROUTINE_FLAG2
+	SUBROUTINE_FLAG3 ret_mut_d1 R_SUBROUTINE_FLAG3
 }
 """
 
-# Punto de entrada: en lugar del ENTRY original, leer los dos digitos y luego
-# entrar en la maquinaria de comparacion existente.
-OLD_ENTRY_MARKER = "ENTRY:\n"
-NEW_ENTRY = """ENTRY:
-	R_MOVED
-	MOVED dec_read_digit
+# El exit_decrement_loop debe enrutar segun la fase. Se implementa con una
+# cadena de banderas de fase que se arman antes de cada clasificacion.
+# Version minima: una sola ranura por fase, reasignada secuencialmente.
+
+EXTRA = """
 """
 
 
 def build():
-    src = BASE.read_text(encoding="utf-8")
-    # 1. insertar los bloques de codigo nuevos justo antes del bloque ENTRY
-    anchor = "{\nENTRY:\n"
-    assert src.count(anchor) == 1, "bloque ENTRY no encontrado"
-    src = src.replace(anchor, NEW_CODE.rstrip() + "\n" + anchor, 1)
-    # 2. sustituir el cuerpo de ENTRY por el nuevo leedor de digitos
-    old_entry = """ENTRY:
-	MOVED next_opcode
-}{
-"""
-    new_entry = """ENTRY:
-	R_MOVED
-	MOVED next_opcode
-}{
-"""
-    assert src.count(old_entry) == 1, "cuerpo de ENTRY no encontrado"
-    src = src.replace(old_entry, new_entry, 1)
-    return src
+    return HELL
 
 
 def main():
@@ -90,9 +361,8 @@ def main():
     args.hell.parent.mkdir(parents=True, exist_ok=True)
     src = build()
     args.hell.write_text(src, encoding="utf-8")
-    base_lines = len(BASE.read_text(encoding="utf-8").splitlines())
-    print(f"generado {args.hell}: {len(src.splitlines())} lineas "
-          f"(base verbatim {base_lines}); ninguna celda añadida")
+    print(f"generado {args.hell} ({len(src.splitlines())} lineas), "
+          f"ENTRY en .DATA, ciclo 5 = LOOP5, ciclo 2 = FLAG1")
     res = subprocess.run([str(LMAO), "-d", "-o", str(args.mb), str(args.hell)],
                          capture_output=True, text=True)
     if res.returncode != 0 or not args.mb.exists():

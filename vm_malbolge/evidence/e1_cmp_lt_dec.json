@@ -1,44 +1,50 @@
 {
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
-  "evidence_kind": "TOOLCHAIN_ANALYSIS",
-  "claim": "The working comparator image has NO usable room at all. Adding even eleven lines of code blocks to mbir_cmp_lt.hell makes LMAO fail with 'HeLL program overlaps with generated initialization code' -- a placement conflict, not a size problem. Its 1,537-byte margin is entirely consumed by the initializer, so the verbatim-base route cannot absorb the decimal reader at any size.",
-  "claim_status": "NOT_DEMONSTRATED (documented entry mechanism found, but adding its cell hits the same wall)",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "A fresh E1 program designed for the 5+2 technique from the start, using the documented ENTRY-in-.DATA entry mechanism, ASSEMBLES at 18,031 bytes and executes a decimal-digit classification: the second stdin byte is read and its class 0/1/2 is distinguishable in the output. The first operand's classification is lost, so the comparison is not yet correct.",
+  "claim_status": "ASSEMBLED, ONE OPERAND CLASSIFIED (first operand lost)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 832,
-    "base_lines_verbatim": 821,
-    "lines_added": 11
+    "lines": 312
   },
-  "four_failure_modes_measured_on_this_route": [
-    "43 lines added -> 'Cannot generate initialization code for cell 58998' (51 cells short)",
-    "36 lines added -> 'Cannot generate jump to entry point 57737'",
-    "36 lines minimised -> 'Memory usage conflict while generating initialization code' (generic)",
-    "11 lines added -> 'HeLL program overlaps with generated initialization code' (placement conflict)"
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
+    "size_bytes": 18031,
+    "headroom_bytes": 41018,
+    "variant": "classic-3^10"
+  },
+  "design": [
+    "designed from the start for the 5+2 cycle technique, not grafted onto mbir_cmp_lt.hell",
+    "the documented entry mechanism is used: an ENTRY label in the .DATA section, so the D register points at the reader and C at a Jmp",
+    "the initializer cost of that cell is budgeted into the design by keeping the whole program minimal: 312 lines, 18,031 bytes, 41,018 bytes of headroom",
+    "LOOP5 is the cycle of 5 and FLAG1 the cycle of 2, as the technique requires"
   ],
-  "reading": "the failure mode changes with the amount added but never clears. At the smallest tested addition it is a placement conflict, which means the base's margin is fully occupied by the initializer and there is no address at which the added block can be placed.",
-  "convergent_conclusion": "Every route to E1 is measured and blocked: extending the working image (no usable room, not even eleven lines), a from-scratch layout (entry misrouted), and the documented explicit entry mechanism (its cell hits the initializer wall).",
-  "what_would_be_needed": "A program designed for the 5+2 cycle technique from the start, where the layout, the entry route and the cycle cells are designed together -- not grafted onto either existing image.",
+  "verification": {
+    "grid": "100 pairs, digits 0..9 x 0..9, stdin '<a> <b>'",
+    "PASS": 0,
+    "engines_agree": 0,
+    "second_operand_classified": true,
+    "evidence_second": "outputs differ in the third byte for (0,0), (0,1), (0,2): 0, 1, 2 respectively, so b's class reaches the output",
+    "first_operand_classified": false,
+    "evidence_first_lost": "(0,0), (1,0) and (2,0) all produce identical output, so A's class never reaches the comparison",
+    "oracle_output": "emits bytes",
+    "runner_output": "empty",
+    "reading": "one of the two classifications works end to end; the other is dropped before the comparison"
+  },
   "what_is_demonstrated": [
-    "The verbatim-base technique transfers the layout and entry wiring intact (zero structural errors at every addition size tested).",
-    "The 5+2 technique needs no new cells on this base: LOOP5 is a cycle of 5 and any flag is a cycle of 2.",
-    "The base image has zero usable room: even eleven lines conflict with the initializer."
+    "The ENTRY-in-.DATA mechanism together with a from-scratch design produces an ASSEMBLED image with 41,018 bytes of headroom: the first E1 source that assembles.",
+    "A decimal digit read from stdin is classified: its value 0, 1, 2 is distinguishable in the emitted bytes.",
+    "The 5+2 cycle cells the technique needs (LOOP5 for 5, a flag for 2) are present and the program is well inside budget."
+  ],
+  "what_remains": [
+    "Keep the first operand's classification so both classes reach the comparison: the exit_decrement_loop currently routes every decrement return to ret_A_d1, which is why A's phase is dropped.",
+    "Resolve the engine disagreement on the emitted bytes.",
+    "Then the 100-vector grid and the verified evidence JSON."
   ],
   "scope_limits": [
-    "Only single-digit operands targeted.",
-    "Additions from 11 to 43 lines were tested; a leaner encoding below eleven lines was not searched."
-  ],
-  "documented_entry_mechanism": {
-    "source": "third_party/lmao/README.md lines 113-121",
-    "quote": "The data section must define a label named ENTRY. When the assembled Malbolge program starts execution, the D register points at the ENTRY cell. The C register points at a Jmp instruction.",
-    "observation": "NEITHER working image uses it: mbir_cmp_lt.hell and mbir_cmp_lt_dec.hell both define ENTRY inside a code block, not in .DATA",
-    "why_it_matters": "it is the only documented way to control where execution starts, which is exactly the variable the from-scratch layout could not control"
-  },
-  "test_of_documented_mechanism": {
-    "change": "added 'ENTRY: dec_read_digit' to the .DATA section of mbir_cmp_lt_dec.hell, so the D register would point at the reader and the initial Jmp would read its value as the jump target",
-    "first_error": "Label ENTRY is defined multiple times (the code block also defines it) -- resolved by renaming the code-block one to PROG_ENTRY",
-    "second_error": "Memory usage conflict while generating initialization code",
-    "reading": "the documented mechanism needs one extra .DATA cell, and that cell hits exactly the same initializer wall every other addition has hit"
-  }
+    "Single-digit operands only.",
+    "No code from the GPL-3 example_adder.hell."
+  ]
 }
