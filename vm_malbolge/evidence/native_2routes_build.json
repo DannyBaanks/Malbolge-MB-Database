@@ -1,0 +1,147 @@
+{
+  "schema": "native-2routes-classic/1",
+  "timestamp": "2026-11-06T09:04:21.571386+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "A single Classic Malbolge image, emitted without LMAO, dispatches two routes from one entry byte with an arithmetic key and prints the expected result of each route, with every cell of the image valid under the strict loader.",
+  "claim_status": "DEMONSTRATED",
+  "generator": {
+    "path": "vm_malbolge/tools/native_two_routes_gen.py",
+    "sha256": "3cbe1d7994ebc225b358697bbc3f891b41cfa130dc3f9e39c8731feedd0d7c9f",
+    "ported_from": "BolgeForge (MIT) native_classic/constants.py + square_0_9_native_dispatcher/build_native_square.py"
+  },
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_native_2routes.mb",
+    "size_bytes": 28478,
+    "sha256": "5d9d456c002886789c39a477b28eca13da9e541ca61fce650d9f6875a964d9cd",
+    "variant": "classic-3^10",
+    "assembler": {
+      "name": "none (native emitter)",
+      "note": "no LMAO involved; the image is emitted directly"
+    }
+  },
+  "tooling": {
+    "oracle": {
+      "path": "tools/oracle_classic.py",
+      "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf"
+    },
+    "runner": {
+      "path": "runners/malbolge-original/malbolge",
+      "sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231"
+    },
+    "strict_loader_c": {
+      "path": "/tmp/opencode/mbdb/mbref/mb_ref",
+      "sha256": "463723a2484d1ea384472c232cfe89fdce7a19aa73d4d2396c2cc68f6d45889a",
+      "provenance": "BolgeForge/oracle/mb_ref.c (MIT), compiled to /tmp for this run",
+      "note": "third engine; rejects INVALID_OPCODE, NONPRINTABLE_PC, INVALID_ENCRYPTION and non-HALT exits"
+    },
+    "loader_gate": "loader_cells() in this generator (mirror of BolgeForge/tools/prove_truth_machine.py:52-71)"
+  },
+  "routing_key": {
+    "formula": "S = rot^7(crazy(48 + d, 85)); Q = crazy(S, 48)",
+    "c_branch": 85,
+    "rotations": 7,
+    "routes": {
+      "0": {
+        "meaning": "ADD 2 + 3 = 5",
+        "S": 28471,
+        "Q": 1071,
+        "k": 1,
+        "data_base": 358,
+        "recipe_length": 6,
+        "data_cells": 3
+      },
+      "1": {
+        "meaning": "CMP_EQ 2 == 2 -> 1",
+        "S": 28444,
+        "Q": 1098,
+        "k": 1,
+        "data_base": 367,
+        "recipe_length": 8,
+        "data_cells": 5
+      }
+    },
+    "route_gaps": [
+      27
+    ]
+  },
+  "summary": {
+    "routes": 2,
+    "routes_pass": 2,
+    "strict_loader": "ACCEPT",
+    "headroom_bytes": 30571,
+    "mbref_routes_pass": 2
+  },
+  "cases": [
+    {
+      "route": 0,
+      "meaning": "ADD 2 + 3 = 5",
+      "stdin_hex": "300a",
+      "expected": "5\n",
+      "oracle_out": "5\n",
+      "runner_out": "5\n",
+      "oracle_steps": 38,
+      "oracle_status": "HALTED",
+      "runner_stderr": "steps: 38 | status: HALTED",
+      "oracle_verdict": "PASS",
+      "runner_verdict": "PASS",
+      "mbref_out": "5\n",
+      "mbref_rc": 0,
+      "mbref_stderr": "",
+      "mbref_verdict": "PASS"
+    },
+    {
+      "route": 1,
+      "meaning": "CMP_EQ 2 == 2 -> 1",
+      "stdin_hex": "310a",
+      "expected": "1\n",
+      "oracle_out": "1\n",
+      "runner_out": "1\n",
+      "oracle_steps": 40,
+      "oracle_status": "HALTED",
+      "runner_stderr": "steps: 40 | status: HALTED",
+      "oracle_verdict": "PASS",
+      "runner_verdict": "PASS",
+      "mbref_out": "1\n",
+      "mbref_rc": 0,
+      "mbref_stderr": "",
+      "mbref_verdict": "PASS"
+    }
+  ],
+  "negative_control": {
+    "2": {
+      "stdin_hex": "320a",
+      "oracle_out": "",
+      "runner_out": "",
+      "oracle_steps": 387,
+      "oracle_status": "HALTED",
+      "note": "negative control: d outside the two routed addresses",
+      "mbref_out": "",
+      "mbref_rc": 3,
+      "mbref_stderr": "INVALID_ENCRYPTION: cell 28498 value 29506 step 21"
+    },
+    "5": {
+      "stdin_hex": "350a",
+      "oracle_out": "",
+      "runner_out": "",
+      "oracle_steps": 38,
+      "oracle_status": "HALTED",
+      "note": "negative control: d outside the two routed addresses",
+      "mbref_out": "",
+      "mbref_rc": 3,
+      "mbref_stderr": "INVALID_ENCRYPTION: cell 28660 value 29506 step 21"
+    }
+  },
+  "negative_control_finding": "Under the strict-loader C oracle, an entry byte outside {0,1} does not halt quietly: mb_ref rejects the image with INVALID_ENCRYPTION (a cell becomes non-printable after xlat2 encryption) around step 21. The Python oracle and the native C runner do halt with empty output for those bytes. The repository's own engines therefore do not detect this class of failure, which is the concrete value of porting the strict loader as a gate: the negative domain of this image is outside the strict-loader contract, not a controlled error.",
+  "scope_limits": [
+    "Two routes only: the entry byte must be 0 or 1. Any other byte is outside the routed domain and is reported as a negative control, not as a supported input.",
+    "Operands are literals baked into each route's recipe: no route reads a second byte from stdin.",
+    "The image is one-shot (entry byte in, result out, HALT). No instruction loop, no stored-program PC.",
+    "No new code flags are added by construction (the emitter emits a rectilinear recipe over literal data cells), which is the property that avoids the LMAO initializer wall measured in evidence/e3_lmao_initializer_budget.json."
+  ],
+  "not_demonstrated": [
+    "Arithmetic over operands read from stdin inside a route (needs an extra IN per route).",
+    "A third route, or the loader + stored-program PC in the same image.",
+    "Execution of the emitted image under the strict C oracle mb_ref (this run used the repository's Python oracle and the native C runner)."
+  ],
+  "next_step": "E6: add a third route with the same key and gate the image with mb_ref (compile oracle/mb_ref.c) as the strict-loader C oracle."
+}
