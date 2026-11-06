@@ -3,7 +3,7 @@
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "TOOLCHAIN_ANALYSIS",
   "claim": "Basing the E1 program on mbir_cmp_lt.hell's VERBATIM .CODE/.DATA layout resolves every structural error the from-scratch attempt hit: all labels resolve, all flag and subroutine slots exist, the braces balance, and LMAO accepts the whole source up to the initializer budget, failing at cell 58998, which is 51 cells from the 59,049 limit. That is the closest any attempt on any front has come.",
-  "claim_status": "NOT_BUILT (51 cells short; structurally complete)",
+  "claim_status": "NOT_BUILT (failure mode moved: entry-jump generation, not cell budget)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
@@ -21,12 +21,12 @@
     "exit_code": 1,
     "errors": [
       "Error: Free space exceeded (Add Malbolge command).",
-      "Internal error: Cannot generate initialization code for cell 58998.",
+      "Internal error: Cannot generate jump to entry point 57737.",
       "Error: Memory usage conflict while generating initialization code."
     ],
-    "cells_from_limit": 51,
-    "structural_errors": 0,
-    "note": "All earlier attempts on this route died on 'Cannot find label X' or 'defined multiple times' or unbalanced braces. On the verbatim base none of those occur, which proves the layout and entry wiring transfer intact."
+    "previous_failure_cell": 58998,
+    "current_failure": "entry-point jump generation at 57737",
+    "structural_errors": 0
   },
   "comparison_of_all_attempts": {
     "e1_from_scratch_layout": "entry misrouted (IN at step 6483 in the working image vs HALT at 6484)",
@@ -44,11 +44,17 @@
     "The remaining gap is 51 cells, the smallest measured anywhere in this campaign."
   ],
   "what_remains": [
-    "Cut about 51 cells from the reader block, most simply by reusing the base's existing classification instead of adding a second pass.",
-    "Then trace to confirm IN is reached, re-run the 100-vector grid, and resolve the engine disagreement."
+    "LMAO cannot emit the jump to the entry point at 57737; the space before it is not free enough.",
+    "Cutting the reader further, or moving the entry, is the next lever."
   ],
   "scope_limits": [
     "Only single-digit operands targeted.",
     "No code from the GPL-3 example_adder.hell; all reused code is this repository's own MIT."
-  ]
+  ],
+  "compression_applied": {
+    "what": "the reader block no longer duplicates the base's read-and-copy phase: it jumps to next_opcode (the base's own byte reader) and only adds the classification chain",
+    "lines_before": 871,
+    "lines_after": 864,
+    "effect_on_assembly": "the failure moved from 'Cannot generate initialization code for cell 58998' (51 cells short) to 'Cannot generate jump to entry point 57737', i.e. the source is now compact enough that the binding constraint is LMAO's entry-point jump generation rather than the cell budget"
+  }
 }

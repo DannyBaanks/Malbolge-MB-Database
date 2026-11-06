@@ -40,22 +40,19 @@ RUNNER = REPO / "runners/malbolge-original/malbolge"
 # par LOOP5 (ciclo 5) / una bandera libre (ciclo 2) para la pareja de ciclos.
 NEW_CODE = """{
 // ==========================================
-// E1: comparador decimal (digitps 0..9) sobre el layout de mbir_cmp_lt.hell
-// No se añade ninguna celda: se reusan LOOP5 (ciclo 5) y una bandera (ciclo 2).
+// E1: comparador de digitos decimales sobre el layout verbatim de
+// mbir_cmp_lt.hell. NO se añade ninguna celda: se reusan LOOP5 (ciclo de 5,
+// ya presente en la base) y cualquier bandera (Nop/MovD = ciclo de 2).
+// El lector reusa next_opcode de la base para leer y copiar a value, y la
+// clasificacion reusa las tres ranuras SUBROUTINE_FLAG4/5/6 secuencialmente
+// (la base las usa para op2 DESPUES, y cada flag se limpia al consumirse).
 // ==========================================
 dec_read_digit:
-	// Leer un digito ASCII y clasificarlo por decrementos sobre value.
+	// la base ya lee un byte y lo copia a value en next_opcode
 	R_MOVED
-	IN ?- R_IN
-	R_FLAG2
-	MOVED crazy_value_C1
+	MOVED next_opcode
 }{
 ret_dec_c1:
-	R_CRAZY R_MOVED
-	R_FLAG2
-	MOVED crazy_value
-}{
-ret_dec_val:
 	R_CRAZY R_MOVED
 	R_SUBROUTINE_FLAG4
 	MOVED decrement_value
@@ -77,10 +74,6 @@ dec_ge_2:
 	MOVED decrement_value
 }{
 ret_dec_d3:
-	NO_MORE_CARRY_FLAG dec_ge_3
-	MOVED dec_done
-}{
-dec_ge_3:
 	MOVED dec_done
 }{
 dec_done:
@@ -111,7 +104,7 @@ def build():
 """
     new_entry = """ENTRY:
 	R_MOVED
-	MOVED dec_read_digit
+	MOVED next_opcode
 }{
 """
     assert src.count(old_entry) == 1, "cuerpo de ENTRY no encontrado"
