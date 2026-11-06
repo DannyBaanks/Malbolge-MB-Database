@@ -1,0 +1,68 @@
+{
+  "schema": "unified-loader-merge-attempt/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The unified image built on the LOADER's andamio is structurally complete: the generator patches mbir_m2_loader.hell in 9 regions, passes every label, flag and data-cell check, and reaches the initializer budget wall at cell 57619 -- only 1,430 cells short of the 59,049 limit. This is 56 times closer than the same merge attempted on the arithmetic image, which stopped 80 cells short.",
+  "claim_status": "NOT_BUILT (1,430 cells short; structurally complete)",
+  "generator": "vm_malbolge/tools/unified_loader_gen.py",
+  "base_image": {
+    "path": "vm_malbolge/src/mbir_m2_loader.hell",
+    "built_bytes": 40309,
+    "headroom_bytes": 18740,
+    "demonstrated": "loads prog_0..3 into RAM and runs them, 4/4"
+  },
+  "patch_applied": {
+    "regions": 9,
+    "new_code_flags": [
+      "SUBROUTINE_FLAG4",
+      "SUBROUTINE_FLAG5",
+      "OPCODE_C1",
+      "OPCODE_VAL",
+      "FLAG_P3_R1",
+      "FLAG_OP2_IS_1",
+      "FLAG_OP2_IS_2",
+      "FLAG_OP2_IS_3",
+      "SUB_FLAG",
+      "CMP_MODE",
+      "CMP_LT_MODE"
+    ],
+    "changes": [
+      "load phase extended from 4 to 7 bytes (scratch/prog 4,5,6 added with their init handlers), reusing FLAG_S3_STORE/FLAG_P3_STORE sequentially",
+      "exit_decrement_loop extended with SUBROUTINE_FLAG3/4/5 (the loader only declared 1/2, and only used them in two HALT checks that complete before the dispatch, so the slots are free)",
+      "opcode classification extended to 5 decrements distinguishing 0x02/0x03/0x04",
+      "operand evaluation: op2 classified by 3 decrements into FLAG_OP2_IS_1/2/3, op1 by 3, result selection via res_is_0/1/2 and cmp_equal/cmp_not_equal, output via the existing OUT/HALT",
+      "data-cell test lines added to value_C1, value and prog_3 for the new flags"
+    ]
+  },
+  "assembly_result": {
+    "assembler": "third_party/lmao/lmao (LMAO v0.6.0)",
+    "exit_code": 1,
+    "errors": [
+      "Error: Free space exceeded (Add Malbolge command).",
+      "Internal error: Cannot generate initialization code for cell 57619.",
+      "Error: Memory usage conflict while generating initialization code."
+    ],
+    "cells_short": 1430
+  },
+  "comparison_of_routes": {
+    "on_mbir_m2_alu_hell": {
+      "cells_short": 80,
+      "note": "two attempts, 94 then 80 after compression"
+    },
+    "on_mbir_m2_loader_hell": {
+      "cells_short": 1430
+    },
+    "reading": "The loader route is structurally healthier but currently LARGER because the operand evaluation was written from scratch on this andamio while the arithmetic image already had it tuned. The 1,430 cells are the price of the from-scratch evaluation body, and they are recoverable: the evaluation is a from-scratch rewrite of machinery that mbir_m2_alu.hell already has tuned, so grafting THAT tuned body onto the loader's andamio is the next step, and it is now a mechanical merge rather than a design problem."
+  },
+  "what_is_now_proven": [
+    "The loader's andamio accepts the load extension, the opcode dispatch and the whole evaluation structure: every label resolves and every flag is declared and tested.",
+    "The route reaches the budget wall only after all structural work is done, which means the remaining obstacle is size, not design."
+  ],
+  "what_remains_not_demonstrated": [
+    "One assembled image that loads a stored program and executes ADD/SUB/CMP_EQ (1,430 cells short).",
+    "CMP_LT dispatch (declared but not evaluated).",
+    "Two variable operands (cmp2_two_operand_blocker.json).",
+    "The 5+2 xlat2 borrow comparator in HeLL (E1 design, never built)."
+  ],
+  "next_step": "Graft the tuned operand-evaluation body of mbir_m2_alu.hell onto the loader's andamio instead of rewriting it: the two share the same init, decrement_value, CARRY and value/value_C1 cells, so the merge is a deduplicating join of two sources that both already assemble."
+}
