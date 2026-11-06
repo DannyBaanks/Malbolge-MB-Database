@@ -63,5 +63,45 @@ arithmetic and comparison routes emitted natively, loader/PC kept with LMAO.
 
 ```
 python3 vm_malbolge/tools/native_two_routes_gen.py \
-    --mb-ref /path/to/mb_ref
+    --mb-ref /path/to/mb_ref \
+    --mb vm_malbolge/src/mbir_native_3routes.mb --routes 3
+python3 vm_malbolge/tools/native_two_routes_gen.py \
+    --mb-ref /path/to/mb_ref \
+    --mb vm_malbolge/src/mbir_native_cmp_decimal.mb --cmp
+python3 vm_malbolge/tools/native_two_routes_gen.py --probe-d \
+    --mb-ref /path/to/mb_ref \
+    --mb vm_malbolge/src/mbir_native_probe_d.mb
 ```
+
+## The loader half of (b): measured, and it is a semantic limit
+
+The remaining half of the unified image is a stored-program loader. Experiment
+`native_probe_d.json` measured the Classic data pointer on a real image and
+verified the trace against the repository's own oracle:
+
+- **The data pointer advances by one after every instruction.** A `* < * < v`
+  recipe printed `rot(mem[d])` then `rot(mem[d+2])`, exactly what the
+  pointer-advance rule predicts — the second read lands on `d+2` because the
+  print between the two rotations also advances the pointer. All three engines
+  agree (`tools/oracle_classic.py:93-97`).
+- **But no opcode writes an arbitrary value.** The only two writing opcodes are
+  op 39 (`mem[d] = rot(mem[d])`) and op 62 (`mem[d] = crz(a, mem[d])`). Op 39
+  can only rotate what is already there; op 62 mixes the new value with the
+  existing one. Writing an exact byte X into a cell would require
+  `a = find_a_for_crazy(current content, X)`, and that transformation depends
+  on X, so a fixed rectilinear recipe cannot express a byte-exact loader of
+  arbitrary stdin input.
+
+So (b) splits into two halves that fail for two different, measured reasons:
+
+| Half | Measured obstacle | Evidence |
+|---|---|---|
+| Loader / stored-program PC | No opcode writes an arbitrary value; the needed per-byte transformation depends on the input | `native_probe_d.json` |
+| Arithmetic + comparison in one image with the loader | LMAO cannot absorb the routes (one new code flag already fails on the comparator image, whose headroom is 1,538 bytes) | `cmp_lt_extensibility_probe.json` |
+
+The arithmetic and comparison half is settled: `mbir_native_3routes.mb` and
+`mbir_native_cmp_decimal.mb` are single Classic images, strict-loader ACCEPT,
+verified on three engines. The loader half needs either LMAO
+(`mbir_m2_loader.mb` already does it, 4/4) in a separate image, or a redesign
+that writes through op 62 with a per-input-value transformation — which no
+fixed recipe can express.

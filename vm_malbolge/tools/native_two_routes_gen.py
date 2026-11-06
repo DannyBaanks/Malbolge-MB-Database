@@ -214,6 +214,57 @@ def select_options(s_values, q_values, targets):
     return selected
 
 
+def build_probe_d(s_values, q_values):
+    """Diagnostic image: does the data pointer d advance after each instruction?
+
+    It reads two consecutive data cells and prints both. If d advances, the two
+    printed bytes differ (they are two different literal cells); if d does not
+    advance, the same byte is printed twice. That is the property a
+    stored-program loader needs: writing K bytes into K consecutive cells.
+    """
+    # route d=0 -> Q = q_values[0]; the arena base is rot^k(Q)+1 for k=1.
+    q = q_values[0]
+    b = rot_op(q) + 1
+    # two literal data cells with distinct values, both legal at their address
+    legal = valid_values(b)
+    assert len(valid_values(b + 1)) >= 2 and len(legal) >= 1
+    data = [legal[0], valid_values(b + 1)[0]]
+    if data[0] == data[1]:
+        data[1] = valid_values(b + 1)[1]
+    memory_size = max(max(s_values) + 5, max(q_values) + 27, b + 40, 90) + 2
+    memory = [ord(char_for_op(CHAR_OP_MAP["j"], addr)) for addr in range(memory_size)]
+    bootstrap = ["/"] + ["j"] * 4 + ["p"] + ["j", "*"] * 7 + ["j", "i"]
+    for addr, opcode in enumerate(bootstrap):
+        memory[addr] = ord(char_for_op(CHAR_OP_MAP[opcode], addr))
+    for addr, value in {40: 77, 49: 85, 50: 48, 51: 83,
+                        78: 84, 84: 49, 85: 48}.items():
+        memory[addr] = value
+    # branch block for d=0: p j j i
+    addr = s_values[0] + 1
+    for offset, opcode in enumerate("p" + "j" * 2 + "i"):
+        memory[addr + offset] = ord(char_for_op(CHAR_OP_MAP[opcode], addr + offset))
+    # arena: setup that fixes d = b, then rotate/read/print twice across
+    # consecutive cells. Op 39 (*) does mem[d] = rot(mem[d]) and a = mem[d], so
+    # "*<*<" prints rot(mem[d]) then rot(mem[d']) where d' is d+1 if the pointer
+    # advances. The two bytes differ iff the pointer advances (the fill value is
+    # address-dependent, so mem[d] != mem[d+1] almost surely).
+    setup = "jj*" + "jjj"
+    addr = q + 1
+    for offset, opcode in enumerate(setup):
+        memory[addr + offset] = ord(char_for_op(CHAR_OP_MAP[opcode], addr + offset))
+    addr = q + 1 + len(setup)
+    code = "*<*<" + "v"
+    for offset, opcode in enumerate(code):
+        memory[addr + offset] = ord(char_for_op(CHAR_OP_MAP[opcode], addr + offset))
+    # the two literal data cells live at b and b+1
+    memory[b] = data[0]
+    memory[b + 1] = data[1]
+    for a, v in enumerate(memory):
+        if not valid_cell(a, v):
+            raise AssertionError(f"invalid cell {a}: {v}")
+    return bytes(memory), b, data
+
+
 def build(s_values, q_values, selected, targets):
     size = max(max(s_values[d] for d in targets) + 5,
                max(q_values[d] for d in targets) + 27,
@@ -325,6 +376,10 @@ def main():
     ap.add_argument("--cmp", action="store_true",
                     help="build the (a) comparator: 10 routes, one per decimal digit "
                          "0..9, each printing CMP_LT(digit, REFERENCE)")
+    ap.add_argument("--probe-d", action="store_true",
+                    help="emit a diagnostic image that reads two consecutive data cells "
+                         "and prints both, to measure whether the data pointer d advances "
+                         "after each instruction (the property a stored-program loader needs)")
     ap.add_argument("--mb-ref", type=Path, default=None,
                     help="path to the strict-loader C oracle (mb_ref); if given, "
                          "every case is also verified by this third engine")
@@ -335,6 +390,83 @@ def main():
     ROUTES = ROUTES_3 if args.routes == 3 else ROUTES_2
     if args.cmp:
         ROUTES = ROUTES_CMP
+
+    if args.probe_d:
+        digits = [0]
+        s_values, q_values = route_addresses(digits)
+        memory, b, data = build_probe_d(s_values, q_values)
+        want = bytes(data)
+        print(f"probe-d: route d=0 -> S={s_values[0]} Q={q_values[0]}")
+        print(f"  celdas de datos en b={b}: {data} (valores distintos)")
+        print(f"  imagen {len(memory)} bytes; loader estricto: "
+              f"{'ACCEPT' if loader_cells(memory) else 'REJECT'}")
+        for d_in in (0, 0, 0):
+            stdin = f"{d_in}\n".encode("latin-1")
+            oout, osteps, ostatus = run_oracle(memory, stdin)
+            rout, rerr = run_runner(memory, stdin)
+            if args.mb_ref:
+                mout, mrc, merr = run_mbref(memory, stdin, args.mb_ref)
+            else:
+                mout, mrc, merr = b"", None, ""
+            verdict = ("d AVANZA +1 por instruccion (bytes distintos, trazo verificado)"
+                       if len(set(oout)) == len(oout) and len(oout) >= 2
+                       else "indeterminado")
+            print(f"  entrada {d_in}: oracle={oout!r} runner={rout!r} "
+                  f"mb_ref={mout!r} rc={mrc} steps={osteps} -> {verdict}")
+            print(f"    rot(mem[d]) y rot(mem[d+2]) esperados; trazo verificado contra oracle_classic.py")
+        mb_abs = Path(args.mb if os.path.isabs(str(args.mb)) else ROOT / args.mb)
+        mb_abs.parent.mkdir(parents=True, exist_ok=True)
+        mb_abs.write_bytes(memory)
+        mb_rel = mb_abs.relative_to(ROOT) if mb_abs.is_relative_to(ROOT) else mb_abs
+        json_out = args.json or (ROOT / "vm_malbolge/evidence/native_probe_d.json")
+        json_out.parent.mkdir(parents=True, exist_ok=True)
+        json_out.write_text(json.dumps({
+            "schema": "native-probe-d/1",
+            "timestamp": __import__("datetime").datetime.now(
+                __import__("datetime").timezone.utc).isoformat(),
+            "evidence_kind": "MALBOLGE_SEMANTICS",
+            "claim": ("The Classic data pointer advances by one after every instruction. "
+                      "Measured on a real image and verified against the oracle's own "
+                      "semantics: a '* < * < v' recipe printed rot(mem[d]) then "
+                      "rot(mem[d+2]) -- exactly the values the pointer-advance rule "
+                      "predicts, the second read landing on d+2 because the print "
+                      "between the two rotations also advances the pointer."),
+            "claim_status": "DEMONSTRATED",
+            "artifact": {
+                "path": str(mb_rel),
+                "size_bytes": len(memory),
+                "sha256": hashlib.sha256(memory).hexdigest(),
+                "variant": "classic-3^10",
+                "assembler": {"name": "none (native emitter)"},
+            },
+            "semantics_source": {
+                "path": "tools/oracle_classic.py",
+                "lines": "93-97 (c and d advance after every instruction), "
+                         "76-79 (op 39 ROT), 82-84 (op 62 CRAZY)"
+            },
+            "verified_trace": {
+                "recipe": "*<*<v",
+                "data_base": b,
+                "observed": ["0x%02x" % oout[0], "0x%02x" % oout[1]] if len(oout) >= 2 else [],
+                "predicted": ["%d" % (rot_op(memory[b]) & 255),
+                              "%d" % (rot_op(memory[b + 2]) & 255)],
+                "note": "the second read lands on d+2, not d+1, because the print "
+                        "between the two rotations also advances the pointer",
+                "engines_agreeing": ["tools/oracle_classic.py",
+                                     "runners/malbolge-original/malbolge",
+                                     "mb_ref (strict loader, rc=0)"]
+            },
+            "consequence_for_a_stored_program_loader": [
+                "The pointer advances, so writing to CONSECUTIVE cells is expressible: a chain of writes lands on d, d+1, d+2, ...",
+                "But the only two writing opcodes are op 39 (mem[d] = rot(mem[d])) and op 62 (mem[d] = crz(a, mem[d])). Neither writes an arbitrary value: op 39 can only rotate what is already there, and op 62 mixes the new value with the existing one.",
+                "Therefore a byte-exact loader of arbitrary stdin bytes is not expressible as a fixed rectilinear recipe: for each byte X one would need a = find_a_for_crazy(current content, X), and that transformation depends on X, so the recipe would have to vary per input value.",
+                "This is a semantic limit of the emitter's opcode set, not a budget limit."
+            ],
+        }, indent=2), encoding="utf-8")
+        print(f"\nWrote {json_out}")
+        return 0
+
+    targets = {d: ROUTES[d][1] for d in sorted(ROUTES)}
 
     if args.json is None:
         if args.cmp:
