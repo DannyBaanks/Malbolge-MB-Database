@@ -1,0 +1,5673 @@
+{
+  "schema": "e0-lmao-example-adder/1",
+  "timestamp": "2026-11-06T08:50:45.425913+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "The LMAO v0.6.0 example adder, assembled with the vendored LMAO of this repository, sums two decimal numbers of up to three digits over its published domain, including carries that overflow to a fourth digit.",
+  "claim_status": "DEMONSTRATED",
+  "artifact": {
+    "path": "third_party/lmao/example_adder.hell",
+    "sha256": "3de580abba03da59af5172e04da9a0822bfe50cb152b9b781a03af451a30fe6e",
+    "built_to": "/tmp/opencode/mbdb/adder/example_adder.mb",
+    "built_sha256": "eed0e44d5f3220a6e8ec83a78b2d23b1ab1245d0682d9fb45fb07437df132d27",
+    "built_size_bytes": 55725,
+    "limit_bytes": 59049,
+    "headroom_bytes": 3324,
+    "variant": "classic-3^10"
+  },
+  "assembler": {
+    "name": "LMAO",
+    "version": "0.6.0",
+    "binary_path": "third_party/lmao/lmao",
+    "command": "lmao -d -o example_adder.mb third_party/lmao/example_adder.hell"
+  },
+  "tooling": {
+    "oracle": {
+      "path": "tools/oracle_classic.py",
+      "sha256": "5dae8f31eaa296fdc5bb1a65b9bab93e94b3f230de5d1929d5d5d904dd4778cf"
+    },
+    "runner": {
+      "path": "runners/malbolge-original/malbolge",
+      "sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231"
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "linux"
+  },
+  "generation_command": "python3 /tmp/opencode/mbdb/adder/adder_verification.py --json vm_malbolge/evidence/e0_lmao_example_adder.json",
+  "summary": {
+    "total_vectors": 475,
+    "runner_pass": 475,
+    "runner_fail": 0,
+    "oracle_pass": 120,
+    "oracle_total": 120,
+    "oracle_fail": 0,
+    "levels": {
+      "N1": {
+        "total": 100,
+        "pass": 100,
+        "fail": 0
+      },
+      "N2": {
+        "total": 100,
+        "pass": 100,
+        "fail": 0
+      },
+      "N3": {
+        "total": 225,
+        "pass": 225,
+        "fail": 0
+      },
+      "N4": {
+        "total": 50,
+        "pass": 50,
+        "fail": 0
+      }
+    },
+    "newline_divergence_cases": 119,
+    "newline_divergence_digits_agree": 119
+  },
+  "newline_divergence": {
+    "description": "The two engines agree on the digits of the sum but not on the trailing newline: the C runner emits one 0x0a more than the Python oracle. This is the EOF/newline semantics difference already known in this repository.",
+    "cases": [
+      {
+        "a": 0,
+        "b": 0,
+        "runner_hex": "300a0a",
+        "oracle_hex": "300a",
+        "digits_agree": true,
+        "runner_steps": 154219,
+        "oracle_steps": 154219
+      },
+      {
+        "a": 0,
+        "b": 1,
+        "runner_hex": "310a0a",
+        "oracle_hex": "310a",
+        "digits_agree": true,
+        "runner_steps": 154816,
+        "oracle_steps": 154816
+      },
+      {
+        "a": 0,
+        "b": 2,
+        "runner_hex": "320a0a",
+        "oracle_hex": "320a",
+        "digits_agree": true,
+        "runner_steps": 154819,
+        "oracle_steps": 154819
+      },
+      {
+        "a": 0,
+        "b": 3,
+        "runner_hex": "330a0a",
+        "oracle_hex": "330a",
+        "digits_agree": true,
+        "runner_steps": 154824,
+        "oracle_steps": 154824
+      },
+      {
+        "a": 0,
+        "b": 4,
+        "runner_hex": "340a0a",
+        "oracle_hex": "340a",
+        "digits_agree": true,
+        "runner_steps": 154827,
+        "oracle_steps": 154827
+      },
+      {
+        "a": 0,
+        "b": 5,
+        "runner_hex": "350a0a",
+        "oracle_hex": "350a",
+        "digits_agree": true,
+        "runner_steps": 154832,
+        "oracle_steps": 154832
+      },
+      {
+        "a": 0,
+        "b": 6,
+        "runner_hex": "360a0a",
+        "oracle_hex": "360a",
+        "digits_agree": true,
+        "runner_steps": 154835,
+        "oracle_steps": 154835
+      },
+      {
+        "a": 0,
+        "b": 7,
+        "runner_hex": "370a0a",
+        "oracle_hex": "370a",
+        "digits_agree": true,
+        "runner_steps": 154840,
+        "oracle_steps": 154840
+      },
+      {
+        "a": 0,
+        "b": 8,
+        "runner_hex": "380a0a",
+        "oracle_hex": "380a",
+        "digits_agree": true,
+        "runner_steps": 154843,
+        "oracle_steps": 154843
+      },
+      {
+        "a": 0,
+        "b": 9,
+        "runner_hex": "390a0a",
+        "oracle_hex": "390a",
+        "digits_agree": true,
+        "runner_steps": 154846,
+        "oracle_steps": 154846
+      },
+      {
+        "a": 1,
+        "b": 0,
+        "runner_hex": "310a0a",
+        "oracle_hex": "310a",
+        "digits_agree": true,
+        "runner_steps": 154814,
+        "oracle_steps": 154814
+      },
+      {
+        "a": 1,
+        "b": 1,
+        "runner_hex": "320a0a",
+        "oracle_hex": "320a",
+        "digits_agree": true,
+        "runner_steps": 154830,
+        "oracle_steps": 154830
+      }
+    ]
+  },
+  "cases": [
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 0,
+      "runner_hex": "300a0a",
+      "runner_steps": 154219,
+      "digits": "30",
+      "want": "0"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 1,
+      "runner_hex": "310a0a",
+      "runner_steps": 154816,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 2,
+      "runner_hex": "320a0a",
+      "runner_steps": 154819,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 3,
+      "runner_hex": "330a0a",
+      "runner_steps": 154824,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 4,
+      "runner_hex": "340a0a",
+      "runner_steps": 154827,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 5,
+      "runner_hex": "350a0a",
+      "runner_steps": 154832,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 6,
+      "runner_hex": "360a0a",
+      "runner_steps": 154835,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 7,
+      "runner_hex": "370a0a",
+      "runner_steps": 154840,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 8,
+      "runner_hex": "380a0a",
+      "runner_steps": 154843,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 0,
+      "b": 9,
+      "runner_hex": "390a0a",
+      "runner_steps": 154846,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 0,
+      "runner_hex": "310a0a",
+      "runner_steps": 154814,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 1,
+      "runner_hex": "320a0a",
+      "runner_steps": 154830,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 2,
+      "runner_hex": "330a0a",
+      "runner_steps": 154651,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 3,
+      "runner_hex": "340a0a",
+      "runner_steps": 154838,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 4,
+      "runner_hex": "350a0a",
+      "runner_steps": 154830,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 5,
+      "runner_hex": "360a0a",
+      "runner_steps": 154333,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 6,
+      "runner_hex": "370a0a",
+      "runner_steps": 154838,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 7,
+      "runner_hex": "380a0a",
+      "runner_steps": 154854,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 8,
+      "runner_hex": "390a0a",
+      "runner_steps": 154673,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 1,
+      "b": 9,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161204,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 0,
+      "runner_hex": "320a0a",
+      "runner_steps": 154818,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 1,
+      "runner_hex": "330a0a",
+      "runner_steps": 154652,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 2,
+      "runner_hex": "340a0a",
+      "runner_steps": 154655,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 3,
+      "runner_hex": "350a0a",
+      "runner_steps": 154831,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 4,
+      "runner_hex": "360a0a",
+      "runner_steps": 154321,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 5,
+      "runner_hex": "370a0a",
+      "runner_steps": 154326,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 6,
+      "runner_hex": "380a0a",
+      "runner_steps": 154842,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 7,
+      "runner_hex": "390a0a",
+      "runner_steps": 154674,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 8,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161021,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 2,
+      "b": 9,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161193,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 0,
+      "runner_hex": "330a0a",
+      "runner_steps": 154821,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 1,
+      "runner_hex": "340a0a",
+      "runner_steps": 154837,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 2,
+      "runner_hex": "350a0a",
+      "runner_steps": 154829,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 3,
+      "runner_hex": "360a0a",
+      "runner_steps": 154503,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 4,
+      "runner_hex": "370a0a",
+      "runner_steps": 154495,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 5,
+      "runner_hex": "380a0a",
+      "runner_steps": 154511,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 6,
+      "runner_hex": "390a0a",
+      "runner_steps": 154843,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 7,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161203,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 8,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161191,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 3,
+      "b": 9,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161378,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 0,
+      "runner_hex": "340a0a",
+      "runner_steps": 154825,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 1,
+      "runner_hex": "350a0a",
+      "runner_steps": 154830,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 2,
+      "runner_hex": "360a0a",
+      "runner_steps": 154320,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 3,
+      "runner_hex": "370a0a",
+      "runner_steps": 154496,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 4,
+      "runner_hex": "380a0a",
+      "runner_steps": 154499,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 5,
+      "runner_hex": "390a0a",
+      "runner_steps": 154331,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 6,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161191,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 7,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161192,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 8,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161195,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 4,
+      "b": 9,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161200,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 0,
+      "runner_hex": "350a0a",
+      "runner_steps": 154828,
+      "digits": "35",
+      "want": "5"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 1,
+      "runner_hex": "360a0a",
+      "runner_steps": 154331,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 2,
+      "runner_hex": "370a0a",
+      "runner_steps": 154323,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 3,
+      "runner_hex": "380a0a",
+      "runner_steps": 154510,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 4,
+      "runner_hex": "390a0a",
+      "runner_steps": 154329,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 5,
+      "runner_hex": "31300a0a",
+      "runner_steps": 160689,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 6,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161190,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 7,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161206,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 8,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161027,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 5,
+      "b": 9,
+      "runner_hex": "31340a0a",
+      "runner_steps": 161214,
+      "digits": "3134",
+      "want": "14"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 0,
+      "runner_hex": "360a0a",
+      "runner_steps": 154832,
+      "digits": "36",
+      "want": "6"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 1,
+      "runner_hex": "370a0a",
+      "runner_steps": 154837,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 2,
+      "runner_hex": "380a0a",
+      "runner_steps": 154840,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 3,
+      "runner_hex": "390a0a",
+      "runner_steps": 154843,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 4,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161190,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 5,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161191,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 6,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161707,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 7,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161541,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 8,
+      "runner_hex": "31340a0a",
+      "runner_steps": 161544,
+      "digits": "3134",
+      "want": "14"
+    },
+    {
+      "level": "N1",
+      "a": 6,
+      "b": 9,
+      "runner_hex": "31350a0a",
+      "runner_steps": 161720,
+      "digits": "3135",
+      "want": "15"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 0,
+      "runner_hex": "370a0a",
+      "runner_steps": 154835,
+      "digits": "37",
+      "want": "7"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 1,
+      "runner_hex": "380a0a",
+      "runner_steps": 154851,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 2,
+      "runner_hex": "390a0a",
+      "runner_steps": 154670,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 3,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161201,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 4,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161189,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 5,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161205,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 6,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161539,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 7,
+      "runner_hex": "31340a0a",
+      "runner_steps": 161555,
+      "digits": "3134",
+      "want": "14"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 8,
+      "runner_hex": "31350a0a",
+      "runner_steps": 161547,
+      "digits": "3135",
+      "want": "15"
+    },
+    {
+      "level": "N1",
+      "a": 7,
+      "b": 9,
+      "runner_hex": "31360a0a",
+      "runner_steps": 161221,
+      "digits": "3136",
+      "want": "16"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 0,
+      "runner_hex": "380a0a",
+      "runner_steps": 154839,
+      "digits": "38",
+      "want": "8"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 1,
+      "runner_hex": "390a0a",
+      "runner_steps": 154671,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 2,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161018,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 3,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161190,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 4,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161193,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 5,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161027,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 6,
+      "runner_hex": "31340a0a",
+      "runner_steps": 161543,
+      "digits": "3134",
+      "want": "14"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 7,
+      "runner_hex": "31350a0a",
+      "runner_steps": 161548,
+      "digits": "3135",
+      "want": "15"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 8,
+      "runner_hex": "31360a0a",
+      "runner_steps": 161038,
+      "digits": "3136",
+      "want": "16"
+    },
+    {
+      "level": "N1",
+      "a": 8,
+      "b": 9,
+      "runner_hex": "31370a0a",
+      "runner_steps": 161214,
+      "digits": "3137",
+      "want": "17"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 0,
+      "runner_hex": "390a0a",
+      "runner_steps": 154840,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 1,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161199,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 2,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161188,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 3,
+      "runner_hex": "31320a0a",
+      "runner_steps": 161374,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 4,
+      "runner_hex": "31330a0a",
+      "runner_steps": 161196,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 5,
+      "runner_hex": "31340a0a",
+      "runner_steps": 161211,
+      "digits": "3134",
+      "want": "14"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 6,
+      "runner_hex": "31350a0a",
+      "runner_steps": 161717,
+      "digits": "3135",
+      "want": "15"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 7,
+      "runner_hex": "31360a0a",
+      "runner_steps": 161219,
+      "digits": "3136",
+      "want": "16"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 8,
+      "runner_hex": "31370a0a",
+      "runner_steps": 161212,
+      "digits": "3137",
+      "want": "17"
+    },
+    {
+      "level": "N1",
+      "a": 9,
+      "b": 9,
+      "runner_hex": "31380a0a",
+      "runner_steps": 161398,
+      "digits": "3138",
+      "want": "18"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 0,
+      "runner_hex": "300a0a",
+      "runner_steps": 154219,
+      "digits": "30",
+      "want": "0"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 1,
+      "runner_hex": "310a0a",
+      "runner_steps": 154816,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 2,
+      "runner_hex": "320a0a",
+      "runner_steps": 154819,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 9,
+      "runner_hex": "390a0a",
+      "runner_steps": 154846,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 10,
+      "runner_hex": "31300a0a",
+      "runner_steps": 188091,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 11,
+      "runner_hex": "31310a0a",
+      "runner_steps": 188092,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 50,
+      "runner_hex": "35300a0a",
+      "runner_steps": 188127,
+      "digits": "3530",
+      "want": "50"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 89,
+      "runner_hex": "38390a0a",
+      "runner_steps": 188186,
+      "digits": "3839",
+      "want": "89"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 90,
+      "runner_hex": "39300a0a",
+      "runner_steps": 188163,
+      "digits": "3930",
+      "want": "90"
+    },
+    {
+      "level": "N2",
+      "a": 0,
+      "b": 99,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188194,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 0,
+      "runner_hex": "310a0a",
+      "runner_steps": 154814,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 1,
+      "runner_hex": "320a0a",
+      "runner_steps": 154830,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 2,
+      "runner_hex": "330a0a",
+      "runner_steps": 154651,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 9,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161204,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 10,
+      "runner_hex": "31310a0a",
+      "runner_steps": 188090,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 11,
+      "runner_hex": "31320a0a",
+      "runner_steps": 188106,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 50,
+      "runner_hex": "35310a0a",
+      "runner_steps": 188126,
+      "digits": "3531",
+      "want": "51"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 89,
+      "runner_hex": "39300a0a",
+      "runner_steps": 193822,
+      "digits": "3930",
+      "want": "90"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 90,
+      "runner_hex": "39310a0a",
+      "runner_steps": 188162,
+      "digits": "3931",
+      "want": "91"
+    },
+    {
+      "level": "N2",
+      "a": 1,
+      "b": 99,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 200351,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 0,
+      "runner_hex": "320a0a",
+      "runner_steps": 154818,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 1,
+      "runner_hex": "330a0a",
+      "runner_steps": 154652,
+      "digits": "33",
+      "want": "3"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 2,
+      "runner_hex": "340a0a",
+      "runner_steps": 154655,
+      "digits": "34",
+      "want": "4"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 9,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161193,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 10,
+      "runner_hex": "31320a0a",
+      "runner_steps": 188094,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 11,
+      "runner_hex": "31330a0a",
+      "runner_steps": 187928,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 50,
+      "runner_hex": "35320a0a",
+      "runner_steps": 188130,
+      "digits": "3532",
+      "want": "52"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 89,
+      "runner_hex": "39310a0a",
+      "runner_steps": 193811,
+      "digits": "3931",
+      "want": "91"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 90,
+      "runner_hex": "39320a0a",
+      "runner_steps": 188166,
+      "digits": "3932",
+      "want": "92"
+    },
+    {
+      "level": "N2",
+      "a": 2,
+      "b": 99,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 200340,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 0,
+      "runner_hex": "390a0a",
+      "runner_steps": 154840,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 1,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161199,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 2,
+      "runner_hex": "31310a0a",
+      "runner_steps": 161188,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 9,
+      "runner_hex": "31380a0a",
+      "runner_steps": 161398,
+      "digits": "3138",
+      "want": "18"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 10,
+      "runner_hex": "31390a0a",
+      "runner_steps": 188116,
+      "digits": "3139",
+      "want": "19"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 11,
+      "runner_hex": "32300a0a",
+      "runner_steps": 193935,
+      "digits": "3230",
+      "want": "20"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 50,
+      "runner_hex": "35390a0a",
+      "runner_steps": 188152,
+      "digits": "3539",
+      "want": "59"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 89,
+      "runner_hex": "39380a0a",
+      "runner_steps": 194016,
+      "digits": "3938",
+      "want": "98"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 90,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188188,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 9,
+      "b": 99,
+      "runner_hex": "3130380a0a",
+      "runner_steps": 200545,
+      "digits": "313038",
+      "want": "108"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 0,
+      "runner_hex": "31300a0a",
+      "runner_steps": 188082,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 1,
+      "runner_hex": "31310a0a",
+      "runner_steps": 188083,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 2,
+      "runner_hex": "31320a0a",
+      "runner_steps": 188086,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 9,
+      "runner_hex": "31390a0a",
+      "runner_steps": 188113,
+      "digits": "3139",
+      "want": "19"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 10,
+      "runner_hex": "32300a0a",
+      "runner_steps": 220818,
+      "digits": "3230",
+      "want": "20"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 11,
+      "runner_hex": "32310a0a",
+      "runner_steps": 220819,
+      "digits": "3231",
+      "want": "21"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 50,
+      "runner_hex": "36300a0a",
+      "runner_steps": 220341,
+      "digits": "3630",
+      "want": "60"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 89,
+      "runner_hex": "39390a0a",
+      "runner_steps": 220731,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 90,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 227229,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 10,
+      "b": 99,
+      "runner_hex": "3130390a0a",
+      "runner_steps": 227260,
+      "digits": "313039",
+      "want": "109"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 0,
+      "runner_hex": "31310a0a",
+      "runner_steps": 188081,
+      "digits": "3131",
+      "want": "11"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 1,
+      "runner_hex": "31320a0a",
+      "runner_steps": 188097,
+      "digits": "3132",
+      "want": "12"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 2,
+      "runner_hex": "31330a0a",
+      "runner_steps": 187918,
+      "digits": "3133",
+      "want": "13"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 9,
+      "runner_hex": "32300a0a",
+      "runner_steps": 193929,
+      "digits": "3230",
+      "want": "20"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 10,
+      "runner_hex": "32310a0a",
+      "runner_steps": 220817,
+      "digits": "3231",
+      "want": "21"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 11,
+      "runner_hex": "32320a0a",
+      "runner_steps": 220833,
+      "digits": "3232",
+      "want": "22"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 50,
+      "runner_hex": "36310a0a",
+      "runner_steps": 220340,
+      "digits": "3631",
+      "want": "61"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 89,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 232886,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 90,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 227228,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N2",
+      "a": 11,
+      "b": 99,
+      "runner_hex": "3131300a0a",
+      "runner_steps": 233016,
+      "digits": "313130",
+      "want": "110"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 0,
+      "runner_hex": "35300a0a",
+      "runner_steps": 188116,
+      "digits": "3530",
+      "want": "50"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 1,
+      "runner_hex": "35310a0a",
+      "runner_steps": 188117,
+      "digits": "3531",
+      "want": "51"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 2,
+      "runner_hex": "35320a0a",
+      "runner_steps": 188120,
+      "digits": "3532",
+      "want": "52"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 9,
+      "runner_hex": "35390a0a",
+      "runner_steps": 188147,
+      "digits": "3539",
+      "want": "59"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 10,
+      "runner_hex": "36300a0a",
+      "runner_steps": 220339,
+      "digits": "3630",
+      "want": "60"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 11,
+      "runner_hex": "36310a0a",
+      "runner_steps": 220340,
+      "digits": "3631",
+      "want": "61"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 50,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 226714,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 89,
+      "runner_hex": "3133390a0a",
+      "runner_steps": 227055,
+      "digits": "313339",
+      "want": "139"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 90,
+      "runner_hex": "3134300a0a",
+      "runner_steps": 227214,
+      "digits": "313430",
+      "want": "140"
+    },
+    {
+      "level": "N2",
+      "a": 50,
+      "b": 99,
+      "runner_hex": "3134390a0a",
+      "runner_steps": 227245,
+      "digits": "313439",
+      "want": "149"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 0,
+      "runner_hex": "38390a0a",
+      "runner_steps": 188169,
+      "digits": "3839",
+      "want": "89"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 1,
+      "runner_hex": "39300a0a",
+      "runner_steps": 193806,
+      "digits": "3930",
+      "want": "90"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 2,
+      "runner_hex": "39310a0a",
+      "runner_steps": 193795,
+      "digits": "3931",
+      "want": "91"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 9,
+      "runner_hex": "39380a0a",
+      "runner_steps": 194005,
+      "digits": "3938",
+      "want": "98"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 10,
+      "runner_hex": "39390a0a",
+      "runner_steps": 220723,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 11,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 232880,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 50,
+      "runner_hex": "3133390a0a",
+      "runner_steps": 227049,
+      "digits": "313339",
+      "want": "139"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 89,
+      "runner_hex": "3137380a0a",
+      "runner_steps": 233084,
+      "digits": "313738",
+      "want": "178"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 90,
+      "runner_hex": "3137390a0a",
+      "runner_steps": 227256,
+      "digits": "313739",
+      "want": "179"
+    },
+    {
+      "level": "N2",
+      "a": 89,
+      "b": 99,
+      "runner_hex": "3138380a0a",
+      "runner_steps": 233273,
+      "digits": "313838",
+      "want": "188"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 0,
+      "runner_hex": "39300a0a",
+      "runner_steps": 188150,
+      "digits": "3930",
+      "want": "90"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 1,
+      "runner_hex": "39310a0a",
+      "runner_steps": 188151,
+      "digits": "3931",
+      "want": "91"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 2,
+      "runner_hex": "39320a0a",
+      "runner_steps": 188154,
+      "digits": "3932",
+      "want": "92"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 9,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188181,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 10,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 227224,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 11,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 227225,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 50,
+      "runner_hex": "3134300a0a",
+      "runner_steps": 227211,
+      "digits": "313430",
+      "want": "140"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 89,
+      "runner_hex": "3137390a0a",
+      "runner_steps": 227260,
+      "digits": "313739",
+      "want": "179"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 90,
+      "runner_hex": "3138300a0a",
+      "runner_steps": 227418,
+      "digits": "313830",
+      "want": "180"
+    },
+    {
+      "level": "N2",
+      "a": 90,
+      "b": 99,
+      "runner_hex": "3138390a0a",
+      "runner_steps": 227449,
+      "digits": "313839",
+      "want": "189"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 0,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188175,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 1,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 200330,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 2,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 200319,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 9,
+      "runner_hex": "3130380a0a",
+      "runner_steps": 200529,
+      "digits": "313038",
+      "want": "108"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 10,
+      "runner_hex": "3130390a0a",
+      "runner_steps": 227249,
+      "digits": "313039",
+      "want": "109"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 11,
+      "runner_hex": "3131300a0a",
+      "runner_steps": 233006,
+      "digits": "313130",
+      "want": "110"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 50,
+      "runner_hex": "3134390a0a",
+      "runner_steps": 227236,
+      "digits": "313439",
+      "want": "149"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 89,
+      "runner_hex": "3138380a0a",
+      "runner_steps": 233269,
+      "digits": "313838",
+      "want": "188"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 90,
+      "runner_hex": "3138390a0a",
+      "runner_steps": 227443,
+      "digits": "313839",
+      "want": "189"
+    },
+    {
+      "level": "N2",
+      "a": 99,
+      "b": 99,
+      "runner_hex": "3139380a0a",
+      "runner_steps": 233277,
+      "digits": "313938",
+      "want": "198"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 0,
+      "runner_hex": "300a0a",
+      "runner_steps": 154219,
+      "digits": "30",
+      "want": "0"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 1,
+      "runner_hex": "310a0a",
+      "runner_steps": 154816,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 9,
+      "runner_hex": "390a0a",
+      "runner_steps": 154846,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 99,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188194,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 100,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 221408,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 101,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 221409,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 199,
+      "runner_hex": "3139390a0a",
+      "runner_steps": 221470,
+      "digits": "313939",
+      "want": "199"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 499,
+      "runner_hex": "3439390a0a",
+      "runner_steps": 221498,
+      "digits": "343939",
+      "want": "499"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 500,
+      "runner_hex": "3530300a0a",
+      "runner_steps": 221444,
+      "digits": "353030",
+      "want": "500"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 899,
+      "runner_hex": "3839390a0a",
+      "runner_steps": 221534,
+      "digits": "383939",
+      "want": "899"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 900,
+      "runner_hex": "3930300a0a",
+      "runner_steps": 221480,
+      "digits": "393030",
+      "want": "900"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 989,
+      "runner_hex": "3938390a0a",
+      "runner_steps": 221534,
+      "digits": "393839",
+      "want": "989"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 990,
+      "runner_hex": "3939300a0a",
+      "runner_steps": 221511,
+      "digits": "393930",
+      "want": "990"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 998,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 221539,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 0,
+      "b": 999,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221542,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 0,
+      "runner_hex": "310a0a",
+      "runner_steps": 154814,
+      "digits": "31",
+      "want": "1"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 1,
+      "runner_hex": "320a0a",
+      "runner_steps": 154830,
+      "digits": "32",
+      "want": "2"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 9,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161204,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 99,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 200351,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 100,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 221407,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 101,
+      "runner_hex": "3130320a0a",
+      "runner_steps": 221423,
+      "digits": "313032",
+      "want": "102"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 199,
+      "runner_hex": "3230300a0a",
+      "runner_steps": 233083,
+      "digits": "323030",
+      "want": "200"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 499,
+      "runner_hex": "3530300a0a",
+      "runner_steps": 233104,
+      "digits": "353030",
+      "want": "500"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 500,
+      "runner_hex": "3530310a0a",
+      "runner_steps": 221443,
+      "digits": "353031",
+      "want": "501"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 899,
+      "runner_hex": "3930300a0a",
+      "runner_steps": 232969,
+      "digits": "393030",
+      "want": "900"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 900,
+      "runner_hex": "3930310a0a",
+      "runner_steps": 221479,
+      "digits": "393031",
+      "want": "901"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 989,
+      "runner_hex": "3939300a0a",
+      "runner_steps": 227170,
+      "digits": "393930",
+      "want": "990"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 990,
+      "runner_hex": "3939310a0a",
+      "runner_steps": 221510,
+      "digits": "393931",
+      "want": "991"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 998,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221369,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 1,
+      "b": 999,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 239489,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 0,
+      "runner_hex": "390a0a",
+      "runner_steps": 154840,
+      "digits": "39",
+      "want": "9"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 1,
+      "runner_hex": "31300a0a",
+      "runner_steps": 161199,
+      "digits": "3130",
+      "want": "10"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 9,
+      "runner_hex": "31380a0a",
+      "runner_steps": 161398,
+      "digits": "3138",
+      "want": "18"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 99,
+      "runner_hex": "3130380a0a",
+      "runner_steps": 200545,
+      "digits": "313038",
+      "want": "108"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 100,
+      "runner_hex": "3130390a0a",
+      "runner_steps": 221433,
+      "digits": "313039",
+      "want": "109"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 101,
+      "runner_hex": "3131300a0a",
+      "runner_steps": 227192,
+      "digits": "313130",
+      "want": "110"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 199,
+      "runner_hex": "3230380a0a",
+      "runner_steps": 233277,
+      "digits": "323038",
+      "want": "208"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 499,
+      "runner_hex": "3530380a0a",
+      "runner_steps": 233298,
+      "digits": "353038",
+      "want": "508"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 500,
+      "runner_hex": "3530390a0a",
+      "runner_steps": 221469,
+      "digits": "353039",
+      "want": "509"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 899,
+      "runner_hex": "3930380a0a",
+      "runner_steps": 233163,
+      "digits": "393038",
+      "want": "908"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 900,
+      "runner_hex": "3930390a0a",
+      "runner_steps": 221505,
+      "digits": "393039",
+      "want": "909"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 989,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 227364,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 990,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221536,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 998,
+      "runner_hex": "313030370a0a",
+      "runner_steps": 239497,
+      "digits": "31303037",
+      "want": "1007"
+    },
+    {
+      "level": "N3",
+      "a": 9,
+      "b": 999,
+      "runner_hex": "313030380a0a",
+      "runner_steps": 239683,
+      "digits": "31303038",
+      "want": "1008"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 0,
+      "runner_hex": "39390a0a",
+      "runner_steps": 188175,
+      "digits": "3939",
+      "want": "99"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 1,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 200330,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 9,
+      "runner_hex": "3130380a0a",
+      "runner_steps": 200529,
+      "digits": "313038",
+      "want": "108"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 99,
+      "runner_hex": "3139380a0a",
+      "runner_steps": 233277,
+      "digits": "313938",
+      "want": "198"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 100,
+      "runner_hex": "3139390a0a",
+      "runner_steps": 254168,
+      "digits": "313939",
+      "want": "199"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 101,
+      "runner_hex": "3230300a0a",
+      "runner_steps": 265779,
+      "digits": "323030",
+      "want": "200"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 199,
+      "runner_hex": "3239380a0a",
+      "runner_steps": 266009,
+      "digits": "323938",
+      "want": "298"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 499,
+      "runner_hex": "3539380a0a",
+      "runner_steps": 266030,
+      "digits": "353938",
+      "want": "598"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 500,
+      "runner_hex": "3539390a0a",
+      "runner_steps": 254204,
+      "digits": "353939",
+      "want": "599"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 899,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 265895,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 900,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 254240,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 989,
+      "runner_hex": "313038380a0a",
+      "runner_steps": 272407,
+      "digits": "31303838",
+      "want": "1088"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 990,
+      "runner_hex": "313038390a0a",
+      "runner_steps": 266581,
+      "digits": "31303839",
+      "want": "1089"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 998,
+      "runner_hex": "313039370a0a",
+      "runner_steps": 272229,
+      "digits": "31303937",
+      "want": "1097"
+    },
+    {
+      "level": "N3",
+      "a": 99,
+      "b": 999,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 272415,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 0,
+      "runner_hex": "3130300a0a",
+      "runner_steps": 221392,
+      "digits": "313030",
+      "want": "100"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 1,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 221393,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 9,
+      "runner_hex": "3130390a0a",
+      "runner_steps": 221423,
+      "digits": "313039",
+      "want": "109"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 99,
+      "runner_hex": "3139390a0a",
+      "runner_steps": 254171,
+      "digits": "313939",
+      "want": "199"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 100,
+      "runner_hex": "3230300a0a",
+      "runner_steps": 286841,
+      "digits": "323030",
+      "want": "200"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 101,
+      "runner_hex": "3230310a0a",
+      "runner_steps": 286842,
+      "digits": "323031",
+      "want": "201"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 199,
+      "runner_hex": "3239390a0a",
+      "runner_steps": 286903,
+      "digits": "323939",
+      "want": "299"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 499,
+      "runner_hex": "3539390a0a",
+      "runner_steps": 286924,
+      "digits": "353939",
+      "want": "599"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 500,
+      "runner_hex": "3630300a0a",
+      "runner_steps": 286364,
+      "digits": "363030",
+      "want": "600"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 899,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 286789,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 900,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 293247,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 989,
+      "runner_hex": "313038390a0a",
+      "runner_steps": 293301,
+      "digits": "31303839",
+      "want": "1089"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 990,
+      "runner_hex": "313039300a0a",
+      "runner_steps": 293278,
+      "digits": "31303930",
+      "want": "1090"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 998,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 293306,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 100,
+      "b": 999,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293309,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 0,
+      "runner_hex": "3130310a0a",
+      "runner_steps": 221391,
+      "digits": "313031",
+      "want": "101"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 1,
+      "runner_hex": "3130320a0a",
+      "runner_steps": 221407,
+      "digits": "313032",
+      "want": "102"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 9,
+      "runner_hex": "3131300a0a",
+      "runner_steps": 227181,
+      "digits": "313130",
+      "want": "110"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 99,
+      "runner_hex": "3230300a0a",
+      "runner_steps": 265782,
+      "digits": "323030",
+      "want": "200"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 100,
+      "runner_hex": "3230310a0a",
+      "runner_steps": 286840,
+      "digits": "323031",
+      "want": "201"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 101,
+      "runner_hex": "3230320a0a",
+      "runner_steps": 286856,
+      "digits": "323032",
+      "want": "202"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 199,
+      "runner_hex": "3330300a0a",
+      "runner_steps": 298336,
+      "digits": "333030",
+      "want": "300"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 499,
+      "runner_hex": "3630300a0a",
+      "runner_steps": 298022,
+      "digits": "363030",
+      "want": "600"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 500,
+      "runner_hex": "3630310a0a",
+      "runner_steps": 286363,
+      "digits": "363031",
+      "want": "601"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 899,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 304734,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 900,
+      "runner_hex": "313030310a0a",
+      "runner_steps": 293246,
+      "digits": "31303031",
+      "want": "1001"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 989,
+      "runner_hex": "313039300a0a",
+      "runner_steps": 298937,
+      "digits": "31303930",
+      "want": "1090"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 990,
+      "runner_hex": "313039310a0a",
+      "runner_steps": 293277,
+      "digits": "31303931",
+      "want": "1091"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 998,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293136,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 101,
+      "b": 999,
+      "runner_hex": "313130300a0a",
+      "runner_steps": 304864,
+      "digits": "31313030",
+      "want": "1100"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 0,
+      "runner_hex": "3139390a0a",
+      "runner_steps": 221442,
+      "digits": "313939",
+      "want": "199"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 1,
+      "runner_hex": "3230300a0a",
+      "runner_steps": 233051,
+      "digits": "323030",
+      "want": "200"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 9,
+      "runner_hex": "3230380a0a",
+      "runner_steps": 233250,
+      "digits": "323038",
+      "want": "208"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 99,
+      "runner_hex": "3239380a0a",
+      "runner_steps": 265998,
+      "digits": "323938",
+      "want": "298"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 100,
+      "runner_hex": "3239390a0a",
+      "runner_steps": 286891,
+      "digits": "323939",
+      "want": "299"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 101,
+      "runner_hex": "3330300a0a",
+      "runner_steps": 298322,
+      "digits": "333030",
+      "want": "300"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 199,
+      "runner_hex": "3339380a0a",
+      "runner_steps": 298552,
+      "digits": "333938",
+      "want": "398"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 499,
+      "runner_hex": "3639380a0a",
+      "runner_steps": 298238,
+      "digits": "363938",
+      "want": "698"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 500,
+      "runner_hex": "3639390a0a",
+      "runner_steps": 286414,
+      "digits": "363939",
+      "want": "699"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 899,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 304950,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 900,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293297,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 989,
+      "runner_hex": "313138380a0a",
+      "runner_steps": 305072,
+      "digits": "31313838",
+      "want": "1188"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 990,
+      "runner_hex": "313138390a0a",
+      "runner_steps": 299246,
+      "digits": "31313839",
+      "want": "1189"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 998,
+      "runner_hex": "313139370a0a",
+      "runner_steps": 304894,
+      "digits": "31313937",
+      "want": "1197"
+    },
+    {
+      "level": "N3",
+      "a": 199,
+      "b": 999,
+      "runner_hex": "313139380a0a",
+      "runner_steps": 305080,
+      "digits": "31313938",
+      "want": "1198"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 0,
+      "runner_hex": "3439390a0a",
+      "runner_steps": 221470,
+      "digits": "343939",
+      "want": "499"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 1,
+      "runner_hex": "3530300a0a",
+      "runner_steps": 233074,
+      "digits": "353030",
+      "want": "500"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 9,
+      "runner_hex": "3530380a0a",
+      "runner_steps": 233273,
+      "digits": "353038",
+      "want": "508"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 99,
+      "runner_hex": "3539380a0a",
+      "runner_steps": 266021,
+      "digits": "353938",
+      "want": "598"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 100,
+      "runner_hex": "3539390a0a",
+      "runner_steps": 286912,
+      "digits": "353939",
+      "want": "599"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 101,
+      "runner_hex": "3630300a0a",
+      "runner_steps": 298010,
+      "digits": "363030",
+      "want": "600"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 199,
+      "runner_hex": "3639380a0a",
+      "runner_steps": 298240,
+      "digits": "363938",
+      "want": "698"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 499,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 298261,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 500,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 286435,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 899,
+      "runner_hex": "313339380a0a",
+      "runner_steps": 304924,
+      "digits": "31333938",
+      "want": "1398"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 900,
+      "runner_hex": "313339390a0a",
+      "runner_steps": 293269,
+      "digits": "31333939",
+      "want": "1399"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 989,
+      "runner_hex": "313438380a0a",
+      "runner_steps": 305102,
+      "digits": "31343838",
+      "want": "1488"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 990,
+      "runner_hex": "313438390a0a",
+      "runner_steps": 299276,
+      "digits": "31343839",
+      "want": "1489"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 998,
+      "runner_hex": "313439370a0a",
+      "runner_steps": 304924,
+      "digits": "31343937",
+      "want": "1497"
+    },
+    {
+      "level": "N3",
+      "a": 499,
+      "b": 999,
+      "runner_hex": "313439380a0a",
+      "runner_steps": 305110,
+      "digits": "31343938",
+      "want": "1498"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 0,
+      "runner_hex": "3530300a0a",
+      "runner_steps": 221426,
+      "digits": "353030",
+      "want": "500"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 1,
+      "runner_hex": "3530310a0a",
+      "runner_steps": 221427,
+      "digits": "353031",
+      "want": "501"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 9,
+      "runner_hex": "3530390a0a",
+      "runner_steps": 221457,
+      "digits": "353039",
+      "want": "509"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 99,
+      "runner_hex": "3539390a0a",
+      "runner_steps": 254205,
+      "digits": "353939",
+      "want": "599"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 100,
+      "runner_hex": "3630300a0a",
+      "runner_steps": 286362,
+      "digits": "363030",
+      "want": "600"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 101,
+      "runner_hex": "3630310a0a",
+      "runner_steps": 286363,
+      "digits": "363031",
+      "want": "601"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 199,
+      "runner_hex": "3639390a0a",
+      "runner_steps": 286424,
+      "digits": "363939",
+      "want": "699"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 499,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 286445,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 500,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 292732,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 899,
+      "runner_hex": "313339390a0a",
+      "runner_steps": 293108,
+      "digits": "31333939",
+      "want": "1399"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 900,
+      "runner_hex": "313430300a0a",
+      "runner_steps": 293232,
+      "digits": "31343030",
+      "want": "1400"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 989,
+      "runner_hex": "313438390a0a",
+      "runner_steps": 293286,
+      "digits": "31343839",
+      "want": "1489"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 990,
+      "runner_hex": "313439300a0a",
+      "runner_steps": 293263,
+      "digits": "31343930",
+      "want": "1490"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 998,
+      "runner_hex": "313439380a0a",
+      "runner_steps": 293291,
+      "digits": "31343938",
+      "want": "1498"
+    },
+    {
+      "level": "N3",
+      "a": 500,
+      "b": 999,
+      "runner_hex": "313439390a0a",
+      "runner_steps": 293294,
+      "digits": "31343939",
+      "want": "1499"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 0,
+      "runner_hex": "3839390a0a",
+      "runner_steps": 221504,
+      "digits": "383939",
+      "want": "899"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 1,
+      "runner_hex": "3930300a0a",
+      "runner_steps": 232937,
+      "digits": "393030",
+      "want": "900"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 9,
+      "runner_hex": "3930380a0a",
+      "runner_steps": 233136,
+      "digits": "393038",
+      "want": "908"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 99,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 265884,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 100,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 286775,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 101,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 304719,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 199,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 304949,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 499,
+      "runner_hex": "313339380a0a",
+      "runner_steps": 304922,
+      "digits": "31333938",
+      "want": "1398"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 500,
+      "runner_hex": "313339390a0a",
+      "runner_steps": 293096,
+      "digits": "31333939",
+      "want": "1399"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 899,
+      "runner_hex": "313739380a0a",
+      "runner_steps": 304958,
+      "digits": "31373938",
+      "want": "1798"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 900,
+      "runner_hex": "313739390a0a",
+      "runner_steps": 293303,
+      "digits": "31373939",
+      "want": "1799"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 989,
+      "runner_hex": "313838380a0a",
+      "runner_steps": 305135,
+      "digits": "31383838",
+      "want": "1888"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 990,
+      "runner_hex": "313838390a0a",
+      "runner_steps": 299309,
+      "digits": "31383839",
+      "want": "1889"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 998,
+      "runner_hex": "313839370a0a",
+      "runner_steps": 304957,
+      "digits": "31383937",
+      "want": "1897"
+    },
+    {
+      "level": "N3",
+      "a": 899,
+      "b": 999,
+      "runner_hex": "313839380a0a",
+      "runner_steps": 305143,
+      "digits": "31383938",
+      "want": "1898"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 0,
+      "runner_hex": "3930300a0a",
+      "runner_steps": 221460,
+      "digits": "393030",
+      "want": "900"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 1,
+      "runner_hex": "3930310a0a",
+      "runner_steps": 221461,
+      "digits": "393031",
+      "want": "901"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 9,
+      "runner_hex": "3930390a0a",
+      "runner_steps": 221491,
+      "digits": "393039",
+      "want": "909"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 99,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 254239,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 100,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 293242,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 101,
+      "runner_hex": "313030310a0a",
+      "runner_steps": 293243,
+      "digits": "31303031",
+      "want": "1001"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 199,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293304,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 499,
+      "runner_hex": "313339390a0a",
+      "runner_steps": 293277,
+      "digits": "31333939",
+      "want": "1399"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 500,
+      "runner_hex": "313430300a0a",
+      "runner_steps": 293229,
+      "digits": "31343030",
+      "want": "1400"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 899,
+      "runner_hex": "313739390a0a",
+      "runner_steps": 293313,
+      "digits": "31373939",
+      "want": "1799"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 900,
+      "runner_hex": "313830300a0a",
+      "runner_steps": 293436,
+      "digits": "31383030",
+      "want": "1800"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 989,
+      "runner_hex": "313838390a0a",
+      "runner_steps": 293490,
+      "digits": "31383839",
+      "want": "1889"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 990,
+      "runner_hex": "313839300a0a",
+      "runner_steps": 293467,
+      "digits": "31383930",
+      "want": "1890"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 998,
+      "runner_hex": "313839380a0a",
+      "runner_steps": 293495,
+      "digits": "31383938",
+      "want": "1898"
+    },
+    {
+      "level": "N3",
+      "a": 900,
+      "b": 999,
+      "runner_hex": "313839390a0a",
+      "runner_steps": 293498,
+      "digits": "31383939",
+      "want": "1899"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 0,
+      "runner_hex": "3938390a0a",
+      "runner_steps": 221504,
+      "digits": "393839",
+      "want": "989"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 1,
+      "runner_hex": "3939300a0a",
+      "runner_steps": 227141,
+      "digits": "393930",
+      "want": "990"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 9,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 227340,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 99,
+      "runner_hex": "313038380a0a",
+      "runner_steps": 272395,
+      "digits": "31303838",
+      "want": "1088"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 100,
+      "runner_hex": "313038390a0a",
+      "runner_steps": 293286,
+      "digits": "31303839",
+      "want": "1089"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 101,
+      "runner_hex": "313039300a0a",
+      "runner_steps": 298923,
+      "digits": "31303930",
+      "want": "1090"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 199,
+      "runner_hex": "313138380a0a",
+      "runner_steps": 305071,
+      "digits": "31313838",
+      "want": "1188"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 499,
+      "runner_hex": "313438380a0a",
+      "runner_steps": 305099,
+      "digits": "31343838",
+      "want": "1488"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 500,
+      "runner_hex": "313438390a0a",
+      "runner_steps": 293273,
+      "digits": "31343839",
+      "want": "1489"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 899,
+      "runner_hex": "313838380a0a",
+      "runner_steps": 305135,
+      "digits": "31383838",
+      "want": "1888"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 900,
+      "runner_hex": "313838390a0a",
+      "runner_steps": 293480,
+      "digits": "31383839",
+      "want": "1889"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 989,
+      "runner_hex": "313937380a0a",
+      "runner_steps": 304954,
+      "digits": "31393738",
+      "want": "1978"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 990,
+      "runner_hex": "313937390a0a",
+      "runner_steps": 299126,
+      "digits": "31393739",
+      "want": "1979"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 998,
+      "runner_hex": "313938370a0a",
+      "runner_steps": 304957,
+      "digits": "31393837",
+      "want": "1987"
+    },
+    {
+      "level": "N3",
+      "a": 989,
+      "b": 999,
+      "runner_hex": "313938380a0a",
+      "runner_steps": 305143,
+      "digits": "31393838",
+      "want": "1988"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 0,
+      "runner_hex": "3939300a0a",
+      "runner_steps": 221485,
+      "digits": "393930",
+      "want": "990"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 1,
+      "runner_hex": "3939310a0a",
+      "runner_steps": 221486,
+      "digits": "393931",
+      "want": "991"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 9,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221516,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 99,
+      "runner_hex": "313038390a0a",
+      "runner_steps": 266571,
+      "digits": "31303839",
+      "want": "1089"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 100,
+      "runner_hex": "313039300a0a",
+      "runner_steps": 293267,
+      "digits": "31303930",
+      "want": "1090"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 101,
+      "runner_hex": "313039310a0a",
+      "runner_steps": 293268,
+      "digits": "31303931",
+      "want": "1091"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 199,
+      "runner_hex": "313138390a0a",
+      "runner_steps": 299247,
+      "digits": "31313839",
+      "want": "1189"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 499,
+      "runner_hex": "313438390a0a",
+      "runner_steps": 299275,
+      "digits": "31343839",
+      "want": "1489"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 500,
+      "runner_hex": "313439300a0a",
+      "runner_steps": 293254,
+      "digits": "31343930",
+      "want": "1490"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 899,
+      "runner_hex": "313838390a0a",
+      "runner_steps": 299311,
+      "digits": "31383839",
+      "want": "1889"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 900,
+      "runner_hex": "313839300a0a",
+      "runner_steps": 293461,
+      "digits": "31383930",
+      "want": "1890"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 989,
+      "runner_hex": "313937390a0a",
+      "runner_steps": 299130,
+      "digits": "31393739",
+      "want": "1979"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 990,
+      "runner_hex": "313938300a0a",
+      "runner_steps": 299288,
+      "digits": "31393830",
+      "want": "1980"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 998,
+      "runner_hex": "313938380a0a",
+      "runner_steps": 299316,
+      "digits": "31393838",
+      "want": "1988"
+    },
+    {
+      "level": "N3",
+      "a": 990,
+      "b": 999,
+      "runner_hex": "313938390a0a",
+      "runner_steps": 299319,
+      "digits": "31393839",
+      "want": "1989"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 0,
+      "runner_hex": "3939380a0a",
+      "runner_steps": 221509,
+      "digits": "393938",
+      "want": "998"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 1,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221341,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 9,
+      "runner_hex": "313030370a0a",
+      "runner_steps": 239467,
+      "digits": "31303037",
+      "want": "1007"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 99,
+      "runner_hex": "313039370a0a",
+      "runner_steps": 272215,
+      "digits": "31303937",
+      "want": "1097"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 100,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 293291,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 101,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293123,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 199,
+      "runner_hex": "313139370a0a",
+      "runner_steps": 304891,
+      "digits": "31313937",
+      "want": "1197"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 499,
+      "runner_hex": "313439370a0a",
+      "runner_steps": 304919,
+      "digits": "31343937",
+      "want": "1497"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 500,
+      "runner_hex": "313439380a0a",
+      "runner_steps": 293278,
+      "digits": "31343938",
+      "want": "1498"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 899,
+      "runner_hex": "313839370a0a",
+      "runner_steps": 304955,
+      "digits": "31383937",
+      "want": "1897"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 900,
+      "runner_hex": "313839380a0a",
+      "runner_steps": 293485,
+      "digits": "31383938",
+      "want": "1898"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 989,
+      "runner_hex": "313938370a0a",
+      "runner_steps": 304955,
+      "digits": "31393837",
+      "want": "1987"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 990,
+      "runner_hex": "313938380a0a",
+      "runner_steps": 299312,
+      "digits": "31393838",
+      "want": "1988"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 998,
+      "runner_hex": "313939360a0a",
+      "runner_steps": 304787,
+      "digits": "31393936",
+      "want": "1996"
+    },
+    {
+      "level": "N3",
+      "a": 998,
+      "b": 999,
+      "runner_hex": "313939370a0a",
+      "runner_steps": 304963,
+      "digits": "31393937",
+      "want": "1997"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 0,
+      "runner_hex": "3939390a0a",
+      "runner_steps": 221510,
+      "digits": "393939",
+      "want": "999"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 1,
+      "runner_hex": "313030300a0a",
+      "runner_steps": 239452,
+      "digits": "31303030",
+      "want": "1000"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 9,
+      "runner_hex": "313030380a0a",
+      "runner_steps": 239651,
+      "digits": "31303038",
+      "want": "1008"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 99,
+      "runner_hex": "313039380a0a",
+      "runner_steps": 272399,
+      "digits": "31303938",
+      "want": "1098"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 100,
+      "runner_hex": "313039390a0a",
+      "runner_steps": 293292,
+      "digits": "31303939",
+      "want": "1099"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 101,
+      "runner_hex": "313130300a0a",
+      "runner_steps": 304845,
+      "digits": "31313030",
+      "want": "1100"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 199,
+      "runner_hex": "313139380a0a",
+      "runner_steps": 305075,
+      "digits": "31313938",
+      "want": "1198"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 499,
+      "runner_hex": "313439380a0a",
+      "runner_steps": 305103,
+      "digits": "31343938",
+      "want": "1498"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 500,
+      "runner_hex": "313439390a0a",
+      "runner_steps": 293279,
+      "digits": "31343939",
+      "want": "1499"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 899,
+      "runner_hex": "313839380a0a",
+      "runner_steps": 305139,
+      "digits": "31383938",
+      "want": "1898"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 900,
+      "runner_hex": "313839390a0a",
+      "runner_steps": 293486,
+      "digits": "31383939",
+      "want": "1899"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 989,
+      "runner_hex": "313938380a0a",
+      "runner_steps": 305139,
+      "digits": "31393838",
+      "want": "1988"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 990,
+      "runner_hex": "313938390a0a",
+      "runner_steps": 299313,
+      "digits": "31393839",
+      "want": "1989"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 998,
+      "runner_hex": "313939370a0a",
+      "runner_steps": 304961,
+      "digits": "31393937",
+      "want": "1997"
+    },
+    {
+      "level": "N3",
+      "a": 999,
+      "b": 999,
+      "runner_hex": "313939380a0a",
+      "runner_steps": 305147,
+      "digits": "31393938",
+      "want": "1998"
+    },
+    {
+      "level": "N4",
+      "a": 664,
+      "b": 49,
+      "runner_hex": "3731330a0a",
+      "runner_steps": 265765,
+      "digits": "373133",
+      "want": "713"
+    },
+    {
+      "level": "N4",
+      "a": 90,
+      "b": 136,
+      "runner_hex": "3232360a0a",
+      "runner_steps": 260116,
+      "digits": "323236",
+      "want": "226"
+    },
+    {
+      "level": "N4",
+      "a": 240,
+      "b": 7,
+      "runner_hex": "3234370a0a",
+      "runner_steps": 221413,
+      "digits": "323437",
+      "want": "247"
+    },
+    {
+      "level": "N4",
+      "a": 632,
+      "b": 870,
+      "runner_hex": "313530320a0a",
+      "runner_steps": 299408,
+      "digits": "31353032",
+      "want": "1502"
+    },
+    {
+      "level": "N4",
+      "a": 332,
+      "b": 415,
+      "runner_hex": "3734370a0a",
+      "runner_steps": 286041,
+      "digits": "373437",
+      "want": "747"
+    },
+    {
+      "level": "N4",
+      "a": 285,
+      "b": 902,
+      "runner_hex": "313138370a0a",
+      "runner_steps": 292729,
+      "digits": "31313837",
+      "want": "1187"
+    },
+    {
+      "level": "N4",
+      "a": 686,
+      "b": 11,
+      "runner_hex": "3639370a0a",
+      "runner_steps": 254032,
+      "digits": "363937",
+      "want": "697"
+    },
+    {
+      "level": "N4",
+      "a": 664,
+      "b": 25,
+      "runner_hex": "3638390a0a",
+      "runner_steps": 253690,
+      "digits": "363839",
+      "want": "689"
+    },
+    {
+      "level": "N4",
+      "a": 926,
+      "b": 115,
+      "runner_hex": "313034310a0a",
+      "runner_steps": 298883,
+      "digits": "31303431",
+      "want": "1041"
+    },
+    {
+      "level": "N4",
+      "a": 220,
+      "b": 279,
+      "runner_hex": "3439390a0a",
+      "runner_steps": 286574,
+      "digits": "343939",
+      "want": "499"
+    },
+    {
+      "level": "N4",
+      "a": 970,
+      "b": 140,
+      "runner_hex": "313131300a0a",
+      "runner_steps": 298974,
+      "digits": "31313130",
+      "want": "1110"
+    },
+    {
+      "level": "N4",
+      "a": 175,
+      "b": 316,
+      "runner_hex": "3439310a0a",
+      "runner_steps": 292537,
+      "digits": "343931",
+      "want": "491"
+    },
+    {
+      "level": "N4",
+      "a": 592,
+      "b": 136,
+      "runner_hex": "3732380a0a",
+      "runner_steps": 292358,
+      "digits": "373238",
+      "want": "728"
+    },
+    {
+      "level": "N4",
+      "a": 347,
+      "b": 911,
+      "runner_hex": "313235380a0a",
+      "runner_steps": 293415,
+      "digits": "31323538",
+      "want": "1258"
+    },
+    {
+      "level": "N4",
+      "a": 696,
+      "b": 2,
+      "runner_hex": "3639380a0a",
+      "runner_steps": 221487,
+      "digits": "363938",
+      "want": "698"
+    },
+    {
+      "level": "N4",
+      "a": 247,
+      "b": 731,
+      "runner_hex": "3937380a0a",
+      "runner_steps": 286433,
+      "digits": "393738",
+      "want": "978"
+    },
+    {
+      "level": "N4",
+      "a": 792,
+      "b": 710,
+      "runner_hex": "313530320a0a",
+      "runner_steps": 299405,
+      "digits": "31353032",
+      "want": "1502"
+    },
+    {
+      "level": "N4",
+      "a": 518,
+      "b": 5,
+      "runner_hex": "3532330a0a",
+      "runner_steps": 227053,
+      "digits": "353233",
+      "want": "523"
+    },
+    {
+      "level": "N4",
+      "a": 79,
+      "b": 587,
+      "runner_hex": "3636360a0a",
+      "runner_steps": 265158,
+      "digits": "363636",
+      "want": "666"
+    },
+    {
+      "level": "N4",
+      "a": 933,
+      "b": 989,
+      "runner_hex": "313932320a0a",
+      "runner_steps": 305069,
+      "digits": "31393232",
+      "want": "1922"
+    },
+    {
+      "level": "N4",
+      "a": 514,
+      "b": 854,
+      "runner_hex": "313336380a0a",
+      "runner_steps": 292229,
+      "digits": "31333638",
+      "want": "1368"
+    },
+    {
+      "level": "N4",
+      "a": 747,
+      "b": 492,
+      "runner_hex": "313233390a0a",
+      "runner_steps": 298862,
+      "digits": "31323339",
+      "want": "1239"
+    },
+    {
+      "level": "N4",
+      "a": 814,
+      "b": 528,
+      "runner_hex": "313334320a0a",
+      "runner_steps": 298688,
+      "digits": "31333432",
+      "want": "1342"
+    },
+    {
+      "level": "N4",
+      "a": 237,
+      "b": 709,
+      "runner_hex": "3934360a0a",
+      "runner_steps": 292566,
+      "digits": "393436",
+      "want": "946"
+    },
+    {
+      "level": "N4",
+      "a": 205,
+      "b": 965,
+      "runner_hex": "313137300a0a",
+      "runner_steps": 298530,
+      "digits": "31313730",
+      "want": "1170"
+    },
+    {
+      "level": "N4",
+      "a": 73,
+      "b": 899,
+      "runner_hex": "3937320a0a",
+      "runner_steps": 265859,
+      "digits": "393732",
+      "want": "972"
+    },
+    {
+      "level": "N4",
+      "a": 372,
+      "b": 734,
+      "runner_hex": "313130360a0a",
+      "runner_steps": 298534,
+      "digits": "31313036",
+      "want": "1106"
+    },
+    {
+      "level": "N4",
+      "a": 427,
+      "b": 558,
+      "runner_hex": "3938350a0a",
+      "runner_steps": 292076,
+      "digits": "393835",
+      "want": "985"
+    },
+    {
+      "level": "N4",
+      "a": 441,
+      "b": 749,
+      "runner_hex": "313139300a0a",
+      "runner_steps": 298547,
+      "digits": "31313930",
+      "want": "1190"
+    },
+    {
+      "level": "N4",
+      "a": 79,
+      "b": 162,
+      "runner_hex": "3234310a0a",
+      "runner_steps": 266099,
+      "digits": "323431",
+      "want": "241"
+    },
+    {
+      "level": "N4",
+      "a": 802,
+      "b": 798,
+      "runner_hex": "313630300a0a",
+      "runner_steps": 304555,
+      "digits": "31363030",
+      "want": "1600"
+    },
+    {
+      "level": "N4",
+      "a": 424,
+      "b": 91,
+      "runner_hex": "3531350a0a",
+      "runner_steps": 259939,
+      "digits": "353135",
+      "want": "515"
+    },
+    {
+      "level": "N4",
+      "a": 580,
+      "b": 288,
+      "runner_hex": "3836380a0a",
+      "runner_steps": 292057,
+      "digits": "383638",
+      "want": "868"
+    },
+    {
+      "level": "N4",
+      "a": 781,
+      "b": 179,
+      "runner_hex": "3936300a0a",
+      "runner_steps": 298216,
+      "digits": "393630",
+      "want": "960"
+    },
+    {
+      "level": "N4",
+      "a": 716,
+      "b": 401,
+      "runner_hex": "313131370a0a",
+      "runner_steps": 293177,
+      "digits": "31313137",
+      "want": "1117"
+    },
+    {
+      "level": "N4",
+      "a": 445,
+      "b": 214,
+      "runner_hex": "3635390a0a",
+      "runner_steps": 285866,
+      "digits": "363539",
+      "want": "659"
+    },
+    {
+      "level": "N4",
+      "a": 462,
+      "b": 237,
+      "runner_hex": "3639390a0a",
+      "runner_steps": 286246,
+      "digits": "363939",
+      "want": "699"
+    },
+    {
+      "level": "N4",
+      "a": 324,
+      "b": 777,
+      "runner_hex": "313130310a0a",
+      "runner_steps": 304679,
+      "digits": "31313031",
+      "want": "1101"
+    },
+    {
+      "level": "N4",
+      "a": 59,
+      "b": 216,
+      "runner_hex": "3237350a0a",
+      "runner_steps": 259974,
+      "digits": "323735",
+      "want": "275"
+    },
+    {
+      "level": "N4",
+      "a": 32,
+      "b": 461,
+      "runner_hex": "3439330a0a",
+      "runner_steps": 254011,
+      "digits": "343933",
+      "want": "493"
+    },
+    {
+      "level": "N4",
+      "a": 723,
+      "b": 567,
+      "runner_hex": "313239300a0a",
+      "runner_steps": 298901,
+      "digits": "31323930",
+      "want": "1290"
+    },
+    {
+      "level": "N4",
+      "a": 636,
+      "b": 56,
+      "runner_hex": "3639320a0a",
+      "runner_steps": 260009,
+      "digits": "363932",
+      "want": "692"
+    },
+    {
+      "level": "N4",
+      "a": 678,
+      "b": 143,
+      "runner_hex": "3832310a0a",
+      "runner_steps": 298502,
+      "digits": "383231",
+      "want": "821"
+    },
+    {
+      "level": "N4",
+      "a": 198,
+      "b": 369,
+      "runner_hex": "3536370a0a",
+      "runner_steps": 298531,
+      "digits": "353637",
+      "want": "567"
+    },
+    {
+      "level": "N4",
+      "a": 642,
+      "b": 437,
+      "runner_hex": "313037390a0a",
+      "runner_steps": 292769,
+      "digits": "31303739",
+      "want": "1079"
+    },
+    {
+      "level": "N4",
+      "a": 111,
+      "b": 483,
+      "runner_hex": "3539340a0a",
+      "runner_steps": 286743,
+      "digits": "353934",
+      "want": "594"
+    },
+    {
+      "level": "N4",
+      "a": 295,
+      "b": 235,
+      "runner_hex": "3533300a0a",
+      "runner_steps": 297805,
+      "digits": "353330",
+      "want": "530"
+    },
+    {
+      "level": "N4",
+      "a": 547,
+      "b": 20,
+      "runner_hex": "3536370a0a",
+      "runner_steps": 253653,
+      "digits": "353637",
+      "want": "567"
+    },
+    {
+      "level": "N4",
+      "a": 410,
+      "b": 44,
+      "runner_hex": "3435340a0a",
+      "runner_steps": 254142,
+      "digits": "343534",
+      "want": "454"
+    },
+    {
+      "level": "N4",
+      "a": 84,
+      "b": 383,
+      "runner_hex": "3436370a0a",
+      "runner_steps": 259483,
+      "digits": "343637",
+      "want": "467"
+    }
+  ],
+  "oracle_cases": [
+    {
+      "a": 0,
+      "b": 0,
+      "oracle_hex": "300a",
+      "oracle_steps": 154219,
+      "oracle_status": "HALTED",
+      "runner_steps": 154219,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 1,
+      "oracle_hex": "310a",
+      "oracle_steps": 154816,
+      "oracle_status": "HALTED",
+      "runner_steps": 154816,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "oracle_hex": "320a",
+      "oracle_steps": 154819,
+      "oracle_status": "HALTED",
+      "runner_steps": 154819,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 3,
+      "oracle_hex": "330a",
+      "oracle_steps": 154824,
+      "oracle_status": "HALTED",
+      "runner_steps": 154824,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 4,
+      "oracle_hex": "340a",
+      "oracle_steps": 154827,
+      "oracle_status": "HALTED",
+      "runner_steps": 154827,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 5,
+      "oracle_hex": "350a",
+      "oracle_steps": 154832,
+      "oracle_status": "HALTED",
+      "runner_steps": 154832,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 6,
+      "oracle_hex": "360a",
+      "oracle_steps": 154835,
+      "oracle_status": "HALTED",
+      "runner_steps": 154835,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 7,
+      "oracle_hex": "370a",
+      "oracle_steps": 154840,
+      "oracle_status": "HALTED",
+      "runner_steps": 154840,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 8,
+      "oracle_hex": "380a",
+      "oracle_steps": 154843,
+      "oracle_status": "HALTED",
+      "runner_steps": 154843,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 9,
+      "oracle_hex": "390a",
+      "oracle_steps": 154846,
+      "oracle_status": "HALTED",
+      "runner_steps": 154846,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 0,
+      "oracle_hex": "310a",
+      "oracle_steps": 154814,
+      "oracle_status": "HALTED",
+      "runner_steps": 154814,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 1,
+      "oracle_hex": "320a",
+      "oracle_steps": 154830,
+      "oracle_status": "HALTED",
+      "runner_steps": 154830,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "oracle_hex": "330a",
+      "oracle_steps": 154651,
+      "oracle_status": "HALTED",
+      "runner_steps": 154651,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 3,
+      "oracle_hex": "340a",
+      "oracle_steps": 154838,
+      "oracle_status": "HALTED",
+      "runner_steps": 154838,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 4,
+      "oracle_hex": "350a",
+      "oracle_steps": 154830,
+      "oracle_status": "HALTED",
+      "runner_steps": 154830,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 5,
+      "oracle_hex": "360a",
+      "oracle_steps": 154333,
+      "oracle_status": "HALTED",
+      "runner_steps": 154333,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 6,
+      "oracle_hex": "370a",
+      "oracle_steps": 154838,
+      "oracle_status": "HALTED",
+      "runner_steps": 154838,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 7,
+      "oracle_hex": "380a",
+      "oracle_steps": 154854,
+      "oracle_status": "HALTED",
+      "runner_steps": 154854,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 8,
+      "oracle_hex": "390a",
+      "oracle_steps": 154673,
+      "oracle_status": "HALTED",
+      "runner_steps": 154673,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 9,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161204,
+      "oracle_status": "HALTED",
+      "runner_steps": 161204,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 0,
+      "oracle_hex": "320a",
+      "oracle_steps": 154818,
+      "oracle_status": "HALTED",
+      "runner_steps": 154818,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 1,
+      "oracle_hex": "330a",
+      "oracle_steps": 154652,
+      "oracle_status": "HALTED",
+      "runner_steps": 154652,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 2,
+      "oracle_hex": "340a",
+      "oracle_steps": 154655,
+      "oracle_status": "HALTED",
+      "runner_steps": 154655,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 3,
+      "oracle_hex": "350a",
+      "oracle_steps": 154831,
+      "oracle_status": "HALTED",
+      "runner_steps": 154831,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 4,
+      "oracle_hex": "360a",
+      "oracle_steps": 154321,
+      "oracle_status": "HALTED",
+      "runner_steps": 154321,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 5,
+      "oracle_hex": "370a",
+      "oracle_steps": 154326,
+      "oracle_status": "HALTED",
+      "runner_steps": 154326,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 6,
+      "oracle_hex": "380a",
+      "oracle_steps": 154842,
+      "oracle_status": "HALTED",
+      "runner_steps": 154842,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 7,
+      "oracle_hex": "390a",
+      "oracle_steps": 154674,
+      "oracle_status": "HALTED",
+      "runner_steps": 154674,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 8,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161021,
+      "oracle_status": "HALTED",
+      "runner_steps": 161021,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 2,
+      "b": 9,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161193,
+      "oracle_status": "HALTED",
+      "runner_steps": 161193,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 0,
+      "oracle_hex": "330a",
+      "oracle_steps": 154821,
+      "oracle_status": "HALTED",
+      "runner_steps": 154821,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 1,
+      "oracle_hex": "340a",
+      "oracle_steps": 154837,
+      "oracle_status": "HALTED",
+      "runner_steps": 154837,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 2,
+      "oracle_hex": "350a",
+      "oracle_steps": 154829,
+      "oracle_status": "HALTED",
+      "runner_steps": 154829,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 3,
+      "oracle_hex": "360a",
+      "oracle_steps": 154503,
+      "oracle_status": "HALTED",
+      "runner_steps": 154503,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 4,
+      "oracle_hex": "370a",
+      "oracle_steps": 154495,
+      "oracle_status": "HALTED",
+      "runner_steps": 154495,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 5,
+      "oracle_hex": "380a",
+      "oracle_steps": 154511,
+      "oracle_status": "HALTED",
+      "runner_steps": 154511,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 6,
+      "oracle_hex": "390a",
+      "oracle_steps": 154843,
+      "oracle_status": "HALTED",
+      "runner_steps": 154843,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 7,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161203,
+      "oracle_status": "HALTED",
+      "runner_steps": 161203,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 8,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161191,
+      "oracle_status": "HALTED",
+      "runner_steps": 161191,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 3,
+      "b": 9,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161378,
+      "oracle_status": "HALTED",
+      "runner_steps": 161378,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 0,
+      "oracle_hex": "340a",
+      "oracle_steps": 154825,
+      "oracle_status": "HALTED",
+      "runner_steps": 154825,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 1,
+      "oracle_hex": "350a",
+      "oracle_steps": 154830,
+      "oracle_status": "HALTED",
+      "runner_steps": 154830,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 2,
+      "oracle_hex": "360a",
+      "oracle_steps": 154320,
+      "oracle_status": "HALTED",
+      "runner_steps": 154320,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 3,
+      "oracle_hex": "370a",
+      "oracle_steps": 154496,
+      "oracle_status": "HALTED",
+      "runner_steps": 154496,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 4,
+      "oracle_hex": "380a",
+      "oracle_steps": 154499,
+      "oracle_status": "HALTED",
+      "runner_steps": 154499,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 5,
+      "oracle_hex": "390a",
+      "oracle_steps": 154331,
+      "oracle_status": "HALTED",
+      "runner_steps": 154331,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 6,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161191,
+      "oracle_status": "HALTED",
+      "runner_steps": 161191,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 7,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161192,
+      "oracle_status": "HALTED",
+      "runner_steps": 161192,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 8,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161195,
+      "oracle_status": "HALTED",
+      "runner_steps": 161195,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 4,
+      "b": 9,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161200,
+      "oracle_status": "HALTED",
+      "runner_steps": 161200,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 0,
+      "oracle_hex": "350a",
+      "oracle_steps": 154828,
+      "oracle_status": "HALTED",
+      "runner_steps": 154828,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 1,
+      "oracle_hex": "360a",
+      "oracle_steps": 154331,
+      "oracle_status": "HALTED",
+      "runner_steps": 154331,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 2,
+      "oracle_hex": "370a",
+      "oracle_steps": 154323,
+      "oracle_status": "HALTED",
+      "runner_steps": 154323,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 3,
+      "oracle_hex": "380a",
+      "oracle_steps": 154510,
+      "oracle_status": "HALTED",
+      "runner_steps": 154510,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 4,
+      "oracle_hex": "390a",
+      "oracle_steps": 154329,
+      "oracle_status": "HALTED",
+      "runner_steps": 154329,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 5,
+      "oracle_hex": "31300a",
+      "oracle_steps": 160689,
+      "oracle_status": "HALTED",
+      "runner_steps": 160689,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 6,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161190,
+      "oracle_status": "HALTED",
+      "runner_steps": 161190,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 7,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161206,
+      "oracle_status": "HALTED",
+      "runner_steps": 161206,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 8,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161027,
+      "oracle_status": "HALTED",
+      "runner_steps": 161027,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 5,
+      "b": 9,
+      "oracle_hex": "31340a",
+      "oracle_steps": 161214,
+      "oracle_status": "HALTED",
+      "runner_steps": 161214,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 0,
+      "oracle_hex": "360a",
+      "oracle_steps": 154832,
+      "oracle_status": "HALTED",
+      "runner_steps": 154832,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 1,
+      "oracle_hex": "370a",
+      "oracle_steps": 154837,
+      "oracle_status": "HALTED",
+      "runner_steps": 154837,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 2,
+      "oracle_hex": "380a",
+      "oracle_steps": 154840,
+      "oracle_status": "HALTED",
+      "runner_steps": 154840,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 3,
+      "oracle_hex": "390a",
+      "oracle_steps": 154843,
+      "oracle_status": "HALTED",
+      "runner_steps": 154843,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 4,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161190,
+      "oracle_status": "HALTED",
+      "runner_steps": 161190,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 5,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161191,
+      "oracle_status": "HALTED",
+      "runner_steps": 161191,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 6,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161707,
+      "oracle_status": "HALTED",
+      "runner_steps": 161707,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 7,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161541,
+      "oracle_status": "HALTED",
+      "runner_steps": 161541,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 8,
+      "oracle_hex": "31340a",
+      "oracle_steps": 161544,
+      "oracle_status": "HALTED",
+      "runner_steps": 161544,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 6,
+      "b": 9,
+      "oracle_hex": "31350a",
+      "oracle_steps": 161720,
+      "oracle_status": "HALTED",
+      "runner_steps": 161720,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 0,
+      "oracle_hex": "370a",
+      "oracle_steps": 154835,
+      "oracle_status": "HALTED",
+      "runner_steps": 154835,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 1,
+      "oracle_hex": "380a",
+      "oracle_steps": 154851,
+      "oracle_status": "HALTED",
+      "runner_steps": 154851,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 2,
+      "oracle_hex": "390a",
+      "oracle_steps": 154670,
+      "oracle_status": "HALTED",
+      "runner_steps": 154670,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 3,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161201,
+      "oracle_status": "HALTED",
+      "runner_steps": 161201,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 4,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161189,
+      "oracle_status": "HALTED",
+      "runner_steps": 161189,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 5,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161205,
+      "oracle_status": "HALTED",
+      "runner_steps": 161205,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 6,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161539,
+      "oracle_status": "HALTED",
+      "runner_steps": 161539,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 7,
+      "oracle_hex": "31340a",
+      "oracle_steps": 161555,
+      "oracle_status": "HALTED",
+      "runner_steps": 161555,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 8,
+      "oracle_hex": "31350a",
+      "oracle_steps": 161547,
+      "oracle_status": "HALTED",
+      "runner_steps": 161547,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 7,
+      "b": 9,
+      "oracle_hex": "31360a",
+      "oracle_steps": 161221,
+      "oracle_status": "HALTED",
+      "runner_steps": 161221,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 0,
+      "oracle_hex": "380a",
+      "oracle_steps": 154839,
+      "oracle_status": "HALTED",
+      "runner_steps": 154839,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 1,
+      "oracle_hex": "390a",
+      "oracle_steps": 154671,
+      "oracle_status": "HALTED",
+      "runner_steps": 154671,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 2,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161018,
+      "oracle_status": "HALTED",
+      "runner_steps": 161018,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 3,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161190,
+      "oracle_status": "HALTED",
+      "runner_steps": 161190,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 4,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161193,
+      "oracle_status": "HALTED",
+      "runner_steps": 161193,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 5,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161027,
+      "oracle_status": "HALTED",
+      "runner_steps": 161027,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 6,
+      "oracle_hex": "31340a",
+      "oracle_steps": 161543,
+      "oracle_status": "HALTED",
+      "runner_steps": 161543,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 7,
+      "oracle_hex": "31350a",
+      "oracle_steps": 161548,
+      "oracle_status": "HALTED",
+      "runner_steps": 161548,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 8,
+      "oracle_hex": "31360a",
+      "oracle_steps": 161038,
+      "oracle_status": "HALTED",
+      "runner_steps": 161038,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 8,
+      "b": 9,
+      "oracle_hex": "31370a",
+      "oracle_steps": 161214,
+      "oracle_status": "HALTED",
+      "runner_steps": 161214,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 0,
+      "oracle_hex": "390a",
+      "oracle_steps": 154840,
+      "oracle_status": "HALTED",
+      "runner_steps": 154840,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 1,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161199,
+      "oracle_status": "HALTED",
+      "runner_steps": 161199,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 2,
+      "oracle_hex": "31310a",
+      "oracle_steps": 161188,
+      "oracle_status": "HALTED",
+      "runner_steps": 161188,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 3,
+      "oracle_hex": "31320a",
+      "oracle_steps": 161374,
+      "oracle_status": "HALTED",
+      "runner_steps": 161374,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 4,
+      "oracle_hex": "31330a",
+      "oracle_steps": 161196,
+      "oracle_status": "HALTED",
+      "runner_steps": 161196,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 5,
+      "oracle_hex": "31340a",
+      "oracle_steps": 161211,
+      "oracle_status": "HALTED",
+      "runner_steps": 161211,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 6,
+      "oracle_hex": "31350a",
+      "oracle_steps": 161717,
+      "oracle_status": "HALTED",
+      "runner_steps": 161717,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 7,
+      "oracle_hex": "31360a",
+      "oracle_steps": 161219,
+      "oracle_status": "HALTED",
+      "runner_steps": 161219,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 8,
+      "oracle_hex": "31370a",
+      "oracle_steps": 161212,
+      "oracle_status": "HALTED",
+      "runner_steps": 161212,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 9,
+      "oracle_hex": "31380a",
+      "oracle_steps": 161398,
+      "oracle_status": "HALTED",
+      "runner_steps": 161398,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 101,
+      "b": 499,
+      "oracle_hex": "3630300a",
+      "oracle_steps": 298022,
+      "oracle_status": "HALTED",
+      "runner_steps": 298022,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 9,
+      "b": 500,
+      "oracle_hex": "3530390a",
+      "oracle_steps": 221469,
+      "oracle_status": "HALTED",
+      "runner_steps": 221469,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 199,
+      "b": 989,
+      "oracle_hex": "313138380a",
+      "oracle_steps": 305072,
+      "oracle_status": "HALTED",
+      "runner_steps": 305072,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 989,
+      "b": 1,
+      "oracle_hex": "3939300a",
+      "oracle_steps": 227141,
+      "oracle_status": "HALTED",
+      "runner_steps": 227141,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 990,
+      "oracle_hex": "3939300a",
+      "oracle_steps": 221511,
+      "oracle_status": "HALTED",
+      "runner_steps": 221511,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 99,
+      "oracle_hex": "3130300a",
+      "oracle_steps": 200351,
+      "oracle_status": "HALTED",
+      "runner_steps": 200351,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 999,
+      "b": 0,
+      "oracle_hex": "3939390a",
+      "oracle_steps": 221510,
+      "oracle_status": "HALTED",
+      "runner_steps": 221510,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 899,
+      "b": 9,
+      "oracle_hex": "3930380a",
+      "oracle_steps": 233136,
+      "oracle_status": "HALTED",
+      "runner_steps": 233136,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 899,
+      "oracle_hex": "3930300a",
+      "oracle_steps": 232969,
+      "oracle_status": "HALTED",
+      "runner_steps": 232969,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 199,
+      "b": 99,
+      "oracle_hex": "3239380a",
+      "oracle_steps": 265998,
+      "oracle_status": "HALTED",
+      "runner_steps": 265998,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 899,
+      "b": 999,
+      "oracle_hex": "313839380a",
+      "oracle_steps": 305143,
+      "oracle_status": "HALTED",
+      "runner_steps": 305143,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 999,
+      "oracle_hex": "3939390a",
+      "oracle_steps": 221542,
+      "oracle_status": "HALTED",
+      "runner_steps": 221542,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 500,
+      "b": 899,
+      "oracle_hex": "313339390a",
+      "oracle_steps": 293108,
+      "oracle_status": "HALTED",
+      "runner_steps": 293108,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 99,
+      "b": 899,
+      "oracle_hex": "3939380a",
+      "oracle_steps": 265895,
+      "oracle_status": "HALTED",
+      "runner_steps": 265895,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 0,
+      "b": 899,
+      "oracle_hex": "3839390a",
+      "oracle_steps": 221534,
+      "oracle_status": "HALTED",
+      "runner_steps": 221534,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 499,
+      "oracle_hex": "3530300a",
+      "oracle_steps": 233104,
+      "oracle_status": "HALTED",
+      "runner_steps": 233104,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 499,
+      "b": 199,
+      "oracle_hex": "3639380a",
+      "oracle_steps": 298240,
+      "oracle_status": "HALTED",
+      "runner_steps": 298240,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 499,
+      "b": 9,
+      "oracle_hex": "3530380a",
+      "oracle_steps": 233273,
+      "oracle_status": "HALTED",
+      "runner_steps": 233273,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 1,
+      "b": 9,
+      "oracle_hex": "31300a",
+      "oracle_steps": 161204,
+      "oracle_status": "HALTED",
+      "runner_steps": 161204,
+      "digits_agree": true,
+      "verdict": "PASS"
+    },
+    {
+      "a": 100,
+      "b": 1,
+      "oracle_hex": "3130310a",
+      "oracle_steps": 221393,
+      "oracle_status": "HALTED",
+      "runner_steps": 221393,
+      "digits_agree": true,
+      "verdict": "PASS"
+    }
+  ],
+  "scope_limits": [
+    "Only the two published input shapes (two \"up to 3 digits\" numbers, newline separated) are measured.",
+    "Negative inputs and non-digit input are out of scope.",
+    "The measurement covers the sum; no subtractor or comparator is derived from this run.",
+    "example_adder.hell is GPL-3: only the method is reused, never the file, and nothing derived from it enters the MIT core."
+  ],
+  "not_demonstrated": [
+    "A borrow-propagating comparator on decimal digits (that is experiment E1).",
+    "Whether the same technique fits inside the repository's own byte budget."
+  ],
+  "license_note": "example_adder.hell is GPL-3 (Matthias Lutter, LMAO). Methodology reference only."
+}
