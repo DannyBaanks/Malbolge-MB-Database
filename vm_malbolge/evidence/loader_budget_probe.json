@@ -1,0 +1,64 @@
+{
+  "schema": "loader-budget-probe/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": ("The LMAO stored-program loader image has 18,740 bytes of headroom and admits "
+            "both 512 extra data cells and 8 new code flags, so the unified image (b) is "
+            "not blocked by the LMAO initializer budget on the loader side. The wall that "
+            "E3 and the extensibility probe measured belongs to the arithmetic and "
+            "comparator images, not to the loader."),
+  "claim_status": "DEMONSTRATED",
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_m2_loader.hell",
+    "sha256": "d18e1ff9275979834d981b0dcc5f24ed919345f8bd08312e39be245953c4ad6f",
+    "built_baseline_bytes": 40309,
+    "headroom_bytes": 18740,
+    "limit_bytes": 59049,
+    "demonstrated": "loads prog_0..3 into RAM and runs them by PC, 4/4 (mbir_m2_loader_smoke.json)"
+  },
+  "assembler": {"name": "LMAO", "version": "0.6.0", "binary_path": "third_party/lmao/lmao"},
+  "method": {
+    "description": ("Same probe shape as e3_lmao_initializer_budget.json and "
+                    "cmp_lt_extensibility_probe.json, but applied to the loader image, "
+                    "which has twelve times the headroom of the comparator image."),
+    "control": "the untouched mbir_m2_loader.hell assembles to 40,309 bytes"
+  },
+  "results": {
+    "data_cells_only": [
+      {"cells": 8, "ok": true, "bytes": 40027},
+      {"cells": 16, "ok": true, "bytes": 40121},
+      {"cells": 32, "ok": true, "bytes": 41161},
+      {"cells": 64, "ok": true, "bytes": 41531},
+      {"cells": 128, "ok": true, "bytes": 43223},
+      {"cells": 256, "ok": true, "bytes": 45203},
+      {"cells": 512, "ok": true, "bytes": 51025}
+    ],
+    "code_flags": [
+      {"flags": 1, "cells": 8, "ok": true, "bytes": 41437},
+      {"flags": 2, "cells": 8, "ok": true, "bytes": 41437},
+      {"flags": 4, "cells": 8, "ok": true, "bytes": 42565},
+      {"flags": 8, "cells": 8, "ok": true, "bytes": 43223}
+    ],
+    "exact_design": {"flags": 2, "cells": 8, "ok": true, "bytes": 41437,
+                     "headroom_after": 17612}
+  },
+  "comparison_with_other_images": [
+    "mbir_alu.hell (54,691 B, headroom 4,358): 2 flags OK, 4 flags FAIL (e3).",
+    "mbir_cmp_lt.hell (57,511 B, headroom 1,538): even 1 new flag FAILS, data cells fail non-monotonically (cmp_lt_extensibility_probe).",
+    "mbir_m2_loader.hell (40,309 B, headroom 18,740): 512 data cells OK, 8 new flags OK."
+  ],
+  "consequence_for_b": [
+    "The unified image's obstacle is NOT the LMAO initializer budget on the loader side: the loader admits the flags and data cells the arithmetic routes need.",
+    "The previously measured walls belong to the images one would have to EXTEND: the streaming ALU image (4,358 B headroom) and the comparator image (1,538 B headroom). The loader is the one with room.",
+    "So (b) reduces to writing the merged kernel on the loader's andamio, not to a budget fight. That is engineering work, and this measurement removes the 'it cannot fit' objection."
+  ],
+  "what_this_does_not_demonstrate": [
+    "That the merged kernel actually fits: only the flag/cell dimensions were probed, and the arithmetic handler code itself was not added.",
+    "That the merged image runs correctly.",
+    "Anything about the native-emitter loader limit measured in native_probe_d.json, which is a separate and still valid finding."
+  ],
+  "scope_limits": [
+    "Measured on mbir_m2_loader.hell with the same flag/cell shape as the other probes.",
+    "No produced image was executed."
+  ]
+}

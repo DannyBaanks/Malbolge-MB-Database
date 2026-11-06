@@ -1,0 +1,61 @@
+{
+  "schema": "cmp2-two-operand-blocker/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "MALBOLGE_SEMANTICS",
+  "claim": "Two-variable-operand comparison is blocked in the native rectilinear emitter, for a structural reason rather than a search failure. The routing key can take only one stdin byte, and the fixed op-chain a recipe could apply to the second operand cannot compute the comparison at all.",
+  "claim_status": "DEMONSTRATED (negative)",
+  "front_a_status": {
+    "demonstrated": "ONE variable operand against a constant: CMP_LT(d, 5) over d=0..9, 10/10 PASS on oracle, native C runner and the strict loader (mbir_native_cmp_decimal.mb).",
+    "not_demonstrated": "TWO variable operands. Both routes below were executed and measured."
+  },
+  "route_1_two_byte_routing_key": {
+    "description": "Extend the bootstrap so the routing key depends on both stdin bytes. The traced pointer choreography of mbir_native_cmp_decimal.mb allows inserting 'j / j p' after the first mixing 'p', so the second 'p' computes crz(B, rot^m(crz(A, C1))) and the key becomes KEY = rot^n(crz(B, rot^m(crz(A, C1)))); Q = crz(KEY, 48).",
+    "search": "Exhaustive over C1 in the 8 loader-valid values at cell 49, m and n in 0..9, and the branch constant over 10 waypoint values, scoring all 100 decimal-digit pairs.",
+    "measured": "at most 56 of the 100 pairs reach a distinct route address",
+    "consequence": "44 pairs collide onto a shared recipe and would print a wrong boolean. The one-bootstrap-plus-100-recipes construction is not viable."
+  },
+  "route_2_fixed_op_chain": {
+    "description": "Route on the first operand (10 routes, already proven) and let each route's recipe read the second operand with IN and apply a fixed chain of ROT and CRAZY-with-constant, then OUT the boolean.",
+    "theoretical_argument": {
+      "separability": "CRAZY is trit-wise: out_trit = TBL[c_trit][a_trit], it never mixes trit positions. ROT is a cyclic shift of the trit string: it moves positions but never combines two trits into one. Therefore, after any composition, output trit i is a function of exactly ONE input trit (permuted), and the output value is V = sum_i 3^i * F_i(t_sigma(i)) -- a SEPARABLE function of the input trits.",
+      "contradiction": "For CMP_LT(b, 5), B = 48..57 has trits (t0,t1): 48:(0,1) 49:(1,1) 50:(2,1) 51:(0,2) 52:(1,2) 53:(2,2), while 54..57 carry t2=0,t3=2 against t2=2,t3=1 for 48..53. Inside the group 48..53 the answer must be 1 for (t0,t1) in {(0,1),(1,1),(2,1),(0,2),(1,2)} and 0 for (2,2). In separated form the group contributes A(t0)+B(t1); the three cases with t1=1 force A(0)=A(1)=A(2), and then (0,2) and (2,2) produce the same value -- but they require different answers. Contradiction.",
+      "caveat": "The separability argument covers CRAZY with a constant fixed at build time. A CRAZY whose operand cell holds an input-derived value would leave this function class; that needs pointer navigation to re-read a stored value, which the emitter does not express today."
+    },
+    "empirical": {
+      "beam_search": "width 800 depth 12 and width 6000 depth 18 both stall at 9/10",
+      "exhaustive_bfs": {
+        "method": "BFS over the 10-tuple of accumulator values with full dedup and no pruning; ops are ROT and CRAZY with each constant 33..126",
+        "targets_tested": [
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        "max_depth": 30,
+        "reachable_states_explored": 51799,
+        "result": "NO chain exists for any target at any depth up to 30",
+        "note": "the reachable set is small (51,799 states) precisely because of the separability structure, so depth 30 is far beyond any recipe a 59,049-cell image could hold; this is a complete negative result for the op set"
+      },
+      "interpretation": "9/10 is the maximum and even that is unreachable; the separability argument explains why"
+    }
+  },
+  "route_3_nested_dispatch": {
+    "description": "Route on operand a (10 routes), and inside each route run a second dispatcher on operand b.",
+    "measured": "The routing key family crz(rot^r(crz(48+d, c)), 48) yields 10 distinct addresses for exactly one (c, r) = (85, 7), which the first level already uses. No second independent set of 10 exists (e4bis_dispatch_packing.json: 31 combos give 3 routes, 10 give 4 or 5, only one gives 10). A second level would need its own navigation chain, which the emitter does not build."
+  },
+  "what_is_demonstrated_for_a": [
+    "Comparator over the decimal domain 0..9 with one variable operand against a constant reference: mbir_native_cmp_decimal.mb, 10/10 on three engines, strict loader ACCEPT.",
+    "E1's building blocks verified: 3-digit decimal addition works in this toolchain (e0_lmao_example_adder.json, 475/475).",
+    "The {0,1,2} ceiling of the HeLL kernels is a measured hard wall (cmp_lt_extensibility_probe.json)."
+  ],
+  "what_remains_not_demonstrated_for_a": [
+    "Two variable operands (this record: three routes measured and all blocked).",
+    "Multi-digit operands and arbitrary precision.",
+    "A borrow-propagating comparator in HeLL (the E1 design, never built)."
+  ],
+  "scope_limits": [
+    "The separability argument is a proof for the fixed-constant CRAZY op set; it does not cover an emitter extended with input-dependent CRAZY operands.",
+    "The routing-key search covers the specific key family derived from the traced choreography; other key families were not searched."
+  ]
+}

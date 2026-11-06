@@ -1,0 +1,21 @@
+{
+  "schema": "native-cmp2-classic/1",
+  "timestamp": "2026-11-06T09:53:08.409460+00:00",
+  "evidence_kind": "MALBOLGE_RUNTIME",
+  "claim": "Refused to build: the two-byte routing key does not yield 100 distinct route addresses for the 100 decimal-digit pairs, so the image would print wrong booleans for the colliding pairs.",
+  "claim_status": "NOT_BUILT",
+  "routing_key": {
+    "formula": "KEY = rot^n(crz(B, rot^m(crz(A, C1)))); Q = crz(KEY, 48)",
+    "c1": 85,
+    "m": 0,
+    "n": 7,
+    "branch": 48,
+    "distinct_addresses": 12,
+    "min_gap": 27,
+    "range": [
+      747,
+      1125
+    ]
+  },
+  "blocker": "vm_malbolge/evidence/cmp2_two_operand_blocker.json"
+}
