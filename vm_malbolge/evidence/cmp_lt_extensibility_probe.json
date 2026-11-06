@@ -1,0 +1,103 @@
+{
+  "schema": "cmp-lt-extensibility-probe/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The CMP_LT image cannot be extended in place with a generalising comparator: one new code flag already fails, and extra data cells fail non-monotonically. The kernel's domain {0,1,2} is a hard ceiling of that image, not a design choice that can be revisited by adding a few cells.",
+  "claim_status": "DEMONSTRATED",
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_cmp_lt.hell",
+    "sha256": "recorded in vm_malbolge/evidence/mbir_m2_cf_cmp provenance; not recomputed here",
+    "built_baseline_bytes": 57511,
+    "headroom_bytes": 1538,
+    "limit_bytes": 59049
+  },
+  "assembler": {
+    "name": "LMAO",
+    "version": "0.6.0",
+    "binary_path": "third_party/lmao/lmao"
+  },
+  "method": {
+    "description": "Same probe shape as e3_lmao_initializer_budget.json, but on the CMP_LT image, which has ten times less headroom. Flags are added as Nop/MovD+Jmp blocks before HALT: with a matching _HIT label; data cells are added at the end of .DATA with U_ targets kept in the same data block.",
+    "control": "the untouched mbir_cmp_lt.hell assembles to 57,511 bytes (headroom 1,538)"
+  },
+  "results": {
+    "data_cells_only": [
+      {
+        "cells": 1,
+        "ok": true,
+        "bytes": 57511,
+        "error": null
+      },
+      {
+        "cells": 2,
+        "ok": true,
+        "bytes": 57511,
+        "error": null
+      },
+      {
+        "cells": 4,
+        "ok": false,
+        "error": "HeLL program overlaps with generated initialization code."
+      },
+      {
+        "cells": 8,
+        "ok": true,
+        "bytes": 57511,
+        "error": null
+      },
+      {
+        "cells": 16,
+        "ok": false,
+        "error": "Memory usage conflict while generating initialization code."
+      }
+    ],
+    "code_flags": [
+      {
+        "flags": 1,
+        "cells": 4,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 2,
+        "cells": 4,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 3,
+        "cells": 4,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 4,
+        "cells": 4,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      }
+    ],
+    "exact_loop_design": {
+      "flags": 2,
+      "cells": 2,
+      "ok": false,
+      "error": "Free space exceeded (Add Malbolge command).",
+      "note": "the design for the mutual-decrement comparator (a<b iff a reaches zero before b) needs 2 state flags and 2 marker cells"
+    }
+  },
+  "interpretation": [
+    "On this image, a single new code flag is already fatal: the 1,538-byte headroom cannot absorb the initializer cost of even one flag.",
+    "Data cells fail NON-MONOTONICALLY (2 OK, 4 FAIL, 8 OK, 16 FAIL): the failure depends on where the generated initializer lands, not on how many cells are added. So 'a few more cells' is not a safe operation on this image.",
+    "Therefore the {0,1,2} domain of CMP_LT is a hard ceiling of that image. Generalising the comparator in place is not a matter of adding cells or flags: the image has to be emitted by another route.",
+    "This is the same wall E3 measured on the ALU image, but reached here at a much smaller budget because the comparator image is already 3,180 bytes larger."
+  ],
+  "what_this_does_not_demonstrate": [
+    "Whether a from-scratch HeLL rewrite of the comparator would fit (only in-place extension was probed).",
+    "Whether the native emitter can express a general comparator (that is the separate experiment recorded in native_cmp_decimal_build.json)."
+  ],
+  "scope_limits": [
+    "Measured on mbir_cmp_lt.hell with a specific flag/cell shape; other shapes may shift the numbers but not the direction, since the failure at 1 flag is categorical.",
+    "No produced image was executed."
+  ],
+  "consequence": "Domain {0,1,2} of CMP_LT/CMP_GT is confirmed as a structural ceiling of those images. The decimal comparator is attempted instead on the native emitter, which has 30,544 free bytes and needs no new code flags."
+}

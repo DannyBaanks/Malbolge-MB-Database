@@ -64,6 +64,19 @@ ROUTES_3 = {
     2: ("CMP_LT 2 < 3 -> 1", b"1\n"),
 }
 
+# Milestone (a): relational comparator over the decimal domain 0..9, which is
+# the domain the decrement-classifier kernels cannot reach (they stop at
+# {0,1,2}). Each decimal digit routes to its own recipe that prints the boolean
+# of (digit < REFERENCE). The dispatcher key routes ASCII('0')..ASCII('9') to
+# ten distinct route addresses (Q = 747..1125, min gap 27), so the whole
+# decimal digit domain is covered without a single new code flag.
+REFERENCE = 5
+ROUTES_CMP = {
+    d: (f"CMP_LT {d} < {REFERENCE} -> {1 if d < REFERENCE else 0}",
+        b"1\n" if d < REFERENCE else b"0\n")
+    for d in range(10)
+}
+
 
 def decode(addr, value):
     if not 33 <= value <= 126:
@@ -309,6 +322,9 @@ def main():
                     default=ROOT / "vm_malbolge/src/mbir_native_2routes.mb")
     ap.add_argument("--routes", type=int, choices=(2, 3), default=2,
                     help="2 routes (ADD + CMP_EQ) or 3 routes (ADD + CMP_EQ + CMP_LT)")
+    ap.add_argument("--cmp", action="store_true",
+                    help="build the (a) comparator: 10 routes, one per decimal digit "
+                         "0..9, each printing CMP_LT(digit, REFERENCE)")
     ap.add_argument("--mb-ref", type=Path, default=None,
                     help="path to the strict-loader C oracle (mb_ref); if given, "
                          "every case is also verified by this third engine")
@@ -317,13 +333,20 @@ def main():
     args = ap.parse_args()
 
     ROUTES = ROUTES_3 if args.routes == 3 else ROUTES_2
+    if args.cmp:
+        ROUTES = ROUTES_CMP
 
     if args.json is None:
-        name = "native_2routes_build.json" if args.routes == 2 else "native_3routes_build.json"
+        if args.cmp:
+            name = "native_cmp_decimal_build.json"
+        else:
+            name = "native_2routes_build.json" if args.routes == 2 else "native_3routes_build.json"
         args.json = ROOT / "vm_malbolge/evidence" / name
-    if args.mb is None or str(args.mb).endswith("mbir_native_2routes.mb"):
+    if str(args.mb).endswith("mbir_native_2routes.mb"):
         args.mb = ROOT / ("vm_malbolge/src/mbir_native_2routes.mb" if args.routes == 2
                           else "vm_malbolge/src/mbir_native_3routes.mb")
+    if args.cmp:
+        args.mb = ROOT / "vm_malbolge/src/mbir_native_cmp_decimal.mb"
 
     targets = {d: ROUTES[d][1] for d in sorted(ROUTES)}
     digits = sorted(targets)
