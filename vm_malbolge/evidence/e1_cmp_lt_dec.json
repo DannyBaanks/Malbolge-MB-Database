@@ -3,7 +3,7 @@
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "TOOLCHAIN_ANALYSIS",
   "claim": "The working comparator image has NO usable room at all. Adding even eleven lines of code blocks to mbir_cmp_lt.hell makes LMAO fail with 'HeLL program overlaps with generated initialization code' -- a placement conflict, not a size problem. Its 1,537-byte margin is entirely consumed by the initializer, so the verbatim-base route cannot absorb the decimal reader at any size.",
-  "claim_status": "NOT_DEMONSTRATED (base image has zero usable room)",
+  "claim_status": "NOT_DEMONSTRATED (documented entry mechanism found, but adding its cell hits the same wall)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
@@ -18,7 +18,7 @@
     "11 lines added -> 'HeLL program overlaps with generated initialization code' (placement conflict)"
   ],
   "reading": "the failure mode changes with the amount added but never clears. At the smallest tested addition it is a placement conflict, which means the base's margin is fully occupied by the initializer and there is no address at which the added block can be placed.",
-  "convergent_conclusion": "E1 cannot be built by extending the working comparator image: it has no usable room. It cannot be built on a from-scratch layout either, because the position-dependent opcode decode misroutes the entry (measured: IN at step 6483 in the working image versus HALT at 6484 in the from-scratch one). Both routes are now measured.",
+  "convergent_conclusion": "Every route to E1 is measured and blocked: extending the working image (no usable room, not even eleven lines), a from-scratch layout (entry misrouted), and the documented explicit entry mechanism (its cell hits the initializer wall).",
   "what_would_be_needed": "A program designed for the 5+2 cycle technique from the start, where the layout, the entry route and the cycle cells are designed together -- not grafted onto either existing image.",
   "what_is_demonstrated": [
     "The verbatim-base technique transfers the layout and entry wiring intact (zero structural errors at every addition size tested).",
@@ -28,5 +28,17 @@
   "scope_limits": [
     "Only single-digit operands targeted.",
     "Additions from 11 to 43 lines were tested; a leaner encoding below eleven lines was not searched."
-  ]
+  ],
+  "documented_entry_mechanism": {
+    "source": "third_party/lmao/README.md lines 113-121",
+    "quote": "The data section must define a label named ENTRY. When the assembled Malbolge program starts execution, the D register points at the ENTRY cell. The C register points at a Jmp instruction.",
+    "observation": "NEITHER working image uses it: mbir_cmp_lt.hell and mbir_cmp_lt_dec.hell both define ENTRY inside a code block, not in .DATA",
+    "why_it_matters": "it is the only documented way to control where execution starts, which is exactly the variable the from-scratch layout could not control"
+  },
+  "test_of_documented_mechanism": {
+    "change": "added 'ENTRY: dec_read_digit' to the .DATA section of mbir_cmp_lt_dec.hell, so the D register would point at the reader and the initial Jmp would read its value as the jump target",
+    "first_error": "Label ENTRY is defined multiple times (the code block also defines it) -- resolved by renaming the code-block one to PROG_ENTRY",
+    "second_error": "Memory usage conflict while generating initialization code",
+    "reading": "the documented mechanism needs one extra .DATA cell, and that cell hits exactly the same initializer wall every other addition has hit"
+  }
 }
