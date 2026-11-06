@@ -49,7 +49,8 @@ def load_memory(source: str):
     return mem
 
 
-def run(source: str, max_steps: int = 2000000, stdin_data: str = ""):
+def run(source: str, max_steps: int = 2000000, stdin_data: str = "",
+        stop_on_eof: bool = False):
     mem = load_memory(source)
     a = 0
     c = 0
@@ -73,6 +74,11 @@ def run(source: str, max_steps: int = 2000000, stdin_data: str = ""):
         elif op == 23:
             ch = next(stdin_iter, None)
             a = -1 if ch is None else ord(ch)
+            if ch is None and stop_on_eof:
+                # The native C runner (Malbolge-Engine/src/vm.c:144-149) sets
+                # terminated=1 when stdin is exhausted. Without this, a program
+                # with an input fetch loop spins forever emitting 0xff.
+                return bytes(out).decode("latin-1"), steps, "EOF"
         elif op == 39:
             v = mem[d]
             mem[d] = (v // 3) + (v % 3) * (3 ** 9)
@@ -99,10 +105,11 @@ def run(source: str, max_steps: int = 2000000, stdin_data: str = ""):
     return bytes(out).decode("latin-1"), steps, "MAX_STEPS"
 
 
-def oracle_run(source_file: str, max_steps: int = 2000000, stdin_data: str = ""):
+def oracle_run(source_file: str, max_steps: int = 2000000, stdin_data: str = "",
+               stop_on_eof: bool = False):
     with open(source_file, "r", encoding="ascii") as f:
         source = f.read()
-    text, steps, status = run(source, max_steps, stdin_data)
+    text, steps, status = run(source, max_steps, stdin_data, stop_on_eof)
     return {"output": text, "steps": steps, "status": status}
 
 
