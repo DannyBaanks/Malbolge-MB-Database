@@ -30,10 +30,10 @@
     "exit_code": 1,
     "errors": [
       "Error: Free space exceeded (Add Malbolge command).",
-      "Internal error: Cannot generate initialization code for cell 58955.",
+      "Internal error: Cannot generate initialization code for cell 58969.",
       "Error: Memory usage conflict while generating initialization code."
     ],
-    "note": "cell 58955 is 94 cells short of the 59049 limit"
+    "note": "cell 58969 is 80 cells short of the 59049 limit. A first uncompressed attempt stopped at cell 58955 (94 cells short); dropping the unused _HIT labels and the duplicated FLAG1-3 lines in the opcode exit block gained 14 cells."
   },
   "measured_budget": {
     "source": "m2_alu_budget probe on the same base image",
@@ -55,5 +55,19 @@
   "scope_limits": [
     "Only the CMP_EQ dispatch was attempted; CMP_LT was not added.",
     "The patch is a proof of mechanism, not a tuned image; a leaner encoding of the same dispatch might fit, but was not searched."
+  ],
+  "compression_attempted": {
+    "changes": [
+      "dropped the OPCODE_PHASE_HIT / CMP_MODE_HIT labels (never tested from .DATA)",
+      "moved the OPCODE_PHASE gate after the FLAG1-3 tests so the opcode exit block only carries FLAG4 and FLAG5"
+    ],
+    "cells_gained": 14,
+    "still_short_by": 80
+  },
+  "consequence_for_b": [
+    "mbir_m2_alu.hell is already the unified image for the arithmetic half: one image, stored program loaded into RAM, ADD and SUB executed (8/8).",
+    "Adding CMP_EQ to that same image is blocked by the initializer budget, not by semantics. Two attempts localized the boundary to 80 cells short.",
+    "Compressing the patch is not enough: the dispatch code for one extra opcode costs more than the entire remaining margin.",
+    "The constructive route is the loader's andamio: mbir_m2_loader.hell has 18,740 bytes of headroom and admits 512 data cells and 8 new code flags (loader_budget_probe.json). The merge must reuse the loader's existing init/decrement/carry subroutines and load phase rather than duplicate them, which is a deduplicating merge of two ~600-800-line HeLL sources, not a patch."
   ]
 }

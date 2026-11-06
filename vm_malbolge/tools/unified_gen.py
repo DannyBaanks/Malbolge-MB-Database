@@ -33,15 +33,7 @@ NEW_FLAGS = """OPCODE_PHASE:
 \tNop/MovD
 \tJmp
 
-OPCODE_PHASE_HIT:
-\tNop/MovD
-\tJmp
-
 CMP_MODE:
-\tNop/MovD
-\tJmp
-
-CMP_MODE_HIT:
 \tNop/MovD
 \tJmp
 

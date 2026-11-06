@@ -67,15 +67,7 @@ OPCODE_PHASE:
 	Nop/MovD
 	Jmp
 
-OPCODE_PHASE_HIT:
-	Nop/MovD
-	Jmp
-
 CMP_MODE:
-	Nop/MovD
-	Jmp
-
-CMP_MODE_HIT:
 	Nop/MovD
 	Jmp
 
