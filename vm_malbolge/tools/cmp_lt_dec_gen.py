@@ -106,6 +106,22 @@ PHASE_B:
 	Nop/MovD
 	Jmp
 
+FLAG_A_IS_0:
+	Nop/MovD
+	Jmp
+
+FLAG_A_IS_1:
+	Nop/MovD
+	Jmp
+
+FLAG_A_IS_2:
+	Nop/MovD
+	Jmp
+
+FLAG_A_IS_GE3:
+	Nop/MovD
+	Jmp
+
 LOOP2:
 	Nop/Nop/Nop/MovD
 	Jmp
@@ -185,6 +201,8 @@ return_from_value_1:
 }{
 ret_A_d1:
 	NO_MORE_CARRY_FLAG A_ge_1
+	// carry en dec1 => A == 0
+	R_FLAG_A_IS_0
 	MOVED A_class_done
 }{
 A_ge_1:
@@ -193,6 +211,8 @@ A_ge_1:
 }{
 ret_A_d2:
 	NO_MORE_CARRY_FLAG A_ge_2
+	// carry en dec2 => A == 1
+	R_FLAG_A_IS_1
 	MOVED A_class_done
 }{
 A_ge_2:
@@ -200,6 +220,14 @@ A_ge_2:
 	MOVED decrement_value
 }{
 ret_A_d3:
+	NO_MORE_CARRY_FLAG A_ge_3
+	// carry en dec3 => A == 2
+	R_FLAG_A_IS_2
+	MOVED A_class_done
+}{
+A_ge_3:
+	// sin carry tras dec3 => A >= 3
+	R_FLAG_A_IS_GE3
 	MOVED A_class_done
 }{
 A_class_done:
@@ -247,10 +275,16 @@ B_class_done:
 	MOVED compare
 }{
 compare:
-	// Dominio determinado por la clasificacion: A y B en {0,1,2,>=3}.
-	// A < B  <=>  (A==0 y B>=1) o (A==1 y B>=2) o (A==2 y B>=3)
-	// La clase se transmite por el numero de decrementos ejecutados, que se
-	// recupera comparando directamente con decrementos mutuos.
+	// Leer la clase de A almacenada en fase A y decidir.
+	FLAG_A_IS_0 cmp_a0 R_FLAG_A_IS_0
+	FLAG_A_IS_1 cmp_a1 R_FLAG_A_IS_1
+	FLAG_A_IS_2 cmp_a2 R_FLAG_A_IS_2
+	// A >= 3: no determinado con esta clasificacion
+	MOVED result_false
+}{
+cmp_a0:
+	// A == 0: A < B sii B >= 1. BStay clasificada: su clase vive en value
+	// (decrementada una vez por clase). Se comprueba con un decremento.
 	R_MOVED
 	ROT C1 R_ROT
 	R_SUBROUTINE_FLAG1
@@ -258,7 +292,7 @@ compare:
 }{
 ret_mut_d1:
 	NO_MORE_CARRY_FLAG mut_ge_1
-	MOVED result_false
+	MOVED result_true
 }{
 mut_ge_1:
 	R_SUBROUTINE_FLAG2
@@ -266,14 +300,64 @@ mut_ge_1:
 }{
 ret_mut_d2:
 	NO_MORE_CARRY_FLAG mut_ge_2
-	MOVED result_false
+	MOVED result_true
 }{
 mut_ge_2:
 	R_SUBROUTINE_FLAG3
 	MOVED decrement_value
 }{
 ret_mut_d3:
-	MOVED result_false
+	MOVED result_true
+}{
+cmp_a1:
+	R_MOVED
+	ROT C1 R_ROT
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+ret_c1_d1:
+	NO_MORE_CARRY_FLAG c1_ge_1
+	MOVED result_true
+}{
+c1_ge_1:
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+ret_c1_d2:
+	NO_MORE_CARRY_FLAG c1_ge_2
+	MOVED result_true
+}{
+c1_ge_2:
+	R_SUBROUTINE_FLAG3
+	MOVED decrement_value
+}{
+ret_c1_d3:
+	MOVED result_true
+}{
+cmp_a2:
+	R_MOVED
+	ROT C1 R_ROT
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
+}{
+ret_c2_d1:
+	NO_MORE_CARRY_FLAG c2_ge_1
+	MOVED result_true
+}{
+c2_ge_1:
+	R_SUBROUTINE_FLAG2
+	MOVED decrement_value
+}{
+ret_c2_d2:
+	NO_MORE_CARRY_FLAG c2_ge_2
+	MOVED result_true
+}{
+c2_ge_2:
+	R_SUBROUTINE_FLAG3
+	MOVED decrement_value
+}{
+ret_c2_d3:
+	MOVED result_true
 }{
 result_true:
 	R_MOVED
