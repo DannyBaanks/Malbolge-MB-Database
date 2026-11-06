@@ -229,7 +229,7 @@
   "references": [
     "vm_malbolge/evidence/gt_12_12_harness.json (original manifest, 2026-10-15)",
     "vm_malbolge/GT_STATUS.md (architecture, truth table, provenance)",
-    "vm_malbolge/LT_STATUS.md §11 (Finding 74, the symmetric CMP_LT milestone) and §12 (re-verification)"
+    "vm_malbolge/LT_STATUS.md §11 (Finding 74, the symmetric CMP_LT milestone) and Addendum A (re-verification)"
   ],
   "note": "Independent re-verification of the CMP_GT 12/12 milestone on this host, 20 days after the original run. No image was rebuilt: the committed canonical image was executed as-is. The LMAO build non-determinism (Finding 62) does not apply here — no rebuild was performed."
 }

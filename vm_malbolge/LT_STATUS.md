@@ -2,7 +2,7 @@
 
 Status: **12/12 DEMONSTRATED** (Finding 74, §11 below; re-verified independently on
 2026-11-05 on both engines with identical outputs and identical step counts —
-`vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`).
+Addendum A below, `vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`).
 
 > The narrative below (Findings 1-73) is the historical ledger of the long 11/12
 > plateau and of the measurements that closed it. Its per-finding "12/12 remains
@@ -4716,9 +4716,14 @@ El estado de `CMP_LT 12/12` pasa de `NOT_DEMONSTRATED` a **`DEMONSTRATED`** con 
 
 ---
 
-## 12. Reverificación independiente — 2026-11-05 · 12/12 reproducido en ambos motores
+## Addendum A — Reverificación independiente · 2026-11-05 · 12/12 reproducido en ambos motores
 
-### 12.1 Qué se ejecutó
+> Addendum de nivel documento (no es una sección de Finding): la numeración `## n.` de este
+> fichero pertenece a las subsecciones de cada Finding y ya está ocupada (F72 §12 = "Siguientes
+> experimentos acotados", F73 §11 = "HITO CONSEGUIDO"). Este addendum se identifica como `A` para
+> no colisionar con ese espacio de nombres.
+
+### A.1 Qué se ejecutó
 
 Desde la raíz del repositorio `MALBOLGE-MB-DATABASE` (host Linux, Ubuntu 24.04):
 
@@ -4748,7 +4753,7 @@ baseline3 halt       in=00               want=(empty) oracle=(empty) runner=(emp
 La salida verbatim de `CMP_GT` queda en `vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`
 (campo `raw_harness`), con los mismos pasos por clase de `b` que su manifiesto de origen.
 
-### 12.2 Resultado
+### A.2 Resultado
 
 | vector | want | oracle | runner | pasos (hoy) | pasos (manifiesto 2026-10-15) | veredicto |
 |---|---|---|---|---|---|---|
@@ -4767,7 +4772,7 @@ La salida verbatim de `CMP_GT` queda en `vm_malbolge/evidence/gt_12_12_reverify_
 
 **Los doce recuentos de pasos coinciden vector a vector con `lt_12_12_harness.json`** (ts `2026-10-15T02:19:31Z`), y lo mismo para `CMP_GT` frente a `gt_12_12_harness.json` (ts `2026-10-15T03:07:24Z`). No hay deriva de comportamiento: el estado `DEMONSTRATED` se sostiene hoy.
 
-### 12.2b Control negativo — el harness discrimina
+### A.2b Control negativo — el harness discrimina
 
 Para descartar que el harness estampe verde por construcción, se corrió el **mismo** harness sobre una imagen histórica de la etapa 11/12 (`lt_f59_cand_C.mb`), que según el Finding 59 falla exactamente un vector:
 
@@ -4783,7 +4788,7 @@ cmp_lt(2,2)          in=01020102021000   want=00     oracle=01     runner=01    
 
 Resultado: **11/12, código de salida 1**, con el fallo único en `(2,2)` (`01` en vez de `00`) y las otras once entradas — incluidas las tres líneas base — en `PASS`. El 12/12 de la imagen canónica es por tanto discriminante y no un artefacto del instrumento.
 
-### 12.3 Identidad de los artefactos verificados
+### A.3 Identidad de los artefactos verificados
 
 | fichero | sha256 blob (`git show HEAD:<ruta>`) | sha256 fichero de trabajo | nota |
 |---|---|---|---|
@@ -4795,7 +4800,7 @@ Resultado: **11/12, código de salida 1**, con el fallo único en `(2,2)` (`01` 
 
 La diferencia entre blob y fichero de trabajo de `mbir_cmp_lt.mb` es **un único byte final** (`0x0A` → `0x0D`) producido por la conversión de fin de línea de `core.autocrlf=true`, no una imagen distinta: el comportamiento medido (salida y pasos) es idéntico al del blob. Es el hazard ya registrado en el adenda del Finding 55, aplicado aquí a un artefacto canónico.
 
-### 12.4 Manifiestos de esta reverificación
+### A.4 Manifiestos de esta reverificación
 
 - `vm_malbolge/evidence/lt_12_12_reverify_2026-11-05.json`
 - `vm_malbolge/evidence/gt_12_12_reverify_2026-11-05.json`

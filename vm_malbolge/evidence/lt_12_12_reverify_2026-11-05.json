@@ -242,7 +242,7 @@
   },
   "references": [
     "vm_malbolge/evidence/lt_12_12_harness.json (original manifest, 2026-10-15)",
-    "vm_malbolge/LT_STATUS.md §11 (Finding 74, root cause and resolution) and §12 (this re-verification)",
+    "vm_malbolge/LT_STATUS.md §11 (Finding 74, root cause and resolution) and Addendum A (this re-verification)",
     "vm_malbolge/GT_STATUS.md (symmetric CMP_GT milestone, Finding 75)"
   ],
   "note": "Independent re-verification of the CMP_LT 12/12 milestone on this host, 20 days after the original run. No image was rebuilt: the committed canonical image was executed as-is. The LMAO build non-determinism (Finding 62) does not apply here — no rebuild was performed."
