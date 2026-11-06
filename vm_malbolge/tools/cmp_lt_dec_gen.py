@@ -204,7 +204,7 @@ crazy_value_C1:
 	U_CRAZY value_C1
 value_C1:
 	C1
-	FLAG_READ_A_C1 return_from_value_C1_1 R_FLAG_READ_A_C1
+	FLAG_READ_A return_from_value_C1_1 R_FLAG_READ_A
 
 crazy_ss:
 	U_CRAZY stack_scratch
@@ -294,7 +294,7 @@ read_digit_A:
 	// Leer un digito: copiarlo a value_C1 y luego a value.
 	R_MOVED
 	IN ?- R_IN
-	R_FLAG_READ_A_C1
+	R_FLAG_READ_A
 	MOVED crazy_value_C1
 }{
 return_from_value_C1_1:
@@ -314,9 +314,10 @@ ret_ss_push:
 }{
 ret_st_push:
 	R_CRAZY R_MOVED
-	// A vive en value (no se clasifica: la clasificacion lo destruiría).
-	// Ir directo a leer B, que aterrizará en value2.
-	MOVED read_digit_B
+	// Clasificar A: los decrementos son la operacion que ESCRIBE en value.
+	R_PHASE_A
+	R_SUBROUTINE_FLAG1
+	MOVED decrement_value
 }{
 ret_A_d1:
 	NO_MORE_CARRY_FLAG A_ge_1
