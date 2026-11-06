@@ -75,6 +75,22 @@ PHASE_A:
 	Nop/MovD
 	Jmp
 
+FLAG_READ_A_C1:
+	Nop/MovD
+	Jmp
+
+FLAG_READ_A:
+	Nop/MovD
+	Jmp
+
+FLAG_READ_B_C1:
+	Nop/MovD
+	Jmp
+
+FLAG_READ_B:
+	Nop/MovD
+	Jmp
+
 PHASE_B:
 	Nop/MovD
 	Jmp
@@ -154,13 +170,14 @@ rot_value:
 	U_ROT value
 value:
 	C1
+	FLAG_READ_A ret_st_push R_FLAG_READ_A
 	FLAG1 return_from_value_3 R_FLAG1
 
 crazy_value_C1:
 	U_CRAZY value_C1
 value_C1:
 	C1
-	FLAG1 return_from_value_C1_1 R_FLAG1
+	FLAG_READ_A_C1 return_from_value_C1_1 R_FLAG_READ_A_C1
 
 crazy_ss:
 	U_CRAZY stack_scratch
@@ -250,12 +267,12 @@ read_digit_A:
 	// Leer un digito: copiarlo a value_C1 y luego a value.
 	R_MOVED
 	IN ?- R_IN
-	R_FLAG1
+	R_FLAG_READ_A_C1
 	MOVED crazy_value_C1
 }{
 return_from_value_C1_1:
 	R_CRAZY R_MOVED
-	R_FLAG1
+	R_FLAG_READ_A
 	MOVED crazy_value
 }{
 ret_push_ss:
