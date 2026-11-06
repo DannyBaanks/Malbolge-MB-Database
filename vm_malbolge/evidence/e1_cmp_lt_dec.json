@@ -1,60 +1,41 @@
 {
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
-  "evidence_kind": "MALBOLGE_RUNTIME",
-  "claim": "The E1 entry is precisely localized: both images walk an identical wandering path through the .CODE/.DATA region, and at step 6483 the working mbir_cmp_lt.mb executes IN (reads the first stdin byte) while mbir_cmp_lt_dec.mb executes HALT one step later. The program never reads stdin, which is why the class flags are constant and the output is input-independent.",
-  "claim_status": "ASSEMBLED, ENTRY MISROUTED (localized to one instruction)",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "Both routes to E1 are now measured and blocked. Route 1, a from-scratch .CODE layout, misroutes the entry (localized to one instruction: the working image reads stdin at step 6483, the new one HALTs at 6484). Route 2, basing the program on the working mbir_cmp_lt.hell layout, is blocked by the initializer: adding the eight cycle cells the 5+2 technique needs makes LMAO reject the image outright, even appended at the very end of .CODE.",
+  "claim_status": "NOT_DEMONSTRATED (both routes measured and blocked)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
-  "source": {
-    "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 358
-  },
   "artifact": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
     "size_bytes": 21487,
-    "headroom_bytes": 37562,
-    "variant": "classic-3^10"
+    "note": "assembles, but the entry is misrouted so no stdin is ever read"
   },
-  "decisive_trace_comparison": {
-    "method": "instrumented trace of c, d, a per instruction, 20,000 steps, stdin '1 2'",
-    "working_image": {
-      "file": "vm_malbolge/src/mbir_cmp_lt.mb",
-      "first_IN_step": 6483,
-      "first_IN_note": "a <- 49 ('1'), i.e. the first stdin byte",
-      "HALT_step": 12280
-    },
-    "e1_image": {
-      "file": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-      "first_IN_step": null,
-      "HALT_step": 6484,
-      "note": "no IN instruction is ever executed; it HALTs one step after where the working image reads"
-    },
-    "reading": "the two images share the same wandering path through the flag/cell region (identical for the first 200 steps and beyond), and the path terminates at my HALT cell instead of at an entry that reads stdin"
+  "route_1_from_scratch_layout": {
+    "symptom": "100-vector grid 0/100, constant output, engines disagree",
+    "localized": "the instrumented trace shows the working mbir_cmp_lt.mb executes IN at step 6483 while mbir_cmp_lt_dec.mb executes HALT at step 6484, having walked an identical wandering path",
+    "cause": "the position-dependent opcode decode (op = (cell + c) % 94) routes the path to the new program's HALT cell"
   },
-  "root_cause": "The program's entry is not wired: the position-dependent opcode decode (op = (cell + c) % 94, so the SAME cell decodes differently at different addresses) routes the wandering path to my HALT cell. My .CODE layout was written from scratch and does not place the code blocks where the wandering path lands.",
-  "fix_required": {
-    "primary": "Do not write the .CODE layout from scratch. Take the WORKING image vmir_cmp_lt.hell as the base: keep its .CODE/.DATA layout and its entry wiring verbatim (same repository, MIT), and change only the comparison logic. Its wandering path already lands on its ENTRY.",
-    "secondary": "If the layout must stay custom, make the leading .CODE cell sequence match a working image's exactly, and place the ENTRY block at the address the wandering path reaches."
+  "route_2_working_layout": {
+    "experiment": "take mbir_cmp_lt.hell verbatim and append the eight cycle cells the 5+2 technique needs (two HIGH/LOW pairs per operand) at the very END of .CODE, so no earlier address shifts",
+    "result": "LMAO rejects the image: 'The program may be too large, or a .OFFSET directive may conflict'",
+    "reading": "the working comparator image has 1,537 bytes of margin, and that margin is not usable: the initializer cost of even eight extra cells exceeds it. Appending at the end of .CODE does not help because the cost is the initializer, not the raw cell count."
   },
-  "verification": {
-    "grid": "100 pairs, digits 0..9 x 0..9",
-    "PASS": 0,
-    "engines_agree": 0,
-    "oracle_output": "constant 0x55 0x55 0xFF 0xFF 0xFF 0x49 0x49",
-    "runner_output": "empty",
-    "reading": "both symptoms follow from the single root cause: no stdin is ever read, so the classification cannot vary, and the emitted bytes are whatever the wandering path leaves in the accumulator"
-  },
-  "what_is_demonstrated": [
-    "The image assembles at 21,487 bytes with 37,562 bytes of headroom.",
-    "The transplanted decrement_value removed the infinite loop.",
-    "The entry failure is localized to one instruction: step 6484 HALT versus step 6483 IN in the working image."
+  "convergence_with_b": [
+    "E1 and the unified image hit the same wall: the Classic 59,049-cell tape together with LMAO's initializer.",
+    "For E1 the wall is specifically that the only image whose entry wiring works cannot absorb the cells the 5+2 technique requires.",
+    "For (b) the wall is that the image whose arithmetic works cannot absorb a comparison dispatch. Five attempts measured (cells 58,955 / 58,969 / 57,619 / 58,152, plus a 6-line dead-code prune against an ~80-cell gap)."
   ],
-  "what_remains": [
-    "Rewire the entry (preferably by basing the program on mbir_cmp_lt.hell's working layout).",
-    "Then wire the digit reader to the class flags, resolve the engine disagreement, and re-run the grid."
+  "what_would_be_needed": [
+    "A working entry wiring in an image that still has room for the cycle cells, i.e. a program built for the 5+2 technique from the start rather than grafted onto either existing image.",
+    "That means designing the .CODE/.DATA layout together with the entry route, which is the multi-week work the repository recorded as 73 findings for the {0,1,2} comparator."
+  ],
+  "what_is_demonstrated": [
+    "The generator, the HeLL source and a 21,487-byte image that assembles.",
+    "The entry failure localized to one instruction with a side-by-side trace.",
+    "That the working comparator image cannot absorb the eight cells the technique needs."
   ],
   "scope_limits": [
-    "Only single-digit operands targeted.",
-    "No code from the GPL-3 example_adder.hell; all reused code is this repository's own MIT."
+    "Only single-digit operands were targeted.",
+    "Eight cells is the minimum for two HIGH/LOW cycle pairs; a leaner encoding was not searched."
   ]
 }
