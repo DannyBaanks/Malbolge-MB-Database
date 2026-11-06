@@ -1,0 +1,85 @@
+{
+  "schema": "e4bis-dispatch-packing/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The native Classic dispatcher of BolgeForge (dest = op(rot^r(op(a, c)), 48)) can select N=3 distinct route addresses with a 27-cell gap, which is the arena size the native emitter needs per route. The address-collapse blocker measured for 100 product recipes does not apply to N=3.",
+  "claim_status": "DEMONSTRATED",
+  "method": {
+    "description": "Exhaustive sweep over the branch constant c (33..126) and the rotation count r (0..15). For N contiguous source opcodes (48..48+N-1) the destination is dest = op(rot^r(op(a, c)), 48). A combination is valid when it yields N distinct destinations with gap >= 20 cells.",
+    "source_of_mechanism": "BolgeForge/experiments/square_0_9_native_dispatcher/build_native_square.py",
+    "crazy_rot": "re-derived locally (identical semantics to BolgeForge/constants.py, methodology only)",
+    "reference_blocker": "BolgeForge docs/evidence/2026-10-22-product-0-9-negative/README.md: 100 packed addresses collapse to 56 unique after the branch"
+  },
+  "results": {
+    "N=2": {
+      "valid_combinations": 756,
+      "best_gap": 19683,
+      "best_destinations": [
+        21,
+        19704
+      ],
+      "best_c_rot": [
+        33,
+        1
+      ]
+    },
+    "N=3": {
+      "valid_combinations": 31,
+      "best_gap": 27,
+      "best_destinations": [
+        990,
+        1017,
+        1044
+      ],
+      "best_c_rot": [
+        34,
+        7
+      ]
+    },
+    "N=4": {
+      "valid_combinations": 10,
+      "best_gap": 27,
+      "best_destinations": [
+        747,
+        828,
+        855,
+        882
+      ],
+      "best_c_rot": [
+        40,
+        7
+      ]
+    },
+    "N=5": {
+      "valid_combinations": 10,
+      "best_gap": 27,
+      "best_destinations": [
+        747,
+        774,
+        828,
+        855,
+        882
+      ],
+      "best_c_rot": [
+        40,
+        7
+      ]
+    }
+  },
+  "interpretation": [
+    "The 27-cell gap matches the per-route arena of the native emitter (setup 3k+3 plus a recipe of at most 26 cells), so N=3 routes are individually placeable.",
+    "The blocker documented for the 100-recipe product target is an artefact of N=100, not of the dispatcher.",
+    "N=3 keeps 31 valid (c, r) combinations, so the choice is not tight."
+  ],
+  "what_this_does_not_demonstrate": [
+    "That the three routes can be placed simultaneously with disjoint arenas (this sweep is per-route arithmetic only; a real build needs the disjoint backtracking of select_options).",
+    "That any route can load a byte-code program into RAM: the native emitter is a rectilinear-recipe dispatcher and has no notion of a stored-program PC.",
+    "That the resulting image passes the strict loader (mb_ref) - that is the next gate."
+  ],
+  "scope_limits": [
+    "Only the address-packing arithmetic is measured here; no image is emitted.",
+    "Branch constant c is restricted to printable bytes (33..126) and rotations to 0..15.",
+    "Source opcodes are the contiguous range 48..48+N-1, matching the emitter's '/' entry cell."
+  ],
+  "next_step": "Build a minimal 2-route native image (ADD + CMP_EQ) with the (c=34, r=7) key and gate it with mb_ref plus the strict loader; that proves the hybrid path before attempting 3 routes."
+}

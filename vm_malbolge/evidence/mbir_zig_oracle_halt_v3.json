@@ -4,7 +4,7 @@
   "verdict": "MATCH",
   "note": "MATCH proves the probe implements this MBIR stream; MISMATCH records the next Malbolge boundary.",
   "result": {
-    "hell_source": "C:\\Development\\ISyCo Git\\MALBOLGE-MB-DATABASE\\vm_malbolge\\src\\byte_dispatch18.hell",
+    "hell_source": "vm_malbolge\\src\\byte_dispatch18.hell",
     "mbir_hex": "00",
     "zig": {
       "schema": "mbir-zig-result/1",

@@ -152,6 +152,35 @@ The two evidence records that pin a `.dbg` hash
 (`mbir_m2_alu_smoke.json`, `mbir_m2_cf_smoke.json`) had their `debug_sha256`
 field updated to the hash of the normalized file.
 
+### Second pass, 2026-11-06: case-mismatched variant
+
+Three further records carried the *same* workstation path in its Windows
+spelling — `C:` backslash `Development` backslash `ISyCo Git` backslash
+`MALBOLGE-MB-DATABASE`, stored JSON-escaped — and were missed by the first pass
+because that sweep matched the Linux path spelling only. They are normalized
+here, again changing **only** the path string:
+
+| File | Field | Before | After |
+|---|---|---|---|
+| `vm_malbolge/evidence/mbir_zig_oracle_halt_v3.json` | `result.hell_source` | `C:\…\vm_malbolge\src\byte_dispatch18.hell` | `vm_malbolge\src\byte_dispatch18.hell` |
+| `vm_malbolge/evidence/mbir_zig_oracle_push_const_v3.json` | `result.hell_source` | `C:\…\vm_malbolge\src\byte_push_const_out.hell` | `vm_malbolge\src\byte_push_const_out.hell` |
+| `vm_malbolge/evidence/mbir_zig_oracle_push_const_missing_halt_v3.json` | `result.hell_source` | `C:\…\vm_malbolge\src\byte_push_const_out.hell` | `vm_malbolge\src\byte_push_const_out.hell` |
+
+Their hashes are pinned in `vm_malbolge/evidence/mbir_zig_oracle_hashes.json`,
+which was updated to the hashes of the normalized files; the four records it
+pins were re-verified to match.
+
+### Caveat: the repo-engine gate misses the JSON-escaped spelling
+
+`repo-engine doctor` reported 0 findings over 370 files both before and after
+this second pass. The reason is not case: the three records above store the path
+in its JSON-escaped spelling (a doubled backslash between components), and the
+gate's `LOCAL_PATH_001_DOC` pattern does not match that spelling. The gate also
+fires on this very document when the path is written in its plain spelling, so a
+gate-clean report is not evidence that no workstation path is embedded —
+normalization here is driven by the policy in this document, and the gate is
+only a second check. Sweeps for embedded paths should try both spellings.
+
 ### Caveat: LMAO regenerates absolute paths in `.dbg`
 
 LMAO v0.6.0 writes the build machine's absolute paths into the

@@ -1,0 +1,154 @@
+{
+  "schema": "e3-lmao-initializer-budget/1",
+  "timestamp": "2026-11-06T00:00:00+00:00",
+  "evidence_kind": "TOOLCHAIN_ANALYSIS",
+  "claim": "The LMAO v0.6.0 initializer wall that blocks the unified MBIR image is driven by NEW CODE FLAGS, not by data cells. On the committed mbir_alu.hell, 64 extra data cells still assemble (57,229 bytes), while 4 new code flags already fail.",
+  "claim_status": "DEMONSTRATED",
+  "artifact": {
+    "path": "vm_malbolge/src/mbir_alu.hell",
+    "sha256": "5743a18ec0205c90e77f572f815f07d1ae3e1c0fbb160c29f23aab9e4c7876e2",
+    "built_baseline_bytes": 54691,
+    "limit_bytes": 59049
+  },
+  "assembler": {
+    "name": "LMAO",
+    "version": "0.6.0",
+    "binary_path": "third_party/lmao/lmao"
+  },
+  "method": {
+    "description": "Flags are inserted as Nop/MovD+Jmp blocks before HALT: in .CODE, each with a matching _HIT label. Data cells are inserted at the end of the .DATA section; U_CRAZY targets are kept in the same data block (no blank line between the cell and its target), which is LMAO's requirement.",
+    "control": "the untouched mbir_alu.hell assembles to 54,691 bytes",
+    "dimension_cells": "flags=0, sweeping 1..64 data cells",
+    "dimension_flags": "cells=0, sweeping 1..48 code flags",
+    "dimension_combined": "(4,8) (8,16) (12,24) (6,48) (12,32) (16,48) (24,64)"
+  },
+  "results": {
+    "cells": [
+      {
+        "cells": 1,
+        "ok": true,
+        "bytes": 54691
+      },
+      {
+        "cells": 2,
+        "ok": true,
+        "bytes": 54691
+      },
+      {
+        "cells": 4,
+        "ok": true,
+        "bytes": 54691
+      },
+      {
+        "cells": 8,
+        "ok": true,
+        "bytes": 54691
+      },
+      {
+        "cells": 15,
+        "ok": true,
+        "bytes": 55819
+      },
+      {
+        "cells": 16,
+        "ok": true,
+        "bytes": 55819
+      },
+      {
+        "cells": 20,
+        "ok": true,
+        "bytes": 55819
+      },
+      {
+        "cells": 24,
+        "ok": true,
+        "bytes": 55819
+      },
+      {
+        "cells": 32,
+        "ok": true,
+        "bytes": 55825
+      },
+      {
+        "cells": 48,
+        "ok": true,
+        "bytes": 56383
+      },
+      {
+        "cells": 64,
+        "ok": true,
+        "bytes": 57229
+      }
+    ],
+    "flags": [
+      {
+        "flags": 1,
+        "ok": true,
+        "bytes": 55819
+      },
+      {
+        "flags": 2,
+        "ok": true,
+        "bytes": 54697
+      },
+      {
+        "flags": 4,
+        "ok": false,
+        "error": "Memory usage conflict while generating initialization code."
+      },
+      {
+        "flags": 8,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 12,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 16,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 20,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 24,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 32,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      },
+      {
+        "flags": 48,
+        "ok": false,
+        "error": "Free space exceeded (Add Malbolge command)."
+      }
+    ],
+    "combined_all_fail": true
+  },
+  "interpretation": [
+    "Data cells are cheap: 64 cells cost about 2.5 KB and assemble fine, so a RAM-loader-sized data block is NOT the blocker.",
+    "Code flags are the blocker: the 3rd new flag already triggers a memory-usage conflict and the 4th exhausts free space. Each new flag needs its own initializer translation cycle and address triples.",
+    "This corrects the previous reading of M2_FULL_STATUS.md, which attributed the failure to the initializer budget in general. The budget is fine on data; it is exhausted specifically by code flags.",
+    "Consistent with the shared-kernel finding: the ALU multiplexes 5 outcomes onto six existing flags (SUBROUTINE_FLAG4..6, OP1_FLAG) precisely because there is no room for new ones."
+  ],
+  "what_this_does_not_demonstrate": [
+    "The exact flag-count threshold: it lies between 2 and 4 new flags and was not bisected.",
+    "Whether rewriting the kernel to share existing flags would admit a loader-sized block (that is experiment E5).",
+    "Any behaviour of the assembled images; this is an assembler-cost measurement only."
+  ],
+  "scope_limits": [
+    "Measured on the committed mbir_alu.hell with a specific flag/cell shape (Nop/MovD + Jmp blocks; U_CRAZY + C1 data pairs).",
+    "A different flag shape or a different base image may shift the numbers.",
+    "This run did not execute any produced image."
+  ],
+  "next_step": "E5: reuse existing flags instead of adding new ones for the unified image. The native emitter of BolgeForge needs no new code flags (rectilinear recipes over literals), which is consistent with this measurement and is the cheapest path to a unified ADD + CMP_EQ image."
+}
