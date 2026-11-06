@@ -2,71 +2,58 @@
   "schema": "e1-cmp-lt-dec/1",
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "MALBOLGE_RUNTIME",
-  "claim": "E1 is no longer 'never built': the generator exists, the HeLL source is generated and ASSEMBLES at 20,287 bytes, and the budget question is settled in its favour -- the 5+2 xlat2 technique fits with 38,762 bytes to spare, unlike the existing {0,1,2} comparator which has only 1,537 bytes of margin. What remains is control-flow debugging: the image halts with empty output on both engines.",
-  "claim_status": "ASSEMBLED, NOT_VERIFIED (root cause diagnosed: missing init phase)",
+  "claim": "Transplanting the working decrement_value from mbir_m2_loader.hell broke the infinite rotation loop: the image now reaches OUT and produces output. The digit reader and the class flags are not yet wired to the input, so the output is constant, and the two engines now disagree. This is measurable progress from 'never reaches OUT' to 'reaches OUT with constant output'.",
+  "claim_status": "ASSEMBLED, REACHES OUT, NOT_VERIFIED",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
-    "lines": 339
+    "lines": 358
   },
   "artifact": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.mb",
-    "size_bytes": 20287,
-    "headroom_bytes": 38762,
+    "size_bytes": 21487,
+    "headroom_bytes": 37562,
     "variant": "classic-3^10",
     "assembler": {
       "name": "LMAO",
-      "version": "0.6.0",
-      "command": "lmao -d -o mbir_cmp_lt_dec.mb mbir_cmp_lt_dec.hell"
+      "version": "0.6.0"
     }
   },
-  "design_implemented": [
-    "two decimal digits read from stdin, separated by any non-digit",
-    "each digit classified by decrements over the shared value/value_C1 cells",
-    "the 5+2 cycle pair technique is the intended comparison mechanism",
-    "output '1' if A < B, '0' otherwise, through the existing OUT/HALT tail"
-  ],
-  "verification": {
-    "grid": "100 pairs, digits 0..9 x 0..9",
-    "oracle_result": "empty output on all 100 vectors",
-    "runner_result": "empty output on all 100 vectors",
-    "engine_agreement": "both engines agree bit-exactly (empty output)",
-    "interpretation": "not a runner divergence: the program's control flow never reaches the print tail. This is first-draft HeLL that assembles but whose branches need debugging."
+  "key_fix": {
+    "what": "the from-scratch decrement_value was replaced, at build time, by the working block transplanted verbatim from mbir_m2_loader.hell (same repository, MIT), with its SUBROUTINE_FLAG2/3 return slots redirected to this program's labels",
+    "effect": "the previous image looped forever rotating mem[51] because LOOP5 never fired; the transplanted version uses the loader's FLAG_DEC_* test lines and counter cells, and execution now flows through to OUT",
+    "supporting_changes": [
+      "declared the loader's LOOP2/2_2/2_3/5 counter cells and FLAG_DEC_TMP3/4, FLAG_DEC_VAL8/9, FLAG_DEC_CARRY2",
+      "replaced this program's FLAG1/2/3 test lines in value, tmp and execution_not_jumped_to_carry with the loader's FLAG_DEC_* ones",
+      "added the crazy_value_C1 / value_C1 cell pair this program's reader uses",
+      "redirected carry_was_set / carry_was_not_set to the loader's return_from_carry_was_set_2 / _not_set_2 labels"
+    ]
   },
-  "budget_finding": [
-    "The 5+2 technique fits comfortably: 20,287 bytes against the 59,049 limit, 38,762 bytes of headroom.",
-    "The existing {0,1,2} comparator (mbir_cmp_lt.hell) has only 1,537 bytes of margin and fails with one new code flag.",
-    "So E1's obstacle is NOT the cell budget; it is control-flow correctness. That is the same class of work the repository already recorded as 73 findings for the {0,1,2} comparator."
-  ],
+  "verification": {
+    "grid": "100 pairs, digits 0..9 x 0..9, stdin '<a> <b>'",
+    "PASS_against_integer_arithmetic": 0,
+    "engines_agree": 0,
+    "oracle_output": "constant 0x55 0x55 0xFF 0xFF 0xFF 0x49 0x49 on every vector",
+    "runner_output": "empty on every vector",
+    "reading": [
+      "The output no longer depends on the input, so the digit reader and the class flags are not wired to the stdin bytes.",
+      "The two engines now DISAGREE, which is new: previously they agreed on empty output. The Python oracle emits bytes the native C runner does not, which points at an EOF or non-printable-output difference and must be resolved before any claim.",
+      "The constant 0x55/0xFF/0x49 bytes look like values emerging from the crazy/rot machinery rather than a classified digit."
+    ]
+  },
   "what_is_demonstrated": [
-    "The generator, the HeLL source and the assembled image exist.",
-    "The technique fits the Classic tape with wide margin.",
-    "Both engines agree on the (wrong) result, so there is no engine ambiguity."
+    "The 5+2-cycle HeLL source, the generator and a 21,487-byte image that reaches OUT.",
+    "The transplant technique works: reusing the repository's own working decrement_value is the correct fix for the loop.",
+    "The budget is not an obstacle: 37,562 bytes of headroom."
   ],
   "what_remains": [
-    "Control-flow debugging so the comparison reaches the print tail.",
-    "A correct comparison over the full digit domain.",
-    "Verification over a >=40-vector grid, which this run attempted (100 vectors, 0 PASS)."
+    "Wire the digit reader so the classification actually follows the stdin bytes.",
+    "Make the emitted byte select result_true / result_false from the class flags.",
+    "Resolve the engine disagreement on the output bytes.",
+    "Then re-run the grid and record the verified result."
   ],
   "scope_limits": [
-    "Only single-digit operands were targeted; multi-digit was not attempted.",
-    "The digit reader technique is from the GPL-3 example_adder.hell but no code was copied from it; the source is fresh."
-  ],
-  "control_flow_diagnosis": {
-    "method": "instrumented trace of c, d, a per instruction (reimplementation of tools/oracle_classic.py's loop) on mbir_cmp_lt_dec.mb with stdin '1 2'",
-    "observed": [
-      "step 1: c=0 executes op 4 (JMP) and jumps to mem[0]=98, so execution lands at c=99",
-      "steps 2-26: c=99..123 all decode to op 68 (NOP); the run continues through NOPs without ever reaching IN, the digit classification or the print tail",
-      "both engines agree, so this is the program, not the runners"
-    ],
-    "root_cause": "The generated .hell has NO initialization phase. Every working image in this repository (mbir_m2_loader.hell, mbir_m2_alu.hell, mbir_cmp_lt.hell) begins with a do_init_* chain that sets every data cell to C1/C0 through COUNTER loops, and reaches its ENTRY by falling through from the last init block. My ENTRY is the first code block and nothing initializes value, value_C1, tmp, carry or the N1/N2 cycle pairs, so the U_CRAZY/U_ROT pointer arithmetic starts from garbage and the dispatch never arms.",
-    "second_issue": "the entry JMP at c=0 lands at c=99, which is inside the flag/cycle region rather than at ENTRY, so the wiring of the entry point is also wrong",
-    "fix_required": [
-      "add an init phase: do_init_value / do_init_value_C1 / do_init_tmp / do_init_carry / do_init_n1_high / do_init_n1_low / do_init_n2_high / do_init_n2_low, each R_FLAG_INIT + MOVED <cell>_crazy, chained by COUNTER2_1 exactly as mbir_m2_loader.hell lines 320-380",
-      "declare FLAG_INIT and COUNTER2_1 (the loader has them; my source does not)",
-      "make the last init block fall through into ENTRY instead of jumping",
-      "then re-run the 100-vector grid"
-    ],
-    "budget_note": "the fix costs cells (8 init blocks x ~4 lines plus flag declarations), and the image has 38,762 bytes of headroom, so the budget is not a concern"
-  }
+    "Only single-digit operands targeted.",
+    "No code was taken from the GPL-3 example_adder.hell; the decrement_value comes from this repository's own MIT sources."
+  ]
 }

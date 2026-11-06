@@ -152,15 +152,11 @@ carry:
 	U_NOP execution_not_jumped_to_carry
 	U_NOP carry_was_not_set U_NOP carry_was_set
 carry_was_set:
-	MOVED return_carry_was_set
+	MOVED return_from_carry_was_set_2
 carry_was_not_set:
-	MOVED return_carry_was_not_set
+	MOVED return_from_carry_was_not_set_2
 execution_not_jumped_to_carry:
-	FLAG1 return_from_carry_1 R_FLAG1
-return_carry_was_set:
-	FLAG1 return_from_carry_was_set_1 R_FLAG1
-return_carry_was_not_set:
-	FLAG1 return_from_carry_was_not_set_1 R_FLAG1
+	FLAG_DEC_CARRY2 return_from_carry_2 R_FLAG_DEC_CARRY2
 
 {
 ENTRY:
@@ -375,15 +371,118 @@ value_C1:
 """
 
 
+def loader_decrement_block():
+    """Bloque decrement_value trasplantado de mbir_m2_loader.hell (mismo repo, MIT)."""
+    txt = (REPO / "vm_malbolge/src/mbir_m2_loader.hell").read_text(encoding="utf-8")
+    lines = txt.split("\n")
+    start = next(i for i, l in enumerate(lines) if "DECREMENT SUBROUTINE" in l) - 1
+    idx = next(i for i in range(start, len(lines)) if lines[i].strip() == "exit_decrement_loop:")
+    end = next(i for i in range(idx, len(lines)) if lines[i].strip() == "}")
+    block = "\n".join(lines[start:end + 1])
+    # redirigir las ranuras de retorno a mis etiquetas
+    block = block.replace("SUBROUTINE_FLAG2 return_from_decrement_value_2 R_SUBROUTINE_FLAG2",
+                          "SUBROUTINE_FLAG2 return_from_decrement_value_4 R_SUBROUTINE_FLAG2")
+    block = block.replace("SUBROUTINE_FLAG3 return_from_decrement_value_2 R_SUBROUTINE_FLAG3",
+                          "SUBROUTINE_FLAG3 return_from_decrement_value_5 R_SUBROUTINE_FLAG3")
+    return block
+
+
+DEC_FLAGS = """LOOP2:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+LOOP2_2:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+LOOP2_3:
+	Nop/Nop/Nop/MovD
+	Jmp
+
+LOOP5:
+	Nop/Nop/Nop/Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG1:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG2:
+	Nop/MovD
+	Jmp
+
+SUBROUTINE_FLAG3:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_TMP3:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_TMP4:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL8:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_VAL9:
+	Nop/MovD
+	Jmp
+
+FLAG_DEC_CARRY2:
+	Nop/MovD
+	Jmp
+
+"""
+
+
 def build():
     src = HELL
-    # insertar flags y celdas que faltan
+    # 1. sustituir mi decrement_value from-scratch por el trasplantado del cargador
+    start = src.index("decrement_value:\n")
+    end = src.index("}\n", src.index("exit_decrement_loop:\n", start)) + 2
+    src = src[:start] + loader_decrement_block() + src[end:]
+    # 2. declarar las banderas FLAG_DEC_* que el bloque trasplantado usa
     code_anchor = "@C21 CARRY:\n\tRNop\n\tRNop\n\tJmp\n"
-    assert src.count(code_anchor) == 1, "anclaje .CODE no encontrado"
-    src = src.replace(code_anchor, code_anchor + "\n" + EXTRA_CODE, 1)
-    data_anchor = ".DATA\n"
-    assert src.count(data_anchor) == 1, "anclaje .DATA no encontrado"
-    src = src.replace(data_anchor, data_anchor + EXTRA_DATA, 1)
+    assert src.count(code_anchor) == 1
+    src = src.replace(code_anchor, code_anchor + "\n" + DEC_FLAGS, 1)
+    # 3. líneas de prueba en las celdas value / tmp / carry (del cargador)
+    # value: cambiar FLAG1/2/3 por las pruebas del cargador
+    old_v = """value:
+	C1
+	FLAG1 return_from_value_1 R_FLAG1
+	FLAG2 return_from_value_2 R_FLAG2
+	FLAG3 return_from_value_3 R_FLAG3"""
+    new_v = """value:
+	C1
+	FLAG_DEC_VAL8 return_from_value_8 R_FLAG_DEC_VAL8
+	FLAG_DEC_VAL9 return_from_value_9"""
+    assert old_v in src
+    src = src.replace(old_v, new_v, 1)
+    old_t = """tmp:
+	C0
+	FLAG1 return_from_tmp_1 R_FLAG1
+	FLAG2 return_from_tmp_2 R_FLAG2"""
+    new_t = """tmp:
+	C0
+	FLAG_DEC_TMP3 return_from_tmp_3 R_FLAG_DEC_TMP3
+	FLAG_DEC_TMP4 return_from_tmp_4"""
+    assert old_t in src
+    src = src.replace(old_t, new_t, 1)
+    # execution_not_jumped_to_carry ya quedó redirigido en la plantilla
+    # declarar crazy_value_C1 / value_C1 (la plantilla los usa pero no los declara)
+    src = src.replace("""crazy_tmp:
+	U_CRAZY tmp""", """crazy_value_C1:
+	U_CRAZY value_C1
+value_C1:
+	C1
+	FLAG_A_READ ret_A_c1 R_FLAG_A_READ
+	FLAG_B_READ ret_B_c1 R_FLAG_B_READ
+
+crazy_tmp:
+	U_CRAZY tmp""", 1)
     return src
 
 
