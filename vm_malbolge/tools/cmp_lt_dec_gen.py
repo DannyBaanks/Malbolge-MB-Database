@@ -200,7 +200,6 @@ crazy_st:
 stack_top:
 	C1
 	FLAG_ST_PUSH ret_st_push R_FLAG_ST_PUSH
-	FLAG_ST_POP ret_st_pop R_FLAG_ST_POP
 
 crazy_value2_C1:
 	U_CRAZY value2_C1
@@ -298,10 +297,9 @@ ret_ss_push:
 }{
 ret_st_push:
 	R_CRAZY R_MOVED
-	// Fase A: A ya está guardado en la pila. Clasificar value.
-	R_PHASE_A
-	R_SUBROUTINE_FLAG1
-	MOVED decrement_value
+	// A vive en value (no se clasifica: la clasificacion lo destruiría).
+	// Ir directo a leer B, que aterrizará en value2.
+	MOVED read_digit_B
 }{
 ret_A_d1:
 	NO_MORE_CARRY_FLAG A_ge_1
@@ -379,14 +377,8 @@ B_class_done:
 	MOVED compare
 }{
 compare:
-	// Recuperar A de la pila (stack_top) y comparar por decrementos mutuos.
+	// A vive en value, B vive en value2. Alternar decrementos.
 	R_MOVED
-	R_FLAG_ST_POP
-	MOVED crazy_st
-}{
-ret_st_pop:
-	R_CRAZY R_MOVED
-	// A quedó en value (leído sin clasificar); B quedó en value2. Alternar.
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
