@@ -23,7 +23,7 @@
       "binary_sha256": "bc0df1e91635599db87ced9040a60c1471f340288addc2b9d6dce6d049e103c5"
     },
     "debug_path": "vm_malbolge/src/mbir_m2_cf.dbg",
-    "debug_sha256": "7b947025e89429dfc5b34d86ed1b6f2a6830b424c47234f8e3289d530a6604b8"
+    "debug_sha256": "978ce6bc2e172c05c76b579d70fb24259550dcce0de315baf09845a6f7c948c2"
   },
   "environment": {
     "os": "Linux 7.0.0-38-generic x86_64",

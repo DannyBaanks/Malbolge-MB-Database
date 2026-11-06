@@ -28,7 +28,7 @@
     "sha256": "29d04027224da8dcec3dbd5fa12aa3adae3f9355f6b978437665e2ee8cf93de7",
     "size_bytes": 48400,
     "variant": "classic-3^10",
-    "assembly_command": "wine /home/danny/Development/ISyCo Git/_external/LMAO/lmao.exe -o vm_malbolge/evidence/artifacts/byte_push_const_dispatch_cell_probe.mb vm_malbolge/src/byte_push_const_dispatch_cell_probe.hell",
+    "assembly_command": "wine _external/LMAO/lmao.exe -o vm_malbolge/evidence/artifacts/byte_push_const_dispatch_cell_probe.mb vm_malbolge/src/byte_push_const_dispatch_cell_probe.hell",
     "assembler": {
       "name": "LMAO",
       "version": "0.6.0",

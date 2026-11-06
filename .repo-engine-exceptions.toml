@@ -1,6 +1,6 @@
 # Repo Engine exceptions for MALBOLGE-MB-DATABASE.
 #
-# Scope: accept the local-workstation path in the two files below, and nothing else.
+# Scope: accept ONE local-workstation path in ONE file, and nothing else.
 #
 # Why: `vm_malbolge/LT_STATUS.md` records, verbatim and as historical evidence,
 # the exact shell commands of Findings 71-73, and those commands embed the
@@ -18,23 +18,13 @@
 # The self-entry below is required because this file necessarily spells out the
 # term it exempts (same pattern as the sibling repos' exceptions files).
 #
-# Known remaining condition (not exempted here, deliberately out of scope):
-# 13 other tracked files still carry the same workstation path:
-#   vm_malbolge/evidence/mbir_zig_oracle_a04_gate.json
-#   vm_malbolge/evidence/mbir_zig_oracle_a05_lifo.json
-#   vm_malbolge/evidence/mbir_zig_oracle_a05_twopush_match.json
-#   vm_malbolge/evidence/mbir_zig_oracle_alu.json
-#   vm_malbolge/evidence/mbir_zig_oracle_p0_add.json
-#   vm_malbolge/evidence/mbir_zig_oracle_p1_sub.json
-#   vm_malbolge/evidence/push_const_cell_operand_smoke.json
-#   vm_malbolge/evidence/push_const_dispatch_cell_smoke.json
-#   vm_malbolge/evidence/push_const_later_fetch_smoke.json
-#   vm_malbolge/src/mbir_a05_lifo.dbg
-#   vm_malbolge/src/mbir_m2_alu.dbg
-#   vm_malbolge/src/mbir_m2_cf.dbg
-#   vm_malbolge/src/mbir_m2_cf_cmp.dbg
-# Staging any of those would raise the same rule (critical for the .dbg files,
-# which are not documentation extensions). Each one needs its own decision.
+# Everything else was normalized on 2026-11-06: the remaining 13 files that
+# carried the same absolute path (9 evidence JSON records and 4 LMAO `.dbg`
+# symbol maps) now use repository-relative paths. Their policy, the exact
+# before/after table and the LMAO-rebuild caveat are documented in
+# `docs/EVIDENCE_MODEL.md` ("Path Normalization in Evidence"). The two evidence
+# records that pin a `.dbg` hash had their `debug_sha256` updated accordingly.
+# No measured value, verdict, step count or output byte was altered.
 
 [exceptions]
 documented_local_evidence = [

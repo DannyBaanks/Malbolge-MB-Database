@@ -4,7 +4,7 @@
   "verdict": "MATCH",
   "note": "MATCH means the Zig VM halted and the observable output matched both Classic executions for this vector. It does not prove the Classic probe consumed or dispatched every input byte; use a negative control or input-consumption trace for that claim.",
   "result": {
-    "hell_source": "/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_a05_multicycle.hell",
+    "hell_source": "vm_malbolge/src/mbir_a05_multicycle.hell",
     "mbir_hex": "01411001421000",
     "zig": {
       "schema": "mbir-zig-result/1",

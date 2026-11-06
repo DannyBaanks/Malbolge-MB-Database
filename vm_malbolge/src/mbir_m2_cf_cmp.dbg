@@ -997,9 +997,9 @@ CARRY: CODE 59047
 :EXECUTION_STEPS_UNTIL_ENTRY_POINT:
 56647
 :SOURCE_FILE:
-/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_m2_cf_cmp.hell
+vm_malbolge/src/mbir_m2_cf_cmp.hell
 :MALBOLGE_FILE:
-/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/src/mbir_m2_cf_cmp.mb
+vm_malbolge/src/mbir_m2_cf_cmp.mb
 :XLAT2:
 0 b 52:2 - 52:4
 56871 P 24:2 - 24:4

@@ -124,6 +124,55 @@ Every generated artifact must have:
 
 If the toolchain introduces non-determinism, document it explicitly.
 
+## Path Normalization in Evidence
+
+Evidence records and generated artifacts must not embed the author's absolute
+workstation paths. A published evidence record has to be readable and
+re-checkable on a machine that is not the author's.
+
+| Kind of reference | Required form | Example |
+|---|---|---|
+| File inside this repository | Repository-relative path | `vm_malbolge/src/mbir_alu.hell` |
+| Tool outside this repository | Workspace-relative or descriptive location | `_external/LMAO/lmao.exe` |
+| Historical ledger (append-only) | Left verbatim | see `vm_malbolge/LT_STATUS.md` |
+
+### Normalization applied on 2026-11-06
+
+The following records carried the build machine's absolute path and were
+normalized in place, changing **only** the path strings — no measured value,
+verdict, step count, output byte or hash of an artifact was altered:
+
+| File | Field | Before | After |
+|---|---|---|---|
+| `vm_malbolge/evidence/mbir_zig_oracle_{a04_gate,a05_lifo,a05_twopush_match,alu,p0_add,p1_sub}.json` | `result.hell_source` | absolute path | repository-relative |
+| `vm_malbolge/evidence/push_const_{cell_operand,dispatch_cell,later_fetch}_smoke.json` | `artifact.assembly_command` | `wine <abs>/_external/LMAO/lmao.exe …` | `wine _external/LMAO/lmao.exe …` |
+| `vm_malbolge/src/mbir_{a05_lifo,m2_alu,m2_cf,m2_cf_cmp}.dbg` | `:SOURCE_FILE:` and `:MALBOLGE_FILE:` | absolute path | repository-relative |
+
+The two evidence records that pin a `.dbg` hash
+(`mbir_m2_alu_smoke.json`, `mbir_m2_cf_smoke.json`) had their `debug_sha256`
+field updated to the hash of the normalized file.
+
+### Caveat: LMAO regenerates absolute paths in `.dbg`
+
+LMAO v0.6.0 writes the build machine's absolute paths into the
+`:SOURCE_FILE:` and `:MALBOLGE_FILE:` sections of a `.dbg` symbol map. A fresh
+build therefore reproduces those two lines with the local absolute path, while
+the committed `.dbg` files carry the repository-relative form. Everything else
+in a `.dbg` — labels, address map, `:XLAT2:` table and
+`:EXECUTION_STEPS_UNTIL_ENTRY_POINT:` — is byte-identical to LMAO's output.
+
+This is the same class of hazard as the `.mb` end-of-line drift recorded in
+the Finding 55 addendum: the committed artifact is canonical, and a rebuild
+differs only in machine-local metadata.
+
+### Exception: the append-only ledger
+
+`vm_malbolge/LT_STATUS.md` keeps the exact shell commands of Findings 71-73
+verbatim, including the workstation path they contain. That file is an
+append-only historical ledger by repository convention and its command blocks
+are evidence, so it is **not** rewritten; it is covered by a narrow
+`.repo-engine-exceptions.toml` entry instead.
+
 ## Anti-Fake Rule
 
 An artifact that prints a constant string does NOT demonstrate computation. To prove arithmetic:
