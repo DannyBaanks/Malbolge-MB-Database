@@ -1,0 +1,12 @@
+{
+  "schema": "input-dependent-cmp-search/1",
+  "claim": "Whether a two-operand comparator exists when the CRAZY operand is an input-dependent stored cell (the gap the separability proof leaves open).",
+  "model": "state = crazy(B, crazy(A, C)); then a chain of rot/crazy(const)",
+  "max_depth": 8,
+  "constants_tried": 94,
+  "solutions": [],
+  "best_constant": {
+    "C": 40,
+    "distinct_pairs": 28
+  }
+}
