@@ -171,6 +171,12 @@ stack_top:
 	FLAG_ST_PUSH ret_st_push R_FLAG_ST_PUSH
 	FLAG_ST_POP ret_st_pop R_FLAG_ST_POP
 
+crazy_value2_C1:
+	U_CRAZY value2_C1
+value2_C1:
+	C1
+	FLAG_D2_VAL8 return_from_value2_C1_1 R_FLAG_D2_VAL8
+
 crazy_value2:
 	U_CRAZY value2
 rot_value2:
@@ -303,13 +309,13 @@ A_class_done:
 read_digit_B:
 	R_MOVED
 	IN ?- R_IN
-	R_FLAG2
-	MOVED crazy_value_C1
+	R_FLAG_D2_VAL8
+	MOVED crazy_value2_C1
 }{
-return_from_value_C1_2:
+return_from_value2_C1_1:
 	R_CRAZY R_MOVED
-	R_FLAG2
-	MOVED crazy_value
+	R_FLAG_D2_VAL9
+	MOVED crazy_value2
 }{
 return_from_value_2:
 	R_CRAZY R_MOVED
@@ -348,13 +354,7 @@ compare:
 }{
 ret_st_pop:
 	R_CRAZY R_MOVED
-	// A pasa a value2 (decrementable por la segunda subrutina); B queda en value.
-	R_FLAG_D2_VAL8
-	MOVED crazy_value2
-}{
-ret_a_in_val2:
-	R_CRAZY R_MOVED
-	// Alternancia: primero B (value), luego A (value2).
+	// A quedó en value (leído sin clasificar); B quedó en value2. Alternar.
 	R_SUBROUTINE_FLAG1
 	MOVED decrement_value
 }{
