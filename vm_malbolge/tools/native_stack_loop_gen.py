@@ -87,6 +87,88 @@ def run_runner(memory, sb, max_steps=400000):
 
 
 def build():
+    """Bucle IN/ROT/OUT con reentrada por JMP, emitido sin LMAO.
+
+    Obstruccion medida: el opcode 'i' (JMP) hace c = mem[d] y el destino debe
+    ser un valor imprimible (33..126), así que no puede apuntar a la celda 0.
+    Reentrada posible: la direccion 39 (y otras >= 33) es alcanzable, porque
+    existen celdas (p. ej. la 23 con opcode 'p', la 29 con 'o') que pueden
+    contener el valor 39 y decodificar a un opcode valido.
+
+    Layout:
+      0  '/'  IN      a = byte
+      1  '*'  ROT     a = rot(a)
+      2  '<'  OUT     emite
+      3  'j'  j       d = mem[3]
+      4  'j'  j       d = mem[4]
+      5  'i'  i       c = mem[d]
+      ... cadena de 'j' que encadena d hasta la celda 23 ...
+      23 39    dato   destino del salto = 39  (decodifica 'p', valido)
+      39 ... inicio del bucle (reentrada)
+      100/101 celdas de pila
+    """
+    size = 120
+    mem = [op_cell("j", a) for a in range(size)]
+    mem[0] = op_cell("/", 0)
+    mem[1] = op_cell("*", 1)
+    mem[2] = op_cell("<", 2)
+    # Cadena de punteros: cada 'j' hace d = mem[d]. Encadenamos hasta la 23.
+    mem[3] = op_cell("j", 3)
+    mem[4] = op_cell("j", 4)
+    mem[5] = op_cell("j", 5)
+    mem[6] = op_cell("i", 6)      # c = mem[d]  (d determinado por la cadena)
+    # Celdas intermedias que encadenan d: deben contener la direccion siguiente
+    # y decodificar valido. Las que valen 4, 5 no son imprimibles; usamos
+    # valores imprimibles que apunten hacia la 23.
+    mem[3] = 3
+    mem[4] = 4
+    mem[5] = 5
+    # Reentrada: celda 23 contiene 39 (destino), decodifica 'p'.
+    mem[23] = 39
+    # En la direccion 39 va el inicio del bucle.
+    mem[39] = op_cell("/", 39)
+    mem[40] = op_cell("*", 40)
+    mem[41] = op_cell("<", 41)
+    mem[100] = op_cell("j", 100)
+    mem[101] = op_cell("j", 101)
+
+    for a, v in enumerate(mem):
+        if not valid_cell(a, v):
+            raise AssertionError(f"celda invalida {a}: {v}")
+    return bytes(mem)
+
+
+def run_oracle(memory, sb, max_steps=400000, stop_on_eof=True):
+    src = memory.decode("latin-1")
+    text, steps, status = oracle_classic.run(
+        src, max_steps=max_steps, stdin_data=sb.decode("latin-1"),
+        stop_on_eof=stop_on_eof)
+    return text.encode("latin-1"), steps, status
+
+
+def run_runner(memory, sb, max_steps=400000):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".bin") as f:
+        f.write(sb)
+        n = f.name
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".mal") as m:
+            m.write(memory)
+            mbn = m.name
+        with open(n, "rb") as fin:
+            r = subprocess.run([str(RUNNER), mbn, str(max_steps)],
+                               stdin=fin, capture_output=True)
+        os.unlink(mbn)
+        out = r.stdout
+        if out.endswith(b"\r\n"):
+            out = out[:-2]
+        elif out.endswith(b"\n"):
+            out = out[:-1]
+        return out, r.stderr.decode("latin-1", "replace").strip()
+    finally:
+        os.unlink(n)
+
+
+def build():
     """Emite un bucle: IN, OUT, JMP-to-ENTRY, más dos celdas de pila.
 
     Layout (direcciones):
