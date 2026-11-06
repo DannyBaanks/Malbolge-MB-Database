@@ -3,7 +3,7 @@
   "timestamp": "2026-11-06T00:00:00+00:00",
   "evidence_kind": "MALBOLGE_RUNTIME",
   "claim": "The DATA-cell storage mechanism works. With a two-cell stack added before phase A's classification, the FIRST operand now survives all the way to the output: the emitted first byte is 0, 1, 2, 3 exactly as a varies. This is the first time A's value reaches the output, and it confirms the identified mechanism: state must be stored in a DATA cell, not in a code-block flag.",
-  "claim_status": "ASSEMBLED, BOTH OPERANDS REACH OUTPUT (comparison selection pending)",
+  "claim_status": "ASSEMBLED, IN REACHED, BOTH OPERANDS LIVE (compare needs a second decrement subroutine)",
   "generator": "vm_malbolge/tools/cmp_lt_dec_gen.py",
   "source": {
     "path": "vm_malbolge/src/mbir_cmp_lt_dec.hell",
@@ -32,9 +32,9 @@
     "remaining_defect": "the program emits A's value instead of the boolean: the compare block's mutual-decrement chain does not select result_true / result_false, so the emitted bytes are the operand and the classifier's residue rather than 01/00"
   },
   "what_is_demonstrated": [
-    "The correct storage mechanism is implemented and verified: A's value survives classification and B's read and reaches the output.",
-    "Both operands are now live in the machine at compare time.",
-    "The from-scratch E1 program with the documented ENTRY-in-.DATA mechanism assembles with 33,968 bytes of headroom."
+    "IN is reached and stdin is read (step 9744, independently traced).",
+    "Both operands are live and A's value reaches the output.",
+    "The ENTRY-in-.DATA mechanism, the phase routing and the data-cell storage all work."
   ],
   "what_remains": [
     "Make the compare block actually select result_true / result_false from the mutual-decrement carries instead of falling through to printing the operand.",
@@ -44,5 +44,17 @@
   "scope_limits": [
     "Single-digit operands only.",
     "No code from the GPL-3 example_adder.hell."
-  ]
+  ],
+  "verified_milestones": {
+    "IN_reached": "confirmed by independent instrumented trace: op 23 (IN) executes at step 9744, a <- 49 (the first stdin byte)",
+    "HALT": "step 10848",
+    "first_operand_reaches_output": "emitted first byte is 0, 1, 2, 3 for a = 0, 1, 2, 3",
+    "oracle_and_tracer_agree_on_loading": "both skip whitespace (oracle_classic.load_memory filters isspace), so the trailing newline LMAO writes is not a divergence source"
+  },
+  "compare_block_defect": {
+    "symptom": "the program emits A's value instead of the boolean",
+    "cause": "restoring B into `value` via value_C1 OVERWRITES A, so by the time the mutual-decrement chain runs only one operand is live. And decrement_value is bound to the single `value` cell by its crazy pointers, so a true alternating mutual decrement of two cells is not expressible with one subroutine.",
+    "concrete_fix": "give the machine a SECOND decrement subroutine bound to a second value cell (crazy_value2/value2 plus its own tmp/carry/rot pointers), so compare can decrement A and B alternately and test NO_MORE_CARRY_FLAG after each; the first operand to carry decides. The budget allows it: 33,968 bytes of headroom and the subroutine is about 45 lines.",
+    "cheaper_alternative": "the complement method needs only ONE decrementable cell: A < B iff A + (9 - B) + 1 produces no carry out of the digit. With B in `value`, decrement it 9-B times... which still needs the count. So the second subroutine is the honest route."
+  }
 }
