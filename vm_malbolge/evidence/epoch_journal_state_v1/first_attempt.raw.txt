@@ -1,0 +1,4 @@
+  File "<REPO>/vm_malbolge/evidence/epoch_journal_state_v1/probe.py", line 2
+    ""State-driven phase selection and PureEpoch M1b journal adaptation."""
+                                                                        ^
+SyntaxError: unterminated triple-quoted string literal (detected at line 69)

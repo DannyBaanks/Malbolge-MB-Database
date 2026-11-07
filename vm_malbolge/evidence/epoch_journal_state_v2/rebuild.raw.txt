@@ -1,0 +1,18 @@
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/journal_rebuild_1794059042685659331/journal.mb
+Debugging information written to /tmp/opencode/journal_rebuild_1794059042685659331/journal.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_journal.mb
+Debugging information written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_journal.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_restore.mb
+Debugging information written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_restore.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_phase.mb
+Debugging information written to /tmp/opencode/journal_rebuild_1794059042685659331/mutant_phase.dbg
+journal source identical
+mutant_journal source identical
+mutant_restore source identical
+mutant_phase source identical
+steps: 56112 | status: HALTED
+5052500a

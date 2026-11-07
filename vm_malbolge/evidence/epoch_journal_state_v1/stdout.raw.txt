@@ -1,0 +1,16 @@
+len 0 input  out  steps 42162 io True state True
+len 1 input 01 out 50 steps 46544 io True state True
+len 1 input 02 out 52 steps 47396 io True state True
+len 3 input 010201 out 505250 steps 56155 io True state True
+len 3 input 020102 out 525052 steps 57007 io True state True
+len 8 input 0101010101010101 out 5050505050505050 steps 77199 io True state True
+len 8 input 0202020202020202 out 5252525252525252 steps 84015 io True state True
+len 16 input 0102010201020102 out 5052505250525052 steps 119051 io True state True
+len 128 input 0202010102010101 out 5252505052505050 steps 653007 io True state True
+mutant_journal 01 out 00 io False state False rejected True
+mutant_journal 02 out 00 io False state False rejected True
+mutant_journal 010201 out 000000 io False state False rejected True
+mutant_phase 01 out 50 io True state False rejected True
+mutant_phase 02 out 52 io True state False rejected True
+mutant_phase 010201 out 505250 io True state False rejected True
+strict_invalid 0 sha256 {'journal': 'b85a4dafac19381cabc5b1fd20d6692f93d9ea12e4e76bbba26e4a49681dd551', 'mutant_journal': 'b7fae3ce5ce828b25ea3d5ba8c169167a5ce15d02084792b1e381545d575d98b', 'mutant_phase': '2c7c98c17d837229af0fc76beb3e0cbd402e24cb1980600b34726985f56b5f5c'}

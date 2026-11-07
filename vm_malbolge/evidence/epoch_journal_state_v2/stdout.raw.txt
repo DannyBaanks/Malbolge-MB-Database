@@ -1,0 +1,19 @@
+len 0 input  out  steps 42119 io True state True
+len 1 input 01 out 50 steps 46501 io True state True
+len 1 input 02 out 52 steps 47353 io True state True
+len 3 input 010201 out 505250 steps 56112 io True state True
+len 3 input 020102 out 525052 steps 56964 io True state True
+len 8 input 0101010101010101 out 5050505050505050 steps 77156 io True state True
+len 8 input 0202020202020202 out 5252525252525252 steps 83972 io True state True
+len 16 input 0102010201020102 out 5052505250525052 steps 119008 io True state True
+len 128 input 0202010102010101 out 5252505052505050 steps 652964 io True state True
+mutant_journal 01 out 00 io False state False rejected True
+mutant_journal 02 out 00 io False state False rejected True
+mutant_journal 010201 out 000000 io False state False rejected True
+mutant_restore 01 out 54 io False state False rejected True
+mutant_restore 02 out 54 io False state False rejected True
+mutant_restore 010201 out 545454 io False state False rejected True
+mutant_phase 01 out 50 io True state False rejected True
+mutant_phase 02 out 52 io True state False rejected True
+mutant_phase 010201 out 505250 io True state False rejected True
+strict_invalid 0 sha256 {'journal': '2878e3dd2ace0bbd4cab389392433609fec41b3e0adf68b90a37e644f3d0ed4c', 'mutant_journal': '30d3108d8c43678567c9c10edc403beb4ad58b10bba483a306891f22b1d20380', 'mutant_restore': 'e57a1f81ba95778c147f0861c12ea240f644ee74d340a61511c77603ebc72a6b', 'mutant_phase': 'd15382be1332348cde83b5ccd561dd0a70fb3b405bf48a83e325cab94456fb66'}

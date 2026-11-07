@@ -1,0 +1,103 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-07T13:46:19.840317+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_journal_state_v2/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "d724562008e40d131f18bdc0b379c9504eaa59651c461175918110ec65010ab7"
+    },
+    {
+      "file": "build.py",
+      "sha256": "3d39856e46e8db9346804c1d6349c28dde1855725e4dc7120df7e04c35e1fb11"
+    },
+    {
+      "file": "journal.dbg",
+      "sha256": "a56403c65f4f7ec9f275bca90bafb5074af822fa12790de795c2d79ff829cf13"
+    },
+    {
+      "file": "journal.hell",
+      "sha256": "8963e847e15b2364e3f81e5b35e5d5cdec2e7c38898663618105264e8b3cc271"
+    },
+    {
+      "file": "journal.mb",
+      "sha256": "2878e3dd2ace0bbd4cab389392433609fec41b3e0adf68b90a37e644f3d0ed4c"
+    },
+    {
+      "file": "mutant_journal.dbg",
+      "sha256": "a4bfd963d91af9f8ee8136ca2e54414869bf7db77cc4dcbdf60b719567e2e5a0"
+    },
+    {
+      "file": "mutant_journal.hell",
+      "sha256": "9c741eb4c620a5b7ee65353799f4f907b9dfff0ac881784fbb6d7c9a31502abe"
+    },
+    {
+      "file": "mutant_journal.mb",
+      "sha256": "30d3108d8c43678567c9c10edc403beb4ad58b10bba483a306891f22b1d20380"
+    },
+    {
+      "file": "mutant_phase.dbg",
+      "sha256": "6ac228aa389fe34977876f5156d30925c95c7b9b56db5e19334570c913335207"
+    },
+    {
+      "file": "mutant_phase.hell",
+      "sha256": "c58128b93c7e39d9a1e2853ae93a997aeec78d8da793054e5fb3ae50efddbb20"
+    },
+    {
+      "file": "mutant_phase.mb",
+      "sha256": "d15382be1332348cde83b5ccd561dd0a70fb3b405bf48a83e325cab94456fb66"
+    },
+    {
+      "file": "mutant_restore.dbg",
+      "sha256": "6fde8d80ebcfc0d95a707306a7acd000e93573b4a982f8661759c84f11389ab7"
+    },
+    {
+      "file": "mutant_restore.hell",
+      "sha256": "6f1e35b3d968572c3911fcac1098053211d835ff64585e5e158abe77bc90b3e0"
+    },
+    {
+      "file": "mutant_restore.mb",
+      "sha256": "e57a1f81ba95778c147f0861c12ea240f644ee74d340a61511c77603ebc72a6b"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "57e21754ee7fbfd59433711d2a8ddb5a4d6e2e9b2f8c1324c554b7df04477545"
+    },
+    {
+      "file": "rebuild.raw.txt",
+      "sha256": "90e920c115f365a256e9d9d904b1ec5fcf7e0be2f34227b7a0359583bf7f43da"
+    },
+    {
+      "file": "results.json",
+      "sha256": "259142e38f280a44029ced2754d48a0490a976616449a816cf297f9c2231a424"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "d864bbab7134f201a737aabaacaaf3e06a19bae001e7eb7622d9b77fcd90d663"
+    }
+  ],
+  "dependencies": {
+    "oracle_classic.py_0": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "malbolge_1": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "lmao_2": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44",
+    "constants.py_3": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f",
+    "combined_pruned.hell_4": "96ef12be2926675d69cb2098d85a493c5fa826b7b186661b607faa4100ef1022",
+    "build_candidates.py_5": "d7d11ce0076f77210a5cd1c81e1f6c4d93a9dc21e84729306eaeaa9ec69292c2",
+    "m1b_normal.mal_6": "80e5cf6a208ccc2fe714d6fdf6c9e348b4c4ad0ef6323aa63f8193ea7d58c551"
+  },
+  "claims": [
+    {
+      "text": "bounded journal restore and phase switching",
+      "status": "CONDITIONAL_PASS"
+    },
+    {
+      "text": "general PureEpoch transition search",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

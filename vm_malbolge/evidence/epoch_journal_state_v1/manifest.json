@@ -1,0 +1,102 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-07T13:46:19.826873+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_journal_state_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "3b8ed32af453c0a79cc4218d8b1c1d559411ef5836bcca990ea29227a6f1f04f"
+    },
+    {
+      "file": "first_attempt.raw.txt",
+      "sha256": "3c5ef66eb631d11bf79bb275d3b4c03e741a1162012dcefec8982a416f920faa"
+    },
+    {
+      "file": "journal.dbg",
+      "sha256": "769ee713110e3926fc2be3669cc2ca857373615c9eb93a7467b080e3b99e12eb"
+    },
+    {
+      "file": "journal.hell",
+      "sha256": "2df3e525f774b1b507674d3bbda8ddba14cf37fadf6286a93ee0342d33a99724"
+    },
+    {
+      "file": "journal.mb",
+      "sha256": "b85a4dafac19381cabc5b1fd20d6692f93d9ea12e4e76bbba26e4a49681dd551"
+    },
+    {
+      "file": "mutant_journal.dbg",
+      "sha256": "681338e369d08f4c0c4a5cf21b0eae67e94d6db5ad1e5c1e0a86d30b084598b9"
+    },
+    {
+      "file": "mutant_journal.hell",
+      "sha256": "a779683d2d9ad187b84aa10c90ea78406ce3e247044bd6a9137869887d673a31"
+    },
+    {
+      "file": "mutant_journal.mb",
+      "sha256": "b7fae3ce5ce828b25ea3d5ba8c169167a5ce15d02084792b1e381545d575d98b"
+    },
+    {
+      "file": "mutant_phase.dbg",
+      "sha256": "6835122ad229a479b7cc762197198a8647721616576b182e26e118beaf8681be"
+    },
+    {
+      "file": "mutant_phase.hell",
+      "sha256": "425342834b4ce0edbb06bac0390f66b45f984c0cb45d6e5793f453b0a28b0efe"
+    },
+    {
+      "file": "mutant_phase.mb",
+      "sha256": "2c7c98c17d837229af0fc76beb3e0cbd402e24cb1980600b34726985f56b5f5c"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "6bd40918f22c5b0baa86f94ba29aeeeea5aa08d83eef340960309604b2667ad5"
+    },
+    {
+      "file": "results.json",
+      "sha256": "e2822b21fd213252d25ea2f3ecb41bf9d507bcb4c89ca9ffc65ae66642d20a6b"
+    },
+    {
+      "file": "second_attempt.json",
+      "sha256": "5accb26fe0d3d4e9d2261a6763ef0984374eb05eb54c1c4b6dda711e7843fe61"
+    },
+    {
+      "file": "second_attempt.raw.txt",
+      "sha256": "f856c993d04f945e3421a84a1e736d0ba8bb67d408bb9caa963b33a18dba4806"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "fe750aef9755d9c2122987b08d26f998fb8daa0e67689f1f12c190393533230a"
+    }
+  ],
+  "dependencies": {
+    "oracle_classic.py_0": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "malbolge_1": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "lmao_2": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44",
+    "constants.py_3": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f",
+    "combined_pruned.hell_4": "96ef12be2926675d69cb2098d85a493c5fa826b7b186661b607faa4100ef1022",
+    "build_candidates.py_5": "d7d11ce0076f77210a5cd1c81e1f6c4d93a9dc21e84729306eaeaa9ec69292c2",
+    "m1b_normal.mal_6": "80e5cf6a208ccc2fe714d6fdf6c9e348b4c4ad0ef6323aa63f8193ea7d58c551"
+  },
+  "claims": [
+    {
+      "text": "bounded journal restore and phase switching",
+      "status": "CONDITIONAL_PASS"
+    },
+    {
+      "text": "general PureEpoch transition search",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ],
+  "redaction": {
+    "artifact": "first_attempt.raw.txt",
+    "original_sha256": "891cd75010647d06e66d390105281a11b783c1faf52576655724bdb7469e3ccc",
+    "redacted_sha256": "3c5ef66eb631d11bf79bb275d3b4c03e741a1162012dcefec8982a416f920faa",
+    "scope": "repository root prefix only",
+    "original_preserved": "local private evidence vault"
+  }
+}
