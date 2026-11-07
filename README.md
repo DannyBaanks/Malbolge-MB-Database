@@ -80,6 +80,11 @@ NOT_DEMONSTRATED
 | **Malbolge VM Salto/Condicional/Llamada en RAM (M2 CF)** | `DEMONSTRATED` | **Cinco formas fijas de `JMP`/`JZ`/`CALL` sobre bytecode cargado (5/5)** | `vm_malbolge/M2_CF_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_smoke.json` |
 | **Malbolge VM Control Flow + Relacional (M2 CF + CMP_EQ)** | `DEMONSTRATED` | **Siete formas de `JMP`/`JZ`/`CALL`/`CMP_EQ` en memoria con paridad dual (7/7)** | `vm_malbolge/M2_CF_CMP_STATUS.md`, `vm_malbolge/evidence/mbir_m2_cf_cmp_smoke.json` (7/7 PASS) |
 | **PureEpoch Suite (M1..M3, Torus, Boss 1..3)** | `DEMONSTRATED` | **12 artefactos: bucle autónomo `while x > 0` sin trucos de host, máquina de Turing, cascada bizantina, préstamo toroidal y checkpoints in-band** | [`pureepoch/README.md`](pureepoch/README.md), 18/18 tests [`pureepoch/tests/test_pureepoch.py`](pureepoch/tests/test_pureepoch.py) |
+| **Oráculo Classic: parada en EOF** | `DEMONSTRATED` | **El oráculo para en EOF igual que el runner C (`stop_on_eof`). Sin ese arreglo, todo programa con bucle de fetch diverge: el oráculo seguía con `a=59048` y emitía `ff` hasta el límite de pasos** | [`tools/oracle_classic.py`](tools/oracle_classic.py), [`vm_malbolge/evidence/BUG_ORACULO_EOF.md`](vm_malbolge/evidence/BUG_ORACULO_EOF.md) |
+| **Andamio iterante en el corpus (frentes 3 y 5)** | `DEMONSTRATED` | **El bloqueante "no existe imagen Classic que itere sobre flujo" queda refutado: `cat_compact.mal` (7.596 celdas) verificado en los motores de este repo, y `example_simple_cat.hell` ensamblado y commiteado** | [`vm_malbolge/evidence/frentes3y5_bloqueante_CORRECCION.md`](vm_malbolge/evidence/frentes3y5_bloqueante_CORRECCION.md), [`vm_malbolge/src/simple_cat_lmao.mb`](vm_malbolge/src/simple_cat_lmao.mb) |
+| **Bucle de fetch nativo con estado entre bytes** | `DEMONSTRATED` | **Vuelta real que regresa al mismo despacho con una celda de estado que sobrevive a todos los bytes leídos: 9/9 acuerdo byte a byte y 4.096 bytes aleatorios exactos en oráculo y runner C** | [`vm_malbolge/src/mbir_native_fold_loop.mb`](vm_malbolge/src/mbir_native_fold_loop.mb), [`vm_malbolge/evidence/native_fold_loop.md`](vm_malbolge/evidence/native_fold_loop.md) |
+| **Pila LIFO de 2 ranuras (one-shot, sin LMAO)** | `DEMONSTRATED` | **Dos bytes almacenados en dos celdas y emitidos en orden inverso (`AB`→`6368`, `BA`→`6769`): 8/8 y loader estricto completo** | [`vm_malbolge/src/mbir_stack2_oneshot.mb`](vm_malbolge/src/mbir_stack2_oneshot.mb), [`vm_malbolge/evidence/stack2_oneshot.md`](vm_malbolge/evidence/stack2_oneshot.md) |
+| **Despacho computado por el dato** | `DEMONSTRATED` | **Máquina de bytecode que enruta por opcode con un salto computado: `mem[P] = crazy(opcode, V)` es la dirección. `01 41 F2`→`68` (el POP emite lo que el PUSH guardó). 8/8 casos y 111/111 combinaciones de barrido** | [`vm_malbolge/src/mbir_dispatch2.mb`](vm_malbolge/src/mbir_dispatch2.mb), [`vm_malbolge/evidence/dispatch2.md`](vm_malbolge/evidence/dispatch2.md) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -265,6 +270,61 @@ La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados 
 - **Épocas M1..M3:** Involución de mutación de 10 rotaciones, checkpoints en diario y encadenamiento autónomo de 2 y 3 fases continuas.
 - Suite verificada en [`pureepoch/tests/test_pureepoch.py`](pureepoch/tests/test_pureepoch.py) (18/18 PASS).
 
+### 14. Frentes 3 y 5: bucle con estado, pila LIFO y despacho computado
+
+Campaña sobre los dos frentes `NOT_DEMONSTRATED` que pedían una imagen Classic que
+itere sobre un flujo de bytes y una pila de profundidad 2. Cuatro resultados, todos
+con doble motor (oráculo Python con `stop_on_eof=True` y runner C nativo):
+
+**a) La primitiva de bucle, explicada.** Traza paso a paso de `simple_cat` más la
+medición de `XLAT2`: el cifrado tiene ciclos mezclados y **solo 70 (`F`) y 74 (`J`)
+forman un 2-ciclo** (2 valores de 94, 0 puntos fijos), y la celda de un `JMP` nunca
+se cifra porque `c` se reasigna al destino antes del cifrado. De ahí la receta:
+instrucción con valor en 2-ciclo + `JMP` que la apunta (la cifra dos veces y vuelve
+a su valor). Consecuencia medida: **2 direcciones utilizables por opcode** dentro de
+una ventana de 94 — MOVD 60/64, IN 43/47, ROT 59/63, CRAZY 82/86, OUT 119/123,
+NOP 88/92. Detalle: [`vm_malbolge/evidence/native_fold_loop.md`](vm_malbolge/evidence/native_fold_loop.md).
+
+**b) Bucle de fetch nativo con estado entre bytes** ([`mbir_native_fold_loop.mb`](vm_malbolge/src/mbir_native_fold_loop.mb), 130 B, sin LMAO). Una vuelta
+`IN → MOVD → CRAZY(estado) → OUT → MOVD(rebobina)` que regresa al mismo despacho
+(celda 43) y mantiene una celda de estado a través de todos los bytes leídos. La
+semántica es precalculable (`estado = crazy(byte, estado)`), así que la salida se
+verifica contra un modelo: **9/9 flujos** y **4.096 bytes aleatorios exactos**
+(61.444 pasos, HALTED).
+
+**c) Pila LIFO de 2 ranuras, one-shot** ([`mbir_stack2_oneshot.mb`](vm_malbolge/src/mbir_stack2_oneshot.mb)). Lee dos bytes, los guarda en dos celdas
+distintas y los emite en orden inverso: `AB`→`6368`, `BA`→`6769` (el orden se
+invierte con la entrada), `0102`→`5556`. **8/8**, 32 pasos, y loader estricto
+**completo**: todas las celdas de código y de dato decodifican a opcode válido en su
+propia dirección. La lectura exacta se hace con 10 pares `MOVD`/`ROT` porque
+`rot^10` es la identidad.
+
+**d) Despacho computado por el dato** ([`mbir_dispatch2.mb`](vm_malbolge/src/mbir_dispatch2.mb)). Máquina de bytecode de dos instrucciones con
+codificación de longitud variable — `PUSH` = `01 operando`, `POP` = `F2` — que
+**enruta según el opcode**: en un programa one-shot `mem[P] = crazy(a, mem[P])` es
+función pura del byte leído, así que eligiendo `V` con
+`crazy(0x01, V) = landing_push - 1` y `crazy(0xF2, V) = landing_pop - 1`, el `JMP`
+que lee `mem[P]` salta al manejador correcto. **Sin cadena de comparaciones ni
+contador: el dato es la dirección.** `01 41 F2`→`68` (el POP emite lo que el PUSH
+guardó), `F2 01 43`→`21` (enrutado correcto), `01 41 01 42`→vacío. **8/8 casos y
+111/111 combinaciones** de un barrido con operandos `00..1F`, `7F`, `80`, `C3`,
+`FE`, `FF`.
+
+**Obstrución probada (no supuesta) para la versión con bucle de (c) y (d):** dos
+instrucciones que dejan `d` en la misma celda comparten sus celdas de puntero
+`(S+1, S+2)`; el `CRAZY` (escritura) y el `ROT` (lectura) de una celda de pila
+dejan ambos `d = S`, así que **una celda no puede escribirse y leerse en el mismo
+ciclo**. Con el presupuesto de 2 direcciones por opcode, una pila con lectura y
+escritura simultáneas no es construible con esta primitiva. Salidas documentadas:
+celda-puntero escrita en tiempo de ejecución, o el selector buscado al estilo de
+BolgeForge (paseo `j/*` que diverge sobre la celda modificada por `crazy`).
+
+**Corrección al bloqueante declarado:** `frentes3y5_bloqueante.md` afirmaba que no
+existía en el corpus una imagen Classic que iterara sobre flujo. Queda refutado en
+[`frentes3y5_bloqueante_CORRECCION.md`](vm_malbolge/evidence/frentes3y5_bloqueante_CORRECCION.md): `cat_compact.mal` de BolgeForge
+(7.596 celdas, commit `7b4fbac`) itera de verdad y se verificó con los motores de
+este repo; el enunciado quedaba acotado al corpus `vm_malbolge`.
+
 ---
 
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
@@ -292,6 +352,7 @@ La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados 
 
 1. **Control de Flujo Completo en Malbolge VM**
    - JMP, JZ, CALL y la comparación relacional `CMP_EQ` en RAM ya están demostrados en el Hito M2 CF + CMP_EQ (7/7, 56,947 bytes). Sigue faltando un contador de programa general para código arbitrario, usar el destino del JMP como selector dinámico arbitrario, y una pila de llamadas de más de una trama.
+   - **(parcialmente cerrado) "usar el destino del JMP como selector dinámico arbitrario"**: ya está demostrado con un salto **computado por el dato** — `mbir_dispatch2.mb` enruta `PUSH`/`POP` sobre flujo haciendo que la dirección de salto sea `crazy(opcode, V)` escrita en una celda (8/8 + 111/111, sección 14d). Lo que sigue abierto es el contador de programa general (N instrucciones encadenadas, no 2) y la pila de llamadas.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
    - Sigue sin existir una sola imagen que cargue el programa en RAM y además ejecute la ALU de 14 vectores y el `CMP_EQ`. Una sonda sobre `mbir_alu.hell` (12 banderas y 8 celdas de scratch) no ensambló: el inicializador se quedó sin sitio en la celda 57855. Quince `C1` sueltos sí entraron. Detalle: [`vm_malbolge/M2_FULL_STATUS.md`](vm_malbolge/M2_FULL_STATUS.md).
    - **La causa está ahora medida y partida en dos**:
@@ -302,6 +363,8 @@ La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados 
    - **Lo que sí quedó demostrado**: la mitad aritmética, como imágenes Classic únicas sin LMAO y con loader estricto ACCEPT en tres motores — `mbir_native_3routes.mb` (`ADD` + `CMP_EQ` + `CMP_LT`) y `mbir_native_cmp_decimal.mb` (comparador de dominio `0..9`).
 3. **Pila Dinámica de Profundidad > 2**
    - Para expresiones complejas que requieran evaluar árboles sintácticos de mayor profundidad o direccionamiento indexado.
+   - **(avance) La profundidad 2 ya está demostrada** en la vía one-shot sin LMAO: `mbir_stack2_oneshot.mb` almacena dos bytes en dos celdas y los emite en orden inverso (8/8, loader estricto completo, sección 14c), y `mbir_dispatch2.mb` añade el enrutado por opcode sobre el flujo (sección 14d).
+   - **(bloqueante medido) La versión con bucle de la pila**: una celda no puede escribirse (`CRAZY`) y leerse (`ROT`) en el mismo ciclo, porque ambas instrucciones dejan `d` en la misma celda y compartirían las celdas de puntero; y el presupuesto de la primitiva de restauración es de 2 direcciones por opcode en una ventana de 94 (sección 14a). Prueba y salidas documentadas en [`vm_malbolge/evidence/stack2_oneshot.md`](vm_malbolge/evidence/stack2_oneshot.md).
 4. **Operadores de Orden Relacional (`CMP_LT`, `CMP_GT`)**
    - Ambos están **DEMONSTRATED 12/12** en los dos motores: `CMP_LT` (Finding 74, sección 5b) y `CMP_GT` (Finding 75, sección 5c).
    - **(a) quedó ABIERTO y ahora tiene un primer resultado**: el dominio `{0,1,2}` de esos kernels es un **techo duro** — la sonda `cmp_lt_extensibility_probe.json` midió que ni un flag nuevo de código cabe sobre `mbir_cmp_lt.hell` (margen de 1.538 bytes). Pero la vía nativa sí lo cruza: `mbir_native_cmp_decimal.mb` implementa `CMP_LT(d, 5)` para los **diez dígitos decimales `0..9`**, 10/10 PASS en oráculo, runner C y loader estricto.
@@ -311,7 +374,7 @@ La suite [`pureepoch/`](pureepoch/) aporta 12 artefactos autónomos verificados 
      - *Despacho anidado*: la familia de claves da 10 direcciones distintas para **un** único `(c, r) = (85, 7)`, que ya usa el primer nivel.
 5. **Frontends que todavía no existen**
    - Pistas `swift/`, `rust/`, `java/`, `c/` marcadas como `NOT_STARTED`.
-   - En Python, P5 ya baja la recursión directa a MBIR en el host (sección 12). P6, el lexer dentro de Malbolge, se probó y no quedó demostrado: al volver a `ENTRY` el clasificador de un byte no emite el segundo token, y el runner C no coincide con el oráculo ([`python/P6_STATUS.md`](python/P6_STATUS.md)). P7 (parser) y P8 (`python.mb`) no se empezaron.
+   - En Python, P5 ya baja la recursión directa a MBIR en el host (sección 12). P6, el lexer dentro de Malbolge, se probó y no quedó demostrado: al volver a `ENTRY` el clasificador de un byte no emite el segundo token, y el runner C no coincide con el oráculo ([`python/P6_STATUS.md`](python/P6_STATUS.md)). **La causa de esa divergencia quedó identificada y corregida entretanto**: el oráculo no paraba en EOF (asignaba `a=59048` y seguía emitiendo `ff` hasta el límite de pasos), mientras el runner C para con `terminated=1`; con `stop_on_eof=True` los dos motores coinciden byte a byte sobre el andamio iterante (9/9). P7 (parser) y P8 (`python.mb`) no se empezaron.
 6. **Conexión Operacional de los 13 Substratos -bolge**
    - Aunque los 13 substratos están indexados y referenciados, falta conectar adaptadores backend de emisión automática para cada uno.
 
