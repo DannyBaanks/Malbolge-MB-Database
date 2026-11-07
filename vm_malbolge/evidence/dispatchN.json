@@ -1,0 +1,135 @@
+{
+  "imagen": "vm_malbolge/src/mbir_dispatchN.mb",
+  "bytes": 29572,
+  "sha256": "3b58ec29d50cf69c7e6da57da9dc0cb768394219914c7a40f510baeb27734774",
+  "n_instrucciones": 3,
+  "parametros": {
+    "Vs": [
+      67,
+      72,
+      90
+    ],
+    "Ps": [
+      50,
+      55,
+      60
+    ],
+    "slotA": 82,
+    "v0a": 33,
+    "destinos": [
+      [
+        29564,
+        29516
+      ],
+      [
+        29547,
+        29532
+      ],
+      [
+        29502,
+        29487
+      ]
+    ],
+    "colas": [
+      1,
+      4,
+      7
+    ]
+  },
+  "codigo_celdas": 69,
+  "dato_celdas": 19,
+  "dato_no_valido": 16,
+  "casos": [
+    {
+      "stdin": "354141354241",
+      "esperado": "78",
+      "oraculo": "78",
+      "runner_c": "78",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "354135424141",
+      "esperado": "52",
+      "oraculo": "52",
+      "runner_c": "52",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "413541413542",
+      "esperado": "0b48",
+      "oraculo": "0b48",
+      "runner_c": "0b48",
+      "pasos_oraculo": 43,
+      "status": "HALTED",
+      "stderr_runner": "steps: 43 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35413542354341",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 45,
+      "status": "HALTED",
+      "stderr_runner": "steps: 45 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35414141",
+      "esperado": "7898",
+      "oraculo": "7898",
+      "runner_c": "7898",
+      "pasos_oraculo": 43,
+      "status": "HALTED",
+      "stderr_runner": "steps: 43 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "3541",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 14,
+      "status": "EOF",
+      "stderr_runner": "steps: 14 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "41",
+      "esperado": "0b",
+      "oraculo": "0b",
+      "runner_c": "0b",
+      "pasos_oraculo": 13,
+      "status": "EOF",
+      "stderr_runner": "steps: 13 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 3,
+      "status": "EOF",
+      "stderr_runner": "steps: 3 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35004135ff41",
+      "esperado": "55",
+      "oraculo": "55",
+      "runner_c": "55",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    }
+  ],
+  "veredicto": "DESPACHO_N_INSTRUCCIONES_DEMOSTRADO"
+}
