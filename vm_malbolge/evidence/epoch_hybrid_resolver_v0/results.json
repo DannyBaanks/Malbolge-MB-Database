@@ -1,0 +1,3273 @@
+{
+  "cases": [
+    {
+      "requests": "AB",
+      "select": [
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        }
+      ],
+      "forwarded_hex": "6821",
+      "store": {
+        "input_hex": "6821",
+        "oracle_hex": "6821",
+        "raw_hex": "68210a",
+        "stderr": "steps: 28106 | status: HALTED",
+        "steps": 28106,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24347,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24358,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24366,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26033,
+            "value": 104,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26048,
+            "value": 178,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26066,
+            "value": 104,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26081,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26217,
+            "value": 20,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26228,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26236,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27903,
+            "value": 33,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27918,
+            "value": 57,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27936,
+            "value": 33,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27951,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28087,
+            "value": 6,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28098,
+            "value": 29524,
+            "index": 1
+          }
+        ]
+      },
+      "store_mutant": {
+        "input_hex": "6821",
+        "oracle_hex": "5454",
+        "raw_hex": "54540a",
+        "stderr": "steps: 28093 | status: HALTED",
+        "steps": 28093,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24328,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24339,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24347,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26017,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26032,
+            "value": 59048,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26050,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26065,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26201,
+            "value": 0,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26212,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26220,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27890,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27905,
+            "value": 59048,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27923,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27938,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28074,
+            "value": 0,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28085,
+            "value": 29524,
+            "index": 1
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "requests": "BABA",
+      "select": [
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        }
+      ],
+      "forwarded_hex": "21682168",
+      "store": {
+        "input_hex": "21682168",
+        "oracle_hex": "21682168",
+        "raw_hex": "216821680a",
+        "stderr": "steps: 31846 | status: HALTED",
+        "steps": 31846,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24347,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24358,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24366,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26033,
+            "value": 33,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26048,
+            "value": 57,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26066,
+            "value": 33,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26081,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26217,
+            "value": 6,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26228,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26236,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27903,
+            "value": 104,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27918,
+            "value": 178,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27936,
+            "value": 104,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27951,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28087,
+            "value": 20,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28098,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 28106,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29773,
+            "value": 33,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29788,
+            "value": 57,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29806,
+            "value": 33,
+            "index": 2
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 29821,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29957,
+            "value": 6,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29968,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 29976,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31643,
+            "value": 104,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31658,
+            "value": 178,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31676,
+            "value": 104,
+            "index": 3
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 31691,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31827,
+            "value": 20,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31838,
+            "value": 29524,
+            "index": 3
+          }
+        ]
+      },
+      "store_mutant": {
+        "input_hex": "21682168",
+        "oracle_hex": "54545454",
+        "raw_hex": "545454540a",
+        "stderr": "steps: 31839 | status: HALTED",
+        "steps": 31839,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24328,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24339,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24347,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26017,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26032,
+            "value": 59048,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26050,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26065,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26201,
+            "value": 0,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26212,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26220,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27890,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27905,
+            "value": 59048,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27923,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27938,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28074,
+            "value": 0,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28085,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 28093,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29763,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29778,
+            "value": 59048,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29796,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 29811,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29947,
+            "value": 0,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29958,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 29966,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31636,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31651,
+            "value": 59048,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31669,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 31684,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31820,
+            "value": 0,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31831,
+            "value": 29524,
+            "index": 3
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "requests": "AAAABBBBABAB",
+      "select": [
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "A",
+          "input_hex": "0141f2",
+          "raw_hex": "680a",
+          "oracle_hex": "68",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29524,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29524,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29527,
+              "step": 11,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29529,
+              "target": 34,
+              "step": 13,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 14,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29434,
+              "step": 18,
+              "slot": 29544
+            },
+            {
+              "type": "visit",
+              "pc": 29434,
+              "step": 19,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29458,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        },
+        {
+          "request": "B",
+          "input_hex": "f20141",
+          "raw_hex": "210a",
+          "oracle_hex": "21",
+          "stderr": "steps: 44 | status: HALTED",
+          "steps": 44,
+          "status": "HALTED",
+          "events": [
+            {
+              "type": "jump",
+              "pc": 6,
+              "target": 29476,
+              "step": 7,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29476,
+              "step": 8,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 29499,
+              "target": 34,
+              "step": 31,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 34,
+              "step": 32,
+              "slot": 33
+            },
+            {
+              "type": "jump",
+              "pc": 38,
+              "target": 29554,
+              "step": 36,
+              "slot": 33
+            },
+            {
+              "type": "visit",
+              "pc": 29554,
+              "step": 37,
+              "slot": 33
+            },
+            {
+              "type": "store",
+              "pc": 29557,
+              "step": 40,
+              "slot": 29544
+            },
+            {
+              "type": "jump",
+              "pc": 29560,
+              "target": 45,
+              "step": 43,
+              "slot": 29544
+            }
+          ],
+          "agreement": true,
+          "accepted": true,
+          "output_matches_expected": true
+        }
+      ],
+      "forwarded_hex": "686868682121212168216821",
+      "store": {
+        "input_hex": "686868682121212168216821",
+        "oracle_hex": "686868682121212168216821",
+        "raw_hex": "6868686821212121682168210a",
+        "stderr": "steps: 46806 | status: HALTED",
+        "steps": 46806,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24347,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24358,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24366,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26033,
+            "value": 104,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26048,
+            "value": 178,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26066,
+            "value": 104,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26081,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26217,
+            "value": 20,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26228,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26236,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27903,
+            "value": 104,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27918,
+            "value": 178,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27936,
+            "value": 104,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27951,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28087,
+            "value": 20,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28098,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 28106,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29773,
+            "value": 104,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29788,
+            "value": 178,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29806,
+            "value": 104,
+            "index": 2
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 29821,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29957,
+            "value": 20,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29968,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 29976,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31643,
+            "value": 104,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31658,
+            "value": 178,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31676,
+            "value": 104,
+            "index": 3
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 31691,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31827,
+            "value": 20,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31838,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 31846,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33513,
+            "value": 33,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33528,
+            "value": 57,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33546,
+            "value": 33,
+            "index": 4
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 33561,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33697,
+            "value": 6,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33708,
+            "value": 29524,
+            "index": 4
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 33716,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35383,
+            "value": 33,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35398,
+            "value": 57,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35416,
+            "value": 33,
+            "index": 5
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 35431,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35567,
+            "value": 6,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35578,
+            "value": 29524,
+            "index": 5
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 35586,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37253,
+            "value": 33,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37268,
+            "value": 57,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37286,
+            "value": 33,
+            "index": 6
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 37301,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37437,
+            "value": 6,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37448,
+            "value": 29524,
+            "index": 6
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 37456,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39123,
+            "value": 33,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39138,
+            "value": 57,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39156,
+            "value": 33,
+            "index": 7
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 39171,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39307,
+            "value": 6,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39318,
+            "value": 29524,
+            "index": 7
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 39326,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 40993,
+            "value": 104,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41008,
+            "value": 178,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41026,
+            "value": 104,
+            "index": 8
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 41041,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41177,
+            "value": 20,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41188,
+            "value": 29524,
+            "index": 8
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 41196,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42863,
+            "value": 33,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42878,
+            "value": 57,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42896,
+            "value": 33,
+            "index": 9
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 42911,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 43047,
+            "value": 6,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 43058,
+            "value": 29524,
+            "index": 9
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 43066,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44733,
+            "value": 104,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44748,
+            "value": 178,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44766,
+            "value": 104,
+            "index": 10
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 44781,
+            "out": 104,
+            "scratch": 29450,
+            "top": 104
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44917,
+            "value": 20,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44928,
+            "value": 29524,
+            "index": 10
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 44936,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46603,
+            "value": 33,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46618,
+            "value": 57,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46636,
+            "value": 33,
+            "index": 11
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 46651,
+            "out": 33,
+            "scratch": 29500,
+            "top": 33
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46787,
+            "value": 6,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46798,
+            "value": 29524,
+            "index": 11
+          }
+        ]
+      },
+      "store_mutant": {
+        "input_hex": "686868682121212168216821",
+        "oracle_hex": "545454545454545454545454",
+        "raw_hex": "5454545454545454545454540a",
+        "stderr": "steps: 46823 | status: HALTED",
+        "steps": 46823,
+        "status": "EOF",
+        "state_ok": true,
+        "ok": true,
+        "events": [
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24328,
+            "value": 0,
+            "index": -1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 24339,
+            "value": 29524,
+            "index": -1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 24347,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26017,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26032,
+            "value": 59048,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26050,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 26065,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26201,
+            "value": 0,
+            "index": 0
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 26212,
+            "value": 29524,
+            "index": 0
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 26220,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27890,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27905,
+            "value": 59048,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 27923,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 27938,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28074,
+            "value": 0,
+            "index": 1
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 28085,
+            "value": 29524,
+            "index": 1
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 28093,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29763,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29778,
+            "value": 59048,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29796,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 29811,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29947,
+            "value": 0,
+            "index": 2
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 29958,
+            "value": 29524,
+            "index": 2
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 29966,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31636,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31651,
+            "value": 59048,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31669,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 31684,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31820,
+            "value": 0,
+            "index": 3
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 31831,
+            "value": 29524,
+            "index": 3
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 31839,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33509,
+            "value": 29524,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33524,
+            "value": 59048,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33542,
+            "value": 29524,
+            "index": 4
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 33557,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33693,
+            "value": 0,
+            "index": 4
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 33704,
+            "value": 29524,
+            "index": 4
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 33712,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35382,
+            "value": 29524,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35397,
+            "value": 59048,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35415,
+            "value": 29524,
+            "index": 5
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 35430,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35566,
+            "value": 0,
+            "index": 5
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 35577,
+            "value": 29524,
+            "index": 5
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 35585,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37255,
+            "value": 29524,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37270,
+            "value": 59048,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37288,
+            "value": 29524,
+            "index": 6
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 37303,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37439,
+            "value": 0,
+            "index": 6
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 37450,
+            "value": 29524,
+            "index": 6
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 37458,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39128,
+            "value": 29524,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39143,
+            "value": 59048,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39161,
+            "value": 29524,
+            "index": 7
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 39176,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39312,
+            "value": 0,
+            "index": 7
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 39323,
+            "value": 29524,
+            "index": 7
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 39331,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41001,
+            "value": 29524,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41016,
+            "value": 59048,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41034,
+            "value": 29524,
+            "index": 8
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 41049,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41185,
+            "value": 0,
+            "index": 8
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 41196,
+            "value": 29524,
+            "index": 8
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 41204,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42874,
+            "value": 29524,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42889,
+            "value": 59048,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 42907,
+            "value": 29524,
+            "index": 9
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 42922,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 43058,
+            "value": 0,
+            "index": 9
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 43069,
+            "value": 29524,
+            "index": 9
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 43077,
+            "byte": 104,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44747,
+            "value": 29524,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44762,
+            "value": 59048,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44780,
+            "value": 29524,
+            "index": 10
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 44795,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44931,
+            "value": 0,
+            "index": 10
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 44942,
+            "value": 29524,
+            "index": 10
+          },
+          {
+            "kind": "in",
+            "pc": 24389,
+            "step": 44950,
+            "byte": 33,
+            "scratch": 29524,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46620,
+            "value": 29524,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46635,
+            "value": 59048,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46653,
+            "value": 29524,
+            "index": 11
+          },
+          {
+            "kind": "out",
+            "pc": 24371,
+            "step": 46668,
+            "out": 84,
+            "scratch": 0,
+            "top": 29524
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46804,
+            "value": 0,
+            "index": 11
+          },
+          {
+            "kind": "write_top",
+            "pc": 24428,
+            "step": 46815,
+            "value": 29524,
+            "index": 11
+          }
+        ]
+      },
+      "ok": true
+    }
+  ],
+  "selector_mutants": [
+    {
+      "request": "A",
+      "input_hex": "0141f2",
+      "raw_hex": "0a",
+      "oracle_hex": "",
+      "stderr": "steps: 10000 | status: TIMEOUT",
+      "steps": 10000,
+      "status": "MAX_STEPS",
+      "events": [
+        {
+          "type": "visit",
+          "pc": 34,
+          "step": 35,
+          "slot": 33
+        },
+        {
+          "type": "jump",
+          "pc": 38,
+          "target": 119,
+          "step": 39,
+          "slot": 33
+        }
+      ],
+      "agreement": true,
+      "accepted": false,
+      "output_matches_expected": false
+    },
+    {
+      "request": "B",
+      "input_hex": "f20141",
+      "raw_hex": "0a",
+      "oracle_hex": "",
+      "stderr": "steps: 10000 | status: TIMEOUT",
+      "steps": 10000,
+      "status": "MAX_STEPS",
+      "events": [
+        {
+          "type": "visit",
+          "pc": 34,
+          "step": 35,
+          "slot": 33
+        },
+        {
+          "type": "jump",
+          "pc": 38,
+          "target": 120,
+          "step": 39,
+          "slot": 33
+        }
+      ],
+      "agreement": true,
+      "accepted": false,
+      "output_matches_expected": false
+    }
+  ],
+  "all_positive_and_store_control": true,
+  "selector_mutants_rejected": true,
+  "transport": "host forwards raw output payload in batch; two separate VMs",
+  "dependencies": {
+    "vm_malbolge/evidence/epoch_resolver_dispatch_v0/dispatch.mb": "4d47c609f1b7814fc041dc213f04a8a47e26fd39735a5c5491c827115f29df48",
+    "vm_malbolge/evidence/epoch_resolver_dispatch_v0/mutant.mb": "837ee9e62e7a5b606631a6a58f5d8ae63e78a59740b229bb6b94209cf16307ac",
+    "vm_malbolge/evidence/epoch_reusable_store_v1/positive.mb": "63f589e99cd4ddfc78d3b8ab900603448552a00d471253faea1872360d633d5c",
+    "vm_malbolge/evidence/epoch_reusable_store_v1/mutant.mb": "91b852d567d03225bfd882a258831511a1f89b802fb2d6455862c12a37460074",
+    "vm_malbolge/evidence/epoch_resolver_dispatch_v0/probe.py": "3bde717a66e2d03919f26ac00aaf80501a7ba2878429e3e89e058fcf5f9120f9",
+    "vm_malbolge/evidence/epoch_reusable_store_v1/probe.py": "7b94d42ad8a597a11bc88b99af8603a37790291869692f723142f147185a8d17",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231"
+  }
+}

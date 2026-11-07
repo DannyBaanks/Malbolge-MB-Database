@@ -1,0 +1,5 @@
+requests AB forwarded 6821 store 6821 mutant 5454 ok True
+requests BABA forwarded 21682168 store 21682168 mutant 54545454 ok True
+requests AAAABBBBABAB forwarded 686868682121212168216821 store 686868682121212168216821 mutant 545454545454545454545454 ok True
+selector_mutant A status MAX_STEPS agreement True accepted False
+selector_mutant B status MAX_STEPS agreement True accepted False

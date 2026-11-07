@@ -1,0 +1,23 @@
+{
+  "timestamp_utc": "2026-11-07T12:56:23.934507+00:00",
+  "commands": [
+    {
+      "command": "python3 vm_malbolge/evidence/epoch_hybrid_resolver_v0/probe.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 vm_malbolge/evidence/epoch_hybrid_resolver_v0/stream_probe.py",
+      "exit_code": 0
+    }
+  ],
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "sha256": {
+    "VERDICT.md": "5e2141449d7b70591d5f9adb6a67ab8dd7275ecdf8b38f5a2cedd74a9c2ca33b",
+    "probe.py": "5fd448c04b3efad31a041f82e5c50dc83723cfb7b1071a11bcb32cd35ccc82c3",
+    "results.json": "9123bafe5549cf763cecf729c0f2c6cf46f9a7fcf32ec638020d668ded42a0f0",
+    "stdout.raw.txt": "46c3763b65baf76d5dd7232e239cc500185edcda60afe46929a4a3aa4f5df13e",
+    "stream.raw.txt": "bdb811fe691f3fc31a67a812ddf30ee99a4acb0a0b3c81706769b2e68bdf2533",
+    "stream_probe.py": "51b1542446a7511b04b7c79a60bf80c22d6e580bed7251e02febbdc389ea9bd4"
+  }
+}
