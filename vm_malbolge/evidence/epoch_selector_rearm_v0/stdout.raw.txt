@@ -1,0 +1,19 @@
+loop     input=       expected=       oracle=           runner=0a           oracle_steps=48156 EOF runner=steps: 48156 | status: HALTED contract=True
+loop     input=01     expected=50     oracle=50         runner=500a         oracle_steps=51641 EOF runner=steps: 51641 | status: HALTED contract=True
+loop     input=02     expected=52     oracle=52         runner=520a         oracle_steps=52433 EOF runner=steps: 52433 | status: HALTED contract=True
+loop     input=010201 expected=505250 oracle=50         runner=500a         oracle_steps=52008 HALTED runner=steps: 52008 | status: HALTED contract=False
+loop     input=020102 expected=525052 oracle=52         runner=520a         oracle_steps=52800 HALTED runner=steps: 52800 | status: HALTED contract=False
+sha256 loop 4836ad61c34963eda29df794640d407e76d2de989b912836b4632285032ad98a
+rearmed  input=       expected=       oracle=           runner=0a           oracle_steps=51728 EOF runner=steps: 51728 | status: HALTED contract=True
+rearmed  input=01     expected=50     oracle=50         runner=500a         oracle_steps=55620 EOF runner=steps: 55620 | status: HALTED contract=True
+rearmed  input=02     expected=52     oracle=52         runner=520a         oracle_steps=56472 EOF runner=steps: 56472 | status: HALTED contract=True
+rearmed  input=010201 expected=505250 oracle=5000       runner=50000a       oracle_steps=56171 EOF runner=steps: 56133 | status: HALTED contract=False
+rearmed  input=020102 expected=525052 oracle=5200       runner=52000a       oracle_steps=57023 EOF runner=steps: 56985 | status: HALTED contract=False
+sha256 rearmed ebe17017d124f6bd4ffb816ff443e82e90473715fa55292a07abc4dc4732172d
+rearmed2 input=       expected=       oracle=           runner=0a           oracle_steps=51186 EOF runner=steps: 51186 | status: HALTED contract=True
+rearmed2 input=01     expected=50     oracle=5052       runner=50520a       oracle_steps=55056 EOF runner=steps: 55056 | status: HALTED contract=False
+rearmed2 input=02     expected=52     oracle=52         runner=520a         oracle_steps=55836 EOF runner=steps: 55823 | status: HALTED contract=False
+rearmed2 input=010201 expected=505250 oracle=5052fe53   runner=5052fe0a     oracle_steps=59723 EOF runner=steps: 59692 | status: HALTED contract=False
+rearmed2 input=020102 expected=525052 oracle=5253020202 runner=520a         oracle_steps=55922 EOF runner=steps: 55823 | status: HALTED contract=False
+sha256 rearmed2 5ee8cde0da37d25db85e4db6d0fa477743198049a3b6fc21e4e437d740c970c2
+positive single-byte controls True multi-byte candidates rejected True

@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-11-07T13:03:34.863873+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_selector_rearm_v0/probe.py",
+  "exit_code": 0,
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "sha256": {
+    "VERDICT.md": "09461d7db78c09fb6be48df31ea8f90a9535961d427d1d567fd540aaf3397a11",
+    "build.py": "7961d7bfa25c023ceba801f520961e44213cb774f9e7f5d8362686cab08fc73d",
+    "loop.dbg": "e769f155056edda4beab69b53d3ffee4db0d6671e106602ab8fdd203d4c40fc4",
+    "loop.hell": "ae8d2d691b3fa3f1501f0d46bf0f610cba7e6c1f25474e57073d074141292512",
+    "loop.mb": "4836ad61c34963eda29df794640d407e76d2de989b912836b4632285032ad98a",
+    "probe.py": "adec3b20f34845d2e7ba5e20e4e188bc3b423df4b1045bfafd31176165ac6548",
+    "rearmed.dbg": "d78a509ee009ec267f98781d82708f3ca98b1738e3c826a20c634be45d3bbf32",
+    "rearmed.hell": "17fa0fdce193645743533ea1f1e1de730b34f00dda867ce50aab43b22b61f723",
+    "rearmed.mb": "ebe17017d124f6bd4ffb816ff443e82e90473715fa55292a07abc4dc4732172d",
+    "rearmed2.dbg": "631365b4b5933a1d2118772a7359397e53748e3021e80f6d8d21f2ea42466299",
+    "rearmed2.hell": "3ff6ce6aa6a54c904e5994c0a325e11f3ce34aa7db7e8979d7fb827382e0de53",
+    "rearmed2.mb": "5ee8cde0da37d25db85e4db6d0fa477743198049a3b6fc21e4e437d740c970c2",
+    "results.json": "0cbfde924ef3bdc086ae9e19713f58cfa05925fa49f9493d5cf346ae6ef562bf",
+    "stdout.raw.txt": "f2b828633627916dbc8d6e4947f6c86a0d8c4875549f253dbb029cea10e7e8a9"
+  },
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "third_party/lmao/lmao": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44",
+    "vm_malbolge/src/byte_dispatch18.hell": "3a9b9f1e86ddaa62c7230d0d02649feb8ab5eb45894a275e18e1f70b86fe6fde"
+  }
+}

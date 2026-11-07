@@ -1,0 +1,699 @@
+{
+  "cases": [
+    {
+      "candidate": "loop",
+      "input": "",
+      "expected": "",
+      "oracle": "",
+      "steps": 48156,
+      "status": "EOF",
+      "runner_raw": "0a",
+      "runner_stderr": "steps: 48156 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 48156,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 0,
+          "a_before": 57295,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "loop",
+      "input": "01",
+      "expected": "50",
+      "oracle": "50",
+      "steps": 51641,
+      "status": "EOF",
+      "runner_raw": "500a",
+      "runner_stderr": "steps: 51641 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 48156,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 0,
+          "a_before": 57295,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 51641,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 1,
+          "a_before": 80,
+          "values": {
+            "value": 59048,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "loop",
+      "input": "02",
+      "expected": "52",
+      "oracle": "52",
+      "steps": 52433,
+      "status": "EOF",
+      "runner_raw": "520a",
+      "runner_stderr": "steps: 52433 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 48156,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 0,
+          "a_before": 57295,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 52433,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 1,
+          "a_before": 82,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "loop",
+      "input": "010201",
+      "expected": "505250",
+      "oracle": "50",
+      "steps": 52008,
+      "status": "HALTED",
+      "runner_raw": "500a",
+      "runner_stderr": "steps: 52008 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 48156,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 0,
+          "a_before": 57295,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 51641,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 1,
+          "a_before": 80,
+          "values": {
+            "value": 59048,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "loop",
+      "input": "020102",
+      "expected": "525052",
+      "oracle": "52",
+      "steps": 52800,
+      "status": "HALTED",
+      "runner_raw": "520a",
+      "runner_stderr": "steps: 52800 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 48156,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 0,
+          "a_before": 57295,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 52433,
+          "pc": 48641,
+          "d": 57297,
+          "idx": 1,
+          "a_before": 82,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed",
+      "input": "",
+      "expected": "",
+      "oracle": "",
+      "steps": 51728,
+      "status": "EOF",
+      "runner_raw": "0a",
+      "runner_stderr": "steps: 51728 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 51728,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed",
+      "input": "01",
+      "expected": "50",
+      "oracle": "50",
+      "steps": 55620,
+      "status": "EOF",
+      "runner_raw": "500a",
+      "runner_stderr": "steps: 55620 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 51728,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55620,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 0,
+          "values": {
+            "value": 0,
+            "value_C1": 0,
+            "save_tmp": 0,
+            "save_B": 0
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed",
+      "input": "02",
+      "expected": "52",
+      "oracle": "52",
+      "steps": 56472,
+      "status": "EOF",
+      "runner_raw": "520a",
+      "runner_stderr": "steps: 56472 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 51728,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 56472,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 1,
+          "values": {
+            "value": 0,
+            "value_C1": 1,
+            "save_tmp": 1,
+            "save_B": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed",
+      "input": "010201",
+      "expected": "505250",
+      "oracle": "5000",
+      "steps": 56171,
+      "status": "EOF",
+      "runner_raw": "50000a",
+      "runner_stderr": "steps: 56133 | status: HALTED",
+      "output_match": true,
+      "step_match": false,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51728,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55620,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 0,
+          "values": {
+            "value": 0,
+            "value_C1": 0,
+            "save_tmp": 0,
+            "save_B": 0
+          }
+        },
+        {
+          "step": 56154,
+          "pc": 59034,
+          "d": 113,
+          "idx": 2,
+          "a_before": 29533,
+          "values": {
+            "value": 2,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        },
+        {
+          "step": 56171,
+          "pc": 65,
+          "d": 130,
+          "idx": 3,
+          "a_before": 1,
+          "values": {
+            "value": 2,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed",
+      "input": "020102",
+      "expected": "525052",
+      "oracle": "5200",
+      "steps": 57023,
+      "status": "EOF",
+      "runner_raw": "52000a",
+      "runner_stderr": "steps: 56985 | status: HALTED",
+      "output_match": true,
+      "step_match": false,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51728,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 56472,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 1,
+          "values": {
+            "value": 0,
+            "value_C1": 1,
+            "save_tmp": 1,
+            "save_B": 1
+          }
+        },
+        {
+          "step": 57006,
+          "pc": 59034,
+          "d": 113,
+          "idx": 2,
+          "a_before": 29533,
+          "values": {
+            "value": 2,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        },
+        {
+          "step": 57023,
+          "pc": 65,
+          "d": 130,
+          "idx": 3,
+          "a_before": 2,
+          "values": {
+            "value": 2,
+            "value_C1": 29523,
+            "save_tmp": 29523,
+            "save_B": 1
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed2",
+      "input": "",
+      "expected": "",
+      "oracle": "",
+      "steps": 51186,
+      "status": "EOF",
+      "runner_raw": "0a",
+      "runner_stderr": "steps: 51186 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": true,
+      "events": [
+        {
+          "step": 51186,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed2",
+      "input": "01",
+      "expected": "50",
+      "oracle": "5052",
+      "steps": 55056,
+      "status": "EOF",
+      "runner_raw": "50520a",
+      "runner_stderr": "steps: 55056 | status: HALTED",
+      "output_match": true,
+      "step_match": true,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51186,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55056,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed2",
+      "input": "02",
+      "expected": "52",
+      "oracle": "52",
+      "steps": 55836,
+      "status": "EOF",
+      "runner_raw": "520a",
+      "runner_stderr": "steps: 55823 | status: HALTED",
+      "output_match": true,
+      "step_match": false,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51186,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55836,
+          "pc": 84,
+          "d": 52346,
+          "idx": 1,
+          "a_before": 29442,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed2",
+      "input": "010201",
+      "expected": "505250",
+      "oracle": "5052fe53",
+      "steps": 59723,
+      "status": "EOF",
+      "runner_raw": "5052fe0a",
+      "runner_stderr": "steps: 59692 | status: HALTED",
+      "output_match": false,
+      "step_match": false,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51186,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55056,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 1,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 59705,
+          "pc": 84,
+          "d": 52346,
+          "idx": 2,
+          "a_before": 9814,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        },
+        {
+          "step": 59723,
+          "pc": 65,
+          "d": 29459,
+          "idx": 3,
+          "a_before": 15,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        }
+      ]
+    },
+    {
+      "candidate": "rearmed2",
+      "input": "020102",
+      "expected": "525052",
+      "oracle": "5253020202",
+      "steps": 55922,
+      "status": "EOF",
+      "runner_raw": "520a",
+      "runner_stderr": "steps: 55823 | status: HALTED",
+      "output_match": false,
+      "step_match": false,
+      "trace_match": true,
+      "contract": false,
+      "events": [
+        {
+          "step": 51186,
+          "pc": 52213,
+          "d": 57411,
+          "idx": 0,
+          "a_before": 29524,
+          "values": {
+            "value": 29524,
+            "value_C1": 29524,
+            "save_tmp": 29524,
+            "save_B": 29524
+          }
+        },
+        {
+          "step": 55836,
+          "pc": 84,
+          "d": 52346,
+          "idx": 1,
+          "a_before": 29442,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        },
+        {
+          "step": 55854,
+          "pc": 65,
+          "d": 29459,
+          "idx": 2,
+          "a_before": 15,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        },
+        {
+          "step": 55922,
+          "pc": 110,
+          "d": 29527,
+          "idx": 3,
+          "a_before": 2,
+          "values": {
+            "value": 59048,
+            "value_C1": 29525,
+            "save_tmp": 29525,
+            "save_B": 2
+          }
+        }
+      ]
+    }
+  ]
+}
