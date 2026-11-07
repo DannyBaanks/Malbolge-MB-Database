@@ -1,0 +1,892 @@
+{
+  "imagen": "vm_malbolge/src/mbir_dispatch2.mb",
+  "bytes": 29562,
+  "sha256": "4d47c609f1b7814fc041dc213f04a8a47e26fd39735a5c5491c827115f29df48",
+  "parametros": {
+    "V1": 36,
+    "V2": 60,
+    "slotA": 46,
+    "v0a": 33,
+    "P1": 51,
+    "P2": 55,
+    "tail1": 1,
+    "tail2": 2,
+    "D2": 34,
+    "HALT": 45,
+    "destinos": [
+      29523,
+      29475,
+      29553,
+      29433
+    ]
+  },
+  "codigo_celdas": 75,
+  "dato_celdas": 14,
+  "dato_no_valido": 11,
+  "casos": [
+    {
+      "stdin": "0141f2",
+      "esperado": "68",
+      "oraculo": "68",
+      "runner_c": "68",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "0142f2",
+      "esperado": "69",
+      "oraculo": "69",
+      "runner_c": "69",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "f20143",
+      "esperado": "21",
+      "oraculo": "21",
+      "runner_c": "21",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "01410142",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 26,
+      "status": "HALTED",
+      "stderr_runner": "steps: 26 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "0141",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 14,
+      "status": "EOF",
+      "stderr_runner": "steps: 14 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "f2",
+      "esperado": "21",
+      "oraculo": "21",
+      "runner_c": "21",
+      "pasos_oraculo": 32,
+      "status": "EOF",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 3,
+      "status": "EOF",
+      "stderr_runner": "steps: 3 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "0141f2f2",
+      "esperado": "68",
+      "oraculo": "68",
+      "runner_c": "68",
+      "pasos_oraculo": 44,
+      "status": "HALTED",
+      "stderr_runner": "steps: 44 | status: HALTED",
+      "acuerdo": true
+    }
+  ],
+  "barrido": {
+    "combinaciones": 111,
+    "acuerdo": 111,
+    "detalle": [
+      {
+        "stdin": "0100f2",
+        "esperado": "57",
+        "oraculo": "57",
+        "runner_c": "57",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20100",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01000100",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0101f2",
+        "esperado": "56",
+        "oraculo": "56",
+        "runner_c": "56",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20101",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01010101",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0102f2",
+        "esperado": "56",
+        "oraculo": "56",
+        "runner_c": "56",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20102",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01020102",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0103f2",
+        "esperado": "57",
+        "oraculo": "57",
+        "runner_c": "57",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20103",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01030103",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0104f2",
+        "esperado": "56",
+        "oraculo": "56",
+        "runner_c": "56",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20104",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01040104",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0105f2",
+        "esperado": "56",
+        "oraculo": "56",
+        "runner_c": "56",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20105",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01050105",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0106f2",
+        "esperado": "54",
+        "oraculo": "54",
+        "runner_c": "54",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20106",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01060106",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0107f2",
+        "esperado": "53",
+        "oraculo": "53",
+        "runner_c": "53",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20107",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01070107",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0108f2",
+        "esperado": "53",
+        "oraculo": "53",
+        "runner_c": "53",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20108",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01080108",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0109f2",
+        "esperado": "4e",
+        "oraculo": "4e",
+        "runner_c": "4e",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20109",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01090109",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010af2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010a",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010a010a",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010bf2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010b",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010b010b",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010cf2",
+        "esperado": "4e",
+        "oraculo": "4e",
+        "runner_c": "4e",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010c",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010c010c",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010df2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010d",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010d010d",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010ef2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010e",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010e010e",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010ff2",
+        "esperado": "4b",
+        "oraculo": "4b",
+        "runner_c": "4b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2010f",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "010f010f",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0110f2",
+        "esperado": "4a",
+        "oraculo": "4a",
+        "runner_c": "4a",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20110",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01100100",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0111f2",
+        "esperado": "4a",
+        "oraculo": "4a",
+        "runner_c": "4a",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20111",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01110101",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0112f2",
+        "esperado": "4e",
+        "oraculo": "4e",
+        "runner_c": "4e",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20112",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01120102",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0113f2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20113",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01130103",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0114f2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20114",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01140104",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0115f2",
+        "esperado": "4e",
+        "oraculo": "4e",
+        "runner_c": "4e",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20115",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01150105",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0116f2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20116",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01160106",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0117f2",
+        "esperado": "4d",
+        "oraculo": "4d",
+        "runner_c": "4d",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20117",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01170107",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0118f2",
+        "esperado": "4b",
+        "oraculo": "4b",
+        "runner_c": "4b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20118",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01180108",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0119f2",
+        "esperado": "4a",
+        "oraculo": "4a",
+        "runner_c": "4a",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20119",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01190109",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011af2",
+        "esperado": "4a",
+        "oraculo": "4a",
+        "runner_c": "4a",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011a",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011a010a",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011bf2",
+        "esperado": "3c",
+        "oraculo": "3c",
+        "runner_c": "3c",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011b",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011b010b",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011cf2",
+        "esperado": "3b",
+        "oraculo": "3b",
+        "runner_c": "3b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011c",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011c010c",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011df2",
+        "esperado": "3b",
+        "oraculo": "3b",
+        "runner_c": "3b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011d",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011d010d",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011ef2",
+        "esperado": "3c",
+        "oraculo": "3c",
+        "runner_c": "3c",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011e",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011e010e",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011ff2",
+        "esperado": "3b",
+        "oraculo": "3b",
+        "runner_c": "3b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2011f",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "011f010f",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "017ff2",
+        "esperado": "e1",
+        "oraculo": "e1",
+        "runner_c": "e1",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f2017f",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "017f010f",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "0180f2",
+        "esperado": "e1",
+        "oraculo": "e1",
+        "runner_c": "e1",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f20180",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01800100",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01c3f2",
+        "esperado": "e8",
+        "oraculo": "e8",
+        "runner_c": "e8",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f201c3",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01c30103",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01fef2",
+        "esperado": "5a",
+        "oraculo": "5a",
+        "runner_c": "5a",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f201fe",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01fe010e",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01fff2",
+        "esperado": "5b",
+        "oraculo": "5b",
+        "runner_c": "5b",
+        "acuerdo": true
+      },
+      {
+        "stdin": "f201ff",
+        "esperado": "21",
+        "oraculo": "21",
+        "runner_c": "21",
+        "acuerdo": true
+      },
+      {
+        "stdin": "01ff010f",
+        "esperado": "",
+        "oraculo": "",
+        "runner_c": "",
+        "acuerdo": true
+      }
+    ]
+  },
+  "veredicto": "DESPACHO_COMPUTADO_DEMOSTRADO"
+}
