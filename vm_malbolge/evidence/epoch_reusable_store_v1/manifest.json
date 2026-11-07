@@ -1,0 +1,26 @@
+{
+  "timestamp_utc": "2026-11-07T12:49:08.029377+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_reusable_store_v1/probe.py",
+  "exit_code": 0,
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "dependency_sha256": {
+    "vm_malbolge/src/cell_stack_loop_echo.hell": "3cca51a188dbf9733ca8117d8a3307e201693aa6b55cfe9f5c8815d6ad07b11b",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "third_party/lmao/lmao": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44"
+  },
+  "sha256": {
+    "VERDICT.md": "1aa20c0598e32120ccd6644144545172067ecbbc98866ea85b8be5c81acf8b8e",
+    "first_attempt.json": "ce8f7accee52904fe91cdf355c15731ed313ee08f272413db0380000b95f1b27",
+    "first_attempt.raw.txt": "78b316bb7bebc5b88f56b75628cf18d6ae40cfbee9bb77cb4fff1898e3bc9d4f",
+    "mutant.dbg": "0e4e95fee095504f763638438edf65920e16b5e46e1f07e0f0d462016e325055",
+    "mutant.hell": "7f2e70e4240bed433c34ac00e77c08a72748536fd2d7ffba11354156169625e6",
+    "mutant.mb": "91b852d567d03225bfd882a258831511a1f89b802fb2d6455862c12a37460074",
+    "positive.dbg": "150e40866cc711e3490efc9846e8f83e49efbf2159bcb52a7746a33216cb34b3",
+    "positive.mb": "63f589e99cd4ddfc78d3b8ab900603448552a00d471253faea1872360d633d5c",
+    "probe.py": "7b94d42ad8a597a11bc88b99af8603a37790291869692f723142f147185a8d17",
+    "results.json": "0932d421246523f767a07039af1020ba31fd7d81c4038d6f150550bdc005e39d",
+    "stdout.raw.txt": "d856f0e08f376c4a3b594889ae5cf56d7a3e65f7d87d6fcaa1ca3efb68c117a1"
+  }
+}

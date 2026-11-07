@@ -1,0 +1,9 @@
+len=  0 positive=True mutant=True steps=24366 rearm=True slot=True
+len=  1 positive=True mutant=True steps=26236 rearm=True slot=True
+len=  2 positive=True mutant=True steps=28106 rearm=True slot=True
+len=  3 positive=True mutant=True steps=29976 rearm=True slot=True
+len=  4 positive=True mutant=True steps=31846 rearm=True slot=True
+len=256 positive=True mutant=True steps=503086 rearm=True slot=True
+len=256 positive=True mutant=True steps=503086 rearm=True slot=True
+strict invalid byte counts: {'positive': 0, 'mutant': 0}
+sha256: {'positive': '63f589e99cd4ddfc78d3b8ab900603448552a00d471253faea1872360d633d5c', 'mutant': '91b852d567d03225bfd882a258831511a1f89b802fb2d6455862c12a37460074'}
