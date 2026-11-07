@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-11-07T12:51:46.150107+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_resolver_dispatch_v0/probe.py",
+  "exit_code": 0,
+  "python": "3.12.3",
+  "sha256": {
+    "VERDICT.md": "fac428c35184e2fcd97c306f48a0f4336bb310e39402b3e925d48541e3c88ac2",
+    "dispatch.mb": "4d47c609f1b7814fc041dc213f04a8a47e26fd39735a5c5491c827115f29df48",
+    "mutant.mb": "837ee9e62e7a5b606631a6a58f5d8ae63e78a59740b229bb6b94209cf16307ac",
+    "probe.py": "3bde717a66e2d03919f26ac00aaf80501a7ba2878429e3e89e058fcf5f9120f9",
+    "results.json": "9003ae4d238a8d20a62efb2d7b53b9732c04f0e2d25023530f22510daa8c5c46",
+    "stdout.raw.txt": "5cc6d7a425dc56282af769925eb5e26785f670dcfcd4335375454aa287e17259"
+  },
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/tools/native_classic/constants.py": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f"
+  }
+}

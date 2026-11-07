@@ -1,0 +1,5 @@
+push-A-pop positive= True mutant_contract= False mutant_agreement= True
+pop-push-A positive= True mutant_contract= False mutant_agreement= True
+push-B-pop positive= True mutant_contract= False mutant_agreement= True
+two-push positive= True mutant_contract= False mutant_agreement= True
+positive True mutants rejected True mutant parity True

@@ -1,0 +1,379 @@
+{
+  "cases": [
+    {
+      "case": "push-A-pop",
+      "input": "0141f2",
+      "positive": {
+        "output": "68",
+        "c_stdout_raw": "680a",
+        "c_stderr": "steps: 44 | status: HALTED",
+        "steps": 44,
+        "status": "HALTED",
+        "agreement": true,
+        "contract": true,
+        "events": [
+          {
+            "type": "jump",
+            "pc": 6,
+            "target": 29524,
+            "step": 7,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 29524,
+            "step": 8,
+            "slot": 33
+          },
+          {
+            "type": "store",
+            "pc": 29527,
+            "step": 11,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 29529,
+            "target": 34,
+            "step": 13,
+            "slot": 29544
+          },
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 14,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 29434,
+            "step": 18,
+            "slot": 29544
+          },
+          {
+            "type": "visit",
+            "pc": 29434,
+            "step": 19,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 29458,
+            "target": 45,
+            "step": 43,
+            "slot": 29544
+          }
+        ]
+      },
+      "mutant": {
+        "output": "",
+        "c_stdout_raw": "0a",
+        "c_stderr": "steps: 10000 | status: TIMEOUT",
+        "steps": 10000,
+        "status": "MAX_STEPS",
+        "agreement": true,
+        "contract": false,
+        "events": [
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 35,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 119,
+            "step": 39,
+            "slot": 33
+          }
+        ]
+      }
+    },
+    {
+      "case": "pop-push-A",
+      "input": "f20141",
+      "positive": {
+        "output": "21",
+        "c_stdout_raw": "210a",
+        "c_stderr": "steps: 44 | status: HALTED",
+        "steps": 44,
+        "status": "HALTED",
+        "agreement": true,
+        "contract": true,
+        "events": [
+          {
+            "type": "jump",
+            "pc": 6,
+            "target": 29476,
+            "step": 7,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 29476,
+            "step": 8,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 29499,
+            "target": 34,
+            "step": 31,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 32,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 29554,
+            "step": 36,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 29554,
+            "step": 37,
+            "slot": 33
+          },
+          {
+            "type": "store",
+            "pc": 29557,
+            "step": 40,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 29560,
+            "target": 45,
+            "step": 43,
+            "slot": 29544
+          }
+        ]
+      },
+      "mutant": {
+        "output": "",
+        "c_stdout_raw": "0a",
+        "c_stderr": "steps: 10000 | status: TIMEOUT",
+        "steps": 10000,
+        "status": "MAX_STEPS",
+        "agreement": true,
+        "contract": false,
+        "events": [
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 35,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 120,
+            "step": 39,
+            "slot": 33
+          }
+        ]
+      }
+    },
+    {
+      "case": "push-B-pop",
+      "input": "0142f2",
+      "positive": {
+        "output": "69",
+        "c_stdout_raw": "690a",
+        "c_stderr": "steps: 44 | status: HALTED",
+        "steps": 44,
+        "status": "HALTED",
+        "agreement": true,
+        "contract": true,
+        "events": [
+          {
+            "type": "jump",
+            "pc": 6,
+            "target": 29524,
+            "step": 7,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 29524,
+            "step": 8,
+            "slot": 33
+          },
+          {
+            "type": "store",
+            "pc": 29527,
+            "step": 11,
+            "slot": 29545
+          },
+          {
+            "type": "jump",
+            "pc": 29529,
+            "target": 34,
+            "step": 13,
+            "slot": 29545
+          },
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 14,
+            "slot": 29545
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 29434,
+            "step": 18,
+            "slot": 29545
+          },
+          {
+            "type": "visit",
+            "pc": 29434,
+            "step": 19,
+            "slot": 29545
+          },
+          {
+            "type": "jump",
+            "pc": 29458,
+            "target": 45,
+            "step": 43,
+            "slot": 29545
+          }
+        ]
+      },
+      "mutant": {
+        "output": "",
+        "c_stdout_raw": "0a",
+        "c_stderr": "steps: 10000 | status: TIMEOUT",
+        "steps": 10000,
+        "status": "MAX_STEPS",
+        "agreement": true,
+        "contract": false,
+        "events": [
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 35,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 119,
+            "step": 39,
+            "slot": 33
+          }
+        ]
+      }
+    },
+    {
+      "case": "two-push",
+      "input": "01410142",
+      "positive": {
+        "output": "",
+        "c_stdout_raw": "0a",
+        "c_stderr": "steps: 26 | status: HALTED",
+        "steps": 26,
+        "status": "HALTED",
+        "agreement": true,
+        "contract": true,
+        "events": [
+          {
+            "type": "jump",
+            "pc": 6,
+            "target": 29524,
+            "step": 7,
+            "slot": 33
+          },
+          {
+            "type": "visit",
+            "pc": 29524,
+            "step": 8,
+            "slot": 33
+          },
+          {
+            "type": "store",
+            "pc": 29527,
+            "step": 11,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 29529,
+            "target": 34,
+            "step": 13,
+            "slot": 29544
+          },
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 14,
+            "slot": 29544
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 29554,
+            "step": 18,
+            "slot": 29544
+          },
+          {
+            "type": "visit",
+            "pc": 29554,
+            "step": 19,
+            "slot": 29544
+          },
+          {
+            "type": "store",
+            "pc": 29557,
+            "step": 22,
+            "slot": 29518
+          },
+          {
+            "type": "jump",
+            "pc": 29560,
+            "target": 45,
+            "step": 25,
+            "slot": 29518
+          }
+        ]
+      },
+      "mutant": {
+        "output": "",
+        "c_stdout_raw": "0a",
+        "c_stderr": "steps: 10000 | status: TIMEOUT",
+        "steps": 10000,
+        "status": "MAX_STEPS",
+        "agreement": true,
+        "contract": false,
+        "events": [
+          {
+            "type": "visit",
+            "pc": 34,
+            "step": 35,
+            "slot": 33
+          },
+          {
+            "type": "jump",
+            "pc": 38,
+            "target": 119,
+            "step": 39,
+            "slot": 33
+          }
+        ]
+      }
+    }
+  ],
+  "source_sha256": "4d47c609f1b7814fc041dc213f04a8a47e26fd39735a5c5491c827115f29df48",
+  "mutant_sha256": "837ee9e62e7a5b606631a6a58f5d8ae63e78a59740b229bb6b94209cf16307ac",
+  "all_positive": true,
+  "all_mutant_rejected": true,
+  "mutant_agreement": true
+}
