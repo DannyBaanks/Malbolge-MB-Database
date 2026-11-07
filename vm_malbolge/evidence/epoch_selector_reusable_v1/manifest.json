@@ -1,0 +1,106 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-07T13:25:03.361388+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_selector_reusable_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "ec801a381df334fadab61a07e8a80f92c6b7552d72f51bbd9b4cca889ce83d11"
+    },
+    {
+      "file": "build.py",
+      "sha256": "1b5f38315e0da3c78847c2462b0d29c315d1af16a3fd64955043c88cfd4aa71c"
+    },
+    {
+      "file": "first_attempt.json",
+      "sha256": "e95439002ae56a83949e8ae69bffbe8eb74be0a08ce991b839920a032ce948f7"
+    },
+    {
+      "file": "first_attempt.raw.txt",
+      "sha256": "0548e1e372edaebf6342a7e2dbbeecc98591734bb6bdb0d647ec1b9d5b5fb4c5"
+    },
+    {
+      "file": "host_counterfactual.py",
+      "sha256": "1e62e3cb36b7d39f21c8e233995112722c4d444a8858e263c5f2dd9f79bcf9a1"
+    },
+    {
+      "file": "host_counterfactual.raw.txt",
+      "sha256": "88bbe91077557b0f6776dec2f641bda2387a71fec0300aebadef7a4d844f7e1c"
+    },
+    {
+      "file": "marker_loop4.dbg",
+      "sha256": "ef962295e18cdb4e195bf770723e0e65426aedf686d61b7008aaba453b48c868"
+    },
+    {
+      "file": "marker_loop4.hell",
+      "sha256": "1b88b6d6f173e2f32a183754553f3daa77e2ba92a0d951159c843a8bb2026280"
+    },
+    {
+      "file": "marker_loop4.mb",
+      "sha256": "82f183234897851961b6b63aa2f90dfa371f7621fb75943eef9ec796c5a22551"
+    },
+    {
+      "file": "marker_mutant.dbg",
+      "sha256": "cdbe91dc5201d956e18e39ad22bc03a32c46da1c16cbeb05059a258bd23fc0e0"
+    },
+    {
+      "file": "marker_mutant.hell",
+      "sha256": "29112c81f4583e949be730986cb5a5b1720f9b5ae2f2a02ef54d41ad67f816c7"
+    },
+    {
+      "file": "marker_mutant.mb",
+      "sha256": "a4ffcb5e475f052e5618fb55aef1e18ff273d94504e38f35391b401a38395225"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "4087a9d9c8f7b33a5592bc33e47ecbe4e50ea3e36d49890a507e3a8d1e085cdd"
+    },
+    {
+      "file": "rearm_moved.dbg",
+      "sha256": "5a0ff67273913fee968d78384925093fe9b809dfe313e841dd2188074dcf0b95"
+    },
+    {
+      "file": "rearm_moved.hell",
+      "sha256": "78e96951c3348c18f60e4bed383b38355e210f09a834db2bcee82dfd71e15917"
+    },
+    {
+      "file": "rearm_moved.mb",
+      "sha256": "5ac408caccfb343214a626e3c6bc1f90403d4aaf5d57b2b5d1a18e6507bfa2e0"
+    },
+    {
+      "file": "rebuild.raw.txt",
+      "sha256": "f075f169f9d6532e7f7ba1318d20476aa2685b57786685cc1b4e0529945bf4c9"
+    },
+    {
+      "file": "results.json",
+      "sha256": "fd57d2d6b4dbf448e9c59a74da3be7e641c2a93d2332927d207a5bbc6ca499a4"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "02d01316c7f7dbb45a45c74d9085de23b03432c6cd356de3bd163ec9a010b295"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "third_party/lmao/lmao": "5a6039efd995af1cf57b9bf4d6ec70da3a5303efe0ec6a1fe0fad3abc03f3f44",
+    "vm_malbolge/tools/native_classic/constants.py": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f",
+    "vm_malbolge/evidence/epoch_selector_rearm_v0/rearmed2.hell": "3ff6ce6aa6a54c904e5994c0a325e11f3ce34aa7db7e8979d7fb827382e0de53",
+    "vm_malbolge/evidence/epoch_selector_rearm_v0/rearmed2.mb": "5ee8cde0da37d25db85e4db6d0fa477743198049a3b6fc21e4e437d740c970c2"
+  },
+  "claims": [
+    {
+      "text": "binary reusable selector with state trace and controls",
+      "status": "CONDITIONAL_PASS"
+    },
+    {
+      "text": "general PureEpoch resolver",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

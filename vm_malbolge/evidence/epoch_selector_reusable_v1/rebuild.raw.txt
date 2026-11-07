@@ -1,0 +1,10 @@
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/selector_rebuild_1794057856718974075/marker_loop4.mb
+Debugging information written to /tmp/opencode/selector_rebuild_1794057856718974075/marker_loop4.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/selector_rebuild_1794057856718974075/marker_mutant.mb
+Debugging information written to /tmp/opencode/selector_rebuild_1794057856718974075/marker_mutant.dbg
+positive HeLL identical
+mutant HeLL identical
+steps: 66549 | status: HALTED
+5052500a

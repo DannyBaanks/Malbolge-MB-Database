@@ -1,0 +1,7 @@
+none output 5052fe steps 59692 status NONPRINTABLE changed= 36 patches= 0 first []
+flag output 5052fe steps 59693 status NONPRINTABLE changed= 36 patches= 1 first [(58908, 70, 74)]
+carry output 5052fe steps 59692 status NONPRINTABLE changed= 36 patches= 1 first [(59047, 74, 70)]
+both output 5052fe steps 59693 status NONPRINTABLE changed= 36 patches= 2 first [(58908, 70, 74), (59047, 74, 70)]
+all output 505252 steps 59693 status NONPRINTABLE changed= 36 patches= 36 first [(52194, 64, 110), (52212, 89, 104), (52229, 47, 97), (52233, 47, 68), (52322, 51, 102), (57246, 69, 81), (57249, 74, 70), (57250, 74, 70), (57251, 74, 70), (57277, 75, 81), (57305, 89, 36), (57309, 34, 81)]
+changed sample [52194, 52212, 52229, 52233, 52322, 57246, 57249, 57250, 57251, 57277, 57305, 57309, 57326, 57327, 57331, 57399, 57403, 57571, 57579, 58245, 58249, 58339, 58343, 58437, 58527, 58531, 58621, 58625, 58809, 58813, 58903, 58907, 58908, 59046, 59047, 59048]
+periodic_all output 505252 steps 59693 status NONPRINTABLE changed= 36 patches= 36 first [(52194, 64, 110), (52212, 89, 104), (52229, 47, 97), (52233, 47, 68), (52322, 51, 102), (57246, 69, 81), (57249, 74, 70), (57250, 74, 70), (57251, 74, 70), (57277, 75, 81), (57305, 89, 36), (57309, 34, 81)]
