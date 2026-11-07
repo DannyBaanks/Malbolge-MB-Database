@@ -125,7 +125,7 @@
       "veredicto": "NO",
       "nodos": 334514,
       "hojas": 102424,
-      "segundos": 1.6
+      "segundos": 1.7
     },
     {
       "opcodes": [
@@ -136,7 +136,7 @@
       "veredicto": "NO",
       "nodos": 2574447,
       "hojas": 1102800,
-      "segundos": 15.5
+      "segundos": 16.3
     },
     {
       "opcodes": [
@@ -158,7 +158,7 @@
       "veredicto": "NO",
       "nodos": 334514,
       "hojas": 102424,
-      "segundos": 1.6
+      "segundos": 1.7
     },
     {
       "opcodes": [
@@ -169,7 +169,7 @@
       "veredicto": "NO",
       "nodos": 38029,
       "hojas": 0,
-      "segundos": 0.1
+      "segundos": 0.2
     },
     {
       "opcodes": [
@@ -184,5 +184,5 @@
     }
   ],
   "veredicto": "N6_EXCLUIDO_EN_PROTOCOLOS_MEDIDOS",
-  "tiempo_total_s": 90.3
+  "tiempo_total_s": 96.4
 }
