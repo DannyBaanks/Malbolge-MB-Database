@@ -116,10 +116,16 @@ verificación futura que emita `0x0d` con el recorte CRLF sería un falso negati
 - **Demostrado:** la primitiva one-shot. Una celda que empieza en `v0` y que un
   `CRAZY` transforma es leída después por un `MOVD` como dirección; el control
   con `CRAZY→NOP` sigue otra ruta y emite otro byte. Doble motor, 9/9.
-- **NOT_DEMONSTRATED:** la integración de esta primitiva en el **bucle de pila**
-  iterado. El one-shot no paga el muro de restauración por 2-ciclo; un bucle
-  necesita además que la celda escrita se reponga entre iteraciones, y eso no se
-  ha construido aquí.
+- **NOT_DEMONSTRATED (en este documento) — SUPERADO por evidencia posterior:**
+  la integración de esta primitiva en el **bucle de pila** iterado. El one-shot
+  no paga el muro de restauración por 2-ciclo. Ese frente se cerró después con
+  otro mecanismo: una celda de trabajo que **no se restaura** avanza por su
+  ciclo de `XLAT2` y cambia de opcode sola en cada iteración, así que la misma
+  celda escribe con `CRAZY` en una iteración y lee con `ROT` en otra. Ver
+  [`stack_loop_phase.md`](stack_loop_phase.md) (escritura y lectura de la misma
+  celda en iteraciones distintas) y [`stack_loop_lifo2.md`](stack_loop_lifo2.md)
+  (LIFO de profundidad 2 en bucle real). El resto de este documento sigue
+  vigente tal cual.
 - **NOT_DEMONSTRATED:** otros `s` con imágenes mayores. El barrido se hizo con
   imagen explícita de 256 celdas y `s = 1..8`; no se exploró `LEN > 256`.
 - **NOT_DEMONSTRATED:** que las 74 soluciones agoten el espacio. La búsqueda
