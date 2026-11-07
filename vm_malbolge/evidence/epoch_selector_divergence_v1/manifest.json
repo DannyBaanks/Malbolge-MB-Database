@@ -1,0 +1,107 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-07T13:10:35.871565+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_selector_divergence_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "4d0e511f5c0d2cfea412e96ec7a5deae2b10f360bfb45b587c38828741de3c4f"
+    },
+    {
+      "file": "build.py",
+      "sha256": "1db1fe9098d5e9213f3b521362312b39d3b04323721b72447b13980e3b651586"
+    },
+    {
+      "file": "conditional_flag.dbg",
+      "sha256": "eae4f766ee96dd97c40abb188b5500345d84dce87635a3dc75240d80a70794e0"
+    },
+    {
+      "file": "conditional_flag.hell",
+      "sha256": "0747d22abeddee4d704e48c4e58d1d0369156fd224474244c5dd2c4e48de66bf"
+    },
+    {
+      "file": "conditional_flag.mb",
+      "sha256": "ae63f8bb4abbbda0bcc2e3f3d3503b14391a893ed5f9fdef571bf0ce7e8e1183"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "29ff6a3b8030e60cb8ae93587e86bb7b3290f417de2963fe7de1e0b3ab8c17ad"
+    },
+    {
+      "file": "reset_carry.dbg",
+      "sha256": "1796928e0f5707153d60fc543636de845af2e7c16a5c0435fa4a8cd399b18bc4"
+    },
+    {
+      "file": "reset_carry.hell",
+      "sha256": "86626e33d1ef169bf58dd5e59e706c98274b4835bf3c3e76a456ea80319e1c98"
+    },
+    {
+      "file": "reset_carry.mb",
+      "sha256": "79ebd9d98439f82224c11dea9c3ea68b40e80f78581ad162d6762bde39cccf9e"
+    },
+    {
+      "file": "results.json",
+      "sha256": "362c4416480a6eb4e498bc1e29268004902776a77e13fb9e2604224d086621f3"
+    },
+    {
+      "file": "runner_original.stderr",
+      "sha256": "ea9e09fe7a352623d3533066c703394c9a087bfbce40f688f863ee0ed1203b6c"
+    },
+    {
+      "file": "runner_original.stdout",
+      "sha256": "2fbc4c3a5e66a41ee5c6d568f90bc8f33104c533e6ea7780361017671de3f0a2"
+    },
+    {
+      "file": "runner_trace.stderr.gz",
+      "sha256": "b07d46743c65e55a01eab4cd5e42bcce278fdb0eff98e57860cb8f44797b443d"
+    },
+    {
+      "file": "runner_trace.stdout",
+      "sha256": "2fbc4c3a5e66a41ee5c6d568f90bc8f33104c533e6ea7780361017671de3f0a2"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "2f4fa4e313c2f6ed5902fd0c03d13e3de31be77aa98e602a00d287d29d35ce30"
+    },
+    {
+      "file": "trace_c.jsonl.gz",
+      "sha256": "0bfa16ef9c423bffd1c37ce3ce02d63c28b79597a640de29daaf068297d560eb"
+    },
+    {
+      "file": "trace_c.stderr",
+      "sha256": "891da94e4afe8986cdef34ac77517ced154886a233212351c7e656b7f8ae73b7"
+    },
+    {
+      "file": "trace_c.stdout",
+      "sha256": "638ac43bee869eb2d1504a347927b951a24f873a87164ba5584cd5a5c78f053f"
+    }
+  ],
+  "dependencies": {
+    "rearmed2.mb_0": "5ee8cde0da37d25db85e4db6d0fa477743198049a3b6fc21e4e437d740c970c2",
+    "rearmed2.hell_1": "3ff6ce6aa6a54c904e5994c0a325e11f3ce34aa7db7e8979d7fb827382e0de53",
+    "rearmed2.dbg_2": "631365b4b5933a1d2118772a7359397e53748e3021e80f6d8d21f2ea42466299",
+    "oracle_classic.py_3": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "malbolge_4": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm.c_5": "9298106c30b99802d6a3745a017bf45f94c3952b9a14650d5af0b944afa2e2d4",
+    "vm.h_6": "bce35bfcb1dbf728f1af5e4c26cbfa3a520d0de8522bd4b9d8d0263f3a7a1c24",
+    "malbolge.c_7": "e77a8fc79ff48ee5fe67bf5fcf528e31dc2cee5559e293c5c4deb77f79c9fda2",
+    "trace_ref.c_8": "f1d3f807e2e2b3609b04792cf2165b44da65a5ec2d22aa66ccd26334f7cd5d52",
+    "trace_ref_9": "13a4b1dfdfe0afcced83c2ee0b612c3e4da1626a3dcf717432eefcad0234e82b",
+    "runner_trace_10": "821a1cb041f13f05cf28fd95946f3ebadd8bb65812d8fb8deab9999e2f342a11"
+  },
+  "claims": [
+    {
+      "text": "first divergence localized",
+      "status": "PASS"
+    },
+    {
+      "text": "reusable selector A-B-A",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

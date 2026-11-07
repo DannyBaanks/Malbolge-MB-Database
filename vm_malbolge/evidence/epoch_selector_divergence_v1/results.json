@@ -1,0 +1,165 @@
+{
+  "divergence": {
+    "kind": "nonprintable",
+    "step": 59692,
+    "prestate": [
+      9814,
+      71,
+      52333,
+      0,
+      2
+    ],
+    "matched_before": 59691,
+    "python_decoded": 71
+  },
+  "reference_comparison": {
+    "kind": "nonprintable",
+    "step": 59691,
+    "matched_before": 59691,
+    "pre": [
+      9814,
+      71,
+      52333,
+      2
+    ],
+    "mem_c": 0,
+    "c_terminal": "STALL"
+  },
+  "reentry": {
+    "first": {
+      "step": 51186,
+      "a": 29524,
+      "c": 52213,
+      "d": 57411
+    },
+    "second": {
+      "step": 55056,
+      "a": 29524,
+      "c": 52213,
+      "d": 57411
+    },
+    "labelled_code_changes": [
+      {
+        "address": 58908,
+        "label": "NO_MORE_CARRY_FLAG",
+        "first": 74,
+        "second": 70
+      },
+      {
+        "address": 59047,
+        "label": "CARRY",
+        "first": 70,
+        "second": 74
+      }
+    ]
+  },
+  "trace_ref_last": {
+    "step": 59691,
+    "pre": [
+      9814,
+      71,
+      52333,
+      2
+    ],
+    "opcode": 71,
+    "post": [
+      9814,
+      71,
+      52333,
+      2
+    ],
+    "changes": [],
+    "output": [],
+    "terminal": "STALL"
+  },
+  "attempts": [
+    {
+      "name": "reset_carry",
+      "input": "01",
+      "expected": "50",
+      "oracle": "5001",
+      "oracle_status": "EOF",
+      "oracle_steps": 57703,
+      "runner_raw": "50010a",
+      "runner_stderr": "steps: 57703 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "reset_carry",
+      "input": "02",
+      "expected": "52",
+      "oracle": "5255",
+      "oracle_status": "EOF",
+      "oracle_steps": 58519,
+      "runner_raw": "52550a",
+      "runner_stderr": "steps: 58519 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "reset_carry",
+      "input": "010201",
+      "expected": "505250",
+      "oracle": "50015255e001",
+      "oracle_status": "EOF",
+      "oracle_steps": 66333,
+      "runner_raw": "50015255e0010a",
+      "runner_stderr": "steps: 66333 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "reset_carry",
+      "input": "020102",
+      "expected": "525052",
+      "oracle": "52555001feff",
+      "oracle_status": "EOF",
+      "oracle_steps": 67149,
+      "runner_raw": "52555001feff0a",
+      "runner_stderr": "steps: 67149 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "conditional_flag",
+      "input": "01",
+      "expected": "50",
+      "oracle": "5001",
+      "oracle_status": "EOF",
+      "oracle_steps": 55313,
+      "runner_raw": "50010a",
+      "runner_stderr": "steps: 55313 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "conditional_flag",
+      "input": "02",
+      "expected": "52",
+      "oracle": "5255",
+      "oracle_status": "EOF",
+      "oracle_steps": 56129,
+      "runner_raw": "52550a",
+      "runner_stderr": "steps: 56129 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "conditional_flag",
+      "input": "010201",
+      "expected": "505250",
+      "oracle": "50015255e001",
+      "oracle_status": "EOF",
+      "oracle_steps": 63945,
+      "runner_raw": "50015255e0010a",
+      "runner_stderr": "steps: 63945 | status: HALTED",
+      "contract": false
+    },
+    {
+      "name": "conditional_flag",
+      "input": "020102",
+      "expected": "525052",
+      "oracle": "52555001feff",
+      "oracle_status": "EOF",
+      "oracle_steps": 64761,
+      "runner_raw": "52555001feff0a",
+      "runner_stderr": "steps: 64761 | status: HALTED",
+      "contract": false
+    }
+  ]
+}

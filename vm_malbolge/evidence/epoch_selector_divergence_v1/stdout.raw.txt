@@ -1,0 +1,12 @@
+reset_carry 01 expected 50 oracle 5001 57703 EOF runner_raw 50010a contract False
+reset_carry 02 expected 52 oracle 5255 58519 EOF runner_raw 52550a contract False
+reset_carry 010201 expected 505250 oracle 50015255e001 66333 EOF runner_raw 50015255e0010a contract False
+reset_carry 020102 expected 525052 oracle 52555001feff 67149 EOF runner_raw 52555001feff0a contract False
+conditional_flag 01 expected 50 oracle 5001 55313 EOF runner_raw 50010a contract False
+conditional_flag 02 expected 52 oracle 5255 56129 EOF runner_raw 52550a contract False
+conditional_flag 010201 expected 505250 oracle 50015255e001 63945 EOF runner_raw 50015255e0010a contract False
+conditional_flag 020102 expected 525052 oracle 52555001feff 64761 EOF runner_raw 52555001feff0a contract False
+first divergence {'kind': 'nonprintable', 'step': 59692, 'prestate': [9814, 71, 52333, 0, 2], 'matched_before': 59691, 'python_decoded': 71}
+independent C reference {'kind': 'nonprintable', 'step': 59691, 'matched_before': 59691, 'pre': [9814, 71, 52333, 2], 'mem_c': 0, 'c_terminal': 'STALL'}
+reentry code changes [{'address': 58908, 'label': 'NO_MORE_CARRY_FLAG', 'first': 74, 'second': 70}, {'address': 59047, 'label': 'CARRY', 'first': 70, 'second': 74}]
+diagnostic_contract True
