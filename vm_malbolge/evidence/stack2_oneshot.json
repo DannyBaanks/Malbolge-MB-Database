@@ -1,0 +1,111 @@
+{
+  "imagen": "vm_malbolge/src/mbir_stack2_oneshot.mb",
+  "bytes": 160,
+  "sha256": "71ed7539045505fdfce8842d7c66fdc7375b6feae677ad66a401fca8d5860aa4",
+  "layout": {
+    "k": 0,
+    "pad1": 1,
+    "pad2": 0,
+    "pad3": 0,
+    "codigo_celdas": 32,
+    "punteros": {
+      "boot": 0,
+      "pf1": 43,
+      "pf2": 116,
+      "pf3": 79,
+      "pf_readA": 115
+    },
+    "slotA": {
+      "celda": 114,
+      "valor_inicial": 42
+    },
+    "slotB": {
+      "celda": 77,
+      "valor_inicial": 40
+    }
+  },
+  "casos": [
+    {
+      "stdin": "4142",
+      "esperado": "6368",
+      "oraculo": "6368",
+      "runner_c": "6368",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "4241",
+      "esperado": "6769",
+      "oraculo": "6769",
+      "runner_c": "6769",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "415a",
+      "esperado": "fa68",
+      "oraculo": "fa68",
+      "runner_c": "fa68",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "0102",
+      "esperado": "5556",
+      "oraculo": "5556",
+      "runner_c": "5556",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "7879",
+      "esperado": "dbe2",
+      "oraculo": "dbe2",
+      "runner_c": "dbe2",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "41",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 6,
+      "status": "EOF",
+      "stderr_runner": "steps: 6 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 2,
+      "status": "EOF",
+      "stderr_runner": "steps: 2 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "414243",
+      "esperado": "6368",
+      "oraculo": "6368",
+      "runner_c": "6368",
+      "pasos_oraculo": 32,
+      "status": "HALTED",
+      "stderr_runner": "steps: 32 | status: HALTED",
+      "acuerdo": true
+    }
+  ],
+  "veredicto": "PILA_PROFUNDIDAD_2_LIFO_DEMONSTRADA",
+  "nota": "one-shot sin bucle ni restauracion; el bucle con escritura y lectura de la misma celda queda bloqueado por colision de pares de punteros (CRAZY y ROT dejan d en la misma celda)"
+}
