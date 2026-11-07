@@ -1,0 +1,152 @@
+{
+  "imagen": "vm_malbolge/src/mbir_dispatch4_pack.mb",
+  "bytes": 29580,
+  "sha256": "c871ba524878373f491987ca3b90d565261e17dabb33c196f38153895a9cd63b",
+  "n_instrucciones": 4,
+  "protocolo": {
+    "push": 53,
+    "pop": 65
+  },
+  "parametros": {
+    "Vs": [
+      108,
+      107,
+      75,
+      68
+    ],
+    "colas": [
+      7,
+      1,
+      4,
+      10
+    ],
+    "slotA": 82,
+    "Ps": [
+      96,
+      101,
+      106,
+      111
+    ],
+    "v0a": 33,
+    "stride": 15,
+    "destinos": [
+      [
+        29484,
+        29541
+      ],
+      [
+        29497,
+        29509
+      ],
+      [
+        29553,
+        29532
+      ],
+      [
+        29563,
+        29515
+      ]
+    ]
+  },
+  "bloques_manejador": {
+    "push": "5+t celdas desde el destino",
+    "pop": "4+t celdas desde el destino",
+    "regla_choque": "t_j = t_i + 2 (celda JMP vs celda puntero)"
+  },
+  "codigo_celdas": 103,
+  "dato_celdas": 25,
+  "dato_no_valido": 22,
+  "casos": [
+    {
+      "stdin": "354141354241",
+      "esperado": "7842",
+      "oraculo": "7842",
+      "runner_c": "7842",
+      "pasos_oraculo": 63,
+      "status": "HALTED",
+      "stderr_runner": "steps: 63 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "354135424141",
+      "esperado": "5236",
+      "oraculo": "5236",
+      "runner_c": "5236",
+      "pasos_oraculo": 63,
+      "status": "HALTED",
+      "stderr_runner": "steps: 63 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "413541413542",
+      "esperado": "0b48",
+      "oraculo": "0b48",
+      "runner_c": "0b48",
+      "pasos_oraculo": 63,
+      "status": "HALTED",
+      "stderr_runner": "steps: 63 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35413542354335443545",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 65,
+      "status": "HALTED",
+      "stderr_runner": "steps: 65 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35414141",
+      "esperado": "7898",
+      "oraculo": "7898",
+      "runner_c": "7898",
+      "pasos_oraculo": 43,
+      "status": "EOF",
+      "stderr_runner": "steps: 43 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "354135",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 25,
+      "status": "EOF",
+      "stderr_runner": "steps: 25 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "41",
+      "esperado": "0b",
+      "oraculo": "0b",
+      "runner_c": "0b",
+      "pasos_oraculo": 19,
+      "status": "EOF",
+      "stderr_runner": "steps: 19 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "",
+      "esperado": "",
+      "oraculo": "",
+      "runner_c": "",
+      "pasos_oraculo": 3,
+      "status": "EOF",
+      "stderr_runner": "steps: 3 | status: HALTED",
+      "acuerdo": true
+    },
+    {
+      "stdin": "35004135ff4141",
+      "esperado": "55e2",
+      "oraculo": "55e2",
+      "runner_c": "55e2",
+      "pasos_oraculo": 63,
+      "status": "HALTED",
+      "stderr_runner": "steps: 63 | status: HALTED",
+      "acuerdo": true
+    }
+  ],
+  "veredicto": "DESPACHO_N_EMPAQUETADO_DEMOSTRADO"
+}

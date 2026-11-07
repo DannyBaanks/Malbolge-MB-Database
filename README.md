@@ -85,7 +85,8 @@ NOT_DEMONSTRATED
 | **Bucle de fetch nativo con estado entre bytes** | `DEMONSTRATED` | **Vuelta real que regresa al mismo despacho con una celda de estado que sobrevive a todos los bytes leídos: 9/9 acuerdo byte a byte y 4.096 bytes aleatorios exactos en oráculo y runner C** | [`vm_malbolge/src/mbir_native_fold_loop.mb`](vm_malbolge/src/mbir_native_fold_loop.mb), [`vm_malbolge/evidence/native_fold_loop.md`](vm_malbolge/evidence/native_fold_loop.md) |
 | **Pila LIFO de 2 ranuras (one-shot, sin LMAO)** | `DEMONSTRATED` | **Dos bytes almacenados en dos celdas y emitidos en orden inverso (`AB`→`6368`, `BA`→`6769`): 8/8 y loader estricto completo** | [`vm_malbolge/src/mbir_stack2_oneshot.mb`](vm_malbolge/src/mbir_stack2_oneshot.mb), [`vm_malbolge/evidence/stack2_oneshot.md`](vm_malbolge/evidence/stack2_oneshot.md) |
 | **Despacho computado por el dato** | `DEMONSTRATED` | **Máquina de bytecode que enruta por opcode con un salto computado: `mem[P] = crazy(opcode, V)` es la dirección. `01 41 F2`→`68` (el POP emite lo que el PUSH guardó). 8/8 casos y 111/111 combinaciones de barrido** | [`vm_malbolge/src/mbir_dispatch2.mb`](vm_malbolge/src/mbir_dispatch2.mb), [`vm_malbolge/evidence/dispatch2.md`](vm_malbolge/evidence/dispatch2.md) |
-| **Bytecode de N instrucciones encadenadas** | `DEMONSTRATED` | **El programa vive en el flujo: 3 instrucciones de longitud variable (`PUSH 0x35 operando`, `POP 0x41`) encadenadas por tres despachos, 9/9 en oráculo y runner C. Medido: con `V` imprimible los destinos caben en una ventana de ~284 celdas, así que N=3 es el máximo** | [`vm_malbolge/src/mbir_dispatchN.mb`](vm_malbolge/src/mbir_dispatchN.mb), [`vm_malbolge/evidence/dispatchN.md`](vm_malbolge/evidence/dispatchN.md) |
+| **Bytecode de N instrucciones encadenadas** | `DEMONSTRATED` | **El programa vive en el flujo: 3 instrucciones de longitud variable (`PUSH 0x35 operando`, `POP 0x41`) encadenadas por tres despachos, 9/9 en oráculo y runner C. La ventana de ~284 celdas no era el límite: con empaquetado exacto y protocolo libre se llega a N=4 y N=5 sin rotaciones (fila siguiente)** | [`vm_malbolge/src/mbir_dispatchN.mb`](vm_malbolge/src/mbir_dispatchN.mb), [`vm_malbolge/evidence/dispatchN.md`](vm_malbolge/evidence/dispatchN.md) |
+| **Empaquetado exacto: N=4 y N=5 sin rotaciones** | `DEMONSTRATED` | **Dos imágenes con coste de rotación cero: N=4 con el protocolo original y colas `7,1,4,10`; N=5 con `PUSH 0xff`/`POP 0x35` (bandas adyacentes, ventana total 486 celdas) y colas `1,2,5,6,9`. 9/9 cada una en oráculo y runner C. El bloque real (destino incluido) es `6+t` (push) / `5+t` (pop) y el único choque de punteros es `t_j = t_i + 2`** | [`vm_malbolge/src/mbir_dispatch4_pack.mb`](vm_malbolge/src/mbir_dispatch4_pack.mb), [`vm_malbolge/src/mbir_dispatch5.mb`](vm_malbolge/src/mbir_dispatch5.mb), [`vm_malbolge/evidence/dispatch_pack.md`](vm_malbolge/evidence/dispatch_pack.md) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -207,7 +208,7 @@ Una imagen aparte carga un programa de 11 bytes y ejecuta cinco formas fijas ([`
 - **JZ** (opcode `0x01`) emite un byte si la condición es 0 y otro si es 1.
 - **CALL `0x0E`** emite el byte del destino y después el byte que sigue a la llamada. Una sola trama.
 - **5/5 PASS** en el oráculo Python y el runner C. Tamaño 55,819 bytes (margen 3,230).
-- El destino del JMP no elige la instrucción, y no hay un contador de programa general.
+- En esta imagen el destino del JMP no elige la instrucción y no hay contador de programa general; el track de despacho computado sí enruta por opcode y llega a N=5 encadenadas (secciones 14d–14e).
 - Evidencia: [`vm_malbolge/evidence/mbir_m2_cf_smoke.json`](vm_malbolge/evidence/mbir_m2_cf_smoke.json), [`vm_malbolge/M2_CF_STATUS.md`](vm_malbolge/M2_CF_STATUS.md).
 
 ### 6d. Control de Flujo con Comparación Relacional en RAM (Hito M2 CF + CMP_EQ)
@@ -333,6 +334,18 @@ instrucción a la siguiente: `35 41 41 35 42 41`→`78`, `41 35 41 41 35 42`→`
 `35 41 41 35`→`7898` (dos POP emiten `rot` y `rot²` del slot). **9/9** en los dos
 motores. Detalle y el límite medido: [`vm_malbolge/evidence/dispatchN.md`](vm_malbolge/evidence/dispatchN.md).
 
+**Corrección (empaquetado exacto, [`dispatch_pack.md`](vm_malbolge/evidence/dispatch_pack.md)).**
+El «límite de la ventana» de (e) era un artefacto de empaquetado: exigir
+separación uniforme 14 entre todos los destinos y usar colas `3k+1` no es
+necesario. El bloque real (destino incluido) mide `6+t` celdas (push) y `5+t`
+(pop) desde el destino, así que dos destinos a 12 celdas pueden ser legales si
+el primer bloque es corto. Con el protocolo libre —`PUSH 0xff` cae en la banda
+adyacente, `[29160, 29402]`, y `POP 0x35` en `[29403, 29645]`— el empaquetado
+exacto da **N=4** con el protocolo original y **N=5** con el nuevo, ambos con
+**coste de rotación cero** y 9/9 en los dos motores. La única regla de choque de
+punteros es `t_j = t_i + 2` (celda `JMP` frente a celda de entrada del despacho
+siguiente); por eso las colas pueden diferir en 1 o 3, no en 2.
+
 ---
 
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
@@ -360,7 +373,7 @@ motores. Detalle y el límite medido: [`vm_malbolge/evidence/dispatchN.md`](vm_m
 
 1. **Control de Flujo Completo en Malbolge VM**
    - JMP, JZ, CALL y la comparación relacional `CMP_EQ` en RAM ya están demostrados en el Hito M2 CF + CMP_EQ (7/7, 56,947 bytes). Sigue faltando un contador de programa general para código arbitrario, usar el destino del JMP como selector dinámico arbitrario, y una pila de llamadas de más de una trama.
-   - **(parcialmente cerrado) "usar el destino del JMP como selector dinámico arbitrario"**: ya está demostrado con un salto **computado por el dato** — `mbir_dispatch2.mb` enruta `PUSH`/`POP` sobre flujo haciendo que la dirección de salto sea `crazy(opcode, V)` escrita en una celda (8/8 + 111/111, sección 14d). Lo que sigue abierto es el contador de programa general (N instrucciones encadenadas, no 2) y la pila de llamadas.
+   - **(parcialmente cerrado) "usar el destino del JMP como selector dinámico arbitrario"**: ya está demostrado con un salto **computado por el dato** — `mbir_dispatch2.mb` enruta `PUSH`/`POP` sobre flujo haciendo que la dirección de salto sea `crazy(opcode, V)` escrita en una celda (8/8 + 111/111, sección 14d). El encadenado ya llega a **N=5 sin rotaciones** con empaquetado exacto ([`dispatch_pack.md`](vm_malbolge/evidence/dispatch_pack.md)); lo que sigue abierto es N ≥ 6 y la pila de llamadas.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
    - Sigue sin existir una sola imagen que cargue el programa en RAM y además ejecute la ALU de 14 vectores y el `CMP_EQ`. Una sonda sobre `mbir_alu.hell` (12 banderas y 8 celdas de scratch) no ensambló: el inicializador se quedó sin sitio en la celda 57855. Quince `C1` sueltos sí entraron. Detalle: [`vm_malbolge/M2_FULL_STATUS.md`](vm_malbolge/M2_FULL_STATUS.md).
    - **La causa está ahora medida y partida en dos**:

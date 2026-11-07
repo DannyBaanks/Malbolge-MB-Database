@@ -162,10 +162,20 @@ def tails_for(n):
     return [3 * k + 1 for k in range(n)]
 
 
-def plan(Vs, Ps, slotA, n):
-    """Devuelve (code, data, destinos); ValueError si la coreografia no cierra."""
+def plan(Vs, Ps, slotA, n, tails=None, stride=None):
+    """Devuelve (code, data, destinos); ValueError si la coreografia no cierra.
+
+    `tails` permite fijar las colas medidas por el empaquetado exacto
+    (dispatch_pack_gen.py); por defecto se usa la convencion 3k+1 de N=3.
+    `stride` separa los despachos; con N=4 hay que bajarlo de 30 para que
+    el HALT y el ultimo exit_landing sigan siendo imprimibles."""
     code, data = [], {}
-    tails = tails_for(n)
+    if tails is None:
+        tails = tails_for(n)
+    if len(tails) != n:
+        raise ValueError(f"se esperaban {n} colas, hay {len(tails)}")
+    if stride is None:
+        stride = DSTRIDE
     put(data, slotA, 33)                     # valor inicial de la pila
     d_prev, Tp_prev, Tq_prev = 0, None, None
     targets = []
@@ -184,7 +194,7 @@ def plan(Vs, Ps, slotA, n):
                     f"caminos de D{k} con distinto d: {ex_p} vs {ex_q}")
             d_after, Tp, Tq = emit_dispatch(nxt, ex_p, Ps[k], Vs[k],
                                             0, code, data)
-            nxt = nxt + DSTRIDE
+            nxt = nxt + stride
         targets.append((Tp, Tq))
         Tp_prev, Tq_prev, d_prev = Tp, Tq, d_after
     # ultima pareja: salida al HALT
@@ -206,8 +216,8 @@ def plan(Vs, Ps, slotA, n):
     return code, data, targets
 
 
-def build(Vs, Ps, slotA, n):
-    code, data, targets = plan(Vs, Ps, slotA, n)
+def build(Vs, Ps, slotA, n, tails=None, stride=None):
+    code, data, targets = plan(Vs, Ps, slotA, n, tails, stride)
     flat = [t for pair in targets for t in pair]
     top = max([a for a, _ in code] + list(data) + flat) + 2
     mem = [ord(char_for_op(CHAR_OP_MAP["j"], a)) for a in range(top)]
