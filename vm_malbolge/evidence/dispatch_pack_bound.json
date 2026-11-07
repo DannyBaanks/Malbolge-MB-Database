@@ -1,0 +1,188 @@
+{
+  "colas_minimas": [
+    1,
+    2,
+    5,
+    6,
+    9,
+    10
+  ],
+  "wlog": "minimo componente a componente; acortar bloques no crea solapes",
+  "controles_positivos": [
+    {
+      "caso": "n4",
+      "imagen": "vm_malbolge/src/mbir_dispatch4_pack.mb",
+      "sha256": "c871ba524878373f491987ca3b90d565261e17dabb33c196f38153895a9cd63b",
+      "dp_acepta": true
+    },
+    {
+      "caso": "n5",
+      "imagen": "vm_malbolge/src/mbir_dispatch5.mb",
+      "sha256": "f45346005d85652f5be2ef85b7112f3e93a32fa6f40f595869e973c21bab356f",
+      "dp_acepta": true
+    }
+  ],
+  "espacio_barrido": "a in [243,255], b in [0,242]",
+  "protocolos_barridos": 3159,
+  "protocolos_que_pasan_filtro": 975,
+  "candidatos": [
+    {
+      "opcodes": [
+        255,
+        238
+      ],
+      "parejas": 43,
+      "capacidad": 205
+    },
+    {
+      "opcodes": [
+        255,
+        239
+      ],
+      "parejas": 64,
+      "capacidad": 205
+    },
+    {
+      "opcodes": [
+        255,
+        241
+      ],
+      "parejas": 63,
+      "capacidad": 205
+    },
+    {
+      "opcodes": [
+        255,
+        242
+      ],
+      "parejas": 94,
+      "capacidad": 205
+    },
+    {
+      "opcodes": [
+        255,
+        237
+      ],
+      "parejas": 43,
+      "capacidad": 202
+    },
+    {
+      "opcodes": [
+        255,
+        240
+      ],
+      "parejas": 63,
+      "capacidad": 202
+    },
+    {
+      "opcodes": [
+        53,
+        65
+      ],
+      "parejas": 81,
+      "capacidad": 80,
+      "extra": true
+    },
+    {
+      "opcodes": [
+        255,
+        53
+      ],
+      "parejas": 54,
+      "capacidad": 136,
+      "extra": true
+    }
+  ],
+  "protocolos": [
+    {
+      "opcodes": [
+        255,
+        238
+      ],
+      "capacidad": 205,
+      "veredicto": "NO",
+      "nodos": 96949,
+      "hojas": 33066,
+      "segundos": 0.5
+    },
+    {
+      "opcodes": [
+        255,
+        239
+      ],
+      "capacidad": 205,
+      "veredicto": "NO",
+      "nodos": 643967,
+      "hojas": 287398,
+      "segundos": 4.0
+    },
+    {
+      "opcodes": [
+        255,
+        241
+      ],
+      "capacidad": 205,
+      "veredicto": "NO",
+      "nodos": 334514,
+      "hojas": 102424,
+      "segundos": 1.6
+    },
+    {
+      "opcodes": [
+        255,
+        242
+      ],
+      "capacidad": 205,
+      "veredicto": "NO",
+      "nodos": 2574447,
+      "hojas": 1102800,
+      "segundos": 15.5
+    },
+    {
+      "opcodes": [
+        255,
+        237
+      ],
+      "capacidad": 202,
+      "veredicto": "NO",
+      "nodos": 96949,
+      "hojas": 33066,
+      "segundos": 0.5
+    },
+    {
+      "opcodes": [
+        255,
+        240
+      ],
+      "capacidad": 202,
+      "veredicto": "NO",
+      "nodos": 334514,
+      "hojas": 102424,
+      "segundos": 1.6
+    },
+    {
+      "opcodes": [
+        53,
+        65
+      ],
+      "capacidad": 80,
+      "veredicto": "NO",
+      "nodos": 38029,
+      "hojas": 0,
+      "segundos": 0.1
+    },
+    {
+      "opcodes": [
+        255,
+        53
+      ],
+      "capacidad": 136,
+      "veredicto": "NO",
+      "nodos": 91404,
+      "hojas": 16464,
+      "segundos": 0.4
+    }
+  ],
+  "veredicto": "N6_EXCLUIDO_EN_PROTOCOLOS_MEDIDOS",
+  "tiempo_total_s": 90.3
+}

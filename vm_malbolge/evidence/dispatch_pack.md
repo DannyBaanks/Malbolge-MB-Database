@@ -107,12 +107,21 @@ python3 vm_malbolge/tools/dispatch_pack_gen.py \
 
 - **N=5 con coste de rotación cero** está demostrado (9/9, imagen y JSON
   commiteados).
-- **N=6 con coste cero no se encontró** en una rejilla de 36 protocolos con
-  bandas cruzadas (`push` en una mitad, `pop` en la otra; 6 valores bajos por
-  banda); el empaquetado exacto falla porque las posiciones realizables dejan
-  huecos de 6–9 celdas que no admiten ni el bloque mínimo. No es una prueba de
-  inexistencia: una búsqueda más fina de protocolos (243×243 valores bajos)
-  queda abierta.
+- **N=6 con coste cero: excluido en los protocolos de mayor capacidad.**
+  `dispatch_pack_bound.py` barre los 3.159 protocolos mixtos
+  (`a ∈ [243,255]`, `b ∈ [0,242]`) con la condición necesaria de N=6 (6 parejas
+  con los 12 destinos a ≥ 6 celdas): pasan 975. En los 8 de mayor capacidad
+  —más los protocolos de control (53,65) y (255,53)— se ejecuta una búsqueda
+  exhaustiva de 6 parejas con asignación de colas; todas terminan sin solución,
+  incluida (255,242) con 1.103.000 hojas. El verificador de empaquetado acepta
+  antes las soluciones commiteadas de N=4 y N=5 (controles positivos), y el
+  conjunto de colas probado, (1,2,5,6,9,10), es el mínimo componente a
+  componente de todos los conjuntos válidos: cualquier otro solo alarga bloques,
+  así que si el mínimo no empaqueta, ninguno lo hace. Evidencia:
+  [`dispatch_pack_bound.json`](dispatch_pack_bound.json) (veredicto
+  `N6_EXCLUIDO_EN_PROTOCOLOS_MEDIDOS`).
+  Queda abierto el barrido exhaustivo de los 975 protocolos que pasan el filtro
+  (aquí se comprobaron los 8 mejores) y la vía con rotaciones.
 - Por tanto el frente 2 (cadenas de rotación para dispersar destinos) **ya no
   es necesario para N=4 ni para N=5**; sigue siendo la vía general si se quiere
   N ≥ 6, y su coste medido (2 celdas de código por rotación) sigue en pie.
