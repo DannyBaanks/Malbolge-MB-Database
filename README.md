@@ -85,6 +85,7 @@ NOT_DEMONSTRATED
 | **Bucle de fetch nativo con estado entre bytes** | `DEMONSTRATED` | **Vuelta real que regresa al mismo despacho con una celda de estado que sobrevive a todos los bytes leídos: 9/9 acuerdo byte a byte y 4.096 bytes aleatorios exactos en oráculo y runner C** | [`vm_malbolge/src/mbir_native_fold_loop.mb`](vm_malbolge/src/mbir_native_fold_loop.mb), [`vm_malbolge/evidence/native_fold_loop.md`](vm_malbolge/evidence/native_fold_loop.md) |
 | **Pila LIFO de 2 ranuras (one-shot, sin LMAO)** | `DEMONSTRATED` | **Dos bytes almacenados en dos celdas y emitidos en orden inverso (`AB`→`6368`, `BA`→`6769`): 8/8 y loader estricto completo** | [`vm_malbolge/src/mbir_stack2_oneshot.mb`](vm_malbolge/src/mbir_stack2_oneshot.mb), [`vm_malbolge/evidence/stack2_oneshot.md`](vm_malbolge/evidence/stack2_oneshot.md) |
 | **Despacho computado por el dato** | `DEMONSTRATED` | **Máquina de bytecode que enruta por opcode con un salto computado: `mem[P] = crazy(opcode, V)` es la dirección. `01 41 F2`→`68` (el POP emite lo que el PUSH guardó). 8/8 casos y 111/111 combinaciones de barrido** | [`vm_malbolge/src/mbir_dispatch2.mb`](vm_malbolge/src/mbir_dispatch2.mb), [`vm_malbolge/evidence/dispatch2.md`](vm_malbolge/evidence/dispatch2.md) |
+| **Bytecode de N instrucciones encadenadas** | `DEMONSTRATED` | **El programa vive en el flujo: 3 instrucciones de longitud variable (`PUSH 0x35 operando`, `POP 0x41`) encadenadas por tres despachos, 9/9 en oráculo y runner C. Medido: con `V` imprimible los destinos caben en una ventana de ~284 celdas, así que N=3 es el máximo** | [`vm_malbolge/src/mbir_dispatchN.mb`](vm_malbolge/src/mbir_dispatchN.mb), [`vm_malbolge/evidence/dispatchN.md`](vm_malbolge/evidence/dispatchN.md) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -324,6 +325,13 @@ existía en el corpus una imagen Classic que iterara sobre flujo. Queda refutado
 [`frentes3y5_bloqueante_CORRECCION.md`](vm_malbolge/evidence/frentes3y5_bloqueante_CORRECCION.md): `cat_compact.mal` de BolgeForge
 (7.596 celdas, commit `7b4fbac`) itera de verdad y se verificó con los motores de
 este repo; el enunciado quedaba acotado al corpus `vm_malbolge`.
+
+**e) Encadenado: N instrucciones desde el flujo** ([`mbir_dispatchN.mb`](vm_malbolge/src/mbir_dispatchN.mb)). La generalización de (d) a
+N = 3 instrucciones encadenadas por tres despachos, con codificación de longitud
+variable (`PUSH 0x35 operando`, `POP 0x41`) y la celda de pila sobreviviendo de una
+instrucción a la siguiente: `35 41 41 35 42 41`→`78`, `41 35 41 41 35 42`→`0b48`,
+`35 41 41 35`→`7898` (dos POP emiten `rot` y `rot²` del slot). **9/9** en los dos
+motores. Detalle y el límite medido: [`vm_malbolge/evidence/dispatchN.md`](vm_malbolge/evidence/dispatchN.md).
 
 ---
 
