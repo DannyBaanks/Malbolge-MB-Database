@@ -1,0 +1,9 @@
+positive: 256 /256; mutant: 256 /256
+strict loader invalid addresses: [41, 70, 71, 90, 91, 92]
+input 0 positive stdout raw 000a mutant stdout raw 540a mem90 at store 0
+input 10 positive stdout raw 0a0a mutant stdout raw 540a mem90 at store 10
+input 13 positive stdout raw 0d0a mutant stdout raw 540a mem90 at store 13
+input 65 positive stdout raw 410a mutant stdout raw 540a mem90 at store 65
+input 255 positive stdout raw ff0a mutant stdout raw 540a mem90 at store 255
+sha256 8ac588cb4861b66051b9fe31f24743c091c4b48ed37c30b7813598288dc4cd3b
+mutant_sha256 5577a0cf81fc8df06a6d2f140631ac52aed1af9073d53fdcf1257560091daf23

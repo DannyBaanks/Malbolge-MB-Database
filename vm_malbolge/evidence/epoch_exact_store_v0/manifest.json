@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-11-07T12:42:19.590319+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_exact_store_v0/probe.py",
+  "exit_code": 0,
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "sha256": {
+    "probe.py": "4d1d13b66710872254eb7bcca35df3bf1aaf419943bff3ba341a6f743aa11040",
+    "store.mal": "8ac588cb4861b66051b9fe31f24743c091c4b48ed37c30b7813598288dc4cd3b",
+    "mutant.mal": "5577a0cf81fc8df06a6d2f140631ac52aed1af9073d53fdcf1257560091daf23",
+    "results.json": "8b0b32139ad4ee1e529b747dbabfd4d17d385ace6948bb1e677c4c7b79f87cc0",
+    "stdout.raw.txt": "62318d7812e4ebd251f992fb48672d80b1ccecbfb7a17bc9eb9cafb36d6006f1",
+    "VERDICT.md": "8dc6b15361ae1ee4e37375546fdb3b807928263b365f2a09dc202d7f302b3ee1"
+  }
+}
