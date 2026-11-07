@@ -595,3 +595,10 @@ cola `56904..57507` nunca es `pc` ni operando de lectura. La identidad canónica
 `(sha256 del .hell, firma de los 12 vectores, sha256 de la instancia)`, no el sha del `.mb`. Además este
 repositorio se maneja con `core.autocrlf=true`: para un artefacto commiteado hay que citar el hash del **blob**
 (`git show HEAD:<ruta> | sha256sum`) junto al del fichero de trabajo.
+
+## Anexo: Análisis de arquitectura de dos sistemas (extractor + PureEpoch como middleware)
+
+Se propuso una arquitectura de dos componentes: un sistema A que extraiga un valor de una celda de Malbolge, un sistema B (PureEpoch) que lo "busque" y lo devuelva, y el sistema A que vuelva a meter el valor conocido en una celda.
+
+**Descartado.** El bloqueante no está en encontrar el valor, sino en la inexistencia de la instrucción `mem[d] = valor_conocido` en Malbolge Classic. Incluso con un sistema externo que encuentre el valor, no hay instrucción Malbolge para escribirlo en una celda de datos. PureEpoch puede precomputar transiciones de estado para valores conocidos en tiempo de compilación (rearme de instrucciones automutadas), pero no puede actuar como middleware que escriba valores decididos en runtime. Documentado en [`vm_malbolge/evidence/dos_sistemas_middleware_analisis.md`](vm_malbolge/evidence/dos_sistemas_middleware_analisis.md).
+
