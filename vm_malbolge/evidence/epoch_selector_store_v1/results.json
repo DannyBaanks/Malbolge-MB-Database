@@ -1,0 +1,8558 @@
+{
+  "positive": [
+    {
+      "input_hex": "",
+      "expected_hex": "",
+      "oracle_hex": "",
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 37090 | status: HALTED",
+      "steps": 37090,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "01",
+      "expected_hex": "50",
+      "oracle_hex": "50",
+      "runner_raw_hex": "500a",
+      "runner_stderr": "steps: 41201 | status: HALTED",
+      "steps": 41201,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41056,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 41008
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 41023
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 41041
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 41201,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "02",
+      "expected_hex": "52",
+      "oracle_hex": "52",
+      "runner_raw_hex": "520a",
+      "runner_stderr": "steps: 42053 | status: HALTED",
+      "steps": 42053,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41908,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 41860
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 41875
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 41893
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 42053,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "010201",
+      "expected_hex": "505250",
+      "oracle_hex": "505250",
+      "runner_raw_hex": "5052500a",
+      "runner_stderr": "steps: 50273 | status: HALTED",
+      "steps": 50273,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41056,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 41008
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 41023
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 41041
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 41201,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 46018,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 45970
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 45985
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 46003
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 46163,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 50128,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 50080
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 50095
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 50113
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 50273,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "020102",
+      "expected_hex": "525052",
+      "oracle_hex": "525052",
+      "runner_raw_hex": "5250520a",
+      "runner_stderr": "steps: 51125 | status: HALTED",
+      "steps": 51125,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41908,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 41860
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 41875
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 41893
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 42053,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 46018,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 45970
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 45985
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 46003
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 46163,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 50980,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 50932
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 50947
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 50965
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 51125,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "0101010101010101",
+      "expected_hex": "5050505050505050",
+      "oracle_hex": "5050505050505050",
+      "runner_raw_hex": "50505050505050500a",
+      "runner_stderr": "steps: 69971 | status: HALTED",
+      "steps": 69971,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41056,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 41008
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 41023
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 41041
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 41201,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 45166,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 45118
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 45133
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 45151
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 45311,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 49276,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 49228
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 49243
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 49261
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 49421,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 53386,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 53338
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 53353
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 53371
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 53531,
+          "index": 4,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 57496,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 57448
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 57463
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 57481
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 57641,
+          "index": 5,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 61606,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 61558
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 61573
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 61591
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 61751,
+          "index": 6,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 65716,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 65668
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 65683
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 65701
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 65861,
+          "index": 7,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 69826,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 69778
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 69793
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 69811
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 69971,
+          "index": 8,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "0202020202020202",
+      "expected_hex": "5252525252525252",
+      "oracle_hex": "5252525252525252",
+      "runner_raw_hex": "52525252525252520a",
+      "runner_stderr": "steps: 76787 | status: HALTED",
+      "steps": 76787,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41908,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 41860
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 41875
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 41893
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 42053,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 46870,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 46822
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 46837
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 46855
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 47015,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 51832,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 51784
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 51799
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 51817
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 51977,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 56794,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 56746
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 56761
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 56779
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 56939,
+          "index": 4,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 61756,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 61708
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 61723
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 61741
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 61901,
+          "index": 5,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 66718,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 66670
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 66685
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 66703
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 66863,
+          "index": 6,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 71680,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 71632
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 71647
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 71665
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 71825,
+          "index": 7,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 76642,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 76594
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 76609
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 76627
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 76787,
+          "index": 8,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "01020102010201020102010201020102",
+      "expected_hex": "50525052505250525052505250525052",
+      "oracle_hex": "50525052505250525052505250525052",
+      "runner_raw_hex": "505250525052505250525052505250520a",
+      "runner_stderr": "steps: 109667 | status: HALTED",
+      "steps": 109667,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41056,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 41008
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 41023
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 41041
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 41201,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 46018,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 45970
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 45985
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 46003
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 46163,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 50128,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 50080
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 50095
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 50113
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 50273,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 55090,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 55042
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 55057
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 55075
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 55235,
+          "index": 4,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 59200,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 59152
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 59167
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 59185
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 59345,
+          "index": 5,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 64162,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 64114
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 64129
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 64147
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 64307,
+          "index": 6,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 68272,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 68224
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 68239
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 68257
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 68417,
+          "index": 7,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 73234,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 73186
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 73201
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 73219
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 73379,
+          "index": 8,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 77344,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 77296
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 77311
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 77329
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 77489,
+          "index": 9,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 82306,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 82258
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 82273
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 82291
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 82451,
+          "index": 10,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 86416,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 86368
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 86383
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 86401
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 86561,
+          "index": 11,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 91378,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 91330
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 91345
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 91363
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 91523,
+          "index": 12,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 95488,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 95440
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 95455
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 95473
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 95633,
+          "index": 13,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 100450,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 100402
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 100417
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 100435
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 100595,
+          "index": 14,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 104560,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 104512
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 104527
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 104545
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 104705,
+          "index": 15,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 109522,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 109474
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 109489
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 109507
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 109667,
+          "index": 16,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    },
+    {
+      "input_hex": "0202010102010101020101010201020102010102010201010101010201020101010102020102020101010201010102020202020102020201010101010102020102010201010102020201020202010101010202010201020201020202010101010101020202020101020201020101010202020102010201010201020102010202",
+      "expected_hex": "5252505052505050525050505250525052505052505250505050505250525050505052525052525050505250505052525252525052525250505050505052525052505250505052525250525252505050505252505250525250525252505050505050525252525050525250525050505252525052505250505250525052505252",
+      "oracle_hex": "5252505052505050525050505250525052505052505250505050505250525050505052525052525050505250505052525252525052525250505050505052525052505250505052525250525252505050505252505250525250525252505050505050525252525050525250525050505252525052505250505250525052505252",
+      "runner_raw_hex": "52525050525050505250505052505250525050525052505050505052505250505050525250525250505052505050525252525250525252505050505050525250525052505050525252505252525050505052525052505252505252525050505050505252525250505252505250505052525250525052505052505250525052520a",
+      "runner_stderr": "steps: 613439 | status: HALTED",
+      "steps": 613439,
+      "status": "EOF",
+      "state_ok": true,
+      "ok": true,
+      "events": [
+        {
+          "kind": "in",
+          "step": 37090,
+          "index": 0,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 41908,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 41860
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 41875
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 41893
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 42053,
+          "index": 1,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 46870,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 46822
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 46837
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 46855
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 47015,
+          "index": 2,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 50980,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 50932
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 50947
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 50965
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 51125,
+          "index": 3,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 55090,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 55042
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 55057
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 55075
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 55235,
+          "index": 4,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 60052,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 60004
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 60019
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 60037
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 60197,
+          "index": 5,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 64162,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 64114
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 64129
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 64147
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 64307,
+          "index": 6,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 68272,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 68224
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 68239
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 68257
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 68417,
+          "index": 7,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 72382,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 72334
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 72349
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 72367
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 72527,
+          "index": 8,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 77344,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 77296
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 77311
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 77329
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 77489,
+          "index": 9,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 81454,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 81406
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 81421
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 81439
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 81599,
+          "index": 10,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 85564,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 85516
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 85531
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 85549
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 85709,
+          "index": 11,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 89674,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 89626
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 89641
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 89659
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 89819,
+          "index": 12,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 94636,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 94588
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 94603
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 94621
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 94781,
+          "index": 13,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 98746,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 98698
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 98713
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 98731
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 98891,
+          "index": 14,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 103708,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 103660
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 103675
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 103693
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 103853,
+          "index": 15,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 107818,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 107770
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 107785
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 107803
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 107963,
+          "index": 16,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 112780,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 112732
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 112747
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 112765
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 112925,
+          "index": 17,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 116890,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 116842
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 116857
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 116875
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 117035,
+          "index": 18,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 121000,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 120952
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 120967
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 120985
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 121145,
+          "index": 19,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 125962,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 125914
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 125929
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 125947
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 126107,
+          "index": 20,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 130072,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 130024
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 130039
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 130057
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 130217,
+          "index": 21,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 135034,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 134986
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 135001
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 135019
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 135179,
+          "index": 22,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 139144,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 139096
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 139111
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 139129
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 139289,
+          "index": 23,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 143254,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 143206
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 143221
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 143239
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 143399,
+          "index": 24,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 147364,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 147316
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 147331
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 147349
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 147509,
+          "index": 25,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 151474,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 151426
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 151441
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 151459
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 151619,
+          "index": 26,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 155584,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 155536
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 155551
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 155569
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 155729,
+          "index": 27,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 160546,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 160498
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 160513
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 160531
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 160691,
+          "index": 28,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 164656,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 164608
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 164623
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 164641
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 164801,
+          "index": 29,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 169618,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 169570
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 169585
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 169603
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 169763,
+          "index": 30,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 173728,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 173680
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 173695
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 173713
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 173873,
+          "index": 31,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 177838,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 177790
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 177805
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 177823
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 177983,
+          "index": 32,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 181948,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 181900
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 181915
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 181933
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 182093,
+          "index": 33,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 186058,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 186010
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 186025
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 186043
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 186203,
+          "index": 34,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 191020,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 190972
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 190987
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 191005
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 191165,
+          "index": 35,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 195982,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 195934
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 195949
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 195967
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 196127,
+          "index": 36,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 200092,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 200044
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 200059
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 200077
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 200237,
+          "index": 37,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 205054,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 205006
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 205021
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 205039
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 205199,
+          "index": 38,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 210016,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 209968
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 209983
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 210001
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 210161,
+          "index": 39,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 214126,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 214078
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 214093
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 214111
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 214271,
+          "index": 40,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 218236,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 218188
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 218203
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 218221
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 218381,
+          "index": 41,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 222346,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 222298
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 222313
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 222331
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 222491,
+          "index": 42,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 227308,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 227260
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 227275
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 227293
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 227453,
+          "index": 43,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 231418,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 231370
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 231385
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 231403
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 231563,
+          "index": 44,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 235528,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 235480
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 235495
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 235513
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 235673,
+          "index": 45,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 239638,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 239590
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 239605
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 239623
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 239783,
+          "index": 46,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 244600,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 244552
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 244567
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 244585
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 244745,
+          "index": 47,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 249562,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 249514
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 249529
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 249547
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 249707,
+          "index": 48,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 254524,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 254476
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 254491
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 254509
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 254669,
+          "index": 49,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 259486,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 259438
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 259453
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 259471
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 259631,
+          "index": 50,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 264448,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 264400
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 264415
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 264433
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 264593,
+          "index": 51,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 268558,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 268510
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 268525
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 268543
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 268703,
+          "index": 52,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 273520,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 273472
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 273487
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 273505
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 273665,
+          "index": 53,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 278482,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 278434
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 278449
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 278467
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 278627,
+          "index": 54,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 283444,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 283396
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 283411
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 283429
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 283589,
+          "index": 55,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 287554,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 287506
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 287521
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 287539
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 287699,
+          "index": 56,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 291664,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 291616
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 291631
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 291649
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 291809,
+          "index": 57,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 295774,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 295726
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 295741
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 295759
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 295919,
+          "index": 58,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 299884,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 299836
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 299851
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 299869
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 300029,
+          "index": 59,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 303994,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 303946
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 303961
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 303979
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 304139,
+          "index": 60,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 308104,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 308056
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 308071
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 308089
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 308249,
+          "index": 61,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 313066,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 313018
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 313033
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 313051
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 313211,
+          "index": 62,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 318028,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 317980
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 317995
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 318013
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 318173,
+          "index": 63,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 322138,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 322090
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 322105
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 322123
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 322283,
+          "index": 64,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 327100,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 327052
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 327067
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 327085
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 327245,
+          "index": 65,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 331210,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 331162
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 331177
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 331195
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 331355,
+          "index": 66,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 336172,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 336124
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 336139
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 336157
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 336317,
+          "index": 67,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 340282,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 340234
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 340249
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 340267
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 340427,
+          "index": 68,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 344392,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 344344
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 344359
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 344377
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 344537,
+          "index": 69,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 348502,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 348454
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 348469
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 348487
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 348647,
+          "index": 70,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 353464,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 353416
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 353431
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 353449
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 353609,
+          "index": 71,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 358426,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 358378
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 358393
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 358411
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 358571,
+          "index": 72,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 363388,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 363340
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 363355
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 363373
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 363533,
+          "index": 73,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 367498,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 367450
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 367465
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 367483
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 367643,
+          "index": 74,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 372460,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 372412
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 372427
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 372445
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 372605,
+          "index": 75,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 377422,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 377374
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 377389
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 377407
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 377567,
+          "index": 76,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 382384,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 382336
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 382351
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 382369
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 382529,
+          "index": 77,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 386494,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 386446
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 386461
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 386479
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 386639,
+          "index": 78,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 390604,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 390556
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 390571
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 390589
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 390749,
+          "index": 79,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 394714,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 394666
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 394681
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 394699
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 394859,
+          "index": 80,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 398824,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 398776
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 398791
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 398809
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 398969,
+          "index": 81,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 403786,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 403738
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 403753
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 403771
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 403931,
+          "index": 82,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 408748,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 408700
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 408715
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 408733
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 408893,
+          "index": 83,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 412858,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 412810
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 412825
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 412843
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 413003,
+          "index": 84,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 417820,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 417772
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 417787
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 417805
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 417965,
+          "index": 85,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 421930,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 421882
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 421897
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 421915
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 422075,
+          "index": 86,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 426892,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 426844
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 426859
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 426877
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 427037,
+          "index": 87,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 431854,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 431806
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 431821
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 431839
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 431999,
+          "index": 88,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 435964,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 435916
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 435931
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 435949
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 436109,
+          "index": 89,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 440926,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 440878
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 440893
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 440911
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 441071,
+          "index": 90,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 445888,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 445840
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 445855
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 445873
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 446033,
+          "index": 91,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 450850,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 450802
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 450817
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 450835
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 450995,
+          "index": 92,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 454960,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 454912
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 454927
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 454945
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 455105,
+          "index": 93,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 459070,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 459022
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 459037
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 459055
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 459215,
+          "index": 94,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 463180,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 463132
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 463147
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 463165
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 463325,
+          "index": 95,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 467290,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 467242
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 467257
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 467275
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 467435,
+          "index": 96,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 471400,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 471352
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 471367
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 471385
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 471545,
+          "index": 97,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 475510,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 475462
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 475477
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 475495
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 475655,
+          "index": 98,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 480472,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 480424
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 480439
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 480457
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 480617,
+          "index": 99,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 485434,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 485386
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 485401
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 485419
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 485579,
+          "index": 100,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 490396,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 490348
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 490363
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 490381
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 490541,
+          "index": 101,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 495358,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 495310
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 495325
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 495343
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 495503,
+          "index": 102,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 499468,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 499420
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 499435
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 499453
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 499613,
+          "index": 103,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 503578,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 503530
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 503545
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 503563
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 503723,
+          "index": 104,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 508540,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 508492
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 508507
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 508525
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 508685,
+          "index": 105,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 513502,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 513454
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 513469
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 513487
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 513647,
+          "index": 106,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 517612,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 517564
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 517579
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 517597
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 517757,
+          "index": 107,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 522574,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 522526
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 522541
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 522559
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 522719,
+          "index": 108,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 526684,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 526636
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 526651
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 526669
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 526829,
+          "index": 109,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 530794,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 530746
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 530761
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 530779
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 530939,
+          "index": 110,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 534904,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 534856
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 534871
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 534889
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 535049,
+          "index": 111,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 539866,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 539818
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 539833
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 539851
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 540011,
+          "index": 112,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 544828,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 544780
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 544795
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 544813
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 544973,
+          "index": 113,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 549790,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 549742
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 549757
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 549775
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 549935,
+          "index": 114,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 553900,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 553852
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 553867
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 553885
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 554045,
+          "index": 115,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 558862,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 558814
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 558829
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 558847
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 559007,
+          "index": 116,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 562972,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 562924
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 562939
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 562957
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 563117,
+          "index": 117,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 567934,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 567886
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 567901
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 567919
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 568079,
+          "index": 118,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 572044,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 571996
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 572011
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 572029
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 572189,
+          "index": 119,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 576154,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 576106
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 576121
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 576139
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 576299,
+          "index": 120,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 581116,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 581068
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 581083
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 581101
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 581261,
+          "index": 121,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 585226,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 585178
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 585193
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 585211
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 585371,
+          "index": 122,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 590188,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 590140
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 590155
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 590173
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 590333,
+          "index": 123,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 594298,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 594250
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 594265
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 594283
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 594443,
+          "index": 124,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 599260,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 599212
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 599227
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 599245
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 599405,
+          "index": 125,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 603370,
+          "value": 80,
+          "slot": 80,
+          "scratch": 29564,
+          "branches": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 80,
+              "step": 603322
+            },
+            {
+              "before": 80,
+              "after": 40,
+              "step": 603337
+            },
+            {
+              "before": 40,
+              "after": 80,
+              "step": 603355
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 603515,
+          "index": 126,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 608332,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 608284
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 608299
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 608317
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 608477,
+          "index": 127,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "out",
+          "step": 613294,
+          "value": 82,
+          "slot": 82,
+          "scratch": 29442,
+          "branches": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "writes": [
+            {
+              "before": 29524,
+              "after": 82,
+              "step": 613246
+            },
+            {
+              "before": 82,
+              "after": 164,
+              "step": 613261
+            },
+            {
+              "before": 164,
+              "after": 82,
+              "step": 613279
+            }
+          ],
+          "calls": 1,
+          "marker01": 80,
+          "marker02": 82
+        },
+        {
+          "kind": "in",
+          "step": 613439,
+          "index": 128,
+          "pc": 37925,
+          "slot": 29524,
+          "scratch": 29524,
+          "marker01": 80,
+          "marker02": 82
+        }
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "name": "mutant_read",
+      "input_hex": "01",
+      "oracle_hex": "28",
+      "steps": 41630,
+      "status": "EOF",
+      "runner_raw_hex": "280a",
+      "runner_stderr": "steps: 41630 | status: HALTED",
+      "control": true,
+      "parity": true
+    },
+    {
+      "name": "mutant_read",
+      "input_hex": "02",
+      "oracle_hex": "00",
+      "steps": 42482,
+      "status": "EOF",
+      "runner_raw_hex": "000a",
+      "runner_stderr": "steps: 42482 | status: HALTED",
+      "control": true,
+      "parity": true
+    },
+    {
+      "name": "mutant_read",
+      "input_hex": "010201",
+      "oracle_hex": "280028",
+      "steps": 50702,
+      "status": "EOF",
+      "runner_raw_hex": "2800280a",
+      "runner_stderr": "steps: 50702 | status: HALTED",
+      "control": true,
+      "parity": true
+    },
+    {
+      "name": "mutant_rearm",
+      "input_hex": "01",
+      "oracle_hex": "",
+      "steps": 41307,
+      "status": "EOF",
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 41305 | status: HALTED",
+      "control": true,
+      "parity": false
+    },
+    {
+      "name": "mutant_rearm",
+      "input_hex": "02",
+      "oracle_hex": "52",
+      "steps": 42490,
+      "status": "EOF",
+      "runner_raw_hex": "520a",
+      "runner_stderr": "steps: 42490 | status: HALTED",
+      "control": true,
+      "parity": true
+    },
+    {
+      "name": "mutant_rearm",
+      "input_hex": "010201",
+      "oracle_hex": "",
+      "steps": 41361,
+      "status": "HALTED",
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 41305 | status: HALTED",
+      "control": true,
+      "parity": false
+    }
+  ],
+  "out_of_domain": [
+    {
+      "input_hex": "00",
+      "oracle_hex": "",
+      "status": "HALTED",
+      "steps": 40320,
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 40320 | status: HALTED"
+    },
+    {
+      "input_hex": "03",
+      "oracle_hex": "",
+      "status": "HALTED",
+      "steps": 39836,
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 39836 | status: HALTED"
+    },
+    {
+      "input_hex": "ff",
+      "oracle_hex": "",
+      "status": "HALTED",
+      "steps": 39836,
+      "runner_raw_hex": "0a",
+      "runner_stderr": "steps: 39836 | status: HALTED"
+    }
+  ],
+  "labels": {
+    "marker_01": 57841,
+    "marker_02": 57783,
+    "next_char_rearm": 57876,
+    "ret_compose_store": 58018,
+    "ret_compose_read1": 58026,
+    "ret_compose_read2": 58034,
+    "dispatch_01": 57981,
+    "dispatch_02": 57995,
+    "compose_scratch": 57846,
+    "compose_slot": 57854,
+    "compose_entry": 58009,
+    "OUT": 37907,
+    "IN": 37925
+  },
+  "loader_invalid_addresses": [],
+  "image_sha256": "7e5999f0fcc3f256b822532bacf89fe521113fe2c8b2331927fbe0d5c5956053",
+  "mutant_sha256": {
+    "mutant_read": "472f39918621a4252e7cc6672bf0be27fee67e33071f67e8399c3900ece9e4c8",
+    "mutant_rearm": "ad404d3672d3f1bf0b8e6ab3363af76df8821e3e6fb2ee209ef9289e4b1893a0"
+  }
+}

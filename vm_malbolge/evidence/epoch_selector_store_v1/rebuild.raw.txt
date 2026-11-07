@@ -1,0 +1,22 @@
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/combined_pruned.mb
+Debugging information written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/combined_pruned.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/mutant_read.mb
+Debugging information written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/mutant_read.dbg
+This is LMAO v0.6.0 (Low-level Malbolge Assembler, Ooh!) by Matthias Lutter.
+Malbolge code written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/mutant_rearm.mb
+Debugging information written to /tmp/opencode/epoch_store_rebuild_1794058294162126846/mutant_rearm.dbg
+unpruned_lmao_exit 1
+combined_pruned source identical
+mutant_read source identical
+mutant_rearm source identical
+steps: 50273 | status: HALTED
+5052500a
+unpruned stderr:
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 59012.
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 59012.
+Error: Memory usage conflict while generating initialization code.
+The program may be too large, or a .OFFSET directive may conflict.
