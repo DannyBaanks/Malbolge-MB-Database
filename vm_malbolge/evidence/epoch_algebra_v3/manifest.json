@@ -1,6 +1,6 @@
 {
   "schema": "isyco-evidence-pack-v1",
-  "created_at": "2026-11-08T02:10:37.455139+00:00",
+  "created_at": "2026-11-08T03:31:46.779282+00:00",
   "command": "python3 vm_malbolge/evidence/epoch_algebra_v3/probe.py",
   "exit_code": 0,
   "environment": {
@@ -10,7 +10,7 @@
   "artifacts": [
     {
       "file": "VERDICT.md",
-      "sha256": "0989d684467d68510b9ea56659eeb4a75b5e02e01986af919c172635bc47c5b8"
+      "sha256": "81a13e799daabc37fa58462387b528df7755cdef79c91957260198da5fcb62f4"
     },
     {
       "file": "build.py",
@@ -22,7 +22,19 @@
     },
     {
       "file": "manifest.py",
-      "sha256": "6772ab9de35f9e4ca9685612d988285f299039578fd807b3d2ce504f04809bd9"
+      "sha256": "7cdb1c1f1329cc44eea85ffb139e744f01586bc11ccf1574c341f80648d04af4"
+    },
+    {
+      "file": "mask_upgrade_probe.py",
+      "sha256": "713c0401382d8c84985e40ab2931aa9d226cd5cf5339b26f49015e43e802ac8b"
+    },
+    {
+      "file": "mask_upgrade.raw.txt",
+      "sha256": "2ce80d42fbe0e92d83a0dd1d7c9b4fb4c06f9eeeb0d54b310d9378521c6e855c"
+    },
+    {
+      "file": "mask_upgrade.json",
+      "sha256": "2ce80d42fbe0e92d83a0dd1d7c9b4fb4c06f9eeeb0d54b310d9378521c6e855c"
     },
     {
       "file": "resolver.mb",
@@ -93,6 +105,10 @@
     },
     {
       "text": "rearm of the epoch cell for a second request in the same run",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "10-trit word extension via runtime C1 manufacturing (121 -> 29523 -> C1 identities measured; not integrated in the resolver image)",
       "status": "NOT_DEMONSTRATED"
     },
     {

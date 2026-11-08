@@ -13,6 +13,7 @@ PACK = Path(__file__).resolve().parent
 ROOT = PACK.parents[2]
 
 ARTIFACTS = ["VERDICT.md", "build.py", "probe.py", "manifest.py",
+             "mask_upgrade_probe.py", "mask_upgrade.raw.txt", "mask_upgrade.json",
              "resolver.mb", "mutant_residue.mb", "mutant_journal.mb",
              "mutant_pointer.mb", "mutant_mask.mb", "mutant_target.mb",
              "labels.json", "build_index.json", "results.json", "stdout.raw.txt"]
@@ -37,6 +38,9 @@ CLAIMS = [
      "status": "PASS"},
     {"text": "rearm of the epoch cell for a second request in the same run",
      "status": "NOT_DEMONSTRATED"},
+    {"text": "10-trit word extension via runtime C1 manufacturing "
+             "(121 -> 29523 -> C1 identities measured; not integrated in the "
+             "resolver image)", "status": "NOT_DEMONSTRATED"},
     {"text": "general transition search / synthesis with dynamic discovered address",
      "status": "NOT_DEMONSTRATED"},
     {"text": "live streaming output before stdin close (batch model only)",

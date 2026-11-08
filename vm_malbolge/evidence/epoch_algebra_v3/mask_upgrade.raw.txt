@@ -1,0 +1,39 @@
+{
+  "crazy(0,0)": {
+    "value": 29524,
+    "is_C1": true
+  },
+  "crazy(0,C1)": {
+    "value": 29524,
+    "is_C1": true
+  },
+  "crazy(1,MASK)": {
+    "value": 29523,
+    "is_zero": false
+  },
+  "involucion_MASK_121": {
+    "byte_range_0_255_exacto": true,
+    "muestra_10_trits_0_59048_paso_7_exacto": false,
+    "muestras_10_trits": 8436
+  },
+  "involucion_C1": {
+    "byte_range_0_255_exacto": true,
+    "muestra_10_trits_0_59048_paso_7_exacto": true,
+    "muestras_10_trits": 8436
+  },
+  "printabilidad": {
+    "MASK_121": true,
+    "C1": false,
+    "nota": "el loader Classic exige celdas fuente imprimibles (33..126)"
+  },
+  "celdas_cero_en_el_relleno": {
+    "celdas_rellenadas": 58823,
+    "con_valor_cero": 0,
+    "primera": []
+  },
+  "upgrade_121_a_C1": {
+    "paso1_crazy(a=1, m=121)": 29523,
+    "paso2_crazy(a=0, m=paso1)": 29524,
+    "resultado_es_C1": true
+  }
+}

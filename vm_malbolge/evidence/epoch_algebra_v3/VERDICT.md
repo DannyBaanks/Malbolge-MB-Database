@@ -154,6 +154,28 @@ el runner C original coinciden byte a byte.
   de época es un caso particular del "resolvedor" general: queda por demostrar la
   búsqueda/síntesis de la transición y la dirección dinámica elegida por búsqueda.
 
+### Por qué la máscara es 121 y cómo se mediría el salto a 10 trits
+
+`mask_upgrade_probe.py` (salida en `mask_upgrade.raw.txt`) mide las identidades que
+acotan el alcance:
+
+| identidad medida | valor | lectura |
+|---|---:|---|
+| `crazy(0,0)` | 29524 | una celda con valor 0 se convierte en `C1` con un solo `CRAZY` |
+| `crazy(0,C1)` | 29524 | `C1` es idempotente: se pueden fabricar copias |
+| `crazy(1,121)` | 29523 | primer paso del upgrade |
+| `crazy(0,29523)` | **29524 = C1** | segundo paso: **`121 → C1` en dos `CRAZY`** |
+| `crazy(crazy(V,121),121)` | = V | exacto en 0..255 (byte); **falso** en la muestra de 10 trits (8436 valores) |
+| `crazy(crazy(V,C1),C1)` | = V | exacto en byte **y** en la muestra de 10 trits |
+| `C1` imprimible | no | 29524 > 126: el loader Classic no lo admite como celda fuente |
+| celdas con valor 0 en el relleno de la imagen v3 | 0 | no hay `C1` gratis en el relleno |
+
+Consecuencia medida: **la extensión a palabras de 10 trits es alcanzable** (basta
+convertir una celda de máscara `121` en `C1` con dos `CRAZY` y usar `C1` como máscara
+de la doble aplicación), pero **no está integrada** en la imagen del resolvedor: la
+integración exigiría fabricar `C1` en runtime y mantener dos copias de máscara
+conservadas, y eso es un experimento posterior, no una propiedad medida aquí.
+
 ## Reproducir
 
 ```bash

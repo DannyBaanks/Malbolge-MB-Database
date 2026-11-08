@@ -60,3 +60,19 @@ roadmap. Los únicos frentes restantes son los ya documentados:
 - Pila de llamadas: imposible (`c` es solo escritura)
 - Pop exacto: imposible en bucle (`rot^10` requiere 10 ROTs, sin contador estable)
 - Comparador de dos operandos variables: bloqueado por separabilidad trit-a-trit
+
+---
+
+## Corrección medida (2026-11-07) — los bloqueantes listados quedan matizados
+
+El texto anterior **se conserva** como registro histórico.
+
+- "Pop exacto: imposible en bucle (`rot^10` requiere 10 ROTs, sin contador estable)":
+  el bloqueo del **pop por carga** sigue vigente, pero la formulación general queda
+  **refutada** — con la máscara `121` el doble `crazy` escribe el valor exacto y la
+  celda lo ejecuta emitiendo ese byte exacto (0 discrepancias en 768 escrituras,
+  [`epoch_algebra_v3/`](epoch_algebra_v3/)). Queda pendiente el rearme de la máscara
+  consumida en la misma ejecución.
+- "Pila de llamadas: imposible (`c` es solo escritura)": **sigue vigente** para
+  direcciones de retorno. La otra mitad de su causa raíz (no hay asignación directa
+  a memoria) queda **refutada** por el mismo pack.

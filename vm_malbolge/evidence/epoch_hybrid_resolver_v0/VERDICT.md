@@ -21,3 +21,19 @@ No es un resolvedor PureEpoch integrado: no se llama/importa PureEpoch durante e
 ## Reproducir
 
 Desde raíz: `python3 vm_malbolge/evidence/epoch_hybrid_resolver_v0/probe.py` y `python3 vm_malbolge/evidence/epoch_hybrid_resolver_v0/stream_probe.py`. El primer comando sobrescribe `results.json`: para conservar la evidencia original usar una copia del pack. Los artefactos de las pruebas previas se leen de sus rutas y se identifican por SHA-256 en `results.json`.
+
+---
+
+## Corrección medida (2026-11-07) — la escritura a dirección arbitraria ya no es el bloqueo
+
+El texto anterior **se conserva** como registro histórico. La frase "No es una
+operación de escritura a dirección arbitraria" queda **refutada** para el caso
+medido en [`epoch_algebra_v3/`](../epoch_algebra_v3/): la petición decide en runtime la
+dirección (36, 130 o 224) y el doble `crazy` con máscara `121` escribe **exactamente**
+el valor recibido por `stdin` en esa celda (768 escrituras, 0 discrepancias), después
+de lo cual la propia celda se ejecuta. **Sigue `NOT_DEMONSTRATED`**: el soporte de
+palabras de 10 trits en general (la máscara `121` solo cubre valores de byte; la
+máscara completa `C1 = 29524` no es imprimible y no se ha integrado como celda de
+runtime), la búsqueda o síntesis general de transiciones, la llamada/retorno general
+entre componentes y la selección de una dirección **elegida por búsqueda** y no por
+aritmética de puntero.

@@ -166,3 +166,17 @@ en `runners/malbolge-original/malbolge`, traza las ejecuciones de `W1`/`W2` y
 escribe `vm_malbolge/evidence/stack_loop_lifo2.json`. La comparación con el
 runner usa el stdout **crudo** (`crudo == esperado` o `crudo == esperado +
 b"\n"`), para no repetir la trampa CRLF documentada en `pointer_cell_rt.md`.
+
+---
+
+## Corrección medida (2026-11-07) — el "pop exacto" se acota, no se refuta entero
+
+El texto anterior **se conserva** como registro histórico. La nota de
+`NOT_DEMONSTRATED` sigue siendo correcta **para el pop por carga** (extraer una
+ranura de dato arbitrario con `ROT` la rota y no la vacía; 10 `ROT` en bucle siguen
+bloqueados por el choque de celdas-puntero). Lo que queda **refutado** es la
+implicación general de que un valor exacto no puede emitirse: con la máscara
+imprimible `121` el doble `crazy` escribe un valor exacto y arbitrario en la celda y
+**esa celda lo ejecuta**, emitiendo el byte exacto sin rotación (768 escrituras
+medidas, 0 discrepancias; [`epoch_algebra_v3/`](epoch_algebra_v3/)). El coste medido:
+la máscara de la celda se consume y hay que rearmarla antes del siguiente uso.
