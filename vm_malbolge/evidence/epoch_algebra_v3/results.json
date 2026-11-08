@@ -1,0 +1,5059 @@
+{
+  "integrity": {
+    "resolver": {
+      "sha256": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b",
+      "matches_build": true,
+      "length": 226,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_residue": {
+      "sha256": "6ec94eb56b34623d4538d43e60a59f998ea261d8c2fd1961748f8f119e1fa845",
+      "matches_build": true,
+      "length": 225,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_journal": {
+      "sha256": "6f7fe1f5923f4b9b9b8da1df3b2a9f494643d22d6d3e3941adafc29b888e284e",
+      "matches_build": true,
+      "length": 226,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_pointer": {
+      "sha256": "bf6250295e55604533dbeb07c428522364e8b8194d0ebdfa291ebe5abac366f6",
+      "matches_build": true,
+      "length": 226,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_mask": {
+      "sha256": "50daeedb566a54837b763d86d42e039abdf73818b3c956f9c78faa194dced306",
+      "matches_build": true,
+      "length": 226,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_target": {
+      "sha256": "b1443abcb5bd9089fc182afa4b1a6d14ca9a4a034d752e633489c395a360ac0f",
+      "matches_build": true,
+      "length": 226,
+      "printable": true,
+      "no_whitespace": true
+    }
+  },
+  "exactness_sweep_0_255": {
+    "36": {
+      "checked": 256,
+      "mismatches": 0,
+      "examples": []
+    },
+    "130": {
+      "checked": 256,
+      "mismatches": 0,
+      "examples": []
+    },
+    "224": {
+      "checked": 256,
+      "mismatches": 0,
+      "examples": []
+    }
+  },
+  "engines": {
+    "resolver": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          36
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          130
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          224
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      }
+    ],
+    "mutant_residue": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          36
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          130
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 63,
+        "payload_opcode_at_epoch": 4,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 102,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 102,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 33,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 65,
+        "payload_opcode_at_epoch": 6,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 90,
+        "payload_opcode_at_epoch": 31,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 126,
+        "payload_opcode_at_epoch": 67,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 47,
+        "payload_opcode_at_epoch": 82,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 92,
+        "payload_opcode_at_epoch": 33,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 223,
+        "request": 222,
+        "payload": 96,
+        "payload_opcode_at_epoch": 37,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 70,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 70,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 223,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 222,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      }
+    ],
+    "mutant_journal": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 35,
+            "a_before": 29501,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          36
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 128,
+            "a_before": 29426,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 45,
+            "a_before": 29506,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 98,
+            "a_before": 29438,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 35,
+            "a_before": 29501,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          130
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 128,
+            "a_before": 29426,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 45,
+            "a_before": 29506,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 98,
+            "a_before": 29438,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 35,
+            "a_before": 29501,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          224
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 128,
+            "a_before": 29426,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 45,
+            "a_before": 29506,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 121,
+            "new": 98,
+            "a_before": 29438,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      }
+    ],
+    "mutant_pointer": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 201,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 201,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 107,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 107,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 122,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 109,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 109,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 131,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 17,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 17,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 224,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      }
+    ],
+    "mutant_mask": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          36
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 36,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "3f",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [
+          130
+        ],
+        "oracle_out": "3f",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "3f0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 33,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 65,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 90,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 126,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 47,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 92,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 130,
+            "old": 121,
+            "new": 96,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": true,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 65,
+            "a_before": 29542,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 35,
+            "a_before": 29500,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 64,
+            "a_before": 29543,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 92,
+            "a_before": 29434,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 128,
+            "a_before": 29425,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 46,
+            "a_before": 29507,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 91,
+            "a_before": 29435,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 18,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 18,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [
+          {
+            "addr": 224,
+            "old": 122,
+            "new": 98,
+            "a_before": 29437,
+            "kind": "crazy",
+            "step": 14
+          }
+        ],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      }
+    ],
+    "mutant_target": [
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 36,
+        "request": 35,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 35,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 130,
+        "request": 129,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 129,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 63,
+        "payload_opcode_at_epoch": 5,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": false
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 33,
+        "payload_opcode_at_epoch": 69,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 65,
+        "payload_opcode_at_epoch": 7,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 90,
+        "payload_opcode_at_epoch": 32,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 126,
+        "payload_opcode_at_epoch": 68,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 47,
+        "payload_opcode_at_epoch": 83,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 92,
+        "payload_opcode_at_epoch": 34,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      },
+      {
+        "epoch": 224,
+        "request": 223,
+        "payload": 96,
+        "payload_opcode_at_epoch": 38,
+        "trace_out": "",
+        "trace_status": "HALTED",
+        "trace_steps": 45,
+        "out_pcs": [],
+        "oracle_out": "",
+        "oracle_status": "HALTED",
+        "oracle_steps": 45,
+        "c_out": "0a",
+        "c_exit": 0,
+        "epoch_writes": [],
+        "pointer_cell": 223,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "write_exact": false,
+        "executed_at_epoch": true
+      }
+    ]
+  },
+  "verdicts": {
+    "resolver": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 224,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_residue": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 223,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_journal": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 224,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_pointer": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 224,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_mask": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": true,
+          "expected": true,
+          "ok": true
+        },
+        {
+          "epoch": 224,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_target": {
+      "cases": [
+        {
+          "epoch": 36,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 130,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        },
+        {
+          "epoch": 224,
+          "out_produced": false,
+          "expected": false,
+          "ok": true
+        }
+      ],
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    }
+  },
+  "physical_trace": {
+    "36": {
+      "request_byte": 35,
+      "epoch_address": 36,
+      "epoch_residue": 36,
+      "pointer_cell_value": 35,
+      "pointer_equals_request": true,
+      "writes": [
+        {
+          "addr": 47,
+          "old": 121,
+          "new": 29501,
+          "a_before": 35,
+          "kind": "crazy",
+          "step": 5
+        },
+        {
+          "addr": 45,
+          "old": 121,
+          "new": 35,
+          "a_before": 29501,
+          "kind": "crazy",
+          "step": 7
+        },
+        {
+          "addr": 49,
+          "old": 121,
+          "new": 29542,
+          "a_before": 63,
+          "kind": "crazy",
+          "step": 11
+        },
+        {
+          "addr": 36,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "epoch_write": [
+        {
+          "addr": 36,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "out_pc": [
+        36
+      ],
+      "executed_at_epoch": true,
+      "opcode_of_payload_at_epoch": 5,
+      "successor_value": 44,
+      "successor_opcode": 81,
+      "log": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "byte": 40,
+          "a": 0,
+          "d": 0,
+          "d_load": {
+            "from": 0,
+            "value": 40
+          },
+          "encrypted_at": 0,
+          "pc_after": 1
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "byte": 39,
+          "a": 0,
+          "d": 41,
+          "d_load": {
+            "from": 41,
+            "value": 44
+          },
+          "encrypted_at": 1,
+          "pc_after": 2
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 23,
+          "byte": 115,
+          "a": 0,
+          "d": 45,
+          "read_byte": 35,
+          "encrypted_at": 2,
+          "pc_after": 3
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 40,
+          "byte": 37,
+          "a": 35,
+          "d": 46,
+          "d_load": {
+            "from": 46,
+            "value": 46
+          },
+          "encrypted_at": 3,
+          "pc_after": 4
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 62,
+          "byte": 58,
+          "a": 35,
+          "d": 47,
+          "write": {
+            "addr": 47,
+            "old": 121,
+            "new": 29501,
+            "a_before": 35,
+            "kind": "crazy"
+          },
+          "encrypted_at": 4,
+          "pc_after": 5
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 40,
+          "byte": 35,
+          "a": 29501,
+          "d": 48,
+          "d_load": {
+            "from": 48,
+            "value": 44
+          },
+          "encrypted_at": 5,
+          "pc_after": 6
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 62,
+          "byte": 56,
+          "a": 29501,
+          "d": 45,
+          "write": {
+            "addr": 45,
+            "old": 121,
+            "new": 35,
+            "a_before": 29501,
+            "kind": "crazy"
+          },
+          "encrypted_at": 6,
+          "pc_after": 7
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 23,
+          "byte": 110,
+          "a": 35,
+          "d": 46,
+          "read_byte": 63,
+          "encrypted_at": 7,
+          "pc_after": 8
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 68,
+          "byte": 60,
+          "a": 63,
+          "d": 47,
+          "encrypted_at": 8,
+          "pc_after": 9
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 68,
+          "byte": 59,
+          "a": 63,
+          "d": 48,
+          "encrypted_at": 9,
+          "pc_after": 10
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "byte": 52,
+          "a": 63,
+          "d": 49,
+          "write": {
+            "addr": 49,
+            "old": 121,
+            "new": 29542,
+            "a_before": 63,
+            "kind": "crazy"
+          },
+          "encrypted_at": 10,
+          "pc_after": 11
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 40,
+          "byte": 123,
+          "a": 29542,
+          "d": 50,
+          "d_load": {
+            "from": 50,
+            "value": 44
+          },
+          "encrypted_at": 11,
+          "pc_after": 12
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 40,
+          "byte": 122,
+          "a": 29542,
+          "d": 45,
+          "d_load": {
+            "from": 45,
+            "value": 35
+          },
+          "encrypted_at": 12,
+          "pc_after": 13
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 62,
+          "byte": 49,
+          "a": 29542,
+          "d": 36,
+          "write": {
+            "addr": 36,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy"
+          },
+          "encrypted_at": 13,
+          "pc_after": 14
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 40,
+          "byte": 120,
+          "a": 63,
+          "d": 37,
+          "d_load": {
+            "from": 37,
+            "value": 44
+          },
+          "encrypted_at": 14,
+          "pc_after": 15
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 4,
+          "byte": 83,
+          "a": 63,
+          "d": 45,
+          "jump_read": {
+            "cell": 45,
+            "value": 35
+          },
+          "encrypted_at": 35,
+          "pc_after": 36
+        },
+        {
+          "step": 17,
+          "pc": 36,
+          "op": 5,
+          "byte": 63,
+          "a": 63,
+          "d": 46,
+          "emitted": 63,
+          "encrypted_at": 36,
+          "pc_after": 37
+        },
+        {
+          "step": 18,
+          "pc": 37,
+          "op": 81,
+          "byte": 44,
+          "a": 63,
+          "d": 47
+        }
+      ]
+    },
+    "130": {
+      "request_byte": 129,
+      "epoch_address": 130,
+      "epoch_residue": 36,
+      "pointer_cell_value": 129,
+      "pointer_equals_request": true,
+      "writes": [
+        {
+          "addr": 47,
+          "old": 121,
+          "new": 29422,
+          "a_before": 129,
+          "kind": "crazy",
+          "step": 5
+        },
+        {
+          "addr": 45,
+          "old": 121,
+          "new": 129,
+          "a_before": 29422,
+          "kind": "crazy",
+          "step": 7
+        },
+        {
+          "addr": 49,
+          "old": 121,
+          "new": 29542,
+          "a_before": 63,
+          "kind": "crazy",
+          "step": 11
+        },
+        {
+          "addr": 130,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "epoch_write": [
+        {
+          "addr": 130,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "out_pc": [
+        130
+      ],
+      "executed_at_epoch": true,
+      "opcode_of_payload_at_epoch": 5,
+      "successor_value": 44,
+      "successor_opcode": 81,
+      "log": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "byte": 40,
+          "a": 0,
+          "d": 0,
+          "d_load": {
+            "from": 0,
+            "value": 40
+          },
+          "encrypted_at": 0,
+          "pc_after": 1
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "byte": 39,
+          "a": 0,
+          "d": 41,
+          "d_load": {
+            "from": 41,
+            "value": 44
+          },
+          "encrypted_at": 1,
+          "pc_after": 2
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 23,
+          "byte": 115,
+          "a": 0,
+          "d": 45,
+          "read_byte": 129,
+          "encrypted_at": 2,
+          "pc_after": 3
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 40,
+          "byte": 37,
+          "a": 129,
+          "d": 46,
+          "d_load": {
+            "from": 46,
+            "value": 46
+          },
+          "encrypted_at": 3,
+          "pc_after": 4
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 62,
+          "byte": 58,
+          "a": 129,
+          "d": 47,
+          "write": {
+            "addr": 47,
+            "old": 121,
+            "new": 29422,
+            "a_before": 129,
+            "kind": "crazy"
+          },
+          "encrypted_at": 4,
+          "pc_after": 5
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 40,
+          "byte": 35,
+          "a": 29422,
+          "d": 48,
+          "d_load": {
+            "from": 48,
+            "value": 44
+          },
+          "encrypted_at": 5,
+          "pc_after": 6
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 62,
+          "byte": 56,
+          "a": 29422,
+          "d": 45,
+          "write": {
+            "addr": 45,
+            "old": 121,
+            "new": 129,
+            "a_before": 29422,
+            "kind": "crazy"
+          },
+          "encrypted_at": 6,
+          "pc_after": 7
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 23,
+          "byte": 110,
+          "a": 129,
+          "d": 46,
+          "read_byte": 63,
+          "encrypted_at": 7,
+          "pc_after": 8
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 68,
+          "byte": 60,
+          "a": 63,
+          "d": 47,
+          "encrypted_at": 8,
+          "pc_after": 9
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 68,
+          "byte": 59,
+          "a": 63,
+          "d": 48,
+          "encrypted_at": 9,
+          "pc_after": 10
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "byte": 52,
+          "a": 63,
+          "d": 49,
+          "write": {
+            "addr": 49,
+            "old": 121,
+            "new": 29542,
+            "a_before": 63,
+            "kind": "crazy"
+          },
+          "encrypted_at": 10,
+          "pc_after": 11
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 40,
+          "byte": 123,
+          "a": 29542,
+          "d": 50,
+          "d_load": {
+            "from": 50,
+            "value": 44
+          },
+          "encrypted_at": 11,
+          "pc_after": 12
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 40,
+          "byte": 122,
+          "a": 29542,
+          "d": 45,
+          "d_load": {
+            "from": 45,
+            "value": 129
+          },
+          "encrypted_at": 12,
+          "pc_after": 13
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 62,
+          "byte": 49,
+          "a": 29542,
+          "d": 130,
+          "write": {
+            "addr": 130,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy"
+          },
+          "encrypted_at": 13,
+          "pc_after": 14
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 40,
+          "byte": 120,
+          "a": 63,
+          "d": 131,
+          "d_load": {
+            "from": 131,
+            "value": 44
+          },
+          "encrypted_at": 14,
+          "pc_after": 15
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 4,
+          "byte": 83,
+          "a": 63,
+          "d": 45,
+          "jump_read": {
+            "cell": 45,
+            "value": 129
+          },
+          "encrypted_at": 129,
+          "pc_after": 130
+        },
+        {
+          "step": 17,
+          "pc": 130,
+          "op": 5,
+          "byte": 63,
+          "a": 63,
+          "d": 46,
+          "emitted": 63,
+          "encrypted_at": 130,
+          "pc_after": 131
+        },
+        {
+          "step": 18,
+          "pc": 131,
+          "op": 81,
+          "byte": 44,
+          "a": 63,
+          "d": 47
+        }
+      ]
+    },
+    "224": {
+      "request_byte": 223,
+      "epoch_address": 224,
+      "epoch_residue": 36,
+      "pointer_cell_value": 223,
+      "pointer_equals_request": true,
+      "writes": [
+        {
+          "addr": 47,
+          "old": 121,
+          "new": 29634,
+          "a_before": 223,
+          "kind": "crazy",
+          "step": 5
+        },
+        {
+          "addr": 45,
+          "old": 121,
+          "new": 223,
+          "a_before": 29634,
+          "kind": "crazy",
+          "step": 7
+        },
+        {
+          "addr": 49,
+          "old": 121,
+          "new": 29542,
+          "a_before": 63,
+          "kind": "crazy",
+          "step": 11
+        },
+        {
+          "addr": 224,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "epoch_write": [
+        {
+          "addr": 224,
+          "old": 121,
+          "new": 63,
+          "a_before": 29542,
+          "kind": "crazy",
+          "step": 14
+        }
+      ],
+      "out_pc": [
+        224
+      ],
+      "executed_at_epoch": true,
+      "opcode_of_payload_at_epoch": 5,
+      "successor_value": 44,
+      "successor_opcode": 81,
+      "log": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "byte": 40,
+          "a": 0,
+          "d": 0,
+          "d_load": {
+            "from": 0,
+            "value": 40
+          },
+          "encrypted_at": 0,
+          "pc_after": 1
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "byte": 39,
+          "a": 0,
+          "d": 41,
+          "d_load": {
+            "from": 41,
+            "value": 44
+          },
+          "encrypted_at": 1,
+          "pc_after": 2
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 23,
+          "byte": 115,
+          "a": 0,
+          "d": 45,
+          "read_byte": 223,
+          "encrypted_at": 2,
+          "pc_after": 3
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 40,
+          "byte": 37,
+          "a": 223,
+          "d": 46,
+          "d_load": {
+            "from": 46,
+            "value": 46
+          },
+          "encrypted_at": 3,
+          "pc_after": 4
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 62,
+          "byte": 58,
+          "a": 223,
+          "d": 47,
+          "write": {
+            "addr": 47,
+            "old": 121,
+            "new": 29634,
+            "a_before": 223,
+            "kind": "crazy"
+          },
+          "encrypted_at": 4,
+          "pc_after": 5
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 40,
+          "byte": 35,
+          "a": 29634,
+          "d": 48,
+          "d_load": {
+            "from": 48,
+            "value": 44
+          },
+          "encrypted_at": 5,
+          "pc_after": 6
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 62,
+          "byte": 56,
+          "a": 29634,
+          "d": 45,
+          "write": {
+            "addr": 45,
+            "old": 121,
+            "new": 223,
+            "a_before": 29634,
+            "kind": "crazy"
+          },
+          "encrypted_at": 6,
+          "pc_after": 7
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 23,
+          "byte": 110,
+          "a": 223,
+          "d": 46,
+          "read_byte": 63,
+          "encrypted_at": 7,
+          "pc_after": 8
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 68,
+          "byte": 60,
+          "a": 63,
+          "d": 47,
+          "encrypted_at": 8,
+          "pc_after": 9
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 68,
+          "byte": 59,
+          "a": 63,
+          "d": 48,
+          "encrypted_at": 9,
+          "pc_after": 10
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "byte": 52,
+          "a": 63,
+          "d": 49,
+          "write": {
+            "addr": 49,
+            "old": 121,
+            "new": 29542,
+            "a_before": 63,
+            "kind": "crazy"
+          },
+          "encrypted_at": 10,
+          "pc_after": 11
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 40,
+          "byte": 123,
+          "a": 29542,
+          "d": 50,
+          "d_load": {
+            "from": 50,
+            "value": 44
+          },
+          "encrypted_at": 11,
+          "pc_after": 12
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 40,
+          "byte": 122,
+          "a": 29542,
+          "d": 45,
+          "d_load": {
+            "from": 45,
+            "value": 223
+          },
+          "encrypted_at": 12,
+          "pc_after": 13
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 62,
+          "byte": 49,
+          "a": 29542,
+          "d": 224,
+          "write": {
+            "addr": 224,
+            "old": 121,
+            "new": 63,
+            "a_before": 29542,
+            "kind": "crazy"
+          },
+          "encrypted_at": 13,
+          "pc_after": 14
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 40,
+          "byte": 120,
+          "a": 63,
+          "d": 225,
+          "d_load": {
+            "from": 225,
+            "value": 44
+          },
+          "encrypted_at": 14,
+          "pc_after": 15
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 4,
+          "byte": 83,
+          "a": 63,
+          "d": 45,
+          "jump_read": {
+            "cell": 45,
+            "value": 223
+          },
+          "encrypted_at": 223,
+          "pc_after": 224
+        },
+        {
+          "step": 17,
+          "pc": 224,
+          "op": 5,
+          "byte": 63,
+          "a": 63,
+          "d": 46,
+          "emitted": 63,
+          "encrypted_at": 224,
+          "pc_after": 225
+        },
+        {
+          "step": 18,
+          "pc": 225,
+          "op": 81,
+          "byte": 44,
+          "a": 63,
+          "d": 47
+        }
+      ]
+    }
+  },
+  "decode_table": {
+    "36": {
+      "residue": 36,
+      "opcode_of_63": 5,
+      "opcode_of_0": 36
+    },
+    "130": {
+      "residue": 36,
+      "opcode_of_63": 5,
+      "opcode_of_0": 36
+    },
+    "224": {
+      "residue": 36,
+      "opcode_of_63": 5,
+      "opcode_of_0": 36
+    },
+    "mutant_residue_223": {
+      "residue": 35,
+      "opcode_of_63": 4,
+      "opcode_of_0": 35
+    }
+  },
+  "verdict_all_checks_pass": true
+}

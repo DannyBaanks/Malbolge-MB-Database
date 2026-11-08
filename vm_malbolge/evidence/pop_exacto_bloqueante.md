@@ -85,3 +85,47 @@ exacto, y es lo máximo expresible en un bucle real.
 
 La pila de llamadas (contador de programa general, múltiples marcos) sigue
 abierta y no está bloqueada por este problema.
+
+---
+
+## Corrección medida (2026-11-07) — el bloqueante no es absoluto
+
+El texto anterior **se conserva** como registro histórico. Esta sección lo corrige con
+medidas nuevas y no lo reescribe.
+
+**Medición:** `vm_malbolge/evidence/epoch_algebra_v3/` (imagen `resolver.mb`,
+SHA-256 `ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b`;
+pack `manifest.json` con los hashes de todas las piezas).
+Comando: `python3 vm_malbolge/evidence/epoch_algebra_v3/probe.py` → salida 0,
+`[verdict] all_checks_pass = True`.
+
+**Lo que sigue vigente (medido):** una celda que contiene un dato arbitrario `S` no
+puede copiarse a `a` sin escribir en ella. Las únicas instrucciones que mueven
+`mem[d]` a `a` son `ROT` (39) y `CRAZY` (62), y **ambas escriben `mem[d]`**. La tabla
+de "Causa 1" es correcta tal cual.
+
+**Lo que queda refutado:** la conclusión "el pop exacto es imposible". Con una
+disciplina de máscara (`121 = 11111_3`, imprimible, involución válida para todo valor
+de byte: `crazy(crazy(V,121),121) = V`) se puede:
+
+1. escribir un valor **exacto** recibido en runtime (`stdin`) dentro de una celda
+   cualquiera, y
+2. emitir ese mismo valor exacto **ejecutando esa celda**: en la imagen v3 el `OUT`
+   emite el byte exacto (63 → `3f`) en el PC de la celda escrita (36, 130, 224).
+
+Barrido exhaustivo: 256 payloads × 3 épocas = 768 escrituras, **0 discrepancias**
+(`results.json` → `exactness_sweep_0_255`). El valor exacto se emite **sin rotación**;
+lo que se consume es la **máscara** de la celda, no el valor. Por tanto, la emisión
+exacta de un valor almacenado sí es construible; lo que no es construible es copiar
+una celda de dato arbitrario a `a` sin tocarla.
+
+**Coste medido y límite:** la máscara de la celda consumida (`121 → V`) obliga a
+rearmar la celda antes del siguiente uso. El rearm con journal y diez `ROT` está
+demostrado en `epoch_journal_state_v2` para una celda fija; **componer** ese rearm
+con la selección de época por puntero sigue siendo `NOT_DEMONSTRATED`. La emisión
+exacta queda, por tanto, acotada al caso "el valor se escribe antes de emitirse" o
+"la celda es una máscara cuyo valor se reproduce".
+
+**Conclusión revisada:** el bloqueo real es más estrecho —no hay lectura pura de una
+celda de dato arbitrario y hay que pagar una máscara por celda—, no "imposible" en
+general.

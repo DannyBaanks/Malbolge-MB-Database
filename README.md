@@ -90,6 +90,9 @@ NOT_DEMONSTRATED
 | **Celda-puntero escrita en runtime (salida del bloqueante de la pila)** | `DEMONSTRATED` | **Una celda sembrada con `v0` se transforma con `CRAZY` durante la ejecución y un `MOVD` posterior la usa como dirección: salida `f0`; el control con `CRAZY→NOP` sigue otra ruta y emite `d4`. 9/9 variantes en oráculo y runner C, loader estricto completo** | [`vm_malbolge/src/mbir_pointer_cell_rt.mb`](vm_malbolge/src/mbir_pointer_cell_rt.mb), [`vm_malbolge/evidence/pointer_cell_rt.md`](vm_malbolge/evidence/pointer_cell_rt.md) |
 | **Bucle de pila por fases: escritura y lectura de la misma celda** | `DEMONSTRATED` | **La celda `W` no se restaura: avanza por su ciclo de `XLAT2` y decodifica `CRAZY` en la iteración 0 (escritura) y `ROT` en la 1 (lectura) sobre la misma celda `S`, repitiendo cada 9. Sin celda-puntero de fase ni colisión de pares. 8/8 positivo y 8/8 control (W inerte), 4096 bytes aleatorios incluidos** | [`vm_malbolge/src/mbir_stack_loop_phase.mb`](vm_malbolge/src/mbir_stack_loop_phase.mb), [`vm_malbolge/evidence/stack_loop_phase.md`](vm_malbolge/evidence/stack_loop_phase.md) |
 | **Pila LIFO de profundidad 2 en bucle real (fases por ciclo de cifrado)** | `DEMONSTRATED` | **Dos ranuras y orden LIFO dentro de un bucle: push `S1` (fase 0), push `S2` (fase 3), pop `S2` (fase 4), pop `S1` (fase 5). Las fases las elige el ciclo de `XLAT2` de cada celda de trabajo (`W1`@71 = `CRAZY`@0/`ROT`@5, `W2`@83 = `CRAZY`@3/`ROT`@4); ninguna se restaura. 8/8 positivo y 8/8 control (células inertes), 2048 bytes aleatorios incluidos** | [`vm_malbolge/src/mbir_stack_loop_lifo2.mb`](vm_malbolge/src/mbir_stack_loop_lifo2.mb), [`vm_malbolge/evidence/stack_loop_lifo2.md`](vm_malbolge/evidence/stack_loop_lifo2.md) |
+| **Línea de épocas (v1): selector de dos rutas reutilizable** | `CONDITIONAL_PASS` | **Una imagen Classic atiende solicitudes `01`/`02`, selecciona la ruta en runtime, rearma el marcador de la ruta con diez `ROT` y vuelve al mismo `IN`: 9 flujos + 128 solicitudes pseudoaleatorias, oráculo y runner C byte a byte** | [`vm_malbolge/evidence/epoch_selector_reusable_v1/`](vm_malbolge/evidence/epoch_selector_reusable_v1/), [`epoch_selector_store_v1/`](vm_malbolge/evidence/epoch_selector_store_v1/) (selector + almacén exacto rearmable) |
+| **Línea de épocas (v2): journal con selección por estado** | `CONDITIONAL_PASS` | **Journal M1b de PureEpoch adaptado (`SAVE → clobber → 10×ROT → RESTORE`) con la ruta elegida por el estado de fase (`EPOCH_PHASE`): 9 flujos + 128 solicitudes y 3 controles negativos (journal, restore, fase)** | [`vm_malbolge/evidence/epoch_journal_state_v2/`](vm_malbolge/evidence/epoch_journal_state_v2/) |
+| **Línea de épocas (v3): resolvedor algebraico de épocas en runtime** | `PASS` | **La petición por `stdin` elige la celda de época (36/130/224, 94 de separación, mismo residuo), se escribe el valor **exacto** con la involución de `crazy` (máscara imprimible `121`) y se salta a esa celda para ejecutarla: 768 escrituras exactas (256 payloads × 3 épocas, 0 discrepancias), 18 pasos, 3 motores, 5 controles negativos** | [`vm_malbolge/evidence/epoch_algebra_v3/`](vm_malbolge/evidence/epoch_algebra_v3/) |
 | **Runtimes Swift, Rust, Java, C** | `NOT_STARTED` | Sin comenzar | Tracks registrados en `registry/languages.json` |
 
 ---
@@ -351,6 +354,43 @@ siguiente); por eso las colas pueden diferir en 1 o 3, no en 2.
 
 ---
 
+### 15. Línea de épocas: selector, almacén, journal y resolvedor algebraico (v1 → v3)
+
+Cuatro packs encadenados, todos en Malbolge Classic y sin intervención del host durante
+la ejecución (el host solo aporta la entrada por `stdin` y recoge la salida):
+
+| v | Pack | Qué demuestra | Veredicto |
+|---|---|---|---|
+| v1 | [`epoch_selector_reusable_v1/`](vm_malbolge/evidence/epoch_selector_reusable_v1/) | Selector de dos rutas reutilizable: la petición `01`/`02` elige la ruta **en runtime**, el marcador de la ruta se rearma con diez `ROT` y el control vuelve al mismo `IN`. 9 flujos + 128 solicitudes pseudoaleatorias (semilla 20261107) | `CONDITIONAL_PASS` (dominio `{01,02}`) |
+| v1 | [`epoch_selector_store_v1/`](vm_malbolge/evidence/epoch_selector_store_v1/) | Selector **y** almacén exacto rearmable en una sola imagen Classic: el valor seleccionado se copia al almacén con dos `CRAZY` y se recupera exacto desde él | `CONDITIONAL_PASS` (dominio `{01,02}`) |
+| v2 | [`epoch_journal_state_v2/`](vm_malbolge/evidence/epoch_journal_state_v2/) | Journal M1b de PureEpoch adaptado (`SAVE → clobber → 10×ROT → RESTORE`) con la **ruta elegida por el estado** (`EPOCH_PHASE`, ciclo `XLAT2` 70↔74), más un tercer control negativo que verifica el contrato de estado y no solo `stdout` | `CONDITIONAL_PASS` |
+| v3 | [`epoch_algebra_v3/`](vm_malbolge/evidence/epoch_algebra_v3/) | **Resolvedor de épocas en runtime**: la petición (byte `b`) selecciona la celda de época `T = b+1` (36, 130, 224 — 94 de separación, mismo residuo), se escribe el valor **exacto** recibido por `stdin` con la involución de `crazy` (máscara imprimible `121`) y se salta a esa celda para ejecutarla | `PASS` |
+
+El v3 es el primero que mueve la decisión **a la dirección física**: no hay ramas por
+valor, la única decisión es la dirección leída del puntero. La traza muestra las cuatro
+escrituras (`scratch → puntero exacto → scratch → celda de época exacta`) y que el `OUT`
+se emite en el PC de la celda escrita. La exactitud está medida sobre **los 256 valores
+de byte en las tres épocas** (768 escrituras, 0 discrepancias) y los tres motores
+(trazador sobre las primitivas del oráculo, oráculo del repo y runner C original)
+coinciden byte a byte en las 144 filas. Los cinco controles negativos fallan como se
+espera: residuo desalineado (223 en vez de 224), scratch corrupto, puntero corrupto,
+máscara rota y escritura a otro bloque.
+
+**Correcciones de imposibilidad que este trabajo provoca.** Los tres documentos
+[`pop_exacto_bloqueante.md`](vm_malbolge/evidence/pop_exacto_bloqueante.md),
+[`pila_llamadas_bloqueante.md`](vm_malbolge/evidence/pila_llamadas_bloqueante.md) y
+[`dos_sistemas_middleware_analisis.md`](vm_malbolge/evidence/dos_sistemas_middleware_analisis.md)
+conservan su texto original y **añaden una corrección medida** (2026-11-07): queda
+refutada la causa raíz "no existe asignación directa a memoria" —el doble `crazy` con
+máscara `121` escribe un valor exacto y arbitrario en runtime—, y con ella el
+"direccionamiento indexado" y el "salto dirigido por datos". **Sigue vigente** que `c`
+no se puede leer ni guardar (de ahí que la pila de llamadas con direcciones de retorno
+siga bloqueada) y que la máscara consumida obliga a rearmar la celda: el rearm con
+journal está demostrado en v2 para celda fija, y **componer** journal y selección
+dinámica de época es `NOT_DEMONSTRATED`.
+
+---
+
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
 
 **La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 53,562 bytes, 6,290 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **triple motor C independiente** (incluye un oráculo que se distribuye en `quine/evidence/mb_classic_indep.c` y verifica en ~0.25 s). Supera al récord anterior del mismo ecosistema (m=284, 54,134 B) por **572 bytes** e inaugura el descenso por debajo de m=284, que estaba en `NOT_DEMONSTRATED`.
@@ -376,7 +416,7 @@ siguiente); por eso las colas pueden diferir en 1 o 3, no en 2.
 
 1. **Control de Flujo Completo en Malbolge VM**
    - JMP, JZ, CALL y la comparación relacional `CMP_EQ` en RAM ya están demostrados en el Hito M2 CF + CMP_EQ (7/7, 56,947 bytes). Sigue faltando un contador de programa general para código arbitrario, usar el destino del JMP como selector dinámico arbitrario, y una pila de llamadas de más de una trama.
-   - **(parcialmente cerrado) "usar el destino del JMP como selector dinámico arbitrario"**: ya está demostrado con un salto **computado por el dato** — `mbir_dispatch2.mb` enruta `PUSH`/`POP` sobre flujo haciendo que la dirección de salto sea `crazy(opcode, V)` escrita en una celda (8/8 + 111/111, sección 14d). El encadenado ya llega a **N=5 sin rotaciones** con empaquetado exacto ([`dispatch_pack.md`](vm_malbolge/evidence/dispatch_pack.md)); **N=6 queda excluido en los protocolos de mayor capacidad** por búsqueda exhaustiva ([`dispatch_pack_bound.json`](vm_malbolge/evidence/dispatch_pack_bound.json)), con el barrido de los 975 protocolos restantes abierto. Lo que sigue abierto del todo es la pila de llamadas, ahora con un bloqueante medido: **imposible en Malbolge Classic** porque el program counter `c` es un registro de solo escritura (se puede saltar a él con `JMP`, se auto-incrementa, pero nunca se puede leer ni guardar en una celda de datos). Sin guardar `c` no hay retorno de subrutina; sin retorno, no hay pila de llamadas. Bloqueante documentado en [`vm_malbolge/evidence/pila_llamadas_bloqueante.md`](vm_malbolge/evidence/pila_llamadas_bloqueante.md).
+   - **(parcialmente cerrado) "usar el destino del JMP como selector dinámico arbitrario"**: ya está demostrado con un salto **computado por el dato** — `mbir_dispatch2.mb` enruta `PUSH`/`POP` sobre flujo haciendo que la dirección de salto sea `crazy(opcode, V)` escrita en una celda (8/8 + 111/111, sección 14d). El encadenado ya llega a **N=5 sin rotaciones** con empaquetado exacto ([`dispatch_pack.md`](vm_malbolge/evidence/dispatch_pack.md)); **N=6 queda excluido en los protocolos de mayor capacidad** por búsqueda exhaustiva ([`dispatch_pack_bound.json`](vm_malbolge/evidence/dispatch_pack_bound.json)), con el barrido de los 975 protocolos restantes abierto. Lo que sigue abierto del todo es la pila de llamadas, ahora con un bloqueante medido: **imposible en Malbolge Classic** porque el program counter `c` es un registro de solo escritura (se puede saltar a él con `JMP`, se auto-incrementa, pero nunca se puede leer ni guardar en una celda de datos). Sin guardar `c` no hay retorno de subrutina; sin retorno, no hay pila de llamadas. Bloqueante documentado en [`vm_malbolge/evidence/pila_llamadas_bloqueante.md`](vm_malbolge/evidence/pila_llamadas_bloqueante.md). **Actualización 2026-11-07:** el bloqueante se mantiene solo en su forma clásica (direcciones de retorno); la otra mitad de su causa raíz —"no existe asignación directa a memoria"— queda **refutada** por el resolvedor v3 (escritura exacta en runtime con doble `crazy` y máscara `121`, y salto dirigido por datos a la celda elegida por la petición). Ver [`epoch_algebra_v3/`](vm_malbolge/evidence/epoch_algebra_v3/) y la corrección medida del documento de bloqueante.
 2. **Integración Completa del Pipeline de Ejecución (M2 + ALU + CMP)**
    - Sigue sin existir una sola imagen que cargue el programa en RAM y además ejecute la ALU de 14 vectores y el `CMP_EQ`. Una sonda sobre `mbir_alu.hell` (12 banderas y 8 celdas de scratch) no ensambló: el inicializador se quedó sin sitio en la celda 57855. Quince `C1` sueltos sí entraron. Detalle: [`vm_malbolge/M2_FULL_STATUS.md`](vm_malbolge/M2_FULL_STATUS.md).
    - **La causa está ahora medida y partida en dos**:
@@ -600,5 +640,15 @@ repositorio se maneja con `core.autocrlf=true`: para un artefacto commiteado hay
 
 Se propuso una arquitectura de dos componentes: un sistema A que extraiga un valor de una celda de Malbolge, un sistema B (PureEpoch) que lo "busque" y lo devuelva, y el sistema A que vuelva a meter el valor conocido en una celda.
 
-**Descartado.** El bloqueante no está en encontrar el valor, sino en la inexistencia de la instrucción `mem[d] = valor_conocido` en Malbolge Classic. Incluso con un sistema externo que encuentre el valor, no hay instrucción Malbolge para escribirlo en una celda de datos. PureEpoch puede precomputar transiciones de estado para valores conocidos en tiempo de compilación (rearme de instrucciones automutadas), pero no puede actuar como middleware que escriba valores decididos en runtime. Documentado en [`vm_malbolge/evidence/dos_sistemas_middleware_analisis.md`](vm_malbolge/evidence/dos_sistemas_middleware_analisis.md).
+**Descartado** (conclusión original; conservada como registro histórico). El bloqueante no está en encontrar el valor, sino en la inexistencia de la instrucción `mem[d] = valor_conocido` en Malbolge Classic. Incluso con un sistema externo que encuentre el valor, no hay instrucción Malbolge para escribirlo en una celda de datos. PureEpoch puede precomputar transiciones de estado para valores conocidos en tiempo de compilación (rearme de instrucciones automutadas), pero no puede actuar como middleware que escriba valores decididos en runtime. Documentado en [`vm_malbolge/evidence/dos_sistemas_middleware_analisis.md`](vm_malbolge/evidence/dos_sistemas_middleware_analisis.md).
+
+**Corrección medida (2026-11-07): la causa raíz queda refutada.** La escritura de un
+valor exacto en runtime **sí** existe: con la máscara imprimible `121` (involución de
+`crazy` para todo valor de byte) la secuencia `mem[scratch] = crazy(V,121)` y
+`mem[destino] = crazy(mem[scratch],121) = V` escribe un valor arbitrario recibido por
+`stdin` en una celda arbitraria — 768 escrituras medidas (256 payloads × 3 épocas), **0
+discrepancias** — y con ese puntero se salta a la celda elegida en runtime
+(36/130/224). Evidencia: [`vm_malbolge/evidence/epoch_algebra_v3/`](vm_malbolge/evidence/epoch_algebra_v3/).
+Lo que sigue abierto es la **búsqueda** de la transición (no hay síntesis general), no
+la escritura.
 

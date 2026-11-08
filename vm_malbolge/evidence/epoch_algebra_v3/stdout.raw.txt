@@ -1,0 +1,53 @@
+[integrity] {
+  "resolver": {
+    "sha256": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b",
+    "matches_build": true,
+    "length": 226,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "mutant_residue": {
+    "sha256": "6ec94eb56b34623d4538d43e60a59f998ea261d8c2fd1961748f8f119e1fa845",
+    "matches_build": true,
+    "length": 225,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "mutant_journal": {
+    "sha256": "6f7fe1f5923f4b9b9b8da1df3b2a9f494643d22d6d3e3941adafc29b888e284e",
+    "matches_build": true,
+    "length": 226,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "mutant_pointer": {
+    "sha256": "bf6250295e55604533dbeb07c428522364e8b8194d0ebdfa291ebe5abac366f6",
+    "matches_build": true,
+    "length": 226,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "mutant_mask": {
+    "sha256": "50daeedb566a54837b763d86d42e039abdf73818b3c956f9c78faa194dced306",
+    "matches_build": true,
+    "length": 226,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "mutant_target": {
+    "sha256": "b1443abcb5bd9089fc182afa4b1a6d14ca9a4a034d752e633489c395a360ac0f",
+    "matches_build": true,
+    "length": 226,
+    "printable": true,
+    "no_whitespace": true
+  }
+}
+[exactness] {"36": {"checked": 256, "mismatches": 0, "examples": []}, "130": {"checked": 256, "mismatches": 0, "examples": []}, "224": {"checked": 256, "mismatches": 0, "examples": []}}
+[engine] resolver         filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[engine] mutant_residue   filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[engine] mutant_journal   filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[engine] mutant_pointer   filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[engine] mutant_mask      filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[engine] mutant_target    filas=24 trace==oracle=True c==oracle=True casos_ok=True
+[decode] {"36": {"residue": 36, "opcode_of_63": 5, "opcode_of_0": 36}, "130": {"residue": 36, "opcode_of_63": 5, "opcode_of_0": 36}, "224": {"residue": 36, "opcode_of_63": 5, "opcode_of_0": 36}, "mutant_residue_223": {"residue": 35, "opcode_of_63": 4, "opcode_of_0": 35}}
+[verdict] all_checks_pass = True

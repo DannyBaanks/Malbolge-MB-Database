@@ -1,0 +1,107 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-08T02:10:37.455139+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_algebra_v3/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "0989d684467d68510b9ea56659eeb4a75b5e02e01986af919c172635bc47c5b8"
+    },
+    {
+      "file": "build.py",
+      "sha256": "5a471bd8bcdd2fbf4121de0e0cb239359634f7e5b0986aa7fa67df9af239f674"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "6e12248ce331e70d5adfc7d995969445655251295d796bc55d1620df4f8f3f8c"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "6772ab9de35f9e4ca9685612d988285f299039578fd807b3d2ce504f04809bd9"
+    },
+    {
+      "file": "resolver.mb",
+      "sha256": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b"
+    },
+    {
+      "file": "mutant_residue.mb",
+      "sha256": "6ec94eb56b34623d4538d43e60a59f998ea261d8c2fd1961748f8f119e1fa845"
+    },
+    {
+      "file": "mutant_journal.mb",
+      "sha256": "6f7fe1f5923f4b9b9b8da1df3b2a9f494643d22d6d3e3941adafc29b888e284e"
+    },
+    {
+      "file": "mutant_pointer.mb",
+      "sha256": "bf6250295e55604533dbeb07c428522364e8b8194d0ebdfa291ebe5abac366f6"
+    },
+    {
+      "file": "mutant_mask.mb",
+      "sha256": "50daeedb566a54837b763d86d42e039abdf73818b3c956f9c78faa194dced306"
+    },
+    {
+      "file": "mutant_target.mb",
+      "sha256": "b1443abcb5bd9089fc182afa4b1a6d14ca9a4a034d752e633489c395a360ac0f"
+    },
+    {
+      "file": "labels.json",
+      "sha256": "8d3f594a6bbed3810702391d8a8a83daf9a1a6132ece4571af8300a2d1b118f2"
+    },
+    {
+      "file": "build_index.json",
+      "sha256": "e8fc255c36f807109bb564d224ad1c1d41685c0b807f6475afe97d7387235f04"
+    },
+    {
+      "file": "results.json",
+      "sha256": "57e0be9cc96d178766fceef5e58e1ba849ac84bc1b06c939a134bc175b45898b"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "e16014ac92b9260b3b98c9f7d0e6a2737e132809e778f3545bf7b22a007ca6bb"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/tools/native_classic/constants.py": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f"
+  },
+  "claims": [
+    {
+      "text": "runtime epoch selection by pointer (T = request+1) over aligned cells 36/130/224",
+      "status": "PASS"
+    },
+    {
+      "text": "exact byte write into the selected epoch cell without value branches (256 payloads x 3 epochs, 0 mismatches)",
+      "status": "PASS"
+    },
+    {
+      "text": "jump to the written cell and execute it (OUT at pc=36/130/224)",
+      "status": "PASS"
+    },
+    {
+      "text": "three-engine agreement (traced oracle, repo oracle, original C runner)",
+      "status": "PASS"
+    },
+    {
+      "text": "negative controls (residue, journal, pointer, mask, target)",
+      "status": "PASS"
+    },
+    {
+      "text": "rearm of the epoch cell for a second request in the same run",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "general transition search / synthesis with dynamic discovered address",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "live streaming output before stdin close (batch model only)",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

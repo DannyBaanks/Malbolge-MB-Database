@@ -71,3 +71,52 @@ Este bloqueante cierra el frente de "pila de llamadas" del roadmap. Los frentes
 restantes son la integración del pipeline M2+ALU+CMP y el comparador de dos
 operandos variables, que tienen obstáculos distintos (presupuesto de imagen y
 separabilidad trit-a-trit de `CRAZY`/`ROT`).
+
+---
+
+## Corrección medida (2026-11-07) — la causa raíz es más estrecha
+
+El texto anterior **se conserva** como registro histórico. Esta sección corrige la
+causa raíz con una medición nueva.
+
+**Medición:** `vm_malbolge/evidence/epoch_algebra_v3/` (imagen `resolver.mb`,
+SHA-256 `ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b`).
+Comando: `python3 vm_malbolge/evidence/epoch_algebra_v3/probe.py` → salida 0.
+
+**Lo que sigue vigente (medido):** `c` es un registro de solo escritura. Ninguna
+instrucción copia el PC a `a` ni a una celda de datos, así que **guardar una
+dirección de retorno generada en runtime sigue sin ser posible**. La tabla de la
+sección "Causa raíz" es correcta para `c` y para `d`.
+
+**Lo que queda refutado:** la afirmación "no hay forma de establecer `mem[d]` a un
+valor conocido" y la línea "no existe asignación directa a memoria". Con la máscara
+`121` (imprimible, involución de `crazy` para todo valor de byte) la secuencia
+
+```
+mem[scratch] = crazy(V, 121)
+mem[destino]  = crazy(mem[scratch], 121) = V      # V exacto, decidido en runtime
+```
+
+**escribe un valor arbitrario conocido en una celda arbitraria**, con el valor
+`V` llegando por `stdin` durante la ejecución. Medido: 256 payloads × 3 épocas,
+0 discrepancias (`exactness_sweep_0_255` en `results.json`).
+
+**Consecuencia colateral medida:** con esa escritura exacta se puede construir un
+**puntero calculado en runtime** y, con él, un **salto dirigido por datos**. En la
+imagen v3 el `JMP` lee `mem[45] = b` (el byte de petición) y salta a `b+1`, es decir
+a 36, 130 o 224 según lo que se haya pedido: el destino del salto lo decide la
+petición en runtime, no el ensamblador. La cadena `d = mem[mem[45]]` (con el `+1`
+del autoincremento) da además **direccionamiento indexado** (`mem[mem[d]]`), que el
+documento declaraba imposible.
+
+**Lo que sigue bloqueado:** una pila de llamadas clásica necesita **direcciones de
+retorno**, es decir valores de `c` en el momento de la llamada. Como `c` no se puede
+leer, eso no se ha desbloqueado. Lo desbloqueado es el otro eje: una pila de
+**direcciones de destino** elegidas en runtime (no de retorno). La composición de
+ambos (llamada con retorno + destino dinámico) y el rearm del valor en la celda
+siguen `NOT_DEMONSTRATED`.
+
+**Conclusión revisada:** "imposible construir una pila de llamadas" se mantiene solo
+en su forma clásica (con direcciones de retorno); la formulación por causa raíz —"no
+existe asignación directa a memoria, luego no se puede actuar en runtime"— queda
+refutada por la medición de v3.

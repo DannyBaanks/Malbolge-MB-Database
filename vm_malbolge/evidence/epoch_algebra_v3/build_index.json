@@ -1,0 +1,176 @@
+{
+  "mutant_journal": {
+    "aligned": true,
+    "epoch_residues": [
+      36,
+      36,
+      36
+    ],
+    "epochs": [
+      36,
+      130,
+      224
+    ],
+    "length": 226,
+    "mask": 121,
+    "mutant": "mutant_journal",
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "224": 223,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "6f7fe1f5923f4b9b9b8da1df3b2a9f494643d22d6d3e3941adafc29b888e284e",
+    "successor_value": 44
+  },
+  "mutant_mask": {
+    "aligned": true,
+    "epoch_residues": [
+      36,
+      36,
+      36
+    ],
+    "epochs": [
+      36,
+      130,
+      224
+    ],
+    "length": 226,
+    "mask": 121,
+    "mutant": "mutant_mask",
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "224": 223,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "50daeedb566a54837b763d86d42e039abdf73818b3c956f9c78faa194dced306",
+    "successor_value": 44
+  },
+  "mutant_pointer": {
+    "aligned": true,
+    "epoch_residues": [
+      36,
+      36,
+      36
+    ],
+    "epochs": [
+      36,
+      130,
+      224
+    ],
+    "length": 226,
+    "mask": 121,
+    "mutant": "mutant_pointer",
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "224": 223,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "bf6250295e55604533dbeb07c428522364e8b8194d0ebdfa291ebe5abac366f6",
+    "successor_value": 44
+  },
+  "mutant_residue": {
+    "aligned": false,
+    "epoch_residues": [
+      36,
+      36,
+      35
+    ],
+    "epochs": [
+      36,
+      130,
+      223
+    ],
+    "length": 225,
+    "mask": 121,
+    "mutant": "mutant_residue",
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "223": 222,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "6ec94eb56b34623d4538d43e60a59f998ea261d8c2fd1961748f8f119e1fa845",
+    "successor_value": 44
+  },
+  "mutant_target": {
+    "aligned": true,
+    "epoch_residues": [
+      36,
+      36,
+      36
+    ],
+    "epochs": [
+      36,
+      130,
+      224
+    ],
+    "length": 226,
+    "mask": 121,
+    "mutant": "mutant_target",
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "224": 223,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "b1443abcb5bd9089fc182afa4b1a6d14ca9a4a034d752e633489c395a360ac0f",
+    "successor_value": 44
+  },
+  "resolver": {
+    "aligned": true,
+    "epoch_residues": [
+      36,
+      36,
+      36
+    ],
+    "epochs": [
+      36,
+      130,
+      224
+    ],
+    "length": 226,
+    "mask": 121,
+    "mutant": null,
+    "payload_out_byte": 63,
+    "pointer_cell": 45,
+    "request_bytes": {
+      "130": 129,
+      "224": 223,
+      "36": 35
+    },
+    "scratch_cells": [
+      47,
+      49
+    ],
+    "sha256": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b",
+    "successor_value": 44
+  }
+}
