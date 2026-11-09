@@ -435,7 +435,8 @@ dinámica de época es `NOT_DEMONSTRATED`.
      2. *rot^10 = identidad, rot^k ≠ identidad para k < 10*: un pop exacto requiere exactamente 10 `ROT` sobre la misma celda; verificado empírico para todo `[33,126]`.
      3. *Una celda no hace ROT en 2+ fases de su ciclo*: medido que ninguna dirección tiene `ROT` en 2+ posiciones de su ciclo de `XLAT2` sin `HALT`/`JMP`.
      4. *Sin contador estable*: distribuir 10 `ROT` en vueltas consecutivas requiere un contador, y cualquier celda de contador se cifra con `XLAT2`.
-     El LIFO demostrado (`stack_loop_lifo2.md`) usa `ROT` como pop (valor rotado, no exacto); es lo máximo expresible en un bucle real.
+     El LIFO demostrado (`stack_loop_lifo2.md`) usa `ROT` como pop (valor rotado, no exacto); es lo máximo expresible en un bucle real **por la vía del pop por carga**.
+   - **Actualización 2026-11-07 (matiz, no refutación):** las cuatro causas miden el **pop por carga** (extraer una ranura de dato arbitrario en `a` sin modificarla), que sigue bloqueado. La formulación general "un valor exacto no puede emitirse" queda **refutada**: con la máscara imprimible `121` el doble `crazy` escribe un valor exacto y arbitrario en la celda y **esa celda lo ejecuta** emitiendo el byte exacto, sin rotación (768 escrituras medidas, 0 discrepancias; [`epoch_algebra_v3/`](vm_malbolge/evidence/epoch_algebra_v3/)). Lo que queda pendiente es el **rearm** de la máscara consumida dentro de la misma ejecución (el journal de v2 lo resuelve para una celda fija; componer journal y selección dinámica sigue `NOT_DEMONSTRATED`).
    - Las fases inertes (1, 2, 6, 7, 8) no se pueden silenciar: `IN`/`OUT` siguen ejecutándose y emitiendo el byte en cada vuelta.
    - La profundidad 3 o mayor no está construida: en la clase de ciclo de 9 solo hay dos direcciones que den el calendario LIFO (71 y 83).
 4. **Operadores de Orden Relacional (`CMP_LT`, `CMP_GT`)**
