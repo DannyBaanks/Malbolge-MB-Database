@@ -1,0 +1,109 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-10T21:01:01.552274+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_resolver_word_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "1fea59a0663624a45f47c9045f62872a2a5457209bd539549359d2559c61d00b"
+    },
+    {
+      "file": "plan.py",
+      "sha256": "9685514d1ad67756e46b52e7afd3d5c8eb121fba26138b9e4cfb9defabdb805b"
+    },
+    {
+      "file": "build.py",
+      "sha256": "958d0fac30ab4e380cab5c031f2d16ac695272b61d109a3252760182449e17c3"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "62a2d69c53b2e61bce0c2d3039a372ba70418bc858ccf94e677ebf8d88c35fb7"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "1df8ac227ef6e9e0fd15343b043d0f83fe5d35cc0b7dab994c28ff2969710913"
+    },
+    {
+      "file": "resolver_word.mb",
+      "sha256": "6f43772bb725540ed96e6687980384d1a2baa5d066b9dc5722d081e2d2e5e186"
+    },
+    {
+      "file": "resolver_word_dynamic.mb",
+      "sha256": "860d59dfe56026e16bcd0bd548b5bc1f910c70ca97d4aaa08f4a890c7d43b8e1"
+    },
+    {
+      "file": "mutant_mask_121.mb",
+      "sha256": "3de4f247c5248b685a1d4cc00a43bd1dacf00cfebd065893ce54abde2b41da18"
+    },
+    {
+      "file": "mutant_wrong_payload.mb",
+      "sha256": "fbf195f43f92ceb9db4f2f5606b08ea16bb3ad6f093e9d282e70ec1157d6028f"
+    },
+    {
+      "file": "labels.json",
+      "sha256": "28dfe42f0d97727b0986ed6f63090df1ba1fa468b7de9a40dc2b5ea6e5da8024"
+    },
+    {
+      "file": "build_index.json",
+      "sha256": "59bbd6162a2bd5af08793993e8fb9b493f8acdf569cc080440e589d6e41be003"
+    },
+    {
+      "file": "results.json",
+      "sha256": "a4b4513300cd5d0b5c9f3cdbb3b97a8576e618cc151ca60d7ba23fc39398ab64"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "94282779de93fb7ced55f13c209d16e214ee636bcce9cf4fbb42cbce7e34f348"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/tools/native_classic/constants.py": "f5e60c77d14dbcdd850e7609cc14048b382557cbeb52fdecb359fb2991fa7e6f",
+    "vm_malbolge/evidence/torus_reach_v1/tr_spec.py": "20de46a0e0d5e32beb8755dfbc7efd54752392c4691771226e80a26c22d69bb1",
+    "vm_malbolge/evidence/epoch_algebra_v3/resolver.mb": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b"
+  },
+  "claims": [
+    {
+      "text": "the epoch cell ends up holding the EXACT 10-trit payload 29797 (2s at trit positions 1, 3 and 5) and the payload is executed: OUT = 0x65 emitted at pc = T = 100, END at T+1",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the request pointer is written exactly (W = 99 from the stdin byte)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "three Python engines agree: traced repo oracle, traced native_classic, repo oracle_run",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "negative controls: with the printable 121 mask the write of this payload FAILS (T = 29311); a payload without the position-5 trit 2 gives another opcode at T",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "two legitimate instances (static jump and the v3 dynamic-pointer jump) both verify",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the 29524 mask makes exact writes cover all 59049 words instead of the 7776 covered by 121",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the ORIGINAL C RUNNER diverges in the final phase of the two legitimate instances: it lands at T (step count matches the OUT) but emits nothing and halts one step earlier; all previous phases agree, and a runtime-written JMP target works in that runner (control program, 29429 steps, both engines agree)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the C runner divergence root cause",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "a payload chosen by the request (today the payload is fixed and only the epoch is chosen by the stdin byte) and the rearm of the epoch cell for a second request in the same run",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

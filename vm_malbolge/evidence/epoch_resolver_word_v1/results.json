@@ -1,0 +1,185 @@
+{
+  "integrity": {
+    "resolver_word": {
+      "sha256": "6f43772bb725540ed96e6687980384d1a2baa5d066b9dc5722d081e2d2e5e186",
+      "matches_build": true,
+      "length": 399,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "resolver_word_dynamic": {
+      "sha256": "860d59dfe56026e16bcd0bd548b5bc1f910c70ca97d4aaa08f4a890c7d43b8e1",
+      "matches_build": true,
+      "length": 396,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_mask_121": {
+      "sha256": "3de4f247c5248b685a1d4cc00a43bd1dacf00cfebd065893ce54abde2b41da18",
+      "matches_build": true,
+      "length": 395,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_wrong_payload": {
+      "sha256": "fbf195f43f92ceb9db4f2f5606b08ea16bb3ad6f093e9d282e70ec1157d6028f",
+      "matches_build": true,
+      "length": 299,
+      "printable": true,
+      "no_whitespace": true
+    }
+  },
+  "physical_trace": {
+    "request_byte": 99,
+    "epoch_cell": 100,
+    "payload": 29797,
+    "pointer_writes": [
+      {
+        "addr": 75,
+        "old": 36,
+        "new": 0,
+        "kind": "crazy",
+        "step": 5
+      },
+      {
+        "addr": 75,
+        "old": 0,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 7
+      },
+      {
+        "addr": 75,
+        "old": 29524,
+        "new": 99,
+        "kind": "crazy",
+        "step": 56
+      }
+    ],
+    "pointer_exact": true,
+    "epoch_writes": [
+      {
+        "addr": 100,
+        "old": 36,
+        "new": 0,
+        "kind": "crazy",
+        "step": 38
+      },
+      {
+        "addr": 100,
+        "old": 0,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 41
+      },
+      {
+        "addr": 100,
+        "old": 29524,
+        "new": 29797,
+        "kind": "crazy",
+        "step": 270
+      }
+    ],
+    "epoch_exact": true,
+    "out_pcs": [
+      100
+    ],
+    "out_bytes": "65",
+    "expected_out": "65",
+    "emitted_at_epoch": true,
+    "status": "HALTED",
+    "steps": 277,
+    "final": {
+      "T": 29797,
+      "W": 99,
+      "P": 29797,
+      "A": 546,
+      "S": 29524,
+      "registers": [
+        29797,
+        101,
+        63
+      ]
+    }
+  },
+  "engines": {
+    "resolver_word": {
+      "instance": "resolver_word",
+      "trace_out": "65",
+      "trace_status": "HALTED",
+      "trace_final_T": 29797,
+      "oracle_out": "65",
+      "oracle_status": "HALTED",
+      "c_out": "0a",
+      "c_out_norm": "",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "nc_trace_out": "65",
+      "nc_eq_oracle": true,
+      "nc_final_T": 29797,
+      "c_eq_oracle": false
+    },
+    "resolver_word_dynamic": {
+      "instance": "resolver_word_dynamic",
+      "trace_out": "65",
+      "trace_status": "HALTED",
+      "trace_final_T": 29797,
+      "oracle_out": "65",
+      "oracle_status": "HALTED",
+      "c_out": "0a",
+      "c_out_norm": "",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "nc_trace_out": "65",
+      "nc_eq_oracle": true,
+      "nc_final_T": 29797,
+      "c_eq_oracle": false
+    },
+    "mutant_mask_121": {
+      "instance": "mutant_mask_121",
+      "trace_out": "",
+      "trace_status": "HALTED",
+      "trace_final_T": 29311,
+      "oracle_out": "",
+      "oracle_status": "HALTED",
+      "c_out": "0a",
+      "c_out_norm": "",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "nc_trace_out": "",
+      "nc_eq_oracle": true,
+      "nc_final_T": 29311,
+      "c_eq_oracle": true
+    },
+    "mutant_wrong_payload": {
+      "instance": "mutant_wrong_payload",
+      "trace_out": "",
+      "trace_status": "HALTED",
+      "trace_final_T": 29554,
+      "oracle_out": "",
+      "oracle_status": "HALTED",
+      "c_out": "0a",
+      "c_out_norm": "",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "nc_trace_out": "",
+      "nc_eq_oracle": true,
+      "nc_final_T": 29554,
+      "c_eq_oracle": true
+    }
+  },
+  "controls": {
+    "mutant_mask_121": {
+      "T_final": 29311,
+      "payload_corrupted": true,
+      "out": "",
+      "out_differs": true
+    },
+    "mutant_wrong_payload": {
+      "T_final": 29554,
+      "out": "",
+      "out_differs": true
+    }
+  },
+  "verdict_all_checks_pass": true
+}

@@ -1,0 +1,11 @@
+[integrity] {"resolver_word": {"ok": true, "len": 399}, "resolver_word_dynamic": {"ok": true, "len": 396}, "mutant_mask_121": {"ok": true, "len": 395}, "mutant_wrong_payload": {"ok": true, "len": 299}}
+[physical] puntero W=99 exacto=True | época T=29797 exacto=True | OUT=65 esperado=65 en pc=[100] | pasos=277 estado=HALTED
+[physical] escrituras en la época: [(36, 0), (0, 29524), (29524, 29797)]
+[engine] resolver_word          repo=65 native_classic=65 oraculo=65 C=0a T_final=29797 repo==oraculo=True nc==oraculo=True C==oraculo=False
+[engine] resolver_word_dynamic  repo=65 native_classic=65 oraculo=65 C=0a T_final=29797 repo==oraculo=True nc==oraculo=True C==oraculo=False
+[engine] mutant_mask_121        repo= native_classic= oraculo= C=0a T_final=29311 repo==oraculo=True nc==oraculo=True C==oraculo=True
+[engine] mutant_wrong_payload   repo= native_classic= oraculo= C=0a T_final=29554 repo==oraculo=True nc==oraculo=True C==oraculo=True
+[control] mutant_mask_121      T=29311 (payload corrupto=True) OUT=
+[control] mutant_wrong_payload T=29554 OUT=
+[verdict] all_checks_pass = True
+EXIT=0
