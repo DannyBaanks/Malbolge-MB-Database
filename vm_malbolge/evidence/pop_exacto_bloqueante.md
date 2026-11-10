@@ -129,3 +129,49 @@ exacta queda, por tanto, acotada al caso "el valor se escribe antes de emitirse"
 **Conclusión revisada:** el bloqueo real es más estrecho —no hay lectura pura de una
 celda de dato arbitrario y hay que pagar una máscara por celda—, no "imposible" en
 general.
+
+---
+
+## Corrección medida (2026-11-09) — la máscara imprimible deja de ser el límite: `29524` se construye en runtime
+
+El texto anterior y la corrección de 2026-11-07 **se conservan** como registro
+histórico. Esta sección los matiza con una medida nueva y no los reescribe.
+
+**Medición:** `vm_malbolge/evidence/torus_reach_v1/`
+(comando: `python3 vm_malbolge/evidence/torus_reach_v1/probe.py` → exit 0,
+`[verdict] all_checks_pass = True`; pack con `manifest.json` de hashes).
+
+**Lo que queda refutado aquí:** la idea de que hace falta una máscara imprimible
+involutiva y que, al no existir una para palabras de 10 trits, la síntesis de
+constantes grandes está bloqueada. Medido:
+
+1. **`29524` (diez trits iguales a 1, la única máscara involutiva para toda
+   palabra) se construye con UNA `CRAZY`: `crazy(54, 54) = 29524`**, donde `54`
+   es un byte imprimible (`2000_3`, sin ningún trit 1). Ocho imprimibles sirven:
+   `54, 56, 60, 62, 72, 74, 78, 80`. No hace falta imprimibilidad de la máscara
+   porque la máscara se fabrica en memoria.
+2. `0 = crazy(29524, 29524)` → la pareja se auto-reproduce.
+3. La dependencia circular real, ahora exacta y probada enumerando los 9 pares de
+   trits: `D(crazy(a,v)) ⊆ D(a) U D(v)` — un trit 2 no aparece donde ningún
+   operando lo tenía. La salida es que **el acumulador es una fuente independiente
+   de trits 2** y `ROT` los recoloca: un solo trit 2 (el de `54`) cubre las 10
+   posiciones por rotación.
+4. **`59048` (diez trits iguales a 2) es alcanzable**, con tres testigos
+   verificados por replay contra el oráculo del repo: constructivo (1038 ops),
+   compacto (`crazy(58806, crazy(242, crazy(54,54)))`, 7 ops) y fiel a la VM
+   (11 ops, presuponiendo sólo la escritura exacta de bytes ya demostrada en
+   `epoch_algebra_v3`).
+5. Toda palabra de 10 trits tiene testigo constructivo (inducciones `Q`/`U`/`F`
+   sobre los 1023 subconjuntos, fórmula general verificada en 209 palabras) y el
+   cierre hacia atrás de `29524` cubre las 59049 palabras.
+6. Medido además: `121` es involutivo sólo en 7776/59049 palabras
+   (`= 3^5 · 2^5`), `29524` en todas → el upgrade del resolvedor de v3 a payload
+   de palabra completa tiene ruta constructiva.
+7. Medido: el relleno de memoria más allá del programa es **crazy-fill** en el
+   runner C original (5 direcciones, 3 motores), no relleno con cero: **no hay
+   celdas cero gratuitas**, el 0 se construye.
+
+**Lo que sigue vigente (sin cambio):** no hay lectura pura de una celda de dato
+arbitrario; el rearm en la misma ejecución con journal + selección dinámica; y la
+ejecución nativa autónoma de estos testigos (`NOT_DEMONSTRATED` en el pack nuevo,
+con las precondiciones identificadas).
