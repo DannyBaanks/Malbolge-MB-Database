@@ -1,6 +1,6 @@
 {
   "schema": "isyco-evidence-pack-v1",
-  "created_at": "2026-11-10T21:42:02.902736+00:00",
+  "created_at": "2026-11-10T22:11:01.935059+00:00",
   "command": "python3 vm_malbolge/evidence/epoch_resolver_word_v1/probe.py",
   "exit_code": 0,
   "environment": {
@@ -10,7 +10,7 @@
   "artifacts": [
     {
       "file": "VERDICT.md",
-      "sha256": "1f9cb63fb81aa4c1fc5137f0c4c3705c5c436fa20850cba5c35945652ef098d3"
+      "sha256": "b2351df0b5459b0179b2a234c3d37e0180a1bd49a0e327448714864b3728d6ba"
     },
     {
       "file": "plan.py",

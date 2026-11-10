@@ -96,3 +96,13 @@ este pack (276, 273, 272 y 176), y dos programas mínimos que aterrizan con
 `126` recorren el programa entero.
 
 Los puntos 1 y 2 siguen abiertos.
+
+## Actualización (2026-11-10) — el payload elegido por la petición
+
+El primer punto queda cerrado por `epoch_resolver_request_v1`: una única imagen
+de 293 bytes construye el payload de 10 trits a partir de la petición (20
+dígitos de control), lo escribe exacto en la celda de época y lo ejecuta
+(payloads 93, 187, 281 y 29797; `OUT` 0x5d, 0xbb, 0x19 y 0x65).
+
+El punto 2 (rearm de la época para una segunda petición en la misma ejecución)
+sigue abierto.

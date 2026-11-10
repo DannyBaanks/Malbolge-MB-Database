@@ -1,0 +1,10 @@
+[integrity] {"sha256": "d1bffb4b97ada49b8e3b33f7c5dc948df7ecfe86f610572651f174a73fe2acbf", "matches_build": true, "length": 293, "printable": true, "no_whitespace": true}
+[lema] V = crazy(M,P) sobre 59049 palabras: 0 discrepancias
+[lema] semigrupo de crazy: 15 mapas; el mapa trit->ctrl que haría falta NO es alcanzable (True); el (0,0,2) sí lo es
+[instancia] payload_v93      leidos=20 P=29617(True) M=29617(True) T=93(True) OUT=5d esperado=5d en pc=[100] pasos=171 C=171(C esperado 171) guarda=None
+[instancia] payload_v187     leidos=20 P=29525(True) M=29618(True) T=187(True) OUT=bb esperado=bb en pc=[100] pasos=171 C=170(C esperado 170) guarda=170
+[instancia] payload_v281     leidos=20 P=29803(True) M=29804(True) T=281(True) OUT=19 esperado=19 en pc=[100] pasos=171 C=170(C esperado 170) guarda=170
+[instancia] payload_v29797   leidos=20 P=58775(True) M=59048(True) T=29797(True) OUT=65 esperado=65 en pc=[100] pasos=171 C=170(C esperado 170) guarda=170
+[control] petición alterada (byte 0 invertido): T=29798 (payload cambiado=True) OUT= estado=HALTED
+[control] payloads distintos: T=True OUT=4
+[verdict] all_checks_pass = True

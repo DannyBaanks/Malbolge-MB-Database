@@ -1,0 +1,251 @@
+{
+  "integrity": {
+    "sha256": "d1bffb4b97ada49b8e3b33f7c5dc948df7ecfe86f610572651f174a73fe2acbf",
+    "matches_build": true,
+    "length": 293,
+    "printable": true,
+    "no_whitespace": true
+  },
+  "lemma_decomposition": {
+    "words": 59049,
+    "mismatches": 0,
+    "examples": []
+  },
+  "lemma_semigroup": {
+    "maps": 15,
+    "reachable": {
+      "trit->ctrl de P (0,2,0)": false,
+      "trit->ctrl de M (0,2,2)": false,
+      "trit->ctrl (0,0,2)": true
+    },
+    "all_maps": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        2,
+        2
+      ]
+    ]
+  },
+  "instances": {
+    "payload_v93": {
+      "payload": 93,
+      "request_hex": "0002020002000000000000020200020000000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 20,
+      "P_built": 29617,
+      "P_expected": 29617,
+      "P_exact": true,
+      "M_built": 29617,
+      "M_expected": 29617,
+      "M_exact": true,
+      "T_written": 93,
+      "T_exact": true,
+      "T_final_mem": 98,
+      "T_encrypted_after_exec": true,
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "5d",
+      "expected_out": "5d",
+      "emitted_at_epoch": true,
+      "status": "HALTED",
+      "steps": 171,
+      "oracle_out": "5d",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 171,
+      "c_out": "5d",
+      "c_predicted_guard_step": null,
+      "c_expected_steps": 171,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": true
+    },
+    "payload_v187": {
+      "payload": 187,
+      "request_hex": "0200000000000000000002020200020000000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 20,
+      "P_built": 29525,
+      "P_expected": 29525,
+      "P_exact": true,
+      "M_built": 29618,
+      "M_expected": 29618,
+      "M_exact": true,
+      "T_written": 187,
+      "T_exact": true,
+      "T_final_mem": 187,
+      "T_encrypted_after_exec": false,
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "bb",
+      "expected_out": "bb",
+      "emitted_at_epoch": true,
+      "status": "HALTED",
+      "steps": 171,
+      "oracle_out": "bb",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 170,
+      "c_out": "",
+      "c_predicted_guard_step": 170,
+      "c_expected_steps": 170,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "payload_v281": {
+      "payload": 281,
+      "request_hex": "0000020200020000000002000202000200000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 20,
+      "P_built": 29803,
+      "P_expected": 29803,
+      "P_exact": true,
+      "M_built": 29804,
+      "M_expected": 29804,
+      "M_exact": true,
+      "T_written": 281,
+      "T_exact": true,
+      "T_final_mem": 281,
+      "T_encrypted_after_exec": false,
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "19",
+      "expected_out": "19",
+      "emitted_at_epoch": true,
+      "status": "HALTED",
+      "steps": 171,
+      "oracle_out": "19",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 170,
+      "c_out": "",
+      "c_predicted_guard_step": 170,
+      "c_expected_steps": 170,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "payload_v29797": {
+      "payload": 29797,
+      "request_hex": "0200020002000202020202020202020202020202",
+      "request_read_in_order": true,
+      "n_bytes_read": 20,
+      "P_built": 58775,
+      "P_expected": 58775,
+      "P_exact": true,
+      "M_built": 59048,
+      "M_expected": 59048,
+      "M_exact": true,
+      "T_written": 29797,
+      "T_exact": true,
+      "T_final_mem": 29797,
+      "T_encrypted_after_exec": false,
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "65",
+      "expected_out": "65",
+      "emitted_at_epoch": true,
+      "status": "HALTED",
+      "steps": 171,
+      "oracle_out": "65",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 170,
+      "c_out": "",
+      "c_predicted_guard_step": 170,
+      "c_expected_steps": 170,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    }
+  },
+  "control_mutated_request": {
+    "base_payload": 29797,
+    "mutated_request_hex": "0000020002000202020202020202020202020202",
+    "T_written": 29798,
+    "payload_changed": true,
+    "out_bytes": "",
+    "status": "HALTED",
+    "steps": 171
+  },
+  "distinct_payloads": {
+    "distinct_T": true,
+    "distinct_out": true
+  },
+  "verdict_all_checks_pass": true
+}

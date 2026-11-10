@@ -1,0 +1,17 @@
+{
+  "S": 41,
+  "P": 44,
+  "M": 46,
+  "A": 48,
+  "SH": 61,
+  "T": 100,
+  "SUCC": 101,
+  "no_trit2_seed": 36,
+  "request_bytes": 20,
+  "payloads": {
+    "payload_v93": 93,
+    "payload_v187": 187,
+    "payload_v281": 281,
+    "payload_v29797": 29797
+  }
+}
