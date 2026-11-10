@@ -1,0 +1,103 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-10T05:10:34.504071+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_mask_native_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "3422bf9d1cef44ef27adce35c87ccac8ff6deb722f9f391c4b8b0927ff82d3fc"
+    },
+    {
+      "file": "build.py",
+      "sha256": "5e6b8f1594594cd08554745eec47a4156423c50c66212416853e93f5ce6c362d"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "832ffd374d84d7a0037607ad974bd3bc0b4e1c718a5c31cb30f67dfce51ad995"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "1194698985d35ede83551049ba5e8c3957e103e3a03a9d10e798dde08b6fa118"
+    },
+    {
+      "file": "mask_native.mb",
+      "sha256": "768bb2bd6ced45fd3be52610b311c728d4ea7deabdf0b87f9bdc81e2ab870245"
+    },
+    {
+      "file": "bootstrap_only.mb",
+      "sha256": "c68db2cef7511af870646cf070f15dda66bdd18a0055bfd6ad3068aaa376a1bd"
+    },
+    {
+      "file": "mutant_boot_has_trit2.mb",
+      "sha256": "1826c488adc2d043b3077d25220d4973440c28279119a02c41a4d2e8a4aa6917"
+    },
+    {
+      "file": "mutant_rot_src.mb",
+      "sha256": "fc89c7edb9c805613a4a18f70c45652490cc2d88032cd50be411ccde662b60a0"
+    },
+    {
+      "file": "mutant_forward.mb",
+      "sha256": "53801b05022daa213b10f49647f5735444d844bc33258d58f9a9dd141ee997d0"
+    },
+    {
+      "file": "mutant_nine_blocks.mb",
+      "sha256": "fb7c30e002c85e7513c271171feb7c122654b6263987b322bfa5e917f4546d43"
+    },
+    {
+      "file": "labels.json",
+      "sha256": "edaaaebddc0cb2d3e9c8b2b7dd4c95324919ba0387a3c1a7a4f623a8be581f4e"
+    },
+    {
+      "file": "build_index.json",
+      "sha256": "d73c61cc4e6d4501e86afe0c3b622462cb97c6057d449aca81fccb55c8641d2b"
+    },
+    {
+      "file": "results.json",
+      "sha256": "a1a3d6b6bf0e2aa516f68d95370149da5cdf42312f4dc6ef2ad0103a8b116f8c"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "3e9b755a2fb53ca0a5c3485e61b3c9d374893834e9ce5ac33e07886e3e001e85"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/evidence/torus_reach_v1/tr_spec.py": "20de46a0e0d5e32beb8755dfbc7efd54752392c4691771226e80a26c22d69bb1"
+  },
+  "claims": [
+    {
+      "text": "autonomous (no stdin) Classic Malbolge image that writes 29524 (ten trits = 1) into cell 41 with the first CRAZY (a = 0 at start, cell holds printable 36 with no trit 2): mem[41] = 29524, OUT = 0x54",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the same image extends to 59048 (ten trits = 2): ten unrolled blocks [DLOAD, ROT, CRAZY] add one trit 2 per ROT of the 54 cell; mem[41] = 59048 = 29524 + (3^0+...+3^9), OUT = 0xa8, 34 steps, HALTED",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "three-engine agreement (traced repo oracle, repo oracle, original C runner) on both legitimate instances",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "four negative controls rejected (boot cell with trit 2, rotation source without trit 2, clobbered forward cell, nine blocks)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the 29524 cell is left in memory as a usable mask (bootstrap_only instance halts with mem[41] = 29524)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "rearm of the mask cell for a second construction in the same run and an epoch resolver with a full 10-trit payload driven by stdin",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "a closed loop (the ten blocks are unrolled; no conditional exit was needed)",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

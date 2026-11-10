@@ -1,0 +1,14 @@
+[integrity] {"mask_native": {"matches_build": true, "printable": true, "len": 43}, "bootstrap_only": {"matches_build": true, "printable": true, "len": 43}, "mutant_boot_has_trit2": {"matches_build": true, "printable": true, "len": 43}, "mutant_rot_src": {"matches_build": true, "printable": true, "len": 43}, "mutant_forward": {"matches_build": true, "printable": true, "len": 43}, "mutant_nine_blocks": {"matches_build": true, "printable": true, "len": 43}}
+[physical] boot={'addr': 41, 'old': 36, 'new': 29524, 'kind': 'crazy', 'step': 2} Q_final=True OUT=a8 pasos=34 estado=HALTED escrituras_en_Q=11
+[engine] mask_native              traza=a8 oraculo=a8 C=a80a Q_final=59048 traza==oraculo=True C==oraculo=True
+[engine] bootstrap_only           traza=54 oraculo=54 C=540a Q_final=29524 traza==oraculo=True C==oraculo=True
+[engine] mutant_boot_has_trit2    traza=89 oraculo=89 C=890a Q_final=59017 traza==oraculo=True C==oraculo=True
+[engine] mutant_rot_src           traza=30 oraculo=30 C=300a Q_final=29488 traza==oraculo=True C==oraculo=True
+[engine] mutant_forward           traza=74 oraculo=74 C=740a Q_final=29524 traza==oraculo=True C==oraculo=True
+[engine] mutant_nine_blocks       traza=8d oraculo=8d C=8d0a Q_final=59021 traza==oraculo=True C==oraculo=True
+[control] mutant_boot_has_trit2    diverge=True (Q=59017, OUT=89)
+[control] mutant_rot_src           diverge=True (Q=29488, OUT=30)
+[control] mutant_forward           diverge=True (Q=29524, OUT=74)
+[control] mutant_nine_blocks       diverge=True (Q=59021, OUT=8d)
+[verdict] all_checks_pass = True
+EXIT=0

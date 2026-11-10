@@ -1,0 +1,356 @@
+{
+  "integrity": {
+    "mask_native": {
+      "sha256": "768bb2bd6ced45fd3be52610b311c728d4ea7deabdf0b87f9bdc81e2ab870245",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 10
+    },
+    "bootstrap_only": {
+      "sha256": "c68db2cef7511af870646cf070f15dda66bdd18a0055bfd6ad3068aaa376a1bd",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 0
+    },
+    "mutant_boot_has_trit2": {
+      "sha256": "1826c488adc2d043b3077d25220d4973440c28279119a02c41a4d2e8a4aa6917",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 10
+    },
+    "mutant_rot_src": {
+      "sha256": "fc89c7edb9c805613a4a18f70c45652490cc2d88032cd50be411ccde662b60a0",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 10
+    },
+    "mutant_forward": {
+      "sha256": "53801b05022daa213b10f49647f5735444d844bc33258d58f9a9dd141ee997d0",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 10
+    },
+    "mutant_nine_blocks": {
+      "sha256": "fb7c30e002c85e7513c271171feb7c122654b6263987b322bfa5e917f4546d43",
+      "matches_build": true,
+      "length": 43,
+      "printable": true,
+      "blocks": 9
+    }
+  },
+  "physical_trace": {
+    "boot_write": {
+      "addr": 41,
+      "old": 36,
+      "new": 29524,
+      "kind": "crazy",
+      "step": 2
+    },
+    "boot_is_29524": true,
+    "q_writes_total": 11,
+    "last_q_write": {
+      "addr": 41,
+      "old": 59021,
+      "new": 59048,
+      "kind": "crazy",
+      "step": 32
+    },
+    "final_q_is_59048": true,
+    "out_pcs": [
+      32
+    ],
+    "out_bytes": "a8",
+    "steps": 34,
+    "status": "HALTED",
+    "registers": [
+      59048,
+      33,
+      43
+    ],
+    "p_cell_final": 54,
+    "writes_summary": [
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 36,
+        "new": 29524
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 54,
+        "new": 18
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 29524,
+        "new": 29533
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 18,
+        "new": 6
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 29533,
+        "new": 29536
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 6,
+        "new": 2
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 29536,
+        "new": 29537
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 2,
+        "new": 39366
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 29537,
+        "new": 49220
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 39366,
+        "new": 13122
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 49220,
+        "new": 55781
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 13122,
+        "new": 4374
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 55781,
+        "new": 57968
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 4374,
+        "new": 1458
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 57968,
+        "new": 58697
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 1458,
+        "new": 486
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 58697,
+        "new": 58940
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 486,
+        "new": 162
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 58940,
+        "new": 59021
+      },
+      {
+        "addr": 40,
+        "kind": "rot",
+        "old": 162,
+        "new": 54
+      },
+      {
+        "addr": 41,
+        "kind": "crazy",
+        "old": 59021,
+        "new": 59048
+      }
+    ]
+  },
+  "engines": {
+    "mask_native": [
+      {
+        "instance": "mask_native",
+        "expected_q": 59048,
+        "expected_out": 168,
+        "trace_out": "a8",
+        "trace_status": "HALTED",
+        "trace_final_q": 59048,
+        "oracle_out": "a8",
+        "oracle_status": "HALTED",
+        "c_out": "a80a",
+        "c_out_norm": "a8",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "builds_59048": true,
+        "emits_168": true
+      }
+    ],
+    "bootstrap_only": [
+      {
+        "instance": "bootstrap_only",
+        "expected_q": 29524,
+        "expected_out": 84,
+        "trace_out": "54",
+        "trace_status": "HALTED",
+        "trace_final_q": 29524,
+        "oracle_out": "54",
+        "oracle_status": "HALTED",
+        "c_out": "540a",
+        "c_out_norm": "54",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "builds_29524": true,
+        "emits_84": true
+      }
+    ],
+    "mutant_boot_has_trit2": [
+      {
+        "instance": "mutant_boot_has_trit2",
+        "expected_q": null,
+        "expected_out": null,
+        "trace_out": "89",
+        "trace_status": "HALTED",
+        "trace_final_q": 59017,
+        "oracle_out": "89",
+        "oracle_status": "HALTED",
+        "c_out": "890a",
+        "c_out_norm": "89",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "diverges_from_target": true
+      }
+    ],
+    "mutant_rot_src": [
+      {
+        "instance": "mutant_rot_src",
+        "expected_q": null,
+        "expected_out": null,
+        "trace_out": "30",
+        "trace_status": "HALTED",
+        "trace_final_q": 29488,
+        "oracle_out": "30",
+        "oracle_status": "HALTED",
+        "c_out": "300a",
+        "c_out_norm": "30",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "diverges_from_target": true
+      }
+    ],
+    "mutant_forward": [
+      {
+        "instance": "mutant_forward",
+        "expected_q": null,
+        "expected_out": null,
+        "trace_out": "74",
+        "trace_status": "HALTED",
+        "trace_final_q": 29524,
+        "oracle_out": "74",
+        "oracle_status": "HALTED",
+        "c_out": "740a",
+        "c_out_norm": "74",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "diverges_from_target": true
+      }
+    ],
+    "mutant_nine_blocks": [
+      {
+        "instance": "mutant_nine_blocks",
+        "expected_q": null,
+        "expected_out": null,
+        "trace_out": "8d",
+        "trace_status": "HALTED",
+        "trace_final_q": 59021,
+        "oracle_out": "8d",
+        "oracle_status": "HALTED",
+        "c_out": "8d0a",
+        "c_out_norm": "8d",
+        "c_exit": 0,
+        "trace_eq_oracle": true,
+        "c_eq_oracle": true,
+        "diverges_from_target": true
+      }
+    ]
+  },
+  "verdicts": {
+    "mask_native": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 59048,
+      "out": "a8"
+    },
+    "bootstrap_only": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 29524,
+      "out": "54"
+    },
+    "mutant_boot_has_trit2": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 59017,
+      "out": "89"
+    },
+    "mutant_rot_src": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 29488,
+      "out": "30"
+    },
+    "mutant_forward": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 29524,
+      "out": "74"
+    },
+    "mutant_nine_blocks": {
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true,
+      "final_q": 59021,
+      "out": "8d"
+    }
+  },
+  "verdict_all_checks_pass": true
+}
