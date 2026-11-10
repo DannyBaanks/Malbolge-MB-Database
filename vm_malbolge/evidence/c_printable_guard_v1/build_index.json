@@ -1,0 +1,58 @@
+{
+  "guard_high": {
+    "mode": "one_crazy",
+    "seed_at_pivot": 36,
+    "pivot_cell": 41,
+    "hop_cell": 42,
+    "end_cell": 43,
+    "pivot_value": 29524,
+    "pivot_printable": false,
+    "opcode_at_pivot": 49,
+    "expected_halt": true,
+    "length": 44,
+    "sha256": "29dc9db7d8fda1f43a786f5b52d8868efcee56c339d710e7d7e3619aeabc3b36",
+    "printable": true
+  },
+  "guard_low": {
+    "mode": "two_crazy",
+    "seed_at_pivot": 36,
+    "pivot_cell": 41,
+    "hop_cell": 42,
+    "end_cell": 43,
+    "pivot_value": 0,
+    "pivot_printable": false,
+    "opcode_at_pivot": 41,
+    "expected_halt": true,
+    "length": 44,
+    "sha256": "1bd28877c0d747069281da13a39bfdfecec2d0162bc2702e5595bc99091fbf15",
+    "printable": true
+  },
+  "control_seed_33": {
+    "mode": "seed_only",
+    "seed_at_pivot": 33,
+    "pivot_cell": 41,
+    "hop_cell": 42,
+    "end_cell": 43,
+    "pivot_value": 33,
+    "pivot_printable": true,
+    "opcode_at_pivot": 74,
+    "expected_halt": false,
+    "length": 44,
+    "sha256": "87c66b9b7c44c22fa0c1d052813be13a9c273bc2da742abc72b226a89e3d51bc",
+    "printable": true
+  },
+  "control_seed_126": {
+    "mode": "seed_only",
+    "seed_at_pivot": 126,
+    "pivot_cell": 41,
+    "hop_cell": 42,
+    "end_cell": 43,
+    "pivot_value": 126,
+    "pivot_printable": true,
+    "opcode_at_pivot": 73,
+    "expected_halt": false,
+    "length": 44,
+    "sha256": "af72fcd4d8b343a407bfdfe1bad3b872caec8e6091f85d83c9f1bc37443c9375",
+    "printable": true
+  }
+}

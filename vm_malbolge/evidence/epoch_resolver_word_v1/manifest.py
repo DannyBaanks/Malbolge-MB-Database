@@ -51,7 +51,12 @@ CLAIMS = [
              "agree, and a runtime-written JMP target works in that runner "
              "(control program, 29429 steps, both engines agree)",
      "status": "DEMONSTRATED"},
-    {"text": "the C runner divergence root cause", "status": "NOT_DEMONSTRATED"},
+    {"text": "the C runner divergence root cause: vm_run halts BEFORE decoding "
+             "when mem[pc] is outside 33..126, so the runner refuses to "
+             "execute the 10-trit payload held by the epoch cell; the halt "
+             "step predicted from the oracle trace matches the C step count "
+             "exactly in all four instances (closed in c_printable_guard_v1)",
+     "status": "DEMONSTRATED"},
     {"text": "a payload chosen by the request (today the payload is fixed and "
              "only the epoch is chosen by the stdin byte) and the rearm of the "
              "epoch cell for a second request in the same run",

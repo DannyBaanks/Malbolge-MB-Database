@@ -1,0 +1,11 @@
+[integrity] {"guard_high": {"ok": true, "len": 44}, "guard_low": {"ok": true, "len": 44}, "control_seed_33": {"ok": true, "len": 44}, "control_seed_126": {"ok": true, "len": 44}}
+[minimal] guard_high           pivote= 29524 imprimible=False pasos(traza)=6 primer_no_imprimible=4 C=4 pasos (predicho 4) coincide=True
+[minimal] guard_low            pivote=     0 imprimible=False pasos(traza)=8 primer_no_imprimible=6 C=6 pasos (predicho 6) coincide=True
+[minimal] control_seed_33      pivote=    33 imprimible=True  pasos(traza)=6 primer_no_imprimible=None C=6 pasos (predicho 6) coincide=True
+[minimal] control_seed_126     pivote=   126 imprimible=True  pasos(traza)=6 primer_no_imprimible=None C=6 pasos (predicho 6) coincide=True
+[replay]  resolver_word          primer_no_imprimible pc=100 byte=29797 en paso 276 | C para en 276 (predicho 276) coincide=True
+[replay]  resolver_word_dynamic  primer_no_imprimible pc=100 byte=29797 en paso 273 | C para en 273 (predicho 273) coincide=True
+[replay]  mutant_mask_121        primer_no_imprimible pc=100 byte=29311 en paso 272 | C para en 272 (predicho 272) coincide=True
+[replay]  mutant_wrong_payload   primer_no_imprimible pc=100 byte=29554 en paso 176 | C para en 176 (predicho 176) coincide=True
+[verdict] {"guards_halt_the_c_runner": true, "printable_controls_run_to_end": true, "resolver_divergence_explained": true, "two_python_engines_agree": true}
+[verdict] all_checks_pass = True

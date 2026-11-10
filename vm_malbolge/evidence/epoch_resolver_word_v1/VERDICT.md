@@ -80,3 +80,19 @@ python3 vm_malbolge/evidence/epoch_resolver_word_v1/probe.py    # exit 0
   elige el byte de stdin);
 * rearrm de la época para una segunda petición en la misma ejecución;
 * la divergencia del runner C en la fase final.
+
+## Actualización (2026-11-10) — causa raíz de la divergencia del runner C
+
+El tercer punto queda cerrado por `c_printable_guard_v1`. No es una divergencia
+semántica: `vm_run` del runner C comprueba que `mem[pc] ∈ 33..126` **antes de
+decodificar** y termina si no lo es (`1cd4`–`1cda` → `HALT`). El pc aterriza en
+`T = 100` con el payload de 10 trits, que no es imprimible, así que el C para
+ahí sin emitir.
+
+Medido en ese pack: el paso en que el oráculo entra por primera vez en una celda
+no imprimible predice el contador del C **exacto** en las cuatro instancias de
+este pack (276, 273, 272 y 176), y dos programas mínimos que aterrizan con
+`29524` y con `0` paran en el paso predicho, mientras sus controles con `33` y
+`126` recorren el programa entero.
+
+Los puntos 1 y 2 siguen abiertos.
