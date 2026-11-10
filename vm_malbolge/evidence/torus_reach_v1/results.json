@@ -1,0 +1,1794 @@
+{
+  "pack": "torus_reach_v1",
+  "python": "3.12.3",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "sections": {
+    "spec": {
+      "ternary_35": {
+        "trits": [
+          2,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": [
+          2,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "value_check": true,
+        "digits_string": "0000001022"
+      },
+      "crazy_trit_pairs": {
+        "(0,0)": {
+          "result": 29524,
+          "table_entry": 1,
+          "matches_table": true
+        },
+        "(0,1)": {
+          "result": 29524,
+          "table_entry": 1,
+          "matches_table": true
+        },
+        "(0,2)": {
+          "result": 59048,
+          "table_entry": 2,
+          "matches_table": true
+        },
+        "(1,0)": {
+          "result": 0,
+          "table_entry": 0,
+          "matches_table": true
+        },
+        "(1,1)": {
+          "result": 0,
+          "table_entry": 0,
+          "matches_table": true
+        },
+        "(1,2)": {
+          "result": 59048,
+          "table_entry": 2,
+          "matches_table": true
+        },
+        "(2,0)": {
+          "result": 0,
+          "table_entry": 0,
+          "matches_table": true
+        },
+        "(2,1)": {
+          "result": 59048,
+          "table_entry": 2,
+          "matches_table": true
+        },
+        "(2,2)": {
+          "result": 29524,
+          "table_entry": 1,
+          "matches_table": true
+        }
+      },
+      "crazy_random": {
+        "checked": 200000,
+        "mismatches_vs_repo_oracle": 0
+      },
+      "rot_exhaustive": {
+        "checked": 59049,
+        "mismatches": 0
+      },
+      "rot_order10": {
+        "checked": 61,
+        "mismatches": 0
+      },
+      "crazy_vs_native_classic": {
+        "checked": 50000,
+        "mismatches": 0
+      },
+      "fixed_vectors": {
+        "rows": 100,
+        "all_agree": true,
+        "rows_data": [
+          {
+            "a": 0,
+            "d": 0,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 1,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 2,
+            "spec": 29525,
+            "repo_oracle": 29525,
+            "native_classic": 29525,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 33,
+            "spec": 29527,
+            "repo_oracle": 29527,
+            "native_classic": 29527,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 54,
+            "spec": 29551,
+            "repo_oracle": 29551,
+            "native_classic": 29551,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 80,
+            "spec": 29564,
+            "repo_oracle": 29564,
+            "native_classic": 29564,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 121,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 242,
+            "spec": 29645,
+            "repo_oracle": 29645,
+            "native_classic": 29645,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 29524,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 0,
+            "d": 59048,
+            "spec": 59048,
+            "repo_oracle": 59048,
+            "native_classic": 59048,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 0,
+            "spec": 29523,
+            "repo_oracle": 29523,
+            "native_classic": 29523,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 1,
+            "spec": 29523,
+            "repo_oracle": 29523,
+            "native_classic": 29523,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 2,
+            "spec": 29525,
+            "repo_oracle": 29525,
+            "native_classic": 29525,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 33,
+            "spec": 29526,
+            "repo_oracle": 29526,
+            "native_classic": 29526,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 54,
+            "spec": 29550,
+            "repo_oracle": 29550,
+            "native_classic": 29550,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 80,
+            "spec": 29564,
+            "repo_oracle": 29564,
+            "native_classic": 29564,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 121,
+            "spec": 29523,
+            "repo_oracle": 29523,
+            "native_classic": 29523,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 242,
+            "spec": 29645,
+            "repo_oracle": 29645,
+            "native_classic": 29645,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 29524,
+            "spec": 29523,
+            "repo_oracle": 29523,
+            "native_classic": 29523,
+            "agree": true
+          },
+          {
+            "a": 1,
+            "d": 59048,
+            "spec": 59048,
+            "repo_oracle": 59048,
+            "native_classic": 59048,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 0,
+            "spec": 29523,
+            "repo_oracle": 29523,
+            "native_classic": 29523,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 1,
+            "spec": 29525,
+            "repo_oracle": 29525,
+            "native_classic": 29525,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 2,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 33,
+            "spec": 29526,
+            "repo_oracle": 29526,
+            "native_classic": 29526,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 54,
+            "spec": 29550,
+            "repo_oracle": 29550,
+            "native_classic": 29550,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 80,
+            "spec": 29563,
+            "repo_oracle": 29563,
+            "native_classic": 29563,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 121,
+            "spec": 29525,
+            "repo_oracle": 29525,
+            "native_classic": 29525,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 242,
+            "spec": 29644,
+            "repo_oracle": 29644,
+            "native_classic": 29644,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 29524,
+            "spec": 29525,
+            "repo_oracle": 29525,
+            "native_classic": 29525,
+            "agree": true
+          },
+          {
+            "a": 2,
+            "d": 59048,
+            "spec": 59047,
+            "repo_oracle": 59047,
+            "native_classic": 59047,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 0,
+            "spec": 29494,
+            "repo_oracle": 29494,
+            "native_classic": 29494,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 1,
+            "spec": 29494,
+            "repo_oracle": 29494,
+            "native_classic": 29494,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 2,
+            "spec": 29495,
+            "repo_oracle": 29495,
+            "native_classic": 29495,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 33,
+            "spec": 29497,
+            "repo_oracle": 29497,
+            "native_classic": 29497,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 54,
+            "spec": 29548,
+            "repo_oracle": 29548,
+            "native_classic": 29548,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 80,
+            "spec": 29561,
+            "repo_oracle": 29561,
+            "native_classic": 29561,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 121,
+            "spec": 29500,
+            "repo_oracle": 29500,
+            "native_classic": 29500,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 242,
+            "spec": 29642,
+            "repo_oracle": 29642,
+            "native_classic": 29642,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 29524,
+            "spec": 29500,
+            "repo_oracle": 29500,
+            "native_classic": 29500,
+            "agree": true
+          },
+          {
+            "a": 33,
+            "d": 59048,
+            "spec": 59045,
+            "repo_oracle": 59045,
+            "native_classic": 59045,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 0,
+            "spec": 29497,
+            "repo_oracle": 29497,
+            "native_classic": 29497,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 1,
+            "spec": 29497,
+            "repo_oracle": 29497,
+            "native_classic": 29497,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 2,
+            "spec": 29498,
+            "repo_oracle": 29498,
+            "native_classic": 29498,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 33,
+            "spec": 29554,
+            "repo_oracle": 29554,
+            "native_classic": 29554,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 54,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 80,
+            "spec": 29537,
+            "repo_oracle": 29537,
+            "native_classic": 29537,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 121,
+            "spec": 29551,
+            "repo_oracle": 29551,
+            "native_classic": 29551,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 242,
+            "spec": 29618,
+            "repo_oracle": 29618,
+            "native_classic": 29618,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 29524,
+            "spec": 29551,
+            "repo_oracle": 29551,
+            "native_classic": 29551,
+            "agree": true
+          },
+          {
+            "a": 54,
+            "d": 59048,
+            "spec": 59021,
+            "repo_oracle": 59021,
+            "native_classic": 59021,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 0,
+            "spec": 29484,
+            "repo_oracle": 29484,
+            "native_classic": 29484,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 1,
+            "spec": 29486,
+            "repo_oracle": 29486,
+            "native_classic": 29486,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 2,
+            "spec": 29485,
+            "repo_oracle": 29485,
+            "native_classic": 29485,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 33,
+            "spec": 29541,
+            "repo_oracle": 29541,
+            "native_classic": 29541,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 54,
+            "spec": 29511,
+            "repo_oracle": 29511,
+            "native_classic": 29511,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 80,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 121,
+            "spec": 29564,
+            "repo_oracle": 29564,
+            "native_classic": 29564,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 242,
+            "spec": 29605,
+            "repo_oracle": 29605,
+            "native_classic": 29605,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 29524,
+            "spec": 29564,
+            "repo_oracle": 29564,
+            "native_classic": 29564,
+            "agree": true
+          },
+          {
+            "a": 80,
+            "d": 59048,
+            "spec": 59008,
+            "repo_oracle": 59008,
+            "native_classic": 59008,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 0,
+            "spec": 29403,
+            "repo_oracle": 29403,
+            "native_classic": 29403,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 1,
+            "spec": 29403,
+            "repo_oracle": 29403,
+            "native_classic": 29403,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 2,
+            "spec": 29405,
+            "repo_oracle": 29405,
+            "native_classic": 29405,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 33,
+            "spec": 29409,
+            "repo_oracle": 29409,
+            "native_classic": 29409,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 54,
+            "spec": 29457,
+            "repo_oracle": 29457,
+            "native_classic": 29457,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 80,
+            "spec": 29483,
+            "repo_oracle": 29483,
+            "native_classic": 29483,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 121,
+            "spec": 29403,
+            "repo_oracle": 29403,
+            "native_classic": 29403,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 242,
+            "spec": 29645,
+            "repo_oracle": 29645,
+            "native_classic": 29645,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 29524,
+            "spec": 29403,
+            "repo_oracle": 29403,
+            "native_classic": 29403,
+            "agree": true
+          },
+          {
+            "a": 121,
+            "d": 59048,
+            "spec": 59048,
+            "repo_oracle": 59048,
+            "native_classic": 59048,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 0,
+            "spec": 29403,
+            "repo_oracle": 29403,
+            "native_classic": 29403,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 1,
+            "spec": 29405,
+            "repo_oracle": 29405,
+            "native_classic": 29405,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 2,
+            "spec": 29404,
+            "repo_oracle": 29404,
+            "native_classic": 29404,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 33,
+            "spec": 29460,
+            "repo_oracle": 29460,
+            "native_classic": 29460,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 54,
+            "spec": 29430,
+            "repo_oracle": 29430,
+            "native_classic": 29430,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 80,
+            "spec": 29443,
+            "repo_oracle": 29443,
+            "native_classic": 29443,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 121,
+            "spec": 29645,
+            "repo_oracle": 29645,
+            "native_classic": 29645,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 242,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 29524,
+            "spec": 29645,
+            "repo_oracle": 29645,
+            "native_classic": 29645,
+            "agree": true
+          },
+          {
+            "a": 242,
+            "d": 59048,
+            "spec": 58927,
+            "repo_oracle": 58927,
+            "native_classic": 58927,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 0,
+            "spec": 0,
+            "repo_oracle": 0,
+            "native_classic": 0,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 1,
+            "spec": 0,
+            "repo_oracle": 0,
+            "native_classic": 0,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 2,
+            "spec": 2,
+            "repo_oracle": 2,
+            "native_classic": 2,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 33,
+            "spec": 6,
+            "repo_oracle": 6,
+            "native_classic": 6,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 54,
+            "spec": 54,
+            "repo_oracle": 54,
+            "native_classic": 54,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 80,
+            "spec": 80,
+            "repo_oracle": 80,
+            "native_classic": 80,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 121,
+            "spec": 0,
+            "repo_oracle": 0,
+            "native_classic": 0,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 242,
+            "spec": 242,
+            "repo_oracle": 242,
+            "native_classic": 242,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 29524,
+            "spec": 0,
+            "repo_oracle": 0,
+            "native_classic": 0,
+            "agree": true
+          },
+          {
+            "a": 29524,
+            "d": 59048,
+            "spec": 59048,
+            "repo_oracle": 59048,
+            "native_classic": 59048,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 0,
+            "spec": 0,
+            "repo_oracle": 0,
+            "native_classic": 0,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 1,
+            "spec": 2,
+            "repo_oracle": 2,
+            "native_classic": 2,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 2,
+            "spec": 1,
+            "repo_oracle": 1,
+            "native_classic": 1,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 33,
+            "spec": 57,
+            "repo_oracle": 57,
+            "native_classic": 57,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 54,
+            "spec": 27,
+            "repo_oracle": 27,
+            "native_classic": 27,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 80,
+            "spec": 40,
+            "repo_oracle": 40,
+            "native_classic": 40,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 121,
+            "spec": 242,
+            "repo_oracle": 242,
+            "native_classic": 242,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 242,
+            "spec": 121,
+            "repo_oracle": 121,
+            "native_classic": 121,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 29524,
+            "spec": 59048,
+            "repo_oracle": 59048,
+            "native_classic": 59048,
+            "agree": true
+          },
+          {
+            "a": 59048,
+            "d": 59048,
+            "spec": 29524,
+            "repo_oracle": 29524,
+            "native_classic": 29524,
+            "agree": true
+          }
+        ]
+      },
+      "verdict": true
+    },
+    "solver": {
+      "lemmas_trit_exhaustive": {
+        "cases": [
+          {
+            "a_trit": 0,
+            "d_trit": 0,
+            "result": 29524,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 0,
+            "d_trit": 1,
+            "result": 29524,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 0,
+            "d_trit": 2,
+            "result": 59048,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 1,
+            "d_trit": 0,
+            "result": 0,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 1,
+            "d_trit": 1,
+            "result": 0,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 1,
+            "d_trit": 2,
+            "result": 59048,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 2,
+            "d_trit": 0,
+            "result": 0,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 2,
+            "d_trit": 1,
+            "result": 59048,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          },
+          {
+            "a_trit": 2,
+            "d_trit": 2,
+            "result": 29524,
+            "L1": true,
+            "L2": true,
+            "L3": true
+          }
+        ],
+        "all_ok": true
+      },
+      "lemmas_random_words": {
+        "checked": 200000,
+        "mismatches": {
+          "L1": 0,
+          "L2": 0,
+          "L3": 0,
+          "L1c": 0
+        }
+      },
+      "rot_permutes_positions": {
+        "checked": 59049,
+        "mismatches": 0
+      },
+      "witnesses": {
+        "printable_without_trit1": [
+          54,
+          56,
+          60,
+          62,
+          72,
+          74,
+          78,
+          80
+        ],
+        "w_29524": {
+          "target": 29524,
+          "value": 29524,
+          "steps": 3,
+          "ok": true,
+          "ops": [
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 0
+            },
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 1
+            },
+            {
+              "op": "CRAZY",
+              "a": 0,
+              "d": 1,
+              "dst": 2
+            }
+          ]
+        },
+        "w_0": {
+          "target": 0,
+          "value": 0,
+          "steps": 6,
+          "ok": true,
+          "ops": [
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 0
+            },
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 1
+            },
+            {
+              "op": "CRAZY",
+              "a": 0,
+              "d": 1,
+              "dst": 2
+            },
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 3
+            },
+            {
+              "op": "CRAZY",
+              "a": 3,
+              "d": 3,
+              "dst": 4
+            },
+            {
+              "op": "CRAZY",
+              "a": 2,
+              "d": 4,
+              "dst": 5
+            }
+          ]
+        },
+        "w_P": {
+          "target": "P_p = 2 en p, 0 fuera",
+          "positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "steps": 11,
+          "ok": true,
+          "cells": {
+            "3": 54,
+            "2": 18,
+            "1": 6,
+            "0": 2,
+            "9": 39366,
+            "8": 13122,
+            "7": 4374,
+            "6": 1458,
+            "5": 486,
+            "4": 162
+          },
+          "independent_replay_all": true
+        },
+        "w_Q_U_induction": {
+          "subsets": 1023,
+          "mismatches": [],
+          "all_ok": true,
+          "steps": 2060
+        },
+        "w_F_induction": {
+          "subsets": 1023,
+          "mismatches": [],
+          "all_ok": true,
+          "steps": 3084
+        },
+        "w_general": {
+          "checked": 209,
+          "mismatches": [],
+          "all_ok": true
+        },
+        "w_59048": {
+          "target": 59048,
+          "value": 59048,
+          "steps": 1038,
+          "ok": true,
+          "sequence_summary": "29524=crazy(54,54); Q_all por inducción (10 CRazys con P_p); 59048=crazy(29524,Q_all)"
+        },
+        "w_59048_compact": {
+          "target": 59048,
+          "value": 59048,
+          "steps": 7,
+          "ok": true,
+          "precondition": "un byte de stdin puede colocarse en una celda (escritura exacta de bytes, demostrada en epoch_algebra_v3)"
+        },
+        "w_59048_vm": {
+          "target": 59048,
+          "value": 59048,
+          "steps": 10,
+          "ok": true,
+          "summary": "escritura exacta de byte (v3) + 5 ROT + crazy(54,54) + crazy(58806,29645)",
+          "ops": [
+            {
+              "op": "IMG",
+              "byte": 121,
+              "dst": 0
+            },
+            {
+              "op": "IMG",
+              "byte": 121,
+              "dst": 1
+            },
+            {
+              "op": "IN",
+              "byte": 242,
+              "dst": 2
+            },
+            {
+              "op": "CRAZY",
+              "a": 2,
+              "d": 0,
+              "dst": 3
+            },
+            {
+              "op": "CRAZY",
+              "a": 3,
+              "d": 1,
+              "dst": 4
+            },
+            {
+              "op": "ROT",
+              "src": 4,
+              "n": 5,
+              "dst": 5
+            },
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 6
+            },
+            {
+              "op": "IMG",
+              "byte": 54,
+              "dst": 7
+            },
+            {
+              "op": "CRAZY",
+              "a": 6,
+              "d": 7,
+              "dst": 8
+            },
+            {
+              "op": "CRAZY",
+              "a": 5,
+              "d": 3,
+              "dst": 9
+            }
+          ]
+        },
+        "closed_component_0_29524": {
+          "closed": true,
+          "cases": [
+            {
+              "a": 0,
+              "d": 0,
+              "crazy": 29524,
+              "inside": true
+            },
+            {
+              "a": 29524,
+              "d": 0,
+              "crazy": 0,
+              "inside": true
+            },
+            {
+              "a": null,
+              "d": 0,
+              "rot": 0,
+              "inside": true
+            },
+            {
+              "a": 0,
+              "d": 29524,
+              "crazy": 29524,
+              "inside": true
+            },
+            {
+              "a": 29524,
+              "d": 29524,
+              "crazy": 0,
+              "inside": true
+            },
+            {
+              "a": null,
+              "d": 29524,
+              "rot": 29524,
+              "inside": true
+            }
+          ],
+          "explanation": "closure({0}) = {0, 29524}: crazy(0,0)=29524 y el par es cerrado bajo crazy/rot con operandos dentro del par"
+        },
+        "bfs": {
+          "forward_levels_sizes": [
+            256,
+            13086,
+            16052,
+            1390
+          ],
+          "results": {
+            "29524": {
+              "depth": 1,
+              "meet_word": 0,
+              "forward_depth": 0,
+              "backward_depth": 1,
+              "note": "camino encontrado por encuentro de niveles; reconstrucción exacta en el solver constructivo"
+            },
+            "59048": {
+              "depth": 2,
+              "meet_word": 29645,
+              "forward_depth": 1,
+              "backward_depth": 1,
+              "note": "camino encontrado por encuentro de niveles; reconstrucción exacta en el solver constructivo"
+            },
+            "0": {
+              "depth": 0,
+              "path": [
+                {
+                  "op": "INIT",
+                  "value": 0
+                }
+              ]
+            },
+            "121": {
+              "depth": 0,
+              "path": [
+                {
+                  "op": "INIT",
+                  "value": 121
+                }
+              ]
+            },
+            "242": {
+              "depth": 0,
+              "path": [
+                {
+                  "op": "INIT",
+                  "value": 242
+                }
+              ]
+            },
+            "58806": {
+              "depth": 2,
+              "meet_word": 58806,
+              "forward_depth": 1,
+              "backward_depth": 1,
+              "note": "camino encontrado por encuentro de niveles; reconstrucción exacta en el solver constructivo"
+            },
+            "29645": {
+              "depth": 1,
+              "meet_word": 121,
+              "forward_depth": 0,
+              "backward_depth": 1,
+              "note": "camino encontrado por encuentro de niveles; reconstrucción exacta en el solver constructivo"
+            }
+          },
+          "targets": [
+            "29524",
+            "59048",
+            "0",
+            "121",
+            "242",
+            "58806",
+            "29645"
+          ]
+        }
+      },
+      "mask_upgrade": {
+        "mask_29524_involutive_words": 59049,
+        "mask_29524_total": 59049,
+        "mask_121_involutive_words": 7776,
+        "mask_121_predicted": 7776,
+        "mask_121_first_counterexample": 486,
+        "mask_121_counterexample_trits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "upgrade_ratio": 1.0,
+        "v3_byte_write_ratio": 0.13168724279835392
+      },
+      "distance_probe": {
+        "sample": 5000,
+        "max_depth": 4,
+        "level_cap": 250000,
+        "histogram": {
+          "0": 1,
+          "1": 2315,
+          "2": 2684,
+          "3": 0,
+          "4": 0
+        },
+        "not_found": 0,
+        "not_found_examples": [],
+        "backward_level_sizes": [
+          1,
+          26943,
+          32105,
+          0,
+          0
+        ],
+        "interpretation": "salvo el sumidero {0,29524}, una muestra aleatoria alcanza 29524 (y por tanto 59048) en pocos pasos; los niveles hacia atrás están capados, así que 'not_found' no es prueba de inalcanzabilidad"
+      }
+    },
+    "solver_ok": true,
+    "fill": {
+      "targets": [
+        {
+          "far": 1200,
+          "length": 1203,
+          "printable": true,
+          "fill_value_at_far": 84,
+          "pred_zero_fill": 84,
+          "pred_crazy_fill": 84,
+          "trace_out": "54",
+          "trace_status": "HALTED",
+          "oracle_out": "54",
+          "oracle_status": "HALTED",
+          "c_out": "540a",
+          "c_out_norm": "54",
+          "c_exit": 0,
+          "c_matches_zero": true,
+          "c_matches_crazy": true,
+          "trace_matches_oracle": true,
+          "c_matches_oracle": true
+        },
+        {
+          "far": 1300,
+          "length": 1303,
+          "printable": true,
+          "fill_value_at_far": 78,
+          "pred_zero_fill": 84,
+          "pred_crazy_fill": 123,
+          "trace_out": "7b",
+          "trace_status": "HALTED",
+          "oracle_out": "7b",
+          "oracle_status": "HALTED",
+          "c_out": "7b0a",
+          "c_out_norm": "7b",
+          "c_exit": 0,
+          "c_matches_zero": false,
+          "c_matches_crazy": true,
+          "trace_matches_oracle": true,
+          "c_matches_oracle": true
+        },
+        {
+          "far": 1294,
+          "length": 1297,
+          "printable": true,
+          "fill_value_at_far": 84,
+          "pred_zero_fill": 84,
+          "pred_crazy_fill": 84,
+          "trace_out": "54",
+          "trace_status": "HALTED",
+          "oracle_out": "54",
+          "oracle_status": "HALTED",
+          "c_out": "540a",
+          "c_out_norm": "54",
+          "c_exit": 0,
+          "c_matches_zero": true,
+          "c_matches_crazy": true,
+          "trace_matches_oracle": true,
+          "c_matches_oracle": true
+        },
+        {
+          "far": 58000,
+          "length": 58003,
+          "printable": true,
+          "fill_value_at_far": 60,
+          "pred_zero_fill": 84,
+          "pred_crazy_fill": 114,
+          "trace_out": "72",
+          "trace_status": "HALTED",
+          "oracle_out": "72",
+          "oracle_status": "HALTED",
+          "c_out": "720a",
+          "c_out_norm": "72",
+          "c_exit": 0,
+          "c_matches_zero": false,
+          "c_matches_crazy": true,
+          "trace_matches_oracle": true,
+          "c_matches_oracle": true
+        },
+        {
+          "far": 58900,
+          "length": 58903,
+          "printable": true,
+          "fill_value_at_far": 100,
+          "pred_zero_fill": 84,
+          "pred_crazy_fill": 93,
+          "trace_out": "5d",
+          "trace_status": "HALTED",
+          "oracle_out": "5d",
+          "oracle_status": "HALTED",
+          "c_out": "5d0a",
+          "c_out_norm": "5d",
+          "c_exit": 0,
+          "c_matches_zero": false,
+          "c_matches_crazy": true,
+          "trace_matches_oracle": true,
+          "c_matches_oracle": true
+        }
+      ],
+      "verdict": true
+    },
+    "fill_ok": true,
+    "mutants": {
+      "mutants": {
+        "M1_crz_table_altered": {
+          "program_meta": {
+            "kind": "CRAZY",
+            "length": 41,
+            "cell40": 33
+          },
+          "true_prediction": 57,
+          "mutant_prediction": 84,
+          "oracle_out": "39",
+          "c_out": "390a",
+          "c_out_norm": "39",
+          "c_exit": 0,
+          "native_agrees_with_true": true,
+          "native_agrees_with_mutant": false,
+          "mutant_refuted": true
+        },
+        "M2_rot_wrong_direction": {
+          "program_meta": {
+            "kind": "ROT",
+            "length": 41,
+            "cell40": 33
+          },
+          "true_prediction": 11,
+          "mutant_prediction": 99,
+          "oracle_out": "0b",
+          "c_out": "0b0a",
+          "c_out_norm": "0b",
+          "c_exit": 0,
+          "native_agrees_with_true": true,
+          "native_agrees_with_mutant": false,
+          "mutant_order10_still_identity": true,
+          "mutant_moves_2_other_way": true,
+          "mutant_refuted": true
+        },
+        "M3_ternary_35_error": {
+          "true_trits": [
+            2,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "true_digits": "0000001022",
+          "round_trip_ok": true,
+          "mutant_digits": "1012",
+          "mutant_value": 32,
+          "mutant_value_differs": true,
+          "detected": true
+        },
+        "M4_clandestine_preload": {
+          "legit_steps": 3,
+          "legit_value": 29524,
+          "legit_provenance_ok": true,
+          "cheat_steps": 1,
+          "cheat_value": 59048,
+          "cheat_provenance_ok": false,
+          "detected": true
+        },
+        "M5_position_blind_decoder": {
+          "program": "epoch_algebra_v3/resolver.mb",
+          "stdin": [
+            35,
+            63
+          ],
+          "oracle_out": "3f",
+          "decoder_true_trace": "3f",
+          "decoder_blind_trace": "f9233f",
+          "blind_matches_oracle": false,
+          "true_matches_oracle": true,
+          "detected": true
+        },
+        "M6_write_only_verifier": {
+          "rows": [
+            {
+              "instance": "resolver",
+              "epoch": 36,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "resolver",
+              "epoch": 130,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "resolver",
+              "epoch": 224,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "mutant_residue",
+              "epoch": 36,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "mutant_residue",
+              "epoch": 130,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "mutant_residue",
+              "epoch": 223,
+              "write_exact": true,
+              "out_at_epoch": false,
+              "write_only_verdict": true,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_journal",
+              "epoch": 36,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_journal",
+              "epoch": 130,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_journal",
+              "epoch": 224,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_pointer",
+              "epoch": 36,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_pointer",
+              "epoch": 130,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_pointer",
+              "epoch": 224,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_mask",
+              "epoch": 36,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "mutant_mask",
+              "epoch": 130,
+              "write_exact": true,
+              "out_at_epoch": true,
+              "write_only_verdict": true,
+              "full_verdict": true
+            },
+            {
+              "instance": "mutant_mask",
+              "epoch": 224,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_target",
+              "epoch": 36,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_target",
+              "epoch": 130,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            },
+            {
+              "instance": "mutant_target",
+              "epoch": 224,
+              "write_exact": false,
+              "out_at_epoch": false,
+              "write_only_verdict": false,
+              "full_verdict": false
+            }
+          ],
+          "false_positive_case": {
+            "instance": "mutant_residue",
+            "epoch": 223,
+            "write_exact": true,
+            "out_at_epoch": false,
+            "write_only_verdict": true,
+            "full_verdict": false
+          },
+          "detected": true
+        }
+      },
+      "verdict": true
+    },
+    "mutants_ok": true
+  },
+  "claims": {
+    "C01": {
+      "text": "La semántica de crazy/rot usada coincide con el oráculo del repo, con native_classic y con el runner C original.",
+      "status": "DEMONSTRATED",
+      "evidence": "diferencial spec vs oráculo (200k) vs native_classic (50k); vectores fijos 3 impls; M1/M2 contra el runner C"
+    },
+    "C02": {
+      "text": "35 = 1022_3: trits pos0=2, pos1=2, pos2=0, pos3=1 (autocontrol).",
+      "status": "DEMONSTRATED",
+      "evidence": "round-trip decimal<->ternario y descomposición de 35 = [2,2,0,1,0,...]"
+    },
+    "C03": {
+      "text": "Lema de creación de 2: D(crazy(a,v)) ⊆ D(a) U D(v). Un trit 2 no aparece donde ningún operando tenía un 2.",
+      "status": "DEMONSTRATED",
+      "evidence": "enumeración exhaustiva de los 9 pares de trits (prueba completa por-trit) + 200k palabras"
+    },
+    "C04": {
+      "text": "ROT permuta posiciones (ciclo Z_10) y rot^10 = identidad.",
+      "status": "DEMONSTRATED",
+      "evidence": "exhaustivo sobre las 59049 palabras"
+    },
+    "C05": {
+      "text": "{0, 29524} es componente cerrada bajo el operador restringido.",
+      "status": "DEMONSTRATED",
+      "evidence": "las 4 combinaciones crazy y las 2 rotaciones sobre el par quedan dentro del par; con máscaras externas 0 deja de ser sumidero"
+    },
+    "C06": {
+      "text": "29524 = crazy(54, 54) con 54 imprimible; hay 8 imprimibles sin ningún trit 1.",
+      "status": "DEMONSTRATED",
+      "evidence": "testigo verificado; imprimibles sin trit 1 = [54, 56, 60, 62, 72, 74, 78, 80]"
+    },
+    "C07": {
+      "text": "0 = crazy(29524, 29524).",
+      "status": "DEMONSTRATED",
+      "evidence": "testigo verificado por replay independiente"
+    },
+    "C08": {
+      "text": "Toda palabra de 10 trits es alcanzable desde constantes autorizadas (testigo constructivo).",
+      "status": "DEMONSTRATED",
+      "evidence": "inducción Q/U sobre 1023 subconjuntos, F sobre 1023, fórmula general en 209 palabras; cierre hacia atrás de 29524 = 59049 palabras"
+    },
+    "C09": {
+      "text": "59048 (diez trits iguales a 2) es alcanzable; tres testigos verificados por replay independiente.",
+      "status": "DEMONSTRATED",
+      "evidence": "constructivo (1038 pasos), compacto (7), fiel a la VM (10); todos con replay independiente"
+    },
+    "C10": {
+      "text": "La búsqueda más corta (encuentro de niveles) halla 59048 en 2 operaciones con la biblioteca declarada.",
+      "status": "DEMONSTRATED",
+      "evidence": "profundidad hallada: 2 (biblioteca declarada)"
+    },
+    "C11": {
+      "text": "El relleno de memoria más allá del programa es crazy-fill en el runner C, no relleno con cero.",
+      "status": "DEMONSTRATED",
+      "evidence": "5 direcciones, 3 motores coinciden; predicción crazy-fill acertada, predicción cero-fill refutada en 3 casos"
+    },
+    "C12": {
+      "text": "La máscara 121 de v3 es involutiva en 7776/59049 palabras; 29524 lo es en las 59049.",
+      "status": "DEMONSTRATED",
+      "evidence": "exhaustivo sobre las 59049 palabras; 7776 = 3^5 * 2^5"
+    },
+    "C13": {
+      "text": "La primitiva de escritura exacta de bytes (pack epoch_algebra_v3) válida y reutilizada aquí.",
+      "status": "DEMONSTRATED",
+      "evidence": "epoch_algebra_v3: 768 escrituras exactas, 3 motores; reutilizado como primitiva en los testigos fieles a la VM"
+    },
+    "C14": {
+      "text": "El relleno crazy-fill NO proporciona celdas cero gratuitas: la palabra 0 debe construirse.",
+      "status": "DEMONSTRATED",
+      "evidence": "el relleno crazy no produce celdas cero; 0 se construye con crazy(29524,29524)"
+    },
+    "C15": {
+      "text": "Imposibilidad de sintetizar constantes de 10 trits.",
+      "status": "DESTROYED",
+      "evidence": "contraejemplo ejecutable: los testigos de 59048 y de la fórmula general"
+    },
+    "C16": {
+      "text": "Topología toroidal que impide alcanzar patrones.",
+      "status": "DESTROYED",
+      "evidence": "distancia a 29524 <= 2 en una muestra de 5000 palabras (histograma {0: 1, 1: 2315, 2: 2684, 3: 0, 4: 0}); cierre hacia atrás completo"
+    },
+    "C17": {
+      "text": "Programa Classic Malbolge autónomo (sin stdin) que construye 59048.",
+      "status": "NOT_DEMONSTRATED",
+      "evidence": "este pack mide álgebra, relleno y controles; la imagen nativa autónoma es el experimento acotado siguiente"
+    },
+    "C18": {
+      "text": "El resolvedor de épocas con payload de palabra completa (máscara 29524) ejecutándose en la VM nativa.",
+      "status": "NOT_DEMONSTRATED",
+      "evidence": "precondiciones identificadas (colocar byte en celda, recargar a = 29524); ejecución nativa pendiente"
+    }
+  },
+  "verdict_all_checks_pass": true
+}

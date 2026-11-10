@@ -1,0 +1,40 @@
+=== 1. spec (diferenciales de semántica) ===
+[spec] ok = True
+=== 2. solver (álgebra de alcanzabilidad) ===
+[solver] ok = True
+=== 3. fill (relleno de memoria, 3 motores) ===
+[fill] far=1200 len=1203 fill=84 pred_cero=84 pred_crazy=84 trace=54 oracle=54 c=540a (exit 0) c==cero:True c==crazy:True
+[fill] far=1300 len=1303 fill=78 pred_cero=84 pred_crazy=123 trace=7b oracle=7b c=7b0a (exit 0) c==cero:False c==crazy:True
+[fill] far=1294 len=1297 fill=84 pred_cero=84 pred_crazy=84 trace=54 oracle=54 c=540a (exit 0) c==cero:True c==crazy:True
+[fill] far=58000 len=58003 fill=60 pred_cero=84 pred_crazy=114 trace=72 oracle=72 c=720a (exit 0) c==cero:False c==crazy:True
+[fill] far=58900 len=58903 fill=100 pred_cero=84 pred_crazy=93 trace=5d oracle=5d c=5d0a (exit 0) c==cero:False c==crazy:True
+[fill] ok = True
+=== 4. mutants (controles) ===
+[M1] pred verdadera=57 mutante=84 | oráculo=39 C=390a -> mutante refutado=True
+[M2] verdadera=11 mutante=99 | C=0b0a -> refutado=True (orden 10 del mutante=True)
+[M3] 35 = 0000001022_3 (trits [2, 2, 0, 1, 0, 0, 0, 0, 0, 0]); lectura errónea 1012_3 = 32 -> detectado=True
+[M4] testigo legítimo (procedencia ok=True, 3 pasos) vs precargado (procedencia ok=False, 1 pasos) -> detectado=True
+[M5] oráculo=3f decodificador correcto=3f decodificador ciego=f9233f -> detectado=True
+[M6] mutant_residue @223: escritura exacta=True OUT en época=False -> verificador débil acepta=True completo rechaza=True (detectado=True)
+[mutants] ok = True
+=== 5. claims ===
+[claim] C01 DEMONSTRATED     La semántica de crazy/rot usada coincide con el oráculo del repo, con native_classic y con el runner C original.
+[claim] C02 DEMONSTRATED     35 = 1022_3: trits pos0=2, pos1=2, pos2=0, pos3=1 (autocontrol).
+[claim] C03 DEMONSTRATED     Lema de creación de 2: D(crazy(a,v)) ⊆ D(a) U D(v). Un trit 2 no aparece donde ningún operando tenía un 2.
+[claim] C04 DEMONSTRATED     ROT permuta posiciones (ciclo Z_10) y rot^10 = identidad.
+[claim] C05 DEMONSTRATED     {0, 29524} es componente cerrada bajo el operador restringido.
+[claim] C06 DEMONSTRATED     29524 = crazy(54, 54) con 54 imprimible; hay 8 imprimibles sin ningún trit 1.
+[claim] C07 DEMONSTRATED     0 = crazy(29524, 29524).
+[claim] C08 DEMONSTRATED     Toda palabra de 10 trits es alcanzable desde constantes autorizadas (testigo constructivo).
+[claim] C09 DEMONSTRATED     59048 (diez trits iguales a 2) es alcanzable; tres testigos verificados por replay independiente.
+[claim] C10 DEMONSTRATED     La búsqueda más corta (encuentro de niveles) halla 59048 en 2 operaciones con la biblioteca declarada.
+[claim] C11 DEMONSTRATED     El relleno de memoria más allá del programa es crazy-fill en el runner C, no relleno con cero.
+[claim] C12 DEMONSTRATED     La máscara 121 de v3 es involutiva en 7776/59049 palabras; 29524 lo es en las 59049.
+[claim] C13 DEMONSTRATED     La primitiva de escritura exacta de bytes (pack epoch_algebra_v3) válida y reutilizada aquí.
+[claim] C14 DEMONSTRATED     El relleno crazy-fill NO proporciona celdas cero gratuitas: la palabra 0 debe construirse.
+[claim] C15 DESTROYED        Imposibilidad de sintetizar constantes de 10 trits.
+[claim] C16 DESTROYED        Topología toroidal que impide alcanzar patrones.
+[claim] C17 NOT_DEMONSTRATED Programa Classic Malbolge autónomo (sin stdin) que construye 59048.
+[claim] C18 NOT_DEMONSTRATED El resolvedor de épocas con payload de palabra completa (máscara 29524) ejecutándose en la VM nativa.
+[verdict] all_checks_pass = True
+EXIT=0
