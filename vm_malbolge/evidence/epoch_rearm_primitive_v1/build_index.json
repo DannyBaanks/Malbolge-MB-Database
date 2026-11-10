@@ -1,0 +1,233 @@
+{
+  "rearm_primitive": {
+    "mutant": null,
+    "payload1": 242,
+    "payload2": 255,
+    "rots": 1,
+    "rearm": true,
+    "length": 160,
+    "sha256": "efc25922f4511a0a9448cdb3856e61deadf18ef4d48ddcb207256d4563e8e160",
+    "printable": true,
+    "cells": {
+      "S": 41,
+      "X": 44,
+      "A": 45,
+      "B": 46
+    },
+    "plan": {
+      "instructions": 43,
+      "pc_end": 160,
+      "seeds": 11,
+      "hops": 6,
+      "final_d": 49,
+      "final_a": 0,
+      "final_sim": {
+        "0": 40,
+        "41": 29524,
+        "42": 43,
+        "43": 45,
+        "44": 0,
+        "45": 0,
+        "46": 29524,
+        "47": 45,
+        "48": 126,
+        "49": 40,
+        "50": 44
+      },
+      "hops_detail": {
+        "42": 44,
+        "43": 46,
+        "47": 46,
+        "48": 127,
+        "49": 41,
+        "50": 45
+      }
+    },
+    "final_a": 29524,
+    "final_d": 49
+  },
+  "mutant_no_rearm": {
+    "mutant": "mutant_no_rearm",
+    "payload1": 242,
+    "payload2": 255,
+    "rots": 1,
+    "rearm": false,
+    "length": 142,
+    "sha256": "9e96172fb43a1b8c1869b3f5131d5194d02500c751d3f8b3e789b76ea15bb64c",
+    "printable": true,
+    "cells": {
+      "S": 41,
+      "X": 44,
+      "A": 45,
+      "B": 46
+    },
+    "plan": {
+      "instructions": 25,
+      "pc_end": 142,
+      "seeds": 10,
+      "hops": 5,
+      "final_d": 49,
+      "final_a": 0,
+      "final_sim": {
+        "0": 40,
+        "41": 29524,
+        "42": 43,
+        "44": 0,
+        "45": 0,
+        "46": 29524,
+        "47": 45,
+        "48": 126,
+        "49": 40,
+        "50": 44
+      },
+      "hops_detail": {
+        "42": 44,
+        "47": 46,
+        "48": 127,
+        "49": 41,
+        "50": 45
+      }
+    },
+    "final_a": 29524,
+    "final_d": 49
+  },
+  "mutant_reload_wrong": {
+    "mutant": "mutant_reload_wrong",
+    "payload1": 242,
+    "payload2": 255,
+    "rots": 0,
+    "rearm": true,
+    "length": 155,
+    "sha256": "6fe87ca45f4e70172b56eeb7ee5b0d74a8fe51f814057c2656eaa518cc58a0c4",
+    "printable": true,
+    "cells": {
+      "S": 41,
+      "X": 44,
+      "A": 45,
+      "B": 46
+    },
+    "plan": {
+      "instructions": 38,
+      "pc_end": 155,
+      "seeds": 10,
+      "hops": 5,
+      "final_d": 49,
+      "final_a": 0,
+      "final_sim": {
+        "0": 40,
+        "41": 29524,
+        "42": 43,
+        "44": 0,
+        "45": 29524,
+        "46": 0,
+        "47": 45,
+        "48": 126,
+        "49": 44,
+        "50": 44
+      },
+      "hops_detail": {
+        "42": 44,
+        "47": 46,
+        "48": 127,
+        "49": 45,
+        "50": 45
+      }
+    },
+    "final_a": 0,
+    "final_d": 49
+  },
+  "mutant_boot_trit2": {
+    "mutant": "mutant_boot_trit2",
+    "payload1": 242,
+    "payload2": 255,
+    "rots": 1,
+    "rearm": true,
+    "length": 160,
+    "sha256": "93ce750ab65800bd4bead550254535aacc1e3d824a2615feb6ffdbd8faca15d8",
+    "printable": true,
+    "cells": {
+      "S": 41,
+      "X": 44,
+      "A": 45,
+      "B": 46
+    },
+    "plan": {
+      "instructions": 43,
+      "pc_end": 160,
+      "seeds": 11,
+      "hops": 6,
+      "final_d": 49,
+      "final_a": 0,
+      "final_sim": {
+        "0": 40,
+        "41": 49217,
+        "42": 43,
+        "43": 45,
+        "44": 54,
+        "45": 0,
+        "46": 29524,
+        "47": 45,
+        "48": 126,
+        "49": 40,
+        "50": 44
+      },
+      "hops_detail": {
+        "42": 44,
+        "43": 46,
+        "47": 46,
+        "48": 127,
+        "49": 41,
+        "50": 45
+      }
+    },
+    "final_a": 29524,
+    "final_d": 49
+  },
+  "mutant_write_wrong_cell": {
+    "mutant": "mutant_write_wrong_cell",
+    "payload1": 242,
+    "payload2": 255,
+    "rots": 1,
+    "rearm": true,
+    "length": 160,
+    "sha256": "935d69de4e5f61e9433c51739f20c3f9758c1a66536d6f6bc3932a48258e76d6",
+    "printable": true,
+    "cells": {
+      "S": 41,
+      "X": 44,
+      "A": 45,
+      "B": 46
+    },
+    "plan": {
+      "instructions": 43,
+      "pc_end": 160,
+      "seeds": 11,
+      "hops": 6,
+      "final_d": 49,
+      "final_a": 0,
+      "final_sim": {
+        "0": 40,
+        "41": 29524,
+        "42": 43,
+        "43": 45,
+        "44": 0,
+        "45": 0,
+        "46": 29524,
+        "47": 45,
+        "48": 126,
+        "49": 40,
+        "50": 44
+      },
+      "hops_detail": {
+        "42": 44,
+        "43": 46,
+        "47": 46,
+        "48": 127,
+        "49": 41,
+        "50": 45
+      }
+    },
+    "final_a": 29524,
+    "final_d": 49
+  }
+}

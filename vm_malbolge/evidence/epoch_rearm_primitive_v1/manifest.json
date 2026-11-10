@@ -1,0 +1,112 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-10T08:11:28.039298+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_rearm_primitive_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "1adaf84723a8278ce06f24e31b367cc25568a3458d1f2bdcab3036aa2479ec7b"
+    },
+    {
+      "file": "plan.py",
+      "sha256": "7b7a04c4c606cc2ae7cb5a0ec6bf355be86dfc7161340c3f62160a177208e4de"
+    },
+    {
+      "file": "build.py",
+      "sha256": "f8dd9225306a31ed862e4ffe4483b80a90c8b6e3998608728d9a1ada1303bf83"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "5a5ae29dc1d3ff675862685cd14a0702d991a359419cdb305495a5d6a555f54d"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "1eb28af48143ab053bb4bcb13a7676411abae56152b71c90bd28e3b8555625cb"
+    },
+    {
+      "file": "rearm_primitive.mb",
+      "sha256": "efc25922f4511a0a9448cdb3856e61deadf18ef4d48ddcb207256d4563e8e160"
+    },
+    {
+      "file": "mutant_no_rearm.mb",
+      "sha256": "9e96172fb43a1b8c1869b3f5131d5194d02500c751d3f8b3e789b76ea15bb64c"
+    },
+    {
+      "file": "mutant_reload_wrong.mb",
+      "sha256": "6fe87ca45f4e70172b56eeb7ee5b0d74a8fe51f814057c2656eaa518cc58a0c4"
+    },
+    {
+      "file": "mutant_boot_trit2.mb",
+      "sha256": "93ce750ab65800bd4bead550254535aacc1e3d824a2615feb6ffdbd8faca15d8"
+    },
+    {
+      "file": "mutant_write_wrong_cell.mb",
+      "sha256": "935d69de4e5f61e9433c51739f20c3f9758c1a66536d6f6bc3932a48258e76d6"
+    },
+    {
+      "file": "labels.json",
+      "sha256": "032d68fd22d2a4ffbaad080579361d8cc6dfb565b967d3258b83496825be8f9e"
+    },
+    {
+      "file": "build_index.json",
+      "sha256": "69553c7af2f9224adb1063c8a457c2c9f254efec4e4e4abe75f43f54da8e1865"
+    },
+    {
+      "file": "results.json",
+      "sha256": "93d09f52792c5771e8b0246f6c7e39dea0b8c74769600c4a964f0476e54050f5"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "759d1d34e12d80650a4a659cda527c42ee0f381d7ac2fffaedd5846298dfcf28"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/evidence/torus_reach_v1/tr_spec.py": "20de46a0e0d5e32beb8755dfbc7efd54752392c4691771226e80a26c22d69bb1",
+    "vm_malbolge/evidence/epoch_algebra_v3/resolver.mb": "ffb2453a7c9301c16ed14801d7ca91c496ed0db1f2c1b00d689c90bef818a32b"
+  },
+  "claims": [
+    {
+      "text": "two EXACT byte writes in ONE execution (payloads 242 and 255 from stdin, OUT = f2 ff) with the mask cells restored in between",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the rearm works: extract2 then crazy(E,E) brings a consumed mask cell back to 29524 (B = 29524 immediately before the second write)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the reload does not consume the source: 29524 is all 1s and therefore ROT-invariant, so one ROT on S leaves a = 29524 and S intact",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "bootstrap needs no zero cell and no printable involutive mask: a starts at 0 and crazy(0, 36) = 29524 (36 = 1100_3 has no trit 2)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "three-engine agreement (traced repo oracle, repo oracle, original C runner) byte-for-byte on all five instances",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "four negative controls rejected (no rearm, reload from the wrong cell, boot cell with trit 2, write landing on the wrong cell)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "d-routing planner (plan.py) raises on any hop cell that would need two different values; zone split code/data with a JMP",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the swapped-hop mutant that pushed d out of the data zone was dropped: the C runner and the oracle diverge out of contract (unwrapped d), replaced by an in-contract mutant",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "full 10-trit payloads selected by epoch (v3 architecture with the 29524 mask) and a conditional loop instead of unrolled phases",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

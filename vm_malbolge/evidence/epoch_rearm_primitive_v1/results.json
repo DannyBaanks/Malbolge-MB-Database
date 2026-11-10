@@ -1,0 +1,243 @@
+{
+  "integrity": {
+    "rearm_primitive": {
+      "sha256": "efc25922f4511a0a9448cdb3856e61deadf18ef4d48ddcb207256d4563e8e160",
+      "matches_build": true,
+      "length": 160,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_no_rearm": {
+      "sha256": "9e96172fb43a1b8c1869b3f5131d5194d02500c751d3f8b3e789b76ea15bb64c",
+      "matches_build": true,
+      "length": 142,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_reload_wrong": {
+      "sha256": "6fe87ca45f4e70172b56eeb7ee5b0d74a8fe51f814057c2656eaa518cc58a0c4",
+      "matches_build": true,
+      "length": 155,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_boot_trit2": {
+      "sha256": "93ce750ab65800bd4bead550254535aacc1e3d824a2615feb6ffdbd8faca15d8",
+      "matches_build": true,
+      "length": 160,
+      "printable": true,
+      "no_whitespace": true
+    },
+    "mutant_write_wrong_cell": {
+      "sha256": "935d69de4e5f61e9433c51739f20c3f9758c1a66536d6f6bc3932a48258e76d6",
+      "matches_build": true,
+      "length": 160,
+      "printable": true,
+      "no_whitespace": true
+    }
+  },
+  "physical_trace": {
+    "payloads": [
+      242,
+      255
+    ],
+    "writes_A": [
+      {
+        "addr": 45,
+        "old": 36,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 5
+      },
+      {
+        "addr": 45,
+        "old": 29524,
+        "new": 29645,
+        "kind": "crazy",
+        "step": 13
+      },
+      {
+        "addr": 45,
+        "old": 29645,
+        "new": 242,
+        "kind": "crazy",
+        "step": 28
+      },
+      {
+        "addr": 45,
+        "old": 242,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 34
+      },
+      {
+        "addr": 45,
+        "old": 29524,
+        "new": 29269,
+        "kind": "crazy",
+        "step": 40
+      }
+    ],
+    "writes_B": [
+      {
+        "addr": 46,
+        "old": 36,
+        "new": 0,
+        "kind": "crazy",
+        "step": 6
+      },
+      {
+        "addr": 46,
+        "old": 0,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 8
+      },
+      {
+        "addr": 46,
+        "old": 29524,
+        "new": 242,
+        "kind": "crazy",
+        "step": 14
+      },
+      {
+        "addr": 46,
+        "old": 242,
+        "new": 242,
+        "kind": "crazy",
+        "step": 21
+      },
+      {
+        "addr": 46,
+        "old": 242,
+        "new": 29524,
+        "kind": "crazy",
+        "step": 23
+      },
+      {
+        "addr": 46,
+        "old": 29524,
+        "new": 255,
+        "kind": "crazy",
+        "step": 41
+      }
+    ],
+    "A_factory": 29524,
+    "A_after_write1": 29645,
+    "A_final": 29269,
+    "B_factory": 0,
+    "B_write1": 242,
+    "B_final": 255,
+    "S_final": 29524,
+    "out": "f2ff",
+    "expected_out": "f2ff",
+    "steps": 43,
+    "status": "HALTED",
+    "A_before_write2": 29524,
+    "B_before_write2": 29524,
+    "A_restored_before_write2": true,
+    "B_restored_before_write2": true,
+    "write1_exact": true,
+    "write2_exact": true
+  },
+  "engines": {
+    "rearm_primitive": {
+      "instance": "rearm_primitive",
+      "B_before_write2": 29524,
+      "trace_out": "f2ff",
+      "trace_status": "HALTED",
+      "trace_final_A": 29269,
+      "trace_final_B": 255,
+      "oracle_out": "f2ff",
+      "oracle_status": "HALTED",
+      "c_out": "f2ff0a",
+      "c_out_norm": "f2ff",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_no_rearm": {
+      "instance": "mutant_no_rearm",
+      "B_before_write2": 242,
+      "trace_out": "f26c",
+      "trace_status": "HALTED",
+      "trace_final_A": 29402,
+      "trace_final_B": 364,
+      "oracle_out": "f26c",
+      "oracle_status": "HALTED",
+      "c_out": "f26c0a",
+      "c_out_norm": "f26c",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_reload_wrong": {
+      "instance": "mutant_reload_wrong",
+      "B_before_write2": 29484,
+      "trace_out": "f2ff",
+      "trace_status": "HALTED",
+      "trace_final_A": 29269,
+      "trace_final_B": 255,
+      "oracle_out": "f2ff",
+      "oracle_status": "HALTED",
+      "c_out": "f2ff0a",
+      "c_out_norm": "f2ff",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_boot_trit2": {
+      "instance": "mutant_boot_trit2",
+      "B_before_write2": 29514,
+      "trace_out": "bcff",
+      "trace_status": "HALTED",
+      "trace_final_A": 29269,
+      "trace_final_B": 255,
+      "oracle_out": "bcff",
+      "oracle_status": "HALTED",
+      "c_out": "bcff0a",
+      "c_out_norm": "bcff",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    },
+    "mutant_write_wrong_cell": {
+      "instance": "mutant_write_wrong_cell",
+      "B_before_write2": null,
+      "trace_out": "79ff",
+      "trace_status": "HALTED",
+      "trace_final_A": 121,
+      "trace_final_B": 29524,
+      "oracle_out": "79ff",
+      "oracle_status": "HALTED",
+      "c_out": "79ff0a",
+      "c_out_norm": "79ff",
+      "c_exit": 0,
+      "trace_eq_oracle": true,
+      "c_eq_oracle": true
+    }
+  },
+  "verdicts": {
+    "mutant_no_rearm": {
+      "out": "f26c",
+      "B_before_write2": 242,
+      "diverges": true
+    },
+    "mutant_reload_wrong": {
+      "out": "f2ff",
+      "B_before_write2": 29484,
+      "diverges": true
+    },
+    "mutant_boot_trit2": {
+      "out": "bcff",
+      "B_before_write2": 29514,
+      "diverges": true
+    },
+    "mutant_write_wrong_cell": {
+      "out": "79ff",
+      "B_before_write2": null,
+      "diverges": true
+    }
+  },
+  "verdict_all_checks_pass": true
+}

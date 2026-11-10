@@ -1,0 +1,15 @@
+[integrity] {"rearm_primitive": {"ok": true, "len": 160}, "mutant_no_rearm": {"ok": true, "len": 142}, "mutant_reload_wrong": {"ok": true, "len": 155}, "mutant_boot_trit2": {"ok": true, "len": 160}, "mutant_write_wrong_cell": {"ok": true, "len": 160}}
+[physical] A_final=29269 B_final=255 S_final=29524 OUT=f2ff esperado=f2ff pasos=43 estado=HALTED
+[physical] escrituras en A: [(36, 29524), (29524, 29645), (29645, 242), (242, 29524), (29524, 29269)]
+[physical] escrituras en B: [(36, 0), (0, 29524), (29524, 242), (242, 242), (242, 29524), (29524, 255)]
+[engine] rearm_primitive        traza=f2ff oraculo=f2ff C=f2ff0a A_final=29269 B_final=255 traza==oraculo=True C==oraculo=True
+[engine] mutant_no_rearm        traza=f26c oraculo=f26c C=f26c0a A_final=29402 B_final=364 traza==oraculo=True C==oraculo=True
+[engine] mutant_reload_wrong    traza=f2ff oraculo=f2ff C=f2ff0a A_final=29269 B_final=255 traza==oraculo=True C==oraculo=True
+[engine] mutant_boot_trit2      traza=bcff oraculo=bcff C=bcff0a A_final=29269 B_final=255 traza==oraculo=True C==oraculo=True
+[engine] mutant_write_wrong_cell traza=79ff oraculo=79ff C=79ff0a A_final=121 B_final=29524 traza==oraculo=True C==oraculo=True
+[control] mutant_no_rearm        OUT=f26c B_antes_de_escritura2=242 diverge=True
+[control] mutant_reload_wrong    OUT=f2ff B_antes_de_escritura2=29484 diverge=True
+[control] mutant_boot_trit2      OUT=bcff B_antes_de_escritura2=29514 diverge=True
+[control] mutant_write_wrong_cell OUT=79ff B_antes_de_escritura2=None diverge=True
+[verdict] all_checks_pass = True
+EXIT=0
