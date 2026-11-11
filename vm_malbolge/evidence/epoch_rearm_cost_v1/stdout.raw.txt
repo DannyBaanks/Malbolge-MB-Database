@@ -1,0 +1,22 @@
+[G0] integridad y determinismo
+  restore    len=105 sha256=c177c9569bc46a9c printable=True no_ws=True rebuild=True
+  no_restore len=105 sha256=3979cfc72b09ea18 printable=True no_ws=True rebuild=True
+  rearm      len=105 sha256=d8f5e17c69ae11e6 printable=True no_ws=True rebuild=True
+[G1] tres motores
+  restore    oracle=2a37/21/HALTED tracer=2a37/21/HALTED c=2a37/21/HALTED agree=True
+  no_restore oracle=2a/21/HALTED tracer=2a/21/HALTED c=2a/21/HALTED agree=True
+  rearm      oracle=2a/28/HALTED tracer=2a/28/HALTED c=2a/28/HALTED agree=True
+[C1] carga de la palabra de control (ROT + un CRAZY)
+  instrucciones=5 pasos=5 hops=3 aux=[89, 100, 101, 103] destruidas=[100, 103]
+  ctrl=29552 (v1=54 v2=74); tabla de la barrera: celda 44 en tabla=False; swap01(55)=29550 en orbita=False
+[C2] restore exacto y re-ejecución
+  ejecuciones=2 ops=[5, 5] emitidos=[42, 55] segundo_byte=55 crazy_a_X=[(110, 55)]
+  salida=2a37 pasos=21 estado=HALTED
+[C2-neg] control negativo sin restauración
+  ejecuciones=2 ops=[5, 60] segundo_byte=110 crazy_a_X=0 salida=2a/HALTED
+[C3] M8 medido desde la traza
+  M8=12 celdas=[44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55] re-ejecutadas=[44, 45] independiente=12 code_map=12
+[C4] rearm de celdas auxiliares
+  celdas escritas por el cuerpo=14, CRAZYs mínimos=25, cota=175 instr
+  rearm 103: 29552 -> 74 (objetivo 74) ok=True; segmento=7 pasos, aux nuevas=[90, 92]
+  ciclo cerrado=False (NOT_DEMONSTRATED)

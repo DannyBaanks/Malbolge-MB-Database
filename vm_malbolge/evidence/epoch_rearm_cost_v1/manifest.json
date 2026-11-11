@@ -1,0 +1,104 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T05:47:40.878748+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_rearm_cost_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "b619da98b1fd87cd529da4e57dd8d4bc091a47e0d187a21466ea3406e11f8167"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "4e6ffb5391256817c31baef1881a0e22650af890d1eda0fb6019a018a0ef78db"
+    },
+    {
+      "file": "plan.py",
+      "sha256": "250986f5d4782e17b59539e5f6f586ecbeac8738964e16b4e5809a80137a8542"
+    },
+    {
+      "file": "build.py",
+      "sha256": "b967a1a39353938c308e7783d4b41580a1d04b7e72a2c60d028b66094c066efb"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "d7e2aaaf7ed90d3623e10b0ceadeb777afa6eea85ab769c431c22380ca065ea4"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "a69c6f725e1995a0a1b0c4af958c737b5d45cdb9943d5bc96164f3e1ef67df03"
+    },
+    {
+      "file": "restore.mb",
+      "sha256": "c177c9569bc46a9cf306100c3698c519c9dc6ac36f4aec398c5e80484133e9ad"
+    },
+    {
+      "file": "no_restore.mb",
+      "sha256": "3979cfc72b09ea18c38636e45f89344801e2f2eb01b2a3ab74591b6cdcdcea9e"
+    },
+    {
+      "file": "rearm.mb",
+      "sha256": "d8f5e17c69ae11e62264ad07066e2c1680b3f2c5bb0b521fc7564f24fedf3e3c"
+    },
+    {
+      "file": "build_index.json",
+      "sha256": "b3fca330283af91e28c84a141ec88a6b63ae49319b4c8e7191ee503a7e1bca76"
+    },
+    {
+      "file": "results.json",
+      "sha256": "99e73234a288fe9e7745cf260a769849128f6a315511c1cc25c86136938a1ba0"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "135a854f72c671deb6e026e5fd7529488ac356e3ad169c79ebe8a20679e08126"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "vm_malbolge/evidence/epoch_rearm_barrier_v1/position_table.json": "2ac3becf82cd3bbbe94879066e0e6ea0e1126dfe6d3df9de55c477cc37441304",
+    "vm_malbolge/evidence/epoch_audit_v1/AUDIT.md": "92a3047f4e7ba0eedc223ca1e50e671030fefeb802626c940bca454bca14b18f"
+  },
+  "claims": [
+    {
+      "text": "C1: la palabra de control (29552) se carga con 5 instrucciones (DLOAD,DLOAD,ROT,DLOAD,CRAZY), 3 hops de d y 4 celdas auxiliares (89,100,101,103), 2 de ellas consumidas (100,103)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C1: la tabla de 34 posiciones de la barrera no contiene la celda 44; swap01(55)=29550 no está en la órbita de 55, así que la vía de un ROT no puede expresar este restore",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2: una celda de código ya ejecutada (44, OUT) se cifra a 110, se restaura exactamente a 55 con un CRAZY y se re-ejecuta en la misma ejecución: salida 2a37, 21 pasos, HALTED",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2 negativo: sin el CRAZY de restauración la segunda visita a 44 decodifica el opcode 60 (no OUT), no hay CRAZY a 44 y la salida es 2a",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C3: M8 = 12 celdas de código del cuerpo (44,45,46..55), contadas desde la traza, con 2 re-ejecutadas (44,45); no se usa el literal 200",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: el rearm ejecutado de la celda auxiliar 103 (29552 -> 74) cuesta 7 instrucciones y consume 2 celdas nuevas (90,92)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: el ciclo cerrado de rearm no se construyó; cada carga de palabra de control consume una celda ROT y no hay punto fijo ROT imprimible",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "el cuerpo del bucle de la época tiene 200 celdas",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "tres motores (oráculo del repo, trazador, runner C) coinciden en bytes, pasos y estado en las tres imágenes",
+      "status": "DEMONSTRATED"
+    }
+  ]
+}

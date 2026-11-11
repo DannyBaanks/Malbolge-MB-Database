@@ -1,0 +1,751 @@
+{
+  "schema": "isyco-build-index-v1",
+  "pack": "epoch_rearm_cost_v1",
+  "dialect": "classic-permissive-3^10",
+  "images": {
+    "restore": {
+      "sha256": "c177c9569bc46a9cf306100c3698c519c9dc6ac36f4aec398c5e80484133e9ad",
+      "length": 105,
+      "info": {
+        "ctrl": 29552,
+        "v1": 54,
+        "v2": 74,
+        "ctrl2": null,
+        "w1": null,
+        "w2": null
+      },
+      "seeds": {
+        "36": 126,
+        "37": 37,
+        "38": 43,
+        "39": 42,
+        "41": 35,
+        "43": 43,
+        "45": 43,
+        "89": 99,
+        "100": 54,
+        "101": 102,
+        "103": 74,
+        "104": 43
+      },
+      "code": {
+        "0": "DLOAD",
+        "1": "DLOAD",
+        "2": "ROT",
+        "3": "DLOAD",
+        "4": "NOP",
+        "5": "DLOAD",
+        "6": "JMP",
+        "44": "OUT",
+        "45": "NOP",
+        "46": "DLOAD",
+        "47": "DLOAD",
+        "48": "ROT",
+        "49": "DLOAD",
+        "50": "CRAZY",
+        "51": "DLOAD",
+        "52": "CRAZY",
+        "53": "DLOAD",
+        "54": "DLOAD",
+        "55": "JMP"
+      },
+      "plan_log": [
+        {
+          "pc": 0,
+          "op": "DLOAD",
+          "d": 0,
+          "a": 0,
+          "d_after_read": 40,
+          "enc_cell": 0
+        },
+        {
+          "pc": 1,
+          "op": "DLOAD",
+          "d": 41,
+          "a": 0,
+          "d_after_read": 35,
+          "enc_cell": 1
+        },
+        {
+          "pc": 2,
+          "op": "ROT",
+          "d": 36,
+          "a": 0,
+          "wrote": 36,
+          "new": 42,
+          "enc_cell": 2
+        },
+        {
+          "pc": 3,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 42,
+          "d_after_read": 37,
+          "enc_cell": 3
+        },
+        {
+          "pc": 4,
+          "op": "NOP",
+          "d": 38,
+          "a": 42,
+          "enc_cell": 4
+        },
+        {
+          "pc": 5,
+          "op": "DLOAD",
+          "d": 39,
+          "a": 42,
+          "d_after_read": 42,
+          "enc_cell": 5
+        },
+        {
+          "pc": 6,
+          "op": "JMP",
+          "d": 43,
+          "a": 42,
+          "jump_to": 44,
+          "enc_cell": 43
+        },
+        {
+          "pc": 44,
+          "op": "OUT",
+          "d": 44,
+          "a": 42,
+          "emitted": 42,
+          "enc_cell": 44
+        },
+        {
+          "pc": 45,
+          "op": "NOP",
+          "d": 45,
+          "a": 42,
+          "enc_cell": 45
+        },
+        {
+          "pc": 46,
+          "op": "DLOAD",
+          "d": 46,
+          "a": 42,
+          "d_after_read": 88,
+          "enc_cell": 46
+        },
+        {
+          "pc": 47,
+          "op": "DLOAD",
+          "d": 89,
+          "a": 42,
+          "d_after_read": 99,
+          "enc_cell": 47
+        },
+        {
+          "pc": 48,
+          "op": "ROT",
+          "d": 100,
+          "a": 42,
+          "wrote": 100,
+          "new": 18,
+          "enc_cell": 48
+        },
+        {
+          "pc": 49,
+          "op": "DLOAD",
+          "d": 101,
+          "a": 18,
+          "d_after_read": 102,
+          "enc_cell": 49
+        },
+        {
+          "pc": 50,
+          "op": "CRAZY",
+          "d": 103,
+          "a": 18,
+          "wrote": 103,
+          "old": 74,
+          "new": 29552,
+          "enc_cell": 50
+        },
+        {
+          "pc": 51,
+          "op": "DLOAD",
+          "d": 104,
+          "a": 29552,
+          "d_after_read": 43,
+          "enc_cell": 51
+        },
+        {
+          "pc": 52,
+          "op": "CRAZY",
+          "d": 44,
+          "a": 29552,
+          "wrote": 44,
+          "old": 110,
+          "new": 55,
+          "enc_cell": 52
+        },
+        {
+          "pc": 53,
+          "op": "DLOAD",
+          "d": 45,
+          "a": 55,
+          "d_after_read": 36,
+          "enc_cell": 53
+        },
+        {
+          "pc": 54,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 55,
+          "d_after_read": 37,
+          "enc_cell": 54
+        },
+        {
+          "pc": 55,
+          "op": "JMP",
+          "d": 38,
+          "a": 55,
+          "jump_to": 44,
+          "enc_cell": 43
+        }
+      ],
+      "plan_final": {
+        "a": 55,
+        "c": 44,
+        "d": 39,
+        "out": [
+          42
+        ],
+        "status": "RUNNING"
+      },
+      "oracle": {
+        "output_hex": "2a37",
+        "steps": 21,
+        "status": "HALTED"
+      }
+    },
+    "no_restore": {
+      "sha256": "3979cfc72b09ea18c38636e45f89344801e2f2eb01b2a3ab74591b6cdcdcea9e",
+      "length": 105,
+      "info": {
+        "ctrl": 29552,
+        "v1": 54,
+        "v2": 74,
+        "ctrl2": null,
+        "w1": null,
+        "w2": null
+      },
+      "seeds": {
+        "36": 126,
+        "37": 37,
+        "38": 43,
+        "39": 42,
+        "41": 35,
+        "43": 43,
+        "45": 43,
+        "89": 99,
+        "100": 54,
+        "101": 102,
+        "103": 74,
+        "104": 43
+      },
+      "code": {
+        "0": "DLOAD",
+        "1": "DLOAD",
+        "2": "ROT",
+        "3": "DLOAD",
+        "4": "NOP",
+        "5": "DLOAD",
+        "6": "JMP",
+        "44": "OUT",
+        "45": "NOP",
+        "46": "DLOAD",
+        "47": "DLOAD",
+        "48": "ROT",
+        "49": "DLOAD",
+        "50": "CRAZY",
+        "51": "DLOAD",
+        "52": "NOP",
+        "53": "DLOAD",
+        "54": "DLOAD",
+        "55": "JMP"
+      },
+      "plan_log": [
+        {
+          "pc": 0,
+          "op": "DLOAD",
+          "d": 0,
+          "a": 0,
+          "d_after_read": 40,
+          "enc_cell": 0
+        },
+        {
+          "pc": 1,
+          "op": "DLOAD",
+          "d": 41,
+          "a": 0,
+          "d_after_read": 35,
+          "enc_cell": 1
+        },
+        {
+          "pc": 2,
+          "op": "ROT",
+          "d": 36,
+          "a": 0,
+          "wrote": 36,
+          "new": 42,
+          "enc_cell": 2
+        },
+        {
+          "pc": 3,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 42,
+          "d_after_read": 37,
+          "enc_cell": 3
+        },
+        {
+          "pc": 4,
+          "op": "NOP",
+          "d": 38,
+          "a": 42,
+          "enc_cell": 4
+        },
+        {
+          "pc": 5,
+          "op": "DLOAD",
+          "d": 39,
+          "a": 42,
+          "d_after_read": 42,
+          "enc_cell": 5
+        },
+        {
+          "pc": 6,
+          "op": "JMP",
+          "d": 43,
+          "a": 42,
+          "jump_to": 44,
+          "enc_cell": 43
+        },
+        {
+          "pc": 44,
+          "op": "OUT",
+          "d": 44,
+          "a": 42,
+          "emitted": 42,
+          "enc_cell": 44
+        },
+        {
+          "pc": 45,
+          "op": "NOP",
+          "d": 45,
+          "a": 42,
+          "enc_cell": 45
+        },
+        {
+          "pc": 46,
+          "op": "DLOAD",
+          "d": 46,
+          "a": 42,
+          "d_after_read": 88,
+          "enc_cell": 46
+        },
+        {
+          "pc": 47,
+          "op": "DLOAD",
+          "d": 89,
+          "a": 42,
+          "d_after_read": 99,
+          "enc_cell": 47
+        },
+        {
+          "pc": 48,
+          "op": "ROT",
+          "d": 100,
+          "a": 42,
+          "wrote": 100,
+          "new": 18,
+          "enc_cell": 48
+        },
+        {
+          "pc": 49,
+          "op": "DLOAD",
+          "d": 101,
+          "a": 18,
+          "d_after_read": 102,
+          "enc_cell": 49
+        },
+        {
+          "pc": 50,
+          "op": "CRAZY",
+          "d": 103,
+          "a": 18,
+          "wrote": 103,
+          "old": 74,
+          "new": 29552,
+          "enc_cell": 50
+        },
+        {
+          "pc": 51,
+          "op": "DLOAD",
+          "d": 104,
+          "a": 29552,
+          "d_after_read": 43,
+          "enc_cell": 51
+        },
+        {
+          "pc": 52,
+          "op": "NOP",
+          "d": 44,
+          "a": 29552,
+          "enc_cell": 52
+        },
+        {
+          "pc": 53,
+          "op": "DLOAD",
+          "d": 45,
+          "a": 29552,
+          "d_after_read": 36,
+          "enc_cell": 53
+        },
+        {
+          "pc": 54,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 29552,
+          "d_after_read": 37,
+          "enc_cell": 54
+        },
+        {
+          "pc": 55,
+          "op": "JMP",
+          "d": 38,
+          "a": 29552,
+          "jump_to": 44,
+          "enc_cell": 43
+        }
+      ],
+      "plan_final": {
+        "a": 29552,
+        "c": 44,
+        "d": 39,
+        "out": [
+          42
+        ],
+        "status": "RUNNING"
+      },
+      "oracle": {
+        "output_hex": "2a",
+        "steps": 21,
+        "status": "HALTED"
+      }
+    },
+    "rearm": {
+      "sha256": "d8f5e17c69ae11e62264ad07066e2c1680b3f2c5bb0b521fc7564f24fedf3e3c",
+      "length": 105,
+      "info": {
+        "ctrl": 29552,
+        "v1": 54,
+        "v2": 74,
+        "ctrl2": 29505,
+        "w1": 84,
+        "w2": 45
+      },
+      "seeds": {
+        "36": 126,
+        "37": 37,
+        "38": 55,
+        "39": 42,
+        "40": 89,
+        "41": 35,
+        "43": 43,
+        "45": 43,
+        "89": 99,
+        "90": 84,
+        "91": 91,
+        "92": 45,
+        "93": 102,
+        "100": 54,
+        "101": 102,
+        "103": 74,
+        "104": 43
+      },
+      "code": {
+        "0": "DLOAD",
+        "1": "DLOAD",
+        "2": "ROT",
+        "3": "DLOAD",
+        "4": "NOP",
+        "5": "DLOAD",
+        "6": "JMP",
+        "44": "OUT",
+        "45": "NOP",
+        "46": "DLOAD",
+        "47": "DLOAD",
+        "48": "ROT",
+        "49": "DLOAD",
+        "50": "CRAZY",
+        "51": "DLOAD",
+        "52": "CRAZY",
+        "53": "DLOAD",
+        "54": "DLOAD",
+        "55": "JMP",
+        "56": "NOP",
+        "57": "DLOAD",
+        "58": "ROT",
+        "59": "DLOAD",
+        "60": "CRAZY",
+        "61": "DLOAD",
+        "62": "CRAZY",
+        "63": "DLOAD",
+        "64": "END"
+      },
+      "plan_log": [
+        {
+          "pc": 0,
+          "op": "DLOAD",
+          "d": 0,
+          "a": 0,
+          "d_after_read": 40,
+          "enc_cell": 0
+        },
+        {
+          "pc": 1,
+          "op": "DLOAD",
+          "d": 41,
+          "a": 0,
+          "d_after_read": 35,
+          "enc_cell": 1
+        },
+        {
+          "pc": 2,
+          "op": "ROT",
+          "d": 36,
+          "a": 0,
+          "wrote": 36,
+          "new": 42,
+          "enc_cell": 2
+        },
+        {
+          "pc": 3,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 42,
+          "d_after_read": 37,
+          "enc_cell": 3
+        },
+        {
+          "pc": 4,
+          "op": "NOP",
+          "d": 38,
+          "a": 42,
+          "enc_cell": 4
+        },
+        {
+          "pc": 5,
+          "op": "DLOAD",
+          "d": 39,
+          "a": 42,
+          "d_after_read": 42,
+          "enc_cell": 5
+        },
+        {
+          "pc": 6,
+          "op": "JMP",
+          "d": 43,
+          "a": 42,
+          "jump_to": 44,
+          "enc_cell": 43
+        },
+        {
+          "pc": 44,
+          "op": "OUT",
+          "d": 44,
+          "a": 42,
+          "emitted": 42,
+          "enc_cell": 44
+        },
+        {
+          "pc": 45,
+          "op": "NOP",
+          "d": 45,
+          "a": 42,
+          "enc_cell": 45
+        },
+        {
+          "pc": 46,
+          "op": "DLOAD",
+          "d": 46,
+          "a": 42,
+          "d_after_read": 88,
+          "enc_cell": 46
+        },
+        {
+          "pc": 47,
+          "op": "DLOAD",
+          "d": 89,
+          "a": 42,
+          "d_after_read": 99,
+          "enc_cell": 47
+        },
+        {
+          "pc": 48,
+          "op": "ROT",
+          "d": 100,
+          "a": 42,
+          "wrote": 100,
+          "new": 18,
+          "enc_cell": 48
+        },
+        {
+          "pc": 49,
+          "op": "DLOAD",
+          "d": 101,
+          "a": 18,
+          "d_after_read": 102,
+          "enc_cell": 49
+        },
+        {
+          "pc": 50,
+          "op": "CRAZY",
+          "d": 103,
+          "a": 18,
+          "wrote": 103,
+          "old": 74,
+          "new": 29552,
+          "enc_cell": 50
+        },
+        {
+          "pc": 51,
+          "op": "DLOAD",
+          "d": 104,
+          "a": 29552,
+          "d_after_read": 43,
+          "enc_cell": 51
+        },
+        {
+          "pc": 52,
+          "op": "CRAZY",
+          "d": 44,
+          "a": 29552,
+          "wrote": 44,
+          "old": 110,
+          "new": 55,
+          "enc_cell": 52
+        },
+        {
+          "pc": 53,
+          "op": "DLOAD",
+          "d": 45,
+          "a": 55,
+          "d_after_read": 36,
+          "enc_cell": 53
+        },
+        {
+          "pc": 54,
+          "op": "DLOAD",
+          "d": 37,
+          "a": 55,
+          "d_after_read": 37,
+          "enc_cell": 54
+        },
+        {
+          "pc": 55,
+          "op": "JMP",
+          "d": 38,
+          "a": 55,
+          "jump_to": 56,
+          "enc_cell": 55
+        },
+        {
+          "pc": 56,
+          "op": "NOP",
+          "d": 39,
+          "a": 55,
+          "enc_cell": 56
+        },
+        {
+          "pc": 57,
+          "op": "DLOAD",
+          "d": 40,
+          "a": 55,
+          "d_after_read": 89,
+          "enc_cell": 57
+        },
+        {
+          "pc": 58,
+          "op": "ROT",
+          "d": 90,
+          "a": 55,
+          "wrote": 90,
+          "new": 28,
+          "enc_cell": 58
+        },
+        {
+          "pc": 59,
+          "op": "DLOAD",
+          "d": 91,
+          "a": 28,
+          "d_after_read": 91,
+          "enc_cell": 59
+        },
+        {
+          "pc": 60,
+          "op": "CRAZY",
+          "d": 92,
+          "a": 28,
+          "wrote": 92,
+          "old": 45,
+          "new": 29505,
+          "enc_cell": 60
+        },
+        {
+          "pc": 61,
+          "op": "DLOAD",
+          "d": 93,
+          "a": 29505,
+          "d_after_read": 102,
+          "enc_cell": 61
+        },
+        {
+          "pc": 62,
+          "op": "CRAZY",
+          "d": 103,
+          "a": 29505,
+          "wrote": 103,
+          "old": 29552,
+          "new": 74,
+          "enc_cell": 62
+        },
+        {
+          "pc": 63,
+          "op": "DLOAD",
+          "d": 104,
+          "a": 74,
+          "d_after_read": 43,
+          "enc_cell": 63
+        },
+        {
+          "pc": 64,
+          "op": "END",
+          "d": 44,
+          "a": 74,
+          "halt": true,
+          "enc_cell": 64
+        }
+      ],
+      "plan_final": {
+        "a": 74,
+        "c": 65,
+        "d": 45,
+        "out": [
+          42
+        ],
+        "status": "HALTED"
+      },
+      "oracle": {
+        "output_hex": "2a",
+        "steps": 28,
+        "status": "HALTED"
+      }
+    }
+  }
+}

@@ -1,0 +1,410 @@
+{
+  "dialect": "classic-permissive-3^10",
+  "pack": "epoch_rearm_cost_v1",
+  "integrity": {
+    "restore": {
+      "sha256": "c177c9569bc46a9cf306100c3698c519c9dc6ac36f4aec398c5e80484133e9ad",
+      "length": 105,
+      "printable": true,
+      "no_whitespace": true,
+      "matches_rebuild": true,
+      "matches_disk": true
+    },
+    "no_restore": {
+      "sha256": "3979cfc72b09ea18c38636e45f89344801e2f2eb01b2a3ab74591b6cdcdcea9e",
+      "length": 105,
+      "printable": true,
+      "no_whitespace": true,
+      "matches_rebuild": true,
+      "matches_disk": true
+    },
+    "rearm": {
+      "sha256": "d8f5e17c69ae11e62264ad07066e2c1680b3f2c5bb0b521fc7564f24fedf3e3c",
+      "length": 105,
+      "printable": true,
+      "no_whitespace": true,
+      "matches_rebuild": true,
+      "matches_disk": true
+    }
+  },
+  "engines": {
+    "restore": {
+      "oracle": {
+        "output_hex": "2a37",
+        "steps": 21,
+        "status": "HALTED"
+      },
+      "tracer": {
+        "output_hex": "2a37",
+        "steps": 21,
+        "status": "HALTED"
+      },
+      "c_runner": {
+        "stdout_hex": "2a370a",
+        "output_hex": "2a37",
+        "steps": 21,
+        "status": "HALTED",
+        "returncode": 0
+      },
+      "agree": true
+    },
+    "no_restore": {
+      "oracle": {
+        "output_hex": "2a",
+        "steps": 21,
+        "status": "HALTED"
+      },
+      "tracer": {
+        "output_hex": "2a",
+        "steps": 21,
+        "status": "HALTED"
+      },
+      "c_runner": {
+        "stdout_hex": "2a0a",
+        "output_hex": "2a",
+        "steps": 21,
+        "status": "HALTED",
+        "returncode": 0
+      },
+      "agree": true
+    },
+    "rearm": {
+      "oracle": {
+        "output_hex": "2a",
+        "steps": 28,
+        "status": "HALTED"
+      },
+      "tracer": {
+        "output_hex": "2a",
+        "steps": 28,
+        "status": "HALTED"
+      },
+      "c_runner": {
+        "stdout_hex": "2a0a",
+        "output_hex": "2a",
+        "steps": 28,
+        "status": "HALTED",
+        "returncode": 0
+      },
+      "agree": true
+    }
+  },
+  "c1_control_word": {
+    "instructions": 5,
+    "steps": 5,
+    "pcs": [
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "ops": [
+      "DLOAD",
+      "DLOAD",
+      "ROT",
+      "DLOAD",
+      "CRAZY"
+    ],
+    "d_hops": [
+      {
+        "pc": 46,
+        "d": 46,
+        "d_after_read": 88
+      },
+      {
+        "pc": 47,
+        "d": 89,
+        "d_after_read": 99
+      },
+      {
+        "pc": 49,
+        "d": 101,
+        "d_after_read": 102
+      }
+    ],
+    "aux_cells": [
+      89,
+      100,
+      101,
+      103
+    ],
+    "aux_cells_read": [
+      89,
+      100,
+      101,
+      103
+    ],
+    "aux_cells_written": [
+      100,
+      103
+    ],
+    "aux_writes": [
+      {
+        "step": 12,
+        "addr": 100,
+        "old": 54,
+        "new": 18,
+        "kind": "rot"
+      },
+      {
+        "step": 14,
+        "addr": 103,
+        "old": 74,
+        "new": 29552,
+        "kind": "crazy"
+      }
+    ],
+    "a_after_load": 29552,
+    "load_ok": true,
+    "ctrl": 29552,
+    "v1": 54,
+    "v2": 74,
+    "barrier_table_cells": 34,
+    "cell_in_barrier_table": false,
+    "swap01_v": 29550,
+    "swap01_in_orbit_v": false,
+    "orbit_printable": [
+      55
+    ]
+  },
+  "c2_restore": {
+    "x": 44,
+    "executions": 2,
+    "ops": [
+      5,
+      5
+    ],
+    "emitted": [
+      42,
+      55
+    ],
+    "second_byte": 55,
+    "second_op": 5,
+    "crazy_writes": [
+      {
+        "step": 16,
+        "addr": 44,
+        "old": 110,
+        "new": 55,
+        "kind": "crazy"
+      }
+    ],
+    "output_hex": "2a37",
+    "steps": 21,
+    "status": "HALTED"
+  },
+  "c2_negative_control": {
+    "executions": 2,
+    "ops": [
+      5,
+      60
+    ],
+    "second_byte": 110,
+    "second_op": 60,
+    "crazy_writes": [],
+    "output_hex": "2a",
+    "steps": 21,
+    "status": "HALTED"
+  },
+  "c3_m8": {
+    "m8_body_code_cells": 12,
+    "body_pcs": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "executions_per_pc": {
+      "44": 2,
+      "45": 2,
+      "46": 1,
+      "47": 1,
+      "48": 1,
+      "49": 1,
+      "50": 1,
+      "51": 1,
+      "52": 1,
+      "53": 1,
+      "54": 1,
+      "55": 1
+    },
+    "re_executed_pcs": [
+      44,
+      45
+    ],
+    "independent_no_restore_count": 12,
+    "code_map_cells_44_55": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "code_map_count": 12,
+    "forbidden_literal_present": false
+  },
+  "c4_rearm": {
+    "cells_written_by_body": 14,
+    "rearm_cells": [
+      {
+        "addr": 43,
+        "kind": "enc",
+        "final": 38,
+        "target": 36,
+        "min_crazys": 2
+      },
+      {
+        "addr": 44,
+        "kind": "enc",
+        "final": 110,
+        "target": 55,
+        "min_crazys": 1
+      },
+      {
+        "addr": 45,
+        "kind": "enc",
+        "final": 36,
+        "target": 43,
+        "min_crazys": 2
+      },
+      {
+        "addr": 46,
+        "kind": "enc",
+        "final": 47,
+        "target": 88,
+        "min_crazys": 2
+      },
+      {
+        "addr": 47,
+        "kind": "enc",
+        "final": 48,
+        "target": 87,
+        "min_crazys": 2
+      },
+      {
+        "addr": 48,
+        "kind": "enc",
+        "final": 73,
+        "target": 85,
+        "min_crazys": 2
+      },
+      {
+        "addr": 49,
+        "kind": "enc",
+        "final": 73,
+        "target": 85,
+        "min_crazys": 2
+      },
+      {
+        "addr": 50,
+        "kind": "enc",
+        "final": 77,
+        "target": 106,
+        "min_crazys": 2
+      },
+      {
+        "addr": 51,
+        "kind": "enc",
+        "final": 94,
+        "target": 83,
+        "min_crazys": 1
+      },
+      {
+        "addr": 52,
+        "kind": "enc",
+        "final": 89,
+        "target": 104,
+        "min_crazys": 2
+      },
+      {
+        "addr": 53,
+        "kind": "enc",
+        "final": 54,
+        "target": 81,
+        "min_crazys": 2
+      },
+      {
+        "addr": 54,
+        "kind": "enc",
+        "final": 66,
+        "target": 80,
+        "min_crazys": 2
+      },
+      {
+        "addr": 100,
+        "kind": "rot",
+        "final": 18,
+        "target": 54,
+        "min_crazys": 2
+      },
+      {
+        "addr": 103,
+        "kind": "crazy",
+        "final": 29552,
+        "target": 74,
+        "min_crazys": 1
+      }
+    ],
+    "total_min_crazys": 25,
+    "cells_required_for_loop": 13,
+    "total_min_crazys_required": 23,
+    "lower_bound_instructions_required": 161,
+    "lower_bound_new_aux_cells_required": 46,
+    "note_cell_43": "el JMP de la celda 55 cifra mem[mem[d]] = mem[43] (quirk del JMP); esa celda s\u00f3lo la usa el bootstrap, as\u00ed que la cota conservadora la incluye y la cota del bucle la excluye",
+    "instructions_per_crazy_measured": 7,
+    "lower_bound_instructions": 175,
+    "new_aux_cells_per_crazy_measured": 2,
+    "lower_bound_new_aux_cells": 50,
+    "rearm_executed": {
+      "cell": 103,
+      "old": 29552,
+      "new": 74,
+      "target": 74,
+      "ok": true,
+      "segment_pcs": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "segment_steps": 7,
+      "aux_cells": [
+        90,
+        92
+      ]
+    },
+    "rot_fixed_points_printable": [],
+    "cycle_closed": false,
+    "cycle_status": "NOT_DEMONSTRATED",
+    "cycle_reason": "cada carga de palabra de control consume una celda ROT y no hay punto fijo ROT imprimible; el rearm medido consume 2 celdas nuevas; no se construy\u00f3 un ciclo cerrado"
+  },
+  "gates": {
+    "G0_integrity": true,
+    "G1_three_engines": true,
+    "G2_control_word": true,
+    "G3_restore_exact": true,
+    "G4_negative_control": true,
+    "G5_m8": true,
+    "G6_rearm": true
+  },
+  "verdict_all_checks_pass": true
+}
