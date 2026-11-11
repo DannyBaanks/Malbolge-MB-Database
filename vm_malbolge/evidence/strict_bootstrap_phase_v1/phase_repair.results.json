@@ -1,0 +1,683 @@
+{
+  "base": "9163d87",
+  "max_helpers": 8,
+  "search_scope": "fixed seed, first target value/op per target; helper data loader-valid; NOP/ROT/CRAZY; one reset DLOAD; final CRAZY before pc 40",
+  "orientation": "crazy(accumulator,cell)=table[cell trit][accumulator trit]",
+  "targets": {
+    "47": {
+      "params": {
+        "target": 47,
+        "seed": 40,
+        "initial": 115,
+        "first": "ROT",
+        "intermediate": 19721,
+        "helpers": [
+          [
+            48,
+            "ROT",
+            33
+          ],
+          [
+            49,
+            "CRAZY",
+            49
+          ],
+          [
+            50,
+            "CRAZY",
+            125
+          ],
+          [
+            51,
+            "CRAZY",
+            66
+          ]
+        ],
+        "reset_pos": 52,
+        "reset_value": 46,
+        "accumulator_before_final": 29562,
+        "first_pc": 8,
+        "reset_pc": 13,
+        "final_pc": 14,
+        "halt_pc": 15
+      },
+      "image_sha256": "fa67cc138dd459f5ddc9e407cc1d9ac2ddc686d97bde0a689e442b5eed2ea108",
+      "control_sha256": "047a7adf8754b89449772ee922c5231b15219bab1540e425ace24a8ba901dd29",
+      "image_length": 54,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 68,
+          "d": 41
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 68,
+          "d": 42
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 68,
+          "d": 43
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 68,
+          "d": 46
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 39,
+          "d": 47
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 39,
+          "d": 48
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "d": 49
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 62,
+          "d": 50
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 62,
+          "d": 51
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 40,
+          "d": 52
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 62,
+          "d": 47
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 81,
+          "d": 48
+        }
+      ],
+      "steps": 16,
+      "final_target": 74,
+      "control_target": 19721,
+      "oracle": {
+        "output": "",
+        "steps": 16,
+        "status": "HALTED"
+      },
+      "runner_stderr": "steps: 16 | status: HALTED\n",
+      "checks": {
+        "strict_image": true,
+        "strict_control": true,
+        "scratch_halt": true,
+        "independent_halt": true,
+        "oracle_halt": true,
+        "equal_steps": true,
+        "no_in_out": true,
+        "target_74": true,
+        "full_mem_match": true,
+        "control_rejects_74": true,
+        "olmstead_halt": true,
+        "control_olmstead_halt": true,
+        "runner_halt": true
+      },
+      "all_checks": true
+    },
+    "64": {
+      "params": {
+        "target": 64,
+        "seed": 57,
+        "initial": 111,
+        "first": "ROT",
+        "intermediate": 37,
+        "helpers": [
+          [
+            65,
+            "CRAZY",
+            33
+          ],
+          [
+            66,
+            "CRAZY",
+            67
+          ],
+          [
+            67,
+            "CRAZY",
+            50
+          ]
+        ],
+        "reset_pos": 68,
+        "reset_value": 49,
+        "accumulator_before_final": 29564,
+        "first_pc": 8,
+        "reset_pc": 12,
+        "final_pc": 27,
+        "halt_pc": 28
+      },
+      "image_sha256": "db821e3f200de04f78a75f41c8de79d9cb2c94006d9664f8f185e56ca7f1816d",
+      "control_sha256": "b795b379857edcaf2c2abadf9a22a843a64f1386a1cf8e53ca68234cdc98c2ec",
+      "image_length": 70,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 68,
+          "d": 58
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 68,
+          "d": 59
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 68,
+          "d": 60
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 68,
+          "d": 61
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 68,
+          "d": 62
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 68,
+          "d": 63
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 39,
+          "d": 64
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 62,
+          "d": 65
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "d": 66
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 62,
+          "d": 67
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 40,
+          "d": 68
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 68,
+          "d": 50
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 68,
+          "d": 51
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 68,
+          "d": 52
+        },
+        {
+          "step": 17,
+          "pc": 16,
+          "op": 68,
+          "d": 53
+        },
+        {
+          "step": 18,
+          "pc": 17,
+          "op": 68,
+          "d": 54
+        },
+        {
+          "step": 19,
+          "pc": 18,
+          "op": 68,
+          "d": 55
+        },
+        {
+          "step": 20,
+          "pc": 19,
+          "op": 68,
+          "d": 56
+        },
+        {
+          "step": 21,
+          "pc": 20,
+          "op": 68,
+          "d": 57
+        },
+        {
+          "step": 22,
+          "pc": 21,
+          "op": 68,
+          "d": 58
+        },
+        {
+          "step": 23,
+          "pc": 22,
+          "op": 68,
+          "d": 59
+        },
+        {
+          "step": 24,
+          "pc": 23,
+          "op": 68,
+          "d": 60
+        },
+        {
+          "step": 25,
+          "pc": 24,
+          "op": 68,
+          "d": 61
+        },
+        {
+          "step": 26,
+          "pc": 25,
+          "op": 68,
+          "d": 62
+        },
+        {
+          "step": 27,
+          "pc": 26,
+          "op": 68,
+          "d": 63
+        },
+        {
+          "step": 28,
+          "pc": 27,
+          "op": 62,
+          "d": 64
+        },
+        {
+          "step": 29,
+          "pc": 28,
+          "op": 81,
+          "d": 65
+        }
+      ],
+      "steps": 29,
+      "final_target": 74,
+      "control_target": 37,
+      "oracle": {
+        "output": "",
+        "steps": 29,
+        "status": "HALTED"
+      },
+      "runner_stderr": "steps: 29 | status: HALTED\n",
+      "checks": {
+        "strict_image": true,
+        "strict_control": true,
+        "scratch_halt": true,
+        "independent_halt": true,
+        "oracle_halt": true,
+        "equal_steps": true,
+        "no_in_out": true,
+        "target_74": true,
+        "full_mem_match": true,
+        "control_rejects_74": true,
+        "olmstead_halt": true,
+        "control_olmstead_halt": true,
+        "runner_halt": true
+      },
+      "all_checks": true
+    },
+    "123": {
+      "params": {
+        "target": 123,
+        "seed": 115,
+        "initial": 39,
+        "first": "CRAZY",
+        "intermediate": 29524,
+        "helpers": [
+          [
+            124,
+            "CRAZY",
+            103
+          ],
+          [
+            125,
+            "CRAZY",
+            68
+          ]
+        ],
+        "reset_pos": 126,
+        "reset_value": 101,
+        "accumulator_before_final": 29561,
+        "first_pc": 9,
+        "reset_pc": 12,
+        "final_pc": 34,
+        "halt_pc": 35
+      },
+      "image_sha256": "572903a204a6486a5bdfac04f955e6f522538bdb60fc25ac4821463d6f9a4bc1",
+      "control_sha256": "b44af368b7c5447d7f024b9edc5e54213a5e49c0596367a0ff7e3240693d452c",
+      "image_length": 128,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 68,
+          "d": 116
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 68,
+          "d": 117
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 68,
+          "d": 118
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 68,
+          "d": 119
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 68,
+          "d": 120
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 68,
+          "d": 121
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 68,
+          "d": 122
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 62,
+          "d": 123
+        },
+        {
+          "step": 11,
+          "pc": 10,
+          "op": 62,
+          "d": 124
+        },
+        {
+          "step": 12,
+          "pc": 11,
+          "op": 62,
+          "d": 125
+        },
+        {
+          "step": 13,
+          "pc": 12,
+          "op": 40,
+          "d": 126
+        },
+        {
+          "step": 14,
+          "pc": 13,
+          "op": 68,
+          "d": 102
+        },
+        {
+          "step": 15,
+          "pc": 14,
+          "op": 68,
+          "d": 103
+        },
+        {
+          "step": 16,
+          "pc": 15,
+          "op": 68,
+          "d": 104
+        },
+        {
+          "step": 17,
+          "pc": 16,
+          "op": 68,
+          "d": 105
+        },
+        {
+          "step": 18,
+          "pc": 17,
+          "op": 68,
+          "d": 106
+        },
+        {
+          "step": 19,
+          "pc": 18,
+          "op": 68,
+          "d": 107
+        },
+        {
+          "step": 20,
+          "pc": 19,
+          "op": 68,
+          "d": 108
+        },
+        {
+          "step": 21,
+          "pc": 20,
+          "op": 68,
+          "d": 109
+        },
+        {
+          "step": 22,
+          "pc": 21,
+          "op": 68,
+          "d": 110
+        },
+        {
+          "step": 23,
+          "pc": 22,
+          "op": 68,
+          "d": 111
+        },
+        {
+          "step": 24,
+          "pc": 23,
+          "op": 68,
+          "d": 112
+        },
+        {
+          "step": 25,
+          "pc": 24,
+          "op": 68,
+          "d": 113
+        },
+        {
+          "step": 26,
+          "pc": 25,
+          "op": 68,
+          "d": 114
+        },
+        {
+          "step": 27,
+          "pc": 26,
+          "op": 68,
+          "d": 115
+        },
+        {
+          "step": 28,
+          "pc": 27,
+          "op": 68,
+          "d": 116
+        },
+        {
+          "step": 29,
+          "pc": 28,
+          "op": 68,
+          "d": 117
+        },
+        {
+          "step": 30,
+          "pc": 29,
+          "op": 68,
+          "d": 118
+        },
+        {
+          "step": 31,
+          "pc": 30,
+          "op": 68,
+          "d": 119
+        },
+        {
+          "step": 32,
+          "pc": 31,
+          "op": 68,
+          "d": 120
+        },
+        {
+          "step": 33,
+          "pc": 32,
+          "op": 68,
+          "d": 121
+        },
+        {
+          "step": 34,
+          "pc": 33,
+          "op": 68,
+          "d": 122
+        },
+        {
+          "step": 35,
+          "pc": 34,
+          "op": 62,
+          "d": 123
+        },
+        {
+          "step": 36,
+          "pc": 35,
+          "op": 81,
+          "d": 124
+        }
+      ],
+      "steps": 36,
+      "final_target": 74,
+      "control_target": 29524,
+      "oracle": {
+        "output": "",
+        "steps": 36,
+        "status": "HALTED"
+      },
+      "runner_stderr": "steps: 36 | status: HALTED\n",
+      "checks": {
+        "strict_image": true,
+        "strict_control": true,
+        "scratch_halt": true,
+        "independent_halt": true,
+        "oracle_halt": true,
+        "equal_steps": true,
+        "no_in_out": true,
+        "target_74": true,
+        "full_mem_match": true,
+        "control_rejects_74": true,
+        "olmstead_halt": true,
+        "control_olmstead_halt": true,
+        "runner_halt": true
+      },
+      "all_checks": true
+    }
+  }
+}

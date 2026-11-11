@@ -1,0 +1,251 @@
+{
+  "base": "2eadc75",
+  "gates_commit": "9163d87",
+  "orientation": "crazy(accumulator,cell) = T[cell trit][accumulator trit]",
+  "direct_crazy": {
+    "47": {
+      "legal_initial": [
+        34,
+        51,
+        52,
+        70,
+        86,
+        87,
+        109,
+        115
+      ],
+      "reachable_74": []
+    },
+    "64": {
+      "legal_initial": [
+        34,
+        35,
+        53,
+        69,
+        70,
+        92,
+        98,
+        111
+      ],
+      "reachable_74": []
+    },
+    "123": {
+      "legal_initial": [
+        33,
+        39,
+        52,
+        69,
+        70,
+        88,
+        104,
+        105
+      ],
+      "reachable_74": []
+    }
+  },
+  "rotate_then_crazy_algebra": {
+    "47": [
+      {
+        "initial": 115,
+        "rotated": 19721,
+        "arbitrary_accumulator_needed": 29559
+      }
+    ],
+    "64": [
+      {
+        "initial": 111,
+        "rotated": 37,
+        "arbitrary_accumulator_needed": 29561
+      }
+    ],
+    "123": []
+  },
+  "prefixes": {
+    "47": {
+      "image_sha256": "b29394b9bf790629c9d977e86265de182b9d4f4791cd6f95d8e97fb376e1d4e4",
+      "control_sha256": "212c9a4fc4745cba0e73ad5464263166289178effea01e4800fd68b53591570c",
+      "source_loader_valid": true,
+      "control_loader_valid": true,
+      "rotation_pc": 8,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 68,
+          "d": 41
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 68,
+          "d": 42
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 68,
+          "d": 43
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 68,
+          "d": 46
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 39,
+          "d": 47
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 81,
+          "d": 48
+        }
+      ],
+      "scratch_steps": 10,
+      "scratch_status": "HALTED",
+      "independent_steps": 10,
+      "independent_status": "HALTED",
+      "oracle": {
+        "output": "",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "original_rc": 0,
+      "original_stdout_hex": "",
+      "original_stderr": "",
+      "runner_rc": 0,
+      "runner_stdout_hex": "0a",
+      "runner_stderr": "steps: 10 | status: HALTED\n",
+      "target_initial": 115,
+      "target_expected": 19721,
+      "scratch_target": 19721,
+      "independent_target": 19721,
+      "control_target": 115,
+      "no_in_out": true,
+      "changed_to_74": false,
+      "memory_equal": true,
+      "checks_pass": true
+    },
+    "64": {
+      "image_sha256": "bc7ebda29ea842920cc5f80a1dddb6e84cd3a228fb9e3a95b0f27e7385e89d21",
+      "control_sha256": "2bb8cf6d97a31dafcca11fe43294290251ee00ac2aebe79145ef993b7ce674ab",
+      "source_loader_valid": true,
+      "control_loader_valid": true,
+      "rotation_pc": 8,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 40,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 68,
+          "d": 58
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 68,
+          "d": 59
+        },
+        {
+          "step": 5,
+          "pc": 4,
+          "op": 68,
+          "d": 60
+        },
+        {
+          "step": 6,
+          "pc": 5,
+          "op": 68,
+          "d": 61
+        },
+        {
+          "step": 7,
+          "pc": 6,
+          "op": 68,
+          "d": 62
+        },
+        {
+          "step": 8,
+          "pc": 7,
+          "op": 68,
+          "d": 63
+        },
+        {
+          "step": 9,
+          "pc": 8,
+          "op": 39,
+          "d": 64
+        },
+        {
+          "step": 10,
+          "pc": 9,
+          "op": 81,
+          "d": 65
+        }
+      ],
+      "scratch_steps": 10,
+      "scratch_status": "HALTED",
+      "independent_steps": 10,
+      "independent_status": "HALTED",
+      "oracle": {
+        "output": "",
+        "steps": 10,
+        "status": "HALTED"
+      },
+      "original_rc": 0,
+      "original_stdout_hex": "",
+      "original_stderr": "",
+      "runner_rc": 0,
+      "runner_stdout_hex": "0a",
+      "runner_stderr": "steps: 10 | status: HALTED\n",
+      "target_initial": 111,
+      "target_expected": 37,
+      "scratch_target": 37,
+      "independent_target": 37,
+      "control_target": 111,
+      "no_in_out": true,
+      "changed_to_74": false,
+      "memory_equal": true,
+      "checks_pass": true
+    }
+  }
+}
