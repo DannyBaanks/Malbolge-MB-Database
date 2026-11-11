@@ -1,0 +1,514 @@
+{
+  "source": "BolgeForge/tools/resynthesize.py",
+  "source_sha256": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+  "scope": "only pure inverse CRAZY feasibility; not solve_sp, scratchpad bootstrap, full write scheduling, or executable Malbolge",
+  "cases": [
+    {
+      "cell": 42,
+      "forge_accumulator": 29419,
+      "prior_accumulator": 29419,
+      "match": true
+    },
+    {
+      "cell": 43,
+      "forge_accumulator": 29559,
+      "prior_accumulator": 29559,
+      "match": true
+    },
+    {
+      "cell": 44,
+      "forge_accumulator": 29486,
+      "prior_accumulator": 29486,
+      "match": true
+    },
+    {
+      "cell": 45,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 46,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 48,
+      "forge_accumulator": 29489,
+      "prior_accumulator": 29489,
+      "match": true
+    },
+    {
+      "cell": 49,
+      "forge_accumulator": 29507,
+      "prior_accumulator": 29507,
+      "match": true
+    },
+    {
+      "cell": 50,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 51,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 52,
+      "forge_accumulator": 29505,
+      "prior_accumulator": 29505,
+      "match": true
+    },
+    {
+      "cell": 53,
+      "forge_accumulator": 29486,
+      "prior_accumulator": 29486,
+      "match": true
+    },
+    {
+      "cell": 54,
+      "forge_accumulator": 29487,
+      "prior_accumulator": 29487,
+      "match": true
+    },
+    {
+      "cell": 55,
+      "forge_accumulator": 29508,
+      "prior_accumulator": 29508,
+      "match": true
+    },
+    {
+      "cell": 56,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 57,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 58,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 59,
+      "forge_accumulator": 29504,
+      "prior_accumulator": 29504,
+      "match": true
+    },
+    {
+      "cell": 60,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 61,
+      "forge_accumulator": 29502,
+      "prior_accumulator": 29502,
+      "match": true
+    },
+    {
+      "cell": 62,
+      "forge_accumulator": 29504,
+      "prior_accumulator": 29504,
+      "match": true
+    },
+    {
+      "cell": 63,
+      "forge_accumulator": 29505,
+      "prior_accumulator": 29505,
+      "match": true
+    },
+    {
+      "cell": 65,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 66,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 67,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 68,
+      "forge_accumulator": 29505,
+      "prior_accumulator": 29505,
+      "match": true
+    },
+    {
+      "cell": 69,
+      "forge_accumulator": 29487,
+      "prior_accumulator": 29487,
+      "match": true
+    },
+    {
+      "cell": 70,
+      "forge_accumulator": 29489,
+      "prior_accumulator": 29489,
+      "match": true
+    },
+    {
+      "cell": 71,
+      "forge_accumulator": 29487,
+      "prior_accumulator": 29487,
+      "match": true
+    },
+    {
+      "cell": 72,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 73,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 74,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 75,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 76,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 77,
+      "forge_accumulator": 29487,
+      "prior_accumulator": 29487,
+      "match": true
+    },
+    {
+      "cell": 78,
+      "forge_accumulator": 29487,
+      "prior_accumulator": 29487,
+      "match": true
+    },
+    {
+      "cell": 79,
+      "forge_accumulator": 29489,
+      "prior_accumulator": 29489,
+      "match": true
+    },
+    {
+      "cell": 80,
+      "forge_accumulator": 29486,
+      "prior_accumulator": 29486,
+      "match": true
+    },
+    {
+      "cell": 81,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 82,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 83,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 84,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 85,
+      "forge_accumulator": 29561,
+      "prior_accumulator": 29561,
+      "match": true
+    },
+    {
+      "cell": 86,
+      "forge_accumulator": 29559,
+      "prior_accumulator": 29559,
+      "match": true
+    },
+    {
+      "cell": 87,
+      "forge_accumulator": 29559,
+      "prior_accumulator": 29559,
+      "match": true
+    },
+    {
+      "cell": 88,
+      "forge_accumulator": 29561,
+      "prior_accumulator": 29561,
+      "match": true
+    },
+    {
+      "cell": 89,
+      "forge_accumulator": 29558,
+      "prior_accumulator": 29558,
+      "match": true
+    },
+    {
+      "cell": 90,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 91,
+      "forge_accumulator": 29562,
+      "prior_accumulator": 29562,
+      "match": true
+    },
+    {
+      "cell": 92,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 93,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 94,
+      "forge_accumulator": 29538,
+      "prior_accumulator": 29538,
+      "match": true
+    },
+    {
+      "cell": 95,
+      "forge_accumulator": 29541,
+      "prior_accumulator": 29541,
+      "match": true
+    },
+    {
+      "cell": 96,
+      "forge_accumulator": 29545,
+      "prior_accumulator": 29545,
+      "match": true
+    },
+    {
+      "cell": 97,
+      "forge_accumulator": 29556,
+      "prior_accumulator": 29556,
+      "match": true
+    },
+    {
+      "cell": 98,
+      "forge_accumulator": 29540,
+      "prior_accumulator": 29540,
+      "match": true
+    },
+    {
+      "cell": 99,
+      "forge_accumulator": 29541,
+      "prior_accumulator": 29541,
+      "match": true
+    },
+    {
+      "cell": 100,
+      "forge_accumulator": 29544,
+      "prior_accumulator": 29544,
+      "match": true
+    },
+    {
+      "cell": 101,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 102,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 103,
+      "forge_accumulator": 29543,
+      "prior_accumulator": 29543,
+      "match": true
+    },
+    {
+      "cell": 104,
+      "forge_accumulator": 29540,
+      "prior_accumulator": 29540,
+      "match": true
+    },
+    {
+      "cell": 105,
+      "forge_accumulator": 29541,
+      "prior_accumulator": 29541,
+      "match": true
+    },
+    {
+      "cell": 106,
+      "forge_accumulator": 29543,
+      "prior_accumulator": 29543,
+      "match": true
+    },
+    {
+      "cell": 107,
+      "forge_accumulator": 29540,
+      "prior_accumulator": 29540,
+      "match": true
+    },
+    {
+      "cell": 108,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 109,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 110,
+      "forge_accumulator": 29510,
+      "prior_accumulator": 29510,
+      "match": true
+    },
+    {
+      "cell": 111,
+      "forge_accumulator": 29503,
+      "prior_accumulator": 29503,
+      "match": true
+    },
+    {
+      "cell": 112,
+      "forge_accumulator": 29507,
+      "prior_accumulator": 29507,
+      "match": true
+    },
+    {
+      "cell": 113,
+      "forge_accumulator": 29505,
+      "prior_accumulator": 29505,
+      "match": true
+    },
+    {
+      "cell": 114,
+      "forge_accumulator": 29505,
+      "prior_accumulator": 29505,
+      "match": true
+    },
+    {
+      "cell": 115,
+      "forge_accumulator": 29507,
+      "prior_accumulator": 29507,
+      "match": true
+    },
+    {
+      "cell": 116,
+      "forge_accumulator": 29504,
+      "prior_accumulator": 29504,
+      "match": true
+    },
+    {
+      "cell": 117,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 118,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 119,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 120,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 121,
+      "forge_accumulator": 29489,
+      "prior_accumulator": 29489,
+      "match": true
+    },
+    {
+      "cell": 122,
+      "forge_accumulator": 29489,
+      "prior_accumulator": 29489,
+      "match": true
+    },
+    {
+      "cell": 124,
+      "forge_accumulator": 29538,
+      "prior_accumulator": 29538,
+      "match": true
+    },
+    {
+      "cell": 125,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    },
+    {
+      "cell": 126,
+      "forge_accumulator": 29509,
+      "prior_accumulator": 29509,
+      "match": true
+    },
+    {
+      "cell": 143,
+      "forge_accumulator": 29553,
+      "prior_accumulator": 29553,
+      "match": true
+    },
+    {
+      "cell": 148,
+      "forge_accumulator": null,
+      "prior_accumulator": null,
+      "match": true
+    }
+  ],
+  "count": 84,
+  "one_step_count": 51,
+  "all_agree": true
+}

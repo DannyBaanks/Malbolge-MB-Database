@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Output validation error: Invalid structured content for tool trace_malbolge: normalized_result.output_bytes.3: Too small: expected number to be >=0"
+    }
+  ],
+  "isError": true
+}

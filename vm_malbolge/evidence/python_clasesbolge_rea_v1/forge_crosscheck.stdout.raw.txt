@@ -1,0 +1,8 @@
+{
+  "source": "BolgeForge/tools/resynthesize.py",
+  "source_sha256": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+  "scope": "only pure inverse CRAZY feasibility; not solve_sp, scratchpad bootstrap, full write scheduling, or executable Malbolge",
+  "count": 84,
+  "one_step_count": 51,
+  "all_agree": true
+}

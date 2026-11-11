@@ -1,0 +1,67 @@
+{
+  "raw_storage": "~/.local/state/isyco/research/python-bf-rea-20261111/",
+  "raw_evidence": [
+    {
+      "file": "auto.json",
+      "sha256": "ece9b04aef13a5215c4e2e14581f3a8d530a664d3cbcac9803d616326252538e",
+      "evidence_id": "ev_74bacb175c3d9afa1144acc80926be715aab5368770a53744ad640c077122517",
+      "is_error": false
+    },
+    {
+      "file": "bf4.json",
+      "sha256": "9d68a46836416ba04fcc19ab669e301c2ea58f3a292b982b815d6cebae04115e",
+      "evidence_id": "ev_273021f01d240caf0de584f302d52941a85fe77a1418e866426814e26b287d33",
+      "is_error": false
+    },
+    {
+      "file": "bf_short.json",
+      "sha256": "7e97ed7815ecb7c12ff203c20c1fff56f3cf00906d4a2639f1a49f90d88e4cca",
+      "evidence_id": "ev_59f1910dc258fc33cd05e7d9ac5319ea2358a10f4050a02ddd84589843d9b88a",
+      "is_error": false
+    },
+    {
+      "file": "bf_trace.json",
+      "sha256": "2ff472dade961d22c33646558182f3e18b97fdd9c66952bcf3d5e4d5275bc6c5",
+      "evidence_id": "ev_f6ad06e1c1dc2da71263213fddfa44f39f2212a986c04aba6ffc31c917799841",
+      "is_error": false
+    },
+    {
+      "file": "malbolge4.json",
+      "sha256": "7fa4cf8770db1473e60d1fdfa733faac126557c1e32e799b9283141b03ebc026",
+      "evidence_id": "ev_d4748e9d52b825678356d922623844b7bebe24a5c3b8f7e4bcbac1009540e50f",
+      "is_error": false
+    },
+    {
+      "file": "malbolge_binary.json",
+      "sha256": "9720887c26703aeb8105706c6173712ad44c9c311252ffd11ac43b4449d61443",
+      "evidence_id": "ev_3ede4a2de94db591f7785cc2d5fdf6742353d31305f9ea0d5f42ea2041bd31e4",
+      "is_error": false
+    },
+    {
+      "file": "malbolge_control.json",
+      "sha256": "f1f401f7846e96192c93eb91b6a64b8d68bf4dc9a6abc4d2ee484f94890eb6e9",
+      "evidence_id": "ev_1c33523f1c95810b1b47befd632eeb44cbb8a3f6cb7b0c5fb7e97280b1dced7c",
+      "is_error": false
+    },
+    {
+      "file": "malbolge_short.json",
+      "sha256": "caa0c25d0662883643072dde2527873526bea4c4134da20ac124d211009510e5",
+      "evidence_id": null,
+      "is_error": true
+    },
+    {
+      "file": "python4.json",
+      "sha256": "f87c55235ba2942db167ad8b2d929d40123a3245ccdd93a0c81f5596a4fc34e9",
+      "evidence_id": "ev_7e4e6e2440e602f41559e02477498b6528fe3248a05aa3ee30cae7d749c1c6c5",
+      "is_error": false
+    },
+    {
+      "file": "python_short.json",
+      "sha256": "62d274737dc2950f0be0364c4dbf85a34559b53943fb49c12869359fe4eeb10b",
+      "evidence_id": "ev_ece70e3945dfa34b8f1d03fd17ee8eb9333f4c5d465b39e6dc8b9909bc2a222d",
+      "is_error": false
+    }
+  ],
+  "repo_redactions": "rea_*.redacted.json replace only workstation path prefixes",
+  "notes": "REA BF and Python are controlled process captures using hex presentation; Malbolge is a bounded in-process replay. EOF short returned tool output-validation error without a valid evidence envelope."
+}

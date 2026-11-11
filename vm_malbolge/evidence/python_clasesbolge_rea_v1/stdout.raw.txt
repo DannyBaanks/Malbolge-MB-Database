@@ -1,0 +1,120 @@
+{
+  "summary": {
+    "all_full_equal": true,
+    "assembly_fragment_agree": true,
+    "short_eof_all_equal": false,
+    "control_fails": true,
+    "boss2_unsupported_rejected": true,
+    "limited_compiler_rejections": true,
+    "binary_data_sha": {
+      "input": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2",
+      "python": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2",
+      "bf": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2",
+      "olmstead": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2"
+    }
+  },
+  "short_cases": {
+    "empty": {
+      "input_hex": "",
+      "python_hex": "",
+      "bf_hex": "00000000",
+      "olmstead_hex": "a8a8a8a8",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": false,
+      "olmstead_stderr_hex": ""
+    },
+    "one": {
+      "input_hex": "41",
+      "python_hex": "41",
+      "bf_hex": "41000000",
+      "olmstead_hex": "41a8a8a8",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": false,
+      "olmstead_stderr_hex": ""
+    },
+    "two": {
+      "input_hex": "4162",
+      "python_hex": "4162",
+      "bf_hex": "41620000",
+      "olmstead_hex": "4162a8a8",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": false,
+      "olmstead_stderr_hex": ""
+    },
+    "three": {
+      "input_hex": "416239",
+      "python_hex": "416239",
+      "bf_hex": "41623900",
+      "olmstead_hex": "416239a8",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": false,
+      "olmstead_stderr_hex": ""
+    },
+    "four": {
+      "input_hex": "41623921",
+      "python_hex": "41623921",
+      "bf_hex": "41623921",
+      "olmstead_hex": "41623921",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": true,
+      "olmstead_stderr_hex": ""
+    },
+    "five": {
+      "input_hex": "416239213f",
+      "python_hex": "41623921",
+      "bf_hex": "41623921",
+      "olmstead_hex": "41623921",
+      "python_rc": 0,
+      "olmstead_rc": 0,
+      "all_equal": true,
+      "olmstead_stderr_hex": ""
+    }
+  },
+  "assembly_cases": {
+    "empty": {
+      "input_utf8_hex": "",
+      "output_hex": "00000000",
+      "steps": 8,
+      "status": "HALTED",
+      "matches_fragment": true
+    },
+    "ascii": {
+      "input_utf8_hex": "41623921",
+      "output_hex": "41623921",
+      "steps": 8,
+      "status": "HALTED",
+      "matches_fragment": true
+    },
+    "embedded_nul": {
+      "input_utf8_hex": "0041",
+      "output_hex": "00410000",
+      "steps": 8,
+      "status": "HALTED",
+      "matches_fragment": true
+    },
+    "short": {
+      "input_utf8_hex": "416239",
+      "output_hex": "41623900",
+      "steps": 8,
+      "status": "HALTED",
+      "matches_fragment": true
+    }
+  },
+  "control": {
+    "output_hex": "623921",
+    "rc": 0,
+    "stderr_hex": "",
+    "expected_hex": "41623921",
+    "fails_equivalence": true
+  },
+  "boss2_rejections": {
+    ",.": "NotImplementedError: Comandos Brainfuck no soportados: ,",
+    "[.,]": "NotImplementedError: Comandos Brainfuck no soportados: ,[]",
+    "+[-].": "NotImplementedError: Comandos Brainfuck no soportados: []"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "python_bf_malbolge_same": true,
+    "python_bf_exit": true,
+    "malbolge_halted": true,
+    "control_distinct": true,
+    "short_python_bf_differ": true,
+    "rea_short_is_tool_error": true
+  },
+  "all_checks": true,
+  "python_four": {
+    "hex": "41623921",
+    "exit": {
+      "code": 0,
+      "signal": 0,
+      "reason": "exited"
+    }
+  },
+  "bf_four": {
+    "hex": "41623921",
+    "exit": {
+      "code": 0,
+      "signal": 0,
+      "reason": "exited"
+    }
+  },
+  "malbolge_four_output_hex": "41623921",
+  "malbolge_four_status": "HALTED",
+  "control_output_hex": "623921",
+  "python_short": {
+    "hex": "416239",
+    "exit": {
+      "code": 0,
+      "signal": 0,
+      "reason": "exited"
+    }
+  },
+  "bf_short": {
+    "hex": "41623900",
+    "exit": {
+      "code": 0,
+      "signal": 0,
+      "reason": "exited"
+    }
+  },
+  "rea_short_error": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Output validation error: Invalid structured content for tool trace_malbolge: normalized_result.output_bytes.3: Too small: expected number to be >=0"
+      }
+    ],
+    "isError": true
+  },
+  "limitations": "REA Python and BF observations are process-level wrappers that print hex; Malbolge is a bounded in-process replay; none is an electrical or transistor trace."
+}

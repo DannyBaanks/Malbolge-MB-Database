@@ -1,0 +1,27 @@
+{
+  "four": {
+    "input_hex": "41623921",
+    "output_hex": "41623921",
+    "steps": 9,
+    "terminated": true,
+    "stop_reason": "StopReason.TERMINATED",
+    "reason_code": 1
+  },
+  "short": {
+    "input_hex": "416239",
+    "output_hex": "416239",
+    "steps": 7,
+    "terminated": true,
+    "stop_reason": "StopReason.INPUT_UNDERFLOW",
+    "reason_code": 2
+  },
+  "empty": {
+    "input_hex": "",
+    "output_hex": "",
+    "steps": 1,
+    "terminated": true,
+    "stop_reason": "StopReason.INPUT_UNDERFLOW",
+    "reason_code": 2
+  },
+  "source_sha256": "bf3dc6dce27d9a2888ffbb37abb75d06e12a35b6cd5d58a349c5b7cf27aa704c"
+}

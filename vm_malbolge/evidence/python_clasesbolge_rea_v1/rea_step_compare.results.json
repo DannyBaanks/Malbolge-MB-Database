@@ -1,0 +1,57 @@
+{
+  "checks": {
+    "four_pairs": true,
+    "bf_capture_exit_0": true,
+    "malbolge_halts": true,
+    "all_values_match": true,
+    "outputs_match": true
+  },
+  "all_checks": true,
+  "pairs": [
+    {
+      "pair": 0,
+      "bf_input_pc": 0,
+      "bf_cell_after_input": 65,
+      "bf_out_pc": 1,
+      "malbolge_in_pc": 0,
+      "malbolge_out_pc": 1,
+      "malbolge_a_before_out": 65,
+      "same_byte": true,
+      "opcode_pair_matches": true
+    },
+    {
+      "pair": 1,
+      "bf_input_pc": 2,
+      "bf_cell_after_input": 98,
+      "bf_out_pc": 3,
+      "malbolge_in_pc": 2,
+      "malbolge_out_pc": 3,
+      "malbolge_a_before_out": 98,
+      "same_byte": true,
+      "opcode_pair_matches": true
+    },
+    {
+      "pair": 2,
+      "bf_input_pc": 4,
+      "bf_cell_after_input": 57,
+      "bf_out_pc": 5,
+      "malbolge_in_pc": 4,
+      "malbolge_out_pc": 5,
+      "malbolge_a_before_out": 57,
+      "same_byte": true,
+      "opcode_pair_matches": true
+    },
+    {
+      "pair": 3,
+      "bf_input_pc": 6,
+      "bf_cell_after_input": 33,
+      "bf_out_pc": 7,
+      "malbolge_in_pc": 6,
+      "malbolge_out_pc": 7,
+      "malbolge_a_before_out": 33,
+      "same_byte": true,
+      "opcode_pair_matches": true
+    }
+  ],
+  "scope": "one ASCII input, BF tracer is an explicit restricted interpreter captured as a process; REA Malbolge trace is in-process replay; no arbitrary programs or EOF equivalence"
+}

@@ -1,0 +1,281 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at_utc": "2026-11-11T22:13:29.985566+00:00",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "base_commit": "2f0d829",
+  "gates_commit": "c6b6dc8",
+  "bf_amendment_commit": "2a3d983",
+  "chronology": "Python reference, fixed image, and initial REA captures precede BF amendment; BF comparisons exploratory",
+  "commands": [
+    {
+      "program": "generate.py",
+      "exit_code": 0
+    },
+    {
+      "program": "probe.py",
+      "exit_code": 0
+    },
+    {
+      "program": "rea_compare.py",
+      "exit_code": 0
+    },
+    {
+      "program": "rea_step_compare.py",
+      "exit_code": 0
+    },
+    {
+      "program": "forge_crosscheck.py",
+      "exit_code": 0,
+      "note": "before orientation rerun, preserved exploratory"
+    },
+    {
+      "program": "orientation_check.py",
+      "exit_code": 0
+    },
+    {
+      "program": "forge_crosscheck_v2.py",
+      "exit_code": 0,
+      "note": "after orientation control"
+    },
+    {
+      "program": "autobolge_check.py",
+      "exit_code": 0,
+      "note": "run directly and via REA; same JSON path overwritten with identical bytes"
+    },
+    {
+      "program": "forge_overlap.py",
+      "exit_code": 0,
+      "note": "exploratory address overlap; no schedule synthesized"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "BF_GATES.md",
+      "sha256": "328a6fd2c0e9c19023ac10f137409500d06547c22819b43d40113e7a3d74082d"
+    },
+    {
+      "file": "GATES.md",
+      "sha256": "a89d7a53f154fbd00c83f05b2999517d4fc200723f050fce5873d2b64444f358"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "47e72ea65eea5ce5f5e9d91c1e579aa0095aee1345f07036a442209321f75459"
+    },
+    {
+      "file": "autobolge_check.py",
+      "sha256": "60746907144402de4e5cf89ffec4ccf3a0a3c83d18c7754bdc1b0546a35f1b3d"
+    },
+    {
+      "file": "autobolge_check.results.json",
+      "sha256": "0508b6824766b3107300f1c3b8e1b81619aaced2c923486884530f7c0eced1bd"
+    },
+    {
+      "file": "autobolge_check.stdout.raw.txt",
+      "sha256": "0508b6824766b3107300f1c3b8e1b81619aaced2c923486884530f7c0eced1bd"
+    },
+    {
+      "file": "bf_fragment.py",
+      "sha256": "2b866944af84b1e637684ab8e362bf392b0fd054146caafddd3ffd88cf70e0db"
+    },
+    {
+      "file": "bf_trace.py",
+      "sha256": "3510b835b698af9bb00c5e1669c195836c69d630fc59dbe0559eaac4cc401ef8"
+    },
+    {
+      "file": "ctrl_no_first_out.mb",
+      "sha256": "9bd16f1d7d7a66c91021bc58bf3754d121ad4c6769472b33af8a7f438290b323"
+    },
+    {
+      "file": "echo4.bf",
+      "sha256": "8e10d40886571aeb7cfcb3629f4135788cb237319ac10fbce884b5a5d2c1cadf"
+    },
+    {
+      "file": "echo4.mb",
+      "sha256": "cfded278793852a4bf892de139e3b3cc67680fcc3d822b42f40f6e67bf0dc69a"
+    },
+    {
+      "file": "encoding.json",
+      "sha256": "abd13c47a992bea6396d2c26099e67c75e797ba151f9f098a1428886d51288bf"
+    },
+    {
+      "file": "forge_crosscheck.py",
+      "sha256": "0b6cd19107607ccd3bfe499ba597a9a45fc9b0c8892cfaa13831c68ebe39aaf7"
+    },
+    {
+      "file": "forge_crosscheck.results.json",
+      "sha256": "13b8e12b68cdf7a328bcfdd41317b783c7c3c8209b2ed8e10edc437dcc4f551b"
+    },
+    {
+      "file": "forge_crosscheck.stdout.raw.txt",
+      "sha256": "fc7562c256d643495d8f3b5a4d8a1778b1db8e44e6ef862763f31dfc465532e3"
+    },
+    {
+      "file": "forge_crosscheck_v2.py",
+      "sha256": "6a6eb0c5e298bcd0f7813200af564f08d8a8cbe3b92ca1114bcba24de7395c54"
+    },
+    {
+      "file": "forge_crosscheck_v2.results.json",
+      "sha256": "13b8e12b68cdf7a328bcfdd41317b783c7c3c8209b2ed8e10edc437dcc4f551b"
+    },
+    {
+      "file": "forge_crosscheck_v2.stdout.raw.txt",
+      "sha256": "fc7562c256d643495d8f3b5a4d8a1778b1db8e44e6ef862763f31dfc465532e3"
+    },
+    {
+      "file": "forge_overlap.py",
+      "sha256": "cfe5c274bae6addc3032c8b97f14a52bce4df5afacdc84c1ee295139c6db2a3a"
+    },
+    {
+      "file": "forge_overlap.results.json",
+      "sha256": "4221212a9ea88904c9fbcfd4f3fa874547e2394262861cf5715a7ed1f9b25102"
+    },
+    {
+      "file": "forge_overlap.stdout.raw.txt",
+      "sha256": "4221212a9ea88904c9fbcfd4f3fa874547e2394262861cf5715a7ed1f9b25102"
+    },
+    {
+      "file": "full_bf.raw",
+      "sha256": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2"
+    },
+    {
+      "file": "full_inputs.raw",
+      "sha256": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2"
+    },
+    {
+      "file": "full_olmstead.raw",
+      "sha256": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2"
+    },
+    {
+      "file": "full_python.raw",
+      "sha256": "152baddfe1414ab7342c9624993164977ade8c27a345632fae12d8ffce2e36b2"
+    },
+    {
+      "file": "generate.py",
+      "sha256": "e639e893ebdba0f51e1abdcb8ec52973f984764e02bc99837210b8a41205bae2"
+    },
+    {
+      "file": "generate.stdout.raw.txt",
+      "sha256": "abd13c47a992bea6396d2c26099e67c75e797ba151f9f098a1428886d51288bf"
+    },
+    {
+      "file": "orientation_check.py",
+      "sha256": "6ccf8ac076ce6200362f8642f9a6b77abf747a2638cd9035a1c0c9fc8c72c04a"
+    },
+    {
+      "file": "orientation_check.stdout.raw.txt",
+      "sha256": "3a98c4c3777202f50d42c12965db42b2c4b1751f26315dc43723b64022bb6ab4"
+    },
+    {
+      "file": "parity.json",
+      "sha256": "3a98c4c3777202f50d42c12965db42b2c4b1751f26315dc43723b64022bb6ab4"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "2ed1436ddc1b77c56a190846cff730f0d7eb12830a2a41dd9f73e0576e25a159"
+    },
+    {
+      "file": "rea_auto.redacted.json",
+      "sha256": "05da6e0ca7effd5ae746494e54b6b3eebfc3248069e6b9fd54ab94753e02e3a3"
+    },
+    {
+      "file": "rea_bf4.redacted.json",
+      "sha256": "665609264e9c3a3b1f9317007d3f09c8304c11a98a78182ecabba163c48c2044"
+    },
+    {
+      "file": "rea_bf_short.redacted.json",
+      "sha256": "25c2b6e7557f9f498521b9817ccf0e1c3365cdb6cc41b73073c6c669f9cc95b7"
+    },
+    {
+      "file": "rea_bf_trace.redacted.json",
+      "sha256": "d76fcf012c1f5a3414ac30d890a65a3eab84b54a5bcc127f3e0a217bb72cd0b2"
+    },
+    {
+      "file": "rea_compare.py",
+      "sha256": "6babbc17cabdf2c76f2ad387314d289e8b992ef9104c6693c6e2d0464be757ea"
+    },
+    {
+      "file": "rea_compare.results.json",
+      "sha256": "fab00ba015deec9ecbaef2f470954f1905b6b1b05c849b4f50268f4f5347fb7e"
+    },
+    {
+      "file": "rea_compare.stdout.raw.txt",
+      "sha256": "fab00ba015deec9ecbaef2f470954f1905b6b1b05c849b4f50268f4f5347fb7e"
+    },
+    {
+      "file": "rea_evidence_manifest.json",
+      "sha256": "1b685db8bdcaa2288954c598db44130efa2c45652087b4b9bd4e7a4693691a00"
+    },
+    {
+      "file": "rea_malbolge4.redacted.json",
+      "sha256": "9843f2ef77d7b94f10366d60a5b6d37ac066af00878c79a08ed845b901381f50"
+    },
+    {
+      "file": "rea_malbolge_binary.redacted.json",
+      "sha256": "0eea58504699790dd2daea4f01fe69e41b32dadde2b648ddc5bc2fea4e272510"
+    },
+    {
+      "file": "rea_malbolge_control.redacted.json",
+      "sha256": "7261bf16efc23d63b85cc73c72f89b6ec59d41a9abd2c27ad557ef3b4210dc79"
+    },
+    {
+      "file": "rea_malbolge_short.redacted.json",
+      "sha256": "caa0c25d0662883643072dde2527873526bea4c4134da20ac124d211009510e5"
+    },
+    {
+      "file": "rea_python4.redacted.json",
+      "sha256": "f23bda860c30976cff96f342721fb8ad9777349c9c94f18fb813ac0d7d2a73d1"
+    },
+    {
+      "file": "rea_python_short.redacted.json",
+      "sha256": "0207dc0126817b9123d5ad5a75914eaecdeab60f2c92258e69dd7d4ebb06caef"
+    },
+    {
+      "file": "rea_step_compare.py",
+      "sha256": "33cfeadd9fe760d84dd1ccb9167ea8194f44952ad7c8dafd0d9622ee0c2f9a0d"
+    },
+    {
+      "file": "rea_step_compare.results.json",
+      "sha256": "ae0aad864d72383fd08158999428cd1a56aa43985ebf31b6e783020d77281ba3"
+    },
+    {
+      "file": "rea_step_compare.stdout.raw.txt",
+      "sha256": "ae0aad864d72383fd08158999428cd1a56aa43985ebf31b6e783020d77281ba3"
+    },
+    {
+      "file": "reference.py",
+      "sha256": "71529a0e126cd3557e788249cb543017793c82f9b593e1500a72621d7ddb43ab"
+    },
+    {
+      "file": "results.json",
+      "sha256": "ca30ab1785348f22ad78d0df5380f62ef7aa2352e990d65e82945ebafa396415"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "105fe527d139bf81fb636c428297f06227caa1d76ef7d20e5c9acd23e81ccfce"
+    }
+  ],
+  "dependencies": {
+    "../../clasesbolge.md": "c50a239fa7786777d6ca6bcefe17bc6a6c8c470a2f5baebc087728d7fcbd1702",
+    "../../ISyCo/workspace/assembly/brainfuck/brainfuck_interpreter.py": "c5a6a4da8ce9620a9a9450b8d5ca6a2be02695edb92b2f7a921282dab12cf289",
+    "../Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "../Malbolge-PureEpoch/tools/boss2_brainfuck.py": "f82374a72ec011b8f51753c36ad422d46607fc782e37542d1075e50600c90123",
+    "../Malbolge-PureEpoch/tools/build_candidates.py": "d7d11ce0076f77210a5cd1c81e1f6c4d93a9dc21e84729306eaeaa9ec69292c2",
+    "../Malbolge-PureEpoch/baseline/epoch_probe.py": "a7b6837aa4433136d1ab6d133ef5f8bf54b7c319873871596cf152249620dbf8",
+    "../BolgeForge/tools/resynthesize.py": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+    "../Autobolge/relational/classic.py": "bf3dc6dce27d9a2888ffbb37abb75d06e12a35b6cd5d58a349c5b7cf27aa704c",
+    "vm_malbolge/evidence/unieco_v1/write_plan.results.json": "c5f19ec6e9c410324a81fe73675c9b5a6df8f93e96a0c578810d21d8708d1598",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "../MALGAMES/vm/classic/pong_bounce_v0.mb": "177e7fcea2b99c31f83f865ba915e53a9d4d70a4ac850c5e6e61aad970b99f06",
+    "../../ISyCo/GUS/04_EXPERIMENTS/GUS_TRIT_ALGEBRA_V0/common.py": "5bfce5820449e20faaed670e0e16bbf8fe0a360ae5e8a2bc455874c543344bba"
+  },
+  "claims": {
+    "fixed_four_byte_observational_equivalence": "DEMONSTRATED for specified 256 vectors; not universal",
+    "short_eof_equivalence": "FALSE for tested inputs",
+    "full_brainfuck_translation": "NOT_DEMONSTRATED",
+    "unieco_strict_echo": "NOT_DEMONSTRATED",
+    "forge_control_comparison": "DEMONSTRATED for arithmetic feasibility only",
+    "forge_address_overlap": "DEMONSTRATED for specified target cells; not a proof of fatal conflict"
+  },
+  "rea": "See rea_evidence_manifest.json; Malbolge short-input response is an output-validation tool error, not a program result"
+}

@@ -1,0 +1,207 @@
+{
+  "evidence_id": "ev_d4748e9d52b825678356d922623844b7bebe24a5c3b8f7e4bcbac1009540e50f",
+  "subject": {
+    "name": "echo4.mb",
+    "digest": {
+      "sha256": "cfded278793852a4bf892de139e3b3cc67680fcc3d822b42f40f6e67bf0dc69a"
+    },
+    "local_path": "<MBDB>/vm_malbolge/evidence/python_clasesbolge_rea_v1/echo4.mb",
+    "format": "file",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rea-malbolge-classic",
+    "name": "REA Malbolge Classic engine",
+    "version": "6.5.0"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis",
+  "operation": "trace_malbolge",
+  "parameters": {
+    "path": "<MBDB>/vm_malbolge/evidence/python_clasesbolge_rea_v1/echo4.mb",
+    "max_steps": 20,
+    "input_text": "Ab9!",
+    "event_capture_limit": 20
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "artifact": {
+      "path": "<MBDB>/vm_malbolge/evidence/python_clasesbolge_rea_v1/echo4.mb",
+      "sha256": "cfded278793852a4bf892de139e3b3cc67680fcc3d822b42f40f6e67bf0dc69a",
+      "bytes": 9
+    },
+    "execution_id": "661467da-6c75-45a4-9ce7-1e11f7e18f2d",
+    "run": {
+      "steps": 9,
+      "status": "HALTED",
+      "invalid_reason": null,
+      "events_truncated": false,
+      "peak_position": 8,
+      "writebacks": 8,
+      "representation_changes": 8,
+      "state_digest_before": "46b12b2693559c99ef5261b74279cbc9288c6cb61558154d4c81c0d5bf479169",
+      "state_digest_after": "4d144f988386cfbf7c8a94d65556c44499d4b0a7cc64e630d95dd6464d8623b7"
+    },
+    "output_text": "Ab9!",
+    "output_bytes": [
+      65,
+      98,
+      57,
+      33
+    ],
+    "events": [
+      {
+        "step": 1,
+        "position": 0,
+        "opcode": 23,
+        "opcode_name": "in",
+        "a": 0,
+        "d": 0,
+        "writes": [
+          {
+            "position": 0,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "position": 1,
+        "opcode": 5,
+        "opcode_name": "out",
+        "a": 65,
+        "d": 1,
+        "writes": [
+          {
+            "position": 1,
+            "value_before": 98,
+            "value_after": 84
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "position": 2,
+        "opcode": 23,
+        "opcode_name": "in",
+        "a": 65,
+        "d": 2,
+        "writes": [
+          {
+            "position": 2,
+            "value_before": 115,
+            "value_after": 82
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "position": 3,
+        "opcode": 5,
+        "opcode_name": "out",
+        "a": 98,
+        "d": 3,
+        "writes": [
+          {
+            "position": 3,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "position": 4,
+        "opcode": 23,
+        "opcode_name": "in",
+        "a": 98,
+        "d": 4,
+        "writes": [
+          {
+            "position": 4,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "position": 5,
+        "opcode": 5,
+        "opcode_name": "out",
+        "a": 57,
+        "d": 5,
+        "writes": [
+          {
+            "position": 5,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "position": 6,
+        "opcode": 23,
+        "opcode_name": "in",
+        "a": 57,
+        "d": 6,
+        "writes": [
+          {
+            "position": 6,
+            "value_before": 111,
+            "value_after": 120
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "position": 7,
+        "opcode": 5,
+        "opcode_name": "out",
+        "a": 33,
+        "d": 7,
+        "writes": [
+          {
+            "position": 7,
+            "value_before": 92,
+            "value_after": 115
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "position": 8,
+        "opcode": 81,
+        "opcode_name": "halt",
+        "a": 33,
+        "d": 8,
+        "writes": []
+      }
+    ],
+    "limitations": [
+      "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+      "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+      "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+      "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+    "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+    "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+    "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "<MBDB>/vm_malbolge/evidence/python_clasesbolge_rea_v1/echo4.mb"
+    }
+  ],
+  "evidence_links": []
+}
