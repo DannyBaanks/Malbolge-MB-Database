@@ -1,0 +1,60 @@
+{
+  "S": 41,
+  "P": 44,
+  "M": 46,
+  "A1": 48,
+  "A2": 49,
+  "W": 52,
+  "epoch_table": {
+    "100": {
+      "b": 99,
+      "succ_cell": 101,
+      "succ_val": 74,
+      "hop_to_w": 75
+    },
+    "106": {
+      "b": 105,
+      "succ_cell": 107,
+      "succ_val": 68,
+      "hop_to_w": 69
+    },
+    "112": {
+      "b": 111,
+      "succ_cell": 113,
+      "succ_val": 62,
+      "hop_to_w": 63
+    }
+  },
+  "no_trit2_seed": 36,
+  "request_bytes": 21,
+  "instances": {
+    "e100_p93": {
+      "epoch": 100,
+      "payload": 93
+    },
+    "e100_p281": {
+      "epoch": 100,
+      "payload": 281
+    },
+    "e100_p29797": {
+      "epoch": 100,
+      "payload": 29797
+    },
+    "e106_p275": {
+      "epoch": 106,
+      "payload": 275
+    },
+    "e106_p29791": {
+      "epoch": 106,
+      "payload": 29791
+    },
+    "e112_p269": {
+      "epoch": 112,
+      "payload": 269
+    },
+    "e112_p29785": {
+      "epoch": 112,
+      "payload": 29785
+    }
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "integrity": {
+    "sha256": "41cdbc79649e4a1c46a9887d138a7589bc1fbef5dbebd368ff61dcde10a2e842",
+    "matches_build": true,
+    "length": 340,
+    "printable": true,
+    "no_whitespace": true,
+    "single_image_for_all_instances": true
+  },
+  "lemma_decomposition": {
+    "words": 59049,
+    "mismatches": 0,
+    "examples": []
+  },
+  "lemma_semigroup": {
+    "maps": 15,
+    "reachable": {
+      "trit->ctrl de P (0,2,0)": false,
+      "trit->ctrl de M (0,2,2)": false,
+      "trit->ctrl (0,0,2)": true
+    },
+    "all_maps": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        0
+      ],
+      [
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        2,
+        2
+      ]
+    ]
+  },
+  "lemma_epoch_table": {
+    "rows": {
+      "100": {
+        "b": 99,
+        "succ_cell": 101,
+        "succ_val": 74,
+        "hop_to_w": 75,
+        "end_decode_ok": true,
+        "chain_ok": true,
+        "pointer_ok": true
+      },
+      "106": {
+        "b": 105,
+        "succ_cell": 107,
+        "succ_val": 68,
+        "hop_to_w": 69,
+        "end_decode_ok": true,
+        "chain_ok": true,
+        "pointer_ok": true
+      },
+      "112": {
+        "b": 111,
+        "succ_cell": 113,
+        "succ_val": 62,
+        "hop_to_w": 63,
+        "end_decode_ok": true,
+        "chain_ok": true,
+        "pointer_ok": true
+      }
+    },
+    "all_ok": true,
+    "candidate_epochs_in_data_zone": 92,
+    "implemented": 3,
+    "candidates_head": [
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "candidates_tail": [
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126
+    ]
+  },
+  "lemma_opcode_triples": {
+    "valid_opcodes": [
+      4,
+      5,
+      23,
+      39,
+      40,
+      62,
+      68,
+      81
+    ],
+    "epochs_implemented": [
+      100,
+      106,
+      112
+    ],
+    "triples_valid_here": 0,
+    "triples_valid_here_detail": [],
+    "triples_valid_aligned_94": 8,
+    "triples_valid_aligned_94_detail": [
+      {
+        "residue": 4,
+        "opcodes": [
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "residue": 5,
+        "opcodes": [
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "residue": 23,
+        "opcodes": [
+          23,
+          23,
+          23
+        ]
+      },
+      {
+        "residue": 39,
+        "opcodes": [
+          39,
+          39,
+          39
+        ]
+      },
+      {
+        "residue": 40,
+        "opcodes": [
+          40,
+          40,
+          40
+        ]
+      },
+      {
+        "residue": 62,
+        "opcodes": [
+          62,
+          62,
+          62
+        ]
+      },
+      {
+        "residue": 68,
+        "opcodes": [
+          68,
+          68,
+          68
+        ]
+      },
+      {
+        "residue": 81,
+        "opcodes": [
+          81,
+          81,
+          81
+        ]
+      }
+    ]
+  },
+  "instances": {
+    "e100_p93": {
+      "epoch": 100,
+      "epoch_byte": 99,
+      "payload": 93,
+      "request_hex": "630002020002000000000000020200020000000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 99,
+      "W_is_epoch_byte": true,
+      "P_built": 29617,
+      "P_expected": 29617,
+      "P_exact": true,
+      "M_built": 29617,
+      "M_expected": 29617,
+      "M_exact": true,
+      "payload_written": 93,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "106": 29524,
+        "112": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "106": 11,
+        "112": 17
+      },
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "5d",
+      "expected_out": "5d",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        101
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "5d",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 218,
+      "c_out": "5d",
+      "c_predicted_guard_step": null,
+      "c_expected_steps": 218,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": true
+    },
+    "e100_p281": {
+      "epoch": 100,
+      "epoch_byte": 99,
+      "payload": 281,
+      "request_hex": "630000020200020000000002000202000200000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 99,
+      "W_is_epoch_byte": true,
+      "P_built": 29803,
+      "P_expected": 29803,
+      "P_exact": true,
+      "M_built": 29804,
+      "M_expected": 29804,
+      "M_exact": true,
+      "payload_written": 281,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "106": 29524,
+        "112": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "106": 11,
+        "112": 17
+      },
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "19",
+      "expected_out": "19",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        101
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "19",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "e100_p29797": {
+      "epoch": 100,
+      "epoch_byte": 99,
+      "payload": 29797,
+      "request_hex": "630200020002000202020202020202020202020202",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 99,
+      "W_is_epoch_byte": true,
+      "P_built": 58775,
+      "P_expected": 58775,
+      "P_exact": true,
+      "M_built": 59048,
+      "M_expected": 59048,
+      "M_exact": true,
+      "payload_written": 29797,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "106": 29524,
+        "112": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "106": 11,
+        "112": 17
+      },
+      "out_pcs": [
+        100
+      ],
+      "out_bytes": "65",
+      "expected_out": "65",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        101
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "65",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "e106_p275": {
+      "epoch": 106,
+      "epoch_byte": 105,
+      "payload": 275,
+      "request_hex": "690002000200020000000002020002000200000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 105,
+      "W_is_epoch_byte": true,
+      "P_built": 29797,
+      "P_expected": 29797,
+      "P_exact": true,
+      "M_built": 29798,
+      "M_expected": 29798,
+      "M_exact": true,
+      "payload_written": 275,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "100": 29524,
+        "112": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "100": 93,
+        "112": 11
+      },
+      "out_pcs": [
+        106
+      ],
+      "out_bytes": "13",
+      "expected_out": "13",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        107
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "13",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "e106_p29791": {
+      "epoch": 106,
+      "epoch_byte": 105,
+      "payload": 29791,
+      "request_hex": "690200020002000202020202000202020202020202",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 105,
+      "W_is_epoch_byte": true,
+      "P_built": 58775,
+      "P_expected": 58775,
+      "P_exact": true,
+      "M_built": 59045,
+      "M_expected": 59045,
+      "M_exact": true,
+      "payload_written": 29791,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "100": 29524,
+        "112": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "100": 93,
+        "112": 11
+      },
+      "out_pcs": [
+        106
+      ],
+      "out_bytes": "5f",
+      "expected_out": "5f",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        107
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "5f",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "e112_p269": {
+      "epoch": 112,
+      "epoch_byte": 111,
+      "payload": 269,
+      "request_hex": "6f0000000000020000000002020200000200000000",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 111,
+      "W_is_epoch_byte": true,
+      "P_built": 29767,
+      "P_expected": 29767,
+      "P_exact": true,
+      "M_built": 29780,
+      "M_expected": 29780,
+      "M_exact": true,
+      "payload_written": 269,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "100": 29524,
+        "106": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "100": 87,
+        "106": 93
+      },
+      "out_pcs": [
+        112
+      ],
+      "out_bytes": "0d",
+      "expected_out": "0d",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        113
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "0d",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    },
+    "e112_p29785": {
+      "epoch": 112,
+      "epoch_byte": 111,
+      "payload": 29785,
+      "request_hex": "6f0202000002000202020202020002020202020202",
+      "request_read_in_order": true,
+      "n_bytes_read": 21,
+      "W_written": 111,
+      "W_is_epoch_byte": true,
+      "P_built": 58769,
+      "P_expected": 58769,
+      "P_exact": true,
+      "M_built": 59039,
+      "M_expected": 59039,
+      "M_exact": true,
+      "payload_written": 29785,
+      "payload_exact": true,
+      "other_epoch_cells": {
+        "100": 29524,
+        "106": 29524
+      },
+      "others_kept_mask": true,
+      "opcode_at_epoch": 5,
+      "opcode_at_other_epochs": {
+        "100": 87,
+        "106": 93
+      },
+      "out_pcs": [
+        112
+      ],
+      "out_bytes": "59",
+      "expected_out": "59",
+      "emitted_at_epoch": true,
+      "end_pcs": [
+        113
+      ],
+      "end_at_successor": true,
+      "status": "HALTED",
+      "steps": 218,
+      "oracle_out": "59",
+      "oracle_status": "HALTED",
+      "trace_eq_oracle": true,
+      "nc_eq_oracle": true,
+      "c_steps": 217,
+      "c_out": "",
+      "c_predicted_guard_step": 217,
+      "c_expected_steps": 217,
+      "c_matches_prediction": true,
+      "c_out_eq_oracle": false
+    }
+  },
+  "control_mutated_epoch_byte": {
+    "base_epoch": 100,
+    "base_payload": 29797,
+    "mutated_request_hex": "690200020002000202020202020202020202020202",
+    "payload_written_at_100": 29524,
+    "payload_written_at_106": 29797,
+    "epoch_moved": true,
+    "opcode_at_106": 11,
+    "out_bytes": "",
+    "status": "HALTED",
+    "steps": 218
+  },
+  "control_mutated_control_byte": {
+    "base_payload": 29797,
+    "mutated_request_hex": "630000020002000202020202020202020202020202",
+    "payload_written": 29798,
+    "payload_changed": true,
+    "epoch_unchanged": true,
+    "out_bytes": "",
+    "status": "HALTED",
+    "steps": 218
+  },
+  "control_off_catalog_epoch_byte": {
+    "request_hex": "320200020002000202020202020202020202020202",
+    "epoch_byte": 50,
+    "payload_landed_in_epoch_cells": [],
+    "no_epoch_selected": true,
+    "out_bytes": "",
+    "status": "HALTED",
+    "steps": 237,
+    "note": "byte fuera de cat\u00e1logo: la m\u00e1quina no tiene \u00e9poca para ese puntero; se mide el comportamiento, no se exige nada"
+  },
+  "coverage": {
+    "epochs_reached": [
+      "100",
+      "106",
+      "112"
+    ],
+    "distinct_epochs": 3,
+    "distinct_payloads": 7,
+    "one_image": true
+  },
+  "verdict_all_checks_pass": true
+}

@@ -127,3 +127,20 @@ python3 vm_malbolge/evidence/epoch_resolver_request_v1/probe.py   # exit 0
   elegido por la petición;
 * rearm de la época para una **segunda** petición en la misma ejecución
   (`epoch_rearm_primitive_v1`).
+
+## Corrección posterior (2026-11-10, adición — sólo se añade; no se reescribe lo anterior)
+
+La primera de las dos tareas listadas en «Pendiente» está **cerrada** por
+[`epoch_resolver_epoch_select_v1/`](../epoch_resolver_epoch_select_v1/): la
+selección de época de `epoch_algebra_v3` queda compuesta con este payload
+elegido por la petición. Medido en ese pack: una imagen de 340 bytes, petición
+de 21 bytes (byte 0 = celda de época `T = b+1` ∈ {100, 106, 112}; 20 dígitos de
+control = payload de 10 trits), payload escrito **exacto** en la celda elegida
+y ejecutado en ella (`OUT = V % 256` en `pc = T`, `END` en `T+1`), 7 instancias
+con 4 motores.
+
+Lo que **sigue abierto** es el segundo punto del «Pendiente»: el rearm de la
+época para una **segunda** petición en la misma ejecución
+(`epoch_rearm_primitive_v1` sin componer) continúa `NOT_DEMONSTRATED`. La
+corrección anterior no reescribe ninguna medición de este pack: aquí la época
+seguía siendo fija y el pack anterior sigue midiendo exactamente eso.

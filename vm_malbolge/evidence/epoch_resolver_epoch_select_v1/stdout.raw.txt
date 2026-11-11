@@ -1,0 +1,17 @@
+[integrity] {"sha256": "41cdbc79649e4a1c46a9887d138a7589bc1fbef5dbebd368ff61dcde10a2e842", "matches_build": true, "length": 340, "printable": true, "no_whitespace": true, "single_image_for_all_instances": true}
+[lema] V = crazy(M,P) sobre 59049 palabras: 0 discrepancias
+[lema] semigrupo de crazy: 15 mapas; el mapa trit->ctrl que haría falta NO es alcanzable (True); el (0,0,2) sí lo es
+[lema] tabla de épocas invariantes=True; candidatas en la zona de dato=92, implementadas=3
+[lema] payload válido en las tres épocas a la vez: aquí=0, con tres épocas alineadas a 94=8 (opcodes=[4, 5, 23, 39, 40, 62, 68, 81])
+[instancia] e100_p93     epoca=100 b= 99 payload=    93 leidos=21 W=99(True) P=29617(True) M=29617(True) payload=93(True) otras-mascara=True OUT=5d esperado=5d en pc=[100] END=[101] pasos=218 C=218(C esperado 218) guarda=None
+[instancia] e100_p281    epoca=100 b= 99 payload=   281 leidos=21 W=99(True) P=29803(True) M=29804(True) payload=281(True) otras-mascara=True OUT=19 esperado=19 en pc=[100] END=[101] pasos=218 C=217(C esperado 217) guarda=217
+[instancia] e100_p29797  epoca=100 b= 99 payload= 29797 leidos=21 W=99(True) P=58775(True) M=59048(True) payload=29797(True) otras-mascara=True OUT=65 esperado=65 en pc=[100] END=[101] pasos=218 C=217(C esperado 217) guarda=217
+[instancia] e106_p275    epoca=106 b=105 payload=   275 leidos=21 W=105(True) P=29797(True) M=29798(True) payload=275(True) otras-mascara=True OUT=13 esperado=13 en pc=[106] END=[107] pasos=218 C=217(C esperado 217) guarda=217
+[instancia] e106_p29791  epoca=106 b=105 payload= 29791 leidos=21 W=105(True) P=58775(True) M=59045(True) payload=29791(True) otras-mascara=True OUT=5f esperado=5f en pc=[106] END=[107] pasos=218 C=217(C esperado 217) guarda=217
+[instancia] e112_p269    epoca=112 b=111 payload=   269 leidos=21 W=111(True) P=29767(True) M=29780(True) payload=269(True) otras-mascara=True OUT=0d esperado=0d en pc=[112] END=[113] pasos=218 C=217(C esperado 217) guarda=217
+[instancia] e112_p29785  epoca=112 b=111 payload= 29785 leidos=21 W=111(True) P=58769(True) M=59039(True) payload=29785(True) otras-mascara=True OUT=59 esperado=59 en pc=[112] END=[113] pasos=218 C=217(C esperado 217) guarda=217
+[control] byte de época 99->105: payload en 100=29524 en 106=29797 (movido=True) opcode@106=11 OUT= estado=HALTED
+[control] dígito de control alterado (byte 1): payload=29798 (cambiado=True) OUT= estado=HALTED
+[control] byte de época fuera de catálogo (50): aterrizaje en épocas=[] estado=HALTED pasos=237 (medido, sin puerta)
+[cobertura] épocas=['100', '106', '112'] payloads distintos=7 imagen=1
+[verdict] all_checks_pass = True
