@@ -1,0 +1,12 @@
+[Q1] params={'shift': 60, 'T': 59, 'g': 4, 'jmp': 65, 'n': 6, 'x_value': 74, 'fillers': [41, 41, 37], 'extras': []} entrada={'D0': 100, 'o0': 0, 'o1': 4}
+[Q1] celdas de dato={'99': 59, '100': 100, '105': 59, '110': 98} predicción={'99': 59, '100': 100, '105': 59, '110': 98} coincide=True largo=111 (block_v1 R=60: 525)
+[Q1] punto fijo leído de la imagen: {'round0_jmp_reads_T': True, 'round1_jmp_reads_T': True, 'd_returns_D0': True, 'data_cells_distinct': True, 'data_cells_outside_code': True, 'image_printable': True}
+[Q2] vueltas=10000 pasos=60060 status=ROUNDS DLOAD/vuelta=[1] opcodes_cuerpo=[4, 40] destinos_JMP=[59] d_inicio=[100, 106]
+[Q2] criterio: {'checks': {'rounds_closed_ge_R': True, 'one_dload_per_round': True, 'body_only_40_and_4': True, 'all_jmp_to_T': True, 'd_start_two_values': True}, 'ok': True}
+[Q2] motores: {'steps': {'oracle': 60060, 'indep': 60060, 'scratch': 60060, 'c': 60060}, 'status': {'oracle': 'MAX_STEPS', 'indep': 'MAX', 'scratch': 'MAX', 'c': 'TIMEOUT'}, 'none_stopped_before_cap': True, 'outputs_empty': True, 'memory_sha_trace_scratch_indep_equal': True, 'jmp_dests_trace_eq_scratch': True, 'd_start_trace_eq_scratch': True, 'all': True}
+[Q3] ciclos de las celdas cifradas={60: 2, 61: 5, 62: 5, 63: 6, 64: 2, 59: 68} P_predicho=1020 repetición=(0, 1020) P_medido=1020 periodo_d=2
+[Q4] ctrl_k_off: celda 110=99 primer_JMP_malo=1 destinos=[59, 100] criterio=False
+[Q4] ctrl_no_dload: vueltas=1 primer_JMP_malo=1 destinos=[59, 29433] status=HALTED criterio=False
+[Q4] ctrl_block_v1: vueltas=0 destinos=[70] status=HALTED
+[Q5] Olmstead 1998: rc=1 stderr='invalid character in source file' válidas-al-cargar 4/111 dialecto=classic_permissive
+[gates] {'G0': True, 'G1': True, 'G2': True, 'G3': True, 'G4': True} all_gates_pass=True

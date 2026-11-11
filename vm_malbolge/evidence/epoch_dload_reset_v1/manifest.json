@@ -1,0 +1,95 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T18:32:19.298579+00:00",
+  "command": "python3 -I vm_malbolge/evidence/epoch_dload_reset_v1/probe.py </dev/null",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "8330773011618fc5432ee03165d23399e21e67f3932d772cf00cd79436fc375c"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "0e231852d10f5c39caa2e8c4ac1996ec4f0637b1c2d3c26ae065255248109a8f"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "47ad84da7eea21c337bf1c009dd839ced0c28e2948ca9f005f5017ed21a6262a"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "1aaf7e710d481a5bd5975fcda9ab1888be2632083931ce22b8a720afcfbf614b"
+    },
+    {
+      "file": "dload_reset.mb",
+      "sha256": "a472cdf966ac5aea2b3129274d8a16d32e3a3cd2209735729640e048f3fbe1b6"
+    },
+    {
+      "file": "ctrl_k_off.mb",
+      "sha256": "f81da2c490b8ff51e87f58a2b26a47c5bd79f7c69928386caef0203a339a193d"
+    },
+    {
+      "file": "ctrl_no_dload.mb",
+      "sha256": "9017da026ecdc8b45aaf7b2ab5e6d1e1828d62e3c1e4c54c5ef2ed248de4491b"
+    },
+    {
+      "file": "results.json",
+      "sha256": "1ad2b46fcf6c37de72089ea01378aa1e63c3b1e8537242b42b250cbb0797e97b"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "6aee1d169f13401b284daabdd0dc1c8cc845193430f0a410433490c6b988962a"
+    }
+  ],
+  "dependencies": {
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py (edge de código)": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/dload_block.mb (control histórico)": "c335f6ed15fc76e8c091d481d99411fd38e9487b936b5238e79816dea5819015",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "Malbolge-PureEpoch/build/olmstead (externo)": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  },
+  "claims": [
+    {
+      "text": "C1: las cuatro celdas de dato del punto fijo se calculan en el probe desde parámetros medidos y coinciden con la predicción en papel de GATES.md (99<-59, 100<-100, 105<-59, 110<-98)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2: la tabla de destinos tiene tamaño constante: la imagen mide 111 celdas para cualquier R (block_v1 necesitaba 525 para R = 60)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C3: dload_reset.mb cierra 10 000 vueltas con exactamente un DLOAD por vuelta, sólo los opcodes 40 y 4 en el cuerpo, todos los JMP en el trampolín 59 y d al empezar cada vuelta en {100, 106}",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: en esas 60 060 instrucciones, trazador, scratch e intérprete independiente coinciden en la memoria final (sha256 de las 59 049 celdas); trazador y scratch en destinos de JMP y en d por vuelta; oráculo y runner C sólo en no parar antes del tope",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C5: el estado completo (memoria, a, c, d) al empezar la vuelta se repite con periodo 1020 = mcm(2, 5, 6, 68), el predicho; en este dialecto y con esta semántica el bucle se repite para siempre",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C6: los tres controles rompen el criterio: K desplazado (JMP malo en la vuelta 1), sin DLOAD (JMP malo en la vuelta 1, luego HALT) y la imagen histórica de block_v1 (0 vueltas cerradas)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C7: el bloque de DLOAD (C8 de epoch_xlat2_block_v1) se construye y ejecuta una vez por vuelta con esta colocación de datos",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C8: una variante que pase el cargador de Olmstead 1998",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C9: componer DLOAD con OUT/ROT/CRAZY en el mismo bucle ilimitado",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}
