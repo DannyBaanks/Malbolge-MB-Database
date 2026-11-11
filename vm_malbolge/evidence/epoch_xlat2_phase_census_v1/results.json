@@ -1,0 +1,602 @@
+{
+  "pack": "epoch_xlat2_phase_census_v1",
+  "image_dependencies": {
+    "oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "epoch_rearm_budget_v1/results.json": "29bbf65cbb5291aac112b9428b48149ada1ee68a85895d86eaac1dfce84f1692"
+  },
+  "q1": {
+    "lengths": [
+      2,
+      4,
+      5,
+      6,
+      9,
+      68
+    ],
+    "census": {
+      "2": 2,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "9": 9,
+      "68": 68
+    },
+    "cycles": [
+      {
+        "L": 68,
+        "members": [
+          33,
+          53,
+          45,
+          119,
+          78,
+          49,
+          87,
+          48,
+          123,
+          71,
+          83,
+          94,
+          57,
+          91,
+          106,
+          77,
+          65,
+          59,
+          92,
+          115,
+          82,
+          118,
+          107,
+          75,
+          104,
+          89,
+          56,
+          44,
+          40,
+          121,
+          35,
+          93,
+          98,
+          84,
+          61,
+          100,
+          97,
+          46,
+          101,
+          99,
+          86,
+          95,
+          109,
+          88,
+          47,
+          52,
+          72,
+          55,
+          110,
+          126,
+          64,
+          81,
+          54,
+          90,
+          124,
+          34,
+          122,
+          63,
+          43,
+          36,
+          38,
+          113,
+          108,
+          39,
+          116,
+          69,
+          112,
+          68
+        ]
+      },
+      {
+        "L": 6,
+        "members": [
+          37,
+          103,
+          117,
+          111,
+          120,
+          58
+        ]
+      },
+      {
+        "L": 5,
+        "members": [
+          41,
+          102,
+          96,
+          60,
+          51
+        ]
+      },
+      {
+        "L": 4,
+        "members": [
+          42,
+          114,
+          125,
+          105
+        ]
+      },
+      {
+        "L": 9,
+        "members": [
+          50,
+          80,
+          66,
+          62,
+          76,
+          79,
+          67,
+          85,
+          73
+        ]
+      },
+      {
+        "L": 2,
+        "members": [
+          70,
+          74
+        ]
+      }
+    ],
+    "budget_q6_lengths": [
+      2,
+      4,
+      5,
+      6,
+      9,
+      68
+    ],
+    "budget_q6_census": {
+      "2": 2,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "9": 9,
+      "68": 68
+    }
+  },
+  "q2": {
+    "positions_mod": 94,
+    "targets": {
+      "OUT": {
+        "target": "OUT",
+        "opcode": 5,
+        "verdict": "NO_WINDOW",
+        "positions": 0,
+        "load_valid_positions": 0,
+        "min_cycle": null,
+        "per_cycle": [
+          {
+            "L": 68,
+            "good_shifts": 0,
+            "max_run": 0,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 2,
+            "load_valid": 0
+          },
+          {
+            "L": 6,
+            "good_shifts": 5,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 5,
+            "good_shifts": 5,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 4,
+            "good_shifts": 3,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 9,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 2,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          }
+        ]
+      },
+      "IN": {
+        "target": "IN",
+        "opcode": 23,
+        "verdict": "NO_WINDOW",
+        "positions": 0,
+        "load_valid_positions": 0,
+        "min_cycle": null,
+        "per_cycle": [
+          {
+            "L": 68,
+            "good_shifts": 0,
+            "max_run": 0,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 2,
+            "load_valid": 0
+          },
+          {
+            "L": 6,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 5,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 4,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 9,
+            "good_shifts": 5,
+            "max_run": 2,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 2,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          }
+        ]
+      },
+      "ROT": {
+        "target": "ROT",
+        "opcode": 39,
+        "verdict": "NO_WINDOW",
+        "positions": 0,
+        "load_valid_positions": 0,
+        "min_cycle": null,
+        "per_cycle": [
+          {
+            "L": 68,
+            "good_shifts": 0,
+            "max_run": 0,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 2,
+            "load_valid": 0
+          },
+          {
+            "L": 6,
+            "good_shifts": 5,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 5,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 4,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 9,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 2,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          }
+        ]
+      },
+      "DLOAD": {
+        "target": "DLOAD",
+        "opcode": 40,
+        "verdict": "NO_WINDOW",
+        "positions": 0,
+        "load_valid_positions": 0,
+        "min_cycle": null,
+        "per_cycle": [
+          {
+            "L": 68,
+            "good_shifts": 0,
+            "max_run": 0,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 2,
+            "load_valid": 0
+          },
+          {
+            "L": 6,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 5,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 4,
+            "good_shifts": 3,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 9,
+            "good_shifts": 5,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 2,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          }
+        ]
+      },
+      "CRAZY": {
+        "target": "CRAZY",
+        "opcode": 62,
+        "verdict": "NO_WINDOW",
+        "positions": 0,
+        "load_valid_positions": 0,
+        "min_cycle": null,
+        "per_cycle": [
+          {
+            "L": 68,
+            "good_shifts": 0,
+            "max_run": 0,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 2,
+            "load_valid": 0
+          },
+          {
+            "L": 6,
+            "good_shifts": 5,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 5,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 4,
+            "good_shifts": 3,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 9,
+            "good_shifts": 4,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          },
+          {
+            "L": 2,
+            "good_shifts": 2,
+            "max_run": 1,
+            "windows": 0,
+            "window_starts": [],
+            "min_valid_per_shift": 0,
+            "load_valid": 0
+          }
+        ]
+      }
+    },
+    "jmp_control": {
+      "target": "JMP",
+      "opcode": 4,
+      "verdict": "NO_WINDOW",
+      "positions": 0,
+      "load_valid_positions": 0,
+      "min_cycle": null,
+      "per_cycle": [
+        {
+          "L": 68,
+          "good_shifts": 0,
+          "max_run": 0,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 2,
+          "load_valid": 0
+        },
+        {
+          "L": 6,
+          "good_shifts": 4,
+          "max_run": 1,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 0,
+          "load_valid": 0
+        },
+        {
+          "L": 5,
+          "good_shifts": 2,
+          "max_run": 1,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 0,
+          "load_valid": 0
+        },
+        {
+          "L": 4,
+          "good_shifts": 4,
+          "max_run": 1,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 0,
+          "load_valid": 0
+        },
+        {
+          "L": 9,
+          "good_shifts": 4,
+          "max_run": 1,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 0,
+          "load_valid": 0
+        },
+        {
+          "L": 2,
+          "good_shifts": 2,
+          "max_run": 1,
+          "windows": 0,
+          "window_starts": [],
+          "min_valid_per_shift": 0,
+          "load_valid": 0
+        }
+      ]
+    }
+  },
+  "q3": {
+    "image": "jmp_control.mb",
+    "image_sha256": "443f319f9965e56fc8626758536e9d0cbd04dd7a5b49af3a1f5b43049d1e57aa",
+    "checks": {
+      "oracle_out": "",
+      "oracle_steps": 2,
+      "oracle_status": "HALTED",
+      "trace_out": "",
+      "trace_steps": 2,
+      "trace_status": "HALTED",
+      "indep_out": "",
+      "indep_steps": 2,
+      "indep_status": "HALTED",
+      "jmp_cell_before": 98,
+      "jmp_cell_after": 98,
+      "jmp_cell_unchanged": true,
+      "dest_cell_before": 64,
+      "dest_cell_after": 81,
+      "dest_cell_encrypted": true,
+      "three_way_agree": true
+    },
+    "olmstead": {
+      "available": true,
+      "sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "q4": {
+    "precondition_windows": 0,
+    "executed": [],
+    "mismatches": [],
+    "verdict": "NOT_APPLICABLE(vacuous)"
+  },
+  "gates": {
+    "G0": true,
+    "G1": true,
+    "G2": true,
+    "G3": true
+  },
+  "all_gates_pass": true,
+  "sha256": {
+    "jmp_control.mb": "443f319f9965e56fc8626758536e9d0cbd04dd7a5b49af3a1f5b43049d1e57aa"
+  }
+}

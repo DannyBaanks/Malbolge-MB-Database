@@ -1,0 +1,84 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T06:46:08.406134+00:00",
+  "command": "python3 -I vm_malbolge/evidence/epoch_xlat2_phase_census_v1/probe.py </dev/null",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "68d5dbc6747afb92e9a6e0339d56147b2949885c8f75431e0d498d0aa3f015f6"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "180db284871d795b04434c8a582d3d3eaa8cfa86cc3f3473d4f1d0a048a575b2"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "443ae1a99dd4d61859de9843da818b96d581f857ab726e7c0ba2f195bf2ebe84"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "8d26f3157aeeef8bf1b52ccf1b3805fc40217a1020b1730f40b666b7b08e6434"
+    },
+    {
+      "file": "jmp_control.mb",
+      "sha256": "443f319f9965e56fc8626758536e9d0cbd04dd7a5b49af3a1f5b43049d1e57aa"
+    },
+    {
+      "file": "results.json",
+      "sha256": "087c04c7a0caae12daec937c9c6b1844b66d016f3d35c31db4414f129c1c17f1"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "193989254ccc17c0537a84c25dc3e299b1e55705c93dcfa1b3d1187937a3c4a6"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "vm_malbolge/evidence/epoch_rearm_budget_v1/results.json": "29bbf65cbb5291aac112b9428b48149ada1ee68a85895d86eaac1dfce84f1692",
+    "Malbolge-PureEpoch/build/olmstead (externo)": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  },
+  "claims": [
+    {
+      "text": "C1: XLAT2 tiene exactamente un ciclo de cada longitud 2,4,5,6,9,68 (censo 2,4,5,6,9,68) y coincide con epoch_rearm_budget_v1 q6",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2: para OUT, IN, ROT, DLOAD y CRAZY no existe ventana desfasada en ningún ciclo: 0 posiciones sobre 94x6x5",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C3: la causa es estructural — el ciclo de 68 no tiene ningún desplazamiento bueno (todo desplazamiento tiene >=2 opcodes válidos) y en los ciclos cortos la racha máxima de desplazamientos buenos es menor que L",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: la versión válida al cargar también es 0, por ser subconjunto de las ventanas",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C5: una celda JMP ejecutada conserva su valor (98->98) y el JMP cifra la celda destino (64->81), medido en oráculo, trazador e intérprete independiente",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C6: Olmstead 1998 carga la imagen de control (todas las celdas válidas al cargar) y termina con rc 0 y stdout vacío",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C7: el censo de JMP como control también es NO_WINDOW",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C8: el cuerpo 'ventana + JMP de vuelta' se ejecutó 2L vueltas para cada (X,L) con ventana",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C9: el resolvedor rediseñado sobre ciclos XLAT2 cortos queda construido y verificado",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

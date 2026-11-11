@@ -1,0 +1,41 @@
+[Q1] ciclos XLAT2: longitudes=[2, 4, 5, 6, 9, 68] censo={'2': 2, '4': 4, '5': 5, '6': 6, '9': 9, '68': 68}; G0 vs budget=True
+[Q2] OUT    -> NO_WINDOW    posiciones=0 carga_valida=0 ciclo_min=None
+       L=68 good=0  max_run=0  min_valid=2  ventanas=0
+       L=6  good=5  max_run=1  min_valid=0  ventanas=0
+       L=5  good=5  max_run=1  min_valid=0  ventanas=0
+       L=4  good=3  max_run=1  min_valid=0  ventanas=0
+       L=9  good=4  max_run=1  min_valid=0  ventanas=0
+       L=2  good=2  max_run=1  min_valid=0  ventanas=0
+[Q2] IN     -> NO_WINDOW    posiciones=0 carga_valida=0 ciclo_min=None
+       L=68 good=0  max_run=0  min_valid=2  ventanas=0
+       L=6  good=4  max_run=1  min_valid=0  ventanas=0
+       L=5  good=2  max_run=1  min_valid=0  ventanas=0
+       L=4  good=4  max_run=1  min_valid=0  ventanas=0
+       L=9  good=5  max_run=2  min_valid=0  ventanas=0
+       L=2  good=2  max_run=1  min_valid=0  ventanas=0
+[Q2] ROT    -> NO_WINDOW    posiciones=0 carga_valida=0 ciclo_min=None
+       L=68 good=0  max_run=0  min_valid=2  ventanas=0
+       L=6  good=5  max_run=1  min_valid=0  ventanas=0
+       L=5  good=4  max_run=1  min_valid=0  ventanas=0
+       L=4  good=4  max_run=1  min_valid=0  ventanas=0
+       L=9  good=4  max_run=1  min_valid=0  ventanas=0
+       L=2  good=2  max_run=1  min_valid=0  ventanas=0
+[Q2] DLOAD  -> NO_WINDOW    posiciones=0 carga_valida=0 ciclo_min=None
+       L=68 good=0  max_run=0  min_valid=2  ventanas=0
+       L=6  good=2  max_run=1  min_valid=0  ventanas=0
+       L=5  good=4  max_run=1  min_valid=0  ventanas=0
+       L=4  good=3  max_run=1  min_valid=0  ventanas=0
+       L=9  good=5  max_run=1  min_valid=0  ventanas=0
+       L=2  good=2  max_run=1  min_valid=0  ventanas=0
+[Q2] CRAZY  -> NO_WINDOW    posiciones=0 carga_valida=0 ciclo_min=None
+       L=68 good=0  max_run=0  min_valid=2  ventanas=0
+       L=6  good=5  max_run=1  min_valid=0  ventanas=0
+       L=5  good=2  max_run=1  min_valid=0  ventanas=0
+       L=4  good=3  max_run=1  min_valid=0  ventanas=0
+       L=9  good=4  max_run=1  min_valid=0  ventanas=0
+       L=2  good=2  max_run=1  min_valid=0  ventanas=0
+[Q3-censo] JMP -> NO_WINDOW posiciones=0
+[Q3] JMP: celda antes=98 despues=98 sin_cifrar=True; destino 64 -> 81 cifrado=True; 3 motores=True
+[Q3] Olmstead: disponible=True rc=0 stdout=''
+[Q4] ventanas que cumplen Q2: 0; ejecutadas=0 (vacuo=True)
+[gates] {'G0': True, 'G1': True, 'G2': True, 'G3': True} all_gates_pass=True
