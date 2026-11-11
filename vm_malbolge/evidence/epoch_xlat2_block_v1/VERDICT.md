@@ -163,3 +163,68 @@ python3 manifest.py
   motores divergen (el runner C para en la primera celda no imprimible y el
   oráculo deambula), y eso no se mide aquí;
 - cualquier uso del bloque dentro de un programa que haga otra cosa.
+
+## Corrección de auditoría (2026-11-11, `opencode_engine_1794376200_block2` — sólo se añade)
+
+Auditoría de `danny`. Lo medido se sostiene (revisado en `results.json` y
+reverificado sobre las imágenes comprometidas); lo que falla es que varias puertas
+son más débiles en el código que lo que dice `GATES.md`, y algunas frases de este
+veredicto afirman más de lo medido. `probe.py` **no** se modifica: la corrección es
+sólo este apéndice. Los huecos quedan declarados, no parcheados en silencio.
+
+1. **Residuos del ROT (error corregido).** En la sección Q4 se escribió que la
+   celda rotada cae "siempre en el residuo 3 (mod 6)". Medido sobre
+   `rot_block.mb`: `d` en las ejecuciones del `ROT` es `99, 109, 111, 121, 123,
+   133, …` → vueltas pares residuo **3 (mod 6)**, vueltas impares residuo **1
+   (mod 6)**, alternando. La conclusión sigue en pie: la tabla de destinos está en
+   `2 (mod 6)` (`d₀ = 104`), así que ninguno de los dos residuos colisiona. CRAZY
+   sí estaba bien (residuos `14` y `0 (mod 18)` vs tabla `13`).
+
+2. **C3 bajada de nivel.** El trazador local no registra salida (sólo pasos, PC,
+   opcode y `d`), así que "los tres coinciden byte a byte con el trazador" era
+   falso tal como estaba escrito. Lo que se verifica realmente es:
+   **oráculo = intérprete independiente = runner C en bytes y pasos**
+   (`60 × 0x00` a 479 pasos para OUT; salida vacía a 419 y 1162 pasos para ROT y
+   CRAZY, con el runner C en `TIMEOUT` en el límite impuesto); el trazador
+   coincide con el oráculo en pasos y en la estructura de eventos, no en bytes.
+   Además: `oracle_vs_trace` comparaba sólo longitud y pasos, e `indep_vs_trace`
+   sólo longitud, aunque los bytes también coincidan (reverificado).
+
+3. **Puertas no computadas.** Declarado, no arreglado: **G0 está escrito a mano
+   (`True`)**, y parte de la construcción también (las dos celdas `X` se siembran
+   con `74` en el código en vez de derivarse del ciclo de longitud 2; la posición
+   `120` del control de relleno está fija; `d_at_first_jmp = 40 + jmp` asume el
+   `d = 40` del `DLOAD` inicial sin medirlo — reverificado ahora: el primer `JMP`
+   lee `d = 164 / 104 / 139` en OUT/ROT/CRAZY, así que la asunción es correcta,
+   pero no la comprobaba el probe). **G3 aceptaba cualquier opcode perjudicial
+   (`has_harmful`)** mientras `GATES.md` pide el `39` concreto (lo medido fue
+   `[39]`, el desenlace no cambia). **G4 era casi una tautología**: `name in q4`
+   siempre es verdadero y `rc in (0, 1)` pasa con cualquier resultado; la
+   comprobación "el resultado declarado es el medido" no existe en el código.
+
+4. **DLOAD acotado.** "El mecanismo de tabla fija no es compatible con la
+   sobreescritura de `d`" es una generalización que este pack no probó: sólo se
+   intentó la tabla fija sembrada por el `DLOAD` de la celda 0. Como el `DLOAD`
+   deja `d` en un valor que uno elige, no quedan excluidas tablas con celdas
+   autorreferidas ni otras colocaciones. Forma correcta: **NOT_DEMONSTRATED con
+   esta colocación**.
+
+5. **IN entra en NOT_DEMONSTRATED.** IN se construye en Q1 (desplazamientos
+   `43, 47`) pero no se ejecutó: sólo OUT, ROT y CRAZY se midieron. IN (y la
+   ausencia de una variante cargable por 1998) pasan a la sección
+   NOT_DEMONSTRATED.
+
+**Reverificación hecha ahora** (sobre las imágenes de `457d82c`, con el oráculo
+del repo, el intérprete de `epoch_audit_v1` y el runner C, stdin cerrado; script
+aparte, no está en `probe.py`): los **60** `JMP` de `out_block.mb`, `rot_block.mb`
+y `crazy_block.mb` caen **todos** en el trampolín (`118` / `58` / `81`; un único
+destino distinto en cada imagen, el primero en el paso `125 / 65 / 100` con
+`d = 164 / 104 / 139`). El criterio de Q2 no comprobaba eso: sólo contaba
+objetivos entre `JMP`s restringidos a `[shift, jmp]`. Estos números completan, no
+reemplazan, lo de `results.json`.
+
+Estado tras la auditoría: **C2, C4, C5, C6, C7, C9 y la parte de C3 acotada en el
+punto 2 se mantienen DEMONSTRATED. C1 se mantiene con la salvedad del punto 3
+(parte de la construcción está escrita a mano). C8 (DLOAD) queda
+NOT_DEMONSTRATED con esta colocación.** Los gates G0–G4 del `results.json`
+comprometido pasan, pero G0 y G4 no están computados como `GATES.md` exige.
