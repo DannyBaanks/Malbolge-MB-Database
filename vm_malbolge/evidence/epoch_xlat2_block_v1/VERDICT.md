@@ -228,3 +228,108 @@ punto 2 se mantienen DEMONSTRATED. C1 se mantiene con la salvedad del punto 3
 (parte de la construcción está escrita a mano). C8 (DLOAD) queda
 NOT_DEMONSTRATED con esta colocación.** Los gates G0–G4 del `results.json`
 comprometido pasan, pero G0 y G4 no están computados como `GATES.md` exige.
+
+## Segunda pasada de medición (2026-11-11, `opencode_engine_1794376200_block3` — sólo se añade)
+
+Danny pidió dos cosas: **(a)** contrastar los motores con un intérprete de Malbolge
+escrito desde cero, y **(b)** meter dentro de `probe.py` el chequeo por vuelta del
+destino de cada `JMP`. Esto es una **pasada de medición nueva**, no una corrección:
+se toca `probe.py`, se regeneran `results.json` y `stdout.raw.txt`, y **las imágenes
+no cambian** (mismo sha256 que en `457d82c`; verificado contra `git show HEAD`).
+`GATES.md` no se toca: las puertas pre-registradas son las mismas.
+
+### 1. Cuarto motor: `scratch_engine.py`
+
+Motor escrito desde la especificación de 1998 **sin importar nada del repo**: la
+tabla XLAT2 y la matriz 3×3 de *crazy* están tecleadas en el archivo y la semántica
+se implementa sobre los opcodes canónicos `(mem[c] + c) % 94`. Validación:
+
+* vector conocido del repo `tools/fixtures/hello_world_40.mb` → **"Hello World!" en
+  40 pasos**, idéntico al del oráculo (`scratch_ok: true`, `oracle_ok: true`);
+* su tabla XLAT2 tecleada coincide carácter a carácter con la del repo
+  (`xlat2_matches_repo: true`) y su matriz *crazy* coincide en **90 000 pares**
+  (`crazy_matches_repo: true`). La independencia del motor es de **implementación**,
+  no de las tablas: las tablas son las de la especificación.
+
+Los **cinco** motores (oráculo, intérprete independiente de `epoch_audit_v1`,
+trazador local, runner C y motor scratch) coinciden **byte a byte y en pasos** en la
+ejecución acotada del bloque de OUT: 60 bytes `0x00` en 479 pasos
+(`bytes_all_five_equal` y `steps_all_five_equal`). El trazador local ahora
+**registra los bytes de salida** (antes sólo pasos, PC, opcode y `d`), así que C3
+deja de estar acotado; el motor scratch además coincide con el trazador en la
+**lista completa de destinos de JMP** (`scratch_vs_trace_jmp_dests: true`).
+
+### 2. Chequeo por vuelta del destino de cada JMP (ya dentro del probe)
+
+`analysis()` registra el destino de cada `JMP`, y tanto el criterio de Q2 como el
+de Q4 exigen que **todos** los destinos caigan en el trampolín
+(`jmp_dest_all_trampoline`), con un único destino distinto por imagen:
+
+| imagen | JMPs | destinos distintos | ¿todos en el trampolín? |
+|---|---|---|---|
+| `out_block.mb` | 60 | {118} | sí (primero: paso 125, `d = 164`; último: paso 479, `d = 518`) |
+| `rot_block.mb` | 60 | {58} | sí (primero: paso 65, `d = 104`) |
+| `crazy_block.mb` | 60 | {81} | sí (primero: paso 100, `d = 139`) |
+| `dload_block.mb` | 1 | {70} | **no**: su único JMP salta a 70 (la segunda celda X), no al trampolín 59 |
+
+Esto confirma dentro del probe lo que la auditoría había reverificado con un script
+aparte, y lo convierte en puerta: G2 incluye ahora `jmp_dest_all_trampoline` y el
+criterio de Q4 también — por eso DLOAD sigue en NOT_DEMONSTRATED.
+
+### 3. G0 ya no está escrito a mano
+
+`G0` pasó de `True` literal a un recálculo. `g0_construction_recomputed()` vuelve a
+derivar, **con las tablas del motor scratch** (independientes del oráculo del repo),
+el valor de las celdas X, sus posiciones, la alternancia de fase, el ciclo entero de
+cada celda de relleno, el trampolín, la celda del `JMP`, la tabla de destinos y la
+semilla `d = 40` del `DLOAD` inicial, y compara con lo que la construcción produjo:
+`OUT/IN/ROT/DLOAD/CRAZY → true` (`results.json:g0_recomputation`).
+
+La construcción tampoco siembra `74` a mano: `derived_x_value()` lo deriva del ciclo
+de longitud 2 (`[70, 74]`) exigiendo la alternancia de fase y prefiriendo la fase en
+que la primera celda X decodifica el objetivo en la vuelta 0; la posición de la celda
+de relleno del control sale de `info["fillers"]["positions"][0]`; y `d` en el primer
+JMP se **mide** (`d_at_first_jmp_measured = 164`, contra la fórmula `40 + jmp = 164`).
+
+### 4. G1, G3 y G4 ahora son comprobaciones de verdad
+
+* **G1**: los cinco motores en bytes **y** pasos (antes: comparación parcial, sólo
+  longitudes).
+* **G3**: exige el opcode perjudicial **concreto** `39` (`has_harmful_39`), no
+  "cualquier opcode perjudicial".
+* **G4**: compara la **declaración** (`DECLARED_Q4`, escrita antes de esta pasada:
+  ROT `CONSTRUCTED`, CRAZY `CONSTRUCTED`, DLOAD `NOT_DEMONSTRATED`) con lo
+  **medido**, y exige que la tabla de paridad de `d` cubra todas las vueltas
+  cerradas. Los tres coinciden.
+
+Estado tras la pasada: **G0..G4 todos `true`**, `all_gates_pass: true`.
+
+### 5. Lo que no cambia
+
+Las mediciones de Q1–Q5 coinciden con el veredicto y con la corrección de auditoría:
+ROT `d` = 99, 109, 111, 121, 123, 133 (pares `pc 59` ≡ 3 mod 6, impares `pc 63`
+≡ 1 mod 6), CRAZY `d` = 122, 144, 158, 180, 194, 216, DLOAD una vuelta cerrada con
+`d = 100` en la celda objetivo y `d = 64` en su JMP (destino 70). Cambia el
+**andamiaje de medición** (un motor más, el chequeo de destinos dentro del probe y
+las cuatro puertas débiles ahora computadas), no el resultado.
+
+### 6. Claims de esta pasada
+
+* **C3 sube de nivel**: los cinco motores coinciden en bytes y pasos, y el motor
+  scratch coincide con el trazador en los destinos de JMP.
+* **C10 (nuevo)**: los 60 JMP de OUT, ROT y CRAZY caen todos en el trampolín,
+  comprobado dentro del probe.
+* **C11 (nuevo)**: G0–G4 están computadas en el probe.
+* **IN** (y la ausencia de una variante cargable por 1998) siguen en
+  NOT_DEMONSTRATED: IN sólo se construye en Q1, no se ejecuta.
+
+### Reproducción
+
+```
+cd vm_malbolge/evidence/epoch_xlat2_block_v1
+python3 -I probe.py </dev/null > stdout.raw.txt 2>&1   # rc 0, G0..G4 true
+python3 manifest.py
+```
+
+Dos corridas consecutivas producen `results.json` y `stdout.raw.txt` byte a byte
+idénticos (verificado).

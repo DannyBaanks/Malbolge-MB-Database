@@ -9,6 +9,17 @@ por JMP, R vueltas), Q3 (controles negativos), Q4 (ROT/CRAZY/DLOAD, con el
 recorrido de d en vueltas pares e impares) y Q5 (cargador de Olmstead 1998 +
 dialecto), y aplica G0..G4.
 
+Motores: oráculo del repo (`tools/oracle_classic.py`), intérprete independiente
+(`epoch_audit_v1/indep_interpreter.py`), trazador local con la misma semántica,
+runner C (`runners/malbolge-original/malbolge`) y un motor **scratch** escrito
+desde la especificación de 1998 con sus propias tablas (`scratch_engine.py`,
+validado con el vector conocido `tools/fixtures/hello_world_40.mb`).
+
+Desde la segunda pasada de medición (2026-11-11) el probe además: deriva los
+valores de las celdas X en vez de sembrarlos, recalcula la construcción en G0,
+comprueba en cada vuelta que el destino del JMP cae en el trampolín, y registra
+los bytes de salida del trazador para comparar los cinco motores en bytes.
+
 Escribe en el directorio del pack: out_block.mb, out_block_ctrl_phase.mb,
 out_block_ctrl_filler.mb, rot_block.mb, crazy_block.mb, dload_block.mb,
 results.json.
@@ -27,9 +38,10 @@ from pathlib import Path
 PACK = Path(__file__).resolve().parent
 EVID = PACK.parent
 ROOT = PACK.parents[2]
-sys.path[:0] = [str(ROOT / "tools")]
+sys.path[:0] = [str(ROOT / "tools"), str(PACK)]
 
 import oracle_classic as O  # noqa: E402
+import scratch_engine as SE  # noqa: E402
 
 ENC: dict[int, int] = O._ENC
 N = O.MEM_SIZE
@@ -40,9 +52,15 @@ BUDGET = EVID / "epoch_rearm_budget_v1" / "results.json"
 CENSUS = EVID / "epoch_xlat2_phase_census_v1" / "results.json"
 C_RUNNER = ROOT / "runners" / "malbolge-original" / "malbolge"
 OLMSTEAD = PACK.parents[3] / "Malbolge-PureEpoch" / "build" / "olmstead"
+HELLO = ROOT / "tools" / "fixtures" / "hello_world_40.mb"
 
 ROUNDS = 60                       # R del pack
 TARGETS = ["OUT", "IN", "ROT", "DLOAD", "CRAZY"]
+# Declaración de Q4 escrita ANTES de esta pasada de medición (heredada del
+# VERDICT de 3bbdfb5 y re-declarada aquí antes de ejecutar el probe). La puerta
+# G4 comprueba que lo medido coincide con lo declarado, no lo da por cierto.
+DECLARED_Q4 = {"ROT": "CONSTRUCTED", "CRAZY": "CONSTRUCTED",
+               "DLOAD": "NOT_DEMONSTRATED"}
 OPS = {"JMP": 4, "OUT": 5, "IN": 23, "ROT": 39, "DLOAD": 40,
        "CRAZY": 62, "NOP": 68, "END": 81}
 VALID = set(OPS.values())
@@ -140,10 +158,57 @@ def placement(target: str) -> tuple[int, int, int, int]:
     raise ValueError("sin colocación para %s" % target)
 
 
+def phase_alternates(target: str, s: int, span: int, v: int) -> bool:
+    """Con valor v en ambas celdas X (posiciones s y s+span), exactamente una
+    decodifica el objetivo en la vuelta 0 y los papeles se intercambian tras un
+    paso de XLAT2. Tablas propias del motor scratch (independientes del repo)."""
+    op = TARGET_OP[target]
+    w = SE.encrypt(v)                      # valor de la celda tras un paso XLAT2
+    a, b = (v + s) % 94, (v + s + span) % 94
+    a1, b1 = (w + s) % 94, (w + s + span) % 94
+    if not ((a == op) ^ (b == op)):
+        return False
+    if not ((a1 == op) ^ (b1 == op)):
+        return False
+    if (a == op) == (a1 == op):
+        return False
+    other_ok = all(x == op or x in HARMLESS
+                   for x in (a, b, a1, b1))
+    return other_ok
+
+
+def derived_x_value(target: str) -> tuple[int, int, int]:
+    """(shift, span, v): valor de las celdas X derivado del ciclo de longitud 2
+    para el que el desfase de posiciones da exactamente una operación por vuelta.
+
+    Si hay dos fases posibles, se prefiere la que hace que la PRIMERA celda X
+    decodifique el objetivo en la vuelta 0 (en la vuelta 1 lo toma la segunda)."""
+    op = TARGET_OP[target]
+    s1, s2 = block_pair(target)
+    span = s2 - s1
+    cands = []
+    for cyc in CYCLES:
+        if len(cyc) != 2:
+            continue
+        for v in cyc:
+            if 33 <= v <= 126 and phase_alternates(target, s1, span, v):
+                cands.append(v)
+    if not cands:
+        raise ValueError("sin valor X derivado para %s" % target)
+    first_phase = [v for v in cands if (v + s1) % 94 == op]
+    return s1, span, (first_phase or cands)[0]
+
+
 # ---------------------------------------------------------------- imagen
-def build_image(target: str, x1: int, x2: int, R: int = ROUNDS,
+def build_image(target: str, x1: int | None = None, x2: int | None = None,
+                R: int = ROUNDS,
                 filler_override: tuple[int, ...] | None = None):
-    """Bloque de 5 celdas + JMP, trampolín y tabla de destinos para R vueltas."""
+    """Bloque de 5 celdas + JMP, trampolín y tabla de destinos para R vueltas.
+
+    Si x1/x2 son None se derivan del ciclo de longitud 2 (G0 los recalcula)."""
+    if x1 is None or x2 is None:
+        _, _, v = derived_x_value(target)
+        x1 = x2 = v
     shift, T, span, extra = placement(target)
     round_len = span + 1 + extra + 1        # X + relleno + celdas extra + JMP
     jmp = shift + span + 1 + extra
@@ -187,6 +252,7 @@ def trace_image(img: list[int], max_steps: int) -> dict:
         mem[i] = CRAZY(mem[i - 1], mem[i - 2])
     a = c = d = 0
     ev = []
+    out: list[int] = []
     for st in range(1, max_steps + 1):
         cell = mem[c]
         o = opcode(cell, c)
@@ -198,7 +264,7 @@ def trace_image(img: list[int], max_steps: int) -> dict:
         if o == 4:
             c = dest
         elif o == 5:
-            pass
+            out.append(a % 256)
         elif o == 23:
             a = 0
         elif o == 39:
@@ -210,12 +276,12 @@ def trace_image(img: list[int], max_steps: int) -> dict:
             mem[d] = CRAZY(a, mem[d])
             a = mem[d]
         elif o == 81:
-            return {"events": ev, "status": "HALTED", "steps": st}
+            return {"events": ev, "out": out, "status": "HALTED", "steps": st}
         if 33 <= mem[c] <= 126:
             mem[c] = ENC[mem[c]]
         c = (c + 1) % N
         d = (d + 1) % N
-    return {"events": ev, "status": "MAX", "steps": max_steps}
+    return {"events": ev, "out": out, "status": "MAX", "steps": max_steps}
 
 
 def analysis(img: list[int], info: dict) -> dict:
@@ -249,9 +315,16 @@ def analysis(img: list[int], info: dict) -> dict:
                          "pc": e["pc"], "d": e["d"]})
     jmps = [{"step": e["step"], "d": e["d"], "dest": e["jmp_dest"]}
             for e in t["events"] if e["op"] == 4]
+    jd = [e["jmp_dest"] for e in t["events"] if e["op"] == 4]
     return {"steps": steps, "rounds_closed": len(jsteps),
             "per_round": per_round, "per_round_all_one": all(p == 1 for p in per_round),
             "loop_valid": loop_valid, "harmful_others": others,
+            "jmp_count": len(jd),
+            "jmp_dests": jd,
+            "jmp_dest_all_trampoline": bool(jd) and all(x == info["trampoline"] for x in jd),
+            "jmp_dest_distinct": sorted(set(jd)),
+            "d_at_first_jmp_measured": jmps[0]["d"] if jmps else None,
+            "out_bytes": t["out"],
             "target_events_first": [{"step": e["step"], "pc": e["pc"], "d": e["d"]}
                                     for e in tgt[:8]],
             "d_parity": d_parity, "jmp_dest_first": jmps[:4],
@@ -299,6 +372,82 @@ def run_olmstead(path: Path) -> dict:
             "stderr": p.stderr.decode("latin-1", "replace").strip()}
 
 
+def run_scratch(path: Path, max_steps: int) -> dict:
+    """Cuarto motor: motor escrito desde la especificación de 1998, con sus
+    propias tablas (scratch_engine.py). Registra además los destinos de cada
+    JMP, para contrastarlos con el trazador."""
+    img = path.read_bytes()
+    r = SE.run(img, max_steps=max_steps, stdin=b"", collect=True)
+    jmps = [e["dest"] for e in r["events"] if e["op"] == 4]
+    return {"out_list": list(r["out"]), "out_steps": r["steps"],
+            "steps": r["steps"],
+            "status": r["status"], "jmp_dests": jmps,
+            "jmp_count": len(jmps)}
+
+
+def scratch_vector_check() -> dict:
+    """Valida el motor scratch contra el vector conocido del repo:
+    tools/fixtures/hello_world_40.mb -> "Hello World!" en 40 pasos.
+
+    Además contrasta sus tablas tecleadas (XLAT2 y matriz crazy) con las del
+    oráculo del repo: la independencia del motor es de implementación, no de
+    las tablas — las tablas son las de la especificación de 1998."""
+    img = HELLO.read_bytes()
+    r = SE.run(img, max_steps=100, stdin=b"")
+    o = O.oracle_run(str(HELLO), max_steps=100)
+    xlat2_same = all(SE.encrypt(v) == O._ENC[v] for v in range(33, 127))
+    crazy_same = all(SE.crazy(x, y) == O.crazy_op(x, y)
+                      for x in range(0, 300) for y in range(0, 300))
+    return {"fixture": "tools/fixtures/hello_world_40.mb",
+            "scratch": {"steps": r["steps"], "status": r["status"],
+                        "output_hex": r["out"].hex()},
+            "oracle": {"steps": o["steps"], "status": o["status"],
+                       "output": o["output"]},
+            "expected": "Hello World!",
+            "expected_steps": 40,
+            "scratch_ok": r["out"] == b"Hello World!" and r["steps"] == 40,
+            "oracle_ok": o["output"] == "Hello World!" and o["steps"] == 40,
+            "xlat2_matches_repo": xlat2_same,
+            "crazy_matches_repo": crazy_same,
+            "crazy_pairs_checked": 300 * 300}
+
+
+def g0_construction_recomputed() -> dict:
+    """G0: recalcula la construcción sin usar las tablas escritas a mano.
+
+    Usa la tabla de cifrado y la operación crazy del motor scratch (independientes
+    del oráculo del repo) y vuelve a derivar posiciones, valores y rellenos."""
+    out = {}
+    for target in TARGETS:
+        shift, span, v = derived_x_value(target)
+        img, info = build_image(target)
+        checks: dict = {}
+        checks["x_value_is_derived"] = (info["x1"] == v and info["x2"] == v)
+        checks["x_positions_derived"] = ([p % 94 for p in info["x_positions"]]
+                                         == [shift % 94, (shift + span) % 94])
+        checks["phase_alternates"] = phase_alternates(target, shift, span, v)
+        # los rellenos: ciclo XLAT2 completo (tabla del motor scratch) inocuo
+        fillers_ok = True
+        for pos, val in zip(info["fillers"]["positions"], info["fillers"]["values"]):
+            cyc = [val]
+            x = SE.encrypt(val)
+            while x != val:
+                cyc.append(x)
+                x = SE.encrypt(x)
+            fillers_ok = fillers_ok and all(
+                (w + pos) % 94 in HARMLESS for w in cyc)
+        checks["fillers_harmless_whole_cycle"] = fillers_ok
+        checks["trampoline_value"] = (img[info["trampoline"]] == info["trampoline"])
+        checks["jmp_decodes_to_jmp"] = (opcode(img[info["jmp"]], info["jmp"]) == 4)
+        checks["table_points_to_trampoline"] = all(
+            img[i] == info["trampoline"] for i in range(info["jmp"] + 1, info["length"]))
+        checks["dload_seed"] = (img[0] == 40 and opcode(img[0], 0) == 40)
+        checks["d_at_first_jmp_formula"] = (info["d_at_first_jmp"] == 40 + info["jmp"])
+        out[target] = {"checks": checks, "ok": all(checks.values()),
+                       "derived_x_value": v, "derived_shift": shift}
+    return out
+
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
@@ -309,7 +458,7 @@ def q1_construction() -> dict:
     for name in TARGETS:
         s1, s2 = block_pair(name)
         good = good_shifts(name)
-        img, info = build_image(name, 74, 74)
+        img, info = build_image(name)
         out[name] = {
             "l2_cycle": [c for c in CYCLES if len(c) == 2][0],
             "good_shifts": good,
@@ -317,6 +466,7 @@ def q1_construction() -> dict:
             "block_positions_abs": info["x_positions"],
             "span_cells": info["span"],
             "x_values": [info["x1"], info["x2"]],
+            "x_values_derived": derived_x_value(name)[2],
             "fillers": info["fillers"],
             "trampoline": info["trampoline"],
             "jmp": info["jmp"], "jmp_value": info["jmp_value"],
@@ -335,16 +485,27 @@ def main() -> int:
     # ---- Q1
     q1 = q1_construction()
 
+    # ---- vector conocido para el cuarto motor (scratch)
+    vector = scratch_vector_check()
+
+    # ---- G0: recálculo independiente de la construcción
+    g0 = g0_construction_recomputed()
+
     # ---- construir todas las imágenes y escribirlas antes de ejecutar
-    img_out, info_out = build_image("OUT", 74, 74)
-    imgA, infoA = build_image("OUT", 74, 70)
-    vb = [v for v in range(33, 127) if opcode(v, 120) == 39][0]
-    imgB, infoB = build_image("OUT", 74, 74,
-                              filler_override=(vb, filler_value(121)[0],
-                                               filler_value(122)[0]))
-    imgR, infoR = build_image("ROT", 74, 74)
-    imgC, infoC = build_image("CRAZY", 74, 74)
-    imgD, infoD = build_image("DLOAD", 74, 74)
+    img_out, info_out = build_image("OUT")
+    # control de desfase: la segunda celda X se siembra en la OTRA fase del
+    # ciclo de longitud 2 (valor derivado, no escrito a mano)
+    cyc2 = [c for c in CYCLES if len(c) == 2][0]
+    v_out = info_out["x1"]
+    other_phase = [x for x in cyc2 if x != v_out][0]
+    imgA, infoA = build_image("OUT", x1=v_out, x2=other_phase)
+    vb = [v for v in range(33, 127)
+          if opcode(v, info_out["fillers"]["positions"][0]) == 39][0]
+    fb = [filler_value(p)[0] for p in info_out["fillers"]["positions"][1:]]
+    imgB, infoB = build_image("OUT", filler_override=(vb,) + tuple(fb))
+    imgR, infoR = build_image("ROT")
+    imgC, infoC = build_image("CRAZY")
+    imgD, infoD = build_image("DLOAD")
     images = {
         "out_block": bytes(bytearray(img_out)),
         "out_block_ctrl_phase": bytes(bytearray(imgA)),
@@ -358,33 +519,45 @@ def main() -> int:
 
     # ---- Q2: OUT construido y ejecutado
     an_out = analysis(img_out, info_out)
-    t = trace_image(img_out, an_out["steps"])
-    out_steps = [e["step"] for e in t["events"] if e["op"] == 5]
     q2 = {"info": info_out, "trace": an_out}
     q2["trace"]["oracle"] = run_oracle(PACK / "out_block.mb", an_out["steps"])
     q2["trace"]["indep"] = run_indep(PACK / "out_block.mb", an_out["steps"])
     q2["trace"]["c"] = run_c(PACK / "out_block.mb", an_out["steps"])
-    q2["trace"]["out_steps"] = out_steps[:8]
+    q2["trace"]["scratch"] = run_scratch(PACK / "out_block.mb", an_out["steps"])
+    q2["trace"]["out_steps"] = [e["step"] for e in
+                                trace_image(img_out, an_out["steps"])["events"]
+                                if e["op"] == 5][:8]
+    four = [q2["trace"]["oracle"]["output"], q2["trace"]["indep"]["output"],
+            q2["trace"]["c"]["out_list"], q2["trace"]["scratch"]["out_list"],
+            q2["trace"]["out_bytes"]]
+    steps4 = [q2["trace"]["oracle"]["steps"], q2["trace"]["indep"]["steps"],
+              q2["trace"]["c"]["steps"], q2["trace"]["scratch"]["out_steps"],
+              q2["trace"]["steps"]]
     q2["engine_agreement"] = {
-        "oracle_vs_trace": (len(q2["trace"]["oracle"]["output"]) == len(out_steps)
-                            and q2["trace"]["oracle"]["steps"] == an_out["steps"]
-                            and q2["trace"]["oracle"]["status"] == "MAX_STEPS"),
-        "indep_vs_trace": len(q2["trace"]["indep"]["output"]) == len(out_steps),
-        "c_vs_trace": q2["trace"]["c"]["out_list"] == [0] * len(out_steps),
+        "bytes_all_five_equal": all(x == four[0] for x in four),
+        "steps_all_five_equal": all(x == steps4[0] for x in steps4),
+        "oracle_vs_trace_bytes": q2["trace"]["oracle"]["output"] == q2["trace"]["out_bytes"],
+        "indep_vs_trace_bytes": q2["trace"]["indep"]["output"] == q2["trace"]["out_bytes"],
+        "indep_vs_trace_steps": q2["trace"]["indep"]["steps"] == q2["trace"]["steps"],
+        "c_vs_trace_bytes": q2["trace"]["c"]["out_list"] == q2["trace"]["out_bytes"],
+        "scratch_vs_trace_bytes": q2["trace"]["scratch"]["out_list"] == q2["trace"]["out_bytes"],
+        "scratch_vs_trace_jmp_dests": (q2["trace"]["scratch"]["jmp_dests"]
+                                       == q2["trace"]["jmp_dests"]),
     }
 
     # ---- Q3: controles negativos
     anA = analysis(imgA, infoA)
     anB = analysis(imgB, infoB)
     ctrlA, ctrlB = anA, anB
-    q3 = {"phase_control": {"x_values": [74, 70],
+    q3 = {"phase_control": {"x_values": [infoA["x1"], infoA["x2"]],
                             "per_round_first8": anA["per_round"][:8],
                             "has_round_not_one": not anA["per_round_all_one"],
                             "rounds": anA["rounds_closed"]},
-          "filler_control": {"filler_value": vb, "filler_pos": 120,
+          "filler_control": {"filler_value": vb,
+                             "filler_pos": info_out["fillers"]["positions"][0],
                              "harmful_others": anB["harmful_others"],
                              "loop_valid": anB["loop_valid"],
-                             "has_harmful": bool(anB["harmful_others"]),
+                             "has_harmful_39": anB["harmful_others"] == [39],
                              "per_round_all_one": anB["per_round_all_one"]}}
 
     # ---- Q4: ROT, CRAZY, DLOAD
@@ -393,16 +566,22 @@ def main() -> int:
                               ("DLOAD", imgD, infoD)):
         an = analysis(imgX, infoX)
         path = PACK / ("%s_block.mb" % name.lower())
-        engines = {"oracle": run_oracle(path, an["steps"])}
-        engines["c"] = run_c(path, an["steps"])
+        engines = {"oracle": run_oracle(path, an["steps"]),
+                   "scratch": run_scratch(path, an["steps"]),
+                   "c": run_c(path, an["steps"])}
+        crit = (an["per_round_all_one"] and an["rounds_closed"] >= ROUNDS
+                and not an["harmful_others"] and an["jmp_dest_all_trampoline"])
+        measured = "CONSTRUCTED" if crit else "NOT_DEMONSTRATED"
         q4[name] = {"info": infoX, "measure": an, "engines": engines,
-                    "built": bool(an["per_round_all_one"]
-                                  and an["rounds_closed"] >= ROUNDS
-                                  and not an["harmful_others"]),
-                    "verdict": "CONSTRUCTED" if (an["per_round_all_one"]
-                                                 and an["rounds_closed"] >= ROUNDS
-                                                 and not an["harmful_others"])
-                               else "NOT_DEMONSTRATED"}
+                    "criterion": {"per_round_all_one": an["per_round_all_one"],
+                                  "rounds_ge_R": an["rounds_closed"] >= ROUNDS,
+                                  "no_harmful_others": not an["harmful_others"],
+                                  "jmp_dest_all_trampoline": an["jmp_dest_all_trampoline"]},
+                    "built": bool(crit),
+                    "declared": DECLARED_Q4[name],
+                    "measured": measured,
+                    "declared_matches_measured": DECLARED_Q4[name] == measured,
+                    "verdict": measured}
 
     # ---- Q5: Olmstead 1998
     olm = run_olmstead(PACK / "out_block.mb")
@@ -419,16 +598,32 @@ def main() -> int:
                           "la imagen pasa el cargador de 1998")}
 
     gates = {
-        "G0": True,   # la construcción se recalcula en el probe (Q1 desde ciclos/EC)
-        "G1": all(q2["engine_agreement"].values()),
+        # G0: la construcción se recalcula aquí (posiciones, valor X, rellenos,
+        # trampolín, JMP, tabla y semilla de d) con las tablas del motor scratch.
+        "G0": all(t["ok"] for t in g0.values()),
+        # G1: acuerdo byte a byte y en pasos de los cinco motores.
+        "G1": (q2["engine_agreement"]["bytes_all_five_equal"]
+               and q2["engine_agreement"]["steps_all_five_equal"]),
+        # G2: criterio de Q2 + destino de cada JMP en el trampolín.
         "G2": (q2["trace"]["per_round_all_one"]
                and q2["trace"]["rounds_closed"] >= ROUNDS
                and not q2["trace"]["harmful_others"]
-               and sorted(q2["trace"]["loop_valid"]) == [4, 5]),
+               and sorted(q2["trace"]["loop_valid"]) == [4, 5]
+               and q2["trace"]["jmp_dest_all_trampoline"]),
+        # G3: los dos controles rompen el criterio por el motivo declarado.
         "G3": (q3["phase_control"]["has_round_not_one"]
-               and q3["filler_control"]["has_harmful"]),
-        "G4": all(name in q4 for name in ("ROT", "CRAZY", "DLOAD"))
-              and q5["olmstead"]["on_out_block"]["rc"] in (0, 1),
+               and q3["filler_control"]["has_harmful_39"]),
+        # G4: Q4 publica lo pedido y lo declarado coincide con lo medido; Q5
+        # publica el resultado del cargador y la declaración de dialecto.
+        "G4": (all(name in q4 for name in ("ROT", "CRAZY", "DLOAD"))
+               and all(q4[n]["declared_matches_measured"] for n in q4)
+               and all(len(q4[n]["measure"]["d_parity"])
+                       == min(q4[n]["measure"]["rounds_closed"], 8)
+                       for n in q4)
+               and all("per_round" in q4[n]["measure"] for n in q4)
+               and q5["olmstead"]["on_out_block"]["rc"] in (0, 1)
+               and q5["dialect"] == ("classic_permissive" if olm["rc"] != 0
+                                     else "classic_1998_loader")),
     }
 
     results["q1"] = q1
@@ -438,6 +633,8 @@ def main() -> int:
     results["q5"] = q5
     results["gates"] = gates
     results["all_gates_pass"] = all(gates.values())
+    results["g0_recomputation"] = g0
+    results["scratch_vector"] = vector
     results["images"] = {name: {"sha256": sha256_bytes(data),
                                 "length": len(data),
                                 "printable": all(33 <= b <= 126 for b in data)}
@@ -453,6 +650,7 @@ def main() -> int:
         "runners/malbolge-original/malbolge": sha256_bytes(C_RUNNER.read_bytes()),
         "Malbolge-PureEpoch/build/olmstead":
             sha256_bytes(OLMSTEAD.read_bytes()) if OLMSTEAD.exists() else None,
+        "tools/fixtures/hello_world_40.mb": sha256_bytes(HELLO.read_bytes()),
     }
 
     (PACK / "results.json").write_text(
@@ -474,19 +672,29 @@ def main() -> int:
           % (t2["rounds_closed"], t2["steps"], t2["per_round"][:6],
              t2["per_round_all_one"], t2["loop_valid"], t2["harmful_others"],
              t2["all_target_pcs"]))
-    print("[Q2] motores: oraculo=%s indep=%s C=%s"
-          % (q2["engine_agreement"]["oracle_vs_trace"],
-             q2["engine_agreement"]["indep_vs_trace"],
-             q2["engine_agreement"]["c_vs_trace"]))
-    print("[Q3] control desfase (x2=70): por-vuelta=%s todas_una=%s"
-          % (anA["per_round"][:8], anA["per_round_all_one"]))
+    print("[Q2] destinos de JMP: %d jumps, todos en el trampolín=%s distintos=%s "
+          "(primeros=%s, último=%s)"
+          % (t2["jmp_count"], t2["jmp_dest_all_trampoline"],
+             t2["jmp_dest_distinct"], t2["jmp_dest_first"], t2["jmp_dest_last"]))
+    print("[Q2] d medido en el primer JMP=%s (fórmula 40+jmp=%s)"
+          % (t2["d_at_first_jmp_measured"], info_out["d_at_first_jmp"]))
+    print("[Q2] motores: %s" % q2["engine_agreement"])
+    print("[Q2] vector scratch (hello_world_40): %s" % vector)
+    print("[G0] recálculo independiente: %s"
+          % {k: v["ok"] for k, v in g0.items()})
+    print("[Q3] control desfase (x2=%d): por-vuelta=%s todas_una=%s"
+          % (infoA["x2"], anA["per_round"][:8], anA["per_round_all_one"]))
     print("[Q3] control relleno no inocuo (v=%d en %d): opcodes_validos=%s otros=%s"
-          % (vb, 120, anB["loop_valid"], anB["harmful_others"]))
+          % (vb, info_out["fillers"]["positions"][0], anB["loop_valid"],
+             anB["harmful_others"]))
     for name in ("ROT", "CRAZY", "DLOAD"):
         m = q4[name]["measure"]
-        print("[Q4] %-6s vueltas=%d por-vuelta(6)=%s todas_una=%s otros=%s -> %s"
+        print("[Q4] %-6s vueltas=%d por-vuelta(6)=%s todas_una=%s otros=%s "
+              "jmp_al_trampolín=%s declarado=%s medido=%s"
               % (name, m["rounds_closed"], m["per_round"][:6],
-                 m["per_round_all_one"], m["harmful_others"], q4[name]["verdict"]))
+                 m["per_round_all_one"], m["harmful_others"],
+                 m["jmp_dest_all_trampoline"], q4[name]["declared"],
+                 q4[name]["measured"]))
         print("     d en vueltas pares/impares:", m["d_parity"])
         print("     primeros JMP (paso,d,destino):", m["jmp_dest_first"])
     print("[Q5] Olmstead 1998: rc=%d stderr=%r válidas-al-cargar %d/%d dialecto=%s"

@@ -1,6 +1,6 @@
 {
   "schema": "isyco-evidence-pack-v1",
-  "created_at": "2026-11-11T09:13:48.346906+00:00",
+  "created_at": "2026-11-11T17:26:22.893315+00:00",
   "command": "python3 -I vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py </dev/null",
   "exit_code": 0,
   "environment": {
@@ -14,15 +14,19 @@
     },
     {
       "file": "VERDICT.md",
-      "sha256": "81dbae43474fe771932da9561dec2be6855c615a3b3b8afa8d0741d944ff0974"
+      "sha256": "289316a6a4d22e3480e128b339233c9793848b74e234d7453de163b90e25d5c4"
     },
     {
       "file": "probe.py",
-      "sha256": "54311b3ec50cf9cdf70cb3824fbb9df9a1bc1a263f5d2afac1dfbfc83a9903bc"
+      "sha256": "395379e55551319ea4b2ca6f6b25838e7a7e6afc7a2663b55fdbf8b238c8a09a"
+    },
+    {
+      "file": "scratch_engine.py",
+      "sha256": "1f76d33de2217546a05d182fc3fb3039e175a7ed1634b7f1ee3a20c8771d3591"
     },
     {
       "file": "manifest.py",
-      "sha256": "a8a0f6fe942e92e81eef44eeb51ea9e274a81afad4030a370eac1a952ef0700a"
+      "sha256": "d61f84daf9fce311ec760ea50572b72186e1cfb9a0ae8572e0e1f339cf1cd6db"
     },
     {
       "file": "out_block.mb",
@@ -50,22 +54,23 @@
     },
     {
       "file": "results.json",
-      "sha256": "563376c3ebae59a69b4bba093902e4f943b16e26a0e0c8c467488f5d3a8f17e5"
+      "sha256": "87620630825c144fa1774c5ab3d797f1aa50f2b097ff83bb5b723273392f7a3d"
     },
     {
       "file": "stdout.raw.txt",
-      "sha256": "4c50011cf7ae093fe9bb53297bb01be94f8e886ab6a573d0fd72a5e4b7f593f4"
+      "sha256": "91046f9e267498807a1a7ddd82a3c7060440a552cca85a5d29f1557796f2e634"
     }
   ],
   "dependencies": {
     "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
     "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
     "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "tools/fixtures/hello_world_40.mb": "956c134aa67fa3fc049bda71406673050b64b18663ee603b16c7b694e13fe6c1",
     "Malbolge-PureEpoch/build/olmstead (externo)": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
   },
   "claims": [
     {
-      "text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, JMP, tabla) se deriva en el probe de los ciclos de XLAT2",
+      "text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, JMP, tabla) se deriva en el probe de los ciclos de XLAT2, y la puerta G0 lo recalcula de forma independiente",
       "status": "DEMONSTRATED"
     },
     {
@@ -73,7 +78,7 @@
       "status": "DEMONSTRATED"
     },
     {
-      "text": "C3: oráculo, intérprete independiente, trazador y runner C coinciden en la salida y los pasos de la ejecución acotada",
+      "text": "C3: oráculo, intérprete independiente, trazador (que registra bytes), runner C y motor scratch (escrito desde la especificación de 1998, validado con el vector 'Hello World!' a 40 pasos) coinciden byte a byte y en pasos en la ejecución acotada",
       "status": "DEMONSTRATED"
     },
     {
@@ -93,11 +98,23 @@
       "status": "DEMONSTRATED"
     },
     {
-      "text": "C8: el bloque de DLOAD se construye y ejecuta",
+      "text": "C8: el bloque de DLOAD se construye y ejecuta con esta colocación",
       "status": "NOT_DEMONSTRATED"
     },
     {
       "text": "C9: una variante del bloque que pase el cargador de Olmstead 1998",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C10: los 60 JMP de out_block.mb, rot_block.mb y crazy_block.mb caen todos en el trampolín, comprobado dentro del probe",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C11: las puertas G0..G4 están computadas en el probe (G0 recalcula la construcción, G1 compara cinco motores en bytes y pasos, G3 exige el opcode 39 concreto y G4 compara la declaración previa con lo medido)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C12: el bloque de IN se construye pero no se ejecuta (no medido)",
       "status": "NOT_DEMONSTRATED"
     }
   ]
