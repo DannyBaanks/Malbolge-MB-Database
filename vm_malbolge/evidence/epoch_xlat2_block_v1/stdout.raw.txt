@@ -1,0 +1,21 @@
+[Q1] ciclos XLAT2: [2, 4, 5, 6, 9, 68] ciclo L=2: [70, 74]
+[Q1] OUT    desplazamientos buenos=[25, 29] bloque en [25, 29] (span 5 celdas), relleno [37, 37, 37], trampolín 118, JMP 124, d0=164, largo 584, válidas-al-cargar 44
+[Q1] IN     desplazamientos buenos=[43, 47] bloque en [43, 47] (span 5 celdas), relleno [41, 41, 37], trampolín 42, JMP 48, d0=88, largo 508, válidas-al-cargar 43
+[Q1] ROT    desplazamientos buenos=[59, 63] bloque en [59, 63] (span 5 celdas), relleno [37, 41, 41], trampolín 58, JMP 64, d0=104, largo 524, válidas-al-cargar 43
+[Q1] DLOAD  desplazamientos buenos=[60, 64] bloque en [60, 64] (span 5 celdas), relleno [41, 41, 37], trampolín 59, JMP 65, d0=105, largo 525, válidas-al-cargar 43
+[Q1] CRAZY  desplazamientos buenos=[82, 86] bloque en [82, 86] (span 5 celdas), relleno [37, 37, 37], trampolín 81, JMP 99, d0=139, largo 1279, válidas-al-cargar 106
+[Q2] OUT: vueltas=60 pasos=479 por-vuelta(6)=[1, 1, 1, 1, 1, 1] todas_una=True opcodes_validos=[4, 5] otros=[] PCs=[119, 123]
+[Q2] motores: oraculo=True indep=True C=True
+[Q3] control desfase (x2=70): por-vuelta=[2, 0, 2, 0, 2, 0, 2, 0] todas_una=False
+[Q3] control relleno no inocuo (v=107 en 120): opcodes_validos=[4, 5, 39] otros=[39]
+[Q4] ROT    vueltas=60 por-vuelta(6)=[1, 1, 1, 1, 1, 1] todas_una=True otros=[] -> CONSTRUCTED
+     d en vueltas pares/impares: [{'round': 0, 'parity': 'par', 'pc': 59, 'd': 99}, {'round': 1, 'parity': 'impar', 'pc': 63, 'd': 109}, {'round': 2, 'parity': 'par', 'pc': 59, 'd': 111}, {'round': 3, 'parity': 'impar', 'pc': 63, 'd': 121}, {'round': 4, 'parity': 'par', 'pc': 59, 'd': 123}, {'round': 5, 'parity': 'impar', 'pc': 63, 'd': 133}, {'round': 6, 'parity': 'par', 'pc': 59, 'd': 135}, {'round': 7, 'parity': 'impar', 'pc': 63, 'd': 145}]
+     primeros JMP (paso,d,destino): [{'step': 65, 'd': 104, 'dest': 58}, {'step': 71, 'd': 110, 'dest': 58}, {'step': 77, 'd': 116, 'dest': 58}, {'step': 83, 'd': 122, 'dest': 58}]
+[Q4] CRAZY  vueltas=60 por-vuelta(6)=[1, 1, 1, 1, 1, 1] todas_una=True otros=[] -> CONSTRUCTED
+     d en vueltas pares/impares: [{'round': 0, 'parity': 'par', 'pc': 82, 'd': 122}, {'round': 1, 'parity': 'impar', 'pc': 86, 'd': 144}, {'round': 2, 'parity': 'par', 'pc': 82, 'd': 158}, {'round': 3, 'parity': 'impar', 'pc': 86, 'd': 180}, {'round': 4, 'parity': 'par', 'pc': 82, 'd': 194}, {'round': 5, 'parity': 'impar', 'pc': 86, 'd': 216}, {'round': 6, 'parity': 'par', 'pc': 82, 'd': 230}, {'round': 7, 'parity': 'impar', 'pc': 86, 'd': 252}]
+     primeros JMP (paso,d,destino): [{'step': 100, 'd': 139, 'dest': 81}, {'step': 118, 'd': 157, 'dest': 81}, {'step': 136, 'd': 175, 'dest': 81}, {'step': 154, 'd': 193, 'dest': 81}]
+[Q4] DLOAD  vueltas=1 por-vuelta(6)=[1] todas_una=True otros=[] -> NOT_DEMONSTRATED
+     d en vueltas pares/impares: [{'round': 0, 'parity': 'par', 'pc': 60, 'd': 100}]
+     primeros JMP (paso,d,destino): [{'step': 66, 'd': 64, 'dest': 70}]
+[Q5] Olmstead 1998: rc=1 stderr='invalid character in source file' válidas-al-cargar 44/584 dialecto=classic_permissive
+[gates] {'G0': True, 'G1': True, 'G2': True, 'G3': True, 'G4': True} all_gates_pass=True

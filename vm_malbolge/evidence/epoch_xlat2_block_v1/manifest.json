@@ -1,0 +1,104 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T08:07:58.813609+00:00",
+  "command": "python3 -I vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py </dev/null",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "ab6b61d542be61d3411ca3235ec69e15af4ce5c053aa47b3b06154cc7afa88eb"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "7c5c0b9dc3364d28365971e50852e897c410756a8fcc4cce1dd2683daf88a679"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "54311b3ec50cf9cdf70cb3824fbb9df9a1bc1a263f5d2afac1dfbfc83a9903bc"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "a8a0f6fe942e92e81eef44eeb51ea9e274a81afad4030a370eac1a952ef0700a"
+    },
+    {
+      "file": "out_block.mb",
+      "sha256": "f2b897211fee972c414bd52cea34632efa5d3005995bdf56f5b369569acad4b8"
+    },
+    {
+      "file": "out_block_ctrl_phase.mb",
+      "sha256": "1707dd45b4016b9c917b1885329f7701b5312cbc408d23d3a8c52add148e25da"
+    },
+    {
+      "file": "out_block_ctrl_filler.mb",
+      "sha256": "6d86f495a0601d991400c5676237347a9dc4590f083c1e092858414c48f344e8"
+    },
+    {
+      "file": "rot_block.mb",
+      "sha256": "e3e55e7472bc0b0ebaeab9da2a092569d7f08929064d5d95910067377fe5629a"
+    },
+    {
+      "file": "crazy_block.mb",
+      "sha256": "49d7798c1e52ab260578cc309cd591925db0d8f64c5b22f8143d69258cca9880"
+    },
+    {
+      "file": "dload_block.mb",
+      "sha256": "c335f6ed15fc76e8c091d481d99411fd38e9487b936b5238e79816dea5819015"
+    },
+    {
+      "file": "results.json",
+      "sha256": "563376c3ebae59a69b4bba093902e4f943b16e26a0e0c8c467488f5d3a8f17e5"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "4c50011cf7ae093fe9bb53297bb01be94f8e886ab6a573d0fd72a5e4b7f593f4"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "Malbolge-PureEpoch/build/olmstead (externo)": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  },
+  "claims": [
+    {
+      "text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, JMP, tabla) se deriva en el probe de los ciclos de XLAT2",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2: out_block.mb hace la operación exactamente una vez por vuelta durante 60 vueltas, con PCs alternantes 119/123 y sin ningún opcode perjudicial en el cuerpo",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C3: oráculo, intérprete independiente, trazador y runner C coinciden en la salida y los pasos de la ejecución acotada",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: el control de desfase produce 2 y 0 operaciones por vuelta alternadas",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C5: el control de relleno no inocuo decodifica el opcode perjudicial 39 en el cuerpo del bucle",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C6: el bloque de ROT se construye y ejecuta exactamente una vez por vuelta durante 60 vueltas, con el d medido por paridad",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C7: el bloque de CRAZY se construye y ejecuta exactamente una vez por vuelta durante 60 vueltas, con el d medido por paridad",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C8: el bloque de DLOAD se construye y ejecuta",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C9: una variante del bloque que pase el cargador de Olmstead 1998",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

@@ -1,0 +1,1353 @@
+{
+ "pack": "epoch_xlat2_block_v1",
+ "rounds": 60,
+ "q1": {
+  "OUT": {
+   "l2_cycle": [
+    70,
+    74
+   ],
+   "good_shifts": [
+    25,
+    29
+   ],
+   "block_positions_mod94": [
+    25,
+    29
+   ],
+   "block_positions_abs": [
+    119,
+    123
+   ],
+   "span_cells": 5,
+   "x_values": [
+    74,
+    74
+   ],
+   "fillers": {
+    "positions": [
+     120,
+     121,
+     122
+    ],
+    "values": [
+     37,
+     37,
+     37
+    ]
+   },
+   "trampoline": 118,
+   "jmp": 124,
+   "jmp_value": 68,
+   "d_at_first_jmp": 164,
+   "length": 584,
+   "loader_valid_cells": 44
+  },
+  "IN": {
+   "l2_cycle": [
+    70,
+    74
+   ],
+   "good_shifts": [
+    43,
+    47
+   ],
+   "block_positions_mod94": [
+    43,
+    47
+   ],
+   "block_positions_abs": [
+    43,
+    47
+   ],
+   "span_cells": 5,
+   "x_values": [
+    74,
+    74
+   ],
+   "fillers": {
+    "positions": [
+     44,
+     45,
+     46
+    ],
+    "values": [
+     41,
+     41,
+     37
+    ]
+   },
+   "trampoline": 42,
+   "jmp": 48,
+   "jmp_value": 50,
+   "d_at_first_jmp": 88,
+   "length": 508,
+   "loader_valid_cells": 43
+  },
+  "ROT": {
+   "l2_cycle": [
+    70,
+    74
+   ],
+   "good_shifts": [
+    59,
+    63
+   ],
+   "block_positions_mod94": [
+    59,
+    63
+   ],
+   "block_positions_abs": [
+    59,
+    63
+   ],
+   "span_cells": 5,
+   "x_values": [
+    74,
+    74
+   ],
+   "fillers": {
+    "positions": [
+     60,
+     61,
+     62
+    ],
+    "values": [
+     37,
+     41,
+     41
+    ]
+   },
+   "trampoline": 58,
+   "jmp": 64,
+   "jmp_value": 34,
+   "d_at_first_jmp": 104,
+   "length": 524,
+   "loader_valid_cells": 43
+  },
+  "DLOAD": {
+   "l2_cycle": [
+    70,
+    74
+   ],
+   "good_shifts": [
+    60,
+    64
+   ],
+   "block_positions_mod94": [
+    60,
+    64
+   ],
+   "block_positions_abs": [
+    60,
+    64
+   ],
+   "span_cells": 5,
+   "x_values": [
+    74,
+    74
+   ],
+   "fillers": {
+    "positions": [
+     61,
+     62,
+     63
+    ],
+    "values": [
+     41,
+     41,
+     37
+    ]
+   },
+   "trampoline": 59,
+   "jmp": 65,
+   "jmp_value": 33,
+   "d_at_first_jmp": 105,
+   "length": 525,
+   "loader_valid_cells": 43
+  },
+  "CRAZY": {
+   "l2_cycle": [
+    70,
+    74
+   ],
+   "good_shifts": [
+    82,
+    86
+   ],
+   "block_positions_mod94": [
+    82,
+    86
+   ],
+   "block_positions_abs": [
+    82,
+    86
+   ],
+   "span_cells": 5,
+   "x_values": [
+    74,
+    74
+   ],
+   "fillers": {
+    "positions": [
+     83,
+     84,
+     85
+    ],
+    "values": [
+     37,
+     37,
+     37
+    ]
+   },
+   "trampoline": 81,
+   "jmp": 99,
+   "jmp_value": 93,
+   "d_at_first_jmp": 139,
+   "length": 1279,
+   "loader_valid_cells": 106
+  }
+ },
+ "q2": {
+  "info": {
+   "target": "OUT",
+   "shift": 119,
+   "span": 5,
+   "extra_cells": 0,
+   "round_len": 6,
+   "x_positions": [
+    119,
+    123
+   ],
+   "x1": 74,
+   "x2": 74,
+   "fillers": {
+    "positions": [
+     120,
+     121,
+     122
+    ],
+    "values": [
+     37,
+     37,
+     37
+    ]
+   },
+   "trampoline": 118,
+   "jmp": 124,
+   "jmp_value": 68,
+   "d_at_first_jmp": 164,
+   "rounds": 60,
+   "length": 584,
+   "loader_valid_cells": 44
+  },
+  "trace": {
+   "steps": 479,
+   "rounds_closed": 60,
+   "per_round": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "per_round_all_one": true,
+   "loop_valid": [
+    4,
+    5
+   ],
+   "harmful_others": [],
+   "target_events_first": [
+    {
+     "step": 120,
+     "pc": 119,
+     "d": 159
+    },
+    {
+     "step": 130,
+     "pc": 123,
+     "d": 169
+    },
+    {
+     "step": 132,
+     "pc": 119,
+     "d": 171
+    },
+    {
+     "step": 142,
+     "pc": 123,
+     "d": 181
+    },
+    {
+     "step": 144,
+     "pc": 119,
+     "d": 183
+    },
+    {
+     "step": 154,
+     "pc": 123,
+     "d": 193
+    },
+    {
+     "step": 156,
+     "pc": 119,
+     "d": 195
+    },
+    {
+     "step": 166,
+     "pc": 123,
+     "d": 205
+    }
+   ],
+   "d_parity": [
+    {
+     "round": 0,
+     "parity": "par",
+     "pc": 119,
+     "d": 159
+    },
+    {
+     "round": 1,
+     "parity": "impar",
+     "pc": 123,
+     "d": 169
+    },
+    {
+     "round": 2,
+     "parity": "par",
+     "pc": 119,
+     "d": 171
+    },
+    {
+     "round": 3,
+     "parity": "impar",
+     "pc": 123,
+     "d": 181
+    },
+    {
+     "round": 4,
+     "parity": "par",
+     "pc": 119,
+     "d": 183
+    },
+    {
+     "round": 5,
+     "parity": "impar",
+     "pc": 123,
+     "d": 193
+    },
+    {
+     "round": 6,
+     "parity": "par",
+     "pc": 119,
+     "d": 195
+    },
+    {
+     "round": 7,
+     "parity": "impar",
+     "pc": 123,
+     "d": 205
+    }
+   ],
+   "jmp_dest_first": [
+    {
+     "step": 125,
+     "d": 164,
+     "dest": 118
+    },
+    {
+     "step": 131,
+     "d": 170,
+     "dest": 118
+    },
+    {
+     "step": 137,
+     "d": 176,
+     "dest": 118
+    },
+    {
+     "step": 143,
+     "d": 182,
+     "dest": 118
+    }
+   ],
+   "jmp_dest_last": [
+    {
+     "step": 479,
+     "d": 518,
+     "dest": 118
+    }
+   ],
+   "status": "MAX",
+   "target_execs": 60,
+   "all_target_pcs": [
+    119,
+    123
+   ],
+   "oracle": {
+    "output": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "steps": 479,
+    "status": "MAX_STEPS"
+   },
+   "indep": {
+    "output": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "steps": 479,
+    "status": "MAX"
+   },
+   "c": {
+    "rc": 0,
+    "out_list": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "out_hex": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "steps": 479,
+    "status": "TIMEOUT"
+   },
+   "out_steps": [
+    120,
+    130,
+    132,
+    142,
+    144,
+    154,
+    156,
+    166
+   ]
+  },
+  "engine_agreement": {
+   "oracle_vs_trace": true,
+   "indep_vs_trace": true,
+   "c_vs_trace": true
+  }
+ },
+ "q3": {
+  "phase_control": {
+   "x_values": [
+    74,
+    70
+   ],
+   "per_round_first8": [
+    2,
+    0,
+    2,
+    0,
+    2,
+    0,
+    2,
+    0
+   ],
+   "has_round_not_one": true,
+   "rounds": 60
+  },
+  "filler_control": {
+   "filler_value": 107,
+   "filler_pos": 120,
+   "harmful_others": [
+    39
+   ],
+   "loop_valid": [
+    4,
+    5,
+    39
+   ],
+   "has_harmful": true,
+   "per_round_all_one": false
+  }
+ },
+ "q4": {
+  "ROT": {
+   "info": {
+    "target": "ROT",
+    "shift": 59,
+    "span": 5,
+    "extra_cells": 0,
+    "round_len": 6,
+    "x_positions": [
+     59,
+     63
+    ],
+    "x1": 74,
+    "x2": 74,
+    "fillers": {
+     "positions": [
+      60,
+      61,
+      62
+     ],
+     "values": [
+      37,
+      41,
+      41
+     ]
+    },
+    "trampoline": 58,
+    "jmp": 64,
+    "jmp_value": 34,
+    "d_at_first_jmp": 104,
+    "rounds": 60,
+    "length": 524,
+    "loader_valid_cells": 43
+   },
+   "measure": {
+    "steps": 419,
+    "rounds_closed": 60,
+    "per_round": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_round_all_one": true,
+    "loop_valid": [
+     4,
+     39
+    ],
+    "harmful_others": [],
+    "target_events_first": [
+     {
+      "step": 60,
+      "pc": 59,
+      "d": 99
+     },
+     {
+      "step": 70,
+      "pc": 63,
+      "d": 109
+     },
+     {
+      "step": 72,
+      "pc": 59,
+      "d": 111
+     },
+     {
+      "step": 82,
+      "pc": 63,
+      "d": 121
+     },
+     {
+      "step": 84,
+      "pc": 59,
+      "d": 123
+     },
+     {
+      "step": 94,
+      "pc": 63,
+      "d": 133
+     },
+     {
+      "step": 96,
+      "pc": 59,
+      "d": 135
+     },
+     {
+      "step": 106,
+      "pc": 63,
+      "d": 145
+     }
+    ],
+    "d_parity": [
+     {
+      "round": 0,
+      "parity": "par",
+      "pc": 59,
+      "d": 99
+     },
+     {
+      "round": 1,
+      "parity": "impar",
+      "pc": 63,
+      "d": 109
+     },
+     {
+      "round": 2,
+      "parity": "par",
+      "pc": 59,
+      "d": 111
+     },
+     {
+      "round": 3,
+      "parity": "impar",
+      "pc": 63,
+      "d": 121
+     },
+     {
+      "round": 4,
+      "parity": "par",
+      "pc": 59,
+      "d": 123
+     },
+     {
+      "round": 5,
+      "parity": "impar",
+      "pc": 63,
+      "d": 133
+     },
+     {
+      "round": 6,
+      "parity": "par",
+      "pc": 59,
+      "d": 135
+     },
+     {
+      "round": 7,
+      "parity": "impar",
+      "pc": 63,
+      "d": 145
+     }
+    ],
+    "jmp_dest_first": [
+     {
+      "step": 65,
+      "d": 104,
+      "dest": 58
+     },
+     {
+      "step": 71,
+      "d": 110,
+      "dest": 58
+     },
+     {
+      "step": 77,
+      "d": 116,
+      "dest": 58
+     },
+     {
+      "step": 83,
+      "d": 122,
+      "dest": 58
+     }
+    ],
+    "jmp_dest_last": [
+     {
+      "step": 419,
+      "d": 458,
+      "dest": 58
+     }
+    ],
+    "status": "MAX",
+    "target_execs": 60,
+    "all_target_pcs": [
+     59,
+     63
+    ]
+   },
+   "engines": {
+    "oracle": {
+     "output": [],
+     "steps": 419,
+     "status": "MAX_STEPS"
+    },
+    "c": {
+     "rc": 0,
+     "out_list": [],
+     "out_hex": "",
+     "steps": 419,
+     "status": "TIMEOUT"
+    }
+   },
+   "built": true,
+   "verdict": "CONSTRUCTED"
+  },
+  "CRAZY": {
+   "info": {
+    "target": "CRAZY",
+    "shift": 82,
+    "span": 5,
+    "extra_cells": 12,
+    "round_len": 18,
+    "x_positions": [
+     82,
+     86
+    ],
+    "x1": 74,
+    "x2": 74,
+    "fillers": {
+     "positions": [
+      83,
+      84,
+      85
+     ],
+     "values": [
+      37,
+      37,
+      37
+     ]
+    },
+    "trampoline": 81,
+    "jmp": 99,
+    "jmp_value": 93,
+    "d_at_first_jmp": 139,
+    "rounds": 60,
+    "length": 1279,
+    "loader_valid_cells": 106
+   },
+   "measure": {
+    "steps": 1162,
+    "rounds_closed": 60,
+    "per_round": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_round_all_one": true,
+    "loop_valid": [
+     4,
+     62
+    ],
+    "harmful_others": [],
+    "target_events_first": [
+     {
+      "step": 83,
+      "pc": 82,
+      "d": 122
+     },
+     {
+      "step": 105,
+      "pc": 86,
+      "d": 144
+     },
+     {
+      "step": 119,
+      "pc": 82,
+      "d": 158
+     },
+     {
+      "step": 141,
+      "pc": 86,
+      "d": 180
+     },
+     {
+      "step": 155,
+      "pc": 82,
+      "d": 194
+     },
+     {
+      "step": 177,
+      "pc": 86,
+      "d": 216
+     },
+     {
+      "step": 191,
+      "pc": 82,
+      "d": 230
+     },
+     {
+      "step": 213,
+      "pc": 86,
+      "d": 252
+     }
+    ],
+    "d_parity": [
+     {
+      "round": 0,
+      "parity": "par",
+      "pc": 82,
+      "d": 122
+     },
+     {
+      "round": 1,
+      "parity": "impar",
+      "pc": 86,
+      "d": 144
+     },
+     {
+      "round": 2,
+      "parity": "par",
+      "pc": 82,
+      "d": 158
+     },
+     {
+      "round": 3,
+      "parity": "impar",
+      "pc": 86,
+      "d": 180
+     },
+     {
+      "round": 4,
+      "parity": "par",
+      "pc": 82,
+      "d": 194
+     },
+     {
+      "round": 5,
+      "parity": "impar",
+      "pc": 86,
+      "d": 216
+     },
+     {
+      "round": 6,
+      "parity": "par",
+      "pc": 82,
+      "d": 230
+     },
+     {
+      "round": 7,
+      "parity": "impar",
+      "pc": 86,
+      "d": 252
+     }
+    ],
+    "jmp_dest_first": [
+     {
+      "step": 100,
+      "d": 139,
+      "dest": 81
+     },
+     {
+      "step": 118,
+      "d": 157,
+      "dest": 81
+     },
+     {
+      "step": 136,
+      "d": 175,
+      "dest": 81
+     },
+     {
+      "step": 154,
+      "d": 193,
+      "dest": 81
+     }
+    ],
+    "jmp_dest_last": [
+     {
+      "step": 1162,
+      "d": 1201,
+      "dest": 81
+     }
+    ],
+    "status": "MAX",
+    "target_execs": 60,
+    "all_target_pcs": [
+     82,
+     86
+    ]
+   },
+   "engines": {
+    "oracle": {
+     "output": [],
+     "steps": 1162,
+     "status": "MAX_STEPS"
+    },
+    "c": {
+     "rc": 0,
+     "out_list": [],
+     "out_hex": "",
+     "steps": 1162,
+     "status": "TIMEOUT"
+    }
+   },
+   "built": true,
+   "verdict": "CONSTRUCTED"
+  },
+  "DLOAD": {
+   "info": {
+    "target": "DLOAD",
+    "shift": 60,
+    "span": 5,
+    "extra_cells": 0,
+    "round_len": 6,
+    "x_positions": [
+     60,
+     64
+    ],
+    "x1": 74,
+    "x2": 74,
+    "fillers": {
+     "positions": [
+      61,
+      62,
+      63
+     ],
+     "values": [
+      41,
+      41,
+      37
+     ]
+    },
+    "trampoline": 59,
+    "jmp": 65,
+    "jmp_value": 33,
+    "d_at_first_jmp": 105,
+    "rounds": 60,
+    "length": 525,
+    "loader_valid_cells": 43
+   },
+   "measure": {
+    "steps": 112,
+    "rounds_closed": 1,
+    "per_round": [
+     1
+    ],
+    "per_round_all_one": true,
+    "loop_valid": [
+     4,
+     40
+    ],
+    "harmful_others": [],
+    "target_events_first": [
+     {
+      "step": 61,
+      "pc": 60,
+      "d": 100
+     }
+    ],
+    "d_parity": [
+     {
+      "round": 0,
+      "parity": "par",
+      "pc": 60,
+      "d": 100
+     }
+    ],
+    "jmp_dest_first": [
+     {
+      "step": 66,
+      "d": 64,
+      "dest": 70
+     }
+    ],
+    "jmp_dest_last": [
+     {
+      "step": 66,
+      "d": 64,
+      "dest": 70
+     }
+    ],
+    "status": "HALTED",
+    "target_execs": 1,
+    "all_target_pcs": [
+     60
+    ]
+   },
+   "engines": {
+    "oracle": {
+     "output": [],
+     "steps": 112,
+     "status": "HALTED"
+    },
+    "c": {
+     "rc": 0,
+     "out_list": [],
+     "out_hex": "",
+     "steps": 112,
+     "status": "HALTED"
+    }
+   },
+   "built": false,
+   "verdict": "NOT_DEMONSTRATED"
+  }
+ },
+ "q5": {
+  "olmstead": {
+   "available": true,
+   "sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+   "on_out_block": {
+    "rc": 1,
+    "stdout": "",
+    "stderr": "invalid character in source file"
+   }
+  },
+  "loader_valid_cells": 44,
+  "cells": 584,
+  "dialect": "classic_permissive",
+  "declaration": "Classic permisivo (3^10): el bloque usa opcodes no válidos como relleno inocuo; el cargador de Olmstead 1998 exige un opcode válido en todas las celdas cargadas y lo rechaza"
+ },
+ "gates": {
+  "G0": true,
+  "G1": true,
+  "G2": true,
+  "G3": true,
+  "G4": true
+ },
+ "all_gates_pass": true,
+ "images": {
+  "out_block": {
+   "sha256": "f2b897211fee972c414bd52cea34632efa5d3005995bdf56f5b369569acad4b8",
+   "length": 584,
+   "printable": true
+  },
+  "out_block_ctrl_phase": {
+   "sha256": "1707dd45b4016b9c917b1885329f7701b5312cbc408d23d3a8c52add148e25da",
+   "length": 584,
+   "printable": true
+  },
+  "out_block_ctrl_filler": {
+   "sha256": "6d86f495a0601d991400c5676237347a9dc4590f083c1e092858414c48f344e8",
+   "length": 584,
+   "printable": true
+  },
+  "rot_block": {
+   "sha256": "e3e55e7472bc0b0ebaeab9da2a092569d7f08929064d5d95910067377fe5629a",
+   "length": 524,
+   "printable": true
+  },
+  "crazy_block": {
+   "sha256": "49d7798c1e52ab260578cc309cd591925db0d8f64c5b22f8143d69258cca9880",
+   "length": 1279,
+   "printable": true
+  },
+  "dload_block": {
+   "sha256": "c335f6ed15fc76e8c091d481d99411fd38e9487b936b5238e79816dea5819015",
+   "length": 525,
+   "printable": true
+  }
+ },
+ "dependencies": {
+  "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+  "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+  "vm_malbolge/evidence/epoch_rearm_budget_v1/results.json": "29bbf65cbb5291aac112b9428b48149ada1ee68a85895d86eaac1dfce84f1692",
+  "vm_malbolge/evidence/epoch_xlat2_phase_census_v1/results.json": "087c04c7a0caae12daec937c9c6b1844b66d016f3d35c31db4414f129c1c17f1",
+  "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+  "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+ }
+}
