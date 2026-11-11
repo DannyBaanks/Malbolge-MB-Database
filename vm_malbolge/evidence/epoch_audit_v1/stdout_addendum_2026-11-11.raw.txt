@@ -1,0 +1,14 @@
+## 2026-11-11T05:54:13Z python3 -I addendum_checks.py <cost 99ee3de> <resolver_epoch.mb> <olmstead_original.c sha256 05abd38e… compilado con gcc -O2 -w>
+restore perm  HALTED 21 2a37 | celdas no válidas para el cargador: 78 / 105
+restore guard HALTED 21 2a37 | celdas no válidas para el cargador: 78 / 105
+no_restore perm  HALTED 21 2a | celdas no válidas para el cargador: 78 / 105
+no_restore guard HALTED 21 2a | celdas no válidas para el cargador: 78 / 105
+rearm perm  HALTED 28 2a | celdas no válidas para el cargador: 70 / 105
+rearm guard HALTED 28 2a | celdas no válidas para el cargador: 70 / 105
+rot(54) = 18 | crazy(rot(54),74) = 29552 | ENC[55] = 110 | crazy(29552, ENC[55]) = 55
+resolver_epoch (e100_p29797): pasos 218 | celdas de código distintas 218 | ejecutadas más de una vez 0 | rango 0 .. 339 | dentro de 34..126: 2
+olmstead1998 restore.mb -> invalid character in source file
+olmstead1998 no_restore.mb -> invalid character in source file
+olmstead1998 rearm.mb -> invalid character in source file
+olmstead1998 resolver_epoch.mb -> invalid character in source file
+exit=0

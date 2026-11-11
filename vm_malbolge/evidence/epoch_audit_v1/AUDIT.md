@@ -158,3 +158,71 @@ emite `0d0d59` y b = 234 emite `148989`). El pack probó b = 50, que es silencio
 Un pack corto que mida el coste real de la vía `ROT` + `CRAZY` para la palabra de
 control y para `swap01(v)`, y que mida M8 de verdad (tamaño del cuerpo del bucle a
 partir de la imagen, no un estimado), antes de construir el planificador.
+
+## Adición 2026-11-11 — dialecto confirmado y auditoría de `epoch_rearm_cost_v1` (sólo se añade)
+
+Auditor: claude_code_a029a379be0f4681. Commit auditado: `99ee3de` (local, sin push en
+ese momento). Script: `addendum_checks.py`; salida cruda:
+`stdout_addendum_2026-11-11.raw.txt`.
+
+### H3 pasa a DEMONSTRATED
+
+La fuente del intérprete de Ben Olmstead (1998) está en el repo hermano
+`Malbolge-PureEpoch/vendor/olmstead_original.c` (sha256 `05abd38e…`, cabecera
+"'98 Ben Olmstead", dominio público). Compilada con `gcc -O2 -w`:
+
+- el cargador rechaza (`invalid character in source file`) `resolver_epoch.mb` y,
+  probado por separado con el mismo binario, `epoch_algebra_v3/resolver.mb` y
+  `epoch_resolver_request_v1/resolver_request.mb`;
+- el bucle de ejecución hace `if ( mem[c] < 33 || mem[c] > 126 ) continue;`: una
+  celda no imprimible en el PC produce un **bucle infinito**, no una ejecución.
+
+La línea de épocas es, por tanto, **Classic permisivo**, y no corre en el intérprete
+de 1998. (Contraste: los programas de PureEpoch probados sí pasan ese cargador.)
+
+### Auditoría de `epoch_rearm_cost_v1`
+
+Confirmado:
+
+| comprobación | resultado |
+|---|---|
+| hashes del manifest (12 artefactos + 4 dependencias) | coinciden, en una copia limpia con `core.autocrlf=false` |
+| reproducción | `build.py` + `probe.py` regeneran las tres imágenes y `results.json` byte a byte |
+| orden de las puertas | `GATES.md` (`6a604fe`, 23:35) se commiteó antes del pack (`99ee3de`, 23:48) y no se modificó después |
+| intérprete independiente | `restore` 2a37/21/HALTED, `no_restore` 2a/21/HALTED, `rearm` 2a/28/HALTED, con y sin guarda |
+| álgebra de C1/C2 | `crazy(rot(54), 74) = 29552` y `crazy(29552, ENC[55]) = 55`: el restore 110→55 es exacto |
+| H1 (en un caso) | la celda 44 no está en la tabla de 34 posiciones y aun así se restaura y se re-ejecuta en una sola ejecución |
+
+Hallazgos:
+
+- **H8 (ALTA): el M8 = 12 no responde a H2.** Ese 12 es el cuerpo del programa de
+  demostración de 105 bytes. La pregunta de H2 era el cuerpo del **resolvedor de
+  épocas**. Medido desde la traza (`e100_p29797`): **218 celdas de código distintas
+  en 218 pasos, ninguna ejecutada dos veces**, en el rango 0..339, y sólo 2 dentro
+  de 34..126. El literal `200` de `epoch_rearm_barrier_v1` era un estimado sin
+  medir, pero estaba cerca: el valor medido es 218. Volver a atender una petición
+  con ese cuerpo exige restaurar del orden de 218 celdas, no 12.
+- **H9 (MEDIA): dialecto.** Las tres imágenes del pack también las rechaza el
+  cargador de 1998 (78/105, 78/105 y 70/105 celdas no válidas). El pack lo declara
+  en `GATES.md` ("Classic permisivo"), así que es correcto como está escrito. Pero el
+  "tercer motor" de G1 es el runner C de `Malbolge-Engine`, **no** el intérprete
+  de Olmstead.
+- **H10 (BAJA): G2 es una especificación, no un umbral.** La puerta fija "exactamente
+  5 instrucciones (`DLOAD,DLOAD,ROT,DLOAD,CRAZY`)" antes de implementar: codifica el
+  diseño ya conocido, así que el coste de 5 es el de este caso construido, no una
+  cota general.
+- **H11 (BAJA): robustez del probe.** `run_c` no fija el stdin del runner C, que
+  hereda el del proceso padre. Con un stdin abierto que no llega a EOF, el probe
+  agota su timeout de 120 s y termina con `exit 1`; con `</dev/null` pasa. Además,
+  `stdout.raw.txt` no incluye la línea final `[verdict] all_checks_pass=True` que el
+  probe sí imprime.
+
+Tabla de afirmaciones (adición):
+
+| afirmación | estado |
+|---|---|
+| H3: el dialecto de la línea de épocas no es Olmstead 1998 | **DEMONSTRATED** (cargador de 1998) |
+| la palabra de control se carga con ROT + 1 CRAZY y el restore es exacto (un caso) | DEMONSTRATED en Classic permisivo |
+| restore + re-ejecución en una sola ejecución, con control negativo | DEMONSTRATED en Classic permisivo |
+| M8 del resolvedor de épocas | **218 celdas medidas** (no 12, no 200) |
+| ciclo cerrado (rearm de todas las auxiliares) | NOT_DEMONSTRATED (igual que el pack) |
