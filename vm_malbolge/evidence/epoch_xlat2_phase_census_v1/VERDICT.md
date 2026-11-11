@@ -147,3 +147,29 @@ midiendo Q1/Q2 y el control con oráculo + intérprete independiente; el bloque
 - el resolvedor rediseñado y su segunda petición dentro de una ejecución;
 - la ejecución del cuerpo “ventana + JMP de vuelta” (Q4 vacuo: no hay ventana
   que ejecutar; el censo de Q2 demuestra que no existe).
+
+## Corrección posterior (2026-11-11, auditoría — sólo se añade; no se reescribe lo anterior)
+
+Auditoría de claude_code_a029a379be0f4681. Este pack se reproduce byte a byte en una
+copia limpia (`results.json` y `stdout.raw.txt` idénticos), los 11 hashes del manifest
+coinciden y `GATES.md` sigue sin cambios desde `cb6bfd1`. Q2 es correcto **tal como lo
+definía `GATES.md`**: no existe ninguna ventana de L celdas **consecutivas**.
+
+Lo que no se sostiene es la consecuencia «el mecanismo no da un cuerpo de bucle
+constante en ningún ciclo». Esa limitación viene de la definición de ventana de
+`GATES.md` (escrita por el mismo auditor), que exigía celdas contiguas sin necesidad.
+Medido en [`epoch_audit_v1/relaxed_window_check.py`](../epoch_audit_v1/relaxed_window_check.py)
+(salida en `epoch_audit_v1/stdout_relaxed_2026-11-11.raw.txt`):
+
+* en las 94 posiciones existe una celda de relleno inocua en todas las vueltas;
+* con celdas no contiguas y relleno en los huecos, para `OUT`, `IN`, `ROT`, `DLOAD` y
+  `CRAZY` hay un bloque fijo de **5 celdas** (dos del ciclo de longitud 2, desfasadas,
+  más 3 de relleno) que, según el cálculo, ejecuta la operación exactamente una vez por
+  vuelta.
+
+Estado: **NOT_DEMONSTRATED** (calculado, no ejecutado). Faltan: (1) construir y ejecutar
+el bloque; (2) que las dos celdas alternas están en posiciones distintas, así que para
+`ROT`, `CRAZY` y `DLOAD` el puntero `d` difiere entre vueltas pares e impares; (3)
+comprobar si los valores iniciales pasan el cargador de Olmstead 1998. Los claims C8/C9
+de este pack («resolvedor sobre ciclos XLAT2 NOT_DEMONSTRATED») siguen vigentes; lo que
+cambia es que la vía no está cerrada.

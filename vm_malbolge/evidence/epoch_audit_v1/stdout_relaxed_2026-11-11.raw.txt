@@ -1,0 +1,9 @@
+## 2026-11-11T07:03:31Z python3 -I relaxed_window_check.py
+ciclos: [2, 4, 5, 6, 9, 68]
+residuos con relleno inocuo: 94 / 94
+OUT -> bloque mínimo: ciclo L=2, 5 celdas, residuos de las celdas X=[25, 29]
+IN -> bloque mínimo: ciclo L=2, 5 celdas, residuos de las celdas X=[43, 47]
+ROT -> bloque mínimo: ciclo L=2, 5 celdas, residuos de las celdas X=[59, 63]
+DLOAD -> bloque mínimo: ciclo L=2, 5 celdas, residuos de las celdas X=[60, 64]
+CRAZY -> bloque mínimo: ciclo L=2, 5 celdas, residuos de las celdas X=[82, 86]
+exit=0
