@@ -1,0 +1,123 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at_utc": "2026-11-11T21:26:51.052376+00:00",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "preregistered_gates_commit": "96d14c0",
+  "base_commit": "4a5cd45",
+  "status": "canonical bounded run with exploratory correction disclosed",
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -I vm_malbolge/evidence/epoch_dload_inout_v1/probe.py > vm_malbolge/evidence/epoch_dload_inout_v1/stdout.raw.txt 2>&1",
+      "exit_code": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -I vm_malbolge/evidence/epoch_dload_inout_v1/capture_io.py > vm_malbolge/evidence/epoch_dload_inout_v1/capture_io.stdout.raw.txt 2>&1",
+      "exit_code": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "6827d9fba82e0c1d5b4363325246bb59231ea119108fca35f09093b020ccba52"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "d9d1dc7f4900edee576a4471502e85cf596ec517361911134743279c54cc66b0"
+    },
+    {
+      "file": "capture_io.py",
+      "sha256": "08ab2474e740f8b9936e3e715df463d6fc5e2031f93dfd2cf3aa04559064d51a"
+    },
+    {
+      "file": "capture_io.stdout.raw.txt",
+      "sha256": "3c7e1e7af648cfe67f283e1032089b3c866acb75beb67d19960f5d41ed41c21b"
+    },
+    {
+      "file": "compose_inout.mb",
+      "sha256": "bdc1e06a3bdc54df07893baae52e89b066657ae9b609fb397ddc073d70d76e39"
+    },
+    {
+      "file": "ctrl_in_phase.mb",
+      "sha256": "f490a860b66f40ea6aeb88aa75e019771a3d3e4a70dc014a453ce78827620709"
+    },
+    {
+      "file": "ctrl_no_dload.mb",
+      "sha256": "8aaad2c584a86a459315a9e1994873a07e359d05dabf38764b51259f48d157fb"
+    },
+    {
+      "file": "ctrl_out_phase.mb",
+      "sha256": "ed867fdd41aed6792c64f91e16d2443a96ed09630c1f389e3a0d765a32a9e82f"
+    },
+    {
+      "file": "ctrl_reverse_order.mb",
+      "sha256": "17b0019adc035be1ce7584fbe28db4beb494d2c9fad6de7e5d21249a73ad56b8"
+    },
+    {
+      "file": "ctrl_table_off.mb",
+      "sha256": "62b343481cbbb66196b514e99d42643e30f5b368604cbfa0b488e10257342cba"
+    },
+    {
+      "file": "exploratory_probe.py",
+      "sha256": "601ca6c042a2fa26a6b88fb0a4142ec906421f9f74fd5759c8bac543c8d76744"
+    },
+    {
+      "file": "exploratory_results.json",
+      "sha256": "e9b530269401fb1f516327dde933187400ee2e96e9d93beee62384db43416dbf"
+    },
+    {
+      "file": "exploratory_stdout.raw.txt",
+      "sha256": "e9b530269401fb1f516327dde933187400ee2e96e9d93beee62384db43416dbf"
+    },
+    {
+      "file": "independent.raw",
+      "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e"
+    },
+    {
+      "file": "input.raw",
+      "sha256": "b13c2bec64e073d7d2c52c0d88ee22605434afb299103567189dcc472dab836f"
+    },
+    {
+      "file": "oracle.raw",
+      "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "e2b432920eb0f9ad6c38eb34b1ba24724abac437446657e60c8630cee55754cb"
+    },
+    {
+      "file": "results.json",
+      "sha256": "6106b9b15557cdf17379399955d4c8431f0b1b517e6866df68dc9ca4cc55a863"
+    },
+    {
+      "file": "runner_c.raw",
+      "sha256": "36fad3496aa52fc021013e8c36bd107b358c696fa67d66f4455f6e10df9dbd97"
+    },
+    {
+      "file": "runner_c.stderr.raw",
+      "sha256": "a3a62e2c63dc8dc85ad6e3a64d85ec1baa430e11ca3122dd574590d0354173e0"
+    },
+    {
+      "file": "scratch.raw",
+      "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "6106b9b15557cdf17379399955d4c8431f0b1b517e6866df68dc9ca4cc55a863"
+    }
+  ],
+  "dependencies": {
+    "vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "../Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  },
+  "claims": {
+    "echo_10000": "DEMONSTRATED in bounded classic-permissive runs",
+    "period_180": "DEMONSTRATED for repeated machine state under constant input; cycle analysis corrected after exploration",
+    "olmstead_loader": "NOT_DEMONSTRATED: rejects image",
+    "uniform_eof": "NOT_DEMONSTRATED: engines differ"
+  }
+}

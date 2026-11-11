@@ -1,0 +1,1 @@
+raw input and four outputs captured; byte comparisons matched; runner C includes final wrapper newline

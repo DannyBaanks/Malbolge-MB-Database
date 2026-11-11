@@ -1,0 +1,796 @@
+{
+  "base": "96d14c0",
+  "environment": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "params": {
+    "s": 43,
+    "T": 42,
+    "first": 23,
+    "second": 5,
+    "dl": 60,
+    "k": 17,
+    "second_pos": 119,
+    "j": 124,
+    "jv": 68,
+    "n": 82,
+    "D0": 126,
+    "D1": 127,
+    "V0": 62,
+    "V1": 65,
+    "A": 143,
+    "B": 126,
+    "C": 148,
+    "D": 125,
+    "W": 84
+  },
+  "reverse_params": {
+    "s": 60,
+    "T": 59,
+    "first": 40,
+    "second": 23,
+    "dl": 60,
+    "k": 0,
+    "second_pos": 137,
+    "j": 142,
+    "jv": 50,
+    "n": 83,
+    "D0": 145,
+    "D1": 149,
+    "V0": 66,
+    "V1": 66,
+    "A": 145,
+    "B": 148,
+    "C": 153,
+    "D": 144,
+    "W": 86
+  },
+  "image_sha256": "bdc1e06a3bdc54df07893baae52e89b066657ae9b609fb397ddc073d70d76e39",
+  "image_length": 150,
+  "structure": {
+    "printable": true,
+    "pairs": true,
+    "pair_opcodes": true,
+    "jmp": true,
+    "seed": true,
+    "tables": true,
+    "fixed_point": true,
+    "disjoint_data": true,
+    "filler": true
+  },
+  "input_pattern": "(73*i+195)%256",
+  "input_len": 10001,
+  "output_last_byte": 10,
+  "engines": {
+    "trace": {
+      "status": "ROUNDS",
+      "steps": 820043,
+      "rounds": 10000,
+      "dests": [
+        42
+      ],
+      "starts": [
+        126,
+        127
+      ],
+      "per_first8": [
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ],
+        [
+          23,
+          40,
+          5,
+          4
+        ]
+      ],
+      "per_distinct": [
+        [
+          23,
+          40,
+          5,
+          4
+        ]
+      ],
+      "input_bytes": 10000,
+      "input_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+      "output_bytes": 10000,
+      "output_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+      "memory_sha256": "eec018171b753823cbfe694bc6b0db3ae1ae404ff5b6676cc9b85073dce58891",
+      "registers": [
+        10,
+        43,
+        126
+      ],
+      "repeat": null
+    },
+    "scratch": {
+      "steps": 820043,
+      "status": "MAX",
+      "out_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+      "memory_sha256": "eec018171b753823cbfe694bc6b0db3ae1ae404ff5b6676cc9b85073dce58891"
+    },
+    "independent": {
+      "steps": 820043,
+      "status": "MAX",
+      "out_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+      "memory_sha256": "eec018171b753823cbfe694bc6b0db3ae1ae404ff5b6676cc9b85073dce58891"
+    },
+    "oracle": {
+      "steps": 820043,
+      "status": "MAX_STEPS",
+      "out_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e"
+    },
+    "c": {
+      "steps": 820043,
+      "status": "TIMEOUT",
+      "rc": 0,
+      "raw_bytes": 10001,
+      "raw_sha256": "36fad3496aa52fc021013e8c36bd107b358c696fa67d66f4455f6e10df9dbd97",
+      "raw_ends_hex": "549de62f78c10a0a",
+      "exact_output_plus_runner_newline": true
+    }
+  },
+  "constant": {
+    "status": "ROUNDS",
+    "steps": 820043,
+    "rounds": 10000,
+    "dests": [
+      42
+    ],
+    "starts": [
+      126,
+      127
+    ],
+    "per_first8": [
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ]
+    ],
+    "per_distinct": [
+      [
+        23,
+        40,
+        5,
+        4
+      ]
+    ],
+    "input_bytes": 10000,
+    "input_sha256": "85757d9ef5868bb53472a6be8d81d1e3c398546b69b107141ad336053c40cb54",
+    "output_bytes": 10000,
+    "output_sha256": "85757d9ef5868bb53472a6be8d81d1e3c398546b69b107141ad336053c40cb54",
+    "memory_sha256": "eec018171b753823cbfe694bc6b0db3ae1ae404ff5b6676cc9b85073dce58891",
+    "registers": [
+      65,
+      43,
+      126
+    ],
+    "repeat": [
+      1,
+      181
+    ]
+  },
+  "cycles": [
+    2,
+    4,
+    5,
+    6,
+    9
+  ],
+  "period_predicted": 180,
+  "controls": {
+    "in_phase": {
+      "params": null,
+      "run": {
+        "status": "ROUNDS",
+        "steps": 4963,
+        "rounds": 60,
+        "dests": [
+          42
+        ],
+        "starts": [
+          126,
+          127
+        ],
+        "per_first8": [
+          [
+            23,
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            23,
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            23,
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            23,
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ]
+        ],
+        "per_distinct": [
+          [
+            23,
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ]
+        ],
+        "input_bytes": 60,
+        "input_sha256": "55d8294fc2f0b8b9755a23d3ff00e4008bdf29a7a8445bff084007e5d6f30fcb",
+        "output_bytes": 60,
+        "output_sha256": "6d4cb92c86af74cd0da682cb0c3c1cb5fdcdafc7d18a055a29754c2c05787243",
+        "memory_sha256": "9f37ab11770502e30c6333aa42f7583ce6846e2934c5c82334d67f9ccf7b3f72",
+        "registers": [
+          150,
+          43,
+          126
+        ],
+        "repeat": null
+      },
+      "criterion_pass": false,
+      "output_matches_first_input": false
+    },
+    "out_phase": {
+      "params": null,
+      "run": {
+        "status": "ROUNDS",
+        "steps": 4963,
+        "rounds": 60,
+        "dests": [
+          42
+        ],
+        "starts": [
+          126,
+          127
+        ],
+        "per_first8": [
+          [
+            23,
+            40,
+            5,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            4
+          ]
+        ],
+        "per_distinct": [
+          [
+            23,
+            40,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            5,
+            4
+          ]
+        ],
+        "input_bytes": 60,
+        "input_sha256": "55d8294fc2f0b8b9755a23d3ff00e4008bdf29a7a8445bff084007e5d6f30fcb",
+        "output_bytes": 60,
+        "output_sha256": "1a6944390348e360db3b5dd74441f760d0a811ecedc12a3379d4623d52a81758",
+        "memory_sha256": "0f494e499ce9e60d0888407a024552989113ca3458caf79ff001ecca2b8f66dc",
+        "registers": [
+          150,
+          43,
+          126
+        ],
+        "repeat": null
+      },
+      "criterion_pass": false,
+      "output_matches_first_input": false
+    },
+    "no_dload": {
+      "params": null,
+      "run": {
+        "status": "NONPRINT",
+        "steps": 345,
+        "rounds": 4,
+        "dests": [
+          33,
+          60,
+          29549
+        ],
+        "starts": [
+          126,
+          345
+        ],
+        "per_first8": [
+          [
+            23,
+            5,
+            4
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            23,
+            5,
+            4
+          ]
+        ],
+        "per_distinct": [
+          [
+            5,
+            4
+          ],
+          [
+            23,
+            5,
+            4
+          ]
+        ],
+        "input_bytes": 2,
+        "input_sha256": "c8fd1087cc1b4b763eb618addf7087ec23f0129cf90a46989945fc21521d62a2",
+        "output_bytes": 4,
+        "output_sha256": "5d2b1b0b692fc46b9892ed9e3cb6279a976c24584d949de4e9724c34d8deab2a",
+        "memory_sha256": "33c8d7c5487bc89cce1995d6df45357132fb35ec808496b50243e1582767f9f0",
+        "registers": [
+          12,
+          29550,
+          427
+        ],
+        "repeat": null
+      },
+      "criterion_pass": false,
+      "output_matches_first_input": false
+    },
+    "table_off": {
+      "params": null,
+      "run": {
+        "status": "NONPRINT",
+        "steps": 566,
+        "rounds": 7,
+        "dests": [
+          37,
+          42,
+          43,
+          60,
+          62,
+          29549
+        ],
+        "starts": [
+          99,
+          126,
+          127
+        ],
+        "per_first8": [
+          [
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ],
+          [
+            23,
+            5,
+            4
+          ]
+        ],
+        "per_distinct": [
+          [
+            5,
+            4
+          ],
+          [
+            23,
+            5,
+            4
+          ],
+          [
+            23,
+            40,
+            5,
+            4
+          ],
+          [
+            40,
+            5,
+            4
+          ]
+        ],
+        "input_bytes": 3,
+        "input_sha256": "026dcdf8054e78b89a5ff251284046d61a8c46e240644bd077b286ad7a252733",
+        "output_bytes": 7,
+        "output_sha256": "5846e78196dd6870efacd7ce246fe50ec43d4f0d0d9c4cfef77d1cde23d6f640",
+        "memory_sha256": "9e9be0fae821a1cc436a888f51643b0ec4d339d40492fd5810bd3a06d637b697",
+        "registers": [
+          85,
+          29550,
+          181
+        ],
+        "repeat": null
+      },
+      "criterion_pass": false,
+      "output_matches_first_input": false
+    },
+    "reverse_order": {
+      "params": {
+        "s": 60,
+        "T": 59,
+        "first": 40,
+        "second": 23,
+        "dl": 60,
+        "k": 0,
+        "second_pos": 137,
+        "j": 142,
+        "jv": 50,
+        "n": 83,
+        "D0": 145,
+        "D1": 149,
+        "V0": 66,
+        "V1": 66,
+        "A": 145,
+        "B": 148,
+        "C": 153,
+        "D": 144,
+        "W": 86
+      },
+      "run": {
+        "status": "ROUNDS",
+        "steps": 5040,
+        "rounds": 60,
+        "dests": [
+          59
+        ],
+        "starts": [
+          145,
+          149
+        ],
+        "per_first8": [
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ],
+          [
+            40,
+            5,
+            23,
+            4
+          ]
+        ],
+        "per_distinct": [
+          [
+            40,
+            5,
+            23,
+            4
+          ]
+        ],
+        "input_bytes": 60,
+        "input_sha256": "55d8294fc2f0b8b9755a23d3ff00e4008bdf29a7a8445bff084007e5d6f30fcb",
+        "output_bytes": 60,
+        "output_sha256": "ac0f9d3638431fe0c364a3fba0821262dc67375699314afe21f58df498b473e7",
+        "memory_sha256": "68340e3d0a5df640c4c9d0fcb0af359f7b7c107a14ade77fa88e6db0991e7314",
+        "registers": [
+          150,
+          60,
+          145
+        ],
+        "repeat": null
+      },
+      "criterion_pass": false,
+      "output_matches_first_input": false
+    }
+  },
+  "boundaries": {
+    "0": {
+      "trace_status": "EOF",
+      "trace_steps": 44,
+      "trace_output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "input_echoed": true,
+      "scratch_at_eof_step": "MAX",
+      "scratch_output_equals_input": true,
+      "independent_status": "EOF",
+      "independent_steps": 44,
+      "independent_output_equals_input": true,
+      "oracle_status": "EOF",
+      "oracle_steps": 44,
+      "oracle_output_equals_input": true,
+      "c_status": "HALTED",
+      "c_steps": 44,
+      "c_rc": 0,
+      "c_raw_equals_input_plus_newline": true
+    },
+    "1": {
+      "trace_status": "EOF",
+      "trace_steps": 130,
+      "trace_output_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+      "input_echoed": true,
+      "scratch_at_eof_step": "MAX",
+      "scratch_output_equals_input": true,
+      "independent_status": "EOF",
+      "independent_steps": 130,
+      "independent_output_equals_input": true,
+      "oracle_status": "EOF",
+      "oracle_steps": 130,
+      "oracle_output_equals_input": true,
+      "c_status": "HALTED",
+      "c_steps": 130,
+      "c_rc": 0,
+      "c_raw_equals_input_plus_newline": true
+    },
+    "2": {
+      "trace_status": "EOF",
+      "trace_steps": 208,
+      "trace_output_sha256": "c8fd1087cc1b4b763eb618addf7087ec23f0129cf90a46989945fc21521d62a2",
+      "input_echoed": true,
+      "scratch_at_eof_step": "MAX",
+      "scratch_output_equals_input": true,
+      "independent_status": "EOF",
+      "independent_steps": 208,
+      "independent_output_equals_input": true,
+      "oracle_status": "EOF",
+      "oracle_steps": 208,
+      "oracle_output_equals_input": true,
+      "c_status": "HALTED",
+      "c_steps": 208,
+      "c_rc": 0,
+      "c_raw_equals_input_plus_newline": true
+    },
+    "257": {
+      "trace_status": "EOF",
+      "trace_steps": 21122,
+      "trace_output_sha256": "ca0c25fec0bfc981f89b305cd9521cf9ed92616b79716d2f461fb4363ecdf126",
+      "input_echoed": true,
+      "scratch_at_eof_step": "MAX",
+      "scratch_output_equals_input": true,
+      "independent_status": "EOF",
+      "independent_steps": 21122,
+      "independent_output_equals_input": true,
+      "oracle_status": "EOF",
+      "oracle_steps": 21122,
+      "oracle_output_equals_input": true,
+      "c_status": "HALTED",
+      "c_steps": 21122,
+      "c_rc": 0,
+      "c_raw_equals_input_plus_newline": true
+    }
+  },
+  "olmstead": {
+    "rc": 1,
+    "stderr": "invalid character in source file\n",
+    "valid_cells": 9
+  },
+  "gates": {
+    "G0": true,
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  }
+}
