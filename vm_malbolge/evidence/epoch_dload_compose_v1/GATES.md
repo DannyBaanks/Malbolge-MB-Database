@@ -154,3 +154,29 @@ dialecto.
   pasos.
 - Usar los bloques dentro de un programa que calcule algo elegido por la petición.
 - La memoria final del oráculo y del runner C: no la exponen.
+
+## Adiciones fechadas
+
+### 2026-11-11 — motivo declarado de `ctrl_dload_phase`
+
+Una corrida exploratoria del probe (no canónica; su `results.json` fue sobrescrito)
+mostró que la predicción de Q4 `dload_phase` = `2, 0, 2, 0, …` **no se cumple** en
+ninguno de los tres objetivos: el patrón medido es `[2, 0]` en OUT y ROT y `[2]` en
+CRAZY, y en los tres el bucle muere tras ese round (algún `JMP` a una celda ≠ `T`).
+Lo que sí ocurre en los tres es un round cerrado con **2 DLOADs**: el par dejó de
+alternar.
+
+Enmienda: el motivo declarado de `ctrl_dload_phase` pasa a ser «algún round cerrado
+ejecuta 2 DLOADs (el par dejó de alternar) y con ello el criterio deja de cumplirse».
+La predicción original se publica como FALSA en `VERDICT.md`; G4 se evalúa con la
+enmienda y el VERDICT da las dos lecturas (texto original y enmendado).
+
+La misma corrida exploratoria expuso un defecto de construcción: el relleno del
+cuerpo usaba `filler_value`, cuyo ciclo incluye 68 (NOP), un opcode **válido**, y
+violaba el conjunto `{4, 40, op}` ya pre-registrado en G2. `probe.py` usa ahora un
+relleno estricto (ciclo XLAT2 entero sin ningún opcode válido, verificado como
+existente en todas las posiciones 60..199). Esto no cambia ninguna puerta: es la
+construcción la que se ajusta a G2, no G2 a la construcción.
+
+Esta adición se escribe **antes** de la corrida canónica (las dos corridas
+byte-idénticas); la corrida exploratoria no se cita como evidencia.
