@@ -1,0 +1,516 @@
+{
+  "params": {
+    "target": "IN",
+    "op": 23,
+    "shift": 60,
+    "T": 59,
+    "delta": 77,
+    "e": 0,
+    "jmp": 142,
+    "n": 83,
+    "D0": 145,
+    "V0": 66,
+    "V1": 66,
+    "A": 145,
+    "B": 148,
+    "C": 153,
+    "D": 144,
+    "d_op": 143,
+    "jmp_value": 50,
+    "r": 1,
+    "W": 86,
+    "seed_data_cell": 41,
+    "seed_value": 39
+  },
+  "variable": {
+    "steps": 830060,
+    "status": "ROUNDS",
+    "rounds": 10000,
+    "destinations": [
+      59
+    ],
+    "d_start": [
+      145,
+      149
+    ],
+    "d_at_in": [
+      143
+    ],
+    "body_ops": [
+      4,
+      23,
+      40
+    ],
+    "counts_first8": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "counts_distinct": [
+      [
+        1,
+        1
+      ]
+    ],
+    "input_count": 10000,
+    "input_sha256": "b3cbfbdb234effb2ea7900c9aeda19123695530c10b5220f21311dc5efe99b33",
+    "repeat": null,
+    "memory_sha256": "30c6b26d791c8421aaa39e075b3ce132e6c4126974295f97304ab6cdfb6b53fb",
+    "registers": [
+      90,
+      60,
+      145
+    ]
+  },
+  "constant": {
+    "steps": 830060,
+    "status": "ROUNDS",
+    "rounds": 10000,
+    "destinations": [
+      59
+    ],
+    "d_start": [
+      145,
+      149
+    ],
+    "d_at_in": [
+      143
+    ],
+    "body_ops": [
+      4,
+      23,
+      40
+    ],
+    "counts_first8": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "counts_distinct": [
+      [
+        1,
+        1
+      ]
+    ],
+    "input_count": 10000,
+    "input_sha256": "85757d9ef5868bb53472a6be8d81d1e3c398546b69b107141ad336053c40cb54",
+    "repeat": [
+      1,
+      3061
+    ],
+    "memory_sha256": "30c6b26d791c8421aaa39e075b3ce132e6c4126974295f97304ab6cdfb6b53fb",
+    "registers": [
+      65,
+      60,
+      145
+    ]
+  },
+  "cycles": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    68
+  ],
+  "period_prediction": 3060,
+  "engines": {
+    "oracle": {
+      "output": "",
+      "steps": 830060,
+      "status": "MAX_STEPS"
+    },
+    "scratch": {
+      "steps": 830060,
+      "status": "MAX",
+      "memory_sha256": "30c6b26d791c8421aaa39e075b3ce132e6c4126974295f97304ab6cdfb6b53fb"
+    },
+    "independent": {
+      "steps": 830060,
+      "status": "MAX",
+      "memory_sha256": "30c6b26d791c8421aaa39e075b3ce132e6c4126974295f97304ab6cdfb6b53fb"
+    },
+    "c": {
+      "rc": 0,
+      "stdout_hex": "0a",
+      "stderr": "steps: 830060 | status: TIMEOUT\n"
+    }
+  },
+  "controls": {
+    "k_off": {
+      "steps": 323,
+      "status": "HALTED",
+      "rounds": 4,
+      "destinations": [
+        33,
+        59,
+        60
+      ],
+      "d_start": [
+        145,
+        149
+      ],
+      "d_at_in": [
+        143,
+        221
+      ],
+      "body_ops": [
+        4,
+        23,
+        40
+      ],
+      "counts_first8": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "counts_distinct": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "input_count": 3,
+      "input_sha256": "2b8c60738b844cd8716c5134363930fbc133c1f41cc0e568dfd0b4106a7b65e1",
+      "repeat": null,
+      "memory_sha256": "0b015d18a80949f668562a7ab5a59ff0a689cfea50c8539d354c68fd37850848",
+      "registers": [
+        165,
+        36,
+        241
+      ]
+    },
+    "no_dload": {
+      "steps": 144,
+      "status": "NONPRINT",
+      "rounds": 1,
+      "destinations": [
+        29554
+      ],
+      "d_start": [
+        145
+      ],
+      "d_at_in": [
+        222
+      ],
+      "body_ops": [
+        4,
+        23
+      ],
+      "counts_first8": [
+        [
+          1,
+          0
+        ]
+      ],
+      "counts_distinct": [
+        [
+          1,
+          0
+        ]
+      ],
+      "input_count": 1,
+      "input_sha256": "ab897fbdedfa502b2d839b6a56100887dccdc507555c282e59589e06300a62e2",
+      "repeat": null,
+      "memory_sha256": "2d5c97d39d5a52e7379c4d93f64dfda561d03d4a06488c4bb868620bf85a3557",
+      "registers": [
+        19,
+        29555,
+        228
+      ]
+    },
+    "op_phase": {
+      "steps": 5040,
+      "status": "ROUNDS",
+      "rounds": 60,
+      "destinations": [
+        59
+      ],
+      "d_start": [
+        145,
+        149
+      ],
+      "d_at_in": [
+        143,
+        147
+      ],
+      "body_ops": [
+        4,
+        23,
+        40
+      ],
+      "counts_first8": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "counts_distinct": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "input_count": 60,
+      "input_sha256": "7337cae44606be794d91c2d8e214a700fcea48d92ae7fafcb03ec57e07845b29",
+      "repeat": null,
+      "memory_sha256": "a13f13df53b5b751e4e1019df4f88f833bd7a48cc7097fada6378496b9a815b8",
+      "registers": [
+        230,
+        60,
+        145
+      ]
+    },
+    "dload_phase": {
+      "steps": 197,
+      "status": "HALTED",
+      "rounds": 3,
+      "destinations": [
+        33,
+        103
+      ],
+      "d_start": [
+        145
+      ],
+      "d_at_in": [
+        110,
+        153
+      ],
+      "body_ops": [
+        4,
+        23,
+        40
+      ],
+      "counts_first8": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "counts_distinct": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "input_count": 2,
+      "input_sha256": "c756bd104d1406ec2c380c268dbef88fd2082819c15a21c8644bcd8e8de4bc96",
+      "repeat": null,
+      "memory_sha256": "f4d72025063730292b98902c45e7c5dda225231a382d415f96d7acdb5b089e5c",
+      "registers": [
+        92,
+        36,
+        169
+      ]
+    }
+  },
+  "input_boundaries": {
+    "0": {
+      "trace_step": 138,
+      "trace_status": "EOF",
+      "trace_reads": 0,
+      "oracle_step": 138,
+      "oracle_status": "EOF",
+      "independent_step": 138,
+      "independent_status": "EOF",
+      "c_step": 138,
+      "c_status": "HALTED",
+      "c_rc": 0
+    },
+    "1": {
+      "trace_step": 225,
+      "trace_status": "EOF",
+      "trace_reads": 1,
+      "oracle_step": 225,
+      "oracle_status": "EOF",
+      "independent_step": 225,
+      "independent_status": "EOF",
+      "c_step": 225,
+      "c_status": "HALTED",
+      "c_rc": 0
+    },
+    "2": {
+      "trace_step": 304,
+      "trace_status": "EOF",
+      "trace_reads": 2,
+      "oracle_step": 304,
+      "oracle_status": "EOF",
+      "independent_step": 304,
+      "independent_status": "EOF",
+      "c_step": 304,
+      "c_status": "HALTED",
+      "c_rc": 0
+    },
+    "257": {
+      "trace_step": 21473,
+      "trace_status": "EOF",
+      "trace_reads": 257,
+      "oracle_step": 21473,
+      "oracle_status": "EOF",
+      "independent_step": 21473,
+      "independent_status": "EOF",
+      "c_step": 21473,
+      "c_status": "HALTED",
+      "c_rc": 0
+    }
+  },
+  "eof": {
+    "oracle": {
+      "output": "",
+      "steps": 138,
+      "status": "EOF"
+    },
+    "independent": {
+      "steps": 138,
+      "status": "EOF"
+    },
+    "scratch": {
+      "steps": 830060,
+      "status": "MAX"
+    },
+    "c": {
+      "rc": 0,
+      "stdout_hex": "0a",
+      "stderr": "steps: 138 | status: HALTED\n"
+    }
+  },
+  "olmstead": {
+    "rc": 1,
+    "stderr": "invalid character in source file\n",
+    "valid_cells": 7
+  },
+  "gates": {
+    "G0": true,
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  }
+}

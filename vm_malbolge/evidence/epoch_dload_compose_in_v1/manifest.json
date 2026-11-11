@@ -1,0 +1,60 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "classification": "exploratory; pre-registration not independently verified",
+  "created_at_utc": "2026-11-11T20:43:02.848739+00:00",
+  "base_commit": "55a574f",
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -I /tmp/isyco-compose-in-20261111/probe.py > /tmp/isyco-compose-in-20261111/stdout.raw.txt 2>&1",
+  "exit_code": 0,
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "fa2ee58845fcaf11344f0690f0bf60c4598cfe12407b9050ef24e485bf163b82"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "02d3f7c455ee28561b22ea8a88c85e27c2d12efec80a3b4f463998634fa845ce"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "74fa8cc995375b96ddc4d8dd96296748d6655764c156b4c05df18d9bf5dd8b1c"
+    },
+    {
+      "file": "compose_in.mb",
+      "sha256": "c7779457c5acc0e7f1d6abcc0ad07a85980bb039af41a5d4c1a2ec919833c9c4"
+    },
+    {
+      "file": "ctrl_in_k_off.mb",
+      "sha256": "c6202887a00e4800f592a673194bb74a03ebd94646472527ba342762859c1488"
+    },
+    {
+      "file": "ctrl_in_no_dload.mb",
+      "sha256": "4b8f51c097165c97962b48aabd18e04e75c629fdb5c8ed68c6e0fe299d5f13fa"
+    },
+    {
+      "file": "ctrl_in_op_phase.mb",
+      "sha256": "212d59b1ccde8e327112e927982cbc019426b9907ebc71e9da3aa313ebbeb479"
+    },
+    {
+      "file": "ctrl_in_dload_phase.mb",
+      "sha256": "41031b202223d2d99a3049103de7ff0f8f3236ba22cb24a41b5cf092e0a7c288"
+    },
+    {
+      "file": "results.json",
+      "sha256": "2e59d519be23c4bbc11800e29fa6d391180722e16f0d1db4dbcaee50eb8825d2"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "2f33ad2176ba166511585c3451946ca1795405b10bb0d2fcdf9411957758aa10"
+    }
+  ],
+  "dependencies": {
+    "vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "../Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  }
+}
