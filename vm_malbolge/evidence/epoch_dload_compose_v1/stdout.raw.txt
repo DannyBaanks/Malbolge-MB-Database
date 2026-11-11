@@ -1,0 +1,19 @@
+[OUT] params shift=60 delta=59 e=0 J=124 n=65 D0=127 V0=66 V1=66 datos=[127, 130, 135, 126] d_op=125 largo=137 (predicho 137, coincide=True)
+[OUT] Q2 vueltas=10000 pasos=650060 op/vuelta=[1] DLOAD/vuelta=[1] cuerpo=[4, 5, 40] destinos=[59] d_inicio=[127, 131] d_op=[125] criterio=True
+[OUT] Q2 motores: {'none_stopped_before_cap': True, 'output_bytes': {'oracle': 10000, 'indep': 10000, 'scratch': 10000, 'c': 10000}, 'outputs_equal': True, 'memory_sha_trace_scratch_indep_equal': True, 'jmp_dests_trace_eq_scratch': True, 'd_start_trace_eq_scratch': True, 'all': True}
+[OUT] Q3 ciclos=[2, 4, 5, 6, 9, 68] P_pred=3060 repeticion=(0, 3060) P_medido=3060 d_periodo=2
+[OUT] Q4 controles: {'k_off': (True, {'first_bad_jmp': 1, 'lt_2': True}), 'no_dload': (True, {'per_dl_distinct': [0], 'all_zero': True}), 'op_phase': (True, {'per_op_first8': [2, 0, 2, 0, 2, 0, 2, 0], 'per_op_distinct': [0, 2], 'has_2_and_0': True}), 'dload_phase': (True, {'per_dl_first8': [2, 0], 'per_dl_distinct': [0, 2], 'some_round_with_2_dloads': True, 'declared': 'enmienda 2026-11-11 (ver GATES.md)'})}
+[OUT] Q5 Olmstead rc=1 'invalid character in source file' validas 8/137 dialecto=classic_permissive
+[ROT] params shift=60 delta=93 e=0 J=158 n=99 D0=161 V0=66 V1=66 datos=[161, 164, 169, 160] d_op=159 largo=171 (predicho 171, coincide=True)
+[ROT] Q2 vueltas=10000 pasos=990060 op/vuelta=[1] DLOAD/vuelta=[1] cuerpo=[4, 39, 40] destinos=[59] d_inicio=[161, 165] d_op=[159] criterio=True
+[ROT] Q2 motores: {'none_stopped_before_cap': True, 'output_bytes': {'oracle': 0, 'indep': 0, 'scratch': 0, 'c': 0}, 'outputs_equal': True, 'memory_sha_trace_scratch_indep_equal': True, 'jmp_dests_trace_eq_scratch': True, 'd_start_trace_eq_scratch': True, 'all': True}
+[ROT] Q3 ciclos=[2, 4, 5, 6, 9, 68] P_pred=3060 repeticion=(1, 3061) P_medido=3060 d_periodo=2
+[ROT] Q4 controles: {'k_off': (True, {'first_bad_jmp': 1, 'lt_2': True}), 'no_dload': (True, {'per_dl_distinct': [0], 'all_zero': True}), 'op_phase': (True, {'per_op_first8': [2, 0, 2, 0, 2, 0, 2, 0], 'per_op_distinct': [0, 2], 'has_2_and_0': True}), 'dload_phase': (True, {'per_dl_first8': [2, 0, 0], 'per_dl_distinct': [0, 2], 'some_round_with_2_dloads': True, 'declared': 'enmienda 2026-11-11 (ver GATES.md)'})}
+[ROT] Q5 Olmstead rc=1 'invalid character in source file' validas 8/171 dialecto=classic_permissive
+[CRAZY] params shift=60 delta=22 e=12 J=99 n=40 D0=114 V0=78 V1=78 datos=[114, 117, 122, 113] d_op=100 largo=124 (predicho 124, coincide=True)
+[CRAZY] Q2 vueltas=10000 pasos=400060 op/vuelta=[1] DLOAD/vuelta=[1] cuerpo=[4, 40, 62] destinos=[59] d_inicio=[114, 118] d_op=[100] criterio=True
+[CRAZY] Q2 motores: {'none_stopped_before_cap': True, 'output_bytes': {'oracle': 0, 'indep': 0, 'scratch': 0, 'c': 0}, 'outputs_equal': True, 'memory_sha_trace_scratch_indep_equal': True, 'jmp_dests_trace_eq_scratch': True, 'd_start_trace_eq_scratch': True, 'all': True}
+[CRAZY] Q3 ciclos=[2, 4, 5, 6, 9, 68] P_pred=3060 repeticion=(2, 3062) P_medido=3060 d_periodo=2
+[CRAZY] Q4 controles: {'k_off': (True, {'first_bad_jmp': 1, 'lt_2': True}), 'no_dload': (True, {'per_dl_distinct': [0], 'all_zero': True}), 'op_phase': (True, {'per_op_first8': [2, 0, 2, 0, 2, 0, 2, 0], 'per_op_distinct': [0, 2], 'has_2_and_0': True}), 'dload_phase': (True, {'per_dl_first8': [2], 'per_dl_distinct': [2], 'some_round_with_2_dloads': True, 'declared': 'enmienda 2026-11-11 (ver GATES.md)'})}
+[CRAZY] Q5 Olmstead rc=1 'invalid character in source file' validas 10/124 dialecto=classic_permissive
+[gates] {'G0': True, 'G1': True, 'G2': True, 'G3': True, 'G4': True} all_gates_pass=True

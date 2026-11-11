@@ -1,0 +1,1981 @@
+{
+ "pack": "epoch_dload_compose_v1",
+ "R": 10000,
+ "targets": [
+  "OUT",
+  "ROT",
+  "CRAZY"
+ ],
+ "q1": {
+  "OUT": {
+   "params": {
+    "shift": 60,
+    "T": 59,
+    "delta": 59,
+    "e": 0,
+    "jmp": 124,
+    "n": 65,
+    "D0": 127,
+    "V0": 66,
+    "V1": 66,
+    "A": 127,
+    "B": 130,
+    "C": 135,
+    "D": 126,
+    "d_op": 125,
+    "jmp_value": 68,
+    "r": 1,
+    "W": 68,
+    "seed_data_cell": 41,
+    "seed_value": 39
+   },
+   "predicted": {
+    "delta": 59,
+    "e": 0,
+    "jmp": 124,
+    "n": 65,
+    "D0": 127,
+    "V0": 66,
+    "V1": 66,
+    "A": 127,
+    "B": 130,
+    "C": 135,
+    "D": 126,
+    "d_op": 125,
+    "length": 137,
+    "W": 68,
+    "r": 1
+   },
+   "computed": {
+    "delta": 59,
+    "e": 0,
+    "jmp": 124,
+    "n": 65,
+    "D0": 127,
+    "V0": 66,
+    "V1": 66,
+    "A": 127,
+    "B": 130,
+    "C": 135,
+    "D": 126,
+    "d_op": 125,
+    "length": 137,
+    "W": 68,
+    "r": 1
+   },
+   "matches_prediction": {
+    "delta": true,
+    "e": true,
+    "jmp": true,
+    "n": true,
+    "D0": true,
+    "V0": true,
+    "V1": true,
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "d_op": true,
+    "length": true,
+    "W": true,
+    "r": true
+   },
+   "all_match_prediction": true,
+   "length": 137,
+   "fixed_point": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   }
+  },
+  "ROT": {
+   "params": {
+    "shift": 60,
+    "T": 59,
+    "delta": 93,
+    "e": 0,
+    "jmp": 158,
+    "n": 99,
+    "D0": 161,
+    "V0": 66,
+    "V1": 66,
+    "A": 161,
+    "B": 164,
+    "C": 169,
+    "D": 160,
+    "d_op": 159,
+    "jmp_value": 34,
+    "r": 1,
+    "W": 102,
+    "seed_data_cell": 41,
+    "seed_value": 39
+   },
+   "predicted": {
+    "delta": 93,
+    "e": 0,
+    "jmp": 158,
+    "n": 99,
+    "D0": 161,
+    "V0": 66,
+    "V1": 66,
+    "A": 161,
+    "B": 164,
+    "C": 169,
+    "D": 160,
+    "d_op": 159,
+    "length": 171,
+    "W": 102,
+    "r": 1
+   },
+   "computed": {
+    "delta": 93,
+    "e": 0,
+    "jmp": 158,
+    "n": 99,
+    "D0": 161,
+    "V0": 66,
+    "V1": 66,
+    "A": 161,
+    "B": 164,
+    "C": 169,
+    "D": 160,
+    "d_op": 159,
+    "length": 171,
+    "W": 102,
+    "r": 1
+   },
+   "matches_prediction": {
+    "delta": true,
+    "e": true,
+    "jmp": true,
+    "n": true,
+    "D0": true,
+    "V0": true,
+    "V1": true,
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "d_op": true,
+    "length": true,
+    "W": true,
+    "r": true
+   },
+   "all_match_prediction": true,
+   "length": 171,
+   "fixed_point": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   }
+  },
+  "CRAZY": {
+   "params": {
+    "shift": 60,
+    "T": 59,
+    "delta": 22,
+    "e": 12,
+    "jmp": 99,
+    "n": 40,
+    "D0": 114,
+    "V0": 78,
+    "V1": 78,
+    "A": 114,
+    "B": 117,
+    "C": 122,
+    "D": 113,
+    "d_op": 100,
+    "jmp_value": 93,
+    "r": 1,
+    "W": 55,
+    "seed_data_cell": 41,
+    "seed_value": 39
+   },
+   "predicted": {
+    "delta": 22,
+    "e": 12,
+    "jmp": 99,
+    "n": 40,
+    "D0": 114,
+    "V0": 78,
+    "V1": 78,
+    "A": 114,
+    "B": 117,
+    "C": 122,
+    "D": 113,
+    "d_op": 100,
+    "length": 124,
+    "W": 55,
+    "r": 1
+   },
+   "computed": {
+    "delta": 22,
+    "e": 12,
+    "jmp": 99,
+    "n": 40,
+    "D0": 114,
+    "V0": 78,
+    "V1": 78,
+    "A": 114,
+    "B": 117,
+    "C": 122,
+    "D": 113,
+    "d_op": 100,
+    "length": 124,
+    "W": 55,
+    "r": 1
+   },
+   "matches_prediction": {
+    "delta": true,
+    "e": true,
+    "jmp": true,
+    "n": true,
+    "D0": true,
+    "V0": true,
+    "V1": true,
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "d_op": true,
+    "length": true,
+    "W": true,
+    "r": true
+   },
+   "all_match_prediction": true,
+   "length": 124,
+   "fixed_point": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   }
+  }
+ },
+ "q2": {
+  "OUT": {
+   "run": {
+    "steps": 650060,
+    "status": "ROUNDS",
+    "jmp_count": 10000,
+    "jmp_dests_distinct": [
+     59
+    ],
+    "first_bad_jmp": null,
+    "rounds_closed": 10000,
+    "body_valid_ops": [
+     4,
+     5,
+     40
+    ],
+    "d_op_distinct": [
+     125
+    ],
+    "d_start_distinct": [
+     127,
+     131
+    ],
+    "d_period": 2,
+    "repeat": [
+     0,
+     3060
+    ],
+    "per_op_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_dl_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_op_distinct": [
+     1
+    ],
+    "per_dl_distinct": [
+     1
+    ],
+    "d_start_first8": [
+     127,
+     131,
+     127,
+     131,
+     127,
+     131,
+     127,
+     131
+    ],
+    "d_op_first8": [
+     125,
+     125,
+     125,
+     125,
+     125,
+     125,
+     125,
+     125
+    ]
+   },
+   "criterion": {
+    "checks": {
+     "rounds_closed_ge_R": true,
+     "one_op_per_round": true,
+     "one_dload_per_round": true,
+     "body_valid_ops_exact": true,
+     "all_jmp_to_T": true,
+     "d_start_two_values": true,
+     "d_op_at_most_two": true,
+     "d_op_outside_code": true,
+     "d_op_not_data": true
+    },
+    "ok": true
+   },
+   "engines": {
+    "steps": {
+     "oracle": 650060,
+     "indep": 650060,
+     "scratch": 650060,
+     "c": 650060
+    },
+    "status": {
+     "oracle": "MAX_STEPS",
+     "indep": "MAX",
+     "scratch": "MAX",
+     "c": "TIMEOUT"
+    },
+    "none_stopped_before_cap": true,
+    "output_bytes": {
+     "oracle": 10000,
+     "indep": 10000,
+     "scratch": 10000,
+     "c": 10000
+    },
+    "outputs_equal": true,
+    "memory_sha": {
+     "trace": "4b1b84da43bcac034911348718c7ae694d35c1ab3089761793548bda59c6718e",
+     "scratch": "4b1b84da43bcac034911348718c7ae694d35c1ab3089761793548bda59c6718e",
+     "indep": "4b1b84da43bcac034911348718c7ae694d35c1ab3089761793548bda59c6718e"
+    },
+    "memory_sha_trace_scratch_indep_equal": true,
+    "jmp_dests_trace_eq_scratch": true,
+    "d_start_trace_eq_scratch": true,
+    "all": true
+   }
+  },
+  "ROT": {
+   "run": {
+    "steps": 990060,
+    "status": "ROUNDS",
+    "jmp_count": 10000,
+    "jmp_dests_distinct": [
+     59
+    ],
+    "first_bad_jmp": null,
+    "rounds_closed": 10000,
+    "body_valid_ops": [
+     4,
+     39,
+     40
+    ],
+    "d_op_distinct": [
+     159
+    ],
+    "d_start_distinct": [
+     161,
+     165
+    ],
+    "d_period": 2,
+    "repeat": [
+     1,
+     3061
+    ],
+    "per_op_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_dl_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_op_distinct": [
+     1
+    ],
+    "per_dl_distinct": [
+     1
+    ],
+    "d_start_first8": [
+     161,
+     165,
+     161,
+     165,
+     161,
+     165,
+     161,
+     165
+    ],
+    "d_op_first8": [
+     159,
+     159,
+     159,
+     159,
+     159,
+     159,
+     159,
+     159
+    ]
+   },
+   "criterion": {
+    "checks": {
+     "rounds_closed_ge_R": true,
+     "one_op_per_round": true,
+     "one_dload_per_round": true,
+     "body_valid_ops_exact": true,
+     "all_jmp_to_T": true,
+     "d_start_two_values": true,
+     "d_op_at_most_two": true,
+     "d_op_outside_code": true,
+     "d_op_not_data": true
+    },
+    "ok": true
+   },
+   "engines": {
+    "steps": {
+     "oracle": 990060,
+     "indep": 990060,
+     "scratch": 990060,
+     "c": 990060
+    },
+    "status": {
+     "oracle": "MAX_STEPS",
+     "indep": "MAX",
+     "scratch": "MAX",
+     "c": "TIMEOUT"
+    },
+    "none_stopped_before_cap": true,
+    "output_bytes": {
+     "oracle": 0,
+     "indep": 0,
+     "scratch": 0,
+     "c": 0
+    },
+    "outputs_equal": true,
+    "memory_sha": {
+     "trace": "a5d19ce8773a847b39fcc870f13cda0142b90f7ef3b55d6a620067a4a79c23ea",
+     "scratch": "a5d19ce8773a847b39fcc870f13cda0142b90f7ef3b55d6a620067a4a79c23ea",
+     "indep": "a5d19ce8773a847b39fcc870f13cda0142b90f7ef3b55d6a620067a4a79c23ea"
+    },
+    "memory_sha_trace_scratch_indep_equal": true,
+    "jmp_dests_trace_eq_scratch": true,
+    "d_start_trace_eq_scratch": true,
+    "all": true
+   }
+  },
+  "CRAZY": {
+   "run": {
+    "steps": 400060,
+    "status": "ROUNDS",
+    "jmp_count": 10000,
+    "jmp_dests_distinct": [
+     59
+    ],
+    "first_bad_jmp": null,
+    "rounds_closed": 10000,
+    "body_valid_ops": [
+     4,
+     40,
+     62
+    ],
+    "d_op_distinct": [
+     100
+    ],
+    "d_start_distinct": [
+     114,
+     118
+    ],
+    "d_period": 2,
+    "repeat": [
+     2,
+     3062
+    ],
+    "per_op_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_dl_first8": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "per_op_distinct": [
+     1
+    ],
+    "per_dl_distinct": [
+     1
+    ],
+    "d_start_first8": [
+     114,
+     118,
+     114,
+     118,
+     114,
+     118,
+     114,
+     118
+    ],
+    "d_op_first8": [
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100,
+     100
+    ]
+   },
+   "criterion": {
+    "checks": {
+     "rounds_closed_ge_R": true,
+     "one_op_per_round": true,
+     "one_dload_per_round": true,
+     "body_valid_ops_exact": true,
+     "all_jmp_to_T": true,
+     "d_start_two_values": true,
+     "d_op_at_most_two": true,
+     "d_op_outside_code": true,
+     "d_op_not_data": true
+    },
+    "ok": true
+   },
+   "engines": {
+    "steps": {
+     "oracle": 400060,
+     "indep": 400060,
+     "scratch": 400060,
+     "c": 400060
+    },
+    "status": {
+     "oracle": "MAX_STEPS",
+     "indep": "MAX",
+     "scratch": "MAX",
+     "c": "TIMEOUT"
+    },
+    "none_stopped_before_cap": true,
+    "output_bytes": {
+     "oracle": 0,
+     "indep": 0,
+     "scratch": 0,
+     "c": 0
+    },
+    "outputs_equal": true,
+    "memory_sha": {
+     "trace": "69caf34dd6615c21e51a6bfc54d8e83700295682ce3bf81dea27004cbbd5b80e",
+     "scratch": "69caf34dd6615c21e51a6bfc54d8e83700295682ce3bf81dea27004cbbd5b80e",
+     "indep": "69caf34dd6615c21e51a6bfc54d8e83700295682ce3bf81dea27004cbbd5b80e"
+    },
+    "memory_sha_trace_scratch_indep_equal": true,
+    "jmp_dests_trace_eq_scratch": true,
+    "d_start_trace_eq_scratch": true,
+    "all": true
+   }
+  }
+ },
+ "q3": {
+  "OUT": {
+   "encrypted_cells": 66,
+   "encrypted_cells_cycle_len": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    68
+   ],
+   "P_predicted": 3060,
+   "repeat_rounds": [
+    0,
+    3060
+   ],
+   "P_measured": 3060,
+   "d_period": 2,
+   "state_repeat_found": true,
+   "P_matches": true
+  },
+  "ROT": {
+   "encrypted_cells": 100,
+   "encrypted_cells_cycle_len": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    68
+   ],
+   "P_predicted": 3060,
+   "repeat_rounds": [
+    1,
+    3061
+   ],
+   "P_measured": 3060,
+   "d_period": 2,
+   "state_repeat_found": true,
+   "P_matches": true
+  },
+  "CRAZY": {
+   "encrypted_cells": 41,
+   "encrypted_cells_cycle_len": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    68
+   ],
+   "P_predicted": 3060,
+   "repeat_rounds": [
+    2,
+    3062
+   ],
+   "P_measured": 3060,
+   "d_period": 2,
+   "state_repeat_found": true,
+   "P_matches": true
+  }
+ },
+ "q4": {
+  "OUT": {
+   "k_off": {
+    "run": {
+     "steps": 269,
+     "status": "HALTED",
+     "jmp_count": 4,
+     "jmp_dests_distinct": [
+      33,
+      59,
+      60
+     ],
+     "first_bad_jmp": 1,
+     "rounds_closed": 1,
+     "body_valid_ops": [
+      4,
+      5,
+      40
+     ],
+     "d_op_distinct": [
+      125,
+      185
+     ],
+     "d_start_distinct": [
+      127,
+      131
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      1,
+      1,
+      1
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0,
+      1
+     ],
+     "d_start_first8": [
+      127,
+      131
+     ],
+     "d_op_first8": [
+      125,
+      125,
+      185
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "first_bad_jmp": 1,
+     "lt_2": true
+    },
+    "breaks_as_declared": true
+   },
+   "no_dload": {
+    "run": {
+     "steps": 205,
+     "status": "HALTED",
+     "jmp_count": 1,
+     "jmp_dests_distinct": [
+      29554
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      5
+     ],
+     "d_op_distinct": [
+      186
+     ],
+     "d_start_distinct": [
+      127
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1
+     ],
+     "per_dl_first8": [
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0
+     ],
+     "d_start_first8": [
+      127
+     ],
+     "d_op_first8": [
+      186
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": false,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_distinct": [
+      0
+     ],
+     "all_zero": true
+    },
+    "breaks_as_declared": true
+   },
+   "op_phase": {
+    "run": {
+     "steps": 3960,
+     "status": "ROUNDS",
+     "jmp_count": 60,
+     "jmp_dests_distinct": [
+      59
+     ],
+     "first_bad_jmp": null,
+     "rounds_closed": 60,
+     "body_valid_ops": [
+      4,
+      5,
+      40
+     ],
+     "d_op_distinct": [
+      125,
+      129
+     ],
+     "d_start_distinct": [
+      127,
+      131
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "per_dl_distinct": [
+      1
+     ],
+     "d_start_first8": [
+      127,
+      131,
+      127,
+      131,
+      127,
+      131,
+      127,
+      131
+     ],
+     "d_op_first8": [
+      125,
+      129,
+      125,
+      129,
+      125,
+      129,
+      125,
+      129
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "has_2_and_0": true
+    },
+    "breaks_as_declared": true
+   },
+   "dload_phase": {
+    "run": {
+     "steps": 252,
+     "status": "HALTED",
+     "jmp_count": 2,
+     "jmp_dests_distinct": [
+      80,
+      29551
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      5,
+      40
+     ],
+     "d_op_distinct": [
+      92,
+      140
+     ],
+     "d_start_distinct": [
+      127
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1,
+      1
+     ],
+     "per_dl_first8": [
+      2,
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0,
+      2
+     ],
+     "d_start_first8": [
+      127
+     ],
+     "d_op_first8": [
+      92,
+      140
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": false,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_first8": [
+      2,
+      0
+     ],
+     "per_dl_distinct": [
+      0,
+      2
+     ],
+     "some_round_with_2_dloads": true,
+     "declared": "enmienda 2026-11-11 (ver GATES.md)"
+    },
+    "breaks_as_declared": true
+   }
+  },
+  "ROT": {
+   "k_off": {
+    "run": {
+     "steps": 497,
+     "status": "HALTED",
+     "jmp_count": 5,
+     "jmp_dests_distinct": [
+      59,
+      60,
+      120,
+      29554
+     ],
+     "first_bad_jmp": 1,
+     "rounds_closed": 1,
+     "body_valid_ops": [
+      4,
+      39,
+      40
+     ],
+     "d_op_distinct": [
+      150,
+      159,
+      184,
+      253
+     ],
+     "d_start_distinct": [
+      161,
+      165
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      0,
+      1,
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0,
+      1
+     ],
+     "d_start_first8": [
+      161,
+      165
+     ],
+     "d_op_first8": [
+      159,
+      159,
+      253,
+      150,
+      184
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": false,
+      "d_op_outside_code": false,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "first_bad_jmp": 1,
+     "lt_2": true
+    },
+    "breaks_as_declared": true
+   },
+   "no_dload": {
+    "run": {
+     "steps": 167,
+     "status": "HALTED",
+     "jmp_count": 1,
+     "jmp_dests_distinct": [
+      29551
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      39
+     ],
+     "d_op_distinct": [
+      254
+     ],
+     "d_start_distinct": [
+      161
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1
+     ],
+     "per_dl_first8": [
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0
+     ],
+     "d_start_first8": [
+      161
+     ],
+     "d_op_first8": [
+      254
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": false,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_distinct": [
+      0
+     ],
+     "all_zero": true
+    },
+    "breaks_as_declared": true
+   },
+   "op_phase": {
+    "run": {
+     "steps": 6000,
+     "status": "ROUNDS",
+     "jmp_count": 60,
+     "jmp_dests_distinct": [
+      59
+     ],
+     "first_bad_jmp": null,
+     "rounds_closed": 60,
+     "body_valid_ops": [
+      4,
+      39,
+      40
+     ],
+     "d_op_distinct": [
+      159,
+      163
+     ],
+     "d_start_distinct": [
+      161,
+      165
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "per_dl_distinct": [
+      1
+     ],
+     "d_start_first8": [
+      161,
+      165,
+      161,
+      165,
+      161,
+      165,
+      161,
+      165
+     ],
+     "d_op_first8": [
+      159,
+      163,
+      159,
+      163,
+      159,
+      163,
+      159,
+      163
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "has_2_and_0": true
+    },
+    "breaks_as_declared": true
+   },
+   "dload_phase": {
+    "run": {
+     "steps": 327,
+     "status": "HALTED",
+     "jmp_count": 4,
+     "jmp_dests_distinct": [
+      33,
+      60,
+      103
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      39,
+      40
+     ],
+     "d_op_distinct": [
+      126,
+      185,
+      279
+     ],
+     "d_start_distinct": [
+      161
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1,
+      1,
+      1
+     ],
+     "per_dl_first8": [
+      2,
+      0,
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0,
+      2
+     ],
+     "d_start_first8": [
+      161
+     ],
+     "d_op_first8": [
+      126,
+      185,
+      279
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": false,
+      "d_op_outside_code": false,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_first8": [
+      2,
+      0,
+      0
+     ],
+     "per_dl_distinct": [
+      0,
+      2
+     ],
+     "some_round_with_2_dloads": true,
+     "declared": "enmienda 2026-11-11 (ver GATES.md)"
+    },
+    "breaks_as_declared": true
+   }
+  },
+  "CRAZY": {
+   "k_off": {
+    "run": {
+     "steps": 305,
+     "status": "HALTED",
+     "jmp_count": 4,
+     "jmp_dests_distinct": [
+      59,
+      60,
+      29536,
+      29563
+     ],
+     "first_bad_jmp": 1,
+     "rounds_closed": 1,
+     "body_valid_ops": [
+      4,
+      40,
+      62
+     ],
+     "d_op_distinct": [
+      100,
+      135
+     ],
+     "d_start_distinct": [
+      114,
+      118
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      1,
+      1,
+      1
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0,
+      1
+     ],
+     "d_start_first8": [
+      114,
+      118
+     ],
+     "d_op_first8": [
+      100,
+      100,
+      135
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "first_bad_jmp": 1,
+     "lt_2": true
+    },
+    "breaks_as_declared": true
+   },
+   "no_dload": {
+    "run": {
+     "steps": 115,
+     "status": "HALTED",
+     "jmp_count": 2,
+     "jmp_dests_distinct": [
+      33
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      62
+     ],
+     "d_op_distinct": [
+      136
+     ],
+     "d_start_distinct": [
+      114
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1
+     ],
+     "per_dl_first8": [
+      0
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      0
+     ],
+     "d_start_first8": [
+      114
+     ],
+     "d_op_first8": [
+      136
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": false,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_distinct": [
+      0
+     ],
+     "all_zero": true
+    },
+    "breaks_as_declared": true
+   },
+   "op_phase": {
+    "run": {
+     "steps": 2460,
+     "status": "ROUNDS",
+     "jmp_count": 60,
+     "jmp_dests_distinct": [
+      59
+     ],
+     "first_bad_jmp": null,
+     "rounds_closed": 60,
+     "body_valid_ops": [
+      4,
+      40,
+      62
+     ],
+     "d_op_distinct": [
+      100,
+      104
+     ],
+     "d_start_distinct": [
+      114,
+      118
+     ],
+     "d_period": 2,
+     "repeat": null,
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_dl_first8": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "per_dl_distinct": [
+      1
+     ],
+     "d_start_first8": [
+      114,
+      118,
+      114,
+      118,
+      114,
+      118,
+      114,
+      118
+     ],
+     "d_op_first8": [
+      100,
+      104,
+      100,
+      104,
+      100,
+      104,
+      100,
+      104
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": true,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": true,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_op_first8": [
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0
+     ],
+     "per_op_distinct": [
+      0,
+      2
+     ],
+     "has_2_and_0": true
+    },
+    "breaks_as_declared": true
+   },
+   "dload_phase": {
+    "run": {
+     "steps": 115,
+     "status": "HALTED",
+     "jmp_count": 2,
+     "jmp_dests_distinct": [
+      33
+     ],
+     "first_bad_jmp": 0,
+     "rounds_closed": 0,
+     "body_valid_ops": [
+      4,
+      40,
+      62
+     ],
+     "d_op_distinct": [
+      92
+     ],
+     "d_start_distinct": [
+      114
+     ],
+     "d_period": 1,
+     "repeat": null,
+     "per_op_first8": [
+      1
+     ],
+     "per_dl_first8": [
+      2
+     ],
+     "per_op_distinct": [
+      1
+     ],
+     "per_dl_distinct": [
+      2
+     ],
+     "d_start_first8": [
+      114
+     ],
+     "d_op_first8": [
+      92
+     ]
+    },
+    "criterion": {
+     "checks": {
+      "rounds_closed_ge_R": false,
+      "one_op_per_round": false,
+      "one_dload_per_round": false,
+      "body_valid_ops_exact": true,
+      "all_jmp_to_T": false,
+      "d_start_two_values": false,
+      "d_op_at_most_two": true,
+      "d_op_outside_code": false,
+      "d_op_not_data": true
+     },
+     "ok": false
+    },
+    "broke_criterion": true,
+    "declared_reason": {
+     "per_dl_first8": [
+      2
+     ],
+     "per_dl_distinct": [
+      2
+     ],
+     "some_round_with_2_dloads": true,
+     "declared": "enmienda 2026-11-11 (ver GATES.md)"
+    },
+    "breaks_as_declared": true
+   }
+  }
+ },
+ "q5": {
+  "OUT": {
+   "rc": 1,
+   "stderr": "invalid character in source file",
+   "loader_valid_cells": 8,
+   "cells": 137,
+   "dialect": "classic_permissive"
+  },
+  "ROT": {
+   "rc": 1,
+   "stderr": "invalid character in source file",
+   "loader_valid_cells": 8,
+   "cells": 171,
+   "dialect": "classic_permissive"
+  },
+  "CRAZY": {
+   "rc": 1,
+   "stderr": "invalid character in source file",
+   "loader_valid_cells": 10,
+   "cells": 124,
+   "dialect": "classic_permissive"
+  }
+ },
+ "g0": {
+  "OUT": {
+   "independent_rederivation": {
+    "shift": 60,
+    "T": 59,
+    "delta": 59,
+    "e": 0,
+    "jmp": 124,
+    "n": 65,
+    "D0": 127,
+    "V0": 66,
+    "V1": 66,
+    "A": 127,
+    "B": 130,
+    "C": 135,
+    "D": 126,
+    "d_op": 125
+   },
+   "matches_construction": true,
+   "image_checks": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   },
+   "mutants": {
+    "k_off": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "table_odd_holds_T",
+      "fixed_point_from_bytes"
+     ]
+    },
+    "no_dload": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74",
+      "dload_decodes_40"
+     ]
+    },
+    "op_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "op_pair_74"
+     ]
+    },
+    "dload_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74"
+     ]
+    }
+   }
+  },
+  "ROT": {
+   "independent_rederivation": {
+    "shift": 60,
+    "T": 59,
+    "delta": 93,
+    "e": 0,
+    "jmp": 158,
+    "n": 99,
+    "D0": 161,
+    "V0": 66,
+    "V1": 66,
+    "A": 161,
+    "B": 164,
+    "C": 169,
+    "D": 160,
+    "d_op": 159
+   },
+   "matches_construction": true,
+   "image_checks": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   },
+   "mutants": {
+    "k_off": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "table_odd_holds_T",
+      "fixed_point_from_bytes"
+     ]
+    },
+    "no_dload": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74",
+      "dload_decodes_40"
+     ]
+    },
+    "op_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "op_pair_74"
+     ]
+    },
+    "dload_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74"
+     ]
+    }
+   }
+  },
+  "CRAZY": {
+   "independent_rederivation": {
+    "shift": 60,
+    "T": 59,
+    "delta": 22,
+    "e": 12,
+    "jmp": 99,
+    "n": 40,
+    "D0": 114,
+    "V0": 78,
+    "V1": 78,
+    "A": 114,
+    "B": 117,
+    "C": 122,
+    "D": 113,
+    "d_op": 100
+   },
+   "matches_construction": true,
+   "image_checks": {
+    "checks": {
+     "printable": true,
+     "dload_pair_74": true,
+     "op_pair_74": true,
+     "dload_decodes_40": true,
+     "op_decodes_target": true,
+     "jmp_decodes_4": true,
+     "fillers_harmless_whole_cycle": true,
+     "table_even_holds_T": true,
+     "table_odd_holds_T": true,
+     "data_A_holds_V0": true,
+     "data_C_holds_V1": true,
+     "seed_cell_0": true,
+     "seed_cell_1_decodes_40": true,
+     "seed_data_cell_holds_W": true,
+     "fixed_point_from_bytes": true
+    },
+    "ok": true
+   },
+   "mutants": {
+    "k_off": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "table_odd_holds_T",
+      "fixed_point_from_bytes"
+     ]
+    },
+    "no_dload": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74",
+      "dload_decodes_40"
+     ]
+    },
+    "op_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "op_pair_74"
+     ]
+    },
+    "dload_phase": {
+     "structural_ok": false,
+     "detected": true,
+     "failing_checks": [
+      "dload_pair_74"
+     ]
+    }
+   }
+  }
+ },
+ "images": {
+  "OUT": {
+   "file": "compose_out.mb",
+   "sha256": "d92fe18e56a249ba70d4cd37c1c1252e35bbf5e36178f7e2b92433ab61684327",
+   "length": 137
+  },
+  "ROT": {
+   "file": "compose_rot.mb",
+   "sha256": "de244cc3319014bc1bf8758f472a9edb1fb48c159793e7f9c5ed157214e13509",
+   "length": 171
+  },
+  "CRAZY": {
+   "file": "compose_crazy.mb",
+   "sha256": "b48d45dde6232b0243c16f6d152df29e6b9ed1c207281c47be7e6c52a1f25ca6",
+   "length": 124
+  }
+ },
+ "controls": {},
+ "gates": {
+  "G0": true,
+  "G1": true,
+  "G2": true,
+  "G3": true,
+  "G4": true
+ },
+ "all_gates_pass": true,
+ "dependencies": {
+  "epoch_xlat2_block_v1/probe.py": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f",
+  "epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+  "epoch_dload_reset_v1/probe.py": "47ad84da7eea21c337bf1c009dd839ced0c28e2948ca9f005f5017ed21a6262a",
+  "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+  "epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+  "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+  "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+ }
+}

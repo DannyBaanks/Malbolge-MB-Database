@@ -1,0 +1,147 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T20:04:43.144435+00:00",
+  "command": "python3 -I vm_malbolge/evidence/epoch_dload_compose_v1/probe.py </dev/null",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "GATES.md",
+      "sha256": "e744fd38bf1106a0895145c163576a87816c2e9ef6e791f23928eea1db4c1beb"
+    },
+    {
+      "file": "VERDICT.md",
+      "sha256": "3fa336e83894e150b4f21675eff9970bdb69d800f399c9dd7de6190e652e0ecf"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "8232e14deba7e8ea237d59a5b839d69c5a4d694cc90ef42f512226ae1a745d7f"
+    },
+    {
+      "file": "compose_out.mb",
+      "sha256": "d92fe18e56a249ba70d4cd37c1c1252e35bbf5e36178f7e2b92433ab61684327"
+    },
+    {
+      "file": "compose_rot.mb",
+      "sha256": "de244cc3319014bc1bf8758f472a9edb1fb48c159793e7f9c5ed157214e13509"
+    },
+    {
+      "file": "compose_crazy.mb",
+      "sha256": "b48d45dde6232b0243c16f6d152df29e6b9ed1c207281c47be7e6c52a1f25ca6"
+    },
+    {
+      "file": "ctrl_out_k_off.mb",
+      "sha256": "f0f7ea5697ca93629ebfacb6f988847534f34d711d3c8a161fc6302d0ddc2879"
+    },
+    {
+      "file": "ctrl_out_no_dload.mb",
+      "sha256": "609efba23647ef54eecbbaca6b8e4a08d3a345d178f3cd9ca37098e0c1725266"
+    },
+    {
+      "file": "ctrl_out_op_phase.mb",
+      "sha256": "895e1793ecd716bd6cc36afa65c7824a560f16a25f48418c69db9afef54339e4"
+    },
+    {
+      "file": "ctrl_out_dload_phase.mb",
+      "sha256": "e94af6da2c3559105cf3bb965bd075f7c5902f8d2f88ca9bab84b40701b4ce83"
+    },
+    {
+      "file": "ctrl_rot_k_off.mb",
+      "sha256": "d436d5bb7ae44acd16bde6540be51df5f286487aa1dff60ca04c3f9d33c72b7a"
+    },
+    {
+      "file": "ctrl_rot_no_dload.mb",
+      "sha256": "d55f7697ebc14b0aab5154c28bd85ba496b4f6b6790321bfd969f20b1f9d7040"
+    },
+    {
+      "file": "ctrl_rot_op_phase.mb",
+      "sha256": "46ce11f1d647edcfcd2558b9e1fa61b849b1fd06d7b3a623e41a50439201dbd9"
+    },
+    {
+      "file": "ctrl_rot_dload_phase.mb",
+      "sha256": "10cee5357baef1e34ed5f138ddd1f0e6ce694dc9f823ddcb80056d1e710f6d47"
+    },
+    {
+      "file": "ctrl_crazy_k_off.mb",
+      "sha256": "800f186d3ff849345a2ed4d462641d4f5ff0281ab96c2a65ca89e600625f82be"
+    },
+    {
+      "file": "ctrl_crazy_no_dload.mb",
+      "sha256": "eb3dc084380457244eeab8421acabcd195a264c2ab4c262b4abe627f7f8d649e"
+    },
+    {
+      "file": "ctrl_crazy_op_phase.mb",
+      "sha256": "a2cf8632431df6a2f474afea3c71f828e56341798320c3ebbad46b303b77ea98"
+    },
+    {
+      "file": "ctrl_crazy_dload_phase.mb",
+      "sha256": "c71b588bc409c5660bf42c65240db1b724f19837b60578d932b8c1966cc6db2a"
+    },
+    {
+      "file": "results.json",
+      "sha256": "987297e583dc5e95adf7291ec54faa71cbbc3f052150e4fdd22758d4474dc78a"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "511cb0f50854eae371cec9aa7d1a9aff7d244056e3d9c58456fe6a4d9f2d3282"
+    }
+  ],
+  "dependencies": {
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py (edge de código)": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f",
+    "vm_malbolge/evidence/epoch_xlat2_block_v1/scratch_engine.py": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2",
+    "vm_malbolge/evidence/epoch_dload_reset_v1/probe.py (punto fijo)": "47ad84da7eea21c337bf1c009dd839ced0c28e2948ca9f005f5017ed21a6262a",
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "vm_malbolge/evidence/epoch_audit_v1/indep_interpreter.py": "5db6336fae5508c945aebd37582a5d8b777389e95c471510f27f8e4dcb687821",
+    "runners/malbolge-original/malbolge": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "Malbolge-PureEpoch/build/olmstead (externo)": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  },
+  "claims": [
+    {
+      "text": "C1: para X = OUT, ROT y CRAZY el probe deriva la construcción desde los ciclos de XLAT2 y los parámetros medidos (no de la tabla de papel) y los 15 campos coinciden con la predicción de GATES.md",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C2: las cuatro ecuaciones del punto fijo, leídas de los bytes de la imagen, se cumplen; las tres imágenes son imprimibles y sus pares, trampolín, tabla y semillas llevan los valores calculados",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C3: cada composición cierra 10 000 vueltas con exactamente una X y un DLOAD por vuelta, los únicos opcodes válidos del cuerpo son {4, 40, op}, todos los JMP caen en 59 y d al empezar la vuelta toma 2 valores",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C4: en esa ejecución acotada oráculo, intérprete independiente, motor scratch y runner C llegan al tope sin parar; en OUT los cuatro emiten los mismos 10 000 bytes (0x00); trazador, scratch e intérprete independiente coinciden en el sha256 de la memoria final, y trazador y scratch en destinos de JMP y d por vuelta",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C5: el estado completo (memoria, a, c, d) al empezar la vuelta se repite con periodo 3060 = mcm(2, 4, 5, 6, 9, 68), el predicho, en los tres objetivos, y d tiene periodo 2",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C6: los doce controles rompen el criterio: k_off (JMP malo en la vuelta 1, destino 60), no_dload (0 DLOAD por vuelta, luego HALT), op_phase (X por vuelta 2, 0, 2, 0) y dload_phase (algún round cerrado con 2 DLOADs, enmienda fechada ebaf700)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C7: el bloque de DLOAD que reinicia d de epoch_dload_reset_v1 se compone con OUT, ROT y CRAZY en un bucle de tabla constante (cierra C9 de epoch_dload_reset_v1)",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "C8: componer IN en el mismo bucle",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C9: una variante que pase el cargador de Olmstead 1998 (las tres imágenes son Classic permisivo 3^10; olmstead rc 1)",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C10: usar la composición dentro de un programa que calcule algo elegido por la petición",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}
