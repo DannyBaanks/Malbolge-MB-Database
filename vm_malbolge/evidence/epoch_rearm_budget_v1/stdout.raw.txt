@@ -1,0 +1,13 @@
+[G0] trazador vs intérprete independiente: 7/7 coinciden
+[tabla] palabras alcanzables (ROT o ROT+CRAZY): 8281 de 59049
+[Q] e100_p93     cuerpo=218 sucias=225 (código 215, dato 10) A=79 B=146 sin_vía=0 carga+restore=2268 aux=364 >127=211 direcc>=14862 restaurador>=17130 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e100_p281    cuerpo=218 sucias=225 (código 215, dato 10) A=77 B=148 sin_vía=0 carga+restore=2276 aux=366 >127=211 direcc>=14862 restaurador>=17138 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e100_p29797  cuerpo=218 sucias=225 (código 215, dato 10) A=77 B=148 sin_vía=0 carga+restore=2276 aux=366 >127=211 direcc>=14862 restaurador>=17138 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e106_p275    cuerpo=218 sucias=225 (código 215, dato 10) A=75 B=150 sin_vía=0 carga+restore=2284 aux=368 >127=211 direcc>=14862 restaurador>=17146 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e106_p29791  cuerpo=218 sucias=225 (código 215, dato 10) A=75 B=150 sin_vía=0 carga+restore=2284 aux=368 >127=211 direcc>=14862 restaurador>=17146 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e112_p269    cuerpo=218 sucias=225 (código 215, dato 10) A=77 B=148 sin_vía=0 carga+restore=2276 aux=366 >127=211 direcc>=14862 restaurador>=17138 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q] e112_p29785  cuerpo=218 sucias=225 (código 215, dato 10) A=77 B=148 sin_vía=0 carga+restore=2276 aux=366 >127=211 direcc>=14862 restaurador>=17138 coste/celda=3..16 -> BLOCKED(REGRESS)
+[Q6] ciclos de XLAT2: longitudes=[2, 4, 5, 6, 9, 68] censo={'2': 2, '4': 4, '5': 5, '6': 6, '9': 9, '68': 68}; cuerpo: longitudes=[2, 4, 5, 6, 9, 68] mcm=3060
+[G3] control b=50: cuerpo=237 sucias=245 restaurador>=17263 (fuera del veredicto)
+[G2] veredictos: ['BLOCKED(REGRESS)']
+[verdict] all_gates_pass=True
