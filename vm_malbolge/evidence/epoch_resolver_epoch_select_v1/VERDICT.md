@@ -197,3 +197,27 @@ barrera**, en [`epoch_rearm_barrier_v1/`](../epoch_rearm_barrier_v1/):
 
 Ninguna de esas mediciones cambia lo que este pack midió: aquí la época la elige
 la petición y el payload también, una vez.
+
+## Corrección posterior 2 (2026-11-10, auditoría — sólo se añade; no se reescribe lo anterior)
+
+Auditoría independiente en [`epoch_audit_v1/AUDIT.md`](../epoch_audit_v1/AUDIT.md).
+Un intérprete escrito sin código del repo reproduce las 7 instancias y los tres
+controles, y la reproducción es byte a byte. Correcciones de alcance:
+
+* **Dialecto**: 24 de las 340 celdas (la zona de dato) no decodifican a un opcode
+  válido en su posición, y 6 de los 7 payloads se ejecutan desde celdas no
+  imprimibles. El resultado vale en **Classic permisivo** (cargador sin validación,
+  ejecución de cualquier valor). Para el intérprete de Olmstead de 1998 queda
+  `NOT_DEMONSTRATED`.
+* **"4 motores coinciden"**: en 6/7 instancias el runner C para en la guarda; la
+  ejecución del payload la confirman sólo motores Python (los dos trazadores
+  comparten el bucle de `probe.py`), más el intérprete de la auditoría.
+* **Control C**: un barrido de los 256 bytes de época confirma que ningún byte
+  fuera de catálogo aterriza en una celda de época, pero 30 de 253 sí producen
+  salida (b = 50 es uno de los silenciosos).
+* **Lema del semigrupo**: 15 mapas es correcto en el modelo de un operando. Con dos
+  operandos el mapa `(0,2,0)` es alcanzable (`crazy(a=1, mem=crazy(a=2, mem=x))`),
+  así que la limitación es del modelo y no "del álgebra"; la ruta práctica
+  (constante 59048) queda `NOT_DEMONSTRATED`.
+* `manifest.json` no se regeneró tras la corrección anterior: el hash de este
+  VERDICT no coincide con el registrado, por diseño append-only.

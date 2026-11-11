@@ -145,3 +145,23 @@ python3 build.py .          # escribe position_table.json
 python3 probe.py            # exit 0; escribe results.json
 python3 manifest.py         # regenera manifest.json
 ```
+
+## Corrección posterior (2026-11-10, auditoría — sólo se añade; no se reescribe lo anterior)
+
+Auditoría independiente en [`epoch_audit_v1/AUDIT.md`](../epoch_audit_v1/AUDIT.md).
+La reproducción y los hashes son correctos y M1, M2, M3 (26), M4 (34) y el alcance
+sembrado de M7 se reproducen. Hay que corregir el alcance de estas afirmaciones:
+
+* **M3/M4 no son una barrera de Classic.** Valen para el modelo en el que la palabra
+  se carga con **un** `ROT` desde una celda sembrada. Con un `CRAZY` de
+  preparación (`a = crazy(x, y)` con `x` e `y` en órbitas imprimibles) la palabra de
+  control es materializable en 839/839 pares y `swap01(v)` en 3200/3200. La tabla
+  de posiciones no restringe a un planificador; el coste de esa vía queda
+  `NOT_DEMONSTRATED`.
+* **M8 no es una medición**: el cuerpo de 200 celdas y `capacity_sufficient=False`
+  están escritos a mano en `probe.py`. Pasa a `NOT_DEMONSTRATED`.
+* Los docstrings de `probe.py` y `build.py` (65%, "0 en órbita imprimible", 452
+  direcciones) no coinciden con lo medido (35%, 26, 36). Los números válidos son
+  los de `stdout.raw.txt`.
+* La "palabra de control única 29403" depende de tomar la primera solución: hay 4
+  palabras posibles. El 26 se mantiene.

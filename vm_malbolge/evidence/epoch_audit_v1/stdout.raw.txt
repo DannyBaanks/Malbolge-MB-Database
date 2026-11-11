@@ -1,0 +1,40 @@
+## indep_interpreter.py ../epoch_resolver_epoch_select_v1/resolver_epoch.mb
+img sha 41cdbc79649e4a1c len 340 printable True
+loader-valid cells 316 / 340
+permis T=100 V=   93 status=HALTED steps=218 out=5d outpc=[100] endpc=101 epochcell=98 others={106: 29524, 112: 29524}
+C-like T=100 V=   93 status=HALTED steps=218 out=5d outpc=[100] endpc=101 epochcell=98 others={106: 29524, 112: 29524}
+permis T=100 V=  281 status=HALTED steps=218 out=19 outpc=[100] endpc=101 epochcell=281 others={106: 29524, 112: 29524}
+C-like T=100 V=  281 status=GUARD steps=217 out= outpc=[] endpc=100 epochcell=281 others={106: 29524, 112: 29524}
+permis T=100 V=29797 status=HALTED steps=218 out=65 outpc=[100] endpc=101 epochcell=29797 others={106: 29524, 112: 29524}
+C-like T=100 V=29797 status=GUARD steps=217 out= outpc=[] endpc=100 epochcell=29797 others={106: 29524, 112: 29524}
+permis T=106 V=  275 status=HALTED steps=218 out=13 outpc=[106] endpc=107 epochcell=275 others={100: 29524, 112: 29524}
+C-like T=106 V=  275 status=GUARD steps=217 out= outpc=[] endpc=106 epochcell=275 others={100: 29524, 112: 29524}
+permis T=106 V=29791 status=HALTED steps=218 out=5f outpc=[106] endpc=107 epochcell=29791 others={100: 29524, 112: 29524}
+C-like T=106 V=29791 status=GUARD steps=217 out= outpc=[] endpc=106 epochcell=29791 others={100: 29524, 112: 29524}
+permis T=112 V=  269 status=HALTED steps=218 out=0d outpc=[112] endpc=113 epochcell=269 others={100: 29524, 106: 29524}
+C-like T=112 V=  269 status=GUARD steps=217 out= outpc=[] endpc=112 epochcell=269 others={100: 29524, 106: 29524}
+permis T=112 V=29785 status=HALTED steps=218 out=59 outpc=[112] endpc=113 epochcell=29785 others={100: 29524, 106: 29524}
+C-like T=112 V=29785 status=GUARD steps=217 out= outpc=[] endpc=112 epochcell=29785 others={100: 29524, 106: 29524}
+ctrlA HALTED  {100: 29524, 106: 29797, 112: 29524}
+ctrlB HALTED  29798
+ctrlC HALTED 237 {100: 29524, 106: 29524, 112: 29524}
+sweep epoch byte 0..255 -> landings/outputs: {4: ([], 'HALTED', '2e'), 14: ([], 'HALTED', '861d'), 21: ([], 'HALTED', '0d0d59'), 27: ([], 'HALTED', '14'), 28: ([], 'HALTED', '2c'), 29: ([], 'HALTED', '14'), 30: ([], 'HALTED', '14'), 32: ([], 'HALTED', '8c'), 35: ([], 'HALTED', '2020'), 36: ([], 'HALTED', 'e6e6'), 37: ([], 'HALTED', '2020'), 38: ([], 'HALTED', '0202'), 44: ([], 'HALTED', '0e'), 99: ([100], 'HALTED', '65'), 105: ([106], 'HALTED', ''), 111: ([112], 'HALTED', ''), 113: ([], 'HALTED', '23'), 115: ([], 'HALTED', '0d0d4d'), 121: ([], 'HALTED', '14'), 122: ([], 'HALTED', '2c'), 123: ([], 'HALTED', '14'), 124: ([], 'HALTED', '2f'), 130: ([], 'HALTED', '9f'), 134: ([], 'HALTED', '2020'), 140: ([], 'HALTED', '2020'), 156: ([], 'HALTED', '40'), 158: ([], 'HALTED', '1c'), 164: ([], 'HALTED', 'e6e6'), 180: ([], 'HALTED', 'd4'), 209: ([], 'HALTED', '2020'), 217: ([], 'HALTED', 'ce'), 228: ([], 'HALTED', '2020'), 234: ([], 'HALTED', '148989')}
+exit=0
+## barrier_remeasure.py ../epoch_resolver_epoch_select_v1/resolver_epoch.mb
+palabras en órbitas imprimibles: 840
+M2 pares 2400 restaurables 839 con >1 control 839
+M3 materializable (solo primer control, como el probe): 26
+M3 materializable (cualquier control): 26 en 26 celdas; palabras distintas 4
+palabras alcanzables con ROT+1 CRAZY (desde órbitas imprimibles): 8281
+M3 con un CRAZY extra de preparación: 839 / 2400
+M4 pares 3200 | swap01(v) en órbita de v (probe): 34 34 celdas | en cualquier órbita imprimible: 34 34 celdas | con ROT+1 CRAZY: 3200
+M7 destinos 128..339 alcanzables leyendo una celda de RELLENO (sin escribir nada): 0 []
+   valores distintos en el relleno: 4
+semigrupo 1 operando: orientación correcta 15 | invertida 17 | (0,2,0) en correcta: False (0,2,2): False (0,0,2): True
+cierre 2 operandos con constantes: 27
+   (0, 2, 0) = crazy(a=1, mem=crazy(a=2, mem=x))
+   (0, 2, 2) = crazy(a=crazy(a=x, mem=1), mem=crazy(a=2, mem=x))
+   (0, 0, 2) = crazy(a=1, mem=x)
+constante 59048 (todo 2) alcanzable con ROT+1 CRAZY: False | 29524 (todo 1): True
+épocas candidatas (regla del pack): 92
+exit=0
