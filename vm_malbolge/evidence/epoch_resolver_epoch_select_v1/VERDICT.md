@@ -175,3 +175,25 @@ python3 build.py .          # reconstruye resolver_epoch.mb + build_index.json
 python3 probe.py            # exit 0; escribe results.json
 python3 manifest.py         # regenera manifest.json
 ```
+
+## Corrección posterior (2026-11-10, adición — sólo se añade; no se reescribe lo anterior)
+
+El punto «`NOT_DEMONSTRATED`: rearmar la época para una **segunda** petición en la
+misma ejecución» sigue vigente como afirmación de este pack — este pack consume 21
+bytes y termina. Lo que se ha añadido desde entonces es la **medición de la
+barrera**, en [`epoch_rearm_barrier_v1/`](../epoch_rearm_barrier_v1/):
+
+* el **rearm de una celda de dato es universal y exacto**
+  (`crazy(29524,X) = extract2(X)` y `crazy(E,E) = 29524` sobre las 59049 palabras,
+  0 discrepancias): la celda de época que consume un payload puede volver a su
+  máscara `29524` siempre;
+* el **rearm de una celda de código** (necesario para re-ejecutar el cuerpo del
+  programa) sí tiene una vía, pero acotada: el cifrado XLAT2 posterior a la
+  ejecución se deshace con un único `CRAZY` en 839 de los 2400 pares
+  (opcode, celda), y la palabra de control de esa restauración sólo es
+  materializable en 26 celdas (siempre la misma palabra, 29403);
+* el salto de retorno con una celda sembrada sólo alcanza destinos 34..127, y la
+  imagen actual mide 340 bytes.
+
+Ninguna de esas mediciones cambia lo que este pack midió: aquí la época la elige
+la petición y el payload también, una vez.

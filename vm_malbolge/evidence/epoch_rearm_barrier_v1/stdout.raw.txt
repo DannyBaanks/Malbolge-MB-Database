@@ -1,0 +1,9 @@
+[M1] cifrado restaurable con rotaciones: 0/2400 pares (opcode, celda) de las celdas 0..299
+[M2] restaurable con un único CRAZY: 839/2400 pares (35.0%); celdas con al menos un opcode restaurable: 290/300
+[M3] palabra de control de la restauración de un CRAZY: 839 controles sobre 2400 pares; imprimibles=0, materializables desde una celda sembrada=26 (en 26 celdas, palabra de control única=[29403])
+[M4] restaurable en dos pasos: 34/3200 pares (opcode, celda) de las celdas 0..399, en 34 celdas
+[M5] rearm de celda de dato: crazy(29524,X)=extract2(X) y crazy(E,E)=29524 sobre 59049 palabras, 0 y 0 discrepancias
+[M6] celda sucesora: el valor de retorno (JMP) y el de parada (END) son distintos por época; la cadena del puntero sigue encajando: True
+[M7] salto de retorno: celda sembrada -> 34..127 (no llega al tamaño actual de la imagen, 340); palabra exacta escrita en runtime -> 36 destinos, el mayor 3767
+[M8] zona de dato: 86 celdas; el diario necesita 1 celda por celda de código re-ejecutada y el cuerpo del bucle actual ronda las 200: no cabe
+[verdict] all_checks_pass = True

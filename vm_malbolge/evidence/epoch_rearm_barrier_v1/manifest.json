@@ -1,0 +1,88 @@
+{
+  "schema": "isyco-evidence-pack-v1",
+  "created_at": "2026-11-11T01:46:22.860660+00:00",
+  "command": "python3 vm_malbolge/evidence/epoch_rearm_barrier_v1/probe.py",
+  "exit_code": 0,
+  "environment": {
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "artifacts": [
+    {
+      "file": "VERDICT.md",
+      "sha256": "f25e8d27a6f369fc598d930139a24276e7ca707079cde90fe351ef88f8e713fa"
+    },
+    {
+      "file": "build.py",
+      "sha256": "2f22e3b8fa5f845b4162a75213ca9d0a0b48c081b0125f58f40a0f9e23ce4dee"
+    },
+    {
+      "file": "probe.py",
+      "sha256": "0f6456f8855167634fd317750f208ab4cb7cf7d5d460cf3a93d32344b9fdbb76"
+    },
+    {
+      "file": "manifest.py",
+      "sha256": "f8762cbe52f204277138ee347f6087ec3caca50d8a3ad424c66eb2c61b85b8b6"
+    },
+    {
+      "file": "position_table.json",
+      "sha256": "2ac3becf82cd3bbbe94879066e0e6ea0e1126dfe6d3df9de55c477cc37441304"
+    },
+    {
+      "file": "results.json",
+      "sha256": "a27065978a03410ef18ec0e33b758e15a08ae112453f0cedfee91d3cc0aae75b"
+    },
+    {
+      "file": "stdout.raw.txt",
+      "sha256": "d95b0a948a933bb3b7bfba26f132022f1551379e795d38637f0a7c7d1adff9fa"
+    }
+  ],
+  "dependencies": {
+    "tools/oracle_classic.py": "f04502081fe14244e236754a3e83cfbfc15534016068e0e99a728802758aa4ca",
+    "vm_malbolge/evidence/epoch_rearm_primitive_v1/VERDICT.md": "1adaf84723a8278ce06f24e31b367cc25568a3458d1f2bdcab3036aa2479ec7b",
+    "vm_malbolge/evidence/epoch_resolver_epoch_select_v1/resolver_epoch.mb": "41cdbc79649e4a1c46a9887d138a7589bc1fbef5dbebd368ff61dcde10a2e842",
+    "vm_malbolge/evidence/epoch_resolver_epoch_select_v1/VERDICT.md": "8d9b288a4300ef6868c78c8ee6c710da814e321ff62e7eeb4d8b49054b358a89"
+  },
+  "claims": [
+    {
+      "text": "the post-execution encryption (XLAT2) cannot be undone with rotations: rot^10 = identity, and none of the 2400 valid (opcode, cell) pairs of cells 0..299 satisfies rot^k(_ENC[v]) = v",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the post-execution encryption CAN be undone with a single CRAZY when a per-trit control word exists (TBL[w_d][a_d] = v_d has no solution only when w_d = 0 and v_d = 2): 839 of 2400 pairs (35%), and 290 of the 300 cells have at least one restorable opcode",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "that control word is materializable from a seeded (printable) cell only through a rotation orbit: 0 of the 839 control words are printable, but 26 of them lie in an orbit containing a printable word, and those 26 are the SAME word (29403) in 26 distinct cells",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the two-step restore (rearm to 29524 via extract2, then the exact write crazy(swap01(v), 29524)) requires swap01(v) to lie in the rotation orbit of v: measured on the 3200 valid (opcode, cell) pairs of cells 0..399, that holds for 34 pairs in 34 distinct cells. The pack ships that position table as its artifact",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the rearm of a DATA cell is universal and exact: crazy(29524, X) = extract2(X) and crazy(E, E) = 29524 hold for ALL 59049 words (0 mismatches), so an epoch cell that consumed a payload can be returned to its mask exactly, always",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the successor cell can take the back-edge role without breaking the pointer chain: its value is forced per epoch (v = (4-(T+1)) mod 94, i.e. 91, 85, 79 for T = 100, 106, 112) and the chain cell v+1 (92, 86, 80) stays inside the data zone and free",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "the back-edge target is out of reach with a seeded cell: a seeded (printable) cell can only carry 33..126, so the continuation address stays in 34..127 while the current image is 340 bytes. Above that the exact word must be written at runtime: the condition swap01(dest-1) in a printable orbit holds for 36 destinations between 35 and 3999 (largest 3767), at a density of about 1 per 100 addresses",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "NEGATIVE / CAPACITY: the data zone has 86 cells and the two-step route needs one journal cell per re-executed code cell; the current loop body is around 200 cells, so it does not fit",
+      "status": "DEMONSTRATED"
+    },
+    {
+      "text": "a loop that serves a SECOND request in the same execution is still NOT demonstrated: this pack measures the three conditions such a loop would have to meet (position table, runtime-written back-edge target, journal capacity) but does not build it",
+      "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "the composition of the data-cell rearm (measured here) with the runtime pointer (measured in epoch_resolver_epoch_select_v1) inside one complete program is NOT demonstrated",
+      "status": "NOT_DEMONSTRATED"
+    }
+  ]
+}

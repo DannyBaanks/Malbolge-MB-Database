@@ -1,0 +1,478 @@
+{
+  "m1_rot_restore": {
+    "cells": 300,
+    "pairs": 2400,
+    "restorable_with_rot": 0
+  },
+  "m2_single_crazy_restore": {
+    "cells": 300,
+    "pairs": 2400,
+    "restorable_with_one_crazy": 839,
+    "cells_with_at_least_one": 290,
+    "cells_total": 300
+  },
+  "m3_control_materializability": {
+    "controls": 839,
+    "printable_controls": 0,
+    "materializable_controls": 26,
+    "distinct_cells": 26,
+    "distinct_control_words": [
+      29403
+    ],
+    "materializable_detail": [
+      {
+        "cell": 9,
+        "op": 39,
+        "ctrl": 29403
+      },
+      {
+        "cell": 10,
+        "op": 40,
+        "ctrl": 29403
+      },
+      {
+        "cell": 32,
+        "op": 62,
+        "ctrl": 29403
+      },
+      {
+        "cell": 38,
+        "op": 68,
+        "ctrl": 29403
+      },
+      {
+        "cell": 51,
+        "op": 81,
+        "ctrl": 29403
+      },
+      {
+        "cell": 68,
+        "op": 4,
+        "ctrl": 29403
+      },
+      {
+        "cell": 69,
+        "op": 5,
+        "ctrl": 29403
+      },
+      {
+        "cell": 87,
+        "op": 23,
+        "ctrl": 29403
+      },
+      {
+        "cell": 103,
+        "op": 39,
+        "ctrl": 29403
+      },
+      {
+        "cell": 104,
+        "op": 40,
+        "ctrl": 29403
+      },
+      {
+        "cell": 126,
+        "op": 62,
+        "ctrl": 29403
+      },
+      {
+        "cell": 132,
+        "op": 68,
+        "ctrl": 29403
+      },
+      {
+        "cell": 145,
+        "op": 81,
+        "ctrl": 29403
+      },
+      {
+        "cell": 162,
+        "op": 4,
+        "ctrl": 29403
+      },
+      {
+        "cell": 163,
+        "op": 5,
+        "ctrl": 29403
+      },
+      {
+        "cell": 181,
+        "op": 23,
+        "ctrl": 29403
+      },
+      {
+        "cell": 197,
+        "op": 39,
+        "ctrl": 29403
+      },
+      {
+        "cell": 198,
+        "op": 40,
+        "ctrl": 29403
+      },
+      {
+        "cell": 220,
+        "op": 62,
+        "ctrl": 29403
+      },
+      {
+        "cell": 226,
+        "op": 68,
+        "ctrl": 29403
+      },
+      {
+        "cell": 239,
+        "op": 81,
+        "ctrl": 29403
+      },
+      {
+        "cell": 256,
+        "op": 4,
+        "ctrl": 29403
+      },
+      {
+        "cell": 257,
+        "op": 5,
+        "ctrl": 29403
+      },
+      {
+        "cell": 275,
+        "op": 23,
+        "ctrl": 29403
+      },
+      {
+        "cell": 291,
+        "op": 39,
+        "ctrl": 29403
+      },
+      {
+        "cell": 292,
+        "op": 40,
+        "ctrl": 29403
+      }
+    ]
+  },
+  "m4_two_step_restore": {
+    "cells": 400,
+    "pairs": 3200,
+    "restorable_in_two_steps": 34,
+    "cells_with_rearmable_opcodes": 34,
+    "position_table": {
+      "12": {
+        "39": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "13": {
+        "40": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "35": {
+        "62": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "41": {
+        "68": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "54": {
+        "81": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "71": {
+        "4": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "72": {
+        "5": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "90": {
+        "23": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "106": {
+        "39": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "107": {
+        "40": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "129": {
+        "62": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "135": {
+        "68": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "148": {
+        "81": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "165": {
+        "4": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "166": {
+        "5": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "184": {
+        "23": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "200": {
+        "39": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "201": {
+        "40": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "223": {
+        "62": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "229": {
+        "68": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "242": {
+        "81": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "259": {
+        "4": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "260": {
+        "5": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "278": {
+        "23": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "294": {
+        "39": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "295": {
+        "40": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "317": {
+        "62": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "323": {
+        "68": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "336": {
+        "81": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "353": {
+        "4": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "354": {
+        "5": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "372": {
+        "23": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "388": {
+        "39": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      },
+      "389": {
+        "40": {
+          "value": 121,
+          "ctrl_needed": 29403,
+          "orbit_size": 10
+        }
+      }
+    }
+  },
+  "m5_data_cell_rearm": {
+    "words": 59049,
+    "extract2_failures": 0,
+    "mask_failures": 0
+  },
+  "m6_successor_role": {
+    "rows": {
+      "100": {
+        "b": 99,
+        "successor_cell": 101,
+        "value_for_jmp_back": 91,
+        "value_for_end": 74,
+        "opcode_with_jmp_value": 4,
+        "opcode_with_end_value": 81,
+        "chain_cell_if_jmp": 92,
+        "chain_cell_in_data_zone": true,
+        "chain_cell_free_in_current_layout": true
+      },
+      "106": {
+        "b": 105,
+        "successor_cell": 107,
+        "value_for_jmp_back": 85,
+        "value_for_end": 68,
+        "opcode_with_jmp_value": 4,
+        "opcode_with_end_value": 81,
+        "chain_cell_if_jmp": 86,
+        "chain_cell_in_data_zone": true,
+        "chain_cell_free_in_current_layout": true
+      },
+      "112": {
+        "b": 111,
+        "successor_cell": 113,
+        "value_for_jmp_back": 79,
+        "value_for_end": 62,
+        "opcode_with_jmp_value": 4,
+        "opcode_with_end_value": 81,
+        "chain_cell_if_jmp": 80,
+        "chain_cell_in_data_zone": true,
+        "chain_cell_free_in_current_layout": true
+      }
+    },
+    "both_roles_are_per_epoch": true,
+    "jmp_role_chain_compatible": true
+  },
+  "m7_back_edge_reach": {
+    "seeded_targets": [
+      34,
+      127
+    ],
+    "seeded_count": 94,
+    "runtime_built_targets": [
+      122,
+      364,
+      365,
+      608,
+      851,
+      1090,
+      1091,
+      1093,
+      1094,
+      1095,
+      1337,
+      1580
+    ],
+    "runtime_built_count": 36,
+    "current_image_length": 340,
+    "seeded_reaches_current_size": false,
+    "runtime_built_reaches_current_size": true,
+    "note": "la celda que el JMP de retorno lee tiene que contener (destino-1); con una celda sembrada (imprimible) el destino queda en 34..127, y por encima hace falta escribir la palabra exacta en runtime"
+  },
+  "m8_data_zone_capacity": {
+    "data_zone_cells": 86,
+    "journal_cells_per_rearmable_code_cell": 1,
+    "current_loop_body_size_estimate": 200,
+    "capacity_sufficient_for_current_body": false
+  },
+  "verdict_all_checks_pass": true
+}

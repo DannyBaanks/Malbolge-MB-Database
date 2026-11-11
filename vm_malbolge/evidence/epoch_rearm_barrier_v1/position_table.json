@@ -1,0 +1,346 @@
+{
+  "schema": "isyco-rearm-position-table-v1",
+  "cells_with_rearmable_opcodes": 34,
+  "position_table": {
+    "12": {
+      "39": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "13": {
+      "40": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "35": {
+      "62": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "41": {
+      "68": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "54": {
+      "81": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "71": {
+      "4": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "72": {
+      "5": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "90": {
+      "23": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "106": {
+      "39": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "107": {
+      "40": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "129": {
+      "62": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "135": {
+      "68": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "148": {
+      "81": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "165": {
+      "4": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "166": {
+      "5": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "184": {
+      "23": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "200": {
+      "39": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "201": {
+      "40": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "223": {
+      "62": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "229": {
+      "68": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "242": {
+      "81": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "259": {
+      "4": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "260": {
+      "5": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "278": {
+      "23": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "294": {
+      "39": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "295": {
+      "40": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "317": {
+      "62": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "323": {
+      "68": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "336": {
+      "81": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "353": {
+      "4": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "354": {
+      "5": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "372": {
+      "23": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "388": {
+      "39": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    },
+    "389": {
+      "40": {
+        "value": 121,
+        "ctrl_needed": 29403,
+        "orbit_size": 10
+      }
+    }
+  },
+  "continuation_addresses_runtime_built": [
+    122,
+    364,
+    365
+  ],
+  "continuation_addresses_seeded": [
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+  ],
+  "note": "las direcciones de continuaci\u00f3n sembradas s\u00f3lo llegan a 127; por encima hace falta la palabra exacta escrita en runtime"
+}
