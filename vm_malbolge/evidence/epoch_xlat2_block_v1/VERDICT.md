@@ -333,3 +333,85 @@ python3 manifest.py
 
 Dos corridas consecutivas producen `results.json` y `stdout.raw.txt` byte a byte
 idénticos (verificado).
+
+## Tercera pasada: auditoría de la segunda pasada (2026-11-11, `claude_code_87747efe962f42f4` — sólo se añade)
+
+Auditoría pedida por Danny sobre `579f195`. Las **mediciones** de la segunda pasada se
+reprodujeron (dos corridas idénticas; imágenes, Q1–Q4 y veredictos sin cambio, verificado
+contra `git show HEAD:results.json`), y un motor aparte del auditor (despacho por xlat1 y
+tabla 9×9 de la implementación de referencia de 1998, fuera del repo, no canónico)
+coincidió en bytes, pasos y destinos de JMP de las cuatro imágenes. Pero tres
+afirmaciones de la segunda pasada valían menos de lo que decían. Esta pasada las
+**corrige o las convierte en comprobaciones reales**; no cambia ninguna medición.
+
+### Lo que estaba inflado y qué se hizo
+
+1. **G0 era casi tautológica.** `x_value_is_derived` comparaba `derived_x_value()`
+   con el `x1` de `build_image()`, que sale de esa misma función; posiciones y
+   `phase_alternates` igual; y `good_shifts`/`block_pair`/`filler_value` usaban los
+   ciclos de la tabla del oráculo, no la del motor scratch. **Ahora:**
+   `check_construction()` deriva todas las soluciones (s1, hueco, valor X) con código
+   propio y los ciclos de la tabla del motor scratch (sin llamar a las funciones de la
+   construcción), comprueba que la imagen tenga la solución canónica **leyendo sus
+   bytes** (celdas X, rellenos con su ciclo entero, JMP, trampolín, tabla, cobertura
+   de las R vueltas, prefijo, semilla `d = 40`), y **cinco controles rotos** deben
+   fallarla: `ctrl_phase` → falla `x_cells_hold_canonical_value` /
+   `image_x_is_a_solution`; `ctrl_filler` → `fillers_harmless_whole_cycle`;
+   `mut_table_cell` → `table_points_to_trampoline`; `mut_jmp_cell` →
+   `jmp_cell_decodes_jmp`; `mut_dload_seed` → `dload_seed`. G0 = las cinco imágenes
+   pasan **y** los cinco controles se detectan. Es más estricta que antes. Sigue
+   siendo independiente en el código, no en la idea: implementa la misma regla de
+   `GATES.md`.
+2. **"Coinciden en pasos" no decía nada.** Con un tope común (479) todos los motores
+   paraban por el tope (`MAX`/`MAX_STEPS`/`TIMEOUT`). La clave se renombra a
+   `none_stopped_before_cap`, que es lo que medía. **Ahora G1** exige además
+   `out_step_profile_all_match`: para cada uno de los 60 OUT (paso `s` según el
+   trazador), con tope `s−1` la salida tiene `i` bytes y con tope `s` tiene `i+1`, en
+   oráculo, intérprete independiente, runner C y motor scratch. Pasa en los cuatro
+   (240 pares de corridas). La memoria final (59049 celdas, sha256) coincide entre
+   trazador, scratch e intérprete independiente.
+3. **"Cinco motores" valía sólo para OUT.** En Q4 nadie comparaba los motores ni
+   había puerta, y el intérprete independiente no se corría. **Ahora** Q4 corre
+   oráculo, scratch, C e independiente y publica `engine_agreement`: pasos, HALT,
+   sha256 de la memoria final (trazador = scratch = indep) y destinos de JMP (scratch
+   = trazador). ROT y CRAZY no dan salida, así que la comparación con contenido es la
+   memoria: la ejecución cambia 119 (ROT) y 144 (CRAZY) celdas, y los tres motores
+   coinciden. DLOAD para con HALT natural en el paso 112 en los cuatro. Esto se
+   publica en `extra_checks` y **no entra en G0..G4** (`GATES.md` define G1 sobre Q2).
+
+### Menores
+
+* `scratch_engine.py`: el docstring decía `23 rot, 39 crazy, 62 in`; el código
+  siempre usó `23 in, 39 rot, 62 crazy`. Corregido el docstring.
+* `scratch_engine.py` ejecutaba celdas no imprimibles; la referencia de 1998 ahí se
+  cuelga y el runner C para. Ahora para con `NONPRINT`. No afecta las corridas
+  acotadas (ninguna llega a una celda así); sin tope, las tres imágenes llegan a una
+  entre 5 y 11 vueltas después de la 60, por la tabla finita ya declarada.
+* La crazy del motor scratch se contrasta además en 100 000 pares al azar de todo el
+  rango 3^10 (semilla 20261111): coincide. Los 90 000 pares de antes sólo cubrían
+  `x, y < 300`.
+* `DECLARED_Q4` **no es un pre-registro**: está en el mismo commit que la segunda
+  medición y repite lo que el VERDICT de `3bbdfb5` ya publicaba. G4 funciona como
+  check de **regresión** contra `3bbdfb5`. El comentario del probe lo dice ahora.
+
+### Claims tras esta pasada
+
+* **C3**: los cinco motores coinciden en bytes **y en el paso exacto de cada OUT**
+  (antes: en el tope); memoria final igual en tres motores. DEMONSTRATED.
+* **C11**: G0..G4 computadas en el probe; G0 con controles negativos. DEMONSTRATED.
+* **C13 (nuevo; C12 ya era IN)**: en ROT/CRAZY/DLOAD, oráculo, scratch, C e indep coinciden en
+  pasos/HALT y la memoria final coincide en trazador, scratch e indep. DEMONSTRATED
+  (fuera de las puertas).
+* Sin cambio: DLOAD e IN en NOT_DEMONSTRATED; ninguna variante cargable por el
+  cargador de 1998.
+
+### NOT_DEMONSTRATED en esta pasada
+
+* La memoria final del oráculo y del runner C no se compara: ninguno de los dos la
+  expone. En ROT/CRAZY su acuerdo se limita a "no pararon antes del tope".
+* El motor del auditor no está en el repo; su acuerdo es contexto, no evidencia
+  canónica.
+
+Reproducción: igual que arriba (`python3 -I probe.py </dev/null > stdout.raw.txt 2>&1`,
+rc 0, ~20 s; luego `python3 manifest.py`). Dos corridas consecutivas: `results.json` y
+`stdout.raw.txt` byte a byte idénticos (verificado).

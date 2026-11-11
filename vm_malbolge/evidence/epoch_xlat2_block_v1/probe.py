@@ -56,9 +56,10 @@ HELLO = ROOT / "tools" / "fixtures" / "hello_world_40.mb"
 
 ROUNDS = 60                       # R del pack
 TARGETS = ["OUT", "IN", "ROT", "DLOAD", "CRAZY"]
-# Declaración de Q4 escrita ANTES de esta pasada de medición (heredada del
-# VERDICT de 3bbdfb5 y re-declarada aquí antes de ejecutar el probe). La puerta
-# G4 comprueba que lo medido coincide con lo declarado, no lo da por cierto.
+# Declaración de Q4 heredada del VERDICT de 3bbdfb5 (que ya publicaba estas
+# mediciones). NO es un pre-registro: se escribió después de la primera medición
+# y en el mismo commit que la segunda, así que funciona como check de REGRESIÓN
+# (G4 falla si la medición cambia respecto de 3bbdfb5), no como predicción.
 DECLARED_Q4 = {"ROT": "CONSTRUCTED", "CRAZY": "CONSTRUCTED",
                "DLOAD": "NOT_DEMONSTRATED"}
 OPS = {"JMP": 4, "OUT": 5, "IN": 23, "ROT": 39, "DLOAD": 40,
@@ -276,12 +277,14 @@ def trace_image(img: list[int], max_steps: int) -> dict:
             mem[d] = CRAZY(a, mem[d])
             a = mem[d]
         elif o == 81:
-            return {"events": ev, "out": out, "status": "HALTED", "steps": st}
+            return {"events": ev, "out": out, "status": "HALTED", "steps": st,
+                    "mem": mem}
         if 33 <= mem[c] <= 126:
             mem[c] = ENC[mem[c]]
         c = (c + 1) % N
         d = (d + 1) % N
-    return {"events": ev, "out": out, "status": "MAX", "steps": max_steps}
+    return {"events": ev, "out": out, "status": "MAX", "steps": max_steps,
+            "mem": mem}
 
 
 def analysis(img: list[int], info: dict) -> dict:
@@ -385,6 +388,38 @@ def run_scratch(path: Path, max_steps: int) -> dict:
             "jmp_count": len(jmps)}
 
 
+def out_step_profile(path: Path, out_steps: list[int]) -> dict:
+    """Paso exacto de cada OUT en cada motor: con tope s-1 la salida tiene i bytes
+    y con tope s tiene i+1 (s = paso del i-ésimo OUT según el trazador)."""
+    runners = {"oracle": lambda c: run_oracle(path, c)["output"],
+               "indep": lambda c: run_indep(path, c)["output"],
+               "c": lambda c: run_c(path, c)["out_list"],
+               "scratch": lambda c: run_scratch(path, c)["out_list"]}
+    engines = {}
+    for name, fn in runners.items():
+        bad = []
+        for i, s in enumerate(out_steps):
+            before, at = len(fn(s - 1)), len(fn(s))
+            if before != i or at != i + 1:
+                bad.append({"out_index": i, "step": s, "len_before": before, "len_at": at})
+        engines[name] = {"match": not bad, "mismatches": bad[:5]}
+    return {"out_steps": out_steps, "engines": engines,
+            "all_match": bool(out_steps) and all(e["match"] for e in engines.values())}
+
+
+def mem_agreement(path: Path, img: list[int], steps: int) -> dict:
+    """sha256 de las 59049 celdas tras `steps` pasos en trazador, scratch e indep."""
+    def h(mem: list[int]) -> str:
+        return hashlib.sha256(json.dumps(mem, separators=(",", ":")).encode()).hexdigest()
+    tr = h(trace_image(img, steps)["mem"])
+    sc = h(SE.run(path.read_bytes(), max_steps=steps, stdin=b"")["mem"])
+    src = INDEP.read_text(encoding="utf8")
+    ns: dict = {}
+    exec(compile(src.split("def trits")[0], str(INDEP), "exec"), ns)
+    ind = h(ns["run"](list(path.read_bytes()), [], maxs=steps)["mem"])
+    return {"trace": tr, "scratch": sc, "indep": ind, "all_equal": tr == sc == ind}
+
+
 def scratch_vector_check() -> dict:
     """Valida el motor scratch contra el vector conocido del repo:
     tools/fixtures/hello_world_40.mb -> "Hello World!" en 40 pasos.
@@ -398,6 +433,10 @@ def scratch_vector_check() -> dict:
     xlat2_same = all(SE.encrypt(v) == O._ENC[v] for v in range(33, 127))
     crazy_same = all(SE.crazy(x, y) == O.crazy_op(x, y)
                       for x in range(0, 300) for y in range(0, 300))
+    import random
+    rng = random.Random(20261111)
+    pairs = [(rng.randrange(N), rng.randrange(N)) for _ in range(100000)]
+    crazy_full = all(SE.crazy(x, y) == O.crazy_op(x, y) for x, y in pairs)
     return {"fixture": "tools/fixtures/hello_world_40.mb",
             "scratch": {"steps": r["steps"], "status": r["status"],
                         "output_hex": r["out"].hex()},
@@ -409,42 +448,139 @@ def scratch_vector_check() -> dict:
             "oracle_ok": o["output"] == "Hello World!" and o["steps"] == 40,
             "xlat2_matches_repo": xlat2_same,
             "crazy_matches_repo": crazy_same,
-            "crazy_pairs_checked": 300 * 300}
+            "crazy_pairs_checked": 300 * 300,
+            "crazy_matches_repo_full_range_random": crazy_full,
+            "crazy_full_range_pairs": len(pairs), "crazy_full_range_seed": 20261111}
 
 
-def g0_construction_recomputed() -> dict:
-    """G0: recalcula la construcción sin usar las tablas escritas a mano.
+def _scratch_cycles() -> list[list[int]]:
+    """Ciclos de XLAT2 calculados con la tabla del motor scratch (no con O._ENC)."""
+    seen: set[int] = set()
+    out = []
+    for v in range(33, 127):
+        if v in seen:
+            continue
+        cyc = []
+        x = v
+        while x not in seen:
+            seen.add(x)
+            cyc.append(x)
+            x = SE.encrypt(x)
+        out.append(cyc)
+    return out
 
-    Usa la tabla de cifrado y la operación crazy del motor scratch (independientes
-    del oráculo del repo) y vuelve a derivar posiciones, valores y rellenos."""
-    out = {}
-    for target in TARGETS:
-        shift, span, v = derived_x_value(target)
-        img, info = build_image(target)
-        checks: dict = {}
-        checks["x_value_is_derived"] = (info["x1"] == v and info["x2"] == v)
-        checks["x_positions_derived"] = ([p % 94 for p in info["x_positions"]]
-                                         == [shift % 94, (shift + span) % 94])
-        checks["phase_alternates"] = phase_alternates(target, shift, span, v)
-        # los rellenos: ciclo XLAT2 completo (tabla del motor scratch) inocuo
-        fillers_ok = True
-        for pos, val in zip(info["fillers"]["positions"], info["fillers"]["values"]):
-            cyc = [val]
-            x = SE.encrypt(val)
-            while x != val:
-                cyc.append(x)
-                x = SE.encrypt(x)
-            fillers_ok = fillers_ok and all(
-                (w + pos) % 94 in HARMLESS for w in cyc)
-        checks["fillers_harmless_whole_cycle"] = fillers_ok
-        checks["trampoline_value"] = (img[info["trampoline"]] == info["trampoline"])
-        checks["jmp_decodes_to_jmp"] = (opcode(img[info["jmp"]], info["jmp"]) == 4)
-        checks["table_points_to_trampoline"] = all(
-            img[i] == info["trampoline"] for i in range(info["jmp"] + 1, info["length"]))
-        checks["dload_seed"] = (img[0] == 40 and opcode(img[0], 0) == 40)
-        checks["d_at_first_jmp_formula"] = (info["d_at_first_jmp"] == 40 + info["jmp"])
-        out[target] = {"checks": checks, "ok": all(checks.values()),
-                       "derived_x_value": v, "derived_shift": shift}
+
+# Inocuo, tecleado de nuevo desde GATES.md (no se reutiliza HARMLESS/VALID).
+G0_HARMFUL = {4, 5, 23, 39, 40, 62, 81}
+G0_HARMLESS = set(range(94)) - G0_HARMFUL
+
+
+def independent_solutions(target: str) -> list[tuple[int, int, int]]:
+    """Todas las soluciones (s1 mod 94, hueco, valor X) del bloque para `target`,
+    derivadas con código propio y las tablas del motor scratch. No llama a
+    good_shifts / block_pair / derived_x_value / filler_value ni usa CYCLES."""
+    op = TARGET_OP[target]
+    cycs = _scratch_cycles()
+    l2 = [c for c in cycs if len(c) == 2]
+
+    def cycle_ok(cyc: list[int], p: int) -> bool:
+        return all((w + p) % 94 in G0_HARMLESS for w in cyc)
+
+    sols = []
+    for s1 in range(94):
+        for gap in range(1, 5):
+            s2 = s1 + gap
+            if not all(any(cycle_ok(c, r) for c in cycs) for r in range(s1 + 1, s2)):
+                continue
+            for cyc in l2:
+                for v in cyc:
+                    w = SE.encrypt(v)
+                    ops0 = ((v + s1) % 94, (v + s2) % 94)
+                    ops1 = ((w + s1) % 94, (w + s2) % 94)
+                    hit0 = tuple(o == op for o in ops0)
+                    hit1 = tuple(o == op for o in ops1)
+                    if sum(hit0) != 1 or sum(hit1) != 1 or hit0 == hit1:
+                        continue
+                    if all(o == op or o in G0_HARMLESS for o in ops0 + ops1):
+                        sols.append((s1, gap, v))
+    return sols
+
+
+def canonical_solution(target: str, sols: list[tuple[int, int, int]]):
+    """La regla declarada: menor s1, luego menor hueco, y la fase en que la
+    PRIMERA celda X decodifica el objetivo en la vuelta 0."""
+    if not sols:
+        return None
+    op = TARGET_OP[target]
+    s1, gap = min((s, g) for s, g, _ in sols)
+    vs = [v for s, g, v in sols if (s, g) == (s1, gap)]
+    first = [v for v in vs if (v + s1) % 94 == op]
+    return s1, gap, (first or vs)[0]
+
+
+def check_construction(target: str, img: list[int], info: dict) -> dict:
+    """Comprueba la IMAGEN (no `info`) contra la derivación independiente.
+
+    De `info` sólo se toman las coordenadas absolutas (shift, jmp); todo lo demás
+    se lee de los bytes de la imagen."""
+    sols = independent_solutions(target)
+    canon = canonical_solution(target, sols)
+    shift, jmp = info["x_positions"][0], info["jmp"]
+    T = shift - 1
+    L = len(img)
+    checks: dict = {}
+    checks["solution_exists"] = canon is not None
+    if canon is None:
+        return {"checks": checks, "ok": False, "canonical": None}
+    s1, gap, v = canon
+    checks["shift_is_canonical_mod94"] = shift % 94 == s1
+    checks["x_cells_hold_canonical_value"] = (img[shift] == v and img[shift + gap] == v)
+    checks["image_x_is_a_solution"] = (shift % 94, gap, img[shift]) in sols \
+        and img[shift] == img[shift + gap]
+    body_other = [p for p in range(shift + 1, jmp) if p != shift + gap]
+
+    def scratch_cycle(val: int) -> list[int]:
+        cyc = [val]
+        x = SE.encrypt(val)
+        while x != val:
+            cyc.append(x)
+            x = SE.encrypt(x)
+        return cyc
+
+    checks["body_cells_printable"] = all(33 <= img[p] <= 126 for p in range(shift, jmp + 1))
+    checks["fillers_harmless_whole_cycle"] = all(
+        all((w + p) % 94 in G0_HARMLESS for w in scratch_cycle(img[p]))
+        for p in body_other)
+    checks["jmp_cell_decodes_jmp"] = (img[jmp] + jmp) % 94 == 4
+    checks["trampoline_is_shift_minus_1"] = info["trampoline"] == T
+    checks["table_points_to_trampoline"] = all(img[i] == T for i in range(jmp + 1, L))
+    round_len = jmp - T
+    checks["table_covers_R_rounds"] = 40 + jmp + (ROUNDS - 1) * round_len < L
+    checks["prefix_harmless_at_load"] = all(
+        (img[i] + i) % 94 in G0_HARMLESS for i in range(1, T))
+    checks["dload_seed"] = img[0] == 40 and (img[0] + 0) % 94 == 40
+    checks["image_printable"] = all(33 <= b <= 126 for b in img)
+    return {"checks": checks, "ok": all(checks.values()),
+            "canonical": {"s1": s1, "gap": gap, "x_value": v},
+            "n_solutions": len(sols)}
+
+
+def g0_construction_recomputed(built: dict, controls: dict) -> dict:
+    """G0 (tercera pasada): cada imagen construida pasa la comprobación
+    independiente y cada imagen ROTA a propósito la falla (control de que la
+    comprobación puede decir que no). `built` y `controls`: nombre -> (target,
+    img, info)."""
+    out = {"targets": {}, "controls": {}}
+    for name, (target, img, info) in built.items():
+        out["targets"][name] = check_construction(target, img, info)
+    for name, (target, img, info) in controls.items():
+        r = check_construction(target, img, info)
+        out["controls"][name] = {"ok": r["ok"],
+                                 "failed_checks": sorted(k for k, v in r["checks"].items()
+                                                         if not v),
+                                 "detected": not r["ok"]}
+    out["ok"] = (all(t["ok"] for t in out["targets"].values())
+                 and all(c["detected"] for c in out["controls"].values()))
     return out
 
 
@@ -488,9 +624,6 @@ def main() -> int:
     # ---- vector conocido para el cuarto motor (scratch)
     vector = scratch_vector_check()
 
-    # ---- G0: recálculo independiente de la construcción
-    g0 = g0_construction_recomputed()
-
     # ---- construir todas las imágenes y escribirlas antes de ejecutar
     img_out, info_out = build_image("OUT")
     # control de desfase: la segunda celda X se siembra en la OTRA fase del
@@ -517,6 +650,21 @@ def main() -> int:
     for name, data in images.items():
         (PACK / (name + ".mb")).write_bytes(data)
 
+    # ---- G0: comprobación independiente de la construcción + controles rotos
+    built = {t: (t,) + build_image(t) for t in TARGETS}
+    mut_table = list(img_out)
+    mut_table[info_out["jmp"] + 50] = info_out["trampoline"] + 1
+    mut_jmp = list(img_out)
+    mut_jmp[info_out["jmp"]] = img_out[info_out["jmp"]] + 1
+    mut_seed = list(img_out)
+    mut_seed[0] = 41
+    g0_controls = {"ctrl_phase": ("OUT", imgA, infoA),
+                   "ctrl_filler": ("OUT", imgB, infoB),
+                   "mut_table_cell": ("OUT", mut_table, info_out),
+                   "mut_jmp_cell": ("OUT", mut_jmp, info_out),
+                   "mut_dload_seed": ("OUT", mut_seed, info_out)}
+    g0 = g0_construction_recomputed(built, g0_controls)
+
     # ---- Q2: OUT construido y ejecutado
     an_out = analysis(img_out, info_out)
     q2 = {"info": info_out, "trace": an_out}
@@ -533,9 +681,19 @@ def main() -> int:
     steps4 = [q2["trace"]["oracle"]["steps"], q2["trace"]["indep"]["steps"],
               q2["trace"]["c"]["steps"], q2["trace"]["scratch"]["out_steps"],
               q2["trace"]["steps"]]
+    all_out_steps = [e["step"] for e in
+                     trace_image(img_out, an_out["steps"])["events"] if e["op"] == 5]
+    profile = out_step_profile(PACK / "out_block.mb", all_out_steps)
+    mem_out = mem_agreement(PACK / "out_block.mb", img_out, an_out["steps"])
+    q2["out_step_profile"] = profile
+    q2["memory_agreement"] = mem_out
     q2["engine_agreement"] = {
         "bytes_all_five_equal": all(x == four[0] for x in four),
-        "steps_all_five_equal": all(x == steps4[0] for x in steps4),
+        # Con tope común, que los pasos coincidan sólo dice que ningún motor paró
+        # antes del tope; la coincidencia de pasos real es out_step_profile.
+        "none_stopped_before_cap": all(x == steps4[0] for x in steps4),
+        "out_step_profile_all_match": profile["all_match"],
+        "memory_sha_trace_scratch_indep_equal": mem_out["all_equal"],
         "oracle_vs_trace_bytes": q2["trace"]["oracle"]["output"] == q2["trace"]["out_bytes"],
         "indep_vs_trace_bytes": q2["trace"]["indep"]["output"] == q2["trace"]["out_bytes"],
         "indep_vs_trace_steps": q2["trace"]["indep"]["steps"] == q2["trace"]["steps"],
@@ -568,11 +726,32 @@ def main() -> int:
         path = PACK / ("%s_block.mb" % name.lower())
         engines = {"oracle": run_oracle(path, an["steps"]),
                    "scratch": run_scratch(path, an["steps"]),
-                   "c": run_c(path, an["steps"])}
+                   "c": run_c(path, an["steps"]),
+                   "indep": run_indep(path, an["steps"])}
+        halted = {k: v["status"] == "HALTED" for k, v in engines.items()}
+        stp = {k: v["steps"] for k, v in engines.items()}
+        mem = mem_agreement(path, imgX, an["steps"])
+        agreement = {
+            "steps": stp, "halted": halted,
+            "steps_all_equal": len(set(stp.values())) == 1,
+            "halt_status_all_equal": len(set(halted.values())) == 1,
+            "trace_halted": an["status"] == "HALTED",
+            "memory_sha_trace_scratch_indep_equal": mem["all_equal"],
+            "scratch_vs_trace_jmp_dests": engines["scratch"]["jmp_dests"] == an["jmp_dests"],
+            "note": ("sin HALT, steps_all_equal sólo dice que nadie paró antes del "
+                     "tope; la comparación con contenido es la memoria final y los "
+                     "destinos de JMP" if an["status"] != "HALTED" else
+                     "HALT natural: los pasos se comparan de verdad"),
+        }
+        agreement["all"] = (agreement["steps_all_equal"] and agreement["halt_status_all_equal"]
+                            and halted["oracle"] == agreement["trace_halted"]
+                            and agreement["memory_sha_trace_scratch_indep_equal"]
+                            and agreement["scratch_vs_trace_jmp_dests"])
         crit = (an["per_round_all_one"] and an["rounds_closed"] >= ROUNDS
                 and not an["harmful_others"] and an["jmp_dest_all_trampoline"])
         measured = "CONSTRUCTED" if crit else "NOT_DEMONSTRATED"
         q4[name] = {"info": infoX, "measure": an, "engines": engines,
+                    "engine_agreement": agreement, "memory_agreement": mem,
                     "criterion": {"per_round_all_one": an["per_round_all_one"],
                                   "rounds_ge_R": an["rounds_closed"] >= ROUNDS,
                                   "no_harmful_others": not an["harmful_others"],
@@ -598,12 +777,14 @@ def main() -> int:
                           "la imagen pasa el cargador de 1998")}
 
     gates = {
-        # G0: la construcción se recalcula aquí (posiciones, valor X, rellenos,
-        # trampolín, JMP, tabla y semilla de d) con las tablas del motor scratch.
-        "G0": all(t["ok"] for t in g0.values()),
-        # G1: acuerdo byte a byte y en pasos de los cinco motores.
+        # G0 (tercera pasada): las imágenes pasan la comprobación independiente
+        # (código propio + tablas del motor scratch, leyendo los bytes) Y los cinco
+        # controles rotos la fallan.
+        "G0": g0["ok"],
+        # G1: bytes iguales en los cinco motores y paso exacto de cada OUT igual
+        # en los cinco (tope s-1 / s), no sólo el mismo tope.
         "G1": (q2["engine_agreement"]["bytes_all_five_equal"]
-               and q2["engine_agreement"]["steps_all_five_equal"]),
+               and q2["engine_agreement"]["out_step_profile_all_match"]),
         # G2: criterio de Q2 + destino de cada JMP en el trampolín.
         "G2": (q2["trace"]["per_round_all_one"]
                and q2["trace"]["rounds_closed"] >= ROUNDS
@@ -632,6 +813,12 @@ def main() -> int:
     results["q4"] = q4
     results["q5"] = q5
     results["gates"] = gates
+    # Fuera de las puertas pre-registradas (GATES.md define G1 sobre Q2): acuerdo
+    # de motores en Q4 y memoria final en Q2, publicados sin entrar en G0..G4.
+    results["extra_checks"] = {
+        "q2_memory_sha_trace_scratch_indep_equal": mem_out["all_equal"],
+        "q4_engine_agreement_all": {n: q4[n]["engine_agreement"]["all"] for n in q4},
+    }
     results["all_gates_pass"] = all(gates.values())
     results["g0_recomputation"] = g0
     results["scratch_vector"] = vector
@@ -680,8 +867,12 @@ def main() -> int:
           % (t2["d_at_first_jmp_measured"], info_out["d_at_first_jmp"]))
     print("[Q2] motores: %s" % q2["engine_agreement"])
     print("[Q2] vector scratch (hello_world_40): %s" % vector)
-    print("[G0] recálculo independiente: %s"
-          % {k: v["ok"] for k, v in g0.items()})
+    print("[G0] comprobación independiente: %s; controles rotos detectados: %s"
+          % ({k: v["ok"] for k, v in g0["targets"].items()},
+             {k: (v["detected"], v["failed_checks"]) for k, v in g0["controls"].items()}))
+    print("[Q2] paso exacto de cada OUT (%d OUT): %s"
+          % (len(profile["out_steps"]), {k: v["match"] for k, v in profile["engines"].items()}))
+    print("[Q2] memoria final sha256 (trazador/scratch/indep) iguales=%s" % mem_out["all_equal"])
     print("[Q3] control desfase (x2=%d): por-vuelta=%s todas_una=%s"
           % (infoA["x2"], anA["per_round"][:8], anA["per_round_all_one"]))
     print("[Q3] control relleno no inocuo (v=%d en %d): opcodes_validos=%s otros=%s"
@@ -695,6 +886,10 @@ def main() -> int:
                  m["per_round_all_one"], m["harmful_others"],
                  m["jmp_dest_all_trampoline"], q4[name]["declared"],
                  q4[name]["measured"]))
+        ag = q4[name]["engine_agreement"]
+        print("     motores: pasos=%s halt=%s memoria_igual=%s destinos_scratch=trazador=%s todo=%s"
+              % (ag["steps"], ag["halted"], ag["memory_sha_trace_scratch_indep_equal"],
+                 ag["scratch_vs_trace_jmp_dests"], ag["all"]))
         print("     d en vueltas pares/impares:", m["d_parity"])
         print("     primeros JMP (paso,d,destino):", m["jmp_dest_first"])
     print("[Q5] Olmstead 1998: rc=%d stderr=%r válidas-al-cargar %d/%d dialecto=%s"

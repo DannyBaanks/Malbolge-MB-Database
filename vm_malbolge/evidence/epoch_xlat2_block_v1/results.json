@@ -915,9 +915,100 @@
     166
    ]
   },
+  "out_step_profile": {
+   "out_steps": [
+    120,
+    130,
+    132,
+    142,
+    144,
+    154,
+    156,
+    166,
+    168,
+    178,
+    180,
+    190,
+    192,
+    202,
+    204,
+    214,
+    216,
+    226,
+    228,
+    238,
+    240,
+    250,
+    252,
+    262,
+    264,
+    274,
+    276,
+    286,
+    288,
+    298,
+    300,
+    310,
+    312,
+    322,
+    324,
+    334,
+    336,
+    346,
+    348,
+    358,
+    360,
+    370,
+    372,
+    382,
+    384,
+    394,
+    396,
+    406,
+    408,
+    418,
+    420,
+    430,
+    432,
+    442,
+    444,
+    454,
+    456,
+    466,
+    468,
+    478
+   ],
+   "engines": {
+    "oracle": {
+     "match": true,
+     "mismatches": []
+    },
+    "indep": {
+     "match": true,
+     "mismatches": []
+    },
+    "c": {
+     "match": true,
+     "mismatches": []
+    },
+    "scratch": {
+     "match": true,
+     "mismatches": []
+    }
+   },
+   "all_match": true
+  },
+  "memory_agreement": {
+   "trace": "169e6bd34430a1002e61bb9a7d85554dcb13236fb151259c4d3ba1176dc86419",
+   "scratch": "169e6bd34430a1002e61bb9a7d85554dcb13236fb151259c4d3ba1176dc86419",
+   "indep": "169e6bd34430a1002e61bb9a7d85554dcb13236fb151259c4d3ba1176dc86419",
+   "all_equal": true
+  },
   "engine_agreement": {
    "bytes_all_five_equal": true,
-   "steps_all_five_equal": true,
+   "none_stopped_before_cap": true,
+   "out_step_profile_all_match": true,
+   "memory_sha_trace_scratch_indep_equal": true,
    "oracle_vs_trace_bytes": true,
    "indep_vs_trace_bytes": true,
    "indep_vs_trace_steps": true,
@@ -1343,7 +1434,39 @@
      "out_hex": "",
      "steps": 419,
      "status": "TIMEOUT"
+    },
+    "indep": {
+     "output": [],
+     "steps": 419,
+     "status": "MAX"
     }
+   },
+   "engine_agreement": {
+    "steps": {
+     "oracle": 419,
+     "scratch": 419,
+     "c": 419,
+     "indep": 419
+    },
+    "halted": {
+     "oracle": false,
+     "scratch": false,
+     "c": false,
+     "indep": false
+    },
+    "steps_all_equal": true,
+    "halt_status_all_equal": true,
+    "trace_halted": false,
+    "memory_sha_trace_scratch_indep_equal": true,
+    "scratch_vs_trace_jmp_dests": true,
+    "note": "sin HALT, steps_all_equal sólo dice que nadie paró antes del tope; la comparación con contenido es la memoria final y los destinos de JMP",
+    "all": true
+   },
+   "memory_agreement": {
+    "trace": "a514b7d522c911d1fb98650220a02635ff20fae56d1517ed828f03e976e752d2",
+    "scratch": "a514b7d522c911d1fb98650220a02635ff20fae56d1517ed828f03e976e752d2",
+    "indep": "a514b7d522c911d1fb98650220a02635ff20fae56d1517ed828f03e976e752d2",
+    "all_equal": true
    },
    "criterion": {
     "per_round_all_one": true,
@@ -1739,7 +1862,39 @@
      "out_hex": "",
      "steps": 1162,
      "status": "TIMEOUT"
+    },
+    "indep": {
+     "output": [],
+     "steps": 1162,
+     "status": "MAX"
     }
+   },
+   "engine_agreement": {
+    "steps": {
+     "oracle": 1162,
+     "scratch": 1162,
+     "c": 1162,
+     "indep": 1162
+    },
+    "halted": {
+     "oracle": false,
+     "scratch": false,
+     "c": false,
+     "indep": false
+    },
+    "steps_all_equal": true,
+    "halt_status_all_equal": true,
+    "trace_halted": false,
+    "memory_sha_trace_scratch_indep_equal": true,
+    "scratch_vs_trace_jmp_dests": true,
+    "note": "sin HALT, steps_all_equal sólo dice que nadie paró antes del tope; la comparación con contenido es la memoria final y los destinos de JMP",
+    "all": true
+   },
+   "memory_agreement": {
+    "trace": "68967f6baed5feda86903352a10d2e37ed7579a80c5bcdd9e419e25a4b1dc75d",
+    "scratch": "68967f6baed5feda86903352a10d2e37ed7579a80c5bcdd9e419e25a4b1dc75d",
+    "indep": "68967f6baed5feda86903352a10d2e37ed7579a80c5bcdd9e419e25a4b1dc75d",
+    "all_equal": true
    },
    "criterion": {
     "per_round_all_one": true,
@@ -1865,7 +2020,39 @@
      "out_hex": "",
      "steps": 112,
      "status": "HALTED"
+    },
+    "indep": {
+     "output": [],
+     "steps": 112,
+     "status": "HALTED"
     }
+   },
+   "engine_agreement": {
+    "steps": {
+     "oracle": 112,
+     "scratch": 112,
+     "c": 112,
+     "indep": 112
+    },
+    "halted": {
+     "oracle": true,
+     "scratch": true,
+     "c": true,
+     "indep": true
+    },
+    "steps_all_equal": true,
+    "halt_status_all_equal": true,
+    "trace_halted": true,
+    "memory_sha_trace_scratch_indep_equal": true,
+    "scratch_vs_trace_jmp_dests": true,
+    "note": "HALT natural: los pasos se comparan de verdad",
+    "all": true
+   },
+   "memory_agreement": {
+    "trace": "5df93f8d99da637968be1c77a7da7c309b48b8a9d0b0df63446131ede28f230f",
+    "scratch": "5df93f8d99da637968be1c77a7da7c309b48b8a9d0b0df63446131ede28f230f",
+    "indep": "5df93f8d99da637968be1c77a7da7c309b48b8a9d0b0df63446131ede28f230f",
+    "all_equal": true
    },
    "criterion": {
     "per_round_all_one": true,
@@ -1902,88 +2089,177 @@
   "G3": true,
   "G4": true
  },
+ "extra_checks": {
+  "q2_memory_sha_trace_scratch_indep_equal": true,
+  "q4_engine_agreement_all": {
+   "ROT": true,
+   "CRAZY": true,
+   "DLOAD": true
+  }
+ },
  "all_gates_pass": true,
  "g0_recomputation": {
-  "OUT": {
-   "checks": {
-    "x_value_is_derived": true,
-    "x_positions_derived": true,
-    "phase_alternates": true,
-    "fillers_harmless_whole_cycle": true,
-    "trampoline_value": true,
-    "jmp_decodes_to_jmp": true,
-    "table_points_to_trampoline": true,
-    "dload_seed": true,
-    "d_at_first_jmp_formula": true
+  "targets": {
+   "OUT": {
+    "checks": {
+     "solution_exists": true,
+     "shift_is_canonical_mod94": true,
+     "x_cells_hold_canonical_value": true,
+     "image_x_is_a_solution": true,
+     "body_cells_printable": true,
+     "fillers_harmless_whole_cycle": true,
+     "jmp_cell_decodes_jmp": true,
+     "trampoline_is_shift_minus_1": true,
+     "table_points_to_trampoline": true,
+     "table_covers_R_rounds": true,
+     "prefix_harmless_at_load": true,
+     "dload_seed": true,
+     "image_printable": true
+    },
+    "ok": true,
+    "canonical": {
+     "s1": 25,
+     "gap": 4,
+     "x_value": 74
+    },
+    "n_solutions": 2
    },
-   "ok": true,
-   "derived_x_value": 74,
-   "derived_shift": 25
+   "IN": {
+    "checks": {
+     "solution_exists": true,
+     "shift_is_canonical_mod94": true,
+     "x_cells_hold_canonical_value": true,
+     "image_x_is_a_solution": true,
+     "body_cells_printable": true,
+     "fillers_harmless_whole_cycle": true,
+     "jmp_cell_decodes_jmp": true,
+     "trampoline_is_shift_minus_1": true,
+     "table_points_to_trampoline": true,
+     "table_covers_R_rounds": true,
+     "prefix_harmless_at_load": true,
+     "dload_seed": true,
+     "image_printable": true
+    },
+    "ok": true,
+    "canonical": {
+     "s1": 43,
+     "gap": 4,
+     "x_value": 74
+    },
+    "n_solutions": 2
+   },
+   "ROT": {
+    "checks": {
+     "solution_exists": true,
+     "shift_is_canonical_mod94": true,
+     "x_cells_hold_canonical_value": true,
+     "image_x_is_a_solution": true,
+     "body_cells_printable": true,
+     "fillers_harmless_whole_cycle": true,
+     "jmp_cell_decodes_jmp": true,
+     "trampoline_is_shift_minus_1": true,
+     "table_points_to_trampoline": true,
+     "table_covers_R_rounds": true,
+     "prefix_harmless_at_load": true,
+     "dload_seed": true,
+     "image_printable": true
+    },
+    "ok": true,
+    "canonical": {
+     "s1": 59,
+     "gap": 4,
+     "x_value": 74
+    },
+    "n_solutions": 2
+   },
+   "DLOAD": {
+    "checks": {
+     "solution_exists": true,
+     "shift_is_canonical_mod94": true,
+     "x_cells_hold_canonical_value": true,
+     "image_x_is_a_solution": true,
+     "body_cells_printable": true,
+     "fillers_harmless_whole_cycle": true,
+     "jmp_cell_decodes_jmp": true,
+     "trampoline_is_shift_minus_1": true,
+     "table_points_to_trampoline": true,
+     "table_covers_R_rounds": true,
+     "prefix_harmless_at_load": true,
+     "dload_seed": true,
+     "image_printable": true
+    },
+    "ok": true,
+    "canonical": {
+     "s1": 60,
+     "gap": 4,
+     "x_value": 74
+    },
+    "n_solutions": 2
+   },
+   "CRAZY": {
+    "checks": {
+     "solution_exists": true,
+     "shift_is_canonical_mod94": true,
+     "x_cells_hold_canonical_value": true,
+     "image_x_is_a_solution": true,
+     "body_cells_printable": true,
+     "fillers_harmless_whole_cycle": true,
+     "jmp_cell_decodes_jmp": true,
+     "trampoline_is_shift_minus_1": true,
+     "table_points_to_trampoline": true,
+     "table_covers_R_rounds": true,
+     "prefix_harmless_at_load": true,
+     "dload_seed": true,
+     "image_printable": true
+    },
+    "ok": true,
+    "canonical": {
+     "s1": 82,
+     "gap": 4,
+     "x_value": 74
+    },
+    "n_solutions": 2
+   }
   },
-  "IN": {
-   "checks": {
-    "x_value_is_derived": true,
-    "x_positions_derived": true,
-    "phase_alternates": true,
-    "fillers_harmless_whole_cycle": true,
-    "trampoline_value": true,
-    "jmp_decodes_to_jmp": true,
-    "table_points_to_trampoline": true,
-    "dload_seed": true,
-    "d_at_first_jmp_formula": true
+  "controls": {
+   "ctrl_phase": {
+    "ok": false,
+    "failed_checks": [
+     "image_x_is_a_solution",
+     "x_cells_hold_canonical_value"
+    ],
+    "detected": true
    },
-   "ok": true,
-   "derived_x_value": 74,
-   "derived_shift": 43
+   "ctrl_filler": {
+    "ok": false,
+    "failed_checks": [
+     "fillers_harmless_whole_cycle"
+    ],
+    "detected": true
+   },
+   "mut_table_cell": {
+    "ok": false,
+    "failed_checks": [
+     "table_points_to_trampoline"
+    ],
+    "detected": true
+   },
+   "mut_jmp_cell": {
+    "ok": false,
+    "failed_checks": [
+     "jmp_cell_decodes_jmp"
+    ],
+    "detected": true
+   },
+   "mut_dload_seed": {
+    "ok": false,
+    "failed_checks": [
+     "dload_seed"
+    ],
+    "detected": true
+   }
   },
-  "ROT": {
-   "checks": {
-    "x_value_is_derived": true,
-    "x_positions_derived": true,
-    "phase_alternates": true,
-    "fillers_harmless_whole_cycle": true,
-    "trampoline_value": true,
-    "jmp_decodes_to_jmp": true,
-    "table_points_to_trampoline": true,
-    "dload_seed": true,
-    "d_at_first_jmp_formula": true
-   },
-   "ok": true,
-   "derived_x_value": 74,
-   "derived_shift": 59
-  },
-  "DLOAD": {
-   "checks": {
-    "x_value_is_derived": true,
-    "x_positions_derived": true,
-    "phase_alternates": true,
-    "fillers_harmless_whole_cycle": true,
-    "trampoline_value": true,
-    "jmp_decodes_to_jmp": true,
-    "table_points_to_trampoline": true,
-    "dload_seed": true,
-    "d_at_first_jmp_formula": true
-   },
-   "ok": true,
-   "derived_x_value": 74,
-   "derived_shift": 60
-  },
-  "CRAZY": {
-   "checks": {
-    "x_value_is_derived": true,
-    "x_positions_derived": true,
-    "phase_alternates": true,
-    "fillers_harmless_whole_cycle": true,
-    "trampoline_value": true,
-    "jmp_decodes_to_jmp": true,
-    "table_points_to_trampoline": true,
-    "dload_seed": true,
-    "d_at_first_jmp_formula": true
-   },
-   "ok": true,
-   "derived_x_value": 74,
-   "derived_shift": 82
-  }
+  "ok": true
  },
  "scratch_vector": {
   "fixture": "tools/fixtures/hello_world_40.mb",
@@ -2003,7 +2279,10 @@
   "oracle_ok": true,
   "xlat2_matches_repo": true,
   "crazy_matches_repo": true,
-  "crazy_pairs_checked": 90000
+  "crazy_pairs_checked": 90000,
+  "crazy_matches_repo_full_range_random": true,
+  "crazy_full_range_pairs": 100000,
+  "crazy_full_range_seed": 20261111
  },
  "images": {
   "out_block": {

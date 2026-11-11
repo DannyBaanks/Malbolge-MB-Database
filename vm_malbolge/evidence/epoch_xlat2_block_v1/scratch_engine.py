@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """scratch_engine.py — motor de Malbolge escrito desde la especificación de 1998.
 
-Sin importar nada del repo: las tres tablas se teclean desde la especificación
-clásica (Olmstead 1998) y la semántica se implementa sobre los opcodes canónicos
-`(mem[c] + c) % 94` = {4 jmp, 5 out, 23 rot, 39 crazy, 40 dload, 62 in, 68 nop,
-81 end}. Sirve como cuarto motor independiente para `epoch_xlat2_block_v1`:
-se valida contra el vector conocido `tools/fixtures/hello_world_40.mb`
-("Hello World!", 40 pasos) y contra las imágenes del pack.
+Sin importar nada del repo: las tablas (XLAT2 y la matriz crazy 3x3) se teclean
+desde la especificación clásica (Olmstead 1998) y la semántica se implementa sobre
+los opcodes canónicos `(mem[c] + c) % 94` = {4 jmp, 5 out, 23 in, 39 rot,
+40 dload, 62 crazy, 68 nop, 81 end}. Sirve como motor independiente (de
+implementación, no de tablas) para `epoch_xlat2_block_v1`: se valida contra el
+vector conocido `tools/fixtures/hello_world_40.mb` ("Hello World!", 40 pasos) y
+contra las imágenes del pack.
+
+Celda no imprimible al decodificar: la implementación de referencia de 1998 se
+queda en bucle; este motor para con status "NONPRINT" (igual que el runner C
+restringido). Corrección del 2026-11-11, tercera pasada: antes la ejecutaba.
 
 Uso:  python3 scratch_engine.py <imagen.mb> [max_steps]
 """
@@ -59,6 +64,9 @@ def run(image: bytes, max_steps: int = 10000, stdin: bytes = b"",
     events = []
     for step in range(1, max_steps + 1):
         cell = mem[c]
+        if not 33 <= cell <= 126:
+            return {"out": bytes(out), "steps": step, "status": "NONPRINT",
+                    "events": events, "mem": mem}
         o = (cell + c) % 94
         dest = None
         if collect:
@@ -84,7 +92,7 @@ def run(image: bytes, max_steps: int = 10000, stdin: bytes = b"",
             if collect:
                 events[-1]["dest"] = dest
             return {"out": bytes(out), "steps": step, "status": "HALTED",
-                    "events": events}
+                    "events": events, "mem": mem}
         if collect:
             events[-1]["dest"] = dest
         if 33 <= mem[c] <= 126:
@@ -92,7 +100,7 @@ def run(image: bytes, max_steps: int = 10000, stdin: bytes = b"",
         c = (c + 1) % MEM
         d = (d + 1) % MEM
     return {"out": bytes(out), "steps": max_steps, "status": "MAX",
-            "events": events}
+            "events": events, "mem": mem}
 
 
 if __name__ == "__main__":

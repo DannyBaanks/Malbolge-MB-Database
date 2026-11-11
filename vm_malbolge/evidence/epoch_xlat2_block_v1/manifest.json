@@ -1,6 +1,6 @@
 {
   "schema": "isyco-evidence-pack-v1",
-  "created_at": "2026-11-11T17:26:22.893315+00:00",
+  "created_at": "2026-11-11T17:52:38.195271+00:00",
   "command": "python3 -I vm_malbolge/evidence/epoch_xlat2_block_v1/probe.py </dev/null",
   "exit_code": 0,
   "environment": {
@@ -14,19 +14,19 @@
     },
     {
       "file": "VERDICT.md",
-      "sha256": "289316a6a4d22e3480e128b339233c9793848b74e234d7453de163b90e25d5c4"
+      "sha256": "dde4b44907112f4bac63b6ca36e56f470d2c6ee56ff1dfae3d79de12278d43dc"
     },
     {
       "file": "probe.py",
-      "sha256": "395379e55551319ea4b2ca6f6b25838e7a7e6afc7a2663b55fdbf8b238c8a09a"
+      "sha256": "24d8dc59228658a0526f990fcac096708aba461d367f55365136ee3164c3e41f"
     },
     {
       "file": "scratch_engine.py",
-      "sha256": "1f76d33de2217546a05d182fc3fb3039e175a7ed1634b7f1ee3a20c8771d3591"
+      "sha256": "8e426706594c23de1db3ce45cc18939391138e48c00faa2f2809a237653750a2"
     },
     {
       "file": "manifest.py",
-      "sha256": "d61f84daf9fce311ec760ea50572b72186e1cfb9a0ae8572e0e1f339cf1cd6db"
+      "sha256": "3a51fb75c85bb3a44dcb5cc955021772785ab408fc2bbba121832e3dc1cf5e45"
     },
     {
       "file": "out_block.mb",
@@ -54,11 +54,11 @@
     },
     {
       "file": "results.json",
-      "sha256": "87620630825c144fa1774c5ab3d797f1aa50f2b097ff83bb5b723273392f7a3d"
+      "sha256": "ec734427a7f940cb143bb642f77b1ddbceb7cdda160f5d4981f72f86d589d3c9"
     },
     {
       "file": "stdout.raw.txt",
-      "sha256": "91046f9e267498807a1a7ddd82a3c7060440a552cca85a5d29f1557796f2e634"
+      "sha256": "d9764909cfcc25dd5898077fbe569deae51af571316b29a1b00795e836302053"
     }
   ],
   "dependencies": {
@@ -70,7 +70,7 @@
   },
   "claims": [
     {
-      "text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, JMP, tabla) se deriva en el probe de los ciclos de XLAT2, y la puerta G0 lo recalcula de forma independiente",
+      "text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, JMP, tabla) se deriva en el probe de los ciclos de XLAT2, y la puerta G0 (tercera pasada) lo comprueba leyendo los bytes de la imagen con código propio y las tablas del motor scratch; cinco imágenes rotas a propósito la fallan",
       "status": "DEMONSTRATED"
     },
     {
@@ -78,7 +78,7 @@
       "status": "DEMONSTRATED"
     },
     {
-      "text": "C3: oráculo, intérprete independiente, trazador (que registra bytes), runner C y motor scratch (escrito desde la especificación de 1998, validado con el vector 'Hello World!' a 40 pasos) coinciden byte a byte y en pasos en la ejecución acotada",
+      "text": "C3: oráculo, intérprete independiente, trazador (que registra bytes), runner C y motor scratch (escrito desde la especificación de 1998, validado con el vector 'Hello World!' a 40 pasos) coinciden byte a byte y en el paso exacto de cada uno de los 60 OUT (tope s-1 / s); la memoria final coincide en trazador, scratch e intérprete independiente",
       "status": "DEMONSTRATED"
     },
     {
@@ -110,12 +110,16 @@
       "status": "DEMONSTRATED"
     },
     {
-      "text": "C11: las puertas G0..G4 están computadas en el probe (G0 recalcula la construcción, G1 compara cinco motores en bytes y pasos, G3 exige el opcode 39 concreto y G4 compara la declaración previa con lo medido)",
+      "text": "C11: las puertas G0..G4 están computadas en el probe (G0 recalcula la construcción con controles negativos, G1 compara cinco motores en bytes y en el paso de cada OUT, G3 exige el opcode 39 concreto y G4 es un check de regresión contra lo publicado en 3bbdfb5, no un pre-registro)",
       "status": "DEMONSTRATED"
     },
     {
       "text": "C12: el bloque de IN se construye pero no se ejecuta (no medido)",
       "status": "NOT_DEMONSTRATED"
+    },
+    {
+      "text": "C13: en rot/crazy/dload_block, oráculo, scratch, runner C e intérprete independiente coinciden en pasos y HALT, y la memoria final coincide en trazador, scratch e indep (fuera de G0..G4; la memoria del oráculo y del runner C no se compara)",
+      "status": "DEMONSTRATED"
     }
   ]
 }

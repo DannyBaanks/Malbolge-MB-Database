@@ -32,7 +32,9 @@ DEPENDENCIES = {
 CLAIMS = [
     {"text": "C1: el cálculo del bloque (posiciones, valores, relleno, trampolín, "
              "JMP, tabla) se deriva en el probe de los ciclos de XLAT2, y la "
-             "puerta G0 lo recalcula de forma independiente",
+             "puerta G0 (tercera pasada) lo comprueba leyendo los bytes de la "
+             "imagen con código propio y las tablas del motor scratch; cinco "
+             "imágenes rotas a propósito la fallan",
      "status": "DEMONSTRATED"},
     {"text": "C2: out_block.mb hace la operación exactamente una vez por vuelta "
              "durante 60 vueltas, con PCs alternantes 119/123 y sin ningún "
@@ -41,7 +43,9 @@ CLAIMS = [
     {"text": "C3: oráculo, intérprete independiente, trazador (que registra "
              "bytes), runner C y motor scratch (escrito desde la especificación "
              "de 1998, validado con el vector 'Hello World!' a 40 pasos) "
-             "coinciden byte a byte y en pasos en la ejecución acotada",
+             "coinciden byte a byte y en el paso exacto de cada uno de los 60 OUT "
+             "(tope s-1 / s); la memoria final coincide en trazador, scratch e "
+             "intérprete independiente",
      "status": "DEMONSTRATED"},
     {"text": "C4: el control de desfase produce 2 y 0 operaciones por vuelta "
              "alternadas",
@@ -63,12 +67,18 @@ CLAIMS = [
              "caen todos en el trampolín, comprobado dentro del probe",
      "status": "DEMONSTRATED"},
     {"text": "C11: las puertas G0..G4 están computadas en el probe (G0 recalcula "
-             "la construcción, G1 compara cinco motores en bytes y pasos, G3 "
-             "exige el opcode 39 concreto y G4 compara la declaración previa "
-             "con lo medido)",
+             "la construcción con controles negativos, G1 compara cinco motores en "
+             "bytes y en el paso de cada OUT, G3 exige el opcode 39 concreto y G4 "
+             "es un check de regresión contra lo publicado en 3bbdfb5, no un "
+             "pre-registro)",
      "status": "DEMONSTRATED"},
     {"text": "C12: el bloque de IN se construye pero no se ejecuta (no medido)",
      "status": "NOT_DEMONSTRATED"},
+    {"text": "C13: en rot/crazy/dload_block, oráculo, scratch, runner C e "
+             "intérprete independiente coinciden en pasos y HALT, y la memoria "
+             "final coincide en trazador, scratch e indep (fuera de G0..G4; la "
+             "memoria del oráculo y del runner C no se compara)",
+     "status": "DEMONSTRATED"},
 ]
 
 
