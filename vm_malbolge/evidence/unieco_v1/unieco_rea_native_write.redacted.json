@@ -1,0 +1,69 @@
+{
+  "evidence_id": "ev_0c52ec1a6574f62321d1338dba916aa110842f1710e85cce1808172e3365952b",
+  "subject": {
+    "name": "olmstead",
+    "digest": {
+      "sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+    },
+    "local_path": "<PUREEPOCH>/build/olmstead",
+    "format": "unknown",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rizin",
+    "name": "Rizin",
+    "version": null
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.reverse-engineering.command-observation",
+  "operation": "execute_rizin_command",
+  "parameters": {
+    "path": "<PUREEPOCH>/build/olmstead",
+    "command": "e scr.color=0; pd 10 @ 0x146a",
+    "provider_executable": "rizin",
+    "command_arguments": [
+      "-N",
+      "-q",
+      "-c",
+      "e scr.color=0; pd 10 @ 0x146a",
+      "<PUREEPOCH>/build/olmstead"
+    ]
+  },
+  "raw_result": {
+    "stdout": "        :   0x0000146a      movzx esi, word [rdx]\n        :   0x0000146d      mov   qword [rsp+0x08], rdx\n        :   0x00001472      call  sym.op\n        :   0x00001477      mov   rdx, qword [rsp+0x08]\n        :   0x0000147c      lea   r8, qword obj.xlat1                  ; 0x21c0 ; \"+b(29e*j1VMEKLyC})8&m#~W>qxdRp0wkrUo[D7,XTcA\\\"lI.v%{gJh4G\\-=O@5`_3i<?Z';FNQuY]szf$!BS/|t:Pn6^Ha\"\n        :   0x00001483      mov   r10d, eax\n        :   0x00001486      mov   word [rdx], ax\n        `=< 0x00001489      jmp   0x1328\n            0x0000148e      mov   rcx, qword [obj.stderr]              ; obj.stderr_GLIBC_2.2.5\n                                                                       ; [0x4040:8]=0\n            0x00001495      mov   edx, 0x14\n",
+    "stderr": "",
+    "exit_code": 0,
+    "signal": null,
+    "output_truncated": false,
+    "completion_status": "complete",
+    "artifact_sha256_after": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "artifact_changed": false
+  },
+  "normalized_result": {
+    "stdout": "        :   0x0000146a      movzx esi, word [rdx]\n        :   0x0000146d      mov   qword [rsp+0x08], rdx\n        :   0x00001472      call  sym.op\n        :   0x00001477      mov   rdx, qword [rsp+0x08]\n        :   0x0000147c      lea   r8, qword obj.xlat1                  ; 0x21c0 ; \"+b(29e*j1VMEKLyC})8&m#~W>qxdRp0wkrUo[D7,XTcA\\\"lI.v%{gJh4G\\-=O@5`_3i<?Z';FNQuY]szf$!BS/|t:Pn6^Ha\"\n        :   0x00001483      mov   r10d, eax\n        :   0x00001486      mov   word [rdx], ax\n        `=< 0x00001489      jmp   0x1328\n            0x0000148e      mov   rcx, qword [obj.stderr]              ; obj.stderr_GLIBC_2.2.5\n                                                                       ; [0x4040:8]=0\n            0x00001495      mov   edx, 0x14\n",
+    "stderr": "",
+    "exit_code": 0,
+    "signal": null,
+    "output_truncated": false,
+    "completion_status": "complete",
+    "artifact_sha256_after": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "artifact_changed": false
+  },
+  "confidence": "observed",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "The executable version and supported formats are reported as unknown because no reliable version probe was performed.",
+    "A non-zero process exit is preserved as an observed command result.",
+    "Rizin commands and retained plugins may read files or access network resources outside the selected artifact; those external inputs are not bound to Evidence.",
+    "When both are available, pre-run and post-run digests detect artifact changes across the provider call but cannot prove the exact bytes consumed during the call."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "<PUREEPOCH>/build/olmstead"
+    }
+  ],
+  "evidence_links": []
+}

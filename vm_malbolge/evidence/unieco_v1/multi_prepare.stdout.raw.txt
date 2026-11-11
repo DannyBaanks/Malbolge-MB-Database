@@ -1,0 +1,495 @@
+{
+  "gate_commit": "6209ea1",
+  "base": "f6adbc3",
+  "landing": 19696,
+  "code_start": 19697,
+  "d_after_jump": 42,
+  "initial_a": 19696,
+  "write_instruction_positions": {
+    "47": 19708,
+    "64": 19744,
+    "123": 19827
+  },
+  "data_initial": {
+    "41": 40,
+    "42": 39,
+    "47": 115,
+    "48": 33,
+    "49": 49,
+    "50": 125,
+    "51": 66,
+    "52": 46,
+    "64": 111,
+    "65": 33,
+    "66": 67,
+    "67": 50,
+    "68": 49,
+    "122": 34,
+    "123": 104,
+    "124": 87,
+    "125": 67,
+    "126": 102
+  },
+  "cases": {
+    "main": {
+      "sha256": "2d9be62c526ea22b5d36f0d32a78c65818f1ce8da954f49a996c555021acf66f",
+      "source_length": 19830,
+      "steps": 14,
+      "target_values": {
+        "47": 115,
+        "64": 111,
+        "123": 56
+      },
+      "checks": {
+        "strict_loader_all_cells": true,
+        "no_in_out": false,
+        "scratch_halt": true,
+        "independent_halt": false,
+        "oracle_halt": false,
+        "equal_steps": false,
+        "scratch_independent_memory_equal": false,
+        "olmstead_halt_no_output": true,
+        "runner_halt": false,
+        "expected_targets": false
+      },
+      "all_checks": false,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 40,
+          "d": 42
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 4,
+          "d": 40
+        },
+        {
+          "step": 5,
+          "pc": 123,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 6,
+          "pc": 124,
+          "op": 23,
+          "d": 42
+        },
+        {
+          "step": 7,
+          "pc": 125,
+          "op": 4,
+          "d": 43
+        },
+        {
+          "step": 8,
+          "pc": 120,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 9,
+          "pc": 121,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 10,
+          "pc": 122,
+          "op": 56,
+          "d": 46
+        },
+        {
+          "step": 11,
+          "pc": 123,
+          "op": 24,
+          "d": 47
+        },
+        {
+          "step": 12,
+          "pc": 124,
+          "op": 78,
+          "d": 48
+        },
+        {
+          "step": 13,
+          "pc": 125,
+          "op": 4,
+          "d": 49
+        },
+        {
+          "step": 14,
+          "pc": 50,
+          "op": 81,
+          "d": 50
+        }
+      ],
+      "oracle": {
+        "output": "",
+        "steps": 6,
+        "status": "EOF"
+      },
+      "runner_stderr": "steps: 6 | status: HALTED\n"
+    },
+    "no47": {
+      "sha256": "ee6b2f3dacd481cb855f2a7e50cadefdb138cf42fd27a5e3585c2839a742c4b2",
+      "source_length": 19830,
+      "steps": 14,
+      "target_values": {
+        "47": 115,
+        "64": 111,
+        "123": 56
+      },
+      "checks": {
+        "strict_loader_all_cells": true,
+        "no_in_out": false,
+        "scratch_halt": true,
+        "independent_halt": false,
+        "oracle_halt": false,
+        "equal_steps": false,
+        "scratch_independent_memory_equal": false,
+        "olmstead_halt_no_output": true,
+        "runner_halt": false,
+        "expected_targets": true
+      },
+      "all_checks": false,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 40,
+          "d": 42
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 4,
+          "d": 40
+        },
+        {
+          "step": 5,
+          "pc": 123,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 6,
+          "pc": 124,
+          "op": 23,
+          "d": 42
+        },
+        {
+          "step": 7,
+          "pc": 125,
+          "op": 4,
+          "d": 43
+        },
+        {
+          "step": 8,
+          "pc": 120,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 9,
+          "pc": 121,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 10,
+          "pc": 122,
+          "op": 56,
+          "d": 46
+        },
+        {
+          "step": 11,
+          "pc": 123,
+          "op": 24,
+          "d": 47
+        },
+        {
+          "step": 12,
+          "pc": 124,
+          "op": 78,
+          "d": 48
+        },
+        {
+          "step": 13,
+          "pc": 125,
+          "op": 4,
+          "d": 49
+        },
+        {
+          "step": 14,
+          "pc": 50,
+          "op": 81,
+          "d": 50
+        }
+      ],
+      "oracle": {
+        "output": "",
+        "steps": 6,
+        "status": "EOF"
+      },
+      "runner_stderr": "steps: 6 | status: HALTED\n"
+    },
+    "no64": {
+      "sha256": "0627541a528424890e93407395e91ad680923c5d56e7b54ccf65c4f0316eca17",
+      "source_length": 19830,
+      "steps": 14,
+      "target_values": {
+        "47": 115,
+        "64": 111,
+        "123": 56
+      },
+      "checks": {
+        "strict_loader_all_cells": true,
+        "no_in_out": false,
+        "scratch_halt": true,
+        "independent_halt": false,
+        "oracle_halt": false,
+        "equal_steps": false,
+        "scratch_independent_memory_equal": false,
+        "olmstead_halt_no_output": true,
+        "runner_halt": false,
+        "expected_targets": true
+      },
+      "all_checks": false,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 40,
+          "d": 42
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 4,
+          "d": 40
+        },
+        {
+          "step": 5,
+          "pc": 123,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 6,
+          "pc": 124,
+          "op": 23,
+          "d": 42
+        },
+        {
+          "step": 7,
+          "pc": 125,
+          "op": 4,
+          "d": 43
+        },
+        {
+          "step": 8,
+          "pc": 120,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 9,
+          "pc": 121,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 10,
+          "pc": 122,
+          "op": 56,
+          "d": 46
+        },
+        {
+          "step": 11,
+          "pc": 123,
+          "op": 24,
+          "d": 47
+        },
+        {
+          "step": 12,
+          "pc": 124,
+          "op": 78,
+          "d": 48
+        },
+        {
+          "step": 13,
+          "pc": 125,
+          "op": 4,
+          "d": 49
+        },
+        {
+          "step": 14,
+          "pc": 50,
+          "op": 81,
+          "d": 50
+        }
+      ],
+      "oracle": {
+        "output": "",
+        "steps": 6,
+        "status": "EOF"
+      },
+      "runner_stderr": "steps: 6 | status: HALTED\n"
+    },
+    "no123": {
+      "sha256": "9d849b2a844c96abaeb124a8ee51b07ece7b77222c4c324bd689d1baa36fddd1",
+      "source_length": 19830,
+      "steps": 14,
+      "target_values": {
+        "47": 115,
+        "64": 111,
+        "123": 56
+      },
+      "checks": {
+        "strict_loader_all_cells": true,
+        "no_in_out": false,
+        "scratch_halt": true,
+        "independent_halt": false,
+        "oracle_halt": false,
+        "equal_steps": false,
+        "scratch_independent_memory_equal": false,
+        "olmstead_halt_no_output": true,
+        "runner_halt": false,
+        "expected_targets": true
+      },
+      "all_checks": false,
+      "trace": [
+        {
+          "step": 1,
+          "pc": 0,
+          "op": 40,
+          "d": 0
+        },
+        {
+          "step": 2,
+          "pc": 1,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 3,
+          "pc": 2,
+          "op": 40,
+          "d": 42
+        },
+        {
+          "step": 4,
+          "pc": 3,
+          "op": 4,
+          "d": 40
+        },
+        {
+          "step": 5,
+          "pc": 123,
+          "op": 39,
+          "d": 41
+        },
+        {
+          "step": 6,
+          "pc": 124,
+          "op": 23,
+          "d": 42
+        },
+        {
+          "step": 7,
+          "pc": 125,
+          "op": 4,
+          "d": 43
+        },
+        {
+          "step": 8,
+          "pc": 120,
+          "op": 68,
+          "d": 44
+        },
+        {
+          "step": 9,
+          "pc": 121,
+          "op": 68,
+          "d": 45
+        },
+        {
+          "step": 10,
+          "pc": 122,
+          "op": 56,
+          "d": 46
+        },
+        {
+          "step": 11,
+          "pc": 123,
+          "op": 24,
+          "d": 47
+        },
+        {
+          "step": 12,
+          "pc": 124,
+          "op": 78,
+          "d": 48
+        },
+        {
+          "step": 13,
+          "pc": 125,
+          "op": 4,
+          "d": 49
+        },
+        {
+          "step": 14,
+          "pc": 50,
+          "op": 81,
+          "d": 50
+        }
+      ],
+      "oracle": {
+        "output": "",
+        "steps": 6,
+        "status": "EOF"
+      },
+      "runner_stderr": "steps: 6 | status: HALTED\n"
+    }
+  }
+}

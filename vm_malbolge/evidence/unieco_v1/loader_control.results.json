@@ -1,0 +1,8 @@
+{
+  "original_first": 40,
+  "mutant_first": 33,
+  "sha256": "4c49e1aab855a5e8ddcd0ac0ebf4075ba30286dd62bede23bac440c6b22710ec",
+  "rc": 1,
+  "stderr": "invalid character in source file\n",
+  "rejected": true
+}

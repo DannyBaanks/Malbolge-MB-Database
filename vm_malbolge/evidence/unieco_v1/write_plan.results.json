@@ -1,0 +1,950 @@
+{
+  "cell_count": 84,
+  "one_crazy_solvable": 51,
+  "two_crazy_solvable": 84,
+  "conditions": "assumes an arbitrary independent accumulator can be supplied before EACH operation and d points at the cell; does not synthesize those operations or an Olmstead program",
+  "cases": [
+    {
+      "cell": 42,
+      "prepared": 39,
+      "needed": 114,
+      "one_crazy_controls": [
+        29419
+      ],
+      "two_crazy_controls": [
+        0,
+        29419
+      ]
+    },
+    {
+      "cell": 43,
+      "prepared": 119,
+      "needed": 74,
+      "one_crazy_controls": [
+        29559
+      ],
+      "two_crazy_controls": [
+        0,
+        29559
+      ]
+    },
+    {
+      "cell": 44,
+      "prepared": 118,
+      "needed": 41,
+      "one_crazy_controls": [
+        29486
+      ],
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 45,
+      "prepared": 117,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 46,
+      "prepared": 116,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29489
+      ]
+    },
+    {
+      "cell": 48,
+      "prepared": 11,
+      "needed": 37,
+      "one_crazy_controls": [
+        29489
+      ],
+      "two_crazy_controls": [
+        0,
+        29489
+      ]
+    },
+    {
+      "cell": 49,
+      "prepared": 29534,
+      "needed": 37,
+      "one_crazy_controls": [
+        29507
+      ],
+      "two_crazy_controls": [
+        0,
+        29507
+      ]
+    },
+    {
+      "cell": 50,
+      "prepared": 25,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29505
+      ]
+    },
+    {
+      "cell": 51,
+      "prepared": 29562,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29564
+      ]
+    },
+    {
+      "cell": 52,
+      "prepared": 46,
+      "needed": 37,
+      "one_crazy_controls": [
+        29505
+      ],
+      "two_crazy_controls": [
+        0,
+        29505
+      ]
+    },
+    {
+      "cell": 53,
+      "prepared": 109,
+      "needed": 41,
+      "one_crazy_controls": [
+        29486
+      ],
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 54,
+      "prepared": 108,
+      "needed": 37,
+      "one_crazy_controls": [
+        29487
+      ],
+      "two_crazy_controls": [
+        0,
+        29487
+      ]
+    },
+    {
+      "cell": 55,
+      "prepared": 107,
+      "needed": 41,
+      "one_crazy_controls": [
+        29508
+      ],
+      "two_crazy_controls": [
+        0,
+        29508
+      ]
+    },
+    {
+      "cell": 56,
+      "prepared": 106,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29505
+      ]
+    },
+    {
+      "cell": 57,
+      "prepared": 105,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29505
+      ]
+    },
+    {
+      "cell": 58,
+      "prepared": 104,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        2,
+        29509
+      ]
+    },
+    {
+      "cell": 59,
+      "prepared": 103,
+      "needed": 41,
+      "one_crazy_controls": [
+        29504
+      ],
+      "two_crazy_controls": [
+        0,
+        29504
+      ]
+    },
+    {
+      "cell": 60,
+      "prepared": 102,
+      "needed": 74,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29543
+      ]
+    },
+    {
+      "cell": 61,
+      "prepared": 101,
+      "needed": 41,
+      "one_crazy_controls": [
+        29502
+      ],
+      "two_crazy_controls": [
+        0,
+        29502
+      ]
+    },
+    {
+      "cell": 62,
+      "prepared": 100,
+      "needed": 41,
+      "one_crazy_controls": [
+        29504
+      ],
+      "two_crazy_controls": [
+        0,
+        29504
+      ]
+    },
+    {
+      "cell": 63,
+      "prepared": 99,
+      "needed": 37,
+      "one_crazy_controls": [
+        29505
+      ],
+      "two_crazy_controls": [
+        0,
+        29505
+      ]
+    },
+    {
+      "cell": 65,
+      "prepared": 29490,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29487
+      ]
+    },
+    {
+      "cell": 66,
+      "prepared": 70,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29541
+      ]
+    },
+    {
+      "cell": 67,
+      "prepared": 29564,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29561
+      ]
+    },
+    {
+      "cell": 68,
+      "prepared": 49,
+      "needed": 37,
+      "one_crazy_controls": [
+        29505
+      ],
+      "two_crazy_controls": [
+        0,
+        29505
+      ]
+    },
+    {
+      "cell": 69,
+      "prepared": 93,
+      "needed": 37,
+      "one_crazy_controls": [
+        29487
+      ],
+      "two_crazy_controls": [
+        0,
+        29487
+      ]
+    },
+    {
+      "cell": 70,
+      "prepared": 92,
+      "needed": 37,
+      "one_crazy_controls": [
+        29489
+      ],
+      "two_crazy_controls": [
+        0,
+        29489
+      ]
+    },
+    {
+      "cell": 71,
+      "prepared": 91,
+      "needed": 37,
+      "one_crazy_controls": [
+        29487
+      ],
+      "two_crazy_controls": [
+        0,
+        29487
+      ]
+    },
+    {
+      "cell": 72,
+      "prepared": 90,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 73,
+      "prepared": 89,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        2,
+        29485
+      ]
+    },
+    {
+      "cell": 74,
+      "prepared": 88,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29487
+      ]
+    },
+    {
+      "cell": 75,
+      "prepared": 87,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29492
+      ]
+    },
+    {
+      "cell": 76,
+      "prepared": 86,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        2,
+        29491
+      ]
+    },
+    {
+      "cell": 77,
+      "prepared": 85,
+      "needed": 37,
+      "one_crazy_controls": [
+        29487
+      ],
+      "two_crazy_controls": [
+        0,
+        29487
+      ]
+    },
+    {
+      "cell": 78,
+      "prepared": 84,
+      "needed": 37,
+      "one_crazy_controls": [
+        29487
+      ],
+      "two_crazy_controls": [
+        0,
+        29487
+      ]
+    },
+    {
+      "cell": 79,
+      "prepared": 83,
+      "needed": 37,
+      "one_crazy_controls": [
+        29489
+      ],
+      "two_crazy_controls": [
+        0,
+        29489
+      ]
+    },
+    {
+      "cell": 80,
+      "prepared": 82,
+      "needed": 41,
+      "one_crazy_controls": [
+        29486
+      ],
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 81,
+      "prepared": 81,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29486
+      ]
+    },
+    {
+      "cell": 82,
+      "prepared": 80,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        2,
+        29557
+      ]
+    },
+    {
+      "cell": 83,
+      "prepared": 79,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29559
+      ]
+    },
+    {
+      "cell": 84,
+      "prepared": 78,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29559
+      ]
+    },
+    {
+      "cell": 85,
+      "prepared": 77,
+      "needed": 37,
+      "one_crazy_controls": [
+        29561
+      ],
+      "two_crazy_controls": [
+        0,
+        29561
+      ]
+    },
+    {
+      "cell": 86,
+      "prepared": 76,
+      "needed": 37,
+      "one_crazy_controls": [
+        29559
+      ],
+      "two_crazy_controls": [
+        0,
+        29559
+      ]
+    },
+    {
+      "cell": 87,
+      "prepared": 75,
+      "needed": 37,
+      "one_crazy_controls": [
+        29559
+      ],
+      "two_crazy_controls": [
+        0,
+        29559
+      ]
+    },
+    {
+      "cell": 88,
+      "prepared": 74,
+      "needed": 37,
+      "one_crazy_controls": [
+        29561
+      ],
+      "two_crazy_controls": [
+        0,
+        29561
+      ]
+    },
+    {
+      "cell": 89,
+      "prepared": 73,
+      "needed": 41,
+      "one_crazy_controls": [
+        29558
+      ],
+      "two_crazy_controls": [
+        0,
+        29558
+      ]
+    },
+    {
+      "cell": 90,
+      "prepared": 72,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29563
+      ]
+    },
+    {
+      "cell": 91,
+      "prepared": 71,
+      "needed": 50,
+      "one_crazy_controls": [
+        29562
+      ],
+      "two_crazy_controls": [
+        0,
+        29562
+      ]
+    },
+    {
+      "cell": 92,
+      "prepared": 70,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29541
+      ]
+    },
+    {
+      "cell": 93,
+      "prepared": 69,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29541
+      ]
+    },
+    {
+      "cell": 94,
+      "prepared": 68,
+      "needed": 41,
+      "one_crazy_controls": [
+        29538
+      ],
+      "two_crazy_controls": [
+        0,
+        29538
+      ]
+    },
+    {
+      "cell": 95,
+      "prepared": 67,
+      "needed": 37,
+      "one_crazy_controls": [
+        29541
+      ],
+      "two_crazy_controls": [
+        0,
+        29541
+      ]
+    },
+    {
+      "cell": 96,
+      "prepared": 66,
+      "needed": 42,
+      "one_crazy_controls": [
+        29545
+      ],
+      "two_crazy_controls": [
+        0,
+        29545
+      ]
+    },
+    {
+      "cell": 97,
+      "prepared": 65,
+      "needed": 50,
+      "one_crazy_controls": [
+        29556
+      ],
+      "two_crazy_controls": [
+        0,
+        29556
+      ]
+    },
+    {
+      "cell": 98,
+      "prepared": 64,
+      "needed": 41,
+      "one_crazy_controls": [
+        29540
+      ],
+      "two_crazy_controls": [
+        0,
+        29540
+      ]
+    },
+    {
+      "cell": 99,
+      "prepared": 63,
+      "needed": 37,
+      "one_crazy_controls": [
+        29541
+      ],
+      "two_crazy_controls": [
+        0,
+        29541
+      ]
+    },
+    {
+      "cell": 100,
+      "prepared": 62,
+      "needed": 41,
+      "one_crazy_controls": [
+        29544
+      ],
+      "two_crazy_controls": [
+        0,
+        29544
+      ]
+    },
+    {
+      "cell": 101,
+      "prepared": 61,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29541
+      ]
+    },
+    {
+      "cell": 102,
+      "prepared": 60,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29541
+      ]
+    },
+    {
+      "cell": 103,
+      "prepared": 59,
+      "needed": 37,
+      "one_crazy_controls": [
+        29543
+      ],
+      "two_crazy_controls": [
+        0,
+        29543
+      ]
+    },
+    {
+      "cell": 104,
+      "prepared": 58,
+      "needed": 41,
+      "one_crazy_controls": [
+        29540
+      ],
+      "two_crazy_controls": [
+        0,
+        29540
+      ]
+    },
+    {
+      "cell": 105,
+      "prepared": 57,
+      "needed": 37,
+      "one_crazy_controls": [
+        29541
+      ],
+      "two_crazy_controls": [
+        0,
+        29541
+      ]
+    },
+    {
+      "cell": 106,
+      "prepared": 56,
+      "needed": 37,
+      "one_crazy_controls": [
+        29543
+      ],
+      "two_crazy_controls": [
+        0,
+        29543
+      ]
+    },
+    {
+      "cell": 107,
+      "prepared": 55,
+      "needed": 41,
+      "one_crazy_controls": [
+        29540
+      ],
+      "two_crazy_controls": [
+        0,
+        29540
+      ]
+    },
+    {
+      "cell": 108,
+      "prepared": 54,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29540
+      ]
+    },
+    {
+      "cell": 109,
+      "prepared": 53,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29507
+      ]
+    },
+    {
+      "cell": 110,
+      "prepared": 52,
+      "needed": 41,
+      "one_crazy_controls": [
+        29510
+      ],
+      "two_crazy_controls": [
+        0,
+        29510
+      ]
+    },
+    {
+      "cell": 111,
+      "prepared": 51,
+      "needed": 42,
+      "one_crazy_controls": [
+        29503
+      ],
+      "two_crazy_controls": [
+        0,
+        29503
+      ]
+    },
+    {
+      "cell": 112,
+      "prepared": 50,
+      "needed": 37,
+      "one_crazy_controls": [
+        29507
+      ],
+      "two_crazy_controls": [
+        0,
+        29507
+      ]
+    },
+    {
+      "cell": 113,
+      "prepared": 49,
+      "needed": 37,
+      "one_crazy_controls": [
+        29505
+      ],
+      "two_crazy_controls": [
+        0,
+        29505
+      ]
+    },
+    {
+      "cell": 114,
+      "prepared": 48,
+      "needed": 37,
+      "one_crazy_controls": [
+        29505
+      ],
+      "two_crazy_controls": [
+        0,
+        29505
+      ]
+    },
+    {
+      "cell": 115,
+      "prepared": 47,
+      "needed": 37,
+      "one_crazy_controls": [
+        29507
+      ],
+      "two_crazy_controls": [
+        0,
+        29507
+      ]
+    },
+    {
+      "cell": 116,
+      "prepared": 46,
+      "needed": 41,
+      "one_crazy_controls": [
+        29504
+      ],
+      "two_crazy_controls": [
+        0,
+        29504
+      ]
+    },
+    {
+      "cell": 117,
+      "prepared": 45,
+      "needed": 41,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29504
+      ]
+    },
+    {
+      "cell": 118,
+      "prepared": 44,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29489
+      ]
+    },
+    {
+      "cell": 119,
+      "prepared": 43,
+      "needed": 74,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29561
+      ]
+    },
+    {
+      "cell": 120,
+      "prepared": 42,
+      "needed": 37,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        6,
+        29487
+      ]
+    },
+    {
+      "cell": 121,
+      "prepared": 41,
+      "needed": 37,
+      "one_crazy_controls": [
+        29489
+      ],
+      "two_crazy_controls": [
+        0,
+        29489
+      ]
+    },
+    {
+      "cell": 122,
+      "prepared": 19694,
+      "needed": 37,
+      "one_crazy_controls": [
+        29489
+      ],
+      "two_crazy_controls": [
+        0,
+        29489
+      ]
+    },
+    {
+      "cell": 124,
+      "prepared": 29,
+      "needed": 68,
+      "one_crazy_controls": [
+        29538
+      ],
+      "two_crazy_controls": [
+        0,
+        29538
+      ]
+    },
+    {
+      "cell": 125,
+      "prepared": 29552,
+      "needed": 42,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        2,
+        29545
+      ]
+    },
+    {
+      "cell": 126,
+      "prepared": 102,
+      "needed": 42,
+      "one_crazy_controls": [
+        29509
+      ],
+      "two_crazy_controls": [
+        0,
+        29509
+      ]
+    },
+    {
+      "cell": 143,
+      "prepared": 113,
+      "needed": 62,
+      "one_crazy_controls": [
+        29553
+      ],
+      "two_crazy_controls": [
+        0,
+        29553
+      ]
+    },
+    {
+      "cell": 148,
+      "prepared": 108,
+      "needed": 65,
+      "one_crazy_controls": null,
+      "two_crazy_controls": [
+        0,
+        29543
+      ]
+    }
+  ]
+}

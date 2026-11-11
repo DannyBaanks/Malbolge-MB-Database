@@ -1,0 +1,76 @@
+{
+  "checks": {
+    "rea_halt": true,
+    "no_truncation": true,
+    "trace_matches_scratch": true,
+    "native_exited": true,
+    "native_before_matches_replay": true,
+    "native_after_matches_replay": true,
+    "native_static_store": true
+  },
+  "all_checks": true,
+  "native_before": [
+    [
+      47,
+      19721,
+      74
+    ],
+    [
+      64,
+      37,
+      74
+    ],
+    [
+      123,
+      104,
+      9850
+    ],
+    [
+      123,
+      9850,
+      74
+    ]
+  ],
+  "native_after": [
+    [
+      47,
+      74
+    ],
+    [
+      64,
+      74
+    ],
+    [
+      123,
+      9850
+    ],
+    [
+      123,
+      74
+    ]
+  ],
+  "rea_crazy_writes": [
+    [
+      47,
+      19721,
+      74
+    ],
+    [
+      64,
+      37,
+      74
+    ],
+    [
+      123,
+      104,
+      9850
+    ],
+    [
+      123,
+      9850,
+      74
+    ]
+  ],
+  "matched_steps": 137,
+  "limitations": "selected CRAZY stores only; native GDB breakpoint perturbs execution and observes process state, not electrical transistor-level behavior; REA replay is in-process semantics"
+}

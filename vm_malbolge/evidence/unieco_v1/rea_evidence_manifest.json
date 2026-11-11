@@ -1,0 +1,59 @@
+{
+  "raw_storage": "~/.local/state/isyco/research/unieco-rea-20261111/",
+  "raw_evidence": [
+    {
+      "file": "unieco_rea_gdb.json",
+      "sha256": "fdb0e207d08d892658da21e1c450d15c71c12beda363f8604b923fbe4c171089",
+      "evidence_id": "ev_c14bb46c27c45fe4735ff4ce8ada972952e8e43cd17da30c764ca124ddbd5481",
+      "operation": "capture_process_scenario"
+    },
+    {
+      "file": "unieco_rea_gdb2.json",
+      "sha256": "f2f30d274e4c96f413dcb804c7f3ffd23e3d568eec45856459d298c37cf4aaf1",
+      "evidence_id": "ev_5c04d104dfb370de82024566a5f4a16e06005f6e327556a166a4d7e442b54bfe",
+      "operation": "capture_process_scenario"
+    },
+    {
+      "file": "unieco_rea_gdb3.json",
+      "sha256": "5b55a1e5caa44bd15a361a10759dae36efd1584874f543dd93a465086197bbb2",
+      "evidence_id": "ev_cef7b06096338fb2e86ccc6cc957eff65b7e8520757264156a54ae0338c37091",
+      "operation": "capture_process_scenario"
+    },
+    {
+      "file": "unieco_rea_gdb4.json",
+      "sha256": "d272f0a6b802634041d383add10e244598acf6fecdb29c1369e95361402cc3da",
+      "evidence_id": "ev_a6202ac5396182b155d8c42a0f44f913e205c5a18a6d67baa878bf9ff4343c8f",
+      "operation": "capture_process_scenario"
+    },
+    {
+      "file": "unieco_rea_native_inventory.json",
+      "sha256": "ca34e8cc8eeb289f0b44021a8f0e26d027c2950b7406d64896a43db9c2d68374",
+      "evidence_id": "ev_bcb27618d596111f53b838f2b124ea01b0bc79eed1fe09e63ee0f917277126a8",
+      "operation": "execute_rizin_command"
+    },
+    {
+      "file": "unieco_rea_native_main.json",
+      "sha256": "ea377943f192aa1ad5cd260ba1d46a5ed867390a8df6441186a78f55aa8a54cd",
+      "evidence_id": "ev_cfbc2f0cf35cffb97848e360675d2577afb838205827316d9ef09bd7d6292735",
+      "operation": "execute_rizin_command"
+    },
+    {
+      "file": "unieco_rea_native_write.json",
+      "sha256": "241a1dd74e01d032c01deb434904a80a1a47a9c8b3611756dbe4a4af5e2e9bac",
+      "evidence_id": "ev_0c52ec1a6574f62321d1338dba916aa110842f1710e85cce1808172e3365952b",
+      "operation": "execute_rizin_command"
+    },
+    {
+      "file": "unieco_rea_trace.json",
+      "sha256": "2617d686e74da0bc652ee6c82339c2a2c3e4846bc3787e8d30c3726c0a40e897",
+      "evidence_id": "ev_5bdfbdf7d2b96b5176d8ec758734a3c856d2bf903cc2bcccfa5ba497d3dfb077",
+      "operation": "trace_malbolge"
+    }
+  ],
+  "redacted_repo_copies": "unieco_rea_*.redacted.json; fixed path-prefix substitutions only",
+  "native_inferior": "Olmstead ELF x86_64; identity sampled before execution, not atomic image binding",
+  "native_binary_sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+  "target_image_sha256": "d333b8b8037943fe0f8b0aa100b7b09aa3e72ad7958ace6ecb5707fba16aa64f",
+  "native_breakpoint": "main+806 before mov word [rdx],ax; main+809 after it; GDB observes inferior with ptrace",
+  "limits": "native writes are CPU instruction-level process observation, not transistor/physical signal observation; debugger conditions cover only selected stores, not all operations"
+}

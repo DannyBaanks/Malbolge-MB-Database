@@ -1,0 +1,527 @@
+{
+  "original_entry": {},
+  "preparation_halt_registers": {},
+  "required_cells": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    143,
+    148
+  ],
+  "changed_cell_count": 84,
+  "changes": [
+    {
+      "cell": 42,
+      "prepared": 39,
+      "needed": 114
+    },
+    {
+      "cell": 43,
+      "prepared": 119,
+      "needed": 74
+    },
+    {
+      "cell": 44,
+      "prepared": 118,
+      "needed": 41
+    },
+    {
+      "cell": 45,
+      "prepared": 117,
+      "needed": 41
+    },
+    {
+      "cell": 46,
+      "prepared": 116,
+      "needed": 37
+    },
+    {
+      "cell": 48,
+      "prepared": 11,
+      "needed": 37
+    },
+    {
+      "cell": 49,
+      "prepared": 29534,
+      "needed": 37
+    },
+    {
+      "cell": 50,
+      "prepared": 25,
+      "needed": 37
+    },
+    {
+      "cell": 51,
+      "prepared": 29562,
+      "needed": 41
+    },
+    {
+      "cell": 52,
+      "prepared": 46,
+      "needed": 37
+    },
+    {
+      "cell": 53,
+      "prepared": 109,
+      "needed": 41
+    },
+    {
+      "cell": 54,
+      "prepared": 108,
+      "needed": 37
+    },
+    {
+      "cell": 55,
+      "prepared": 107,
+      "needed": 41
+    },
+    {
+      "cell": 56,
+      "prepared": 106,
+      "needed": 37
+    },
+    {
+      "cell": 57,
+      "prepared": 105,
+      "needed": 37
+    },
+    {
+      "cell": 58,
+      "prepared": 104,
+      "needed": 42
+    },
+    {
+      "cell": 59,
+      "prepared": 103,
+      "needed": 41
+    },
+    {
+      "cell": 60,
+      "prepared": 102,
+      "needed": 74
+    },
+    {
+      "cell": 61,
+      "prepared": 101,
+      "needed": 41
+    },
+    {
+      "cell": 62,
+      "prepared": 100,
+      "needed": 41
+    },
+    {
+      "cell": 63,
+      "prepared": 99,
+      "needed": 37
+    },
+    {
+      "cell": 65,
+      "prepared": 29490,
+      "needed": 37
+    },
+    {
+      "cell": 66,
+      "prepared": 70,
+      "needed": 37
+    },
+    {
+      "cell": 67,
+      "prepared": 29564,
+      "needed": 37
+    },
+    {
+      "cell": 68,
+      "prepared": 49,
+      "needed": 37
+    },
+    {
+      "cell": 69,
+      "prepared": 93,
+      "needed": 37
+    },
+    {
+      "cell": 70,
+      "prepared": 92,
+      "needed": 37
+    },
+    {
+      "cell": 71,
+      "prepared": 91,
+      "needed": 37
+    },
+    {
+      "cell": 72,
+      "prepared": 90,
+      "needed": 41
+    },
+    {
+      "cell": 73,
+      "prepared": 89,
+      "needed": 42
+    },
+    {
+      "cell": 74,
+      "prepared": 88,
+      "needed": 37
+    },
+    {
+      "cell": 75,
+      "prepared": 87,
+      "needed": 41
+    },
+    {
+      "cell": 76,
+      "prepared": 86,
+      "needed": 42
+    },
+    {
+      "cell": 77,
+      "prepared": 85,
+      "needed": 37
+    },
+    {
+      "cell": 78,
+      "prepared": 84,
+      "needed": 37
+    },
+    {
+      "cell": 79,
+      "prepared": 83,
+      "needed": 37
+    },
+    {
+      "cell": 80,
+      "prepared": 82,
+      "needed": 41
+    },
+    {
+      "cell": 81,
+      "prepared": 81,
+      "needed": 41
+    },
+    {
+      "cell": 82,
+      "prepared": 80,
+      "needed": 42
+    },
+    {
+      "cell": 83,
+      "prepared": 79,
+      "needed": 37
+    },
+    {
+      "cell": 84,
+      "prepared": 78,
+      "needed": 37
+    },
+    {
+      "cell": 85,
+      "prepared": 77,
+      "needed": 37
+    },
+    {
+      "cell": 86,
+      "prepared": 76,
+      "needed": 37
+    },
+    {
+      "cell": 87,
+      "prepared": 75,
+      "needed": 37
+    },
+    {
+      "cell": 88,
+      "prepared": 74,
+      "needed": 37
+    },
+    {
+      "cell": 89,
+      "prepared": 73,
+      "needed": 41
+    },
+    {
+      "cell": 90,
+      "prepared": 72,
+      "needed": 42
+    },
+    {
+      "cell": 91,
+      "prepared": 71,
+      "needed": 50
+    },
+    {
+      "cell": 92,
+      "prepared": 70,
+      "needed": 37
+    },
+    {
+      "cell": 93,
+      "prepared": 69,
+      "needed": 37
+    },
+    {
+      "cell": 94,
+      "prepared": 68,
+      "needed": 41
+    },
+    {
+      "cell": 95,
+      "prepared": 67,
+      "needed": 37
+    },
+    {
+      "cell": 96,
+      "prepared": 66,
+      "needed": 42
+    },
+    {
+      "cell": 97,
+      "prepared": 65,
+      "needed": 50
+    },
+    {
+      "cell": 98,
+      "prepared": 64,
+      "needed": 41
+    },
+    {
+      "cell": 99,
+      "prepared": 63,
+      "needed": 37
+    },
+    {
+      "cell": 100,
+      "prepared": 62,
+      "needed": 41
+    },
+    {
+      "cell": 101,
+      "prepared": 61,
+      "needed": 37
+    },
+    {
+      "cell": 102,
+      "prepared": 60,
+      "needed": 37
+    },
+    {
+      "cell": 103,
+      "prepared": 59,
+      "needed": 37
+    },
+    {
+      "cell": 104,
+      "prepared": 58,
+      "needed": 41
+    },
+    {
+      "cell": 105,
+      "prepared": 57,
+      "needed": 37
+    },
+    {
+      "cell": 106,
+      "prepared": 56,
+      "needed": 37
+    },
+    {
+      "cell": 107,
+      "prepared": 55,
+      "needed": 41
+    },
+    {
+      "cell": 108,
+      "prepared": 54,
+      "needed": 41
+    },
+    {
+      "cell": 109,
+      "prepared": 53,
+      "needed": 37
+    },
+    {
+      "cell": 110,
+      "prepared": 52,
+      "needed": 41
+    },
+    {
+      "cell": 111,
+      "prepared": 51,
+      "needed": 42
+    },
+    {
+      "cell": 112,
+      "prepared": 50,
+      "needed": 37
+    },
+    {
+      "cell": 113,
+      "prepared": 49,
+      "needed": 37
+    },
+    {
+      "cell": 114,
+      "prepared": 48,
+      "needed": 37
+    },
+    {
+      "cell": 115,
+      "prepared": 47,
+      "needed": 37
+    },
+    {
+      "cell": 116,
+      "prepared": 46,
+      "needed": 41
+    },
+    {
+      "cell": 117,
+      "prepared": 45,
+      "needed": 41
+    },
+    {
+      "cell": 118,
+      "prepared": 44,
+      "needed": 37
+    },
+    {
+      "cell": 119,
+      "prepared": 43,
+      "needed": 74
+    },
+    {
+      "cell": 120,
+      "prepared": 42,
+      "needed": 37
+    },
+    {
+      "cell": 121,
+      "prepared": 41,
+      "needed": 37
+    },
+    {
+      "cell": 122,
+      "prepared": 19694,
+      "needed": 37
+    },
+    {
+      "cell": 124,
+      "prepared": 29,
+      "needed": 68
+    },
+    {
+      "cell": 125,
+      "prepared": 29552,
+      "needed": 42
+    },
+    {
+      "cell": 126,
+      "prepared": 102,
+      "needed": 42
+    },
+    {
+      "cell": 143,
+      "prepared": 113,
+      "needed": 62
+    },
+    {
+      "cell": 148,
+      "prepared": 108,
+      "needed": 65
+    }
+  ],
+  "synthetic_registers": {},
+  "synthetic_continuation": {
+    "steps": 820000,
+    "original_input_bytes": 10000,
+    "transplant_input_bytes": 10000,
+    "original_output_bytes": 10000,
+    "transplant_output_bytes": 10000,
+    "both_equal_input": true,
+    "output_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e"
+  },
+  "scope": "host modifies memory and registers directly; NOT a self-contained program or Olmstead execution"
+}
