@@ -1,0 +1,29 @@
+{
+  "IN": {
+    "position": 43,
+    "opcode": 23,
+    "printable_pairs_tested": 8836,
+    "loader_valid_pairs": 64,
+    "one_target_first_round": 14,
+    "one_target_both_rounds": 0,
+    "solutions": []
+  },
+  "DLOAD": {
+    "position": 60,
+    "opcode": 40,
+    "printable_pairs_tested": 8836,
+    "loader_valid_pairs": 64,
+    "one_target_first_round": 14,
+    "one_target_both_rounds": 0,
+    "solutions": []
+  },
+  "OUT": {
+    "position": 119,
+    "opcode": 5,
+    "printable_pairs_tested": 8836,
+    "loader_valid_pairs": 64,
+    "one_target_first_round": 14,
+    "one_target_both_rounds": 0,
+    "solutions": []
+  }
+}

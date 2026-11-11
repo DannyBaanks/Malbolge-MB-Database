@@ -1,0 +1,56 @@
+{
+  "olmstead": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10000,
+    "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+    "exact": true,
+    "exact_plus_runner_newline": false,
+    "stderr": ""
+  },
+  "runner": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10001,
+    "sha256": "36fad3496aa52fc021013e8c36bd107b358c696fa67d66f4455f6e10df9dbd97",
+    "exact": false,
+    "exact_plus_runner_newline": true,
+    "stderr": "steps: 4077531 | status: HALTED\n"
+  },
+  "scratch": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10000,
+    "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+    "exact": true,
+    "steps": 4077806,
+    "status": "HALTED"
+  },
+  "independent": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10000,
+    "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+    "exact": true,
+    "steps": 4077531,
+    "status": "EOF"
+  },
+  "oracle_default": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10000,
+    "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+    "exact": true,
+    "steps": 4077806,
+    "status": "HALTED"
+  },
+  "oracle_stop": {
+    "rc": 0,
+    "timed_out": false,
+    "bytes": 10000,
+    "sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+    "exact": true,
+    "steps": 4077531,
+    "status": "EOF"
+  }
+}
