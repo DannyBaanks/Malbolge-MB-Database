@@ -1,0 +1,85 @@
+{
+  "involution_pairs_over_59049": {
+    "bad_count": 0,
+    "bad_examples": [],
+    "ok": 59049
+  },
+  "orbit_clock_pure_nop": {
+    "detail": [
+      {
+        "cycle_len": 68,
+        "o_before_v": false,
+        "o_char": 68,
+        "o_position": 67,
+        "pc_mod94": 0,
+        "v_char": 81,
+        "v_position": 51
+      },
+      {
+        "cycle_len": 9,
+        "o_before_v": false,
+        "o_char": 67,
+        "o_position": 6,
+        "pc_mod94": 1,
+        "v_char": 80,
+        "v_position": 1
+      },
+      {
+        "cycle_len": 9,
+        "o_before_v": true,
+        "o_char": 66,
+        "o_position": 2,
+        "pc_mod94": 2,
+        "v_char": 79,
+        "v_position": 5
+      },
+      {
+        "cycle_len": 68,
+        "o_before_v": false,
+        "o_char": 65,
+        "o_position": 16,
+        "pc_mod94": 3,
+        "v_char": 78,
+        "v_position": 4
+      },
+      {
+        "cycle_len": 68,
+        "o_before_v": false,
+        "o_char": 64,
+        "o_position": 50,
+        "pc_mod94": 4,
+        "v_char": 77,
+        "v_position": 15
+      },
+      {
+        "cycle_len": 68,
+        "o_before_v": true,
+        "o_char": 59,
+        "o_position": 17,
+        "pc_mod94": 9,
+        "v_char": 72,
+        "v_position": 46
+      }
+    ],
+    "note": "N<=2 only without controlled-dangerous opcodes; N>=3 needs choreographed d/a at the clock cell",
+    "o_before_v": 23,
+    "possible_pairs": 48
+  },
+  "reset_printable_e": {
+    "bad": [],
+    "ok": 94
+  },
+  "scope": "host-side feasibility for the two-restorer loop design; no image synthesized",
+  "xlat2_cycles": {
+    "count": 6,
+    "lengths": [
+      2,
+      4,
+      5,
+      6,
+      9,
+      68
+    ],
+    "longest": 68
+  }
+}
