@@ -1,0 +1,47 @@
+{
+  "empty": {
+    "rea_evidence_id": "ev_8435f3749efa3e36f575130bd54da7f461062eb9c9684e9bcb0436520f3e965c",
+    "window_start": 55962,
+    "window_events": 3501,
+    "last_step": 59462,
+    "window_equal": true,
+    "output_hex": "",
+    "scope": "window only; earlier steps not captured by REA"
+  },
+  "ascii": {
+    "rea_evidence_id": "ev_293d67599280c47a4fb52da2b56483bc784bdcf8ef8e7138d2a5836b34c147e7",
+    "window_start": 65532,
+    "window_events": 3501,
+    "last_step": 69032,
+    "window_equal": true,
+    "output_hex": "42414443",
+    "scope": "window only; earlier steps not captured by REA"
+  },
+  "odd": {
+    "rea_evidence_id": "ev_ed7c6ec6c8a1970f1257fcb31caad6668887dda2a82fced494c8b5454803b69c",
+    "window_start": 60747,
+    "window_events": 3501,
+    "last_step": 64247,
+    "window_equal": true,
+    "output_hex": "4241",
+    "scope": "window only; earlier steps not captured by REA"
+  },
+  "binary": {
+    "rea_evidence_id": "ev_6560b3844e7fd48fb0a8706b1adeeffb2ec743858b9247088bd6a160e90af5ed",
+    "window_start": 65532,
+    "window_events": 3501,
+    "last_step": 69032,
+    "window_equal": true,
+    "output_hex": "ff00fe80",
+    "scope": "window only; earlier steps not captured by REA"
+  },
+  "allbytes": {
+    "rea_evidence_id": "ev_000fc9ebfea0130a685ad080d4f6fb73c343050c72fe9ee6d053ff2cddb5d4db",
+    "window_start": 668442,
+    "window_events": 3501,
+    "last_step": 671942,
+    "window_equal": true,
+    "output_hex": "010003020504070609080b0a0d0c0f0e111013121514171619181b1a1d1c1f1e212023222524272629282b2a2d2c2f2e313033323534373639383b3a3d3c3f3e414043424544474649484b4a4d4c4f4e515053525554575659585b5a5d5c5f5e616063626564676669686b6a6d6c6f6e717073727574777679787b7a7d7c7f7e818083828584878689888b8a8d8c8f8e919093929594979699989b9a9d9c9f9ea1a0a3a2a5a4a7a6a9a8abaaadacafaeb1b0b3b2b5b4b7b6b9b8bbbabdbcbfbec1c0c3c2c5c4c7c6c9c8cbcacdcccfced1d0d3d2d5d4d7d6d9d8dbdadddcdfdee1e0e3e2e5e4e7e6e9e8ebeaedecefeef1f0f3f2f5f4f7f6f9f8fbfafdfcfffe",
+    "scope": "window only; earlier steps not captured by REA"
+  }
+}

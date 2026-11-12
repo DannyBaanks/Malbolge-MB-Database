@@ -33,6 +33,10 @@ Para evitar falsos positivos o ilusiones de éxito ("antifake locotron"):
 - **Control de Mutación de Instalador:** Modificar un único byte en el preámbulo del instalador (`offset=200`) invalida la gramática del cargador estricto, resultando en rechazo inmediato.
 - **Tortura de Flujo Masivo (10.000 bytes):** Ejecutado sobre el binario nativo C de Olmstead con 10.000 bytes pseudoaleatorios deterministas (`seed=0xDEADBEEF`), produciendo exactamente 5.000 pares intercambiados sin fugas de memoria, divergencias ni bloqueos.
 
+## Replay REA (`eof_mode=olmstead_1998`)
+
+Se capturaron 5 trazas mediante `MalbolgeService.trace` del checkout fuente de REA (`eof_mode=olmstead_1998`, ventana de 3.501 eventos hasta `HALT` por caso, debido al límite de captura de 4.096 eventos): `empty` (59.462 pasos), `ascii` (`ABCD`, 69.032 pasos), `odd` (`ABC`, 64.247 pasos, descartando el byte impar), `binary` (`00ff80fe`, 69.032 pasos) y `allbytes` (`00..ff`, 671.942 pasos). `rea_compare.py` verifica paso a paso que `position`, `opcode`, `a`, `d`, `writes`, conteo total de pasos y `output_bytes` coinciden al 100% con el modelo independiente (`rea_compare.raw.json`). Las capturas redactadas reemplazan la ruta local de la imagen por `<image>`.
+
 ## Reproducción
 
 Desde la raíz del repositorio:
@@ -40,6 +44,9 @@ Desde la raíz del repositorio:
 ```bash
 # Ejecutar la suite adversarial completa
 python3 vm_malbolge/evidence/tape_circuit_loop_v1/verify.py vm_malbolge/evidence/tape_circuit_loop_v1/tape_swap.mb
+
+# Cotejar las ventanas REA guardadas contra el modelo independiente
+python3 vm_malbolge/evidence/tape_circuit_loop_v1/rea_compare.py vm_malbolge/evidence/tape_circuit_loop_v1
 
 # Compilar una imagen nueva desde el programa BF
 python3 vm_malbolge/tools/tape_bf/compile.py vm_malbolge/evidence/tape_circuit_loop_v1/swap.bf --output /tmp/tape_reproduced.mb

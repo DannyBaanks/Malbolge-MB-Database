@@ -12,8 +12,40 @@
       "bytes": 1752
     },
     "VERDICT.md": {
-      "sha256": "4f91e98324663193434dbec18d3cd72969c0aa6848ce14de9249d16126184fbb",
-      "bytes": 4490
+      "sha256": "1d9707cfde24027c626cd9ddd830fd44579b007f6422204bdf78d52abf5fb21d",
+      "bytes": 5375
+    },
+    "rea_compare.py": {
+      "sha256": "7d392d6818ebe90341c3fc48654b6f8d78264a961f628aaccf6e553e523da401",
+      "bytes": 3247
+    },
+    "rea_compare.raw.json": {
+      "sha256": "f9fd514d7b0b09783bfc7616abe058b7a5559d0dfd465ca0074e8fd76ece68d1",
+      "bytes": 2039
+    },
+    "rea_olmstead.mjs": {
+      "sha256": "d2715b88daf5e604ea5f9e522a1d90efd8c1704393480097780ffb280582409c",
+      "bytes": 2301
+    },
+    "rea_olmstead_allbytes.redacted.json": {
+      "sha256": "1051ebcd164006e02bedacb10dfbdd73d3545df5cff8d98cf7a662688e18fe99",
+      "bytes": 1092123
+    },
+    "rea_olmstead_ascii.redacted.json": {
+      "sha256": "2dd5715cad8caf447a7f838489808f98e1dd19aa8413c9cff8720af8a21a0fe9",
+      "bytes": 1084916
+    },
+    "rea_olmstead_binary.redacted.json": {
+      "sha256": "b122895e7d1f28a93767592d09bfff1444266757931b584d56dc5e710059ebcc",
+      "bytes": 1084934
+    },
+    "rea_olmstead_empty.redacted.json": {
+      "sha256": "106f92fc1ffb76e8ef39787f34cb1b64d7a6bbc45be93b94a714c4963b606676",
+      "bytes": 1084865
+    },
+    "rea_olmstead_odd.redacted.json": {
+      "sha256": "991ff261b56c1c2332c7d6ac8e6d563ed2d1cdcc49ae87cd46b9f0e31dce028a",
+      "bytes": 1084884
     },
     "swap.bf": {
       "sha256": "ae09e0191e8c0d546908ed0cba449924e84239a3615e178e661e21e972cb6c50",
