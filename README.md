@@ -8,6 +8,16 @@ Base de datos reproducible y laboratorio de investigación para programas Malbol
 
 Núcleo de almacenamiento y catálogo de la **Suite de Datos y Runtimes v2.0** del ecosistema Malbolge de ISyCo.
 
+## UNIECO: eco binario con EOF y relocalización
+
+Una imagen Classic de **33 822 bytes** instala su núcleo de eco dentro de Malbolge, es aceptada por el cargador histórico de Olmstead y termina por sí misma al llegar a EOF. En las pruebas nativas reprodujo exactamente 261 entradas: vacío, NUL, una mezcla binaria, los 256 valores individuales, la secuencia `00..ff` y un flujo de 10 000 bytes. El modelo scratch también terminó con salida exacta en los cinco vectores principales; un control de cargador inválido y otro de instalación alterada fallaron como se esperaba. Son resultados para las entradas medidas, no una prueba de todos los flujos posibles.
+
+El compilador experimental [`compile_bf.py`](vm_malbolge/evidence/unieco_bf_compile_v1/compile_bf.py) acepta el patrón Brainfuck `,+[-.,+]` con celdas de 16 bits y EOF=65535, y lo compila mediante una **plantilla Malbolge autenticada**. Rechaza otros programas y convenciones: no es un compilador general de Brainfuck ni demuestra equivalencia de estados internos. La imagen relocaliza un núcleo de la referencia PureEpoch/BolgeForge; el EOF del bucle compacto de la candidata anterior sigue `NOT_DEMONSTRATED`.
+
+Para comparar trazas, el código fuente actualizado de REA ofrece `eof_mode=olmstead_1998`. Con ese modo, la imagen compilada produjo `00 0a 80 ff` y `HALTED` en una prueba acotada. El runner C de este repositorio puede detener el host al agotarse la entrada, de modo que su etiqueta `HALTED` por sí sola no demuestra un halt autónomo; su prueba de 10 000 bytes agotó el tiempo límite.
+
+Imagen, controles, hashes y resultados: [`veredicto`](vm_malbolge/evidence/unieco_bf_compile_v1/VERDICT.md), [`manifiesto`](vm_malbolge/evidence/unieco_bf_compile_v1/manifest.json) y [`guía de uso`](vm_malbolge/evidence/unieco_bf_compile_v1/GUIA.md).
+
 > **Récord vigente (2026-10-17): quine clásica de 53,562 bytes** — la quine más pequeña producida y verificada por este ecosistema, **6,290 bytes menor** que la quine de referencia de Matthias Lutter (59,852 B). Sintetizada por **BolgeForge**, verificada byte a byte con triple motor C independiente. Detalles, hashes y reproducción: [`quine/README.md`](quine/README.md).
 
 ---
