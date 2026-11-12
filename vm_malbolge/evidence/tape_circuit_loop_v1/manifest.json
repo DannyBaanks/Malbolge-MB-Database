@@ -1,0 +1,35 @@
+{
+  "experiment": "tape_circuit_loop_v1",
+  "description": "Brainfuck tape pointer movement (> and <) on decoupled memory cells in Malbolge Classic",
+  "date": "2026-11-12",
+  "files": {
+    ".gitattributes": {
+      "sha256": "d54f42ef19d5ef0e766734dd225bebceef76254f4f71395d1777048fe3a97b99",
+      "bytes": 37
+    },
+    "GATES.md": {
+      "sha256": "f751f86e7cde024083da09e192b6f8e31d50515f3702eaf53b6d4db917d4f73d",
+      "bytes": 1752
+    },
+    "VERDICT.md": {
+      "sha256": "4f91e98324663193434dbec18d3cd72969c0aa6848ce14de9249d16126184fbb",
+      "bytes": 4490
+    },
+    "swap.bf": {
+      "sha256": "ae09e0191e8c0d546908ed0cba449924e84239a3615e178e661e21e972cb6c50",
+      "bytes": 15
+    },
+    "tape_swap.mb": {
+      "sha256": "93616e1c3581274b0c5a9bd27b2d4be37eec03a360aef993fc0ea3ecde3a681c",
+      "bytes": 56946
+    },
+    "verification.raw.json": {
+      "sha256": "bf7cca2678a1518f5845578f5731bf3a15c1109cacdf4fdea0276f5700b3debf",
+      "bytes": 953
+    },
+    "verify.py": {
+      "sha256": "d451dd75e3f8911f2bad453ae982a30120424819cd3b58511e7625703124e942",
+      "bytes": 6690
+    }
+  }
+}

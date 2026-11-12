@@ -1,0 +1,51 @@
+{
+  "ctrl_single_cell": {
+    "total_pairs_tested": 256,
+    "mismatches_detected": 256,
+    "negative_control_passed": true
+  },
+  "ctrl_mutated_installer": {
+    "mutated_offset": 200,
+    "rejected_or_aborted": true,
+    "negative_control_passed": true
+  },
+  "torture_empty": {
+    "inp_len": 0,
+    "out_len": 0,
+    "rc": 0,
+    "pass": true
+  },
+  "torture_odd_truncation": {
+    "pass": true
+  },
+  "torture_256_distinct_pairs": {
+    "tested": 256,
+    "pass": true
+  },
+  "torture_nul_storm": {
+    "inp_len": 1000,
+    "out_len": 1000,
+    "rc": 0,
+    "pass": true
+  },
+  "torture_0xff_storm": {
+    "inp_len": 1000,
+    "out_len": 1000,
+    "rc": 0,
+    "pass": true
+  },
+  "torture_full_byte_sequence": {
+    "inp_len": 256,
+    "out_len": 256,
+    "rc": 0,
+    "pass": true
+  },
+  "torture_10k_stream": {
+    "inp_len": 10000,
+    "out_len": 10000,
+    "rc": 0,
+    "exact_match": true,
+    "pass": true
+  },
+  "overall_status": "PASS"
+}
