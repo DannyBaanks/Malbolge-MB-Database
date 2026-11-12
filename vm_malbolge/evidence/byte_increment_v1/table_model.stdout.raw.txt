@@ -1,0 +1,75 @@
+{
+  "all_indices_equal_base_plus_byte": true,
+  "examples": {
+    "0": {
+      "after_first_rot": 1,
+      "index": 34263,
+      "lookup_address": 34264,
+      "output_byte": 1,
+      "table_initial": 3
+    },
+    "1": {
+      "after_first_rot": 2,
+      "index": 34264,
+      "lookup_address": 34265,
+      "output_byte": 2,
+      "table_initial": 6
+    },
+    "127": {
+      "after_first_rot": 128,
+      "index": 34390,
+      "lookup_address": 34391,
+      "output_byte": 128,
+      "table_initial": 384
+    },
+    "254": {
+      "after_first_rot": 255,
+      "index": 34517,
+      "lookup_address": 34518,
+      "output_byte": 255,
+      "table_initial": 765
+    },
+    "255": {
+      "after_first_rot": 0,
+      "index": 34518,
+      "lookup_address": 34519,
+      "output_byte": 0,
+      "table_initial": 0
+    }
+  },
+  "index_base": 34263,
+  "lookup_max": 34519,
+  "lookup_min": 34264,
+  "mask1": 39730,
+  "mask1_trits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    2
+  ],
+  "mask2": 54310,
+  "mask2_trits": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    0,
+    2,
+    2
+  ],
+  "orientation": "crazy(accumulator,cell) = table[cell][accumulator]",
+  "rotated_table_matches_increment": true,
+  "scope": "pure word arithmetic and abstract memory layout only; masks consumed by CRAZY; no control flow, mask rearm, loader or native program demonstrated",
+  "table_sha256": "f11901dccdcba9749217d65b872e0ec0a2282de1ef2e8bf59551747fd3cf0407",
+  "ten_rotations_restore_table": true,
+  "wrong_index_control_mismatches": 256
+}

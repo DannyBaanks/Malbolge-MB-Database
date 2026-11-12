@@ -1,0 +1,26 @@
+{
+  "table_restored": true,
+  "native_cases": 512,
+  "all_exact": true,
+  "controls_detected": true,
+  "boundaries": {
+    "empty": {
+      "stdout_hex": "0c00",
+      "rc": 0,
+      "expected_stream_hex": "",
+      "stream_goal_met": false
+    },
+    "41": {
+      "stdout_hex": "420c",
+      "rc": 0,
+      "expected_stream_hex": "42",
+      "stream_goal_met": false
+    },
+    "414243": {
+      "stdout_hex": "4243",
+      "rc": 0,
+      "expected_stream_hex": "424344",
+      "stream_goal_met": false
+    }
+  }
+}

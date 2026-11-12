@@ -1,0 +1,11 @@
+{
+  "artifacts_byte_identical": {
+    "increment_two.mb": true,
+    "two_plan.ops": true,
+    "two_targets.json": true
+  },
+  "command": "python3 synthesize_two.py in fresh isolated tree",
+  "excluded": "elapsed_seconds varies",
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

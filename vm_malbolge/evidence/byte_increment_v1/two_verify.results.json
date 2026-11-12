@@ -1,0 +1,3661 @@
+{
+  "boundaries": {
+    "41": {
+      "expected_stream_hex": "42",
+      "rc": 0,
+      "stdout_hex": "420c",
+      "stream_goal_met": false
+    },
+    "414243": {
+      "expected_stream_hex": "424344",
+      "rc": 0,
+      "stdout_hex": "4243",
+      "stream_goal_met": false
+    },
+    "empty": {
+      "expected_stream_hex": "",
+      "rc": 0,
+      "stdout_hex": "0c00",
+      "stream_goal_met": false
+    }
+  },
+  "cases": {
+    "next_000": {
+      "input_hex": "0001",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0102"
+    },
+    "next_001": {
+      "input_hex": "0102",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0203"
+    },
+    "next_002": {
+      "input_hex": "0203",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0304"
+    },
+    "next_003": {
+      "input_hex": "0304",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0405"
+    },
+    "next_004": {
+      "input_hex": "0405",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0506"
+    },
+    "next_005": {
+      "input_hex": "0506",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0607"
+    },
+    "next_006": {
+      "input_hex": "0607",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0708"
+    },
+    "next_007": {
+      "input_hex": "0708",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0809"
+    },
+    "next_008": {
+      "input_hex": "0809",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "090a"
+    },
+    "next_009": {
+      "input_hex": "090a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0a0b"
+    },
+    "next_010": {
+      "input_hex": "0a0b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0b0c"
+    },
+    "next_011": {
+      "input_hex": "0b0c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0c0d"
+    },
+    "next_012": {
+      "input_hex": "0c0d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0d0e"
+    },
+    "next_013": {
+      "input_hex": "0d0e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0e0f"
+    },
+    "next_014": {
+      "input_hex": "0e0f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0f10"
+    },
+    "next_015": {
+      "input_hex": "0f10",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1011"
+    },
+    "next_016": {
+      "input_hex": "1011",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1112"
+    },
+    "next_017": {
+      "input_hex": "1112",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1213"
+    },
+    "next_018": {
+      "input_hex": "1213",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1314"
+    },
+    "next_019": {
+      "input_hex": "1314",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1415"
+    },
+    "next_020": {
+      "input_hex": "1415",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1516"
+    },
+    "next_021": {
+      "input_hex": "1516",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1617"
+    },
+    "next_022": {
+      "input_hex": "1617",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1718"
+    },
+    "next_023": {
+      "input_hex": "1718",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1819"
+    },
+    "next_024": {
+      "input_hex": "1819",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "191a"
+    },
+    "next_025": {
+      "input_hex": "191a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1a1b"
+    },
+    "next_026": {
+      "input_hex": "1a1b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1b1c"
+    },
+    "next_027": {
+      "input_hex": "1b1c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1c1d"
+    },
+    "next_028": {
+      "input_hex": "1c1d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1d1e"
+    },
+    "next_029": {
+      "input_hex": "1d1e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1e1f"
+    },
+    "next_030": {
+      "input_hex": "1e1f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1f20"
+    },
+    "next_031": {
+      "input_hex": "1f20",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2021"
+    },
+    "next_032": {
+      "input_hex": "2021",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2122"
+    },
+    "next_033": {
+      "input_hex": "2122",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2223"
+    },
+    "next_034": {
+      "input_hex": "2223",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2324"
+    },
+    "next_035": {
+      "input_hex": "2324",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2425"
+    },
+    "next_036": {
+      "input_hex": "2425",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2526"
+    },
+    "next_037": {
+      "input_hex": "2526",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2627"
+    },
+    "next_038": {
+      "input_hex": "2627",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2728"
+    },
+    "next_039": {
+      "input_hex": "2728",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2829"
+    },
+    "next_040": {
+      "input_hex": "2829",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "292a"
+    },
+    "next_041": {
+      "input_hex": "292a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2a2b"
+    },
+    "next_042": {
+      "input_hex": "2a2b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2b2c"
+    },
+    "next_043": {
+      "input_hex": "2b2c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2c2d"
+    },
+    "next_044": {
+      "input_hex": "2c2d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2d2e"
+    },
+    "next_045": {
+      "input_hex": "2d2e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2e2f"
+    },
+    "next_046": {
+      "input_hex": "2e2f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2f30"
+    },
+    "next_047": {
+      "input_hex": "2f30",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3031"
+    },
+    "next_048": {
+      "input_hex": "3031",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3132"
+    },
+    "next_049": {
+      "input_hex": "3132",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3233"
+    },
+    "next_050": {
+      "input_hex": "3233",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3334"
+    },
+    "next_051": {
+      "input_hex": "3334",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3435"
+    },
+    "next_052": {
+      "input_hex": "3435",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3536"
+    },
+    "next_053": {
+      "input_hex": "3536",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3637"
+    },
+    "next_054": {
+      "input_hex": "3637",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3738"
+    },
+    "next_055": {
+      "input_hex": "3738",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3839"
+    },
+    "next_056": {
+      "input_hex": "3839",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "393a"
+    },
+    "next_057": {
+      "input_hex": "393a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3a3b"
+    },
+    "next_058": {
+      "input_hex": "3a3b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3b3c"
+    },
+    "next_059": {
+      "input_hex": "3b3c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3c3d"
+    },
+    "next_060": {
+      "input_hex": "3c3d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3d3e"
+    },
+    "next_061": {
+      "input_hex": "3d3e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3e3f"
+    },
+    "next_062": {
+      "input_hex": "3e3f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3f40"
+    },
+    "next_063": {
+      "input_hex": "3f40",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4041"
+    },
+    "next_064": {
+      "input_hex": "4041",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4142"
+    },
+    "next_065": {
+      "input_hex": "4142",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4243"
+    },
+    "next_066": {
+      "input_hex": "4243",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4344"
+    },
+    "next_067": {
+      "input_hex": "4344",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4445"
+    },
+    "next_068": {
+      "input_hex": "4445",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4546"
+    },
+    "next_069": {
+      "input_hex": "4546",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4647"
+    },
+    "next_070": {
+      "input_hex": "4647",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4748"
+    },
+    "next_071": {
+      "input_hex": "4748",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4849"
+    },
+    "next_072": {
+      "input_hex": "4849",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "494a"
+    },
+    "next_073": {
+      "input_hex": "494a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4a4b"
+    },
+    "next_074": {
+      "input_hex": "4a4b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4b4c"
+    },
+    "next_075": {
+      "input_hex": "4b4c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4c4d"
+    },
+    "next_076": {
+      "input_hex": "4c4d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4d4e"
+    },
+    "next_077": {
+      "input_hex": "4d4e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4e4f"
+    },
+    "next_078": {
+      "input_hex": "4e4f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4f50"
+    },
+    "next_079": {
+      "input_hex": "4f50",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5051"
+    },
+    "next_080": {
+      "input_hex": "5051",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5152"
+    },
+    "next_081": {
+      "input_hex": "5152",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5253"
+    },
+    "next_082": {
+      "input_hex": "5253",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5354"
+    },
+    "next_083": {
+      "input_hex": "5354",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5455"
+    },
+    "next_084": {
+      "input_hex": "5455",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5556"
+    },
+    "next_085": {
+      "input_hex": "5556",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5657"
+    },
+    "next_086": {
+      "input_hex": "5657",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5758"
+    },
+    "next_087": {
+      "input_hex": "5758",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5859"
+    },
+    "next_088": {
+      "input_hex": "5859",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "595a"
+    },
+    "next_089": {
+      "input_hex": "595a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5a5b"
+    },
+    "next_090": {
+      "input_hex": "5a5b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5b5c"
+    },
+    "next_091": {
+      "input_hex": "5b5c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5c5d"
+    },
+    "next_092": {
+      "input_hex": "5c5d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5d5e"
+    },
+    "next_093": {
+      "input_hex": "5d5e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5e5f"
+    },
+    "next_094": {
+      "input_hex": "5e5f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5f60"
+    },
+    "next_095": {
+      "input_hex": "5f60",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6061"
+    },
+    "next_096": {
+      "input_hex": "6061",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6162"
+    },
+    "next_097": {
+      "input_hex": "6162",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6263"
+    },
+    "next_098": {
+      "input_hex": "6263",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6364"
+    },
+    "next_099": {
+      "input_hex": "6364",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6465"
+    },
+    "next_100": {
+      "input_hex": "6465",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6566"
+    },
+    "next_101": {
+      "input_hex": "6566",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6667"
+    },
+    "next_102": {
+      "input_hex": "6667",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6768"
+    },
+    "next_103": {
+      "input_hex": "6768",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6869"
+    },
+    "next_104": {
+      "input_hex": "6869",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "696a"
+    },
+    "next_105": {
+      "input_hex": "696a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6a6b"
+    },
+    "next_106": {
+      "input_hex": "6a6b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6b6c"
+    },
+    "next_107": {
+      "input_hex": "6b6c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6c6d"
+    },
+    "next_108": {
+      "input_hex": "6c6d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6d6e"
+    },
+    "next_109": {
+      "input_hex": "6d6e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6e6f"
+    },
+    "next_110": {
+      "input_hex": "6e6f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6f70"
+    },
+    "next_111": {
+      "input_hex": "6f70",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7071"
+    },
+    "next_112": {
+      "input_hex": "7071",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7172"
+    },
+    "next_113": {
+      "input_hex": "7172",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7273"
+    },
+    "next_114": {
+      "input_hex": "7273",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7374"
+    },
+    "next_115": {
+      "input_hex": "7374",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7475"
+    },
+    "next_116": {
+      "input_hex": "7475",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7576"
+    },
+    "next_117": {
+      "input_hex": "7576",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7677"
+    },
+    "next_118": {
+      "input_hex": "7677",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7778"
+    },
+    "next_119": {
+      "input_hex": "7778",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7879"
+    },
+    "next_120": {
+      "input_hex": "7879",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "797a"
+    },
+    "next_121": {
+      "input_hex": "797a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7a7b"
+    },
+    "next_122": {
+      "input_hex": "7a7b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7b7c"
+    },
+    "next_123": {
+      "input_hex": "7b7c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7c7d"
+    },
+    "next_124": {
+      "input_hex": "7c7d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7d7e"
+    },
+    "next_125": {
+      "input_hex": "7d7e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7e7f"
+    },
+    "next_126": {
+      "input_hex": "7e7f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7f80"
+    },
+    "next_127": {
+      "input_hex": "7f80",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8081"
+    },
+    "next_128": {
+      "input_hex": "8081",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8182"
+    },
+    "next_129": {
+      "input_hex": "8182",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8283"
+    },
+    "next_130": {
+      "input_hex": "8283",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8384"
+    },
+    "next_131": {
+      "input_hex": "8384",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8485"
+    },
+    "next_132": {
+      "input_hex": "8485",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8586"
+    },
+    "next_133": {
+      "input_hex": "8586",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8687"
+    },
+    "next_134": {
+      "input_hex": "8687",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8788"
+    },
+    "next_135": {
+      "input_hex": "8788",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8889"
+    },
+    "next_136": {
+      "input_hex": "8889",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "898a"
+    },
+    "next_137": {
+      "input_hex": "898a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8a8b"
+    },
+    "next_138": {
+      "input_hex": "8a8b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8b8c"
+    },
+    "next_139": {
+      "input_hex": "8b8c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8c8d"
+    },
+    "next_140": {
+      "input_hex": "8c8d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8d8e"
+    },
+    "next_141": {
+      "input_hex": "8d8e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8e8f"
+    },
+    "next_142": {
+      "input_hex": "8e8f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8f90"
+    },
+    "next_143": {
+      "input_hex": "8f90",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9091"
+    },
+    "next_144": {
+      "input_hex": "9091",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9192"
+    },
+    "next_145": {
+      "input_hex": "9192",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9293"
+    },
+    "next_146": {
+      "input_hex": "9293",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9394"
+    },
+    "next_147": {
+      "input_hex": "9394",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9495"
+    },
+    "next_148": {
+      "input_hex": "9495",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9596"
+    },
+    "next_149": {
+      "input_hex": "9596",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9697"
+    },
+    "next_150": {
+      "input_hex": "9697",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9798"
+    },
+    "next_151": {
+      "input_hex": "9798",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9899"
+    },
+    "next_152": {
+      "input_hex": "9899",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "999a"
+    },
+    "next_153": {
+      "input_hex": "999a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9a9b"
+    },
+    "next_154": {
+      "input_hex": "9a9b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9b9c"
+    },
+    "next_155": {
+      "input_hex": "9b9c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9c9d"
+    },
+    "next_156": {
+      "input_hex": "9c9d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9d9e"
+    },
+    "next_157": {
+      "input_hex": "9d9e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9e9f"
+    },
+    "next_158": {
+      "input_hex": "9e9f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9fa0"
+    },
+    "next_159": {
+      "input_hex": "9fa0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a0a1"
+    },
+    "next_160": {
+      "input_hex": "a0a1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a1a2"
+    },
+    "next_161": {
+      "input_hex": "a1a2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a2a3"
+    },
+    "next_162": {
+      "input_hex": "a2a3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a3a4"
+    },
+    "next_163": {
+      "input_hex": "a3a4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a4a5"
+    },
+    "next_164": {
+      "input_hex": "a4a5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a5a6"
+    },
+    "next_165": {
+      "input_hex": "a5a6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a6a7"
+    },
+    "next_166": {
+      "input_hex": "a6a7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a7a8"
+    },
+    "next_167": {
+      "input_hex": "a7a8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a8a9"
+    },
+    "next_168": {
+      "input_hex": "a8a9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a9aa"
+    },
+    "next_169": {
+      "input_hex": "a9aa",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "aaab"
+    },
+    "next_170": {
+      "input_hex": "aaab",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "abac"
+    },
+    "next_171": {
+      "input_hex": "abac",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "acad"
+    },
+    "next_172": {
+      "input_hex": "acad",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "adae"
+    },
+    "next_173": {
+      "input_hex": "adae",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "aeaf"
+    },
+    "next_174": {
+      "input_hex": "aeaf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "afb0"
+    },
+    "next_175": {
+      "input_hex": "afb0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b0b1"
+    },
+    "next_176": {
+      "input_hex": "b0b1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b1b2"
+    },
+    "next_177": {
+      "input_hex": "b1b2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b2b3"
+    },
+    "next_178": {
+      "input_hex": "b2b3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b3b4"
+    },
+    "next_179": {
+      "input_hex": "b3b4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b4b5"
+    },
+    "next_180": {
+      "input_hex": "b4b5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b5b6"
+    },
+    "next_181": {
+      "input_hex": "b5b6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b6b7"
+    },
+    "next_182": {
+      "input_hex": "b6b7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b7b8"
+    },
+    "next_183": {
+      "input_hex": "b7b8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b8b9"
+    },
+    "next_184": {
+      "input_hex": "b8b9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b9ba"
+    },
+    "next_185": {
+      "input_hex": "b9ba",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "babb"
+    },
+    "next_186": {
+      "input_hex": "babb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bbbc"
+    },
+    "next_187": {
+      "input_hex": "bbbc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bcbd"
+    },
+    "next_188": {
+      "input_hex": "bcbd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bdbe"
+    },
+    "next_189": {
+      "input_hex": "bdbe",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bebf"
+    },
+    "next_190": {
+      "input_hex": "bebf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bfc0"
+    },
+    "next_191": {
+      "input_hex": "bfc0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c0c1"
+    },
+    "next_192": {
+      "input_hex": "c0c1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c1c2"
+    },
+    "next_193": {
+      "input_hex": "c1c2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c2c3"
+    },
+    "next_194": {
+      "input_hex": "c2c3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c3c4"
+    },
+    "next_195": {
+      "input_hex": "c3c4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c4c5"
+    },
+    "next_196": {
+      "input_hex": "c4c5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c5c6"
+    },
+    "next_197": {
+      "input_hex": "c5c6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c6c7"
+    },
+    "next_198": {
+      "input_hex": "c6c7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c7c8"
+    },
+    "next_199": {
+      "input_hex": "c7c8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c8c9"
+    },
+    "next_200": {
+      "input_hex": "c8c9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c9ca"
+    },
+    "next_201": {
+      "input_hex": "c9ca",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cacb"
+    },
+    "next_202": {
+      "input_hex": "cacb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cbcc"
+    },
+    "next_203": {
+      "input_hex": "cbcc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cccd"
+    },
+    "next_204": {
+      "input_hex": "cccd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cdce"
+    },
+    "next_205": {
+      "input_hex": "cdce",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cecf"
+    },
+    "next_206": {
+      "input_hex": "cecf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cfd0"
+    },
+    "next_207": {
+      "input_hex": "cfd0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d0d1"
+    },
+    "next_208": {
+      "input_hex": "d0d1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d1d2"
+    },
+    "next_209": {
+      "input_hex": "d1d2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d2d3"
+    },
+    "next_210": {
+      "input_hex": "d2d3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d3d4"
+    },
+    "next_211": {
+      "input_hex": "d3d4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d4d5"
+    },
+    "next_212": {
+      "input_hex": "d4d5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d5d6"
+    },
+    "next_213": {
+      "input_hex": "d5d6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d6d7"
+    },
+    "next_214": {
+      "input_hex": "d6d7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d7d8"
+    },
+    "next_215": {
+      "input_hex": "d7d8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d8d9"
+    },
+    "next_216": {
+      "input_hex": "d8d9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d9da"
+    },
+    "next_217": {
+      "input_hex": "d9da",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dadb"
+    },
+    "next_218": {
+      "input_hex": "dadb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dbdc"
+    },
+    "next_219": {
+      "input_hex": "dbdc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dcdd"
+    },
+    "next_220": {
+      "input_hex": "dcdd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ddde"
+    },
+    "next_221": {
+      "input_hex": "ddde",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dedf"
+    },
+    "next_222": {
+      "input_hex": "dedf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dfe0"
+    },
+    "next_223": {
+      "input_hex": "dfe0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e0e1"
+    },
+    "next_224": {
+      "input_hex": "e0e1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e1e2"
+    },
+    "next_225": {
+      "input_hex": "e1e2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e2e3"
+    },
+    "next_226": {
+      "input_hex": "e2e3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e3e4"
+    },
+    "next_227": {
+      "input_hex": "e3e4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e4e5"
+    },
+    "next_228": {
+      "input_hex": "e4e5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e5e6"
+    },
+    "next_229": {
+      "input_hex": "e5e6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e6e7"
+    },
+    "next_230": {
+      "input_hex": "e6e7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e7e8"
+    },
+    "next_231": {
+      "input_hex": "e7e8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e8e9"
+    },
+    "next_232": {
+      "input_hex": "e8e9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e9ea"
+    },
+    "next_233": {
+      "input_hex": "e9ea",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eaeb"
+    },
+    "next_234": {
+      "input_hex": "eaeb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ebec"
+    },
+    "next_235": {
+      "input_hex": "ebec",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eced"
+    },
+    "next_236": {
+      "input_hex": "eced",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "edee"
+    },
+    "next_237": {
+      "input_hex": "edee",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eeef"
+    },
+    "next_238": {
+      "input_hex": "eeef",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eff0"
+    },
+    "next_239": {
+      "input_hex": "eff0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f0f1"
+    },
+    "next_240": {
+      "input_hex": "f0f1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f1f2"
+    },
+    "next_241": {
+      "input_hex": "f1f2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f2f3"
+    },
+    "next_242": {
+      "input_hex": "f2f3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f3f4"
+    },
+    "next_243": {
+      "input_hex": "f3f4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f4f5"
+    },
+    "next_244": {
+      "input_hex": "f4f5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f5f6"
+    },
+    "next_245": {
+      "input_hex": "f5f6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f6f7"
+    },
+    "next_246": {
+      "input_hex": "f6f7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f7f8"
+    },
+    "next_247": {
+      "input_hex": "f7f8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f8f9"
+    },
+    "next_248": {
+      "input_hex": "f8f9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f9fa"
+    },
+    "next_249": {
+      "input_hex": "f9fa",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fafb"
+    },
+    "next_250": {
+      "input_hex": "fafb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fbfc"
+    },
+    "next_251": {
+      "input_hex": "fbfc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fcfd"
+    },
+    "next_252": {
+      "input_hex": "fcfd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fdfe"
+    },
+    "next_253": {
+      "input_hex": "fdfe",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "feff"
+    },
+    "next_254": {
+      "input_hex": "feff",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ff00"
+    },
+    "next_255": {
+      "input_hex": "ff00",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0001"
+    },
+    "repeated_000": {
+      "input_hex": "0000",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0101"
+    },
+    "repeated_001": {
+      "input_hex": "0101",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0202"
+    },
+    "repeated_002": {
+      "input_hex": "0202",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0303"
+    },
+    "repeated_003": {
+      "input_hex": "0303",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0404"
+    },
+    "repeated_004": {
+      "input_hex": "0404",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0505"
+    },
+    "repeated_005": {
+      "input_hex": "0505",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0606"
+    },
+    "repeated_006": {
+      "input_hex": "0606",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0707"
+    },
+    "repeated_007": {
+      "input_hex": "0707",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0808"
+    },
+    "repeated_008": {
+      "input_hex": "0808",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0909"
+    },
+    "repeated_009": {
+      "input_hex": "0909",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0a0a"
+    },
+    "repeated_010": {
+      "input_hex": "0a0a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0b0b"
+    },
+    "repeated_011": {
+      "input_hex": "0b0b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0c0c"
+    },
+    "repeated_012": {
+      "input_hex": "0c0c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0d0d"
+    },
+    "repeated_013": {
+      "input_hex": "0d0d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0e0e"
+    },
+    "repeated_014": {
+      "input_hex": "0e0e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0f0f"
+    },
+    "repeated_015": {
+      "input_hex": "0f0f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1010"
+    },
+    "repeated_016": {
+      "input_hex": "1010",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1111"
+    },
+    "repeated_017": {
+      "input_hex": "1111",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1212"
+    },
+    "repeated_018": {
+      "input_hex": "1212",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1313"
+    },
+    "repeated_019": {
+      "input_hex": "1313",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1414"
+    },
+    "repeated_020": {
+      "input_hex": "1414",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1515"
+    },
+    "repeated_021": {
+      "input_hex": "1515",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1616"
+    },
+    "repeated_022": {
+      "input_hex": "1616",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1717"
+    },
+    "repeated_023": {
+      "input_hex": "1717",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1818"
+    },
+    "repeated_024": {
+      "input_hex": "1818",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1919"
+    },
+    "repeated_025": {
+      "input_hex": "1919",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1a1a"
+    },
+    "repeated_026": {
+      "input_hex": "1a1a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1b1b"
+    },
+    "repeated_027": {
+      "input_hex": "1b1b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1c1c"
+    },
+    "repeated_028": {
+      "input_hex": "1c1c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1d1d"
+    },
+    "repeated_029": {
+      "input_hex": "1d1d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1e1e"
+    },
+    "repeated_030": {
+      "input_hex": "1e1e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "1f1f"
+    },
+    "repeated_031": {
+      "input_hex": "1f1f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2020"
+    },
+    "repeated_032": {
+      "input_hex": "2020",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2121"
+    },
+    "repeated_033": {
+      "input_hex": "2121",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2222"
+    },
+    "repeated_034": {
+      "input_hex": "2222",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2323"
+    },
+    "repeated_035": {
+      "input_hex": "2323",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2424"
+    },
+    "repeated_036": {
+      "input_hex": "2424",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2525"
+    },
+    "repeated_037": {
+      "input_hex": "2525",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2626"
+    },
+    "repeated_038": {
+      "input_hex": "2626",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2727"
+    },
+    "repeated_039": {
+      "input_hex": "2727",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2828"
+    },
+    "repeated_040": {
+      "input_hex": "2828",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2929"
+    },
+    "repeated_041": {
+      "input_hex": "2929",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2a2a"
+    },
+    "repeated_042": {
+      "input_hex": "2a2a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2b2b"
+    },
+    "repeated_043": {
+      "input_hex": "2b2b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2c2c"
+    },
+    "repeated_044": {
+      "input_hex": "2c2c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2d2d"
+    },
+    "repeated_045": {
+      "input_hex": "2d2d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2e2e"
+    },
+    "repeated_046": {
+      "input_hex": "2e2e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "2f2f"
+    },
+    "repeated_047": {
+      "input_hex": "2f2f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3030"
+    },
+    "repeated_048": {
+      "input_hex": "3030",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3131"
+    },
+    "repeated_049": {
+      "input_hex": "3131",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3232"
+    },
+    "repeated_050": {
+      "input_hex": "3232",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3333"
+    },
+    "repeated_051": {
+      "input_hex": "3333",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3434"
+    },
+    "repeated_052": {
+      "input_hex": "3434",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3535"
+    },
+    "repeated_053": {
+      "input_hex": "3535",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3636"
+    },
+    "repeated_054": {
+      "input_hex": "3636",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3737"
+    },
+    "repeated_055": {
+      "input_hex": "3737",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3838"
+    },
+    "repeated_056": {
+      "input_hex": "3838",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3939"
+    },
+    "repeated_057": {
+      "input_hex": "3939",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3a3a"
+    },
+    "repeated_058": {
+      "input_hex": "3a3a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3b3b"
+    },
+    "repeated_059": {
+      "input_hex": "3b3b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3c3c"
+    },
+    "repeated_060": {
+      "input_hex": "3c3c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3d3d"
+    },
+    "repeated_061": {
+      "input_hex": "3d3d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3e3e"
+    },
+    "repeated_062": {
+      "input_hex": "3e3e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "3f3f"
+    },
+    "repeated_063": {
+      "input_hex": "3f3f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4040"
+    },
+    "repeated_064": {
+      "input_hex": "4040",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4141"
+    },
+    "repeated_065": {
+      "input_hex": "4141",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4242"
+    },
+    "repeated_066": {
+      "input_hex": "4242",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4343"
+    },
+    "repeated_067": {
+      "input_hex": "4343",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4444"
+    },
+    "repeated_068": {
+      "input_hex": "4444",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4545"
+    },
+    "repeated_069": {
+      "input_hex": "4545",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4646"
+    },
+    "repeated_070": {
+      "input_hex": "4646",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4747"
+    },
+    "repeated_071": {
+      "input_hex": "4747",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4848"
+    },
+    "repeated_072": {
+      "input_hex": "4848",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4949"
+    },
+    "repeated_073": {
+      "input_hex": "4949",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4a4a"
+    },
+    "repeated_074": {
+      "input_hex": "4a4a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4b4b"
+    },
+    "repeated_075": {
+      "input_hex": "4b4b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4c4c"
+    },
+    "repeated_076": {
+      "input_hex": "4c4c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4d4d"
+    },
+    "repeated_077": {
+      "input_hex": "4d4d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4e4e"
+    },
+    "repeated_078": {
+      "input_hex": "4e4e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "4f4f"
+    },
+    "repeated_079": {
+      "input_hex": "4f4f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5050"
+    },
+    "repeated_080": {
+      "input_hex": "5050",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5151"
+    },
+    "repeated_081": {
+      "input_hex": "5151",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5252"
+    },
+    "repeated_082": {
+      "input_hex": "5252",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5353"
+    },
+    "repeated_083": {
+      "input_hex": "5353",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5454"
+    },
+    "repeated_084": {
+      "input_hex": "5454",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5555"
+    },
+    "repeated_085": {
+      "input_hex": "5555",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5656"
+    },
+    "repeated_086": {
+      "input_hex": "5656",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5757"
+    },
+    "repeated_087": {
+      "input_hex": "5757",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5858"
+    },
+    "repeated_088": {
+      "input_hex": "5858",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5959"
+    },
+    "repeated_089": {
+      "input_hex": "5959",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5a5a"
+    },
+    "repeated_090": {
+      "input_hex": "5a5a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5b5b"
+    },
+    "repeated_091": {
+      "input_hex": "5b5b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5c5c"
+    },
+    "repeated_092": {
+      "input_hex": "5c5c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5d5d"
+    },
+    "repeated_093": {
+      "input_hex": "5d5d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5e5e"
+    },
+    "repeated_094": {
+      "input_hex": "5e5e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "5f5f"
+    },
+    "repeated_095": {
+      "input_hex": "5f5f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6060"
+    },
+    "repeated_096": {
+      "input_hex": "6060",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6161"
+    },
+    "repeated_097": {
+      "input_hex": "6161",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6262"
+    },
+    "repeated_098": {
+      "input_hex": "6262",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6363"
+    },
+    "repeated_099": {
+      "input_hex": "6363",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6464"
+    },
+    "repeated_100": {
+      "input_hex": "6464",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6565"
+    },
+    "repeated_101": {
+      "input_hex": "6565",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6666"
+    },
+    "repeated_102": {
+      "input_hex": "6666",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6767"
+    },
+    "repeated_103": {
+      "input_hex": "6767",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6868"
+    },
+    "repeated_104": {
+      "input_hex": "6868",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6969"
+    },
+    "repeated_105": {
+      "input_hex": "6969",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6a6a"
+    },
+    "repeated_106": {
+      "input_hex": "6a6a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6b6b"
+    },
+    "repeated_107": {
+      "input_hex": "6b6b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6c6c"
+    },
+    "repeated_108": {
+      "input_hex": "6c6c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6d6d"
+    },
+    "repeated_109": {
+      "input_hex": "6d6d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6e6e"
+    },
+    "repeated_110": {
+      "input_hex": "6e6e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "6f6f"
+    },
+    "repeated_111": {
+      "input_hex": "6f6f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7070"
+    },
+    "repeated_112": {
+      "input_hex": "7070",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7171"
+    },
+    "repeated_113": {
+      "input_hex": "7171",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7272"
+    },
+    "repeated_114": {
+      "input_hex": "7272",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7373"
+    },
+    "repeated_115": {
+      "input_hex": "7373",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7474"
+    },
+    "repeated_116": {
+      "input_hex": "7474",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7575"
+    },
+    "repeated_117": {
+      "input_hex": "7575",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7676"
+    },
+    "repeated_118": {
+      "input_hex": "7676",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7777"
+    },
+    "repeated_119": {
+      "input_hex": "7777",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7878"
+    },
+    "repeated_120": {
+      "input_hex": "7878",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7979"
+    },
+    "repeated_121": {
+      "input_hex": "7979",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7a7a"
+    },
+    "repeated_122": {
+      "input_hex": "7a7a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7b7b"
+    },
+    "repeated_123": {
+      "input_hex": "7b7b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7c7c"
+    },
+    "repeated_124": {
+      "input_hex": "7c7c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7d7d"
+    },
+    "repeated_125": {
+      "input_hex": "7d7d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7e7e"
+    },
+    "repeated_126": {
+      "input_hex": "7e7e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "7f7f"
+    },
+    "repeated_127": {
+      "input_hex": "7f7f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8080"
+    },
+    "repeated_128": {
+      "input_hex": "8080",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8181"
+    },
+    "repeated_129": {
+      "input_hex": "8181",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8282"
+    },
+    "repeated_130": {
+      "input_hex": "8282",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8383"
+    },
+    "repeated_131": {
+      "input_hex": "8383",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8484"
+    },
+    "repeated_132": {
+      "input_hex": "8484",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8585"
+    },
+    "repeated_133": {
+      "input_hex": "8585",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8686"
+    },
+    "repeated_134": {
+      "input_hex": "8686",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8787"
+    },
+    "repeated_135": {
+      "input_hex": "8787",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8888"
+    },
+    "repeated_136": {
+      "input_hex": "8888",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8989"
+    },
+    "repeated_137": {
+      "input_hex": "8989",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8a8a"
+    },
+    "repeated_138": {
+      "input_hex": "8a8a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8b8b"
+    },
+    "repeated_139": {
+      "input_hex": "8b8b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8c8c"
+    },
+    "repeated_140": {
+      "input_hex": "8c8c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8d8d"
+    },
+    "repeated_141": {
+      "input_hex": "8d8d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8e8e"
+    },
+    "repeated_142": {
+      "input_hex": "8e8e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "8f8f"
+    },
+    "repeated_143": {
+      "input_hex": "8f8f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9090"
+    },
+    "repeated_144": {
+      "input_hex": "9090",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9191"
+    },
+    "repeated_145": {
+      "input_hex": "9191",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9292"
+    },
+    "repeated_146": {
+      "input_hex": "9292",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9393"
+    },
+    "repeated_147": {
+      "input_hex": "9393",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9494"
+    },
+    "repeated_148": {
+      "input_hex": "9494",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9595"
+    },
+    "repeated_149": {
+      "input_hex": "9595",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9696"
+    },
+    "repeated_150": {
+      "input_hex": "9696",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9797"
+    },
+    "repeated_151": {
+      "input_hex": "9797",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9898"
+    },
+    "repeated_152": {
+      "input_hex": "9898",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9999"
+    },
+    "repeated_153": {
+      "input_hex": "9999",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9a9a"
+    },
+    "repeated_154": {
+      "input_hex": "9a9a",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9b9b"
+    },
+    "repeated_155": {
+      "input_hex": "9b9b",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9c9c"
+    },
+    "repeated_156": {
+      "input_hex": "9c9c",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9d9d"
+    },
+    "repeated_157": {
+      "input_hex": "9d9d",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9e9e"
+    },
+    "repeated_158": {
+      "input_hex": "9e9e",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "9f9f"
+    },
+    "repeated_159": {
+      "input_hex": "9f9f",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a0a0"
+    },
+    "repeated_160": {
+      "input_hex": "a0a0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a1a1"
+    },
+    "repeated_161": {
+      "input_hex": "a1a1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a2a2"
+    },
+    "repeated_162": {
+      "input_hex": "a2a2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a3a3"
+    },
+    "repeated_163": {
+      "input_hex": "a3a3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a4a4"
+    },
+    "repeated_164": {
+      "input_hex": "a4a4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a5a5"
+    },
+    "repeated_165": {
+      "input_hex": "a5a5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a6a6"
+    },
+    "repeated_166": {
+      "input_hex": "a6a6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a7a7"
+    },
+    "repeated_167": {
+      "input_hex": "a7a7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a8a8"
+    },
+    "repeated_168": {
+      "input_hex": "a8a8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "a9a9"
+    },
+    "repeated_169": {
+      "input_hex": "a9a9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "aaaa"
+    },
+    "repeated_170": {
+      "input_hex": "aaaa",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "abab"
+    },
+    "repeated_171": {
+      "input_hex": "abab",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "acac"
+    },
+    "repeated_172": {
+      "input_hex": "acac",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "adad"
+    },
+    "repeated_173": {
+      "input_hex": "adad",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "aeae"
+    },
+    "repeated_174": {
+      "input_hex": "aeae",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "afaf"
+    },
+    "repeated_175": {
+      "input_hex": "afaf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b0b0"
+    },
+    "repeated_176": {
+      "input_hex": "b0b0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b1b1"
+    },
+    "repeated_177": {
+      "input_hex": "b1b1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b2b2"
+    },
+    "repeated_178": {
+      "input_hex": "b2b2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b3b3"
+    },
+    "repeated_179": {
+      "input_hex": "b3b3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b4b4"
+    },
+    "repeated_180": {
+      "input_hex": "b4b4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b5b5"
+    },
+    "repeated_181": {
+      "input_hex": "b5b5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b6b6"
+    },
+    "repeated_182": {
+      "input_hex": "b6b6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b7b7"
+    },
+    "repeated_183": {
+      "input_hex": "b7b7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b8b8"
+    },
+    "repeated_184": {
+      "input_hex": "b8b8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "b9b9"
+    },
+    "repeated_185": {
+      "input_hex": "b9b9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "baba"
+    },
+    "repeated_186": {
+      "input_hex": "baba",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bbbb"
+    },
+    "repeated_187": {
+      "input_hex": "bbbb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bcbc"
+    },
+    "repeated_188": {
+      "input_hex": "bcbc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bdbd"
+    },
+    "repeated_189": {
+      "input_hex": "bdbd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bebe"
+    },
+    "repeated_190": {
+      "input_hex": "bebe",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "bfbf"
+    },
+    "repeated_191": {
+      "input_hex": "bfbf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c0c0"
+    },
+    "repeated_192": {
+      "input_hex": "c0c0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c1c1"
+    },
+    "repeated_193": {
+      "input_hex": "c1c1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c2c2"
+    },
+    "repeated_194": {
+      "input_hex": "c2c2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c3c3"
+    },
+    "repeated_195": {
+      "input_hex": "c3c3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c4c4"
+    },
+    "repeated_196": {
+      "input_hex": "c4c4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c5c5"
+    },
+    "repeated_197": {
+      "input_hex": "c5c5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c6c6"
+    },
+    "repeated_198": {
+      "input_hex": "c6c6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c7c7"
+    },
+    "repeated_199": {
+      "input_hex": "c7c7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c8c8"
+    },
+    "repeated_200": {
+      "input_hex": "c8c8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "c9c9"
+    },
+    "repeated_201": {
+      "input_hex": "c9c9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "caca"
+    },
+    "repeated_202": {
+      "input_hex": "caca",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cbcb"
+    },
+    "repeated_203": {
+      "input_hex": "cbcb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cccc"
+    },
+    "repeated_204": {
+      "input_hex": "cccc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cdcd"
+    },
+    "repeated_205": {
+      "input_hex": "cdcd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cece"
+    },
+    "repeated_206": {
+      "input_hex": "cece",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "cfcf"
+    },
+    "repeated_207": {
+      "input_hex": "cfcf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d0d0"
+    },
+    "repeated_208": {
+      "input_hex": "d0d0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d1d1"
+    },
+    "repeated_209": {
+      "input_hex": "d1d1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d2d2"
+    },
+    "repeated_210": {
+      "input_hex": "d2d2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d3d3"
+    },
+    "repeated_211": {
+      "input_hex": "d3d3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d4d4"
+    },
+    "repeated_212": {
+      "input_hex": "d4d4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d5d5"
+    },
+    "repeated_213": {
+      "input_hex": "d5d5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d6d6"
+    },
+    "repeated_214": {
+      "input_hex": "d6d6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d7d7"
+    },
+    "repeated_215": {
+      "input_hex": "d7d7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d8d8"
+    },
+    "repeated_216": {
+      "input_hex": "d8d8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "d9d9"
+    },
+    "repeated_217": {
+      "input_hex": "d9d9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dada"
+    },
+    "repeated_218": {
+      "input_hex": "dada",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dbdb"
+    },
+    "repeated_219": {
+      "input_hex": "dbdb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dcdc"
+    },
+    "repeated_220": {
+      "input_hex": "dcdc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dddd"
+    },
+    "repeated_221": {
+      "input_hex": "dddd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dede"
+    },
+    "repeated_222": {
+      "input_hex": "dede",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "dfdf"
+    },
+    "repeated_223": {
+      "input_hex": "dfdf",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e0e0"
+    },
+    "repeated_224": {
+      "input_hex": "e0e0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e1e1"
+    },
+    "repeated_225": {
+      "input_hex": "e1e1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e2e2"
+    },
+    "repeated_226": {
+      "input_hex": "e2e2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e3e3"
+    },
+    "repeated_227": {
+      "input_hex": "e3e3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e4e4"
+    },
+    "repeated_228": {
+      "input_hex": "e4e4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e5e5"
+    },
+    "repeated_229": {
+      "input_hex": "e5e5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e6e6"
+    },
+    "repeated_230": {
+      "input_hex": "e6e6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e7e7"
+    },
+    "repeated_231": {
+      "input_hex": "e7e7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e8e8"
+    },
+    "repeated_232": {
+      "input_hex": "e8e8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "e9e9"
+    },
+    "repeated_233": {
+      "input_hex": "e9e9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eaea"
+    },
+    "repeated_234": {
+      "input_hex": "eaea",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ebeb"
+    },
+    "repeated_235": {
+      "input_hex": "ebeb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ecec"
+    },
+    "repeated_236": {
+      "input_hex": "ecec",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eded"
+    },
+    "repeated_237": {
+      "input_hex": "eded",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "eeee"
+    },
+    "repeated_238": {
+      "input_hex": "eeee",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "efef"
+    },
+    "repeated_239": {
+      "input_hex": "efef",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f0f0"
+    },
+    "repeated_240": {
+      "input_hex": "f0f0",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f1f1"
+    },
+    "repeated_241": {
+      "input_hex": "f1f1",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f2f2"
+    },
+    "repeated_242": {
+      "input_hex": "f2f2",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f3f3"
+    },
+    "repeated_243": {
+      "input_hex": "f3f3",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f4f4"
+    },
+    "repeated_244": {
+      "input_hex": "f4f4",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f5f5"
+    },
+    "repeated_245": {
+      "input_hex": "f5f5",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f6f6"
+    },
+    "repeated_246": {
+      "input_hex": "f6f6",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f7f7"
+    },
+    "repeated_247": {
+      "input_hex": "f7f7",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f8f8"
+    },
+    "repeated_248": {
+      "input_hex": "f8f8",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "f9f9"
+    },
+    "repeated_249": {
+      "input_hex": "f9f9",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fafa"
+    },
+    "repeated_250": {
+      "input_hex": "fafa",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fbfb"
+    },
+    "repeated_251": {
+      "input_hex": "fbfb",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fcfc"
+    },
+    "repeated_252": {
+      "input_hex": "fcfc",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fdfd"
+    },
+    "repeated_253": {
+      "input_hex": "fdfd",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "fefe"
+    },
+    "repeated_254": {
+      "input_hex": "fefe",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "ffff"
+    },
+    "repeated_255": {
+      "input_hex": "ffff",
+      "ok": true,
+      "rc": 0,
+      "stderr_hex": "",
+      "stdout_hex": "0000"
+    }
+  },
+  "echo_table_controls": {
+    "0000": {
+      "detected": true,
+      "is_echo": true,
+      "rc": 0,
+      "stdout_hex": "0000"
+    },
+    "00ff": {
+      "detected": true,
+      "is_echo": true,
+      "rc": 0,
+      "stdout_hex": "00ff"
+    },
+    "4142": {
+      "detected": true,
+      "is_echo": true,
+      "rc": 0,
+      "stdout_hex": "4142"
+    },
+    "ffff": {
+      "detected": true,
+      "is_echo": true,
+      "rc": 0,
+      "stdout_hex": "ffff"
+    }
+  },
+  "image_bytes": 56382,
+  "image_sha256": "807c42ae8f5890e25df0500e3af0a29f9362ac9d7ee794fb2d7612b28de03a97",
+  "model": {
+    "at_halt_table_mismatches": [],
+    "before_second_input_table_mismatches": [],
+    "inputs": [
+      {
+        "d": 58000,
+        "pc": 58500,
+        "step": 43920
+      },
+      {
+        "d": 58020,
+        "pc": 58549,
+        "step": 43969
+      }
+    ],
+    "installation_mismatches": [],
+    "ok": true,
+    "outputs": [
+      0,
+      0
+    ],
+    "steps": 44017
+  },
+  "scope": "two bounded reads; no EOF-aware branch, no general streaming loop",
+  "strict_cells": true
+}

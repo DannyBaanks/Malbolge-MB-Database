@@ -1,0 +1,16 @@
+{
+  "base": 56862,
+  "start": 58500,
+  "scratch": 58000,
+  "second_scratch": 58020,
+  "mask1": 1093,
+  "mask2": 57955,
+  "target_cells": 879,
+  "runtime_ops": "/ppj*j*j*j*j*j*j*j*j*jooppjj*j*j*j*j*j*j*j*j*j*<j/ppj*j*j*j*j*j*j*j*j*jooppjj*j*j*j*j*j*j*j*j*j*<v",
+  "plan_length": 42977,
+  "plan_end": 43076,
+  "source_length": 56382,
+  "fits": true,
+  "elapsed_seconds": 3.684,
+  "scope": "bounded two-input construction, no EOF detection or unbounded loop"
+}

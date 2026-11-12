@@ -1,0 +1,8 @@
+{
+  "input_hex": "",
+  "rc": 0,
+  "stdout_hex": "e6",
+  "stderr_hex": "",
+  "desired": "halt with no output",
+  "meets_stream_contract": false
+}

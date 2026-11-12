@@ -1,0 +1,8 @@
+{
+  "installation_ok": true,
+  "native_cases": 256,
+  "native_all_equal": true,
+  "controls_detected": true,
+  "scratch_pass": true,
+  "multi_byte_goal_met": false
+}

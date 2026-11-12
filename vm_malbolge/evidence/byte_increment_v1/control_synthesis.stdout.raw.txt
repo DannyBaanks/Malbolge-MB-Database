@@ -1,0 +1,15 @@
+{
+  "base": 34992,
+  "start": 40000,
+  "scratch": 50000,
+  "mask1": 44833,
+  "mask2": 57955,
+  "runtime_ops": "/ppj*j*j*j*j*j*j*j*j*jooppjj*<v",
+  "target_cells": 294,
+  "plan_length": 19340,
+  "plan_end": 19439,
+  "source_length": 33822,
+  "fits": true,
+  "elapsed_seconds": 0.67,
+  "scope": "one input only; no EOF handling or reusable streaming loop"
+}
