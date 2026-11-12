@@ -1,0 +1,27 @@
+{
+  "TA": 58550,
+  "TB": 58573,
+  "want_a": 74,
+  "want_b": 51,
+  "h1": 58000,
+  "h2": 58100,
+  "hclock": 58376,
+  "hclock_mod94": 2,
+  "programs": {
+    "positive": {
+      "target_cells": 89,
+      "plan_length": 5955,
+      "plan_end": 6054,
+      "fits": true,
+      "elapsed_seconds": 0.277
+    },
+    "control": {
+      "target_cells": 89,
+      "plan_length": 5936,
+      "plan_end": 6035,
+      "fits": true,
+      "elapsed_seconds": 0.106
+    }
+  },
+  "scope": "two v4 iterations then pc\u22612 clock drain to HALT; not mutual R/R2"
+}

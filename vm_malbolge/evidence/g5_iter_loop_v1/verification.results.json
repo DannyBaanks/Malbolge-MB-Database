@@ -1,0 +1,225 @@
+{
+  "control": {
+    "final": {
+      "TA": 53,
+      "TB": 41,
+      "hclock": 79
+    },
+    "halt_pc": 58376,
+    "hclock_visits": 4,
+    "image_sha256": "d5bb8473fded77d9195f96c3ec25d3e2c91ec65b4e1a3d84430c07989f4a024f",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "scratch_steps": 5990,
+    "strict_cells": true,
+    "visits": {
+      "58376": [
+        {
+          "opcode": 68,
+          "step": 5984,
+          "value": 66
+        },
+        {
+          "opcode": 64,
+          "step": 5986,
+          "value": 62
+        },
+        {
+          "opcode": 78,
+          "step": 5988,
+          "value": 76
+        },
+        {
+          "opcode": 81,
+          "step": 5990,
+          "value": 79
+        }
+      ],
+      "58550": [
+        {
+          "opcode": 62,
+          "step": 5938,
+          "value": 74
+        },
+        {
+          "opcode": 21,
+          "step": 5959,
+          "value": 33
+        }
+      ],
+      "58573": [
+        {
+          "opcode": 62,
+          "step": 5961,
+          "value": 51
+        },
+        {
+          "opcode": 62,
+          "step": 5982,
+          "value": 51
+        }
+      ]
+    },
+    "writes": {
+      "58550": [
+        {
+          "after": 74,
+          "before": 29443,
+          "step": 4547
+        },
+        {
+          "after": 60,
+          "before": 70,
+          "step": 5946
+        },
+        {
+          "after": 33,
+          "before": 60,
+          "step": 5953
+        }
+      ],
+      "58573": [
+        {
+          "after": 29524,
+          "before": 81,
+          "step": 4948
+        },
+        {
+          "after": 51,
+          "before": 29524,
+          "step": 5191
+        },
+        {
+          "after": 2,
+          "before": 41,
+          "step": 5966
+        },
+        {
+          "after": 29524,
+          "before": 2,
+          "step": 5969
+        },
+        {
+          "after": 51,
+          "before": 29524,
+          "step": 5976
+        }
+      ]
+    }
+  },
+  "positive": {
+    "final": {
+      "TA": 70,
+      "TB": 41,
+      "hclock": 79
+    },
+    "halt_pc": 58376,
+    "hclock_visits": 4,
+    "image_sha256": "e9932dd80c096ece083507ec9eb668a615fbcd5990778249cbeca241a76be0d9",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "scratch_steps": 6009,
+    "strict_cells": true,
+    "visits": {
+      "58376": [
+        {
+          "opcode": 68,
+          "step": 6003,
+          "value": 66
+        },
+        {
+          "opcode": 64,
+          "step": 6005,
+          "value": 62
+        },
+        {
+          "opcode": 78,
+          "step": 6007,
+          "value": 76
+        },
+        {
+          "opcode": 81,
+          "step": 6009,
+          "value": 79
+        }
+      ],
+      "58550": [
+        {
+          "opcode": 62,
+          "step": 5957,
+          "value": 74
+        },
+        {
+          "opcode": 62,
+          "step": 5978,
+          "value": 74
+        }
+      ],
+      "58573": [
+        {
+          "opcode": 62,
+          "step": 5980,
+          "value": 51
+        },
+        {
+          "opcode": 62,
+          "step": 6001,
+          "value": 51
+        }
+      ]
+    },
+    "writes": {
+      "58550": [
+        {
+          "after": 74,
+          "before": 29443,
+          "step": 4482
+        },
+        {
+          "after": 60,
+          "before": 70,
+          "step": 5962
+        },
+        {
+          "after": 29524,
+          "before": 60,
+          "step": 5965
+        },
+        {
+          "after": 74,
+          "before": 29524,
+          "step": 5972
+        }
+      ],
+      "58573": [
+        {
+          "after": 29524,
+          "before": 81,
+          "step": 4986
+        },
+        {
+          "after": 51,
+          "before": 29524,
+          "step": 5051
+        },
+        {
+          "after": 2,
+          "before": 41,
+          "step": 5985
+        },
+        {
+          "after": 29524,
+          "before": 2,
+          "step": 5988
+        },
+        {
+          "after": 51,
+          "before": 29524,
+          "step": 5995
+        }
+      ]
+    }
+  }
+}

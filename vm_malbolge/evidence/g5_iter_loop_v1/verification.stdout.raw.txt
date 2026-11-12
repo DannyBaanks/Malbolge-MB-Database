@@ -1,0 +1,23 @@
+{
+  "positive": {
+    "halt_pc": 58376,
+    "steps": 6009,
+    "hclock_visits": 4,
+    "rc": 0,
+    "TA_visits": 2,
+    "TB_visits": 2,
+    "final": {
+      "TA": 70,
+      "TB": 41,
+      "hclock": 79
+    }
+  },
+  "control": {
+    "halt_pc": 58376,
+    "steps": 5990,
+    "hclock_visits": 4,
+    "rc": 0,
+    "TA_visits": 2,
+    "differs": true
+  }
+}

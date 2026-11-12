@@ -1,0 +1,21 @@
+{
+  "count": 16,
+  "files": {
+    "DESIGN.md": "489f4dbb15466da6e253fa90fd22960ed5bc5af35d14d80fdf3f93cfa1288558",
+    "GATES.md": "8849201d551d77fa80188a3b06345dabfa7a1fa099cad97d1ee3a172a69049d6",
+    "GUIA.md": "bf3e294076c1b6d211cf730206be77e4f6949a26a89f559512fe678a61724dac",
+    "VERDICT.md": "15ec5ce48c8c0a2a119a9ddd60f9df573aba771deb4b97f89639ab4c630e975e",
+    "iter_control.mb": "d5bb8473fded77d9195f96c3ec25d3e2c91ec65b4e1a3d84430c07989f4a024f",
+    "iter_control_plan.ops": "ad25e9e16991823ab0482b5c96e9a3208125958b877de4060eab32cc32822c85",
+    "iter_control_targets.json": "bfec1d5062553ca9dfeaa2e719018ee072d3caa5a69434a8c6998ee02f987a2f",
+    "iter_positive.mb": "e9932dd80c096ece083507ec9eb668a615fbcd5990778249cbeca241a76be0d9",
+    "iter_positive_plan.ops": "508f708e8816ad83dd69ccd2bcf7613b83a44f61b4ea2e797f062d047b628174",
+    "iter_positive_targets.json": "173a142a450fcf5c019c44206ad71921ca0815e5f764c33a75fba3343672c3cb",
+    "synthesis.results.json": "e3898ea4c8307270d774fd424955ca8aea567fa70d69d6fdd5ed531963ef0dca",
+    "synthesize.py": "c1616fd9724c41675861aca6c248688431ee3c02daff4f17f52c908463fb4cf1",
+    "verification.results.json": "91e9378dca5f29dbf1452bdca80032ffe94d270e984478723d58792ec00bcd52",
+    "verification.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification.stdout.raw.txt": "72bd2930c7132b1be257f9b199ccfeab0f752e0ae286608baa364bb1296a3285",
+    "verify.py": "c06d55cc096d1709aca6f86cbf3bdc6fa1fda61df3ca3208f5dc1a1fdb556732"
+  }
+}
