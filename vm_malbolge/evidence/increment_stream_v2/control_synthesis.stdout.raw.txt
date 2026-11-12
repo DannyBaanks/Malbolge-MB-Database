@@ -1,0 +1,20 @@
+{
+  "base": 56862,
+  "start": 58500,
+  "first_scratch": 58000,
+  "reusable_scratch": 58020,
+  "mask1": 1093,
+  "mask2": 57955,
+  "ctrl1": 28431,
+  "ctrl2": 56862,
+  "rearm_ops": "*oooooojppjpopooojppjpooo*j*j*j*j*j*j*j*j*j*ojpooooooo*j*j*j*j*j*j*j*j*j*ojpoooooooooj",
+  "runtime_ops": "/ppj*j*j*j*j*j*j*j*j*jooppjj*j*j*j*j*j*j*j*j*j*<j/ppj*j*j*j*j*j*j*j*j*jooppjj*j*j*j*j*j*j*j*j*j*<j*oooooojppjpopooojppjpooo*j*j*j*j*j*j*j*j*j*ojpooooooo*j*j*j*j*j*j*j*j*j*ojpoooooooooj/ppj*j*j*j*j*j*j*j*j*jooppjj*j*j*j*j*j*j*j*j*j*<v",
+  "runtime_length": 233,
+  "target_cells": 1024,
+  "plan_length": 49754,
+  "plan_end": 49853,
+  "source_length": 56382,
+  "fits": true,
+  "elapsed_seconds": 3.632,
+  "scope": "three unrolled reads; scratch reset only; no code rearm, loop, or EOF branch"
+}

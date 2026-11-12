@@ -1,0 +1,25 @@
+{
+  "target_pc": 58550,
+  "original": 74,
+  "after_first_execute": 70,
+  "control_word": 29561,
+  "helper_pc": 58000,
+  "stop_pc": 58037,
+  "programs": {
+    "positive": {
+      "runtime_ops": "j*jpojpooj*j*j*j*j*j*j*j*j*j*ojpooooi",
+      "plan_length": 3815,
+      "plan_end": 3914,
+      "fits": true,
+      "elapsed_seconds": 0.122
+    },
+    "control": {
+      "runtime_ops": "j*joojpooj*j*j*j*j*j*j*j*j*j*ojpooooi",
+      "plan_length": 3860,
+      "plan_end": 3959,
+      "fits": true,
+      "elapsed_seconds": 0.021
+    }
+  },
+  "scope": "one code cell is executed, rearmed and executed again; no increment loop or EOF branch"
+}

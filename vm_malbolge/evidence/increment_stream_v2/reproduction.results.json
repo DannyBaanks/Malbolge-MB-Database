@@ -1,0 +1,25 @@
+{
+  "excluded": "elapsed_seconds varies",
+  "method": "two fresh isolated syntheses with sibling dependencies",
+  "runs": {
+    "synthesize_four.py": {
+      "artifacts_byte_identical": {
+        "four_plan.ops": true,
+        "four_targets.json": true,
+        "increment_four.mb": true
+      },
+      "rc": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "synthesize_revisit.py": {
+      "artifacts_byte_identical": {
+        "revisit_control.mb": true,
+        "revisit_control_plan.ops": true,
+        "revisit_positive.mb": true,
+        "revisit_positive_plan.ops": true
+      },
+      "rc": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

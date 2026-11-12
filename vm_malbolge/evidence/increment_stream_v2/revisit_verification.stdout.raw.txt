@@ -1,0 +1,109 @@
+{
+  "control": {
+    "image_sha256": "8bde4ead8d55938144690693617997ac0d4867eea874052451cfaf0ec381fdcd",
+    "model_steps": 3903,
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "rea_events_truncated": false,
+    "rea_id": "ev_646c11ab7e591b1f38a1471fcbc8f97228206bbd57ad1a1c0a0c0090650c32c1",
+    "rea_status": "HALTED",
+    "rea_steps": 3903,
+    "rea_visits_match": true,
+    "rea_writes_match": true,
+    "strict_cells": true,
+    "visits": [
+      {
+        "opcode": 62,
+        "step": 3862
+      },
+      {
+        "opcode": 21,
+        "step": 3901
+      }
+    ],
+    "writes": [
+      {
+        "after": 74,
+        "before": 29443,
+        "step": 3514
+      },
+      {
+        "after": 70,
+        "before": 74,
+        "step": 3862
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 3870
+      },
+      {
+        "after": 33,
+        "before": 60,
+        "step": 3895
+      },
+      {
+        "after": 53,
+        "before": 33,
+        "step": 3901
+      }
+    ]
+  },
+  "positive": {
+    "image_sha256": "87f48e9c8c8e04be9c666811179fa61e9beca1f9286e4d3dfef59eb37a4a40ae",
+    "model_steps": 3858,
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "rea_events_truncated": false,
+    "rea_id": "ev_03370ffefb2af9db76bf8451c19095dea741b75e217a7524e9ef0157bb5fdcc5",
+    "rea_status": "HALTED",
+    "rea_steps": 3858,
+    "rea_visits_match": true,
+    "rea_writes_match": true,
+    "strict_cells": true,
+    "visits": [
+      {
+        "opcode": 62,
+        "step": 3817
+      },
+      {
+        "opcode": 62,
+        "step": 3856
+      }
+    ],
+    "writes": [
+      {
+        "after": 74,
+        "before": 29443,
+        "step": 3469
+      },
+      {
+        "after": 70,
+        "before": 74,
+        "step": 3817
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 3822
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 3825
+      },
+      {
+        "after": 74,
+        "before": 29524,
+        "step": 3850
+      },
+      {
+        "after": 70,
+        "before": 74,
+        "step": 3856
+      }
+    ]
+  }
+}

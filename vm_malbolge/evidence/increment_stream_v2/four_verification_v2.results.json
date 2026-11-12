@@ -1,0 +1,3776 @@
+{
+  "boundaries": {
+    "41": {
+      "expected_hex": "42",
+      "matches": false,
+      "output_hex": "",
+      "rc": null,
+      "timed_out": true
+    },
+    "414243": {
+      "expected_hex": "424344",
+      "matches": false,
+      "output_hex": "4243441f",
+      "rc": 0,
+      "timed_out": false
+    },
+    "4142434445": {
+      "expected_hex": "4243444546",
+      "matches": false,
+      "output_hex": "42434445",
+      "rc": 0,
+      "timed_out": false
+    },
+    "empty": {
+      "expected_hex": "",
+      "matches": false,
+      "output_hex": "",
+      "rc": null,
+      "timed_out": true
+    }
+  },
+  "controls": {
+    "00000000": {
+      "detected": false,
+      "expected_hex": "01010101",
+      "output_hex": "01010101",
+      "rc": 0
+    },
+    "00ff8042": {
+      "detected": true,
+      "expected_hex": "01008143",
+      "output_hex": "01007743",
+      "rc": 0
+    },
+    "41424344": {
+      "detected": true,
+      "expected_hex": "42434445",
+      "output_hex": "42430e45",
+      "rc": 0
+    },
+    "ffffffff": {
+      "detected": false,
+      "expected_hex": "00000000",
+      "output_hex": "00000000",
+      "rc": 0
+    }
+  },
+  "image_bytes": 56382,
+  "image_sha256": "1d036a22907f3b6746c93f5e7158db9e7b60e8d34b8fdda969ba5628c67128a9",
+  "native_cases": {
+    "repeated_000": {
+      "input_hex": "00000000",
+      "ok": true,
+      "output_hex": "01010101",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_001": {
+      "input_hex": "01010101",
+      "ok": true,
+      "output_hex": "02020202",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_002": {
+      "input_hex": "02020202",
+      "ok": true,
+      "output_hex": "03030303",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_003": {
+      "input_hex": "03030303",
+      "ok": true,
+      "output_hex": "04040404",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_004": {
+      "input_hex": "04040404",
+      "ok": true,
+      "output_hex": "05050505",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_005": {
+      "input_hex": "05050505",
+      "ok": true,
+      "output_hex": "06060606",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_006": {
+      "input_hex": "06060606",
+      "ok": true,
+      "output_hex": "07070707",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_007": {
+      "input_hex": "07070707",
+      "ok": true,
+      "output_hex": "08080808",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_008": {
+      "input_hex": "08080808",
+      "ok": true,
+      "output_hex": "09090909",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_009": {
+      "input_hex": "09090909",
+      "ok": true,
+      "output_hex": "0a0a0a0a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_010": {
+      "input_hex": "0a0a0a0a",
+      "ok": true,
+      "output_hex": "0b0b0b0b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_011": {
+      "input_hex": "0b0b0b0b",
+      "ok": true,
+      "output_hex": "0c0c0c0c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_012": {
+      "input_hex": "0c0c0c0c",
+      "ok": true,
+      "output_hex": "0d0d0d0d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_013": {
+      "input_hex": "0d0d0d0d",
+      "ok": true,
+      "output_hex": "0e0e0e0e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_014": {
+      "input_hex": "0e0e0e0e",
+      "ok": true,
+      "output_hex": "0f0f0f0f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_015": {
+      "input_hex": "0f0f0f0f",
+      "ok": true,
+      "output_hex": "10101010",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_016": {
+      "input_hex": "10101010",
+      "ok": true,
+      "output_hex": "11111111",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_017": {
+      "input_hex": "11111111",
+      "ok": true,
+      "output_hex": "12121212",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_018": {
+      "input_hex": "12121212",
+      "ok": true,
+      "output_hex": "13131313",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_019": {
+      "input_hex": "13131313",
+      "ok": true,
+      "output_hex": "14141414",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_020": {
+      "input_hex": "14141414",
+      "ok": true,
+      "output_hex": "15151515",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_021": {
+      "input_hex": "15151515",
+      "ok": true,
+      "output_hex": "16161616",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_022": {
+      "input_hex": "16161616",
+      "ok": true,
+      "output_hex": "17171717",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_023": {
+      "input_hex": "17171717",
+      "ok": true,
+      "output_hex": "18181818",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_024": {
+      "input_hex": "18181818",
+      "ok": true,
+      "output_hex": "19191919",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_025": {
+      "input_hex": "19191919",
+      "ok": true,
+      "output_hex": "1a1a1a1a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_026": {
+      "input_hex": "1a1a1a1a",
+      "ok": true,
+      "output_hex": "1b1b1b1b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_027": {
+      "input_hex": "1b1b1b1b",
+      "ok": true,
+      "output_hex": "1c1c1c1c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_028": {
+      "input_hex": "1c1c1c1c",
+      "ok": true,
+      "output_hex": "1d1d1d1d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_029": {
+      "input_hex": "1d1d1d1d",
+      "ok": true,
+      "output_hex": "1e1e1e1e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_030": {
+      "input_hex": "1e1e1e1e",
+      "ok": true,
+      "output_hex": "1f1f1f1f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_031": {
+      "input_hex": "1f1f1f1f",
+      "ok": true,
+      "output_hex": "20202020",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_032": {
+      "input_hex": "20202020",
+      "ok": true,
+      "output_hex": "21212121",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_033": {
+      "input_hex": "21212121",
+      "ok": true,
+      "output_hex": "22222222",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_034": {
+      "input_hex": "22222222",
+      "ok": true,
+      "output_hex": "23232323",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_035": {
+      "input_hex": "23232323",
+      "ok": true,
+      "output_hex": "24242424",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_036": {
+      "input_hex": "24242424",
+      "ok": true,
+      "output_hex": "25252525",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_037": {
+      "input_hex": "25252525",
+      "ok": true,
+      "output_hex": "26262626",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_038": {
+      "input_hex": "26262626",
+      "ok": true,
+      "output_hex": "27272727",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_039": {
+      "input_hex": "27272727",
+      "ok": true,
+      "output_hex": "28282828",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_040": {
+      "input_hex": "28282828",
+      "ok": true,
+      "output_hex": "29292929",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_041": {
+      "input_hex": "29292929",
+      "ok": true,
+      "output_hex": "2a2a2a2a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_042": {
+      "input_hex": "2a2a2a2a",
+      "ok": true,
+      "output_hex": "2b2b2b2b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_043": {
+      "input_hex": "2b2b2b2b",
+      "ok": true,
+      "output_hex": "2c2c2c2c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_044": {
+      "input_hex": "2c2c2c2c",
+      "ok": true,
+      "output_hex": "2d2d2d2d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_045": {
+      "input_hex": "2d2d2d2d",
+      "ok": true,
+      "output_hex": "2e2e2e2e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_046": {
+      "input_hex": "2e2e2e2e",
+      "ok": true,
+      "output_hex": "2f2f2f2f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_047": {
+      "input_hex": "2f2f2f2f",
+      "ok": true,
+      "output_hex": "30303030",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_048": {
+      "input_hex": "30303030",
+      "ok": true,
+      "output_hex": "31313131",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_049": {
+      "input_hex": "31313131",
+      "ok": true,
+      "output_hex": "32323232",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_050": {
+      "input_hex": "32323232",
+      "ok": true,
+      "output_hex": "33333333",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_051": {
+      "input_hex": "33333333",
+      "ok": true,
+      "output_hex": "34343434",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_052": {
+      "input_hex": "34343434",
+      "ok": true,
+      "output_hex": "35353535",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_053": {
+      "input_hex": "35353535",
+      "ok": true,
+      "output_hex": "36363636",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_054": {
+      "input_hex": "36363636",
+      "ok": true,
+      "output_hex": "37373737",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_055": {
+      "input_hex": "37373737",
+      "ok": true,
+      "output_hex": "38383838",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_056": {
+      "input_hex": "38383838",
+      "ok": true,
+      "output_hex": "39393939",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_057": {
+      "input_hex": "39393939",
+      "ok": true,
+      "output_hex": "3a3a3a3a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_058": {
+      "input_hex": "3a3a3a3a",
+      "ok": true,
+      "output_hex": "3b3b3b3b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_059": {
+      "input_hex": "3b3b3b3b",
+      "ok": true,
+      "output_hex": "3c3c3c3c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_060": {
+      "input_hex": "3c3c3c3c",
+      "ok": true,
+      "output_hex": "3d3d3d3d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_061": {
+      "input_hex": "3d3d3d3d",
+      "ok": true,
+      "output_hex": "3e3e3e3e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_062": {
+      "input_hex": "3e3e3e3e",
+      "ok": true,
+      "output_hex": "3f3f3f3f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_063": {
+      "input_hex": "3f3f3f3f",
+      "ok": true,
+      "output_hex": "40404040",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_064": {
+      "input_hex": "40404040",
+      "ok": true,
+      "output_hex": "41414141",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_065": {
+      "input_hex": "41414141",
+      "ok": true,
+      "output_hex": "42424242",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_066": {
+      "input_hex": "42424242",
+      "ok": true,
+      "output_hex": "43434343",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_067": {
+      "input_hex": "43434343",
+      "ok": true,
+      "output_hex": "44444444",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_068": {
+      "input_hex": "44444444",
+      "ok": true,
+      "output_hex": "45454545",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_069": {
+      "input_hex": "45454545",
+      "ok": true,
+      "output_hex": "46464646",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_070": {
+      "input_hex": "46464646",
+      "ok": true,
+      "output_hex": "47474747",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_071": {
+      "input_hex": "47474747",
+      "ok": true,
+      "output_hex": "48484848",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_072": {
+      "input_hex": "48484848",
+      "ok": true,
+      "output_hex": "49494949",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_073": {
+      "input_hex": "49494949",
+      "ok": true,
+      "output_hex": "4a4a4a4a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_074": {
+      "input_hex": "4a4a4a4a",
+      "ok": true,
+      "output_hex": "4b4b4b4b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_075": {
+      "input_hex": "4b4b4b4b",
+      "ok": true,
+      "output_hex": "4c4c4c4c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_076": {
+      "input_hex": "4c4c4c4c",
+      "ok": true,
+      "output_hex": "4d4d4d4d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_077": {
+      "input_hex": "4d4d4d4d",
+      "ok": true,
+      "output_hex": "4e4e4e4e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_078": {
+      "input_hex": "4e4e4e4e",
+      "ok": true,
+      "output_hex": "4f4f4f4f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_079": {
+      "input_hex": "4f4f4f4f",
+      "ok": true,
+      "output_hex": "50505050",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_080": {
+      "input_hex": "50505050",
+      "ok": true,
+      "output_hex": "51515151",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_081": {
+      "input_hex": "51515151",
+      "ok": true,
+      "output_hex": "52525252",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_082": {
+      "input_hex": "52525252",
+      "ok": true,
+      "output_hex": "53535353",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_083": {
+      "input_hex": "53535353",
+      "ok": true,
+      "output_hex": "54545454",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_084": {
+      "input_hex": "54545454",
+      "ok": true,
+      "output_hex": "55555555",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_085": {
+      "input_hex": "55555555",
+      "ok": true,
+      "output_hex": "56565656",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_086": {
+      "input_hex": "56565656",
+      "ok": true,
+      "output_hex": "57575757",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_087": {
+      "input_hex": "57575757",
+      "ok": true,
+      "output_hex": "58585858",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_088": {
+      "input_hex": "58585858",
+      "ok": true,
+      "output_hex": "59595959",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_089": {
+      "input_hex": "59595959",
+      "ok": true,
+      "output_hex": "5a5a5a5a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_090": {
+      "input_hex": "5a5a5a5a",
+      "ok": true,
+      "output_hex": "5b5b5b5b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_091": {
+      "input_hex": "5b5b5b5b",
+      "ok": true,
+      "output_hex": "5c5c5c5c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_092": {
+      "input_hex": "5c5c5c5c",
+      "ok": true,
+      "output_hex": "5d5d5d5d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_093": {
+      "input_hex": "5d5d5d5d",
+      "ok": true,
+      "output_hex": "5e5e5e5e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_094": {
+      "input_hex": "5e5e5e5e",
+      "ok": true,
+      "output_hex": "5f5f5f5f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_095": {
+      "input_hex": "5f5f5f5f",
+      "ok": true,
+      "output_hex": "60606060",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_096": {
+      "input_hex": "60606060",
+      "ok": true,
+      "output_hex": "61616161",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_097": {
+      "input_hex": "61616161",
+      "ok": true,
+      "output_hex": "62626262",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_098": {
+      "input_hex": "62626262",
+      "ok": true,
+      "output_hex": "63636363",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_099": {
+      "input_hex": "63636363",
+      "ok": true,
+      "output_hex": "64646464",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_100": {
+      "input_hex": "64646464",
+      "ok": true,
+      "output_hex": "65656565",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_101": {
+      "input_hex": "65656565",
+      "ok": true,
+      "output_hex": "66666666",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_102": {
+      "input_hex": "66666666",
+      "ok": true,
+      "output_hex": "67676767",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_103": {
+      "input_hex": "67676767",
+      "ok": true,
+      "output_hex": "68686868",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_104": {
+      "input_hex": "68686868",
+      "ok": true,
+      "output_hex": "69696969",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_105": {
+      "input_hex": "69696969",
+      "ok": true,
+      "output_hex": "6a6a6a6a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_106": {
+      "input_hex": "6a6a6a6a",
+      "ok": true,
+      "output_hex": "6b6b6b6b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_107": {
+      "input_hex": "6b6b6b6b",
+      "ok": true,
+      "output_hex": "6c6c6c6c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_108": {
+      "input_hex": "6c6c6c6c",
+      "ok": true,
+      "output_hex": "6d6d6d6d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_109": {
+      "input_hex": "6d6d6d6d",
+      "ok": true,
+      "output_hex": "6e6e6e6e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_110": {
+      "input_hex": "6e6e6e6e",
+      "ok": true,
+      "output_hex": "6f6f6f6f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_111": {
+      "input_hex": "6f6f6f6f",
+      "ok": true,
+      "output_hex": "70707070",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_112": {
+      "input_hex": "70707070",
+      "ok": true,
+      "output_hex": "71717171",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_113": {
+      "input_hex": "71717171",
+      "ok": true,
+      "output_hex": "72727272",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_114": {
+      "input_hex": "72727272",
+      "ok": true,
+      "output_hex": "73737373",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_115": {
+      "input_hex": "73737373",
+      "ok": true,
+      "output_hex": "74747474",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_116": {
+      "input_hex": "74747474",
+      "ok": true,
+      "output_hex": "75757575",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_117": {
+      "input_hex": "75757575",
+      "ok": true,
+      "output_hex": "76767676",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_118": {
+      "input_hex": "76767676",
+      "ok": true,
+      "output_hex": "77777777",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_119": {
+      "input_hex": "77777777",
+      "ok": true,
+      "output_hex": "78787878",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_120": {
+      "input_hex": "78787878",
+      "ok": true,
+      "output_hex": "79797979",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_121": {
+      "input_hex": "79797979",
+      "ok": true,
+      "output_hex": "7a7a7a7a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_122": {
+      "input_hex": "7a7a7a7a",
+      "ok": true,
+      "output_hex": "7b7b7b7b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_123": {
+      "input_hex": "7b7b7b7b",
+      "ok": true,
+      "output_hex": "7c7c7c7c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_124": {
+      "input_hex": "7c7c7c7c",
+      "ok": true,
+      "output_hex": "7d7d7d7d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_125": {
+      "input_hex": "7d7d7d7d",
+      "ok": true,
+      "output_hex": "7e7e7e7e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_126": {
+      "input_hex": "7e7e7e7e",
+      "ok": true,
+      "output_hex": "7f7f7f7f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_127": {
+      "input_hex": "7f7f7f7f",
+      "ok": true,
+      "output_hex": "80808080",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_128": {
+      "input_hex": "80808080",
+      "ok": true,
+      "output_hex": "81818181",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_129": {
+      "input_hex": "81818181",
+      "ok": true,
+      "output_hex": "82828282",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_130": {
+      "input_hex": "82828282",
+      "ok": true,
+      "output_hex": "83838383",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_131": {
+      "input_hex": "83838383",
+      "ok": true,
+      "output_hex": "84848484",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_132": {
+      "input_hex": "84848484",
+      "ok": true,
+      "output_hex": "85858585",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_133": {
+      "input_hex": "85858585",
+      "ok": true,
+      "output_hex": "86868686",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_134": {
+      "input_hex": "86868686",
+      "ok": true,
+      "output_hex": "87878787",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_135": {
+      "input_hex": "87878787",
+      "ok": true,
+      "output_hex": "88888888",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_136": {
+      "input_hex": "88888888",
+      "ok": true,
+      "output_hex": "89898989",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_137": {
+      "input_hex": "89898989",
+      "ok": true,
+      "output_hex": "8a8a8a8a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_138": {
+      "input_hex": "8a8a8a8a",
+      "ok": true,
+      "output_hex": "8b8b8b8b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_139": {
+      "input_hex": "8b8b8b8b",
+      "ok": true,
+      "output_hex": "8c8c8c8c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_140": {
+      "input_hex": "8c8c8c8c",
+      "ok": true,
+      "output_hex": "8d8d8d8d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_141": {
+      "input_hex": "8d8d8d8d",
+      "ok": true,
+      "output_hex": "8e8e8e8e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_142": {
+      "input_hex": "8e8e8e8e",
+      "ok": true,
+      "output_hex": "8f8f8f8f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_143": {
+      "input_hex": "8f8f8f8f",
+      "ok": true,
+      "output_hex": "90909090",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_144": {
+      "input_hex": "90909090",
+      "ok": true,
+      "output_hex": "91919191",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_145": {
+      "input_hex": "91919191",
+      "ok": true,
+      "output_hex": "92929292",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_146": {
+      "input_hex": "92929292",
+      "ok": true,
+      "output_hex": "93939393",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_147": {
+      "input_hex": "93939393",
+      "ok": true,
+      "output_hex": "94949494",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_148": {
+      "input_hex": "94949494",
+      "ok": true,
+      "output_hex": "95959595",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_149": {
+      "input_hex": "95959595",
+      "ok": true,
+      "output_hex": "96969696",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_150": {
+      "input_hex": "96969696",
+      "ok": true,
+      "output_hex": "97979797",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_151": {
+      "input_hex": "97979797",
+      "ok": true,
+      "output_hex": "98989898",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_152": {
+      "input_hex": "98989898",
+      "ok": true,
+      "output_hex": "99999999",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_153": {
+      "input_hex": "99999999",
+      "ok": true,
+      "output_hex": "9a9a9a9a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_154": {
+      "input_hex": "9a9a9a9a",
+      "ok": true,
+      "output_hex": "9b9b9b9b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_155": {
+      "input_hex": "9b9b9b9b",
+      "ok": true,
+      "output_hex": "9c9c9c9c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_156": {
+      "input_hex": "9c9c9c9c",
+      "ok": true,
+      "output_hex": "9d9d9d9d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_157": {
+      "input_hex": "9d9d9d9d",
+      "ok": true,
+      "output_hex": "9e9e9e9e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_158": {
+      "input_hex": "9e9e9e9e",
+      "ok": true,
+      "output_hex": "9f9f9f9f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_159": {
+      "input_hex": "9f9f9f9f",
+      "ok": true,
+      "output_hex": "a0a0a0a0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_160": {
+      "input_hex": "a0a0a0a0",
+      "ok": true,
+      "output_hex": "a1a1a1a1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_161": {
+      "input_hex": "a1a1a1a1",
+      "ok": true,
+      "output_hex": "a2a2a2a2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_162": {
+      "input_hex": "a2a2a2a2",
+      "ok": true,
+      "output_hex": "a3a3a3a3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_163": {
+      "input_hex": "a3a3a3a3",
+      "ok": true,
+      "output_hex": "a4a4a4a4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_164": {
+      "input_hex": "a4a4a4a4",
+      "ok": true,
+      "output_hex": "a5a5a5a5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_165": {
+      "input_hex": "a5a5a5a5",
+      "ok": true,
+      "output_hex": "a6a6a6a6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_166": {
+      "input_hex": "a6a6a6a6",
+      "ok": true,
+      "output_hex": "a7a7a7a7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_167": {
+      "input_hex": "a7a7a7a7",
+      "ok": true,
+      "output_hex": "a8a8a8a8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_168": {
+      "input_hex": "a8a8a8a8",
+      "ok": true,
+      "output_hex": "a9a9a9a9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_169": {
+      "input_hex": "a9a9a9a9",
+      "ok": true,
+      "output_hex": "aaaaaaaa",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_170": {
+      "input_hex": "aaaaaaaa",
+      "ok": true,
+      "output_hex": "abababab",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_171": {
+      "input_hex": "abababab",
+      "ok": true,
+      "output_hex": "acacacac",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_172": {
+      "input_hex": "acacacac",
+      "ok": true,
+      "output_hex": "adadadad",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_173": {
+      "input_hex": "adadadad",
+      "ok": true,
+      "output_hex": "aeaeaeae",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_174": {
+      "input_hex": "aeaeaeae",
+      "ok": true,
+      "output_hex": "afafafaf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_175": {
+      "input_hex": "afafafaf",
+      "ok": true,
+      "output_hex": "b0b0b0b0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_176": {
+      "input_hex": "b0b0b0b0",
+      "ok": true,
+      "output_hex": "b1b1b1b1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_177": {
+      "input_hex": "b1b1b1b1",
+      "ok": true,
+      "output_hex": "b2b2b2b2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_178": {
+      "input_hex": "b2b2b2b2",
+      "ok": true,
+      "output_hex": "b3b3b3b3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_179": {
+      "input_hex": "b3b3b3b3",
+      "ok": true,
+      "output_hex": "b4b4b4b4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_180": {
+      "input_hex": "b4b4b4b4",
+      "ok": true,
+      "output_hex": "b5b5b5b5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_181": {
+      "input_hex": "b5b5b5b5",
+      "ok": true,
+      "output_hex": "b6b6b6b6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_182": {
+      "input_hex": "b6b6b6b6",
+      "ok": true,
+      "output_hex": "b7b7b7b7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_183": {
+      "input_hex": "b7b7b7b7",
+      "ok": true,
+      "output_hex": "b8b8b8b8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_184": {
+      "input_hex": "b8b8b8b8",
+      "ok": true,
+      "output_hex": "b9b9b9b9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_185": {
+      "input_hex": "b9b9b9b9",
+      "ok": true,
+      "output_hex": "babababa",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_186": {
+      "input_hex": "babababa",
+      "ok": true,
+      "output_hex": "bbbbbbbb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_187": {
+      "input_hex": "bbbbbbbb",
+      "ok": true,
+      "output_hex": "bcbcbcbc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_188": {
+      "input_hex": "bcbcbcbc",
+      "ok": true,
+      "output_hex": "bdbdbdbd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_189": {
+      "input_hex": "bdbdbdbd",
+      "ok": true,
+      "output_hex": "bebebebe",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_190": {
+      "input_hex": "bebebebe",
+      "ok": true,
+      "output_hex": "bfbfbfbf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_191": {
+      "input_hex": "bfbfbfbf",
+      "ok": true,
+      "output_hex": "c0c0c0c0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_192": {
+      "input_hex": "c0c0c0c0",
+      "ok": true,
+      "output_hex": "c1c1c1c1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_193": {
+      "input_hex": "c1c1c1c1",
+      "ok": true,
+      "output_hex": "c2c2c2c2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_194": {
+      "input_hex": "c2c2c2c2",
+      "ok": true,
+      "output_hex": "c3c3c3c3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_195": {
+      "input_hex": "c3c3c3c3",
+      "ok": true,
+      "output_hex": "c4c4c4c4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_196": {
+      "input_hex": "c4c4c4c4",
+      "ok": true,
+      "output_hex": "c5c5c5c5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_197": {
+      "input_hex": "c5c5c5c5",
+      "ok": true,
+      "output_hex": "c6c6c6c6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_198": {
+      "input_hex": "c6c6c6c6",
+      "ok": true,
+      "output_hex": "c7c7c7c7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_199": {
+      "input_hex": "c7c7c7c7",
+      "ok": true,
+      "output_hex": "c8c8c8c8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_200": {
+      "input_hex": "c8c8c8c8",
+      "ok": true,
+      "output_hex": "c9c9c9c9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_201": {
+      "input_hex": "c9c9c9c9",
+      "ok": true,
+      "output_hex": "cacacaca",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_202": {
+      "input_hex": "cacacaca",
+      "ok": true,
+      "output_hex": "cbcbcbcb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_203": {
+      "input_hex": "cbcbcbcb",
+      "ok": true,
+      "output_hex": "cccccccc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_204": {
+      "input_hex": "cccccccc",
+      "ok": true,
+      "output_hex": "cdcdcdcd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_205": {
+      "input_hex": "cdcdcdcd",
+      "ok": true,
+      "output_hex": "cececece",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_206": {
+      "input_hex": "cececece",
+      "ok": true,
+      "output_hex": "cfcfcfcf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_207": {
+      "input_hex": "cfcfcfcf",
+      "ok": true,
+      "output_hex": "d0d0d0d0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_208": {
+      "input_hex": "d0d0d0d0",
+      "ok": true,
+      "output_hex": "d1d1d1d1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_209": {
+      "input_hex": "d1d1d1d1",
+      "ok": true,
+      "output_hex": "d2d2d2d2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_210": {
+      "input_hex": "d2d2d2d2",
+      "ok": true,
+      "output_hex": "d3d3d3d3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_211": {
+      "input_hex": "d3d3d3d3",
+      "ok": true,
+      "output_hex": "d4d4d4d4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_212": {
+      "input_hex": "d4d4d4d4",
+      "ok": true,
+      "output_hex": "d5d5d5d5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_213": {
+      "input_hex": "d5d5d5d5",
+      "ok": true,
+      "output_hex": "d6d6d6d6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_214": {
+      "input_hex": "d6d6d6d6",
+      "ok": true,
+      "output_hex": "d7d7d7d7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_215": {
+      "input_hex": "d7d7d7d7",
+      "ok": true,
+      "output_hex": "d8d8d8d8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_216": {
+      "input_hex": "d8d8d8d8",
+      "ok": true,
+      "output_hex": "d9d9d9d9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_217": {
+      "input_hex": "d9d9d9d9",
+      "ok": true,
+      "output_hex": "dadadada",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_218": {
+      "input_hex": "dadadada",
+      "ok": true,
+      "output_hex": "dbdbdbdb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_219": {
+      "input_hex": "dbdbdbdb",
+      "ok": true,
+      "output_hex": "dcdcdcdc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_220": {
+      "input_hex": "dcdcdcdc",
+      "ok": true,
+      "output_hex": "dddddddd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_221": {
+      "input_hex": "dddddddd",
+      "ok": true,
+      "output_hex": "dededede",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_222": {
+      "input_hex": "dededede",
+      "ok": true,
+      "output_hex": "dfdfdfdf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_223": {
+      "input_hex": "dfdfdfdf",
+      "ok": true,
+      "output_hex": "e0e0e0e0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_224": {
+      "input_hex": "e0e0e0e0",
+      "ok": true,
+      "output_hex": "e1e1e1e1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_225": {
+      "input_hex": "e1e1e1e1",
+      "ok": true,
+      "output_hex": "e2e2e2e2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_226": {
+      "input_hex": "e2e2e2e2",
+      "ok": true,
+      "output_hex": "e3e3e3e3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_227": {
+      "input_hex": "e3e3e3e3",
+      "ok": true,
+      "output_hex": "e4e4e4e4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_228": {
+      "input_hex": "e4e4e4e4",
+      "ok": true,
+      "output_hex": "e5e5e5e5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_229": {
+      "input_hex": "e5e5e5e5",
+      "ok": true,
+      "output_hex": "e6e6e6e6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_230": {
+      "input_hex": "e6e6e6e6",
+      "ok": true,
+      "output_hex": "e7e7e7e7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_231": {
+      "input_hex": "e7e7e7e7",
+      "ok": true,
+      "output_hex": "e8e8e8e8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_232": {
+      "input_hex": "e8e8e8e8",
+      "ok": true,
+      "output_hex": "e9e9e9e9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_233": {
+      "input_hex": "e9e9e9e9",
+      "ok": true,
+      "output_hex": "eaeaeaea",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_234": {
+      "input_hex": "eaeaeaea",
+      "ok": true,
+      "output_hex": "ebebebeb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_235": {
+      "input_hex": "ebebebeb",
+      "ok": true,
+      "output_hex": "ecececec",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_236": {
+      "input_hex": "ecececec",
+      "ok": true,
+      "output_hex": "edededed",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_237": {
+      "input_hex": "edededed",
+      "ok": true,
+      "output_hex": "eeeeeeee",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_238": {
+      "input_hex": "eeeeeeee",
+      "ok": true,
+      "output_hex": "efefefef",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_239": {
+      "input_hex": "efefefef",
+      "ok": true,
+      "output_hex": "f0f0f0f0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_240": {
+      "input_hex": "f0f0f0f0",
+      "ok": true,
+      "output_hex": "f1f1f1f1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_241": {
+      "input_hex": "f1f1f1f1",
+      "ok": true,
+      "output_hex": "f2f2f2f2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_242": {
+      "input_hex": "f2f2f2f2",
+      "ok": true,
+      "output_hex": "f3f3f3f3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_243": {
+      "input_hex": "f3f3f3f3",
+      "ok": true,
+      "output_hex": "f4f4f4f4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_244": {
+      "input_hex": "f4f4f4f4",
+      "ok": true,
+      "output_hex": "f5f5f5f5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_245": {
+      "input_hex": "f5f5f5f5",
+      "ok": true,
+      "output_hex": "f6f6f6f6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_246": {
+      "input_hex": "f6f6f6f6",
+      "ok": true,
+      "output_hex": "f7f7f7f7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_247": {
+      "input_hex": "f7f7f7f7",
+      "ok": true,
+      "output_hex": "f8f8f8f8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_248": {
+      "input_hex": "f8f8f8f8",
+      "ok": true,
+      "output_hex": "f9f9f9f9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_249": {
+      "input_hex": "f9f9f9f9",
+      "ok": true,
+      "output_hex": "fafafafa",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_250": {
+      "input_hex": "fafafafa",
+      "ok": true,
+      "output_hex": "fbfbfbfb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_251": {
+      "input_hex": "fbfbfbfb",
+      "ok": true,
+      "output_hex": "fcfcfcfc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_252": {
+      "input_hex": "fcfcfcfc",
+      "ok": true,
+      "output_hex": "fdfdfdfd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_253": {
+      "input_hex": "fdfdfdfd",
+      "ok": true,
+      "output_hex": "fefefefe",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_254": {
+      "input_hex": "fefefefe",
+      "ok": true,
+      "output_hex": "ffffffff",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "repeated_255": {
+      "input_hex": "ffffffff",
+      "ok": true,
+      "output_hex": "00000000",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_000": {
+      "input_hex": "00c30d07",
+      "ok": true,
+      "output_hex": "01c40e08",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_001": {
+      "input_hex": "010c1e32",
+      "ok": true,
+      "output_hex": "020d1f33",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_002": {
+      "input_hex": "02552f5d",
+      "ok": true,
+      "output_hex": "0356305e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_003": {
+      "input_hex": "039e4088",
+      "ok": true,
+      "output_hex": "049f4189",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_004": {
+      "input_hex": "04e751b3",
+      "ok": true,
+      "output_hex": "05e852b4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_005": {
+      "input_hex": "053062de",
+      "ok": true,
+      "output_hex": "063163df",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_006": {
+      "input_hex": "06797309",
+      "ok": true,
+      "output_hex": "077a740a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_007": {
+      "input_hex": "07c28434",
+      "ok": true,
+      "output_hex": "08c38535",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_008": {
+      "input_hex": "080b955f",
+      "ok": true,
+      "output_hex": "090c9660",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_009": {
+      "input_hex": "0954a68a",
+      "ok": true,
+      "output_hex": "0a55a78b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_010": {
+      "input_hex": "0a9db7b5",
+      "ok": true,
+      "output_hex": "0b9eb8b6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_011": {
+      "input_hex": "0be6c8e0",
+      "ok": true,
+      "output_hex": "0ce7c9e1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_012": {
+      "input_hex": "0c2fd90b",
+      "ok": true,
+      "output_hex": "0d30da0c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_013": {
+      "input_hex": "0d78ea36",
+      "ok": true,
+      "output_hex": "0e79eb37",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_014": {
+      "input_hex": "0ec1fb61",
+      "ok": true,
+      "output_hex": "0fc2fc62",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_015": {
+      "input_hex": "0f0a0c8c",
+      "ok": true,
+      "output_hex": "100b0d8d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_016": {
+      "input_hex": "10531db7",
+      "ok": true,
+      "output_hex": "11541eb8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_017": {
+      "input_hex": "119c2ee2",
+      "ok": true,
+      "output_hex": "129d2fe3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_018": {
+      "input_hex": "12e53f0d",
+      "ok": true,
+      "output_hex": "13e6400e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_019": {
+      "input_hex": "132e5038",
+      "ok": true,
+      "output_hex": "142f5139",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_020": {
+      "input_hex": "14776163",
+      "ok": true,
+      "output_hex": "15786264",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_021": {
+      "input_hex": "15c0728e",
+      "ok": true,
+      "output_hex": "16c1738f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_022": {
+      "input_hex": "160983b9",
+      "ok": true,
+      "output_hex": "170a84ba",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_023": {
+      "input_hex": "175294e4",
+      "ok": true,
+      "output_hex": "185395e5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_024": {
+      "input_hex": "189ba50f",
+      "ok": true,
+      "output_hex": "199ca610",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_025": {
+      "input_hex": "19e4b63a",
+      "ok": true,
+      "output_hex": "1ae5b73b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_026": {
+      "input_hex": "1a2dc765",
+      "ok": true,
+      "output_hex": "1b2ec866",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_027": {
+      "input_hex": "1b76d890",
+      "ok": true,
+      "output_hex": "1c77d991",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_028": {
+      "input_hex": "1cbfe9bb",
+      "ok": true,
+      "output_hex": "1dc0eabc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_029": {
+      "input_hex": "1d08fae6",
+      "ok": true,
+      "output_hex": "1e09fbe7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_030": {
+      "input_hex": "1e510b11",
+      "ok": true,
+      "output_hex": "1f520c12",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_031": {
+      "input_hex": "1f9a1c3c",
+      "ok": true,
+      "output_hex": "209b1d3d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_032": {
+      "input_hex": "20e32d67",
+      "ok": true,
+      "output_hex": "21e42e68",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_033": {
+      "input_hex": "212c3e92",
+      "ok": true,
+      "output_hex": "222d3f93",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_034": {
+      "input_hex": "22754fbd",
+      "ok": true,
+      "output_hex": "237650be",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_035": {
+      "input_hex": "23be60e8",
+      "ok": true,
+      "output_hex": "24bf61e9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_036": {
+      "input_hex": "24077113",
+      "ok": true,
+      "output_hex": "25087214",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_037": {
+      "input_hex": "2550823e",
+      "ok": true,
+      "output_hex": "2651833f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_038": {
+      "input_hex": "26999369",
+      "ok": true,
+      "output_hex": "279a946a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_039": {
+      "input_hex": "27e2a494",
+      "ok": true,
+      "output_hex": "28e3a595",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_040": {
+      "input_hex": "282bb5bf",
+      "ok": true,
+      "output_hex": "292cb6c0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_041": {
+      "input_hex": "2974c6ea",
+      "ok": true,
+      "output_hex": "2a75c7eb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_042": {
+      "input_hex": "2abdd715",
+      "ok": true,
+      "output_hex": "2bbed816",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_043": {
+      "input_hex": "2b06e840",
+      "ok": true,
+      "output_hex": "2c07e941",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_044": {
+      "input_hex": "2c4ff96b",
+      "ok": true,
+      "output_hex": "2d50fa6c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_045": {
+      "input_hex": "2d980a96",
+      "ok": true,
+      "output_hex": "2e990b97",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_046": {
+      "input_hex": "2ee11bc1",
+      "ok": true,
+      "output_hex": "2fe21cc2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_047": {
+      "input_hex": "2f2a2cec",
+      "ok": true,
+      "output_hex": "302b2ded",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_048": {
+      "input_hex": "30733d17",
+      "ok": true,
+      "output_hex": "31743e18",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_049": {
+      "input_hex": "31bc4e42",
+      "ok": true,
+      "output_hex": "32bd4f43",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_050": {
+      "input_hex": "32055f6d",
+      "ok": true,
+      "output_hex": "3306606e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_051": {
+      "input_hex": "334e7098",
+      "ok": true,
+      "output_hex": "344f7199",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_052": {
+      "input_hex": "349781c3",
+      "ok": true,
+      "output_hex": "359882c4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_053": {
+      "input_hex": "35e092ee",
+      "ok": true,
+      "output_hex": "36e193ef",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_054": {
+      "input_hex": "3629a319",
+      "ok": true,
+      "output_hex": "372aa41a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_055": {
+      "input_hex": "3772b444",
+      "ok": true,
+      "output_hex": "3873b545",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_056": {
+      "input_hex": "38bbc56f",
+      "ok": true,
+      "output_hex": "39bcc670",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_057": {
+      "input_hex": "3904d69a",
+      "ok": true,
+      "output_hex": "3a05d79b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_058": {
+      "input_hex": "3a4de7c5",
+      "ok": true,
+      "output_hex": "3b4ee8c6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_059": {
+      "input_hex": "3b96f8f0",
+      "ok": true,
+      "output_hex": "3c97f9f1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_060": {
+      "input_hex": "3cdf091b",
+      "ok": true,
+      "output_hex": "3de00a1c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_061": {
+      "input_hex": "3d281a46",
+      "ok": true,
+      "output_hex": "3e291b47",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_062": {
+      "input_hex": "3e712b71",
+      "ok": true,
+      "output_hex": "3f722c72",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_063": {
+      "input_hex": "3fba3c9c",
+      "ok": true,
+      "output_hex": "40bb3d9d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_064": {
+      "input_hex": "40034dc7",
+      "ok": true,
+      "output_hex": "41044ec8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_065": {
+      "input_hex": "414c5ef2",
+      "ok": true,
+      "output_hex": "424d5ff3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_066": {
+      "input_hex": "42956f1d",
+      "ok": true,
+      "output_hex": "4396701e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_067": {
+      "input_hex": "43de8048",
+      "ok": true,
+      "output_hex": "44df8149",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_068": {
+      "input_hex": "44279173",
+      "ok": true,
+      "output_hex": "45289274",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_069": {
+      "input_hex": "4570a29e",
+      "ok": true,
+      "output_hex": "4671a39f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_070": {
+      "input_hex": "46b9b3c9",
+      "ok": true,
+      "output_hex": "47bab4ca",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_071": {
+      "input_hex": "4702c4f4",
+      "ok": true,
+      "output_hex": "4803c5f5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_072": {
+      "input_hex": "484bd51f",
+      "ok": true,
+      "output_hex": "494cd620",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_073": {
+      "input_hex": "4994e64a",
+      "ok": true,
+      "output_hex": "4a95e74b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_074": {
+      "input_hex": "4addf775",
+      "ok": true,
+      "output_hex": "4bdef876",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_075": {
+      "input_hex": "4b2608a0",
+      "ok": true,
+      "output_hex": "4c2709a1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_076": {
+      "input_hex": "4c6f19cb",
+      "ok": true,
+      "output_hex": "4d701acc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_077": {
+      "input_hex": "4db82af6",
+      "ok": true,
+      "output_hex": "4eb92bf7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_078": {
+      "input_hex": "4e013b21",
+      "ok": true,
+      "output_hex": "4f023c22",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_079": {
+      "input_hex": "4f4a4c4c",
+      "ok": true,
+      "output_hex": "504b4d4d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_080": {
+      "input_hex": "50935d77",
+      "ok": true,
+      "output_hex": "51945e78",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_081": {
+      "input_hex": "51dc6ea2",
+      "ok": true,
+      "output_hex": "52dd6fa3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_082": {
+      "input_hex": "52257fcd",
+      "ok": true,
+      "output_hex": "532680ce",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_083": {
+      "input_hex": "536e90f8",
+      "ok": true,
+      "output_hex": "546f91f9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_084": {
+      "input_hex": "54b7a123",
+      "ok": true,
+      "output_hex": "55b8a224",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_085": {
+      "input_hex": "5500b24e",
+      "ok": true,
+      "output_hex": "5601b34f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_086": {
+      "input_hex": "5649c379",
+      "ok": true,
+      "output_hex": "574ac47a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_087": {
+      "input_hex": "5792d4a4",
+      "ok": true,
+      "output_hex": "5893d5a5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_088": {
+      "input_hex": "58dbe5cf",
+      "ok": true,
+      "output_hex": "59dce6d0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_089": {
+      "input_hex": "5924f6fa",
+      "ok": true,
+      "output_hex": "5a25f7fb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_090": {
+      "input_hex": "5a6d0725",
+      "ok": true,
+      "output_hex": "5b6e0826",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_091": {
+      "input_hex": "5bb61850",
+      "ok": true,
+      "output_hex": "5cb71951",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_092": {
+      "input_hex": "5cff297b",
+      "ok": true,
+      "output_hex": "5d002a7c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_093": {
+      "input_hex": "5d483aa6",
+      "ok": true,
+      "output_hex": "5e493ba7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_094": {
+      "input_hex": "5e914bd1",
+      "ok": true,
+      "output_hex": "5f924cd2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_095": {
+      "input_hex": "5fda5cfc",
+      "ok": true,
+      "output_hex": "60db5dfd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_096": {
+      "input_hex": "60236d27",
+      "ok": true,
+      "output_hex": "61246e28",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_097": {
+      "input_hex": "616c7e52",
+      "ok": true,
+      "output_hex": "626d7f53",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_098": {
+      "input_hex": "62b58f7d",
+      "ok": true,
+      "output_hex": "63b6907e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_099": {
+      "input_hex": "63fea0a8",
+      "ok": true,
+      "output_hex": "64ffa1a9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_100": {
+      "input_hex": "6447b1d3",
+      "ok": true,
+      "output_hex": "6548b2d4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_101": {
+      "input_hex": "6590c2fe",
+      "ok": true,
+      "output_hex": "6691c3ff",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_102": {
+      "input_hex": "66d9d329",
+      "ok": true,
+      "output_hex": "67dad42a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_103": {
+      "input_hex": "6722e454",
+      "ok": true,
+      "output_hex": "6823e555",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_104": {
+      "input_hex": "686bf57f",
+      "ok": true,
+      "output_hex": "696cf680",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_105": {
+      "input_hex": "69b406aa",
+      "ok": true,
+      "output_hex": "6ab507ab",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_106": {
+      "input_hex": "6afd17d5",
+      "ok": true,
+      "output_hex": "6bfe18d6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_107": {
+      "input_hex": "6b462800",
+      "ok": true,
+      "output_hex": "6c472901",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_108": {
+      "input_hex": "6c8f392b",
+      "ok": true,
+      "output_hex": "6d903a2c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_109": {
+      "input_hex": "6dd84a56",
+      "ok": true,
+      "output_hex": "6ed94b57",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_110": {
+      "input_hex": "6e215b81",
+      "ok": true,
+      "output_hex": "6f225c82",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_111": {
+      "input_hex": "6f6a6cac",
+      "ok": true,
+      "output_hex": "706b6dad",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_112": {
+      "input_hex": "70b37dd7",
+      "ok": true,
+      "output_hex": "71b47ed8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_113": {
+      "input_hex": "71fc8e02",
+      "ok": true,
+      "output_hex": "72fd8f03",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_114": {
+      "input_hex": "72459f2d",
+      "ok": true,
+      "output_hex": "7346a02e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_115": {
+      "input_hex": "738eb058",
+      "ok": true,
+      "output_hex": "748fb159",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_116": {
+      "input_hex": "74d7c183",
+      "ok": true,
+      "output_hex": "75d8c284",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_117": {
+      "input_hex": "7520d2ae",
+      "ok": true,
+      "output_hex": "7621d3af",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_118": {
+      "input_hex": "7669e3d9",
+      "ok": true,
+      "output_hex": "776ae4da",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_119": {
+      "input_hex": "77b2f404",
+      "ok": true,
+      "output_hex": "78b3f505",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_120": {
+      "input_hex": "78fb052f",
+      "ok": true,
+      "output_hex": "79fc0630",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_121": {
+      "input_hex": "7944165a",
+      "ok": true,
+      "output_hex": "7a45175b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_122": {
+      "input_hex": "7a8d2785",
+      "ok": true,
+      "output_hex": "7b8e2886",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_123": {
+      "input_hex": "7bd638b0",
+      "ok": true,
+      "output_hex": "7cd739b1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_124": {
+      "input_hex": "7c1f49db",
+      "ok": true,
+      "output_hex": "7d204adc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_125": {
+      "input_hex": "7d685a06",
+      "ok": true,
+      "output_hex": "7e695b07",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_126": {
+      "input_hex": "7eb16b31",
+      "ok": true,
+      "output_hex": "7fb26c32",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_127": {
+      "input_hex": "7ffa7c5c",
+      "ok": true,
+      "output_hex": "80fb7d5d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_128": {
+      "input_hex": "80438d87",
+      "ok": true,
+      "output_hex": "81448e88",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_129": {
+      "input_hex": "818c9eb2",
+      "ok": true,
+      "output_hex": "828d9fb3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_130": {
+      "input_hex": "82d5afdd",
+      "ok": true,
+      "output_hex": "83d6b0de",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_131": {
+      "input_hex": "831ec008",
+      "ok": true,
+      "output_hex": "841fc109",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_132": {
+      "input_hex": "8467d133",
+      "ok": true,
+      "output_hex": "8568d234",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_133": {
+      "input_hex": "85b0e25e",
+      "ok": true,
+      "output_hex": "86b1e35f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_134": {
+      "input_hex": "86f9f389",
+      "ok": true,
+      "output_hex": "87faf48a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_135": {
+      "input_hex": "874204b4",
+      "ok": true,
+      "output_hex": "884305b5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_136": {
+      "input_hex": "888b15df",
+      "ok": true,
+      "output_hex": "898c16e0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_137": {
+      "input_hex": "89d4260a",
+      "ok": true,
+      "output_hex": "8ad5270b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_138": {
+      "input_hex": "8a1d3735",
+      "ok": true,
+      "output_hex": "8b1e3836",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_139": {
+      "input_hex": "8b664860",
+      "ok": true,
+      "output_hex": "8c674961",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_140": {
+      "input_hex": "8caf598b",
+      "ok": true,
+      "output_hex": "8db05a8c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_141": {
+      "input_hex": "8df86ab6",
+      "ok": true,
+      "output_hex": "8ef96bb7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_142": {
+      "input_hex": "8e417be1",
+      "ok": true,
+      "output_hex": "8f427ce2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_143": {
+      "input_hex": "8f8a8c0c",
+      "ok": true,
+      "output_hex": "908b8d0d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_144": {
+      "input_hex": "90d39d37",
+      "ok": true,
+      "output_hex": "91d49e38",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_145": {
+      "input_hex": "911cae62",
+      "ok": true,
+      "output_hex": "921daf63",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_146": {
+      "input_hex": "9265bf8d",
+      "ok": true,
+      "output_hex": "9366c08e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_147": {
+      "input_hex": "93aed0b8",
+      "ok": true,
+      "output_hex": "94afd1b9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_148": {
+      "input_hex": "94f7e1e3",
+      "ok": true,
+      "output_hex": "95f8e2e4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_149": {
+      "input_hex": "9540f20e",
+      "ok": true,
+      "output_hex": "9641f30f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_150": {
+      "input_hex": "96890339",
+      "ok": true,
+      "output_hex": "978a043a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_151": {
+      "input_hex": "97d21464",
+      "ok": true,
+      "output_hex": "98d31565",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_152": {
+      "input_hex": "981b258f",
+      "ok": true,
+      "output_hex": "991c2690",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_153": {
+      "input_hex": "996436ba",
+      "ok": true,
+      "output_hex": "9a6537bb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_154": {
+      "input_hex": "9aad47e5",
+      "ok": true,
+      "output_hex": "9bae48e6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_155": {
+      "input_hex": "9bf65810",
+      "ok": true,
+      "output_hex": "9cf75911",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_156": {
+      "input_hex": "9c3f693b",
+      "ok": true,
+      "output_hex": "9d406a3c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_157": {
+      "input_hex": "9d887a66",
+      "ok": true,
+      "output_hex": "9e897b67",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_158": {
+      "input_hex": "9ed18b91",
+      "ok": true,
+      "output_hex": "9fd28c92",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_159": {
+      "input_hex": "9f1a9cbc",
+      "ok": true,
+      "output_hex": "a01b9dbd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_160": {
+      "input_hex": "a063ade7",
+      "ok": true,
+      "output_hex": "a164aee8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_161": {
+      "input_hex": "a1acbe12",
+      "ok": true,
+      "output_hex": "a2adbf13",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_162": {
+      "input_hex": "a2f5cf3d",
+      "ok": true,
+      "output_hex": "a3f6d03e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_163": {
+      "input_hex": "a33ee068",
+      "ok": true,
+      "output_hex": "a43fe169",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_164": {
+      "input_hex": "a487f193",
+      "ok": true,
+      "output_hex": "a588f294",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_165": {
+      "input_hex": "a5d002be",
+      "ok": true,
+      "output_hex": "a6d103bf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_166": {
+      "input_hex": "a61913e9",
+      "ok": true,
+      "output_hex": "a71a14ea",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_167": {
+      "input_hex": "a7622414",
+      "ok": true,
+      "output_hex": "a8632515",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_168": {
+      "input_hex": "a8ab353f",
+      "ok": true,
+      "output_hex": "a9ac3640",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_169": {
+      "input_hex": "a9f4466a",
+      "ok": true,
+      "output_hex": "aaf5476b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_170": {
+      "input_hex": "aa3d5795",
+      "ok": true,
+      "output_hex": "ab3e5896",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_171": {
+      "input_hex": "ab8668c0",
+      "ok": true,
+      "output_hex": "ac8769c1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_172": {
+      "input_hex": "accf79eb",
+      "ok": true,
+      "output_hex": "add07aec",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_173": {
+      "input_hex": "ad188a16",
+      "ok": true,
+      "output_hex": "ae198b17",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_174": {
+      "input_hex": "ae619b41",
+      "ok": true,
+      "output_hex": "af629c42",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_175": {
+      "input_hex": "afaaac6c",
+      "ok": true,
+      "output_hex": "b0abad6d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_176": {
+      "input_hex": "b0f3bd97",
+      "ok": true,
+      "output_hex": "b1f4be98",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_177": {
+      "input_hex": "b13ccec2",
+      "ok": true,
+      "output_hex": "b23dcfc3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_178": {
+      "input_hex": "b285dfed",
+      "ok": true,
+      "output_hex": "b386e0ee",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_179": {
+      "input_hex": "b3cef018",
+      "ok": true,
+      "output_hex": "b4cff119",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_180": {
+      "input_hex": "b4170143",
+      "ok": true,
+      "output_hex": "b5180244",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_181": {
+      "input_hex": "b560126e",
+      "ok": true,
+      "output_hex": "b661136f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_182": {
+      "input_hex": "b6a92399",
+      "ok": true,
+      "output_hex": "b7aa249a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_183": {
+      "input_hex": "b7f234c4",
+      "ok": true,
+      "output_hex": "b8f335c5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_184": {
+      "input_hex": "b83b45ef",
+      "ok": true,
+      "output_hex": "b93c46f0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_185": {
+      "input_hex": "b984561a",
+      "ok": true,
+      "output_hex": "ba85571b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_186": {
+      "input_hex": "bacd6745",
+      "ok": true,
+      "output_hex": "bbce6846",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_187": {
+      "input_hex": "bb167870",
+      "ok": true,
+      "output_hex": "bc177971",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_188": {
+      "input_hex": "bc5f899b",
+      "ok": true,
+      "output_hex": "bd608a9c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_189": {
+      "input_hex": "bda89ac6",
+      "ok": true,
+      "output_hex": "bea99bc7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_190": {
+      "input_hex": "bef1abf1",
+      "ok": true,
+      "output_hex": "bff2acf2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_191": {
+      "input_hex": "bf3abc1c",
+      "ok": true,
+      "output_hex": "c03bbd1d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_192": {
+      "input_hex": "c083cd47",
+      "ok": true,
+      "output_hex": "c184ce48",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_193": {
+      "input_hex": "c1ccde72",
+      "ok": true,
+      "output_hex": "c2cddf73",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_194": {
+      "input_hex": "c215ef9d",
+      "ok": true,
+      "output_hex": "c316f09e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_195": {
+      "input_hex": "c35e00c8",
+      "ok": true,
+      "output_hex": "c45f01c9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_196": {
+      "input_hex": "c4a711f3",
+      "ok": true,
+      "output_hex": "c5a812f4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_197": {
+      "input_hex": "c5f0221e",
+      "ok": true,
+      "output_hex": "c6f1231f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_198": {
+      "input_hex": "c6393349",
+      "ok": true,
+      "output_hex": "c73a344a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_199": {
+      "input_hex": "c7824474",
+      "ok": true,
+      "output_hex": "c8834575",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_200": {
+      "input_hex": "c8cb559f",
+      "ok": true,
+      "output_hex": "c9cc56a0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_201": {
+      "input_hex": "c91466ca",
+      "ok": true,
+      "output_hex": "ca1567cb",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_202": {
+      "input_hex": "ca5d77f5",
+      "ok": true,
+      "output_hex": "cb5e78f6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_203": {
+      "input_hex": "cba68820",
+      "ok": true,
+      "output_hex": "cca78921",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_204": {
+      "input_hex": "ccef994b",
+      "ok": true,
+      "output_hex": "cdf09a4c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_205": {
+      "input_hex": "cd38aa76",
+      "ok": true,
+      "output_hex": "ce39ab77",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_206": {
+      "input_hex": "ce81bba1",
+      "ok": true,
+      "output_hex": "cf82bca2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_207": {
+      "input_hex": "cfcacccc",
+      "ok": true,
+      "output_hex": "d0cbcdcd",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_208": {
+      "input_hex": "d013ddf7",
+      "ok": true,
+      "output_hex": "d114def8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_209": {
+      "input_hex": "d15cee22",
+      "ok": true,
+      "output_hex": "d25def23",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_210": {
+      "input_hex": "d2a5ff4d",
+      "ok": true,
+      "output_hex": "d3a6004e",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_211": {
+      "input_hex": "d3ee1078",
+      "ok": true,
+      "output_hex": "d4ef1179",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_212": {
+      "input_hex": "d43721a3",
+      "ok": true,
+      "output_hex": "d53822a4",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_213": {
+      "input_hex": "d58032ce",
+      "ok": true,
+      "output_hex": "d68133cf",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_214": {
+      "input_hex": "d6c943f9",
+      "ok": true,
+      "output_hex": "d7ca44fa",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_215": {
+      "input_hex": "d7125424",
+      "ok": true,
+      "output_hex": "d8135525",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_216": {
+      "input_hex": "d85b654f",
+      "ok": true,
+      "output_hex": "d95c6650",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_217": {
+      "input_hex": "d9a4767a",
+      "ok": true,
+      "output_hex": "daa5777b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_218": {
+      "input_hex": "daed87a5",
+      "ok": true,
+      "output_hex": "dbee88a6",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_219": {
+      "input_hex": "db3698d0",
+      "ok": true,
+      "output_hex": "dc3799d1",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_220": {
+      "input_hex": "dc7fa9fb",
+      "ok": true,
+      "output_hex": "dd80aafc",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_221": {
+      "input_hex": "ddc8ba26",
+      "ok": true,
+      "output_hex": "dec9bb27",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_222": {
+      "input_hex": "de11cb51",
+      "ok": true,
+      "output_hex": "df12cc52",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_223": {
+      "input_hex": "df5adc7c",
+      "ok": true,
+      "output_hex": "e05bdd7d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_224": {
+      "input_hex": "e0a3eda7",
+      "ok": true,
+      "output_hex": "e1a4eea8",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_225": {
+      "input_hex": "e1ecfed2",
+      "ok": true,
+      "output_hex": "e2edffd3",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_226": {
+      "input_hex": "e2350ffd",
+      "ok": true,
+      "output_hex": "e33610fe",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_227": {
+      "input_hex": "e37e2028",
+      "ok": true,
+      "output_hex": "e47f2129",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_228": {
+      "input_hex": "e4c73153",
+      "ok": true,
+      "output_hex": "e5c83254",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_229": {
+      "input_hex": "e510427e",
+      "ok": true,
+      "output_hex": "e611437f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_230": {
+      "input_hex": "e65953a9",
+      "ok": true,
+      "output_hex": "e75a54aa",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_231": {
+      "input_hex": "e7a264d4",
+      "ok": true,
+      "output_hex": "e8a365d5",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_232": {
+      "input_hex": "e8eb75ff",
+      "ok": true,
+      "output_hex": "e9ec7600",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_233": {
+      "input_hex": "e934862a",
+      "ok": true,
+      "output_hex": "ea35872b",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_234": {
+      "input_hex": "ea7d9755",
+      "ok": true,
+      "output_hex": "eb7e9856",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_235": {
+      "input_hex": "ebc6a880",
+      "ok": true,
+      "output_hex": "ecc7a981",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_236": {
+      "input_hex": "ec0fb9ab",
+      "ok": true,
+      "output_hex": "ed10baac",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_237": {
+      "input_hex": "ed58cad6",
+      "ok": true,
+      "output_hex": "ee59cbd7",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_238": {
+      "input_hex": "eea1db01",
+      "ok": true,
+      "output_hex": "efa2dc02",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_239": {
+      "input_hex": "efeaec2c",
+      "ok": true,
+      "output_hex": "f0ebed2d",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_240": {
+      "input_hex": "f033fd57",
+      "ok": true,
+      "output_hex": "f134fe58",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_241": {
+      "input_hex": "f17c0e82",
+      "ok": true,
+      "output_hex": "f27d0f83",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_242": {
+      "input_hex": "f2c51fad",
+      "ok": true,
+      "output_hex": "f3c620ae",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_243": {
+      "input_hex": "f30e30d8",
+      "ok": true,
+      "output_hex": "f40f31d9",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_244": {
+      "input_hex": "f4574103",
+      "ok": true,
+      "output_hex": "f5584204",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_245": {
+      "input_hex": "f5a0522e",
+      "ok": true,
+      "output_hex": "f6a1532f",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_246": {
+      "input_hex": "f6e96359",
+      "ok": true,
+      "output_hex": "f7ea645a",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_247": {
+      "input_hex": "f7327484",
+      "ok": true,
+      "output_hex": "f8337585",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_248": {
+      "input_hex": "f87b85af",
+      "ok": true,
+      "output_hex": "f97c86b0",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_249": {
+      "input_hex": "f9c496da",
+      "ok": true,
+      "output_hex": "fac597db",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_250": {
+      "input_hex": "fa0da705",
+      "ok": true,
+      "output_hex": "fb0ea806",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_251": {
+      "input_hex": "fb56b830",
+      "ok": true,
+      "output_hex": "fc57b931",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_252": {
+      "input_hex": "fc9fc95b",
+      "ok": true,
+      "output_hex": "fda0ca5c",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_253": {
+      "input_hex": "fde8da86",
+      "ok": true,
+      "output_hex": "fee9db87",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_254": {
+      "input_hex": "fe31ebb1",
+      "ok": true,
+      "output_hex": "ff32ecb2",
+      "rc": 0,
+      "stderr_hex": ""
+    },
+    "varied_255": {
+      "input_hex": "ff7afcdc",
+      "ok": true,
+      "output_hex": "007bfddd",
+      "rc": 0,
+      "stderr_hex": ""
+    }
+  },
+  "scope": "exactly four unrolled reads; not a general loop or EOF branch",
+  "strict_cells": true,
+  "traces": {
+    "00000000": {
+      "inputs": [
+        {
+          "d": 58000,
+          "pc": 58500,
+          "scratch_matches_initial": true,
+          "step": 55104,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58549,
+          "scratch_matches_initial": true,
+          "step": 55153,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58684,
+          "scratch_matches_initial": true,
+          "step": 55288,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58819,
+          "scratch_matches_initial": true,
+          "step": 55423,
+          "table_matches_initial": true
+        }
+      ],
+      "installation_mismatches": [],
+      "outputs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "status": "HALTED",
+      "steps": 55471,
+      "two_rearms_ok": true
+    },
+    "41424344": {
+      "inputs": [
+        {
+          "d": 58000,
+          "pc": 58500,
+          "scratch_matches_initial": true,
+          "step": 55104,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58549,
+          "scratch_matches_initial": true,
+          "step": 55153,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58684,
+          "scratch_matches_initial": true,
+          "step": 55288,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58819,
+          "scratch_matches_initial": true,
+          "step": 55423,
+          "table_matches_initial": true
+        }
+      ],
+      "installation_mismatches": [],
+      "outputs": [
+        66,
+        67,
+        68,
+        69
+      ],
+      "status": "HALTED",
+      "steps": 55471,
+      "two_rearms_ok": true
+    },
+    "ffffffff": {
+      "inputs": [
+        {
+          "d": 58000,
+          "pc": 58500,
+          "scratch_matches_initial": true,
+          "step": 55104,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58549,
+          "scratch_matches_initial": true,
+          "step": 55153,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58684,
+          "scratch_matches_initial": true,
+          "step": 55288,
+          "table_matches_initial": true
+        },
+        {
+          "d": 58020,
+          "pc": 58819,
+          "scratch_matches_initial": true,
+          "step": 55423,
+          "table_matches_initial": true
+        }
+      ],
+      "installation_mismatches": [],
+      "outputs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "HALTED",
+      "steps": 55471,
+      "two_rearms_ok": true
+    }
+  }
+}

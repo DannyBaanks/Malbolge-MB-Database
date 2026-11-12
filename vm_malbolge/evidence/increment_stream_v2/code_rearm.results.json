@@ -1,0 +1,451 @@
+{
+  "code_cells": 48,
+  "input_hex": "414243",
+  "printable_control": 0,
+  "rotate_then_crazy_reachable": 38,
+  "rows": [
+    {
+      "after_execution": 38,
+      "pc": 58549,
+      "solution": {
+        "control": 29542,
+        "control_printable": false,
+        "rotations_before_crazy": 7
+      },
+      "target": 36
+    },
+    {
+      "after_execution": 70,
+      "pc": 58550,
+      "solution": null,
+      "target": 74
+    },
+    {
+      "after_execution": 50,
+      "pc": 58551,
+      "solution": {
+        "control": 29543,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 73
+    },
+    {
+      "after_execution": 80,
+      "pc": 58552,
+      "solution": {
+        "control": 29544,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 50
+    },
+    {
+      "after_execution": 123,
+      "pc": 58553,
+      "solution": {
+        "control": 29509,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 48
+    },
+    {
+      "after_execution": 123,
+      "pc": 58554,
+      "solution": {
+        "control": 29509,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 48
+    },
+    {
+      "after_execution": 101,
+      "pc": 58555,
+      "solution": {
+        "control": 29489,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 46
+    },
+    {
+      "after_execution": 101,
+      "pc": 58556,
+      "solution": {
+        "control": 29489,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 46
+    },
+    {
+      "after_execution": 40,
+      "pc": 58557,
+      "solution": {
+        "control": 29492,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 44
+    },
+    {
+      "after_execution": 40,
+      "pc": 58558,
+      "solution": {
+        "control": 29492,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 44
+    },
+    {
+      "after_execution": 114,
+      "pc": 58559,
+      "solution": {
+        "control": 29485,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 42
+    },
+    {
+      "after_execution": 114,
+      "pc": 58560,
+      "solution": {
+        "control": 29485,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 42
+    },
+    {
+      "after_execution": 121,
+      "pc": 58561,
+      "solution": {
+        "control": 29484,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 40
+    },
+    {
+      "after_execution": 121,
+      "pc": 58562,
+      "solution": {
+        "control": 29484,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 40
+    },
+    {
+      "after_execution": 113,
+      "pc": 58563,
+      "solution": {
+        "control": 29487,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 38
+    },
+    {
+      "after_execution": 113,
+      "pc": 58564,
+      "solution": {
+        "control": 29487,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 38
+    },
+    {
+      "after_execution": 38,
+      "pc": 58565,
+      "solution": {
+        "control": 29542,
+        "control_printable": false,
+        "rotations_before_crazy": 7
+      },
+      "target": 36
+    },
+    {
+      "after_execution": 38,
+      "pc": 58566,
+      "solution": {
+        "control": 29542,
+        "control_printable": false,
+        "rotations_before_crazy": 7
+      },
+      "target": 36
+    },
+    {
+      "after_execution": 122,
+      "pc": 58567,
+      "solution": {
+        "control": 29501,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 34
+    },
+    {
+      "after_execution": 122,
+      "pc": 58568,
+      "solution": {
+        "control": 29501,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 34
+    },
+    {
+      "after_execution": 64,
+      "pc": 58569,
+      "solution": {
+        "control": 29479,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 126
+    },
+    {
+      "after_execution": 64,
+      "pc": 58570,
+      "solution": {
+        "control": 29479,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 126
+    },
+    {
+      "after_execution": 92,
+      "pc": 58571,
+      "solution": null,
+      "target": 59
+    },
+    {
+      "after_execution": 37,
+      "pc": 58572,
+      "solution": {
+        "control": 29547,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 58
+    },
+    {
+      "after_execution": 41,
+      "pc": 58573,
+      "solution": {
+        "control": 29503,
+        "control_printable": false,
+        "rotations_before_crazy": 9
+      },
+      "target": 51
+    },
+    {
+      "after_execution": 80,
+      "pc": 58574,
+      "solution": {
+        "control": 29544,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 50
+    },
+    {
+      "after_execution": 35,
+      "pc": 58575,
+      "solution": {
+        "control": 29411,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 121
+    },
+    {
+      "after_execution": 58,
+      "pc": 58576,
+      "solution": {
+        "control": 29458,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 120
+    },
+    {
+      "after_execution": 107,
+      "pc": 58577,
+      "solution": {
+        "control": 29640,
+        "control_printable": false,
+        "rotations_before_crazy": 8
+      },
+      "target": 118
+    },
+    {
+      "after_execution": 107,
+      "pc": 58578,
+      "solution": {
+        "control": 29640,
+        "control_printable": false,
+        "rotations_before_crazy": 8
+      },
+      "target": 118
+    },
+    {
+      "after_execution": 69,
+      "pc": 58579,
+      "solution": null,
+      "target": 116
+    },
+    {
+      "after_execution": 69,
+      "pc": 58580,
+      "solution": null,
+      "target": 116
+    },
+    {
+      "after_execution": 125,
+      "pc": 58581,
+      "solution": null,
+      "target": 114
+    },
+    {
+      "after_execution": 125,
+      "pc": 58582,
+      "solution": null,
+      "target": 114
+    },
+    {
+      "after_execution": 68,
+      "pc": 58583,
+      "solution": {
+        "control": 29468,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 112
+    },
+    {
+      "after_execution": 68,
+      "pc": 58584,
+      "solution": {
+        "control": 29468,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 112
+    },
+    {
+      "after_execution": 126,
+      "pc": 58585,
+      "solution": {
+        "control": 29415,
+        "control_printable": false,
+        "rotations_before_crazy": 2
+      },
+      "target": 110
+    },
+    {
+      "after_execution": 126,
+      "pc": 58586,
+      "solution": {
+        "control": 29415,
+        "control_printable": false,
+        "rotations_before_crazy": 2
+      },
+      "target": 110
+    },
+    {
+      "after_execution": 39,
+      "pc": 58587,
+      "solution": {
+        "control": 29416,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 108
+    },
+    {
+      "after_execution": 39,
+      "pc": 58588,
+      "solution": {
+        "control": 29416,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 108
+    },
+    {
+      "after_execution": 77,
+      "pc": 58589,
+      "solution": null,
+      "target": 106
+    },
+    {
+      "after_execution": 77,
+      "pc": 58590,
+      "solution": null,
+      "target": 106
+    },
+    {
+      "after_execution": 89,
+      "pc": 58591,
+      "solution": null,
+      "target": 104
+    },
+    {
+      "after_execution": 89,
+      "pc": 58592,
+      "solution": null,
+      "target": 104
+    },
+    {
+      "after_execution": 96,
+      "pc": 58593,
+      "solution": {
+        "control": 29455,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 102
+    },
+    {
+      "after_execution": 96,
+      "pc": 58594,
+      "solution": {
+        "control": 29455,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 102
+    },
+    {
+      "after_execution": 97,
+      "pc": 58595,
+      "solution": {
+        "control": 29433,
+        "control_printable": false,
+        "rotations_before_crazy": 9
+      },
+      "target": 100
+    },
+    {
+      "after_execution": 59,
+      "pc": 58596,
+      "solution": {
+        "control": 29487,
+        "control_printable": false,
+        "rotations_before_crazy": 0
+      },
+      "target": 65
+    }
+  ],
+  "scope": "host-computed controls; no in-Malbolge scheduler, scratch/control rearm or EOF demonstrated",
+  "single_crazy_reachable": 29,
+  "third_input_step": 49915
+}

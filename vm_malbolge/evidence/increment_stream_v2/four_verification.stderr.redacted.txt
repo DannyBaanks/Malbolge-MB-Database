@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<repo>/vm_malbolge/evidence/increment_stream_v2/verify_four.py", line 48, in <module>
+    r=subprocess.run([str(OL),str(P/'increment_four.mb')],input=data,capture_output=True,timeout=10);want=bytes((x+1)%256 for x in data)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/usr/lib/python3.12/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['<pureepoch>/build/olmstead', '<repo>/vm_malbolge/evidence/increment_stream_v2/increment_four.mb']' timed out after 10 seconds

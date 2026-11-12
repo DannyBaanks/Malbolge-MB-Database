@@ -1,0 +1,61 @@
+{
+  "cases": 512,
+  "all_exact": true,
+  "traces_rearmed": true,
+  "controls": {
+    "41424344": {
+      "rc": 0,
+      "output_hex": "42430e45",
+      "expected_hex": "42434445",
+      "detected": true
+    },
+    "00000000": {
+      "rc": 0,
+      "output_hex": "01010101",
+      "expected_hex": "01010101",
+      "detected": false
+    },
+    "ffffffff": {
+      "rc": 0,
+      "output_hex": "00000000",
+      "expected_hex": "00000000",
+      "detected": false
+    },
+    "00ff8042": {
+      "rc": 0,
+      "output_hex": "01007743",
+      "expected_hex": "01008143",
+      "detected": true
+    }
+  },
+  "boundaries": {
+    "empty": {
+      "rc": null,
+      "output_hex": "",
+      "expected_hex": "",
+      "matches": false,
+      "timed_out": true
+    },
+    "41": {
+      "rc": null,
+      "output_hex": "",
+      "expected_hex": "42",
+      "matches": false,
+      "timed_out": true
+    },
+    "414243": {
+      "rc": 0,
+      "output_hex": "4243441f",
+      "expected_hex": "424344",
+      "matches": false,
+      "timed_out": false
+    },
+    "4142434445": {
+      "rc": 0,
+      "output_hex": "42434445",
+      "expected_hex": "4243444546",
+      "matches": false,
+      "timed_out": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "input_hex": "414243",
+  "third_input_step": 49915,
+  "code_cells": 48,
+  "single_crazy_reachable": 29,
+  "rotate_then_crazy_reachable": 38,
+  "printable_control": 0,
+  "three_crazy_reachable": 48,
+  "scope": "host-computed controls; no in-Malbolge scheduler, scratch/control rearm or EOF demonstrated"
+}

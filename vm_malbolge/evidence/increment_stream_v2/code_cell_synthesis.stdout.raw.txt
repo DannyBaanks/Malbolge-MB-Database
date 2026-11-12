@@ -1,0 +1,25 @@
+{
+  "source_pc": 58550,
+  "source_after_execution": 70,
+  "source_original": 74,
+  "target_address": 57000,
+  "constant_address": 57010,
+  "control": 29561,
+  "programs": {
+    "positive": {
+      "runtime_ops": "*jpjpoj*j*j*j*j*j*j*j*j*j*ojpv",
+      "plan_length": 3213,
+      "plan_end": 3312,
+      "fits": true,
+      "elapsed_seconds": 0.087
+    },
+    "control": {
+      "runtime_ops": "*jojpoj*j*j*j*j*j*j*j*j*j*ojpv",
+      "plan_length": 3174,
+      "plan_end": 3273,
+      "fits": true,
+      "elapsed_seconds": 0.034
+    }
+  },
+  "scope": "one code-derived word placed in a data cell; host preinstalls control; no autonomous whole-code rearm or loop"
+}

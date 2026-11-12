@@ -1,0 +1,62 @@
+{
+  "native_cases": 512,
+  "native_all_ok": true,
+  "scratch_restored_in_traces": true,
+  "code_changes": [
+    49,
+    49,
+    49
+  ],
+  "controls": {
+    "414243": {
+      "rc": 0,
+      "output_hex": "42430e",
+      "expected_hex": "424344",
+      "detected": true
+    },
+    "000000": {
+      "rc": 0,
+      "output_hex": "010101",
+      "expected_hex": "010101",
+      "detected": false
+    },
+    "ffffff": {
+      "rc": 0,
+      "output_hex": "000000",
+      "expected_hex": "000000",
+      "detected": false
+    },
+    "00ff80": {
+      "rc": 0,
+      "output_hex": "010077",
+      "expected_hex": "010081",
+      "detected": true
+    }
+  },
+  "boundaries": {
+    "empty": {
+      "rc": 0,
+      "output_hex": "00d116",
+      "expected_hex": "",
+      "matches": false
+    },
+    "41": {
+      "rc": 0,
+      "output_hex": "4200f7",
+      "expected_hex": "42",
+      "matches": false
+    },
+    "4142": {
+      "rc": 0,
+      "output_hex": "424300",
+      "expected_hex": "4243",
+      "matches": false
+    },
+    "41424344": {
+      "rc": 0,
+      "output_hex": "424344",
+      "expected_hex": "42434445",
+      "matches": false
+    }
+  }
+}
