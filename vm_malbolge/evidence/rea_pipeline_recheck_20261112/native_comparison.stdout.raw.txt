@@ -1,0 +1,96 @@
+{
+  "cases": [
+    {
+      "input_hex": "41424344",
+      "expected_hex": "42434445",
+      "python": {
+        "rc": 0,
+        "stdout_hex": "42434445",
+        "stderr_hex": ""
+      },
+      "bf": {
+        "status": "HALTED",
+        "stdout_hex": "42434445",
+        "steps": 27,
+        "consumed": 4
+      },
+      "olmstead": {
+        "rc": 0,
+        "stdout_hex": "42434445",
+        "stderr_hex": ""
+      }
+    },
+    {
+      "input_hex": "00ff80fe",
+      "expected_hex": "010081ff",
+      "python": {
+        "rc": 0,
+        "stdout_hex": "010081ff",
+        "stderr_hex": ""
+      },
+      "bf": {
+        "status": "HALTED",
+        "stdout_hex": "010081ff",
+        "steps": 27,
+        "consumed": 4
+      },
+      "olmstead": {
+        "rc": 0,
+        "stdout_hex": "010081ff",
+        "stderr_hex": ""
+      }
+    },
+    {
+      "input_hex": "00000000",
+      "expected_hex": "01010101",
+      "python": {
+        "rc": 0,
+        "stdout_hex": "01010101",
+        "stderr_hex": ""
+      },
+      "bf": {
+        "status": "HALTED",
+        "stdout_hex": "01010101",
+        "steps": 27,
+        "consumed": 4
+      },
+      "olmstead": {
+        "rc": 0,
+        "stdout_hex": "01010101",
+        "stderr_hex": ""
+      }
+    },
+    {
+      "input_hex": "ffffffff",
+      "expected_hex": "00000000",
+      "python": {
+        "rc": 0,
+        "stdout_hex": "00000000",
+        "stderr_hex": ""
+      },
+      "bf": {
+        "status": "HALTED",
+        "stdout_hex": "00000000",
+        "steps": 27,
+        "consumed": 4
+      },
+      "olmstead": {
+        "rc": 0,
+        "stdout_hex": "00000000",
+        "stderr_hex": ""
+      }
+    }
+  ],
+  "control": {
+    "rc": 0,
+    "stdout_hex": "42430e45",
+    "stderr_hex": ""
+  },
+  "sha256": {
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/byte_increment_v1/reference.py": "4c81c4b3bac8ab4a69d9f212b8e5d901aa08a18f51db5d87b1bc845d9e5408a0",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/byte_increment_v1/increment.bf": "82dd1b5714619bfc22f018edd9488ed23b277f75d6ffc7b50d7196dfd0cac09d",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/increment_four.mb": "1d036a22907f3b6746c93f5e7158db9e7b60e8d34b8fdda969ba5628c67128a9",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/increment_four_control.mb": "10dbe6e32fc5bca6c0553cdc17735c5e9db9e6da4042b17b407350fee5ab5de8",
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  }
+}

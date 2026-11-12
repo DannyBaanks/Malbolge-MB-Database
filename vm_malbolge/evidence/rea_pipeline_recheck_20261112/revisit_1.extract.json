@@ -1,0 +1,111 @@
+{
+  "evidence_id": "ev_a8800f3b702c30d31cd7a9da1ffee2211bc589da8c9433070ef7790bea8547d1",
+  "provider": {
+    "id": "rea-malbolge-classic",
+    "name": "REA Malbolge Classic engine",
+    "version": "6.5.0"
+  },
+  "authority": "shipped-artifact",
+  "parameters": {
+    "path": "<repo>/vm_malbolge/evidence/increment_stream_v2/revisit_control.mb",
+    "max_steps": 4096,
+    "event_capture_limit": 4096
+  },
+  "artifact": {
+    "path": "<repo>/vm_malbolge/evidence/increment_stream_v2/revisit_control.mb",
+    "sha256": "8bde4ead8d55938144690693617997ac0d4867eea874052451cfaf0ec381fdcd",
+    "bytes": 56382
+  },
+  "run": {
+    "steps": 3903,
+    "status": "HALTED",
+    "invalid_reason": null,
+    "events_truncated": false,
+    "peak_position": 58551,
+    "writebacks": 4907,
+    "representation_changes": 4647,
+    "state_digest_before": "9b2aff39c0dac1014793f66f1da836e7749af01f4e2800c13c89df57bb165188",
+    "state_digest_after": "3c7726e1f0891ea32482cd26204b7908c0dfbdaaeff9125a5e80a639ee321de9"
+  },
+  "visits": [
+    {
+      "step": 3862,
+      "position": 58550,
+      "opcode": 62,
+      "opcode_name": "crazy",
+      "a": 57018,
+      "d": 57020,
+      "writes": [
+        {
+          "position": 57020,
+          "value_before": 29524,
+          "value_after": 57907
+        },
+        {
+          "position": 58550,
+          "value_before": 74,
+          "value_after": 70
+        }
+      ]
+    },
+    {
+      "step": 3901,
+      "position": 58550,
+      "opcode": 21,
+      "opcode_name": "nop",
+      "a": 33,
+      "d": 58556,
+      "writes": [
+        {
+          "position": 58550,
+          "value_before": 33,
+          "value_after": 53
+        }
+      ]
+    }
+  ],
+  "writes": [
+    {
+      "step": 3514,
+      "pc": 3611,
+      "position": 58550,
+      "value_before": 29443,
+      "value_after": 74
+    },
+    {
+      "step": 3862,
+      "pc": 58550,
+      "position": 58550,
+      "value_before": 74,
+      "value_after": 70
+    },
+    {
+      "step": 3870,
+      "pc": 58006,
+      "position": 58550,
+      "value_before": 70,
+      "value_after": 60
+    },
+    {
+      "step": 3895,
+      "pc": 58031,
+      "position": 58550,
+      "value_before": 60,
+      "value_after": 33
+    },
+    {
+      "step": 3901,
+      "pc": 58550,
+      "position": 58550,
+      "value_before": 33,
+      "value_after": 53
+    }
+  ],
+  "limitations": [
+    "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+    "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+    "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+    "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+  ],
+  "note": "Derived extract; full trace returned by REA but not saved in this run."
+}

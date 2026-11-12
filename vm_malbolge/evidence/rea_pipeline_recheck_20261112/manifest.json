@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-11-12T10:09:20.754085-06:00",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "base": "2ef86df19d1a2a77c261e759331d2523602327a5",
+  "commands": [
+    "python3 vm_malbolge/evidence/rea_pipeline_recheck_20261112/compare.py",
+    "python3 vm_malbolge/evidence/rea_pipeline_recheck_20261112/check_evidence.py"
+  ],
+  "files": {
+    "GATES.md": "6e696bf89b3b4f1ee614b8fe779bf56f0d3819054733f206ac877e3176c0d9b7",
+    "VERDICT.md": "9e721a2cd826e4e9dec1552939e5ab9b4d8053748ab5bc37c6349161f9150ab8",
+    "bf.redacted.json": "596f44bee442cb78baa3c73ae95ed06ead13c2854df3b75879eeea8ac441bbb9",
+    "check_evidence.py": "d30d3adb2f73536b8d97429feba9eb1bcd034d7d5c385830d589d7ec22f9987c",
+    "compare.py": "639a99aaec65536f7ddc6daa3b51e937f3df96d2e3b4bae151ecfd76780dd209",
+    "control.redacted.json": "21146f9388e44e335fdaffac7161c06700b2ab6026ec0da4132ae132474959d6",
+    "malbolge.redacted.json": "d5a38b86c98ace2eac66160c7d660ac1cefeb0cc8a0da6cb0c5967628e85174b",
+    "native_comparison.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native_comparison.stdout.raw.txt": "bb608ada1ef6e536b70abac64bdc7a010a57c6991accd4316fd39ec2bf6a713a",
+    "python.redacted.json": "b3fdec6d5d6061cf26b5e492c29843522fa6dbf1e64c8be96102e77a911cdf2c",
+    "revisit_0.extract.json": "f8c6126a28743125b0c26317df3c71e091468a27189e143be4b8d0a702c6a371",
+    "revisit_1.extract.json": "d55325de8d5990b92b164a7948ecee1207dfea97dabdd5b9a153cd3ca3d8a066"
+  },
+  "inputs": {
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/byte_increment_v1/reference.py": "4c81c4b3bac8ab4a69d9f212b8e5d901aa08a18f51db5d87b1bc845d9e5408a0",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/byte_increment_v1/increment.bf": "82dd1b5714619bfc22f018edd9488ed23b277f75d6ffc7b50d7196dfd0cac09d",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/byte_increment_v1/rea_reference.py": "30f8cd1d7e5ad6fa7d8bfb49ddb939e4e9fdb446f1f659ee4864ef73ba378068",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/unieco_rea_eof_v2/bf16.py": "608443c853fb30912999368309dab1ed62f4ddc3d17b2889ac66f79146ed6f85",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/increment_four.mb": "1d036a22907f3b6746c93f5e7158db9e7b60e8d34b8fdda969ba5628c67128a9",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/increment_four_control.mb": "10dbe6e32fc5bca6c0553cdc17735c5e9db9e6da4042b17b407350fee5ab5de8",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/revisit_positive.mb": "87f48e9c8c8e04be9c666811179fa61e9beca1f9286e4d3dfef59eb37a4a40ae",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_stream_v2/revisit_control.mb": "8bde4ead8d55938144690693617997ac0d4867eea874052451cfaf0ec381fdcd",
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6"
+  }
+}

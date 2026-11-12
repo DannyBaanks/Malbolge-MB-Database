@@ -1,0 +1,3 @@
+# REA: contraste de incremento acotado
+
+2026-11-12. Validación exploratoria sobre artefactos preexistentes: para entrada ASCII ABCD, observar bajo REA la referencia Python, el ejecutor BF16 y replay Malbolge de `increment_four.mb`; comparar resultado BCDE y terminación, además de contrastar el control Malbolge. Capturar evidencias originales, hashes y límites. Esto no demuestra compilación BF→Malbolge, equivalencia general, EOF ni longitud arbitraria. Las capturas Python/BF observan procesos con wrapper hexadecimal; Malbolge es replay acotado, no Olmstead nativo. El diseño R/R2 previo no forma parte de la imagen de incremento.
