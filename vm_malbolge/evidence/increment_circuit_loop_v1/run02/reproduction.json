@@ -1,0 +1,7 @@
+{
+  "isolated_checkout": true,
+  "image_byte_identical": true,
+  "original_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+  "isolated_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+  "scope": "only compiler, its vendored backend, LMAO sources and BF copied to isolated tree; no neighboring BolgeForge"
+}

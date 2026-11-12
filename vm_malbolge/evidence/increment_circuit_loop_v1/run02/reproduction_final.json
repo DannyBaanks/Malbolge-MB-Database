@@ -1,0 +1,7 @@
+{
+  "isolated_tree": "compiler, vendored planner, LMAO source and BF only",
+  "neighboring_BolgeForge_present": false,
+  "outputs_byte_identical": true,
+  "image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+  "isolated_image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1"
+}

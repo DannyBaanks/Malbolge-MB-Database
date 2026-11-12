@@ -1,0 +1,4 @@
+len 4 got 4 pass True first mismatch None rc -15
+len 256 got 256 pass True first mismatch None rc -15
+len 6 got 6 pass True first mismatch None rc -15
+len 10000 got 10000 pass True first mismatch None rc -15

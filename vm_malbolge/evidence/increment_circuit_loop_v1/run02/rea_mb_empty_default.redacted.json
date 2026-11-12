@@ -1,0 +1,595 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"evidence_id\":\"ev_adea8161791f81c8263bf604ccd03b4a2b389daeb8a171e610f72320e679853a\",\"subject\":{\"name\":\"increment.mb\",\"digest\":{\"sha256\":\"aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1\"},\"local_path\":\"<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb\",\"format\":\"file\",\"architecture\":null},\"provider\":{\"id\":\"rea-malbolge-classic\",\"name\":\"REA Malbolge Classic engine\",\"version\":\"6.5.0\"},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis\",\"operation\":\"trace_malbolge\",\"parameters\":{\"path\":\"<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb\",\"max_steps\":100000,\"input_text\":\"\",\"event_capture_limit\":32},\"raw_result\":null,\"normalized_result\":{\"artifact\":{\"path\":\"<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb\",\"sha256\":\"aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1\",\"bytes\":56570},\"execution_id\":\"bfcb9933-9368-4d19-848c-01ec54bb5e3a\",\"run\":{\"steps\":100000,\"status\":\"MAX_STEPS\",\"invalid_reason\":\"step budget of 100000 reached before halt\",\"events_truncated\":true,\"peak_position\":58331,\"writebacks\":116893,\"representation_changes\":112069,\"state_digest_before\":\"64dc41582cdff591066aae39150c22bc83c2eba813431ecbc9cf7389ec892ce0\",\"state_digest_after\":\"a0fe5f96e85bbccbf11f03edef67ebe0b2aa6ec16b17e88552f2f2e9ad47ce3d\"},\"output_text\":\"UUUUUUUU\",\"output_bytes\":[85,85,85,85,85,85,85,85],\"events\":[{\"step\":1,\"position\":0,\"opcode\":4,\"opcode_name\":\"jmp\",\"a\":0,\"d\":0,\"writes\":[{\"position\":98,\"value_before\":64,\"value_after\":81}]},{\"step\":2,\"position\":99,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":0,\"d\":1,\"writes\":[{\"position\":99,\"value_before\":63,\"value_after\":43}]},{\"step\":3,\"position\":100,\"opcode\":40,\"opcode_name\":\"movd\",\"a\":0,\"d\":2,\"writes\":[{\"position\":100,\"value_before\":34,\"value_after\":122}]},{\"step\":4,\"position\":101,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":0,\"d\":39,\"writes\":[{\"position\":101,\"value_before\":61,\"value_after\":100}]},{\"step\":5,\"position\":102,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":0,\"d\":40,\"writes\":[{\"position\":102,\"value_before\":60,\"value_after\":51}]},{\"step\":6,\"position\":103,\"opcode\":62,\"opcode_name\":\"crazy\",\"a\":0,\"d\":41,\"writes\":[{\"position\":41,\"value_before\":121,\"value_after\":29524},{\"position\":103,\"value_before\":53,\"value_after\":45}]},{\"step\":7,\"position\":104,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":42,\"writes\":[{\"position\":104,\"value_before\":58,\"value_after\":37}]},{\"step\":8,\"position\":105,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":43,\"writes\":[{\"position\":105,\"value_before\":57,\"value_after\":91}]},{\"step\":9,\"position\":106,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":44,\"writes\":[{\"position\":106,\"value_before\":56,\"value_after\":44}]},{\"step\":10,\"position\":107,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":45,\"writes\":[{\"position\":107,\"value_before\":55,\"value_after\":110}]},{\"step\":11,\"position\":108,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":46,\"writes\":[{\"position\":108,\"value_before\":54,\"value_after\":90}]},{\"step\":12,\"position\":109,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":47,\"writes\":[{\"position\":109,\"value_before\":53,\"value_after\":45}]},{\"step\":13,\"position\":110,\"opcode\":62,\"opcode_name\":\"crazy\",\"a\":29524,\"d\":48,\"writes\":[{\"position\":48,\"value_before\":108,\"value_after\":0},{\"position\":110,\"value_before\":46,\"value_after\":101}]},{\"step\":14,\"position\":111,\"opcode\":62,\"opcode_name\":\"crazy\",\"a\":0,\"d\":49,\"writes\":[{\"position\":49,\"value_before\":85,\"value_after\":29524},{\"position\":111,\"value_before\":45,\"value_after\":119}]},{\"step\":15,\"position\":112,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":50,\"writes\":[{\"position\":112,\"value_before\":50,\"value_after\":80}]},{\"step\":16,\"position\":113,\"opcode\":62,\"opcode_name\":\"crazy\",\"a\":29524,\"d\":51,\"writes\":[{\"position\":51,\"value_before\":82,\"value_after\":0},{\"position\":113,\"value_before\":43,\"value_after\":36}]},{\"step\":17,\"position\":114,\"opcode\":62,\"opcode_name\":\"crazy\",\"a\":0,\"d\":52,\"writes\":[{\"position\":52,\"value_before\":81,\"value_after\":29524},{\"position\":114,\"value_before\":42,\"value_after\":114}]},{\"step\":18,\"position\":115,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":53,\"writes\":[{\"position\":115,\"value_before\":47,\"value_after\":52}]},{\"step\":19,\"position\":116,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":54,\"writes\":[{\"position\":116,\"value_before\":46,\"value_after\":101}]},{\"step\":20,\"position\":117,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":55,\"writes\":[{\"position\":117,\"value_before\":45,\"value_after\":119}]},{\"step\":21,\"position\":118,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":56,\"writes\":[{\"position\":118,\"value_before\":44,\"value_after\":40}]},{\"step\":22,\"position\":119,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":57,\"writes\":[{\"position\":119,\"value_before\":43,\"value_after\":36}]},{\"step\":23,\"position\":120,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":58,\"writes\":[{\"position\":120,\"value_before\":42,\"value_after\":114}]},{\"step\":24,\"position\":121,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":59,\"writes\":[{\"position\":121,\"value_before\":41,\"value_after\":102}]},{\"step\":25,\"position\":122,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":60,\"writes\":[{\"position\":122,\"value_before\":40,\"value_after\":121}]},{\"step\":26,\"position\":123,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":61,\"writes\":[{\"position\":123,\"value_before\":39,\"value_after\":116}]},{\"step\":27,\"position\":124,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":62,\"writes\":[{\"position\":124,\"value_before\":38,\"value_after\":113}]},{\"step\":28,\"position\":125,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":63,\"writes\":[{\"position\":125,\"value_before\":37,\"value_after\":103}]},{\"step\":29,\"position\":126,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":64,\"writes\":[{\"position\":126,\"value_before\":36,\"value_after\":38}]},{\"step\":30,\"position\":127,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":65,\"writes\":[{\"position\":127,\"value_before\":35,\"value_after\":93}]},{\"step\":31,\"position\":128,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":66,\"writes\":[{\"position\":128,\"value_before\":34,\"value_after\":122}]},{\"step\":32,\"position\":129,\"opcode\":68,\"opcode_name\":\"nop\",\"a\":29524,\"d\":67,\"writes\":[{\"position\":129,\"value_before\":33,\"value_after\":53}]}],\"limitations\":[\"The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.\",\"Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.\",\"Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.\",\"Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time.\"]},\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[\"The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.\",\"Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.\",\"Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.\",\"Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time.\"],\"relationship_coverage\":null,\"locations\":[{\"kind\":\"artifact-path\",\"path\":\"<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb\"}],\"evidence_links\":[]}"
+    }
+  ],
+  "structuredContent": {
+    "evidence_id": "ev_adea8161791f81c8263bf604ccd03b4a2b389daeb8a171e610f72320e679853a",
+    "subject": {
+      "name": "increment.mb",
+      "digest": {
+        "sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1"
+      },
+      "local_path": "<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb",
+      "format": "file",
+      "architecture": null
+    },
+    "provider": {
+      "id": "rea-malbolge-classic",
+      "name": "REA Malbolge Classic engine",
+      "version": "6.5.0"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "trace_malbolge",
+    "parameters": {
+      "path": "<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb",
+      "max_steps": 100000,
+      "input_text": "",
+      "event_capture_limit": 32
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "artifact": {
+        "path": "<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb",
+        "sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+        "bytes": 56570
+      },
+      "execution_id": "bfcb9933-9368-4d19-848c-01ec54bb5e3a",
+      "run": {
+        "steps": 100000,
+        "status": "MAX_STEPS",
+        "invalid_reason": "step budget of 100000 reached before halt",
+        "events_truncated": true,
+        "peak_position": 58331,
+        "writebacks": 116893,
+        "representation_changes": 112069,
+        "state_digest_before": "64dc41582cdff591066aae39150c22bc83c2eba813431ecbc9cf7389ec892ce0",
+        "state_digest_after": "a0fe5f96e85bbccbf11f03edef67ebe0b2aa6ec16b17e88552f2f2e9ad47ce3d"
+      },
+      "output_text": "UUUUUUUU",
+      "output_bytes": [
+        85,
+        85,
+        85,
+        85,
+        85,
+        85,
+        85,
+        85
+      ],
+      "events": [
+        {
+          "step": 1,
+          "position": 0,
+          "opcode": 4,
+          "opcode_name": "jmp",
+          "a": 0,
+          "d": 0,
+          "writes": [
+            {
+              "position": 98,
+              "value_before": 64,
+              "value_after": 81
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "position": 99,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 0,
+          "d": 1,
+          "writes": [
+            {
+              "position": 99,
+              "value_before": 63,
+              "value_after": 43
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "position": 100,
+          "opcode": 40,
+          "opcode_name": "movd",
+          "a": 0,
+          "d": 2,
+          "writes": [
+            {
+              "position": 100,
+              "value_before": 34,
+              "value_after": 122
+            }
+          ]
+        },
+        {
+          "step": 4,
+          "position": 101,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 0,
+          "d": 39,
+          "writes": [
+            {
+              "position": 101,
+              "value_before": 61,
+              "value_after": 100
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "position": 102,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 0,
+          "d": 40,
+          "writes": [
+            {
+              "position": 102,
+              "value_before": 60,
+              "value_after": 51
+            }
+          ]
+        },
+        {
+          "step": 6,
+          "position": 103,
+          "opcode": 62,
+          "opcode_name": "crazy",
+          "a": 0,
+          "d": 41,
+          "writes": [
+            {
+              "position": 41,
+              "value_before": 121,
+              "value_after": 29524
+            },
+            {
+              "position": 103,
+              "value_before": 53,
+              "value_after": 45
+            }
+          ]
+        },
+        {
+          "step": 7,
+          "position": 104,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 42,
+          "writes": [
+            {
+              "position": 104,
+              "value_before": 58,
+              "value_after": 37
+            }
+          ]
+        },
+        {
+          "step": 8,
+          "position": 105,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 43,
+          "writes": [
+            {
+              "position": 105,
+              "value_before": 57,
+              "value_after": 91
+            }
+          ]
+        },
+        {
+          "step": 9,
+          "position": 106,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 44,
+          "writes": [
+            {
+              "position": 106,
+              "value_before": 56,
+              "value_after": 44
+            }
+          ]
+        },
+        {
+          "step": 10,
+          "position": 107,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 45,
+          "writes": [
+            {
+              "position": 107,
+              "value_before": 55,
+              "value_after": 110
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "position": 108,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 46,
+          "writes": [
+            {
+              "position": 108,
+              "value_before": 54,
+              "value_after": 90
+            }
+          ]
+        },
+        {
+          "step": 12,
+          "position": 109,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 47,
+          "writes": [
+            {
+              "position": 109,
+              "value_before": 53,
+              "value_after": 45
+            }
+          ]
+        },
+        {
+          "step": 13,
+          "position": 110,
+          "opcode": 62,
+          "opcode_name": "crazy",
+          "a": 29524,
+          "d": 48,
+          "writes": [
+            {
+              "position": 48,
+              "value_before": 108,
+              "value_after": 0
+            },
+            {
+              "position": 110,
+              "value_before": 46,
+              "value_after": 101
+            }
+          ]
+        },
+        {
+          "step": 14,
+          "position": 111,
+          "opcode": 62,
+          "opcode_name": "crazy",
+          "a": 0,
+          "d": 49,
+          "writes": [
+            {
+              "position": 49,
+              "value_before": 85,
+              "value_after": 29524
+            },
+            {
+              "position": 111,
+              "value_before": 45,
+              "value_after": 119
+            }
+          ]
+        },
+        {
+          "step": 15,
+          "position": 112,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 50,
+          "writes": [
+            {
+              "position": 112,
+              "value_before": 50,
+              "value_after": 80
+            }
+          ]
+        },
+        {
+          "step": 16,
+          "position": 113,
+          "opcode": 62,
+          "opcode_name": "crazy",
+          "a": 29524,
+          "d": 51,
+          "writes": [
+            {
+              "position": 51,
+              "value_before": 82,
+              "value_after": 0
+            },
+            {
+              "position": 113,
+              "value_before": 43,
+              "value_after": 36
+            }
+          ]
+        },
+        {
+          "step": 17,
+          "position": 114,
+          "opcode": 62,
+          "opcode_name": "crazy",
+          "a": 0,
+          "d": 52,
+          "writes": [
+            {
+              "position": 52,
+              "value_before": 81,
+              "value_after": 29524
+            },
+            {
+              "position": 114,
+              "value_before": 42,
+              "value_after": 114
+            }
+          ]
+        },
+        {
+          "step": 18,
+          "position": 115,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 53,
+          "writes": [
+            {
+              "position": 115,
+              "value_before": 47,
+              "value_after": 52
+            }
+          ]
+        },
+        {
+          "step": 19,
+          "position": 116,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 54,
+          "writes": [
+            {
+              "position": 116,
+              "value_before": 46,
+              "value_after": 101
+            }
+          ]
+        },
+        {
+          "step": 20,
+          "position": 117,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 55,
+          "writes": [
+            {
+              "position": 117,
+              "value_before": 45,
+              "value_after": 119
+            }
+          ]
+        },
+        {
+          "step": 21,
+          "position": 118,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 56,
+          "writes": [
+            {
+              "position": 118,
+              "value_before": 44,
+              "value_after": 40
+            }
+          ]
+        },
+        {
+          "step": 22,
+          "position": 119,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 57,
+          "writes": [
+            {
+              "position": 119,
+              "value_before": 43,
+              "value_after": 36
+            }
+          ]
+        },
+        {
+          "step": 23,
+          "position": 120,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 58,
+          "writes": [
+            {
+              "position": 120,
+              "value_before": 42,
+              "value_after": 114
+            }
+          ]
+        },
+        {
+          "step": 24,
+          "position": 121,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 59,
+          "writes": [
+            {
+              "position": 121,
+              "value_before": 41,
+              "value_after": 102
+            }
+          ]
+        },
+        {
+          "step": 25,
+          "position": 122,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 60,
+          "writes": [
+            {
+              "position": 122,
+              "value_before": 40,
+              "value_after": 121
+            }
+          ]
+        },
+        {
+          "step": 26,
+          "position": 123,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 61,
+          "writes": [
+            {
+              "position": 123,
+              "value_before": 39,
+              "value_after": 116
+            }
+          ]
+        },
+        {
+          "step": 27,
+          "position": 124,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 62,
+          "writes": [
+            {
+              "position": 124,
+              "value_before": 38,
+              "value_after": 113
+            }
+          ]
+        },
+        {
+          "step": 28,
+          "position": 125,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 63,
+          "writes": [
+            {
+              "position": 125,
+              "value_before": 37,
+              "value_after": 103
+            }
+          ]
+        },
+        {
+          "step": 29,
+          "position": 126,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 64,
+          "writes": [
+            {
+              "position": 126,
+              "value_before": 36,
+              "value_after": 38
+            }
+          ]
+        },
+        {
+          "step": 30,
+          "position": 127,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 65,
+          "writes": [
+            {
+              "position": 127,
+              "value_before": 35,
+              "value_after": 93
+            }
+          ]
+        },
+        {
+          "step": 31,
+          "position": 128,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 66,
+          "writes": [
+            {
+              "position": 128,
+              "value_before": 34,
+              "value_after": 122
+            }
+          ]
+        },
+        {
+          "step": 32,
+          "position": 129,
+          "opcode": 68,
+          "opcode_name": "nop",
+          "a": 29524,
+          "d": 67,
+          "writes": [
+            {
+              "position": 129,
+              "value_before": 33,
+              "value_after": 53
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+        "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+        "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+        "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+      "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+      "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+      "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+    ],
+    "relationship_coverage": null,
+    "locations": [
+      {
+        "kind": "artifact-path",
+        "path": "<repo>/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb"
+      }
+    ],
+    "evidence_links": []
+  }
+}

@@ -1,0 +1,3 @@
+Warning: Memory usage conflict in fast mode. Retrying in normal mode...
+Error: Memory usage conflict while generating initialization code.
+The program may be too large, or a .OFFSET directive may conflict.

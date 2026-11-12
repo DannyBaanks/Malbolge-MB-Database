@@ -1,0 +1,11 @@
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 55958.
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 55958.
+Warning: Memory usage conflict in fast mode. Retrying in normal mode...
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 55958.
+Error: Free space exceeded (Add Malbolge command).
+Internal error: Cannot generate initialization code for cell 55958.
+Error: Memory usage conflict while generating initialization code.
+The program may be too large, or a .OFFSET directive may conflict.

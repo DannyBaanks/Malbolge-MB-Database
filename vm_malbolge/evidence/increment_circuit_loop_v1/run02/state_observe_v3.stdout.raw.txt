@@ -1,0 +1,1581 @@
+{
+  "scratch_first_access": [
+    {
+      "t1": [
+        {
+          "step": 56353,
+          "opcode": 62
+        },
+        {
+          "step": 56365,
+          "opcode": 62
+        }
+      ],
+      "t2": [
+        {
+          "step": 56514,
+          "opcode": 62
+        },
+        {
+          "step": 56526,
+          "opcode": 62
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 61773,
+          "opcode": 62
+        },
+        {
+          "step": 61785,
+          "opcode": 62
+        }
+      ],
+      "t2": [
+        {
+          "step": 61934,
+          "opcode": 62
+        },
+        {
+          "step": 61946,
+          "opcode": 62
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 67193,
+          "opcode": 62
+        },
+        {
+          "step": 67205,
+          "opcode": 62
+        }
+      ],
+      "t2": [
+        {
+          "step": 67354,
+          "opcode": 62
+        },
+        {
+          "step": 67366,
+          "opcode": 62
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 72613,
+          "opcode": 62
+        },
+        {
+          "step": 72625,
+          "opcode": 62
+        }
+      ],
+      "t2": [
+        {
+          "step": 72774,
+          "opcode": 62
+        },
+        {
+          "step": 72786,
+          "opcode": 62
+        }
+      ]
+    }
+  ],
+  "scratch_first_resets": [
+    {
+      "t1": [
+        {
+          "step": 56353,
+          "before": 29524,
+          "after": 0
+        },
+        {
+          "step": 56365,
+          "before": 0,
+          "after": 29524
+        }
+      ],
+      "t2": [
+        {
+          "step": 56514,
+          "before": 29524,
+          "after": 0
+        },
+        {
+          "step": 56526,
+          "before": 0,
+          "after": 29524
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 61773,
+          "before": 66,
+          "after": 54
+        },
+        {
+          "step": 61785,
+          "before": 54,
+          "after": 29524
+        }
+      ],
+      "t2": [
+        {
+          "step": 61934,
+          "before": 58322,
+          "after": 58322
+        },
+        {
+          "step": 61946,
+          "before": 58322,
+          "after": 29524
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 67193,
+          "before": 67,
+          "after": 54
+        },
+        {
+          "step": 67205,
+          "before": 54,
+          "after": 29524
+        }
+      ],
+      "t2": [
+        {
+          "step": 67354,
+          "before": 58320,
+          "after": 58320
+        },
+        {
+          "step": 67366,
+          "before": 58320,
+          "after": 29524
+        }
+      ]
+    },
+    {
+      "t1": [
+        {
+          "step": 72613,
+          "before": 68,
+          "after": 56
+        },
+        {
+          "step": 72625,
+          "before": 56,
+          "after": 29524
+        }
+      ],
+      "t2": [
+        {
+          "step": 72774,
+          "before": 58320,
+          "after": 58320
+        },
+        {
+          "step": 72786,
+          "before": 58320,
+          "after": 29524
+        }
+      ]
+    }
+  ],
+  "input_hex": "41424344",
+  "boundary": "before IN, including final EOF read",
+  "baseline_step": 56319,
+  "comparisons": [
+    {
+      "visit": 2,
+      "step": 61739,
+      "count_by_layout_type": {
+        "4": 40,
+        "2": 7,
+        "3": 2
+      },
+      "differences": [
+        {
+          "address": 56682,
+          "type": 4,
+          "initial": 124,
+          "current": 53,
+          "labels": []
+        },
+        {
+          "address": 56683,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56684,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56685,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56686,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56688,
+          "type": 2,
+          "initial": 67,
+          "current": 76,
+          "labels": []
+        },
+        {
+          "address": 56698,
+          "type": 4,
+          "initial": 72,
+          "current": 54,
+          "labels": []
+        },
+        {
+          "address": 56706,
+          "type": 4,
+          "initial": 80,
+          "current": 66,
+          "labels": []
+        },
+        {
+          "address": 56710,
+          "type": 4,
+          "initial": 72,
+          "current": 124,
+          "labels": []
+        },
+        {
+          "address": 56724,
+          "type": 4,
+          "initial": 59,
+          "current": 92,
+          "labels": []
+        },
+        {
+          "address": 56741,
+          "type": 4,
+          "initial": 69,
+          "current": 86,
+          "labels": []
+        },
+        {
+          "address": 56744,
+          "type": 4,
+          "initial": 117,
+          "current": 103,
+          "labels": []
+        },
+        {
+          "address": 56749,
+          "type": 4,
+          "initial": 81,
+          "current": 53,
+          "labels": []
+        },
+        {
+          "address": 56762,
+          "type": 4,
+          "initial": 123,
+          "current": 43,
+          "labels": []
+        },
+        {
+          "address": 56835,
+          "type": 4,
+          "initial": 39,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 56839,
+          "type": 4,
+          "initial": 69,
+          "current": 83,
+          "labels": []
+        },
+        {
+          "address": 56929,
+          "type": 4,
+          "initial": 90,
+          "current": 72,
+          "labels": []
+        },
+        {
+          "address": 56933,
+          "type": 4,
+          "initial": 81,
+          "current": 61,
+          "labels": []
+        },
+        {
+          "address": 56938,
+          "type": 3,
+          "initial": 29524,
+          "current": 58322,
+          "labels": [
+            "t2"
+          ]
+        },
+        {
+          "address": 57023,
+          "type": 4,
+          "initial": 81,
+          "current": 107,
+          "labels": []
+        },
+        {
+          "address": 57027,
+          "type": 4,
+          "initial": 81,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 57117,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 57121,
+          "type": 4,
+          "initial": 81,
+          "current": 69,
+          "labels": []
+        },
+        {
+          "address": 57211,
+          "type": 4,
+          "initial": 81,
+          "current": 64,
+          "labels": []
+        },
+        {
+          "address": 57215,
+          "type": 4,
+          "initial": 81,
+          "current": 101,
+          "labels": []
+        },
+        {
+          "address": 57305,
+          "type": 4,
+          "initial": 81,
+          "current": 98,
+          "labels": []
+        },
+        {
+          "address": 57309,
+          "type": 4,
+          "initial": 81,
+          "current": 40,
+          "labels": []
+        },
+        {
+          "address": 57399,
+          "type": 4,
+          "initial": 81,
+          "current": 107,
+          "labels": []
+        },
+        {
+          "address": 57403,
+          "type": 4,
+          "initial": 81,
+          "current": 92,
+          "labels": []
+        },
+        {
+          "address": 57493,
+          "type": 4,
+          "initial": 81,
+          "current": 77,
+          "labels": []
+        },
+        {
+          "address": 57497,
+          "type": 4,
+          "initial": 81,
+          "current": 106,
+          "labels": []
+        },
+        {
+          "address": 57587,
+          "type": 4,
+          "initial": 81,
+          "current": 123,
+          "labels": []
+        },
+        {
+          "address": 57591,
+          "type": 4,
+          "initial": 81,
+          "current": 48,
+          "labels": []
+        },
+        {
+          "address": 57681,
+          "type": 4,
+          "initial": 81,
+          "current": 87,
+          "labels": []
+        },
+        {
+          "address": 57685,
+          "type": 4,
+          "initial": 81,
+          "current": 49,
+          "labels": []
+        },
+        {
+          "address": 57775,
+          "type": 4,
+          "initial": 81,
+          "current": 116,
+          "labels": []
+        },
+        {
+          "address": 57779,
+          "type": 4,
+          "initial": 81,
+          "current": 39,
+          "labels": []
+        },
+        {
+          "address": 57869,
+          "type": 4,
+          "initial": 81,
+          "current": 113,
+          "labels": []
+        },
+        {
+          "address": 57873,
+          "type": 4,
+          "initial": 81,
+          "current": 36,
+          "labels": []
+        },
+        {
+          "address": 57963,
+          "type": 4,
+          "initial": 81,
+          "current": 43,
+          "labels": []
+        },
+        {
+          "address": 57967,
+          "type": 4,
+          "initial": 81,
+          "current": 63,
+          "labels": []
+        },
+        {
+          "address": 58057,
+          "type": 4,
+          "initial": 81,
+          "current": 122,
+          "labels": []
+        },
+        {
+          "address": 58061,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 58151,
+          "type": 4,
+          "initial": 81,
+          "current": 90,
+          "labels": []
+        },
+        {
+          "address": 58155,
+          "type": 4,
+          "initial": 81,
+          "current": 54,
+          "labels": []
+        },
+        {
+          "address": 58160,
+          "type": 3,
+          "initial": 29524,
+          "current": 66,
+          "labels": [
+            "t1"
+          ]
+        },
+        {
+          "address": 58328,
+          "type": 4,
+          "initial": 33,
+          "current": 53,
+          "labels": []
+        },
+        {
+          "address": 58329,
+          "type": 2,
+          "initial": 111,
+          "current": 120,
+          "labels": [
+            "NON_EOF_0"
+          ]
+        },
+        {
+          "address": 58330,
+          "type": 2,
+          "initial": 111,
+          "current": 120,
+          "labels": []
+        }
+      ]
+    },
+    {
+      "visit": 3,
+      "step": 67159,
+      "count_by_layout_type": {
+        "4": 40,
+        "2": 3,
+        "3": 2
+      },
+      "differences": [
+        {
+          "address": 56682,
+          "type": 4,
+          "initial": 124,
+          "current": 65,
+          "labels": []
+        },
+        {
+          "address": 56688,
+          "type": 2,
+          "initial": 67,
+          "current": 66,
+          "labels": []
+        },
+        {
+          "address": 56698,
+          "type": 4,
+          "initial": 72,
+          "current": 43,
+          "labels": []
+        },
+        {
+          "address": 56706,
+          "type": 4,
+          "initial": 80,
+          "current": 62,
+          "labels": []
+        },
+        {
+          "address": 56710,
+          "type": 4,
+          "initial": 72,
+          "current": 108,
+          "labels": []
+        },
+        {
+          "address": 56724,
+          "type": 4,
+          "initial": 59,
+          "current": 115,
+          "labels": []
+        },
+        {
+          "address": 56741,
+          "type": 4,
+          "initial": 69,
+          "current": 77,
+          "labels": []
+        },
+        {
+          "address": 56744,
+          "type": 4,
+          "initial": 117,
+          "current": 37,
+          "labels": []
+        },
+        {
+          "address": 56749,
+          "type": 4,
+          "initial": 81,
+          "current": 115,
+          "labels": []
+        },
+        {
+          "address": 56762,
+          "type": 4,
+          "initial": 123,
+          "current": 86,
+          "labels": []
+        },
+        {
+          "address": 56835,
+          "type": 4,
+          "initial": 39,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 56839,
+          "type": 4,
+          "initial": 69,
+          "current": 75,
+          "labels": []
+        },
+        {
+          "address": 56929,
+          "type": 4,
+          "initial": 90,
+          "current": 99,
+          "labels": []
+        },
+        {
+          "address": 56933,
+          "type": 4,
+          "initial": 81,
+          "current": 59,
+          "labels": []
+        },
+        {
+          "address": 56938,
+          "type": 3,
+          "initial": 29524,
+          "current": 58320,
+          "labels": [
+            "t2"
+          ]
+        },
+        {
+          "address": 57023,
+          "type": 4,
+          "initial": 81,
+          "current": 113,
+          "labels": []
+        },
+        {
+          "address": 57027,
+          "type": 4,
+          "initial": 81,
+          "current": 99,
+          "labels": []
+        },
+        {
+          "address": 57117,
+          "type": 4,
+          "initial": 81,
+          "current": 75,
+          "labels": []
+        },
+        {
+          "address": 57121,
+          "type": 4,
+          "initial": 81,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 57211,
+          "type": 4,
+          "initial": 81,
+          "current": 126,
+          "labels": []
+        },
+        {
+          "address": 57215,
+          "type": 4,
+          "initial": 81,
+          "current": 89,
+          "labels": []
+        },
+        {
+          "address": 57305,
+          "type": 4,
+          "initial": 81,
+          "current": 91,
+          "labels": []
+        },
+        {
+          "address": 57309,
+          "type": 4,
+          "initial": 81,
+          "current": 49,
+          "labels": []
+        },
+        {
+          "address": 57399,
+          "type": 4,
+          "initial": 81,
+          "current": 113,
+          "labels": []
+        },
+        {
+          "address": 57403,
+          "type": 4,
+          "initial": 81,
+          "current": 90,
+          "labels": []
+        },
+        {
+          "address": 57493,
+          "type": 4,
+          "initial": 81,
+          "current": 55,
+          "labels": []
+        },
+        {
+          "address": 57497,
+          "type": 4,
+          "initial": 81,
+          "current": 52,
+          "labels": []
+        },
+        {
+          "address": 57587,
+          "type": 4,
+          "initial": 81,
+          "current": 84,
+          "labels": []
+        },
+        {
+          "address": 57591,
+          "type": 4,
+          "initial": 81,
+          "current": 93,
+          "labels": []
+        },
+        {
+          "address": 57681,
+          "type": 4,
+          "initial": 81,
+          "current": 121,
+          "labels": []
+        },
+        {
+          "address": 57685,
+          "type": 4,
+          "initial": 81,
+          "current": 44,
+          "labels": []
+        },
+        {
+          "address": 57775,
+          "type": 4,
+          "initial": 81,
+          "current": 71,
+          "labels": []
+        },
+        {
+          "address": 57779,
+          "type": 4,
+          "initial": 81,
+          "current": 48,
+          "labels": []
+        },
+        {
+          "address": 57869,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 57873,
+          "type": 4,
+          "initial": 81,
+          "current": 68,
+          "labels": []
+        },
+        {
+          "address": 57963,
+          "type": 4,
+          "initial": 81,
+          "current": 69,
+          "labels": []
+        },
+        {
+          "address": 57967,
+          "type": 4,
+          "initial": 81,
+          "current": 39,
+          "labels": []
+        },
+        {
+          "address": 58057,
+          "type": 4,
+          "initial": 81,
+          "current": 113,
+          "labels": []
+        },
+        {
+          "address": 58061,
+          "type": 4,
+          "initial": 81,
+          "current": 36,
+          "labels": []
+        },
+        {
+          "address": 58151,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 58155,
+          "type": 4,
+          "initial": 81,
+          "current": 90,
+          "labels": []
+        },
+        {
+          "address": 58160,
+          "type": 3,
+          "initial": 29524,
+          "current": 67,
+          "labels": [
+            "t1"
+          ]
+        },
+        {
+          "address": 58328,
+          "type": 4,
+          "initial": 33,
+          "current": 45,
+          "labels": []
+        },
+        {
+          "address": 58329,
+          "type": 2,
+          "initial": 111,
+          "current": 58,
+          "labels": [
+            "NON_EOF_0"
+          ]
+        },
+        {
+          "address": 58330,
+          "type": 2,
+          "initial": 111,
+          "current": 58,
+          "labels": []
+        }
+      ]
+    },
+    {
+      "visit": 4,
+      "step": 72579,
+      "count_by_layout_type": {
+        "4": 40,
+        "2": 7,
+        "3": 2
+      },
+      "differences": [
+        {
+          "address": 56682,
+          "type": 4,
+          "initial": 124,
+          "current": 93,
+          "labels": []
+        },
+        {
+          "address": 56683,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56684,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56685,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56686,
+          "type": 2,
+          "initial": 74,
+          "current": 70,
+          "labels": []
+        },
+        {
+          "address": 56688,
+          "type": 2,
+          "initial": 67,
+          "current": 50,
+          "labels": []
+        },
+        {
+          "address": 56698,
+          "type": 4,
+          "initial": 72,
+          "current": 116,
+          "labels": []
+        },
+        {
+          "address": 56706,
+          "type": 4,
+          "initial": 80,
+          "current": 76,
+          "labels": []
+        },
+        {
+          "address": 56710,
+          "type": 4,
+          "initial": 72,
+          "current": 45,
+          "labels": []
+        },
+        {
+          "address": 56724,
+          "type": 4,
+          "initial": 59,
+          "current": 82,
+          "labels": []
+        },
+        {
+          "address": 56741,
+          "type": 4,
+          "initial": 69,
+          "current": 43,
+          "labels": []
+        },
+        {
+          "address": 56744,
+          "type": 4,
+          "initial": 117,
+          "current": 58,
+          "labels": []
+        },
+        {
+          "address": 56749,
+          "type": 4,
+          "initial": 81,
+          "current": 46,
+          "labels": []
+        },
+        {
+          "address": 56762,
+          "type": 4,
+          "initial": 123,
+          "current": 107,
+          "labels": []
+        },
+        {
+          "address": 56835,
+          "type": 4,
+          "initial": 39,
+          "current": 115,
+          "labels": []
+        },
+        {
+          "address": 56839,
+          "type": 4,
+          "initial": 69,
+          "current": 97,
+          "labels": []
+        },
+        {
+          "address": 56929,
+          "type": 4,
+          "initial": 90,
+          "current": 98,
+          "labels": []
+        },
+        {
+          "address": 56933,
+          "type": 4,
+          "initial": 81,
+          "current": 33,
+          "labels": []
+        },
+        {
+          "address": 56938,
+          "type": 3,
+          "initial": 29524,
+          "current": 58320,
+          "labels": [
+            "t2"
+          ]
+        },
+        {
+          "address": 57023,
+          "type": 4,
+          "initial": 81,
+          "current": 98,
+          "labels": []
+        },
+        {
+          "address": 57027,
+          "type": 4,
+          "initial": 81,
+          "current": 68,
+          "labels": []
+        },
+        {
+          "address": 57117,
+          "type": 4,
+          "initial": 81,
+          "current": 88,
+          "labels": []
+        },
+        {
+          "address": 57121,
+          "type": 4,
+          "initial": 81,
+          "current": 89,
+          "labels": []
+        },
+        {
+          "address": 57211,
+          "type": 4,
+          "initial": 81,
+          "current": 110,
+          "labels": []
+        },
+        {
+          "address": 57215,
+          "type": 4,
+          "initial": 81,
+          "current": 57,
+          "labels": []
+        },
+        {
+          "address": 57305,
+          "type": 4,
+          "initial": 81,
+          "current": 108,
+          "labels": []
+        },
+        {
+          "address": 57309,
+          "type": 4,
+          "initial": 81,
+          "current": 64,
+          "labels": []
+        },
+        {
+          "address": 57399,
+          "type": 4,
+          "initial": 81,
+          "current": 98,
+          "labels": []
+        },
+        {
+          "address": 57403,
+          "type": 4,
+          "initial": 81,
+          "current": 82,
+          "labels": []
+        },
+        {
+          "address": 57493,
+          "type": 4,
+          "initial": 81,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 57497,
+          "type": 4,
+          "initial": 81,
+          "current": 123,
+          "labels": []
+        },
+        {
+          "address": 57587,
+          "type": 4,
+          "initial": 81,
+          "current": 43,
+          "labels": []
+        },
+        {
+          "address": 57591,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 57681,
+          "type": 4,
+          "initial": 81,
+          "current": 54,
+          "labels": []
+        },
+        {
+          "address": 57685,
+          "type": 4,
+          "initial": 81,
+          "current": 126,
+          "labels": []
+        },
+        {
+          "address": 57775,
+          "type": 4,
+          "initial": 81,
+          "current": 107,
+          "labels": []
+        },
+        {
+          "address": 57779,
+          "type": 4,
+          "initial": 81,
+          "current": 115,
+          "labels": []
+        },
+        {
+          "address": 57869,
+          "type": 4,
+          "initial": 81,
+          "current": 91,
+          "labels": []
+        },
+        {
+          "address": 57873,
+          "type": 4,
+          "initial": 81,
+          "current": 48,
+          "labels": []
+        },
+        {
+          "address": 57963,
+          "type": 4,
+          "initial": 81,
+          "current": 78,
+          "labels": []
+        },
+        {
+          "address": 57967,
+          "type": 4,
+          "initial": 81,
+          "current": 53,
+          "labels": []
+        },
+        {
+          "address": 58057,
+          "type": 4,
+          "initial": 81,
+          "current": 112,
+          "labels": []
+        },
+        {
+          "address": 58061,
+          "type": 4,
+          "initial": 81,
+          "current": 39,
+          "labels": []
+        },
+        {
+          "address": 58151,
+          "type": 4,
+          "initial": 81,
+          "current": 63,
+          "labels": []
+        },
+        {
+          "address": 58155,
+          "type": 4,
+          "initial": 81,
+          "current": 124,
+          "labels": []
+        },
+        {
+          "address": 58160,
+          "type": 3,
+          "initial": 29524,
+          "current": 68,
+          "labels": [
+            "t1"
+          ]
+        },
+        {
+          "address": 58328,
+          "type": 4,
+          "initial": 33,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 58329,
+          "type": 2,
+          "initial": 111,
+          "current": 37,
+          "labels": [
+            "NON_EOF_0"
+          ]
+        },
+        {
+          "address": 58330,
+          "type": 2,
+          "initial": 111,
+          "current": 37,
+          "labels": []
+        }
+      ]
+    },
+    {
+      "visit": 5,
+      "step": 77999,
+      "count_by_layout_type": {
+        "4": 39,
+        "2": 3,
+        "3": 2
+      },
+      "differences": [
+        {
+          "address": 56682,
+          "type": 4,
+          "initial": 124,
+          "current": 72,
+          "labels": []
+        },
+        {
+          "address": 56688,
+          "type": 2,
+          "initial": 67,
+          "current": 85,
+          "labels": []
+        },
+        {
+          "address": 56698,
+          "type": 4,
+          "initial": 72,
+          "current": 45,
+          "labels": []
+        },
+        {
+          "address": 56706,
+          "type": 4,
+          "initial": 80,
+          "current": 79,
+          "labels": []
+        },
+        {
+          "address": 56710,
+          "type": 4,
+          "initial": 72,
+          "current": 83,
+          "labels": []
+        },
+        {
+          "address": 56724,
+          "type": 4,
+          "initial": 59,
+          "current": 118,
+          "labels": []
+        },
+        {
+          "address": 56741,
+          "type": 4,
+          "initial": 69,
+          "current": 84,
+          "labels": []
+        },
+        {
+          "address": 56744,
+          "type": 4,
+          "initial": 117,
+          "current": 120,
+          "labels": []
+        },
+        {
+          "address": 56749,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 56762,
+          "type": 4,
+          "initial": 123,
+          "current": 78,
+          "labels": []
+        },
+        {
+          "address": 56835,
+          "type": 4,
+          "initial": 39,
+          "current": 44,
+          "labels": []
+        },
+        {
+          "address": 56839,
+          "type": 4,
+          "initial": 69,
+          "current": 126,
+          "labels": []
+        },
+        {
+          "address": 56929,
+          "type": 4,
+          "initial": 90,
+          "current": 89,
+          "labels": []
+        },
+        {
+          "address": 56938,
+          "type": 3,
+          "initial": 29524,
+          "current": 58322,
+          "labels": [
+            "t2"
+          ]
+        },
+        {
+          "address": 57023,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 57027,
+          "type": 4,
+          "initial": 81,
+          "current": 44,
+          "labels": []
+        },
+        {
+          "address": 57117,
+          "type": 4,
+          "initial": 81,
+          "current": 39,
+          "labels": []
+        },
+        {
+          "address": 57121,
+          "type": 4,
+          "initial": 81,
+          "current": 99,
+          "labels": []
+        },
+        {
+          "address": 57211,
+          "type": 4,
+          "initial": 81,
+          "current": 55,
+          "labels": []
+        },
+        {
+          "address": 57215,
+          "type": 4,
+          "initial": 81,
+          "current": 68,
+          "labels": []
+        },
+        {
+          "address": 57305,
+          "type": 4,
+          "initial": 81,
+          "current": 88,
+          "labels": []
+        },
+        {
+          "address": 57309,
+          "type": 4,
+          "initial": 81,
+          "current": 44,
+          "labels": []
+        },
+        {
+          "address": 57399,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 57403,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 57493,
+          "type": 4,
+          "initial": 81,
+          "current": 88,
+          "labels": []
+        },
+        {
+          "address": 57497,
+          "type": 4,
+          "initial": 81,
+          "current": 99,
+          "labels": []
+        },
+        {
+          "address": 57587,
+          "type": 4,
+          "initial": 81,
+          "current": 77,
+          "labels": []
+        },
+        {
+          "address": 57591,
+          "type": 4,
+          "initial": 81,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 57681,
+          "type": 4,
+          "initial": 81,
+          "current": 48,
+          "labels": []
+        },
+        {
+          "address": 57685,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 57775,
+          "type": 4,
+          "initial": 81,
+          "current": 100,
+          "labels": []
+        },
+        {
+          "address": 57779,
+          "type": 4,
+          "initial": 81,
+          "current": 93,
+          "labels": []
+        },
+        {
+          "address": 57869,
+          "type": 4,
+          "initial": 81,
+          "current": 75,
+          "labels": []
+        },
+        {
+          "address": 57873,
+          "type": 4,
+          "initial": 81,
+          "current": 77,
+          "labels": []
+        },
+        {
+          "address": 57963,
+          "type": 4,
+          "initial": 81,
+          "current": 94,
+          "labels": []
+        },
+        {
+          "address": 57967,
+          "type": 4,
+          "initial": 81,
+          "current": 48,
+          "labels": []
+        },
+        {
+          "address": 58057,
+          "type": 4,
+          "initial": 81,
+          "current": 119,
+          "labels": []
+        },
+        {
+          "address": 58061,
+          "type": 4,
+          "initial": 81,
+          "current": 68,
+          "labels": []
+        },
+        {
+          "address": 58151,
+          "type": 4,
+          "initial": 81,
+          "current": 36,
+          "labels": []
+        },
+        {
+          "address": 58155,
+          "type": 4,
+          "initial": 81,
+          "current": 34,
+          "labels": []
+        },
+        {
+          "address": 58160,
+          "type": 3,
+          "initial": 29524,
+          "current": 69,
+          "labels": [
+            "t1"
+          ]
+        },
+        {
+          "address": 58328,
+          "type": 4,
+          "initial": 33,
+          "current": 78,
+          "labels": []
+        },
+        {
+          "address": 58329,
+          "type": 2,
+          "initial": 111,
+          "current": 103,
+          "labels": [
+            "NON_EOF_0"
+          ]
+        },
+        {
+          "address": 58330,
+          "type": 2,
+          "initial": 111,
+          "current": 103,
+          "labels": []
+        }
+      ]
+    }
+  ],
+  "scope": "whole initialized layout; differences are observed, not by themselves evidence of error"
+}

@@ -1,0 +1,53 @@
+from pathlib import Path
+import sys
+sys.path.insert(0,str(Path.cwd().parent/'BolgeForge'))
+from constants import crazy_op,rot_op
+base=8*6561
+truth=((1,0,0),(1,0,2),(2,2,1))
+r1=[1]*8;r2=[1]*8
+for i in range(8,10):
+ t=(base//3**i)%3;x,y=next((x,y) for x in range(3) for y in range(3) if truth[y][truth[x][0]]==t);r1.append(x);r2.append(y)
+m1=sum(x*3**i for i,x in enumerate(r1));m2=sum(x*3**i for i,x in enumerate(r2));c1=crazy_op(m1,29524);c2=crazy_op(m2,29524)
+def pre(v):
+ for i in range(9):v=rot_op(v)
+ return v
+variables={}; flags=[]; seq=[];serial=0
+
+def emit(s):seq.append(s)
+def call(var,mode):
+ global serial
+ serial+=1; flag=f'F{serial}';ret=f'RET{serial}';flags.append(flag);variables.setdefault(var,[]).append((flag,ret));emit(f' R_{flag}\n MOVED {var}_{mode}\n}}\n{{\n{ret}:\n R_{"CRAZY" if mode=="crazy" else "ROT"} R_MOVED')
+def reload(var):
+ emit(' ROT C1 R_ROT');emit(f'{var}_reset:');call(var,'crazy');emit(f' COUNTER2 {var}_reset')
+def init_mask(var,ctl):
+ reload(var);call(ctl,'rot');call(var,'crazy');emit(f'{ctl}_restore:');call(ctl,'rot');emit(f' COUNTER9 {ctl}_done\n MOVED {ctl}_restore\n}}\n{{\n{ctl}_done:\n R_MOVED')
+# Each iteration restores all scratch and mask state before input.
+emit('ENTRY:\n R_MOVED')
+for v in ('tmp1','tmp2'):reload(v)
+init_mask('mask1','ctl1');init_mask('mask2','ctl2')
+emit(' IN ?- R_IN')
+call('tmp1','crazy');call('tmp2','crazy')
+emit('ROTATE8:');call('tmp2','rot');emit(' COUNTER4 ROTATE_FOUR\n MOVED ROTATE8\n}\n{\nROTATE_FOUR:\n COUNTER2 ROTATE8')
+call('mask1','crazy');call('mask2','crazy')
+emit('LOOKUP:\n ROT C2 R_ROT\n MOVED mask2_move\n}\n{\nLOOKUP_RETURN:\n R_CRAZY R_MOVED\n COUNTER2 LOOKUP\n OUT ?- R_OUT\n MOVED ENTRY')
+head='''.CODE
+MOVED: MovD/Nop\n Jmp\n\nCRAZY: Opr/Nop\n Jmp\n\nROT: Rot/Nop\n Jmp\n\nIN: In/Nop\n Jmp\n\nOUT: Out/Nop\n Jmp\n\nCOUNTER2: MovD/Nop\n Jmp\n\nCOUNTER4: Nop/Nop/Nop/MovD\n Jmp\n\nCOUNTER9: Nop/Nop/Nop/Nop/Nop/Nop/Nop/Nop/MovD\n Jmp\n\n'''
+head+='\n'.join(f'{f}: Nop/MovD\n Jmp\n' for f in flags)
+data='\n.DATA\n'
+for var,calls in variables.items():
+ data+='\n{\n'
+ if var=='mask2':data+='mask2_move: U_MOVED mask2\n'
+ if any(f for f,r in calls):
+  if var in ('tmp1','tmp2','mask1','mask2'):data+=f'{var}_crazy: U_CRAZY {var}\n'
+  if var in ('tmp2','ctl1','ctl2'):data+=f'{var}_rot: U_ROT {var}\n'
+ value={'ctl1':pre(c1),'ctl2':pre(c2)}.get(var,'?')
+ data+=f'{var}: {value}\n'
+ for f,r in calls:data+=f' {f} {r} R_{f}\n'
+ data+='}\n'
+# Each index points to an invocation of CRAZY on the table entry, followed by a move to common return.
+data+=f'\n{{\n.OFFSET {base}\nTABLE:\n'
+for b in range(256):
+ data+=f' ? U_CRAZY VAL{b}\nVAL{b}: {(b+1)%256}\n U_MOVED BACK{b}\nBACK{b}: LOOKUP_RETURN\n ? ? ? ?\n'
+data+='}\n\n{\n'+'\n'.join(seq)+'\n}\n'
+Path('/tmp/phase-hell-lab/increment.hell').write_text(head+data)
+print('base',base,'masks',m1,m2,'controls',c1,c2,'flags',len(flags),'source_bytes',len(head+data))

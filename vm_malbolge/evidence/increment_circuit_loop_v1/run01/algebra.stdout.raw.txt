@@ -1,0 +1,1802 @@
+{
+  "scope": "host arithmetic only; no native circuit or EOF established",
+  "orientation": "crazy(accumulator,cell)=table[cell][accumulator]",
+  "low_mask": 364,
+  "high_mask": 29160,
+  "rows": [
+    {
+      "input": 0,
+      "word": 1,
+      "expected_word": 1,
+      "output_byte": 1,
+      "control_byte": 15
+    },
+    {
+      "input": 1,
+      "word": 2,
+      "expected_word": 2,
+      "output_byte": 2,
+      "control_byte": 16
+    },
+    {
+      "input": 2,
+      "word": 3,
+      "expected_word": 3,
+      "output_byte": 3,
+      "control_byte": 17
+    },
+    {
+      "input": 3,
+      "word": 4,
+      "expected_word": 4,
+      "output_byte": 4,
+      "control_byte": 18
+    },
+    {
+      "input": 4,
+      "word": 5,
+      "expected_word": 5,
+      "output_byte": 5,
+      "control_byte": 19
+    },
+    {
+      "input": 5,
+      "word": 6,
+      "expected_word": 6,
+      "output_byte": 6,
+      "control_byte": 20
+    },
+    {
+      "input": 6,
+      "word": 7,
+      "expected_word": 7,
+      "output_byte": 7,
+      "control_byte": 21
+    },
+    {
+      "input": 7,
+      "word": 8,
+      "expected_word": 8,
+      "output_byte": 8,
+      "control_byte": 22
+    },
+    {
+      "input": 8,
+      "word": 9,
+      "expected_word": 9,
+      "output_byte": 9,
+      "control_byte": 23
+    },
+    {
+      "input": 9,
+      "word": 10,
+      "expected_word": 10,
+      "output_byte": 10,
+      "control_byte": 24
+    },
+    {
+      "input": 10,
+      "word": 11,
+      "expected_word": 11,
+      "output_byte": 11,
+      "control_byte": 25
+    },
+    {
+      "input": 11,
+      "word": 12,
+      "expected_word": 12,
+      "output_byte": 12,
+      "control_byte": 26
+    },
+    {
+      "input": 12,
+      "word": 13,
+      "expected_word": 13,
+      "output_byte": 13,
+      "control_byte": 27
+    },
+    {
+      "input": 13,
+      "word": 14,
+      "expected_word": 14,
+      "output_byte": 14,
+      "control_byte": 28
+    },
+    {
+      "input": 14,
+      "word": 15,
+      "expected_word": 15,
+      "output_byte": 15,
+      "control_byte": 29
+    },
+    {
+      "input": 15,
+      "word": 16,
+      "expected_word": 16,
+      "output_byte": 16,
+      "control_byte": 30
+    },
+    {
+      "input": 16,
+      "word": 17,
+      "expected_word": 17,
+      "output_byte": 17,
+      "control_byte": 31
+    },
+    {
+      "input": 17,
+      "word": 18,
+      "expected_word": 18,
+      "output_byte": 18,
+      "control_byte": 32
+    },
+    {
+      "input": 18,
+      "word": 19,
+      "expected_word": 19,
+      "output_byte": 19,
+      "control_byte": 33
+    },
+    {
+      "input": 19,
+      "word": 20,
+      "expected_word": 20,
+      "output_byte": 20,
+      "control_byte": 34
+    },
+    {
+      "input": 20,
+      "word": 21,
+      "expected_word": 21,
+      "output_byte": 21,
+      "control_byte": 35
+    },
+    {
+      "input": 21,
+      "word": 22,
+      "expected_word": 22,
+      "output_byte": 22,
+      "control_byte": 36
+    },
+    {
+      "input": 22,
+      "word": 23,
+      "expected_word": 23,
+      "output_byte": 23,
+      "control_byte": 37
+    },
+    {
+      "input": 23,
+      "word": 24,
+      "expected_word": 24,
+      "output_byte": 24,
+      "control_byte": 38
+    },
+    {
+      "input": 24,
+      "word": 25,
+      "expected_word": 25,
+      "output_byte": 25,
+      "control_byte": 39
+    },
+    {
+      "input": 25,
+      "word": 26,
+      "expected_word": 26,
+      "output_byte": 26,
+      "control_byte": 40
+    },
+    {
+      "input": 26,
+      "word": 27,
+      "expected_word": 27,
+      "output_byte": 27,
+      "control_byte": 41
+    },
+    {
+      "input": 27,
+      "word": 28,
+      "expected_word": 28,
+      "output_byte": 28,
+      "control_byte": 42
+    },
+    {
+      "input": 28,
+      "word": 29,
+      "expected_word": 29,
+      "output_byte": 29,
+      "control_byte": 43
+    },
+    {
+      "input": 29,
+      "word": 30,
+      "expected_word": 30,
+      "output_byte": 30,
+      "control_byte": 44
+    },
+    {
+      "input": 30,
+      "word": 31,
+      "expected_word": 31,
+      "output_byte": 31,
+      "control_byte": 45
+    },
+    {
+      "input": 31,
+      "word": 32,
+      "expected_word": 32,
+      "output_byte": 32,
+      "control_byte": 46
+    },
+    {
+      "input": 32,
+      "word": 33,
+      "expected_word": 33,
+      "output_byte": 33,
+      "control_byte": 47
+    },
+    {
+      "input": 33,
+      "word": 34,
+      "expected_word": 34,
+      "output_byte": 34,
+      "control_byte": 48
+    },
+    {
+      "input": 34,
+      "word": 35,
+      "expected_word": 35,
+      "output_byte": 35,
+      "control_byte": 49
+    },
+    {
+      "input": 35,
+      "word": 36,
+      "expected_word": 36,
+      "output_byte": 36,
+      "control_byte": 50
+    },
+    {
+      "input": 36,
+      "word": 37,
+      "expected_word": 37,
+      "output_byte": 37,
+      "control_byte": 51
+    },
+    {
+      "input": 37,
+      "word": 38,
+      "expected_word": 38,
+      "output_byte": 38,
+      "control_byte": 52
+    },
+    {
+      "input": 38,
+      "word": 39,
+      "expected_word": 39,
+      "output_byte": 39,
+      "control_byte": 53
+    },
+    {
+      "input": 39,
+      "word": 40,
+      "expected_word": 40,
+      "output_byte": 40,
+      "control_byte": 54
+    },
+    {
+      "input": 40,
+      "word": 41,
+      "expected_word": 41,
+      "output_byte": 41,
+      "control_byte": 55
+    },
+    {
+      "input": 41,
+      "word": 42,
+      "expected_word": 42,
+      "output_byte": 42,
+      "control_byte": 56
+    },
+    {
+      "input": 42,
+      "word": 43,
+      "expected_word": 43,
+      "output_byte": 43,
+      "control_byte": 57
+    },
+    {
+      "input": 43,
+      "word": 44,
+      "expected_word": 44,
+      "output_byte": 44,
+      "control_byte": 58
+    },
+    {
+      "input": 44,
+      "word": 45,
+      "expected_word": 45,
+      "output_byte": 45,
+      "control_byte": 59
+    },
+    {
+      "input": 45,
+      "word": 46,
+      "expected_word": 46,
+      "output_byte": 46,
+      "control_byte": 60
+    },
+    {
+      "input": 46,
+      "word": 47,
+      "expected_word": 47,
+      "output_byte": 47,
+      "control_byte": 61
+    },
+    {
+      "input": 47,
+      "word": 48,
+      "expected_word": 48,
+      "output_byte": 48,
+      "control_byte": 62
+    },
+    {
+      "input": 48,
+      "word": 49,
+      "expected_word": 49,
+      "output_byte": 49,
+      "control_byte": 63
+    },
+    {
+      "input": 49,
+      "word": 50,
+      "expected_word": 50,
+      "output_byte": 50,
+      "control_byte": 64
+    },
+    {
+      "input": 50,
+      "word": 51,
+      "expected_word": 51,
+      "output_byte": 51,
+      "control_byte": 65
+    },
+    {
+      "input": 51,
+      "word": 52,
+      "expected_word": 52,
+      "output_byte": 52,
+      "control_byte": 66
+    },
+    {
+      "input": 52,
+      "word": 53,
+      "expected_word": 53,
+      "output_byte": 53,
+      "control_byte": 67
+    },
+    {
+      "input": 53,
+      "word": 54,
+      "expected_word": 54,
+      "output_byte": 54,
+      "control_byte": 68
+    },
+    {
+      "input": 54,
+      "word": 55,
+      "expected_word": 55,
+      "output_byte": 55,
+      "control_byte": 69
+    },
+    {
+      "input": 55,
+      "word": 56,
+      "expected_word": 56,
+      "output_byte": 56,
+      "control_byte": 70
+    },
+    {
+      "input": 56,
+      "word": 57,
+      "expected_word": 57,
+      "output_byte": 57,
+      "control_byte": 71
+    },
+    {
+      "input": 57,
+      "word": 58,
+      "expected_word": 58,
+      "output_byte": 58,
+      "control_byte": 72
+    },
+    {
+      "input": 58,
+      "word": 59,
+      "expected_word": 59,
+      "output_byte": 59,
+      "control_byte": 73
+    },
+    {
+      "input": 59,
+      "word": 60,
+      "expected_word": 60,
+      "output_byte": 60,
+      "control_byte": 74
+    },
+    {
+      "input": 60,
+      "word": 61,
+      "expected_word": 61,
+      "output_byte": 61,
+      "control_byte": 75
+    },
+    {
+      "input": 61,
+      "word": 62,
+      "expected_word": 62,
+      "output_byte": 62,
+      "control_byte": 76
+    },
+    {
+      "input": 62,
+      "word": 63,
+      "expected_word": 63,
+      "output_byte": 63,
+      "control_byte": 77
+    },
+    {
+      "input": 63,
+      "word": 64,
+      "expected_word": 64,
+      "output_byte": 64,
+      "control_byte": 78
+    },
+    {
+      "input": 64,
+      "word": 65,
+      "expected_word": 65,
+      "output_byte": 65,
+      "control_byte": 79
+    },
+    {
+      "input": 65,
+      "word": 66,
+      "expected_word": 66,
+      "output_byte": 66,
+      "control_byte": 80
+    },
+    {
+      "input": 66,
+      "word": 67,
+      "expected_word": 67,
+      "output_byte": 67,
+      "control_byte": 81
+    },
+    {
+      "input": 67,
+      "word": 68,
+      "expected_word": 68,
+      "output_byte": 68,
+      "control_byte": 82
+    },
+    {
+      "input": 68,
+      "word": 69,
+      "expected_word": 69,
+      "output_byte": 69,
+      "control_byte": 83
+    },
+    {
+      "input": 69,
+      "word": 70,
+      "expected_word": 70,
+      "output_byte": 70,
+      "control_byte": 84
+    },
+    {
+      "input": 70,
+      "word": 71,
+      "expected_word": 71,
+      "output_byte": 71,
+      "control_byte": 85
+    },
+    {
+      "input": 71,
+      "word": 72,
+      "expected_word": 72,
+      "output_byte": 72,
+      "control_byte": 86
+    },
+    {
+      "input": 72,
+      "word": 73,
+      "expected_word": 73,
+      "output_byte": 73,
+      "control_byte": 87
+    },
+    {
+      "input": 73,
+      "word": 74,
+      "expected_word": 74,
+      "output_byte": 74,
+      "control_byte": 88
+    },
+    {
+      "input": 74,
+      "word": 75,
+      "expected_word": 75,
+      "output_byte": 75,
+      "control_byte": 89
+    },
+    {
+      "input": 75,
+      "word": 76,
+      "expected_word": 76,
+      "output_byte": 76,
+      "control_byte": 90
+    },
+    {
+      "input": 76,
+      "word": 77,
+      "expected_word": 77,
+      "output_byte": 77,
+      "control_byte": 91
+    },
+    {
+      "input": 77,
+      "word": 78,
+      "expected_word": 78,
+      "output_byte": 78,
+      "control_byte": 92
+    },
+    {
+      "input": 78,
+      "word": 79,
+      "expected_word": 79,
+      "output_byte": 79,
+      "control_byte": 93
+    },
+    {
+      "input": 79,
+      "word": 80,
+      "expected_word": 80,
+      "output_byte": 80,
+      "control_byte": 94
+    },
+    {
+      "input": 80,
+      "word": 81,
+      "expected_word": 81,
+      "output_byte": 81,
+      "control_byte": 95
+    },
+    {
+      "input": 81,
+      "word": 82,
+      "expected_word": 82,
+      "output_byte": 82,
+      "control_byte": 96
+    },
+    {
+      "input": 82,
+      "word": 83,
+      "expected_word": 83,
+      "output_byte": 83,
+      "control_byte": 97
+    },
+    {
+      "input": 83,
+      "word": 84,
+      "expected_word": 84,
+      "output_byte": 84,
+      "control_byte": 98
+    },
+    {
+      "input": 84,
+      "word": 85,
+      "expected_word": 85,
+      "output_byte": 85,
+      "control_byte": 99
+    },
+    {
+      "input": 85,
+      "word": 86,
+      "expected_word": 86,
+      "output_byte": 86,
+      "control_byte": 100
+    },
+    {
+      "input": 86,
+      "word": 87,
+      "expected_word": 87,
+      "output_byte": 87,
+      "control_byte": 101
+    },
+    {
+      "input": 87,
+      "word": 88,
+      "expected_word": 88,
+      "output_byte": 88,
+      "control_byte": 102
+    },
+    {
+      "input": 88,
+      "word": 89,
+      "expected_word": 89,
+      "output_byte": 89,
+      "control_byte": 103
+    },
+    {
+      "input": 89,
+      "word": 90,
+      "expected_word": 90,
+      "output_byte": 90,
+      "control_byte": 104
+    },
+    {
+      "input": 90,
+      "word": 91,
+      "expected_word": 91,
+      "output_byte": 91,
+      "control_byte": 105
+    },
+    {
+      "input": 91,
+      "word": 92,
+      "expected_word": 92,
+      "output_byte": 92,
+      "control_byte": 106
+    },
+    {
+      "input": 92,
+      "word": 93,
+      "expected_word": 93,
+      "output_byte": 93,
+      "control_byte": 107
+    },
+    {
+      "input": 93,
+      "word": 94,
+      "expected_word": 94,
+      "output_byte": 94,
+      "control_byte": 108
+    },
+    {
+      "input": 94,
+      "word": 95,
+      "expected_word": 95,
+      "output_byte": 95,
+      "control_byte": 109
+    },
+    {
+      "input": 95,
+      "word": 96,
+      "expected_word": 96,
+      "output_byte": 96,
+      "control_byte": 110
+    },
+    {
+      "input": 96,
+      "word": 97,
+      "expected_word": 97,
+      "output_byte": 97,
+      "control_byte": 111
+    },
+    {
+      "input": 97,
+      "word": 98,
+      "expected_word": 98,
+      "output_byte": 98,
+      "control_byte": 112
+    },
+    {
+      "input": 98,
+      "word": 99,
+      "expected_word": 99,
+      "output_byte": 99,
+      "control_byte": 113
+    },
+    {
+      "input": 99,
+      "word": 100,
+      "expected_word": 100,
+      "output_byte": 100,
+      "control_byte": 114
+    },
+    {
+      "input": 100,
+      "word": 101,
+      "expected_word": 101,
+      "output_byte": 101,
+      "control_byte": 115
+    },
+    {
+      "input": 101,
+      "word": 102,
+      "expected_word": 102,
+      "output_byte": 102,
+      "control_byte": 116
+    },
+    {
+      "input": 102,
+      "word": 103,
+      "expected_word": 103,
+      "output_byte": 103,
+      "control_byte": 117
+    },
+    {
+      "input": 103,
+      "word": 104,
+      "expected_word": 104,
+      "output_byte": 104,
+      "control_byte": 118
+    },
+    {
+      "input": 104,
+      "word": 105,
+      "expected_word": 105,
+      "output_byte": 105,
+      "control_byte": 119
+    },
+    {
+      "input": 105,
+      "word": 106,
+      "expected_word": 106,
+      "output_byte": 106,
+      "control_byte": 120
+    },
+    {
+      "input": 106,
+      "word": 107,
+      "expected_word": 107,
+      "output_byte": 107,
+      "control_byte": 121
+    },
+    {
+      "input": 107,
+      "word": 108,
+      "expected_word": 108,
+      "output_byte": 108,
+      "control_byte": 122
+    },
+    {
+      "input": 108,
+      "word": 109,
+      "expected_word": 109,
+      "output_byte": 109,
+      "control_byte": 123
+    },
+    {
+      "input": 109,
+      "word": 110,
+      "expected_word": 110,
+      "output_byte": 110,
+      "control_byte": 124
+    },
+    {
+      "input": 110,
+      "word": 111,
+      "expected_word": 111,
+      "output_byte": 111,
+      "control_byte": 125
+    },
+    {
+      "input": 111,
+      "word": 112,
+      "expected_word": 112,
+      "output_byte": 112,
+      "control_byte": 126
+    },
+    {
+      "input": 112,
+      "word": 113,
+      "expected_word": 113,
+      "output_byte": 113,
+      "control_byte": 127
+    },
+    {
+      "input": 113,
+      "word": 114,
+      "expected_word": 114,
+      "output_byte": 114,
+      "control_byte": 128
+    },
+    {
+      "input": 114,
+      "word": 115,
+      "expected_word": 115,
+      "output_byte": 115,
+      "control_byte": 129
+    },
+    {
+      "input": 115,
+      "word": 116,
+      "expected_word": 116,
+      "output_byte": 116,
+      "control_byte": 130
+    },
+    {
+      "input": 116,
+      "word": 117,
+      "expected_word": 117,
+      "output_byte": 117,
+      "control_byte": 131
+    },
+    {
+      "input": 117,
+      "word": 118,
+      "expected_word": 118,
+      "output_byte": 118,
+      "control_byte": 132
+    },
+    {
+      "input": 118,
+      "word": 119,
+      "expected_word": 119,
+      "output_byte": 119,
+      "control_byte": 133
+    },
+    {
+      "input": 119,
+      "word": 120,
+      "expected_word": 120,
+      "output_byte": 120,
+      "control_byte": 134
+    },
+    {
+      "input": 120,
+      "word": 121,
+      "expected_word": 121,
+      "output_byte": 121,
+      "control_byte": 135
+    },
+    {
+      "input": 121,
+      "word": 122,
+      "expected_word": 122,
+      "output_byte": 122,
+      "control_byte": 136
+    },
+    {
+      "input": 122,
+      "word": 123,
+      "expected_word": 123,
+      "output_byte": 123,
+      "control_byte": 137
+    },
+    {
+      "input": 123,
+      "word": 124,
+      "expected_word": 124,
+      "output_byte": 124,
+      "control_byte": 138
+    },
+    {
+      "input": 124,
+      "word": 125,
+      "expected_word": 125,
+      "output_byte": 125,
+      "control_byte": 139
+    },
+    {
+      "input": 125,
+      "word": 126,
+      "expected_word": 126,
+      "output_byte": 126,
+      "control_byte": 140
+    },
+    {
+      "input": 126,
+      "word": 127,
+      "expected_word": 127,
+      "output_byte": 127,
+      "control_byte": 141
+    },
+    {
+      "input": 127,
+      "word": 128,
+      "expected_word": 128,
+      "output_byte": 128,
+      "control_byte": 142
+    },
+    {
+      "input": 128,
+      "word": 129,
+      "expected_word": 129,
+      "output_byte": 129,
+      "control_byte": 143
+    },
+    {
+      "input": 129,
+      "word": 130,
+      "expected_word": 130,
+      "output_byte": 130,
+      "control_byte": 144
+    },
+    {
+      "input": 130,
+      "word": 131,
+      "expected_word": 131,
+      "output_byte": 131,
+      "control_byte": 145
+    },
+    {
+      "input": 131,
+      "word": 132,
+      "expected_word": 132,
+      "output_byte": 132,
+      "control_byte": 146
+    },
+    {
+      "input": 132,
+      "word": 133,
+      "expected_word": 133,
+      "output_byte": 133,
+      "control_byte": 147
+    },
+    {
+      "input": 133,
+      "word": 134,
+      "expected_word": 134,
+      "output_byte": 134,
+      "control_byte": 148
+    },
+    {
+      "input": 134,
+      "word": 135,
+      "expected_word": 135,
+      "output_byte": 135,
+      "control_byte": 149
+    },
+    {
+      "input": 135,
+      "word": 136,
+      "expected_word": 136,
+      "output_byte": 136,
+      "control_byte": 150
+    },
+    {
+      "input": 136,
+      "word": 137,
+      "expected_word": 137,
+      "output_byte": 137,
+      "control_byte": 151
+    },
+    {
+      "input": 137,
+      "word": 138,
+      "expected_word": 138,
+      "output_byte": 138,
+      "control_byte": 152
+    },
+    {
+      "input": 138,
+      "word": 139,
+      "expected_word": 139,
+      "output_byte": 139,
+      "control_byte": 153
+    },
+    {
+      "input": 139,
+      "word": 140,
+      "expected_word": 140,
+      "output_byte": 140,
+      "control_byte": 154
+    },
+    {
+      "input": 140,
+      "word": 141,
+      "expected_word": 141,
+      "output_byte": 141,
+      "control_byte": 155
+    },
+    {
+      "input": 141,
+      "word": 142,
+      "expected_word": 142,
+      "output_byte": 142,
+      "control_byte": 156
+    },
+    {
+      "input": 142,
+      "word": 143,
+      "expected_word": 143,
+      "output_byte": 143,
+      "control_byte": 157
+    },
+    {
+      "input": 143,
+      "word": 144,
+      "expected_word": 144,
+      "output_byte": 144,
+      "control_byte": 158
+    },
+    {
+      "input": 144,
+      "word": 145,
+      "expected_word": 145,
+      "output_byte": 145,
+      "control_byte": 159
+    },
+    {
+      "input": 145,
+      "word": 146,
+      "expected_word": 146,
+      "output_byte": 146,
+      "control_byte": 160
+    },
+    {
+      "input": 146,
+      "word": 147,
+      "expected_word": 147,
+      "output_byte": 147,
+      "control_byte": 161
+    },
+    {
+      "input": 147,
+      "word": 148,
+      "expected_word": 148,
+      "output_byte": 148,
+      "control_byte": 162
+    },
+    {
+      "input": 148,
+      "word": 149,
+      "expected_word": 149,
+      "output_byte": 149,
+      "control_byte": 163
+    },
+    {
+      "input": 149,
+      "word": 150,
+      "expected_word": 150,
+      "output_byte": 150,
+      "control_byte": 164
+    },
+    {
+      "input": 150,
+      "word": 151,
+      "expected_word": 151,
+      "output_byte": 151,
+      "control_byte": 165
+    },
+    {
+      "input": 151,
+      "word": 152,
+      "expected_word": 152,
+      "output_byte": 152,
+      "control_byte": 166
+    },
+    {
+      "input": 152,
+      "word": 153,
+      "expected_word": 153,
+      "output_byte": 153,
+      "control_byte": 167
+    },
+    {
+      "input": 153,
+      "word": 154,
+      "expected_word": 154,
+      "output_byte": 154,
+      "control_byte": 168
+    },
+    {
+      "input": 154,
+      "word": 155,
+      "expected_word": 155,
+      "output_byte": 155,
+      "control_byte": 169
+    },
+    {
+      "input": 155,
+      "word": 156,
+      "expected_word": 156,
+      "output_byte": 156,
+      "control_byte": 170
+    },
+    {
+      "input": 156,
+      "word": 157,
+      "expected_word": 157,
+      "output_byte": 157,
+      "control_byte": 171
+    },
+    {
+      "input": 157,
+      "word": 158,
+      "expected_word": 158,
+      "output_byte": 158,
+      "control_byte": 172
+    },
+    {
+      "input": 158,
+      "word": 159,
+      "expected_word": 159,
+      "output_byte": 159,
+      "control_byte": 173
+    },
+    {
+      "input": 159,
+      "word": 160,
+      "expected_word": 160,
+      "output_byte": 160,
+      "control_byte": 174
+    },
+    {
+      "input": 160,
+      "word": 161,
+      "expected_word": 161,
+      "output_byte": 161,
+      "control_byte": 175
+    },
+    {
+      "input": 161,
+      "word": 162,
+      "expected_word": 162,
+      "output_byte": 162,
+      "control_byte": 176
+    },
+    {
+      "input": 162,
+      "word": 163,
+      "expected_word": 163,
+      "output_byte": 163,
+      "control_byte": 177
+    },
+    {
+      "input": 163,
+      "word": 164,
+      "expected_word": 164,
+      "output_byte": 164,
+      "control_byte": 178
+    },
+    {
+      "input": 164,
+      "word": 165,
+      "expected_word": 165,
+      "output_byte": 165,
+      "control_byte": 179
+    },
+    {
+      "input": 165,
+      "word": 166,
+      "expected_word": 166,
+      "output_byte": 166,
+      "control_byte": 180
+    },
+    {
+      "input": 166,
+      "word": 167,
+      "expected_word": 167,
+      "output_byte": 167,
+      "control_byte": 181
+    },
+    {
+      "input": 167,
+      "word": 168,
+      "expected_word": 168,
+      "output_byte": 168,
+      "control_byte": 182
+    },
+    {
+      "input": 168,
+      "word": 169,
+      "expected_word": 169,
+      "output_byte": 169,
+      "control_byte": 183
+    },
+    {
+      "input": 169,
+      "word": 170,
+      "expected_word": 170,
+      "output_byte": 170,
+      "control_byte": 184
+    },
+    {
+      "input": 170,
+      "word": 171,
+      "expected_word": 171,
+      "output_byte": 171,
+      "control_byte": 185
+    },
+    {
+      "input": 171,
+      "word": 172,
+      "expected_word": 172,
+      "output_byte": 172,
+      "control_byte": 186
+    },
+    {
+      "input": 172,
+      "word": 173,
+      "expected_word": 173,
+      "output_byte": 173,
+      "control_byte": 187
+    },
+    {
+      "input": 173,
+      "word": 174,
+      "expected_word": 174,
+      "output_byte": 174,
+      "control_byte": 188
+    },
+    {
+      "input": 174,
+      "word": 175,
+      "expected_word": 175,
+      "output_byte": 175,
+      "control_byte": 189
+    },
+    {
+      "input": 175,
+      "word": 176,
+      "expected_word": 176,
+      "output_byte": 176,
+      "control_byte": 190
+    },
+    {
+      "input": 176,
+      "word": 177,
+      "expected_word": 177,
+      "output_byte": 177,
+      "control_byte": 191
+    },
+    {
+      "input": 177,
+      "word": 178,
+      "expected_word": 178,
+      "output_byte": 178,
+      "control_byte": 192
+    },
+    {
+      "input": 178,
+      "word": 179,
+      "expected_word": 179,
+      "output_byte": 179,
+      "control_byte": 193
+    },
+    {
+      "input": 179,
+      "word": 180,
+      "expected_word": 180,
+      "output_byte": 180,
+      "control_byte": 194
+    },
+    {
+      "input": 180,
+      "word": 181,
+      "expected_word": 181,
+      "output_byte": 181,
+      "control_byte": 195
+    },
+    {
+      "input": 181,
+      "word": 182,
+      "expected_word": 182,
+      "output_byte": 182,
+      "control_byte": 196
+    },
+    {
+      "input": 182,
+      "word": 183,
+      "expected_word": 183,
+      "output_byte": 183,
+      "control_byte": 197
+    },
+    {
+      "input": 183,
+      "word": 184,
+      "expected_word": 184,
+      "output_byte": 184,
+      "control_byte": 198
+    },
+    {
+      "input": 184,
+      "word": 185,
+      "expected_word": 185,
+      "output_byte": 185,
+      "control_byte": 199
+    },
+    {
+      "input": 185,
+      "word": 186,
+      "expected_word": 186,
+      "output_byte": 186,
+      "control_byte": 200
+    },
+    {
+      "input": 186,
+      "word": 187,
+      "expected_word": 187,
+      "output_byte": 187,
+      "control_byte": 201
+    },
+    {
+      "input": 187,
+      "word": 188,
+      "expected_word": 188,
+      "output_byte": 188,
+      "control_byte": 202
+    },
+    {
+      "input": 188,
+      "word": 189,
+      "expected_word": 189,
+      "output_byte": 189,
+      "control_byte": 203
+    },
+    {
+      "input": 189,
+      "word": 190,
+      "expected_word": 190,
+      "output_byte": 190,
+      "control_byte": 204
+    },
+    {
+      "input": 190,
+      "word": 191,
+      "expected_word": 191,
+      "output_byte": 191,
+      "control_byte": 205
+    },
+    {
+      "input": 191,
+      "word": 192,
+      "expected_word": 192,
+      "output_byte": 192,
+      "control_byte": 206
+    },
+    {
+      "input": 192,
+      "word": 193,
+      "expected_word": 193,
+      "output_byte": 193,
+      "control_byte": 207
+    },
+    {
+      "input": 193,
+      "word": 194,
+      "expected_word": 194,
+      "output_byte": 194,
+      "control_byte": 208
+    },
+    {
+      "input": 194,
+      "word": 195,
+      "expected_word": 195,
+      "output_byte": 195,
+      "control_byte": 209
+    },
+    {
+      "input": 195,
+      "word": 196,
+      "expected_word": 196,
+      "output_byte": 196,
+      "control_byte": 210
+    },
+    {
+      "input": 196,
+      "word": 197,
+      "expected_word": 197,
+      "output_byte": 197,
+      "control_byte": 211
+    },
+    {
+      "input": 197,
+      "word": 198,
+      "expected_word": 198,
+      "output_byte": 198,
+      "control_byte": 212
+    },
+    {
+      "input": 198,
+      "word": 199,
+      "expected_word": 199,
+      "output_byte": 199,
+      "control_byte": 213
+    },
+    {
+      "input": 199,
+      "word": 200,
+      "expected_word": 200,
+      "output_byte": 200,
+      "control_byte": 214
+    },
+    {
+      "input": 200,
+      "word": 201,
+      "expected_word": 201,
+      "output_byte": 201,
+      "control_byte": 215
+    },
+    {
+      "input": 201,
+      "word": 202,
+      "expected_word": 202,
+      "output_byte": 202,
+      "control_byte": 216
+    },
+    {
+      "input": 202,
+      "word": 203,
+      "expected_word": 203,
+      "output_byte": 203,
+      "control_byte": 217
+    },
+    {
+      "input": 203,
+      "word": 204,
+      "expected_word": 204,
+      "output_byte": 204,
+      "control_byte": 218
+    },
+    {
+      "input": 204,
+      "word": 205,
+      "expected_word": 205,
+      "output_byte": 205,
+      "control_byte": 219
+    },
+    {
+      "input": 205,
+      "word": 206,
+      "expected_word": 206,
+      "output_byte": 206,
+      "control_byte": 220
+    },
+    {
+      "input": 206,
+      "word": 207,
+      "expected_word": 207,
+      "output_byte": 207,
+      "control_byte": 221
+    },
+    {
+      "input": 207,
+      "word": 208,
+      "expected_word": 208,
+      "output_byte": 208,
+      "control_byte": 222
+    },
+    {
+      "input": 208,
+      "word": 209,
+      "expected_word": 209,
+      "output_byte": 209,
+      "control_byte": 223
+    },
+    {
+      "input": 209,
+      "word": 210,
+      "expected_word": 210,
+      "output_byte": 210,
+      "control_byte": 224
+    },
+    {
+      "input": 210,
+      "word": 211,
+      "expected_word": 211,
+      "output_byte": 211,
+      "control_byte": 225
+    },
+    {
+      "input": 211,
+      "word": 212,
+      "expected_word": 212,
+      "output_byte": 212,
+      "control_byte": 226
+    },
+    {
+      "input": 212,
+      "word": 213,
+      "expected_word": 213,
+      "output_byte": 213,
+      "control_byte": 227
+    },
+    {
+      "input": 213,
+      "word": 214,
+      "expected_word": 214,
+      "output_byte": 214,
+      "control_byte": 228
+    },
+    {
+      "input": 214,
+      "word": 215,
+      "expected_word": 215,
+      "output_byte": 215,
+      "control_byte": 229
+    },
+    {
+      "input": 215,
+      "word": 216,
+      "expected_word": 216,
+      "output_byte": 216,
+      "control_byte": 230
+    },
+    {
+      "input": 216,
+      "word": 217,
+      "expected_word": 217,
+      "output_byte": 217,
+      "control_byte": 231
+    },
+    {
+      "input": 217,
+      "word": 218,
+      "expected_word": 218,
+      "output_byte": 218,
+      "control_byte": 232
+    },
+    {
+      "input": 218,
+      "word": 219,
+      "expected_word": 219,
+      "output_byte": 219,
+      "control_byte": 233
+    },
+    {
+      "input": 219,
+      "word": 220,
+      "expected_word": 220,
+      "output_byte": 220,
+      "control_byte": 234
+    },
+    {
+      "input": 220,
+      "word": 221,
+      "expected_word": 221,
+      "output_byte": 221,
+      "control_byte": 235
+    },
+    {
+      "input": 221,
+      "word": 222,
+      "expected_word": 222,
+      "output_byte": 222,
+      "control_byte": 236
+    },
+    {
+      "input": 222,
+      "word": 223,
+      "expected_word": 223,
+      "output_byte": 223,
+      "control_byte": 237
+    },
+    {
+      "input": 223,
+      "word": 224,
+      "expected_word": 224,
+      "output_byte": 224,
+      "control_byte": 238
+    },
+    {
+      "input": 224,
+      "word": 225,
+      "expected_word": 225,
+      "output_byte": 225,
+      "control_byte": 239
+    },
+    {
+      "input": 225,
+      "word": 226,
+      "expected_word": 226,
+      "output_byte": 226,
+      "control_byte": 240
+    },
+    {
+      "input": 226,
+      "word": 227,
+      "expected_word": 227,
+      "output_byte": 227,
+      "control_byte": 241
+    },
+    {
+      "input": 227,
+      "word": 228,
+      "expected_word": 228,
+      "output_byte": 228,
+      "control_byte": 242
+    },
+    {
+      "input": 228,
+      "word": 229,
+      "expected_word": 229,
+      "output_byte": 229,
+      "control_byte": 243
+    },
+    {
+      "input": 229,
+      "word": 230,
+      "expected_word": 230,
+      "output_byte": 230,
+      "control_byte": 244
+    },
+    {
+      "input": 230,
+      "word": 231,
+      "expected_word": 231,
+      "output_byte": 231,
+      "control_byte": 245
+    },
+    {
+      "input": 231,
+      "word": 232,
+      "expected_word": 232,
+      "output_byte": 232,
+      "control_byte": 246
+    },
+    {
+      "input": 232,
+      "word": 233,
+      "expected_word": 233,
+      "output_byte": 233,
+      "control_byte": 247
+    },
+    {
+      "input": 233,
+      "word": 234,
+      "expected_word": 234,
+      "output_byte": 234,
+      "control_byte": 248
+    },
+    {
+      "input": 234,
+      "word": 235,
+      "expected_word": 235,
+      "output_byte": 235,
+      "control_byte": 249
+    },
+    {
+      "input": 235,
+      "word": 236,
+      "expected_word": 236,
+      "output_byte": 236,
+      "control_byte": 250
+    },
+    {
+      "input": 236,
+      "word": 237,
+      "expected_word": 237,
+      "output_byte": 237,
+      "control_byte": 251
+    },
+    {
+      "input": 237,
+      "word": 238,
+      "expected_word": 238,
+      "output_byte": 238,
+      "control_byte": 252
+    },
+    {
+      "input": 238,
+      "word": 239,
+      "expected_word": 239,
+      "output_byte": 239,
+      "control_byte": 253
+    },
+    {
+      "input": 239,
+      "word": 240,
+      "expected_word": 240,
+      "output_byte": 240,
+      "control_byte": 254
+    },
+    {
+      "input": 240,
+      "word": 241,
+      "expected_word": 241,
+      "output_byte": 241,
+      "control_byte": 255
+    },
+    {
+      "input": 241,
+      "word": 242,
+      "expected_word": 242,
+      "output_byte": 242,
+      "control_byte": 0
+    },
+    {
+      "input": 242,
+      "word": 243,
+      "expected_word": 243,
+      "output_byte": 243,
+      "control_byte": 1
+    },
+    {
+      "input": 243,
+      "word": 244,
+      "expected_word": 244,
+      "output_byte": 244,
+      "control_byte": 2
+    },
+    {
+      "input": 244,
+      "word": 245,
+      "expected_word": 245,
+      "output_byte": 245,
+      "control_byte": 3
+    },
+    {
+      "input": 245,
+      "word": 246,
+      "expected_word": 246,
+      "output_byte": 246,
+      "control_byte": 4
+    },
+    {
+      "input": 246,
+      "word": 247,
+      "expected_word": 247,
+      "output_byte": 247,
+      "control_byte": 5
+    },
+    {
+      "input": 247,
+      "word": 248,
+      "expected_word": 248,
+      "output_byte": 248,
+      "control_byte": 6
+    },
+    {
+      "input": 248,
+      "word": 249,
+      "expected_word": 249,
+      "output_byte": 249,
+      "control_byte": 7
+    },
+    {
+      "input": 249,
+      "word": 250,
+      "expected_word": 250,
+      "output_byte": 250,
+      "control_byte": 8
+    },
+    {
+      "input": 250,
+      "word": 251,
+      "expected_word": 251,
+      "output_byte": 251,
+      "control_byte": 9
+    },
+    {
+      "input": 251,
+      "word": 252,
+      "expected_word": 252,
+      "output_byte": 252,
+      "control_byte": 10
+    },
+    {
+      "input": 252,
+      "word": 253,
+      "expected_word": 253,
+      "output_byte": 253,
+      "control_byte": 11
+    },
+    {
+      "input": 253,
+      "word": 254,
+      "expected_word": 254,
+      "output_byte": 254,
+      "control_byte": 12
+    },
+    {
+      "input": 254,
+      "word": 255,
+      "expected_word": 255,
+      "output_byte": 255,
+      "control_byte": 13
+    },
+    {
+      "input": 255,
+      "word": 256,
+      "expected_word": 256,
+      "output_byte": 0,
+      "control_byte": 14
+    }
+  ],
+  "control_mismatches": 256,
+  "source_sha256": "3a12fcd1b4825d298420fd6899f4d092c103975a628329f5f46dee70739a1fa9"
+}

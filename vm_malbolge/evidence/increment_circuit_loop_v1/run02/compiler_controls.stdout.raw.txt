@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "existing_output": {
+      "rc": 2,
+      "stderr": "compile failed: /tmp/bf-compiler-controls-1s65yfjt/existing.mb"
+    },
+    "wrong_cell_bits": {
+      "rc": 2,
+      "stderr": "compile failed: only ,+[-+.,+] with 16-bit wrapping cells and EOF=65535 is supported"
+    },
+    "wrong_eof": {
+      "rc": 2,
+      "stderr": "compile failed: only ,+[-+.,+] with 16-bit wrapping cells and EOF=65535 is supported"
+    },
+    "changed_bf": {
+      "rc": 2,
+      "stderr": "compile failed: only ,+[-+.,+] with 16-bit wrapping cells and EOF=65535 is supported"
+    }
+  },
+  "existing_sha256_before": "dc94cd5687dc9a4376e15608ea1cfe0c6d7e2a997d735a3bc88ac3e8897171bd",
+  "existing_sha256_after": "dc94cd5687dc9a4376e15608ea1cfe0c6d7e2a997d735a3bc88ac3e8897171bd",
+  "unchanged": true
+}

@@ -1,0 +1,13 @@
+{
+  "bf_pattern": ",+[-+.,+]",
+  "cell_bits": 16,
+  "bf_eof": 65535,
+  "runtime": "Malbolge Classic, Olmstead EOF=59048",
+  "hell_sha256": "3bcd18c3d70baab22c21c9f567570c5ec260c06a950209caa700b1ce863fcbc5",
+  "image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+  "image_bytes": 56570,
+  "layout_cells": 1090,
+  "entry_data": 56717,
+  "installer_ops": 56116,
+  "scope": "single BF pattern; no arbitrary BF compilation"
+}

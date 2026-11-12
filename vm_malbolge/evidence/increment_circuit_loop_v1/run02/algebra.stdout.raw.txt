@@ -1,0 +1,1299 @@
+{
+  "orientation": "crazy(accumulator,cell)=table[cell][accumulator]",
+  "cases": 257,
+  "distinct_byte_branch_values": [
+    58328,
+    58337,
+    58364,
+    58445
+  ],
+  "eof_branch": 58688,
+  "early_branch_control_false_positives": 0,
+  "rows": [
+    {
+      "input": 0,
+      "branch": 58328,
+      "output_word": 1
+    },
+    {
+      "input": 1,
+      "branch": 58328,
+      "output_word": 2
+    },
+    {
+      "input": 2,
+      "branch": 58328,
+      "output_word": 3
+    },
+    {
+      "input": 3,
+      "branch": 58328,
+      "output_word": 4
+    },
+    {
+      "input": 4,
+      "branch": 58328,
+      "output_word": 5
+    },
+    {
+      "input": 5,
+      "branch": 58328,
+      "output_word": 6
+    },
+    {
+      "input": 6,
+      "branch": 58328,
+      "output_word": 7
+    },
+    {
+      "input": 7,
+      "branch": 58328,
+      "output_word": 8
+    },
+    {
+      "input": 8,
+      "branch": 58328,
+      "output_word": 9
+    },
+    {
+      "input": 9,
+      "branch": 58328,
+      "output_word": 10
+    },
+    {
+      "input": 10,
+      "branch": 58328,
+      "output_word": 11
+    },
+    {
+      "input": 11,
+      "branch": 58328,
+      "output_word": 12
+    },
+    {
+      "input": 12,
+      "branch": 58328,
+      "output_word": 13
+    },
+    {
+      "input": 13,
+      "branch": 58328,
+      "output_word": 14
+    },
+    {
+      "input": 14,
+      "branch": 58328,
+      "output_word": 15
+    },
+    {
+      "input": 15,
+      "branch": 58328,
+      "output_word": 16
+    },
+    {
+      "input": 16,
+      "branch": 58328,
+      "output_word": 17
+    },
+    {
+      "input": 17,
+      "branch": 58328,
+      "output_word": 18
+    },
+    {
+      "input": 18,
+      "branch": 58328,
+      "output_word": 19
+    },
+    {
+      "input": 19,
+      "branch": 58328,
+      "output_word": 20
+    },
+    {
+      "input": 20,
+      "branch": 58328,
+      "output_word": 21
+    },
+    {
+      "input": 21,
+      "branch": 58328,
+      "output_word": 22
+    },
+    {
+      "input": 22,
+      "branch": 58328,
+      "output_word": 23
+    },
+    {
+      "input": 23,
+      "branch": 58328,
+      "output_word": 24
+    },
+    {
+      "input": 24,
+      "branch": 58328,
+      "output_word": 25
+    },
+    {
+      "input": 25,
+      "branch": 58328,
+      "output_word": 26
+    },
+    {
+      "input": 26,
+      "branch": 58337,
+      "output_word": 27
+    },
+    {
+      "input": 27,
+      "branch": 58328,
+      "output_word": 28
+    },
+    {
+      "input": 28,
+      "branch": 58328,
+      "output_word": 29
+    },
+    {
+      "input": 29,
+      "branch": 58328,
+      "output_word": 30
+    },
+    {
+      "input": 30,
+      "branch": 58328,
+      "output_word": 31
+    },
+    {
+      "input": 31,
+      "branch": 58328,
+      "output_word": 32
+    },
+    {
+      "input": 32,
+      "branch": 58328,
+      "output_word": 33
+    },
+    {
+      "input": 33,
+      "branch": 58328,
+      "output_word": 34
+    },
+    {
+      "input": 34,
+      "branch": 58328,
+      "output_word": 35
+    },
+    {
+      "input": 35,
+      "branch": 58328,
+      "output_word": 36
+    },
+    {
+      "input": 36,
+      "branch": 58328,
+      "output_word": 37
+    },
+    {
+      "input": 37,
+      "branch": 58328,
+      "output_word": 38
+    },
+    {
+      "input": 38,
+      "branch": 58328,
+      "output_word": 39
+    },
+    {
+      "input": 39,
+      "branch": 58328,
+      "output_word": 40
+    },
+    {
+      "input": 40,
+      "branch": 58328,
+      "output_word": 41
+    },
+    {
+      "input": 41,
+      "branch": 58328,
+      "output_word": 42
+    },
+    {
+      "input": 42,
+      "branch": 58328,
+      "output_word": 43
+    },
+    {
+      "input": 43,
+      "branch": 58328,
+      "output_word": 44
+    },
+    {
+      "input": 44,
+      "branch": 58328,
+      "output_word": 45
+    },
+    {
+      "input": 45,
+      "branch": 58328,
+      "output_word": 46
+    },
+    {
+      "input": 46,
+      "branch": 58328,
+      "output_word": 47
+    },
+    {
+      "input": 47,
+      "branch": 58328,
+      "output_word": 48
+    },
+    {
+      "input": 48,
+      "branch": 58328,
+      "output_word": 49
+    },
+    {
+      "input": 49,
+      "branch": 58328,
+      "output_word": 50
+    },
+    {
+      "input": 50,
+      "branch": 58328,
+      "output_word": 51
+    },
+    {
+      "input": 51,
+      "branch": 58328,
+      "output_word": 52
+    },
+    {
+      "input": 52,
+      "branch": 58328,
+      "output_word": 53
+    },
+    {
+      "input": 53,
+      "branch": 58337,
+      "output_word": 54
+    },
+    {
+      "input": 54,
+      "branch": 58328,
+      "output_word": 55
+    },
+    {
+      "input": 55,
+      "branch": 58328,
+      "output_word": 56
+    },
+    {
+      "input": 56,
+      "branch": 58328,
+      "output_word": 57
+    },
+    {
+      "input": 57,
+      "branch": 58328,
+      "output_word": 58
+    },
+    {
+      "input": 58,
+      "branch": 58328,
+      "output_word": 59
+    },
+    {
+      "input": 59,
+      "branch": 58328,
+      "output_word": 60
+    },
+    {
+      "input": 60,
+      "branch": 58328,
+      "output_word": 61
+    },
+    {
+      "input": 61,
+      "branch": 58328,
+      "output_word": 62
+    },
+    {
+      "input": 62,
+      "branch": 58328,
+      "output_word": 63
+    },
+    {
+      "input": 63,
+      "branch": 58328,
+      "output_word": 64
+    },
+    {
+      "input": 64,
+      "branch": 58328,
+      "output_word": 65
+    },
+    {
+      "input": 65,
+      "branch": 58328,
+      "output_word": 66
+    },
+    {
+      "input": 66,
+      "branch": 58328,
+      "output_word": 67
+    },
+    {
+      "input": 67,
+      "branch": 58328,
+      "output_word": 68
+    },
+    {
+      "input": 68,
+      "branch": 58328,
+      "output_word": 69
+    },
+    {
+      "input": 69,
+      "branch": 58328,
+      "output_word": 70
+    },
+    {
+      "input": 70,
+      "branch": 58328,
+      "output_word": 71
+    },
+    {
+      "input": 71,
+      "branch": 58328,
+      "output_word": 72
+    },
+    {
+      "input": 72,
+      "branch": 58328,
+      "output_word": 73
+    },
+    {
+      "input": 73,
+      "branch": 58328,
+      "output_word": 74
+    },
+    {
+      "input": 74,
+      "branch": 58328,
+      "output_word": 75
+    },
+    {
+      "input": 75,
+      "branch": 58328,
+      "output_word": 76
+    },
+    {
+      "input": 76,
+      "branch": 58328,
+      "output_word": 77
+    },
+    {
+      "input": 77,
+      "branch": 58328,
+      "output_word": 78
+    },
+    {
+      "input": 78,
+      "branch": 58328,
+      "output_word": 79
+    },
+    {
+      "input": 79,
+      "branch": 58328,
+      "output_word": 80
+    },
+    {
+      "input": 80,
+      "branch": 58364,
+      "output_word": 81
+    },
+    {
+      "input": 81,
+      "branch": 58328,
+      "output_word": 82
+    },
+    {
+      "input": 82,
+      "branch": 58328,
+      "output_word": 83
+    },
+    {
+      "input": 83,
+      "branch": 58328,
+      "output_word": 84
+    },
+    {
+      "input": 84,
+      "branch": 58328,
+      "output_word": 85
+    },
+    {
+      "input": 85,
+      "branch": 58328,
+      "output_word": 86
+    },
+    {
+      "input": 86,
+      "branch": 58328,
+      "output_word": 87
+    },
+    {
+      "input": 87,
+      "branch": 58328,
+      "output_word": 88
+    },
+    {
+      "input": 88,
+      "branch": 58328,
+      "output_word": 89
+    },
+    {
+      "input": 89,
+      "branch": 58328,
+      "output_word": 90
+    },
+    {
+      "input": 90,
+      "branch": 58328,
+      "output_word": 91
+    },
+    {
+      "input": 91,
+      "branch": 58328,
+      "output_word": 92
+    },
+    {
+      "input": 92,
+      "branch": 58328,
+      "output_word": 93
+    },
+    {
+      "input": 93,
+      "branch": 58328,
+      "output_word": 94
+    },
+    {
+      "input": 94,
+      "branch": 58328,
+      "output_word": 95
+    },
+    {
+      "input": 95,
+      "branch": 58328,
+      "output_word": 96
+    },
+    {
+      "input": 96,
+      "branch": 58328,
+      "output_word": 97
+    },
+    {
+      "input": 97,
+      "branch": 58328,
+      "output_word": 98
+    },
+    {
+      "input": 98,
+      "branch": 58328,
+      "output_word": 99
+    },
+    {
+      "input": 99,
+      "branch": 58328,
+      "output_word": 100
+    },
+    {
+      "input": 100,
+      "branch": 58328,
+      "output_word": 101
+    },
+    {
+      "input": 101,
+      "branch": 58328,
+      "output_word": 102
+    },
+    {
+      "input": 102,
+      "branch": 58328,
+      "output_word": 103
+    },
+    {
+      "input": 103,
+      "branch": 58328,
+      "output_word": 104
+    },
+    {
+      "input": 104,
+      "branch": 58328,
+      "output_word": 105
+    },
+    {
+      "input": 105,
+      "branch": 58328,
+      "output_word": 106
+    },
+    {
+      "input": 106,
+      "branch": 58328,
+      "output_word": 107
+    },
+    {
+      "input": 107,
+      "branch": 58337,
+      "output_word": 108
+    },
+    {
+      "input": 108,
+      "branch": 58328,
+      "output_word": 109
+    },
+    {
+      "input": 109,
+      "branch": 58328,
+      "output_word": 110
+    },
+    {
+      "input": 110,
+      "branch": 58328,
+      "output_word": 111
+    },
+    {
+      "input": 111,
+      "branch": 58328,
+      "output_word": 112
+    },
+    {
+      "input": 112,
+      "branch": 58328,
+      "output_word": 113
+    },
+    {
+      "input": 113,
+      "branch": 58328,
+      "output_word": 114
+    },
+    {
+      "input": 114,
+      "branch": 58328,
+      "output_word": 115
+    },
+    {
+      "input": 115,
+      "branch": 58328,
+      "output_word": 116
+    },
+    {
+      "input": 116,
+      "branch": 58328,
+      "output_word": 117
+    },
+    {
+      "input": 117,
+      "branch": 58328,
+      "output_word": 118
+    },
+    {
+      "input": 118,
+      "branch": 58328,
+      "output_word": 119
+    },
+    {
+      "input": 119,
+      "branch": 58328,
+      "output_word": 120
+    },
+    {
+      "input": 120,
+      "branch": 58328,
+      "output_word": 121
+    },
+    {
+      "input": 121,
+      "branch": 58328,
+      "output_word": 122
+    },
+    {
+      "input": 122,
+      "branch": 58328,
+      "output_word": 123
+    },
+    {
+      "input": 123,
+      "branch": 58328,
+      "output_word": 124
+    },
+    {
+      "input": 124,
+      "branch": 58328,
+      "output_word": 125
+    },
+    {
+      "input": 125,
+      "branch": 58328,
+      "output_word": 126
+    },
+    {
+      "input": 126,
+      "branch": 58328,
+      "output_word": 127
+    },
+    {
+      "input": 127,
+      "branch": 58328,
+      "output_word": 128
+    },
+    {
+      "input": 128,
+      "branch": 58328,
+      "output_word": 129
+    },
+    {
+      "input": 129,
+      "branch": 58328,
+      "output_word": 130
+    },
+    {
+      "input": 130,
+      "branch": 58328,
+      "output_word": 131
+    },
+    {
+      "input": 131,
+      "branch": 58328,
+      "output_word": 132
+    },
+    {
+      "input": 132,
+      "branch": 58328,
+      "output_word": 133
+    },
+    {
+      "input": 133,
+      "branch": 58328,
+      "output_word": 134
+    },
+    {
+      "input": 134,
+      "branch": 58337,
+      "output_word": 135
+    },
+    {
+      "input": 135,
+      "branch": 58328,
+      "output_word": 136
+    },
+    {
+      "input": 136,
+      "branch": 58328,
+      "output_word": 137
+    },
+    {
+      "input": 137,
+      "branch": 58328,
+      "output_word": 138
+    },
+    {
+      "input": 138,
+      "branch": 58328,
+      "output_word": 139
+    },
+    {
+      "input": 139,
+      "branch": 58328,
+      "output_word": 140
+    },
+    {
+      "input": 140,
+      "branch": 58328,
+      "output_word": 141
+    },
+    {
+      "input": 141,
+      "branch": 58328,
+      "output_word": 142
+    },
+    {
+      "input": 142,
+      "branch": 58328,
+      "output_word": 143
+    },
+    {
+      "input": 143,
+      "branch": 58328,
+      "output_word": 144
+    },
+    {
+      "input": 144,
+      "branch": 58328,
+      "output_word": 145
+    },
+    {
+      "input": 145,
+      "branch": 58328,
+      "output_word": 146
+    },
+    {
+      "input": 146,
+      "branch": 58328,
+      "output_word": 147
+    },
+    {
+      "input": 147,
+      "branch": 58328,
+      "output_word": 148
+    },
+    {
+      "input": 148,
+      "branch": 58328,
+      "output_word": 149
+    },
+    {
+      "input": 149,
+      "branch": 58328,
+      "output_word": 150
+    },
+    {
+      "input": 150,
+      "branch": 58328,
+      "output_word": 151
+    },
+    {
+      "input": 151,
+      "branch": 58328,
+      "output_word": 152
+    },
+    {
+      "input": 152,
+      "branch": 58328,
+      "output_word": 153
+    },
+    {
+      "input": 153,
+      "branch": 58328,
+      "output_word": 154
+    },
+    {
+      "input": 154,
+      "branch": 58328,
+      "output_word": 155
+    },
+    {
+      "input": 155,
+      "branch": 58328,
+      "output_word": 156
+    },
+    {
+      "input": 156,
+      "branch": 58328,
+      "output_word": 157
+    },
+    {
+      "input": 157,
+      "branch": 58328,
+      "output_word": 158
+    },
+    {
+      "input": 158,
+      "branch": 58328,
+      "output_word": 159
+    },
+    {
+      "input": 159,
+      "branch": 58328,
+      "output_word": 160
+    },
+    {
+      "input": 160,
+      "branch": 58328,
+      "output_word": 161
+    },
+    {
+      "input": 161,
+      "branch": 58364,
+      "output_word": 162
+    },
+    {
+      "input": 162,
+      "branch": 58328,
+      "output_word": 163
+    },
+    {
+      "input": 163,
+      "branch": 58328,
+      "output_word": 164
+    },
+    {
+      "input": 164,
+      "branch": 58328,
+      "output_word": 165
+    },
+    {
+      "input": 165,
+      "branch": 58328,
+      "output_word": 166
+    },
+    {
+      "input": 166,
+      "branch": 58328,
+      "output_word": 167
+    },
+    {
+      "input": 167,
+      "branch": 58328,
+      "output_word": 168
+    },
+    {
+      "input": 168,
+      "branch": 58328,
+      "output_word": 169
+    },
+    {
+      "input": 169,
+      "branch": 58328,
+      "output_word": 170
+    },
+    {
+      "input": 170,
+      "branch": 58328,
+      "output_word": 171
+    },
+    {
+      "input": 171,
+      "branch": 58328,
+      "output_word": 172
+    },
+    {
+      "input": 172,
+      "branch": 58328,
+      "output_word": 173
+    },
+    {
+      "input": 173,
+      "branch": 58328,
+      "output_word": 174
+    },
+    {
+      "input": 174,
+      "branch": 58328,
+      "output_word": 175
+    },
+    {
+      "input": 175,
+      "branch": 58328,
+      "output_word": 176
+    },
+    {
+      "input": 176,
+      "branch": 58328,
+      "output_word": 177
+    },
+    {
+      "input": 177,
+      "branch": 58328,
+      "output_word": 178
+    },
+    {
+      "input": 178,
+      "branch": 58328,
+      "output_word": 179
+    },
+    {
+      "input": 179,
+      "branch": 58328,
+      "output_word": 180
+    },
+    {
+      "input": 180,
+      "branch": 58328,
+      "output_word": 181
+    },
+    {
+      "input": 181,
+      "branch": 58328,
+      "output_word": 182
+    },
+    {
+      "input": 182,
+      "branch": 58328,
+      "output_word": 183
+    },
+    {
+      "input": 183,
+      "branch": 58328,
+      "output_word": 184
+    },
+    {
+      "input": 184,
+      "branch": 58328,
+      "output_word": 185
+    },
+    {
+      "input": 185,
+      "branch": 58328,
+      "output_word": 186
+    },
+    {
+      "input": 186,
+      "branch": 58328,
+      "output_word": 187
+    },
+    {
+      "input": 187,
+      "branch": 58328,
+      "output_word": 188
+    },
+    {
+      "input": 188,
+      "branch": 58337,
+      "output_word": 189
+    },
+    {
+      "input": 189,
+      "branch": 58328,
+      "output_word": 190
+    },
+    {
+      "input": 190,
+      "branch": 58328,
+      "output_word": 191
+    },
+    {
+      "input": 191,
+      "branch": 58328,
+      "output_word": 192
+    },
+    {
+      "input": 192,
+      "branch": 58328,
+      "output_word": 193
+    },
+    {
+      "input": 193,
+      "branch": 58328,
+      "output_word": 194
+    },
+    {
+      "input": 194,
+      "branch": 58328,
+      "output_word": 195
+    },
+    {
+      "input": 195,
+      "branch": 58328,
+      "output_word": 196
+    },
+    {
+      "input": 196,
+      "branch": 58328,
+      "output_word": 197
+    },
+    {
+      "input": 197,
+      "branch": 58328,
+      "output_word": 198
+    },
+    {
+      "input": 198,
+      "branch": 58328,
+      "output_word": 199
+    },
+    {
+      "input": 199,
+      "branch": 58328,
+      "output_word": 200
+    },
+    {
+      "input": 200,
+      "branch": 58328,
+      "output_word": 201
+    },
+    {
+      "input": 201,
+      "branch": 58328,
+      "output_word": 202
+    },
+    {
+      "input": 202,
+      "branch": 58328,
+      "output_word": 203
+    },
+    {
+      "input": 203,
+      "branch": 58328,
+      "output_word": 204
+    },
+    {
+      "input": 204,
+      "branch": 58328,
+      "output_word": 205
+    },
+    {
+      "input": 205,
+      "branch": 58328,
+      "output_word": 206
+    },
+    {
+      "input": 206,
+      "branch": 58328,
+      "output_word": 207
+    },
+    {
+      "input": 207,
+      "branch": 58328,
+      "output_word": 208
+    },
+    {
+      "input": 208,
+      "branch": 58328,
+      "output_word": 209
+    },
+    {
+      "input": 209,
+      "branch": 58328,
+      "output_word": 210
+    },
+    {
+      "input": 210,
+      "branch": 58328,
+      "output_word": 211
+    },
+    {
+      "input": 211,
+      "branch": 58328,
+      "output_word": 212
+    },
+    {
+      "input": 212,
+      "branch": 58328,
+      "output_word": 213
+    },
+    {
+      "input": 213,
+      "branch": 58328,
+      "output_word": 214
+    },
+    {
+      "input": 214,
+      "branch": 58328,
+      "output_word": 215
+    },
+    {
+      "input": 215,
+      "branch": 58337,
+      "output_word": 216
+    },
+    {
+      "input": 216,
+      "branch": 58328,
+      "output_word": 217
+    },
+    {
+      "input": 217,
+      "branch": 58328,
+      "output_word": 218
+    },
+    {
+      "input": 218,
+      "branch": 58328,
+      "output_word": 219
+    },
+    {
+      "input": 219,
+      "branch": 58328,
+      "output_word": 220
+    },
+    {
+      "input": 220,
+      "branch": 58328,
+      "output_word": 221
+    },
+    {
+      "input": 221,
+      "branch": 58328,
+      "output_word": 222
+    },
+    {
+      "input": 222,
+      "branch": 58328,
+      "output_word": 223
+    },
+    {
+      "input": 223,
+      "branch": 58328,
+      "output_word": 224
+    },
+    {
+      "input": 224,
+      "branch": 58328,
+      "output_word": 225
+    },
+    {
+      "input": 225,
+      "branch": 58328,
+      "output_word": 226
+    },
+    {
+      "input": 226,
+      "branch": 58328,
+      "output_word": 227
+    },
+    {
+      "input": 227,
+      "branch": 58328,
+      "output_word": 228
+    },
+    {
+      "input": 228,
+      "branch": 58328,
+      "output_word": 229
+    },
+    {
+      "input": 229,
+      "branch": 58328,
+      "output_word": 230
+    },
+    {
+      "input": 230,
+      "branch": 58328,
+      "output_word": 231
+    },
+    {
+      "input": 231,
+      "branch": 58328,
+      "output_word": 232
+    },
+    {
+      "input": 232,
+      "branch": 58328,
+      "output_word": 233
+    },
+    {
+      "input": 233,
+      "branch": 58328,
+      "output_word": 234
+    },
+    {
+      "input": 234,
+      "branch": 58328,
+      "output_word": 235
+    },
+    {
+      "input": 235,
+      "branch": 58328,
+      "output_word": 236
+    },
+    {
+      "input": 236,
+      "branch": 58328,
+      "output_word": 237
+    },
+    {
+      "input": 237,
+      "branch": 58328,
+      "output_word": 238
+    },
+    {
+      "input": 238,
+      "branch": 58328,
+      "output_word": 239
+    },
+    {
+      "input": 239,
+      "branch": 58328,
+      "output_word": 240
+    },
+    {
+      "input": 240,
+      "branch": 58328,
+      "output_word": 241
+    },
+    {
+      "input": 241,
+      "branch": 58328,
+      "output_word": 242
+    },
+    {
+      "input": 242,
+      "branch": 58445,
+      "output_word": 243
+    },
+    {
+      "input": 243,
+      "branch": 58328,
+      "output_word": 244
+    },
+    {
+      "input": 244,
+      "branch": 58328,
+      "output_word": 245
+    },
+    {
+      "input": 245,
+      "branch": 58328,
+      "output_word": 246
+    },
+    {
+      "input": 246,
+      "branch": 58328,
+      "output_word": 247
+    },
+    {
+      "input": 247,
+      "branch": 58328,
+      "output_word": 248
+    },
+    {
+      "input": 248,
+      "branch": 58328,
+      "output_word": 249
+    },
+    {
+      "input": 249,
+      "branch": 58328,
+      "output_word": 250
+    },
+    {
+      "input": 250,
+      "branch": 58328,
+      "output_word": 251
+    },
+    {
+      "input": 251,
+      "branch": 58328,
+      "output_word": 252
+    },
+    {
+      "input": 252,
+      "branch": 58328,
+      "output_word": 253
+    },
+    {
+      "input": 253,
+      "branch": 58328,
+      "output_word": 254
+    },
+    {
+      "input": 254,
+      "branch": 58328,
+      "output_word": 255
+    },
+    {
+      "input": 255,
+      "branch": 58328,
+      "output_word": 256
+    },
+    {
+      "input": 59048,
+      "branch": 58688,
+      "output_word": null
+    }
+  ]
+}

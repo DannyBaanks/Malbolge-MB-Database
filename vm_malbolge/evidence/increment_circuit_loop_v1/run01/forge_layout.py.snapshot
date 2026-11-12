@@ -1,0 +1,14 @@
+import json,sys,pathlib,time
+root=pathlib.Path.cwd();sys.path.insert(0,str(root.parent/'BolgeForge'))
+from constants import XLAT1
+from tools.resynthesize import synthesize_preamble_ops
+p=pathlib.Path('/tmp/phase-hell-lab/circuit.layout');lines=p.read_text().splitlines();entry=int(lines[0].split()[1]);values={int(a):int(b) for a,b in (line.split() for line in lines[1:])}
+raw=(root.parent/'BolgeForge/reference/malbolge_org/cat.mal').read_bytes();template=[x for x in raw if 33<=x<=126];source_len=min(values)-20;source_len-= (source_len-len(template))%94;clean=template+[33]*(source_len-len(template))
+print('targets',len(values),'min',min(values),'entry',entry,'source_len',source_len,flush=True)
+t=time.monotonic();ops=synthesize_preamble_ops(clean,values,entry,9003,0,template_clean=template,boot='original');print('plan',len(ops),'end',99+len(ops),'elapsed',time.monotonic()-t,flush=True)
+if 99+len(ops)>source_len-2:raise ValueError('does not fit')
+prog=bytearray(template[:99]);prog.extend(33+((XLAT1.index(ch)-i)%94) for i,ch in enumerate(ops,99))
+while len(prog)<source_len-2:prog.append(33+((XLAT1.index('o')-len(prog))%94))
+prog.extend(template[-2:]);assert all(XLAT1[(w-33+i)%94] in 'ji*p</vo' for i,w in enumerate(prog))
+pathlib.Path('/tmp/phase-hell-lab/circuit_forge.mb').write_bytes(prog)
+pathlib.Path('/tmp/phase-hell-lab/circuit_forge.ops').write_text(''.join(ops)+'\n')

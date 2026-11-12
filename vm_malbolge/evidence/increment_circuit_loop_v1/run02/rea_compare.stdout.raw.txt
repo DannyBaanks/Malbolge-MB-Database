@@ -1,0 +1,20 @@
+{
+  "empty": {
+    "rea_evidence_id": "ev_5632088cebf409ccc64ac24f445014f81548ec3b851908f8476916c67ffdf4fc",
+    "window_start": 58000,
+    "window_events": 1066,
+    "last_step": 59065,
+    "window_equal": true,
+    "output_hex": "",
+    "scope": "window only; earlier steps not captured by REA"
+  },
+  "ascii": {
+    "rea_evidence_id": "ev_5e038222e38234a041f1580b0bffcedbde8fee787255a7b02f3b87deb6bb761e",
+    "window_start": 78000,
+    "window_events": 2746,
+    "last_step": 80745,
+    "window_equal": true,
+    "output_hex": "42434445",
+    "scope": "window only; earlier steps not captured by REA"
+  }
+}
