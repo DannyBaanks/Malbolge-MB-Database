@@ -1,0 +1,3 @@
+# Enmienda preregistrada: tabla para un solo byte
+
+2026-11-11. Las referencias BF/Python y el análisis de tabla ya existen. Antes de sintetizar, registrar el siguiente subobjetivo: producir una imagen estricta que lea un byte, lo incremente módulo 256 con cálculo y tabla en memoria Malbolge y se detenga. Comprobar los 256 valores individualmente con Olmstead y un control de tabla o direccionamiento. Esta construcción no prueba entrada vacía, EOF limpio ni iteración; las puertas del experimento principal permanecen abiertas. Los parámetros de la tabla y del programa son diseño, no una prueba hasta ejecutar la imagen.
