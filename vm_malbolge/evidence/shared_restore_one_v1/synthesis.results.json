@@ -1,0 +1,36 @@
+{
+  "T": 57100,
+  "target_initial": 70,
+  "target_want": 40,
+  "intermediate": 29484,
+  "control": 40,
+  "clock_pc": 58303,
+  "clock_expected_opcodes": [
+    46,
+    40,
+    49,
+    81
+  ],
+  "primitive_pcs": {
+    "ROT": 58057,
+    "MOVD": 58152,
+    "CRAZY": 58268
+  },
+  "programs": {
+    "positive": {
+      "target_cells": 30,
+      "plan_length": 3300,
+      "plan_end": 3399,
+      "fits": true,
+      "elapsed_seconds": 0.072
+    },
+    "control": {
+      "target_cells": 30,
+      "plan_length": 3296,
+      "plan_end": 3395,
+      "fits": true,
+      "elapsed_seconds": 0.014
+    }
+  },
+  "scope": "one fixed value, four-phase driver; no generic, repeatable scheduler or EOF"
+}

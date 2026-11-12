@@ -1,0 +1,14 @@
+{
+  "artifacts_byte_identical": {
+    "restore_control.mb": true,
+    "restore_control_plan.ops": true,
+    "restore_control_targets.json": true,
+    "restore_positive.mb": true,
+    "restore_positive_plan.ops": true,
+    "restore_positive_targets.json": true
+  },
+  "excluded": "elapsed_seconds",
+  "method": "fresh isolated synthesis",
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

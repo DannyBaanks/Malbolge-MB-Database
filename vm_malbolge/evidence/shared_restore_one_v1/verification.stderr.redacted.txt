@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<repo>/vm_malbolge/evidence/shared_restore_one_v1/verify.py", line 45, in <module>
+    assert initial is not None and initial['target']==70 and not initial['mismatches'] and final['target']==expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

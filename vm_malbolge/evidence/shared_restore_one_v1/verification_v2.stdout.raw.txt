@@ -1,0 +1,474 @@
+{
+  "control": {
+    "final": {
+      "clock": 58,
+      "constant": 39,
+      "primitive_words": {
+        "58057": 74,
+        "58152": 74,
+        "58268": 74
+      },
+      "target": 39
+    },
+    "image_sha256": "9556b1e0d43dfc79da44c0bf57a4eedd4e87dbcc8b0b2068e18d94ea6a5b9fb2",
+    "initial": {
+      "clock": 117,
+      "constant": 117,
+      "mismatches": [],
+      "primitive_words": {
+        "58057": 74,
+        "58152": 74,
+        "58268": 74
+      },
+      "step": 3298,
+      "target": 70
+    },
+    "inputs": [],
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "outputs": [],
+    "rea_events_truncated": true,
+    "rea_id": "ev_d871b7968916e052d42afab5c1a50f8f984321e5f96fe3177f88cce34920a531",
+    "rea_start": 3200,
+    "rea_status": "HALTED",
+    "rea_steps": 3344,
+    "rea_window_equals_scratch": true,
+    "scratch_steps": 3344,
+    "strict_cells": true,
+    "target_writes": [
+      {
+        "position": 57100,
+        "step": 3306,
+        "value_after": 60,
+        "value_before": 70
+      },
+      {
+        "position": 57100,
+        "step": 3316,
+        "value_after": 29524,
+        "value_before": 60
+      },
+      {
+        "position": 57100,
+        "step": 3330,
+        "value_after": 29485,
+        "value_before": 29524
+      },
+      {
+        "position": 57100,
+        "step": 3340,
+        "value_after": 39,
+        "value_before": 29485
+      }
+    ],
+    "visits": [
+      {
+        "a": 56998,
+        "d": 57000,
+        "opcode": 39,
+        "pc": 58057,
+        "step": 3298
+      },
+      {
+        "a": 29524,
+        "d": 57002,
+        "opcode": 35,
+        "pc": 58057,
+        "step": 3300
+      },
+      {
+        "a": 29524,
+        "d": 57004,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3302
+      },
+      {
+        "a": 29524,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3304
+      },
+      {
+        "a": 29524,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3306
+      },
+      {
+        "a": 60,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3308
+      },
+      {
+        "a": 60,
+        "d": 57104,
+        "opcode": 46,
+        "pc": 58303,
+        "step": 3310
+      },
+      {
+        "a": 60,
+        "d": 57106,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3312
+      },
+      {
+        "a": 60,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3314
+      },
+      {
+        "a": 60,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3316
+      },
+      {
+        "a": 29524,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3318
+      },
+      {
+        "a": 29524,
+        "d": 57104,
+        "opcode": 40,
+        "pc": 58303,
+        "step": 3320
+      },
+      {
+        "a": 29524,
+        "d": 57200,
+        "opcode": 39,
+        "pc": 58057,
+        "step": 3322
+      },
+      {
+        "a": 39,
+        "d": 57202,
+        "opcode": 35,
+        "pc": 58057,
+        "step": 3324
+      },
+      {
+        "a": 39,
+        "d": 57204,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3326
+      },
+      {
+        "a": 39,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3328
+      },
+      {
+        "a": 39,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3330
+      },
+      {
+        "a": 29485,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3332
+      },
+      {
+        "a": 29485,
+        "d": 57104,
+        "opcode": 49,
+        "pc": 58303,
+        "step": 3334
+      },
+      {
+        "a": 29485,
+        "d": 57106,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3336
+      },
+      {
+        "a": 29485,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3338
+      },
+      {
+        "a": 29485,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3340
+      },
+      {
+        "a": 39,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3342
+      },
+      {
+        "a": 39,
+        "d": 57104,
+        "opcode": 81,
+        "pc": 58303,
+        "step": 3344
+      }
+    ],
+    "window_complete_through_halt": true,
+    "window_events": 145
+  },
+  "positive": {
+    "final": {
+      "clock": 58,
+      "constant": 40,
+      "primitive_words": {
+        "58057": 74,
+        "58152": 74,
+        "58268": 74
+      },
+      "target": 40
+    },
+    "image_sha256": "08e4e4934ec8f27dc71ba3e1ef44af1b61d9a9bcd5a3fcc07b2a5cef75cadea3",
+    "initial": {
+      "clock": 117,
+      "constant": 120,
+      "mismatches": [],
+      "primitive_words": {
+        "58057": 74,
+        "58152": 74,
+        "58268": 74
+      },
+      "step": 3302,
+      "target": 70
+    },
+    "inputs": [],
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "outputs": [],
+    "rea_events_truncated": true,
+    "rea_id": "ev_46895febae6dc8e64298661cd7380fa3270779c939c11d78995d90afe43cd98d",
+    "rea_start": 3200,
+    "rea_status": "HALTED",
+    "rea_steps": 3348,
+    "rea_window_equals_scratch": true,
+    "scratch_steps": 3348,
+    "strict_cells": true,
+    "target_writes": [
+      {
+        "position": 57100,
+        "step": 3310,
+        "value_after": 60,
+        "value_before": 70
+      },
+      {
+        "position": 57100,
+        "step": 3320,
+        "value_after": 29524,
+        "value_before": 60
+      },
+      {
+        "position": 57100,
+        "step": 3334,
+        "value_after": 29484,
+        "value_before": 29524
+      },
+      {
+        "position": 57100,
+        "step": 3344,
+        "value_after": 40,
+        "value_before": 29484
+      }
+    ],
+    "visits": [
+      {
+        "a": 56998,
+        "d": 57000,
+        "opcode": 39,
+        "pc": 58057,
+        "step": 3302
+      },
+      {
+        "a": 29524,
+        "d": 57002,
+        "opcode": 35,
+        "pc": 58057,
+        "step": 3304
+      },
+      {
+        "a": 29524,
+        "d": 57004,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3306
+      },
+      {
+        "a": 29524,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3308
+      },
+      {
+        "a": 29524,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3310
+      },
+      {
+        "a": 60,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3312
+      },
+      {
+        "a": 60,
+        "d": 57104,
+        "opcode": 46,
+        "pc": 58303,
+        "step": 3314
+      },
+      {
+        "a": 60,
+        "d": 57106,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3316
+      },
+      {
+        "a": 60,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3318
+      },
+      {
+        "a": 60,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3320
+      },
+      {
+        "a": 29524,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3322
+      },
+      {
+        "a": 29524,
+        "d": 57104,
+        "opcode": 40,
+        "pc": 58303,
+        "step": 3324
+      },
+      {
+        "a": 29524,
+        "d": 57200,
+        "opcode": 39,
+        "pc": 58057,
+        "step": 3326
+      },
+      {
+        "a": 40,
+        "d": 57202,
+        "opcode": 35,
+        "pc": 58057,
+        "step": 3328
+      },
+      {
+        "a": 40,
+        "d": 57204,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3330
+      },
+      {
+        "a": 40,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3332
+      },
+      {
+        "a": 40,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3334
+      },
+      {
+        "a": 29484,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3336
+      },
+      {
+        "a": 29484,
+        "d": 57104,
+        "opcode": 49,
+        "pc": 58303,
+        "step": 3338
+      },
+      {
+        "a": 29484,
+        "d": 57106,
+        "opcode": 40,
+        "pc": 58152,
+        "step": 3340
+      },
+      {
+        "a": 29484,
+        "d": 57098,
+        "opcode": 36,
+        "pc": 58152,
+        "step": 3342
+      },
+      {
+        "a": 29484,
+        "d": 57100,
+        "opcode": 62,
+        "pc": 58268,
+        "step": 3344
+      },
+      {
+        "a": 40,
+        "d": 57102,
+        "opcode": 58,
+        "pc": 58268,
+        "step": 3346
+      },
+      {
+        "a": 40,
+        "d": 57104,
+        "opcode": 81,
+        "pc": 58303,
+        "step": 3348
+      }
+    ],
+    "window_complete_through_halt": true,
+    "window_events": 149
+  }
+}
