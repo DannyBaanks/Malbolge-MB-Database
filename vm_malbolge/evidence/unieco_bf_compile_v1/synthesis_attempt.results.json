@@ -1,0 +1,14 @@
+{
+  "profile_input_bytes": 258,
+  "target_cells": 281,
+  "profile_code_cells": 32,
+  "profile_jump_pointer_cells": 59,
+  "source_len": 33822,
+  "plan_length": 9651,
+  "plan_end": 9750,
+  "elapsed_seconds": 0.836,
+  "fits": true,
+  "handoff_c": 35857,
+  "handoff_d": 58975,
+  "scope": "profile-derived target; must verify emitted native image independently"
+}

@@ -1,0 +1,12 @@
+{
+  "artifacts_byte_identical": {
+    "relocated_candidate.mb": true,
+    "relocated_plan.ops": true,
+    "relocated_targets.json": true
+  },
+  "command": "python3 synthesize_relocated.py in fresh isolated tree with sibling dependencies",
+  "excluded": "elapsed_seconds is timing dependent",
+  "rc": 0,
+  "stderr_hex": "",
+  "stdout_sha256": "e5af37e2a1485ff13774e94d5d278ea222481fb82b295c0549781e1f1c43204f"
+}

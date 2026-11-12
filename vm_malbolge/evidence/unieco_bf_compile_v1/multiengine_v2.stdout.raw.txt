@@ -1,0 +1,5 @@
+empty scratch True runner True
+nul scratch True runner True
+mixed scratch True runner True
+all256 scratch True runner True
+long10000 scratch True runner NOT_DEMONSTRATED

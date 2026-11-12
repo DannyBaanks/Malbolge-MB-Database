@@ -1,0 +1,13 @@
+{
+  "olmstead": {
+    "rc": 0,
+    "stdout_hex": "a8",
+    "stderr_hex": ""
+  },
+  "runner": {
+    "rc": 0,
+    "stdout_hex": "0a",
+    "stderr_hex": "73746570733a2031207c207374617475733a2048414c5445440a"
+  },
+  "scope": "Empty input: runner newline with no byte cannot establish autonomous EOF halt. Olmstead emits low byte of 59048."
+}

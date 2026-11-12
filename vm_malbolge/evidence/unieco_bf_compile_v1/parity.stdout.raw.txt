@@ -1,0 +1,10 @@
+{
+  "fixture_sha256": "177e7fcea2b99c31f83f865ba915e53a9d4d70a4ac850c5e6e61aad970b99f06",
+  "cells": 59049,
+  "mismatches": {
+    "common": 0,
+    "scratch": 0,
+    "swapped": 18709
+  },
+  "orientation": "crazy(accumulator,cell)=table[cell][accumulator]"
+}

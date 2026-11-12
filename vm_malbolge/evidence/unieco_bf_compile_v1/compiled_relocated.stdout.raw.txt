@@ -1,0 +1,5 @@
+empty True
+nul True
+mixed True
+all256 True
+long10000 True

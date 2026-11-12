@@ -1,0 +1,1106 @@
+{
+  "evidence_id": "ev_f03577be748686d1f0af3c8b8e00f20871bfd194b2aa1206625059a61ceeb1eb",
+  "subject": {
+    "name": "compiled_relocated.mb",
+    "digest": {
+      "sha256": "c7b0aef98363242607c1fb13aa964fd412da057bcea04105f7e9b8559e986d13"
+    },
+    "local_path": "compiled_relocated.mb",
+    "format": "file",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rea-malbolge-classic",
+    "name": "REA Malbolge Classic engine",
+    "version": "6.5.0"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis",
+  "operation": "trace_malbolge",
+  "parameters": {
+    "path": "compiled_relocated.mb",
+    "max_steps": 20000,
+    "input_text": "\u0000\nÿ",
+    "event_capture_limit": 64,
+    "eof_mode": "olmstead_1998"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "artifact": {
+      "path": "compiled_relocated.mb",
+      "sha256": "c7b0aef98363242607c1fb13aa964fd412da057bcea04105f7e9b8559e986d13",
+      "bytes": 33822
+    },
+    "execution_id": "35d67df8-28a0-48b2-a17d-cbeb9a885343",
+    "run": {
+      "steps": 11556,
+      "status": "HALTED",
+      "invalid_reason": null,
+      "events_truncated": true,
+      "peak_position": 59048,
+      "writebacks": 14293,
+      "representation_changes": 13501,
+      "state_digest_before": "c54f2ba6fbc7231aeaab6a48a7afb62c0c41346681582763d6ad8448a858eedf",
+      "state_digest_after": "f637a64b1c2df5054c85bbc33266dda31b99acaa0bfd9394ec9db0c525df90d3"
+    },
+    "output_text": "\u0000\nÿ",
+    "output_bytes": [
+      0,
+      10,
+      128,
+      255
+    ],
+    "events": [
+      {
+        "step": 1,
+        "position": 0,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 0,
+        "d": 0,
+        "writes": [
+          {
+            "position": 98,
+            "value_before": 64,
+            "value_after": 81
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "position": 99,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 1,
+        "writes": [
+          {
+            "position": 99,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "position": 100,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 0,
+        "d": 2,
+        "writes": [
+          {
+            "position": 100,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "position": 101,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 39,
+        "writes": [
+          {
+            "position": 101,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "position": 102,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 40,
+        "writes": [
+          {
+            "position": 102,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "position": 103,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 41,
+        "writes": [
+          {
+            "position": 41,
+            "value_before": 121,
+            "value_after": 29524
+          },
+          {
+            "position": 103,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "position": 104,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 42,
+        "writes": [
+          {
+            "position": 104,
+            "value_before": 58,
+            "value_after": 37
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "position": 105,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 43,
+        "writes": [
+          {
+            "position": 105,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "position": 106,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 44,
+        "writes": [
+          {
+            "position": 106,
+            "value_before": 56,
+            "value_after": 44
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "position": 107,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 45,
+        "writes": [
+          {
+            "position": 107,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "position": 108,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 46,
+        "writes": [
+          {
+            "position": 108,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "position": 109,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 47,
+        "writes": [
+          {
+            "position": 109,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "position": 110,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 48,
+        "writes": [
+          {
+            "position": 48,
+            "value_before": 108,
+            "value_after": 0
+          },
+          {
+            "position": 110,
+            "value_before": 46,
+            "value_after": 101
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "position": 111,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 49,
+        "writes": [
+          {
+            "position": 49,
+            "value_before": 85,
+            "value_after": 29524
+          },
+          {
+            "position": 111,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "position": 112,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 50,
+        "writes": [
+          {
+            "position": 112,
+            "value_before": 50,
+            "value_after": 80
+          }
+        ]
+      },
+      {
+        "step": 16,
+        "position": 113,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 82,
+            "value_after": 0
+          },
+          {
+            "position": 113,
+            "value_before": 43,
+            "value_after": 36
+          }
+        ]
+      },
+      {
+        "step": 17,
+        "position": 114,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 52,
+        "writes": [
+          {
+            "position": 52,
+            "value_before": 81,
+            "value_after": 29524
+          },
+          {
+            "position": 114,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 18,
+        "position": 115,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 53,
+        "writes": [
+          {
+            "position": 115,
+            "value_before": 47,
+            "value_after": 52
+          }
+        ]
+      },
+      {
+        "step": 19,
+        "position": 116,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 54,
+        "writes": [
+          {
+            "position": 116,
+            "value_before": 46,
+            "value_after": 101
+          }
+        ]
+      },
+      {
+        "step": 20,
+        "position": 117,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 55,
+        "writes": [
+          {
+            "position": 117,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 21,
+        "position": 118,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 56,
+        "writes": [
+          {
+            "position": 118,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 22,
+        "position": 119,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 57,
+        "writes": [
+          {
+            "position": 119,
+            "value_before": 43,
+            "value_after": 36
+          }
+        ]
+      },
+      {
+        "step": 23,
+        "position": 120,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 58,
+        "writes": [
+          {
+            "position": 120,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 24,
+        "position": 121,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 59,
+        "writes": [
+          {
+            "position": 121,
+            "value_before": 41,
+            "value_after": 102
+          }
+        ]
+      },
+      {
+        "step": 25,
+        "position": 122,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 60,
+        "writes": [
+          {
+            "position": 122,
+            "value_before": 40,
+            "value_after": 121
+          }
+        ]
+      },
+      {
+        "step": 26,
+        "position": 123,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 61,
+        "writes": [
+          {
+            "position": 123,
+            "value_before": 39,
+            "value_after": 116
+          }
+        ]
+      },
+      {
+        "step": 27,
+        "position": 124,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 62,
+        "writes": [
+          {
+            "position": 124,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 28,
+        "position": 125,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 63,
+        "writes": [
+          {
+            "position": 125,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 29,
+        "position": 126,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 64,
+        "writes": [
+          {
+            "position": 126,
+            "value_before": 36,
+            "value_after": 38
+          }
+        ]
+      },
+      {
+        "step": 30,
+        "position": 127,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 65,
+        "writes": [
+          {
+            "position": 127,
+            "value_before": 35,
+            "value_after": 93
+          }
+        ]
+      },
+      {
+        "step": 31,
+        "position": 128,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 66,
+        "writes": [
+          {
+            "position": 128,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 32,
+        "position": 129,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 67,
+        "writes": [
+          {
+            "position": 129,
+            "value_before": 33,
+            "value_after": 53
+          }
+        ]
+      },
+      {
+        "step": 33,
+        "position": 130,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 68,
+        "writes": [
+          {
+            "position": 130,
+            "value_before": 126,
+            "value_after": 64
+          }
+        ]
+      },
+      {
+        "step": 34,
+        "position": 131,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 69,
+        "writes": [
+          {
+            "position": 131,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 35,
+        "position": 132,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 70,
+        "writes": [
+          {
+            "position": 132,
+            "value_before": 124,
+            "value_after": 34
+          }
+        ]
+      },
+      {
+        "step": 36,
+        "position": 133,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 121,
+            "value_after": 0
+          },
+          {
+            "position": 133,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 37,
+        "position": 134,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 72,
+            "value_before": 120,
+            "value_after": 29524
+          },
+          {
+            "position": 134,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 38,
+        "position": 135,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 135,
+            "value_before": 121,
+            "value_after": 35
+          }
+        ]
+      },
+      {
+        "step": 39,
+        "position": 136,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 82,
+            "value_after": 0
+          },
+          {
+            "position": 136,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 40,
+        "position": 137,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 75,
+        "writes": [
+          {
+            "position": 75,
+            "value_before": 81,
+            "value_after": 29524
+          },
+          {
+            "position": 137,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 41,
+        "position": 138,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 76,
+        "writes": [
+          {
+            "position": 138,
+            "value_before": 118,
+            "value_after": 107
+          }
+        ]
+      },
+      {
+        "step": 42,
+        "position": 139,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 77,
+        "writes": [
+          {
+            "position": 139,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 43,
+        "position": 140,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 78,
+        "writes": [
+          {
+            "position": 140,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 44,
+        "position": 141,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 79,
+        "writes": [
+          {
+            "position": 141,
+            "value_before": 115,
+            "value_after": 82
+          }
+        ]
+      },
+      {
+        "step": 45,
+        "position": 142,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 80,
+        "writes": [
+          {
+            "position": 142,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 46,
+        "position": 143,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 81,
+        "writes": [
+          {
+            "position": 143,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 47,
+        "position": 144,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 82,
+        "writes": [
+          {
+            "position": 82,
+            "value_before": 93,
+            "value_after": 0
+          },
+          {
+            "position": 144,
+            "value_before": 106,
+            "value_after": 77
+          }
+        ]
+      },
+      {
+        "step": 48,
+        "position": 145,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 83,
+        "writes": [
+          {
+            "position": 145,
+            "value_before": 111,
+            "value_after": 120
+          }
+        ]
+      },
+      {
+        "step": 49,
+        "position": 146,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 84,
+        "writes": [
+          {
+            "position": 146,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 50,
+        "position": 147,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 85,
+        "writes": [
+          {
+            "position": 147,
+            "value_before": 109,
+            "value_after": 88
+          }
+        ]
+      },
+      {
+        "step": 51,
+        "position": 148,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 0,
+        "d": 86,
+        "writes": [
+          {
+            "position": 148,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 52,
+        "position": 149,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 49,
+        "writes": [
+          {
+            "position": 149,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 53,
+        "position": 150,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 50,
+        "writes": [
+          {
+            "position": 150,
+            "value_before": 106,
+            "value_after": 77
+          }
+        ]
+      },
+      {
+        "step": 54,
+        "position": 151,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 51,
+        "writes": [
+          {
+            "position": 151,
+            "value_before": 105,
+            "value_after": 42
+          }
+        ]
+      },
+      {
+        "step": 55,
+        "position": 152,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 52,
+        "writes": [
+          {
+            "position": 152,
+            "value_before": 104,
+            "value_after": 89
+          }
+        ]
+      },
+      {
+        "step": 56,
+        "position": 153,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 53,
+        "writes": [
+          {
+            "position": 153,
+            "value_before": 103,
+            "value_after": 117
+          }
+        ]
+      },
+      {
+        "step": 57,
+        "position": 154,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 54,
+        "writes": [
+          {
+            "position": 154,
+            "value_before": 102,
+            "value_after": 96
+          }
+        ]
+      },
+      {
+        "step": 58,
+        "position": 155,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 55,
+        "writes": [
+          {
+            "position": 155,
+            "value_before": 101,
+            "value_after": 99
+          }
+        ]
+      },
+      {
+        "step": 59,
+        "position": 156,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 56,
+        "writes": [
+          {
+            "position": 156,
+            "value_before": 100,
+            "value_after": 97
+          }
+        ]
+      },
+      {
+        "step": 60,
+        "position": 157,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 57,
+        "writes": [
+          {
+            "position": 157,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 61,
+        "position": 158,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 58,
+        "writes": [
+          {
+            "position": 58,
+            "value_before": 41,
+            "value_after": 29525
+          },
+          {
+            "position": 158,
+            "value_before": 92,
+            "value_after": 115
+          }
+        ]
+      },
+      {
+        "step": 62,
+        "position": 159,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29525,
+        "d": 59,
+        "writes": [
+          {
+            "position": 59,
+            "value_before": 74,
+            "value_after": 39390
+          },
+          {
+            "position": 159,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 63,
+        "position": 160,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 39390,
+        "d": 60,
+        "writes": [
+          {
+            "position": 160,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 64,
+        "position": 161,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 39390,
+        "d": 58,
+        "writes": [
+          {
+            "position": 58,
+            "value_before": 29525,
+            "value_after": 49220
+          },
+          {
+            "position": 161,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "Exhausted input uses EOF mode olmstead_1998; different EOF conventions can change control flow and output.",
+      "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+      "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+      "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+      "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "Exhausted input uses EOF mode olmstead_1998; different EOF conventions can change control flow and output.",
+    "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+    "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+    "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+    "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "compiled_relocated.mb"
+    }
+  ],
+  "evidence_links": []
+}

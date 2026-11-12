@@ -1,0 +1,83 @@
+{
+  "cases": {
+    "all256": {
+      "runner": {
+        "output_exact_with_framing": true,
+        "rc": 0,
+        "status": "HALTED",
+        "stderr_hex": "73746570733a20313133383435207c207374617475733a2048414c5445440a",
+        "stdout_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeff0a",
+        "steps": 113845
+      },
+      "scratch": {
+        "exact": true,
+        "output_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+        "status": "HALTED",
+        "steps": 114120
+      }
+    },
+    "empty": {
+      "runner": {
+        "output_exact_with_framing": true,
+        "rc": 0,
+        "status": "HALTED",
+        "stderr_hex": "73746570733a2039363533207c207374617475733a2048414c5445440a",
+        "stdout_hex": "0a",
+        "steps": 9653
+      },
+      "scratch": {
+        "exact": true,
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status": "HALTED",
+        "steps": 9928
+      }
+    },
+    "long10000": {
+      "runner": {
+        "reason": "previous long-input attempt timed out after 90 seconds",
+        "status": "NOT_DEMONSTRATED"
+      },
+      "scratch": {
+        "exact": true,
+        "output_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+        "status": "HALTED",
+        "steps": 4079928
+      }
+    },
+    "mixed": {
+      "runner": {
+        "output_exact_with_framing": true,
+        "rc": 0,
+        "status": "HALTED",
+        "stderr_hex": "73746570733a203131323831207c207374617475733a2048414c5445440a",
+        "stdout_hex": "000a80ff0a",
+        "steps": 11281
+      },
+      "scratch": {
+        "exact": true,
+        "output_sha256": "ffe35b4fa5c7b0f56cd1655225abb697077c5a2da853f2664bcb566c14be0fe8",
+        "status": "HALTED",
+        "steps": 11556
+      }
+    },
+    "nul": {
+      "runner": {
+        "output_exact_with_framing": true,
+        "rc": 0,
+        "status": "HALTED",
+        "stderr_hex": "73746570733a203130303630207c207374617475733a2048414c5445440a",
+        "stdout_hex": "000a",
+        "steps": 10060
+      },
+      "scratch": {
+        "exact": true,
+        "output_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "status": "HALTED",
+        "steps": 10335
+      }
+    }
+  },
+  "image_sha256": "c7b0aef98363242607c1fb13aa964fd412da057bcea04105f7e9b8559e986d13",
+  "note": "C runner stopped by host on EOF in source e7faeb1; status HALTED does not prove opcode halt",
+  "step_limit": 10000000
+}

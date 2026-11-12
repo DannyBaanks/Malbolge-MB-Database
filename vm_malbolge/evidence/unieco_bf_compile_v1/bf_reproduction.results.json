@@ -1,0 +1,7 @@
+{
+  "command": "python3 verify.py in new isolated tree",
+  "rc": 0,
+  "stdout": "cases 261 all match True\ncontrols 4 all rejected True\n",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "results_identical": true
+}
