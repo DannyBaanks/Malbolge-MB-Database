@@ -1,0 +1,32 @@
+{
+  "T1": 57100,
+  "T2": 57300,
+  "T3": 57800,
+  "want": 40,
+  "clock": 58303,
+  "clock2": 58585,
+  "clock3": 58679,
+  "rearm": 57565,
+  "rearm2": 58339,
+  "store": 57700,
+  "store2": 57720,
+  "s2": 57380,
+  "s3": 57750,
+  "programs": {
+    "positive": {
+      "target_cells": 150,
+      "plan_length": 9823,
+      "plan_end": 9922,
+      "fits": true,
+      "elapsed_seconds": 0.548
+    },
+    "control": {
+      "target_cells": 150,
+      "plan_length": 9770,
+      "plan_end": 9869,
+      "fits": true,
+      "elapsed_seconds": 0.138
+    }
+  },
+  "scope": "three fixed restores; CLOCK2 relocated for free REARM2; CLOCK3 halts"
+}

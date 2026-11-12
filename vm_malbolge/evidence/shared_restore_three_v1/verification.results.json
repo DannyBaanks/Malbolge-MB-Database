@@ -1,0 +1,210 @@
+{
+  "control": {
+    "final": {
+      "C": 39,
+      "C2": 39,
+      "C3": 39,
+      "T1": 39,
+      "T2": 39,
+      "T3": 39,
+      "clock": 120,
+      "clock2": 120,
+      "clock3": 58,
+      "patch1": 57564,
+      "patch2": 58338
+    },
+    "halt_pc": 58679,
+    "image_sha256": "6a9dc84f8e9512418fb868af16fe409bea5d34c684583a7744624aa050e5a261",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "patch_ok": true,
+    "scratch_steps": 9948,
+    "strict_cells": true,
+    "t1_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 1931
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9780
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9790
+      },
+      {
+        "after": 29485,
+        "before": 29524,
+        "step": 9812
+      },
+      {
+        "after": 39,
+        "before": 29485,
+        "step": 9821
+      }
+    ],
+    "t2_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 3205
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9845
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9855
+      },
+      {
+        "after": 29485,
+        "before": 29524,
+        "step": 9877
+      },
+      {
+        "after": 39,
+        "before": 29485,
+        "step": 9886
+      }
+    ],
+    "t3_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 7055
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9910
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9920
+      },
+      {
+        "after": 29485,
+        "before": 29524,
+        "step": 9934
+      },
+      {
+        "after": 39,
+        "before": 29485,
+        "step": 9944
+      }
+    ]
+  },
+  "positive": {
+    "final": {
+      "C": 40,
+      "C2": 40,
+      "C3": 40,
+      "T1": 40,
+      "T2": 40,
+      "T3": 40,
+      "clock": 120,
+      "clock2": 120,
+      "clock3": 58,
+      "patch1": 57564,
+      "patch2": 58338
+    },
+    "halt_pc": 58679,
+    "image_sha256": "a3af879341946882547a34e6cfad302bb3a3e27029d5e22bc5141f0e55d5a2da",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "patch_ok": true,
+    "scratch_steps": 10001,
+    "strict_cells": true,
+    "t1_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 1931
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9833
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9843
+      },
+      {
+        "after": 29484,
+        "before": 29524,
+        "step": 9865
+      },
+      {
+        "after": 40,
+        "before": 29484,
+        "step": 9874
+      }
+    ],
+    "t2_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 3126
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9898
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9908
+      },
+      {
+        "after": 29484,
+        "before": 29524,
+        "step": 9930
+      },
+      {
+        "after": 40,
+        "before": 29484,
+        "step": 9939
+      }
+    ],
+    "t3_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 7101
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 9963
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 9973
+      },
+      {
+        "after": 29484,
+        "before": 29524,
+        "step": 9987
+      },
+      {
+        "after": 40,
+        "before": 29484,
+        "step": 9997
+      }
+    ]
+  }
+}

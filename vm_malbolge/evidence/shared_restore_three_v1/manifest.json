@@ -1,0 +1,21 @@
+{
+  "count": 16,
+  "files": {
+    "DESIGN.md": "829d0df21c2a6f3f6d58df8ce0e05ce2567232f62e1126ffb34ffc377a7ecaf7",
+    "GATES.md": "a1396cc0df4296a9cd9ae3e031ba56501d42514d95c252b54aa8f87956352ed4",
+    "GUIA.md": "345b6493cbc7c7c2a9c238cd55d2b7597227b3a63a8659a80cee5069c135a7e3",
+    "VERDICT.md": "ff3b84f75e4c914dfeb0b414a7e93b154dbdba2b2f376dd15062e53beaaec177",
+    "restore3_control.mb": "6a9dc84f8e9512418fb868af16fe409bea5d34c684583a7744624aa050e5a261",
+    "restore3_control_plan.ops": "75b1a64b251bbe008705eeb2487c0afe84587a4afd573401089db63f2b2d355a",
+    "restore3_control_targets.json": "8fe5d7c92adb424ec4a3bb2e45c98f5a3deac5b2bffd28960eaf44bac97982d7",
+    "restore3_positive.mb": "a3af879341946882547a34e6cfad302bb3a3e27029d5e22bc5141f0e55d5a2da",
+    "restore3_positive_plan.ops": "983e7d20a1c5aab303200bfe2220e3d0ace6c88f985975099ee2f2d39ec69912",
+    "restore3_positive_targets.json": "177c3ef5748d46788a7fbfda59053e74065388cccbd06616270f1fa2291b9ad4",
+    "synthesis.results.json": "fd611fc4c36f590345fa8c0e13fdfe56fd1f8572a4fc95a17c047b5e0e5eae0d",
+    "synthesize.py": "e96f0c3847ca22c32fd06de557e8aa3f19c5530fdbac7c4810340e94df6de4a7",
+    "verification.results.json": "c337cccca001123f894dcbbc3ee477603707dea82887380a56665df928df7515",
+    "verification.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification.stdout.raw.txt": "c337cccca001123f894dcbbc3ee477603707dea82887380a56665df928df7515",
+    "verify.py": "0a597cf28c2a6deba9c44a090d12bd1ce09c874993f5e0b4f1f11c993601c70d"
+  }
+}
