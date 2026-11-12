@@ -1,0 +1,5 @@
+# Rearme de varias celdas ejecutadas: puertas
+
+2026-11-12. Base `c65b75b`. Objetivo: ejecutar en una sola imagen estricta dos celdas de código originales del bloque de incremento, restaurar cada una dentro de Malbolge y ejecutarla de nuevo en su misma dirección; sin escritura del host durante ejecución. Las celdas pueden estar en islas aisladas con auxiliares; no llamarlo rearme del bloque completo.
+
+G0: estado inicial construido en la imagen, loader estricto y halt bajo Olmstead. G1: dos celdas de código, dos visitas por celda con opcode original y escrituras de restauración observadas por REA y un trazador separado. G2: control negativo que suprima una operación de restauración y cause al menos un segundo opcode distinto; registrar si la ejecución nativa por sí sola distingue el control. G3: repetición de síntesis en árbol aislado, hashes y capturas crudas; no sobreescribir evidencia previa. G4: bloque completo, rutina autorrearmable, loop arbitrario y EOF siguen NOT_DEMONSTRATED si no se construyen y prueban.
