@@ -1,0 +1,1 @@
+{"evidence_id":"ev_574656384fa71b957b666dbc936e8f7dfcd976a2e6a85a1fbdbbc0b27f16cf42","raw_sha256":"56c6c7caa72172d3fe73cf80987a62c8a87afe5c6c45c103bd874241855c6e1b","status":"HALTED","steps":2687,"first_event":2600,"events_truncated":true,"output_bytes":[166],"visits":[{"step":2681,"opcode":68,"a":56998,"d":57000},{"step":2685,"opcode":64,"a":56998,"d":57004}]}

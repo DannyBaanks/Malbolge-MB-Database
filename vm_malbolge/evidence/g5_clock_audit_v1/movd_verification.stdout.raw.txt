@@ -1,0 +1,124 @@
+{
+  "control": {
+    "image_sha256": "6c69ced38365c01fe721f32d36ac2488e7ae67d7019e3ae657ad1c4b8b98b9bb",
+    "movd_destinations": [
+      57100,
+      57200,
+      57300
+    ],
+    "native_rc": 0,
+    "native_stdout_hex": "",
+    "rea_event_start": 2300,
+    "rea_events_truncated": true,
+    "rea_id": "ev_a40763f91948d24d747dc1abd3bd95c2ee6f83053b9c0ba5c216ff914bb0466b",
+    "rea_status": "HALTED",
+    "rea_steps": 2442,
+    "scratch_steps": 2442,
+    "strict_cells": true,
+    "visits": [
+      {
+        "d": 57000,
+        "opcode": 36,
+        "step": 2428,
+        "value": 70
+      },
+      {
+        "d": 57002,
+        "opcode": 40,
+        "step": 2430,
+        "value": 74
+      },
+      {
+        "d": 57101,
+        "opcode": 36,
+        "step": 2432,
+        "value": 70
+      },
+      {
+        "d": 57103,
+        "opcode": 40,
+        "step": 2434,
+        "value": 74
+      },
+      {
+        "d": 57201,
+        "opcode": 36,
+        "step": 2436,
+        "value": 70
+      },
+      {
+        "d": 57203,
+        "opcode": 40,
+        "step": 2438,
+        "value": 74
+      },
+      {
+        "d": 57301,
+        "opcode": 36,
+        "step": 2440,
+        "value": 70
+      }
+    ],
+    "window_equal": true,
+    "window_events": 143,
+    "window_through_halt": true
+  },
+  "positive": {
+    "image_sha256": "a3aa82b013c1edab762a41fa162cc3cd1c084d9c37c4f238b9223f6234fa56e6",
+    "movd_destinations": [
+      57100,
+      57200,
+      57300
+    ],
+    "native_rc": 0,
+    "native_stdout_hex": "",
+    "rea_event_start": 2300,
+    "rea_events_truncated": true,
+    "rea_id": "ev_42fc94c33153f7c8c0636469afd192593c0c443f084b736e0ba8c22fdf99b53b",
+    "rea_status": "HALTED",
+    "rea_steps": 2448,
+    "scratch_steps": 2448,
+    "strict_cells": true,
+    "visits": [
+      {
+        "d": 57000,
+        "opcode": 40,
+        "step": 2436,
+        "value": 74
+      },
+      {
+        "d": 57101,
+        "opcode": 36,
+        "step": 2438,
+        "value": 70
+      },
+      {
+        "d": 57103,
+        "opcode": 40,
+        "step": 2440,
+        "value": 74
+      },
+      {
+        "d": 57201,
+        "opcode": 36,
+        "step": 2442,
+        "value": 70
+      },
+      {
+        "d": 57203,
+        "opcode": 40,
+        "step": 2444,
+        "value": 74
+      },
+      {
+        "d": 57301,
+        "opcode": 36,
+        "step": 2446,
+        "value": 70
+      }
+    ],
+    "window_equal": true,
+    "window_events": 149,
+    "window_through_halt": true
+  }
+}

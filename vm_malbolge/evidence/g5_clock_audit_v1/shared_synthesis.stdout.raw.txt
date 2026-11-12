@@ -1,0 +1,41 @@
+{
+  "pc": 58456,
+  "positive_initial": 74,
+  "control_initial": 70,
+  "expected_positive_opcodes": [
+    62,
+    58,
+    62,
+    58,
+    62,
+    58
+  ],
+  "positive_target_cells": [
+    57000,
+    57004,
+    57008
+  ],
+  "control_target_cells": [
+    57002,
+    57006,
+    57010
+  ],
+  "return_scheme": "six preinstalled D-pointer values; final pointer goes to HALT",
+  "scope": "phase-shared single instruction with finite driver, not a complete reusable restorer",
+  "programs": {
+    "positive": {
+      "target_cells": 18,
+      "plan_length": 2096,
+      "plan_end": 2195,
+      "fits": true,
+      "elapsed_seconds": 0.018
+    },
+    "control": {
+      "target_cells": 18,
+      "plan_length": 2113,
+      "plan_end": 2212,
+      "fits": true,
+      "elapsed_seconds": 0.011
+    }
+  }
+}

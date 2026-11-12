@@ -1,0 +1,33 @@
+{
+  "derived": "r >= 19*(19*r+b) = 361*r+19*b",
+  "island_length": 19,
+  "island_op_counts": {
+    "*": 2,
+    "i": 1,
+    "j": 5,
+    "o": 8,
+    "p": 3
+  },
+  "literal_constraints": [
+    "b>=1",
+    "r>=0",
+    "s>=0",
+    "r>=19*(s+b)",
+    "s>=19*r"
+  ],
+  "scope": "disjoint dedicated 19-cell islands which restore every code cell; does not rule out shared reusable routines, semantic phase-tolerant NOPs, or block-level restoration",
+  "shared_schematic_only": {
+    "arithmetic_status": "sat",
+    "b": 2,
+    "r": 19,
+    "runtime_claim": "NOT_DEMONSTRATED",
+    "s": 19
+  },
+  "status": "unsat",
+  "unsat_core": [
+    "nonnegative_s",
+    "positive_body",
+    "r2_islands",
+    "r_islands"
+  ]
+}

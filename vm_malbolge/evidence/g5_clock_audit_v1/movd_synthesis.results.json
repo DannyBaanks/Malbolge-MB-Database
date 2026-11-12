@@ -1,0 +1,44 @@
+{
+  "pc": 58434,
+  "positive_initial": 74,
+  "control_initial": 70,
+  "destinations": [
+    57100,
+    57200,
+    57300
+  ],
+  "expected_positive_opcodes": [
+    40,
+    36,
+    40,
+    36,
+    40,
+    36
+  ],
+  "expected_control_opcodes": [
+    36,
+    40,
+    36,
+    40,
+    36,
+    40,
+    36
+  ],
+  "scope": "phase-shared MOVD with finite pointer driver; not complete restorer",
+  "programs": {
+    "positive": {
+      "target_cells": 17,
+      "plan_length": 2434,
+      "plan_end": 2533,
+      "fits": true,
+      "elapsed_seconds": 0.039
+    },
+    "control": {
+      "target_cells": 17,
+      "plan_length": 2426,
+      "plan_end": 2525,
+      "fits": true,
+      "elapsed_seconds": 0.01
+    }
+  }
+}

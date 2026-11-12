@@ -1,0 +1,6300 @@
+{
+  "evidence_id": "ev_ddcd39c57477a622400be929afc90a6053436510e2fffb753fba64adc0a80278",
+  "subject": {
+    "name": "rot_positive.mb",
+    "digest": {
+      "sha256": "070ba7f3823bfbcffb94027fa790cb7b0b60d7394680403a79ba660fd0a10cd3"
+    },
+    "local_path": "<image>",
+    "format": "file",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rea-malbolge-classic",
+    "name": "REA Malbolge Classic engine",
+    "version": "6.5.0"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.analysis",
+  "operation": "trace_malbolge",
+  "parameters": {
+    "path": "<image>",
+    "max_steps": 5000,
+    "event_capture_limit": 512,
+    "event_start_step": 2000,
+    "eof_mode": "olmstead_1998"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "artifact": {
+      "path": "<image>",
+      "sha256": "070ba7f3823bfbcffb94027fa790cb7b0b60d7394680403a79ba660fd0a10cd3",
+      "bytes": 56382
+    },
+    "execution_id": "db9e0646-3c4d-4484-925e-3e8b47e438a3",
+    "run": {
+      "steps": 2376,
+      "status": "HALTED",
+      "invalid_reason": null,
+      "events_truncated": true,
+      "peak_position": 58434,
+      "writebacks": 3004,
+      "representation_changes": 2836,
+      "state_digest_before": "4fe38b25a9ba42cbbab9b7ce0ed5a077d297be9f71de348cb395afb95f82b71a",
+      "state_digest_after": "d028601da5d8b728868fdaeb174779fe5423b803cfd476d7df95b3cc4113c1d6"
+    },
+    "output_text": "",
+    "output_bytes": [],
+    "events": [
+      {
+        "step": 2000,
+        "position": 2097,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 56618,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2097,
+            "value_before": 105,
+            "value_after": 42
+          }
+        ]
+      },
+      {
+        "step": 2001,
+        "position": 2098,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 56618,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 56618,
+            "value_after": 58238
+          },
+          {
+            "position": 2098,
+            "value_before": 103,
+            "value_after": 117
+          }
+        ]
+      },
+      {
+        "step": 2002,
+        "position": 2099,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58238,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2099,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2003,
+        "position": 2100,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58238,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2100,
+            "value_before": 102,
+            "value_after": 96
+          }
+        ]
+      },
+      {
+        "step": 2004,
+        "position": 2101,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58238,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58238,
+            "value_after": 58778
+          },
+          {
+            "position": 2101,
+            "value_before": 100,
+            "value_after": 97
+          }
+        ]
+      },
+      {
+        "step": 2005,
+        "position": 2102,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58778,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2102,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2006,
+        "position": 2103,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58778,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2103,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 2007,
+        "position": 2104,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58778,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58778,
+            "value_after": 58958
+          },
+          {
+            "position": 2104,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2008,
+        "position": 2105,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58958,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2105,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 2009,
+        "position": 2106,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58958,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2106,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 2010,
+        "position": 2107,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58958,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58958,
+            "value_after": 59018
+          },
+          {
+            "position": 2107,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2011,
+        "position": 2108,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 59018,
+        "d": 52,
+        "writes": [
+          {
+            "position": 52,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2108,
+            "value_before": 93,
+            "value_after": 98
+          }
+        ]
+      },
+      {
+        "step": 2012,
+        "position": 2109,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2109,
+            "value_before": 93,
+            "value_after": 98
+          }
+        ]
+      },
+      {
+        "step": 2013,
+        "position": 2110,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 59018,
+            "value_after": 29554
+          },
+          {
+            "position": 2110,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 2014,
+        "position": 2111,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29554,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2111,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2015,
+        "position": 2112,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29554,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2112,
+            "value_before": 118,
+            "value_after": 107
+          }
+        ]
+      },
+      {
+        "step": 2016,
+        "position": 2113,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29554,
+        "d": 54,
+        "writes": [
+          {
+            "position": 2113,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2017,
+        "position": 2114,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29554,
+        "d": 48,
+        "writes": [
+          {
+            "position": 48,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2114,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2018,
+        "position": 2115,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 49,
+        "writes": [
+          {
+            "position": 2115,
+            "value_before": 115,
+            "value_after": 82
+          }
+        ]
+      },
+      {
+        "step": 2019,
+        "position": 2116,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 50,
+        "writes": [
+          {
+            "position": 50,
+            "value_before": 59046,
+            "value_after": 59047
+          },
+          {
+            "position": 2116,
+            "value_before": 108,
+            "value_after": 39
+          }
+        ]
+      },
+      {
+        "step": 2020,
+        "position": 2117,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 29554,
+            "value_after": 59016
+          },
+          {
+            "position": 2117,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2021,
+        "position": 2118,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 59016,
+        "d": 52,
+        "writes": [
+          {
+            "position": 52,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2118,
+            "value_before": 83,
+            "value_after": 94
+          }
+        ]
+      },
+      {
+        "step": 2022,
+        "position": 2119,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2119,
+            "value_before": 83,
+            "value_after": 94
+          }
+        ]
+      },
+      {
+        "step": 2023,
+        "position": 2120,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 59016,
+            "value_after": 29553
+          },
+          {
+            "position": 2120,
+            "value_before": 104,
+            "value_after": 89
+          }
+        ]
+      },
+      {
+        "step": 2024,
+        "position": 2121,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29553,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2121,
+            "value_before": 109,
+            "value_after": 88
+          }
+        ]
+      },
+      {
+        "step": 2025,
+        "position": 2122,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29553,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2122,
+            "value_before": 108,
+            "value_after": 39
+          }
+        ]
+      },
+      {
+        "step": 2026,
+        "position": 2123,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29553,
+        "d": 54,
+        "writes": [
+          {
+            "position": 2123,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2027,
+        "position": 2124,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29553,
+        "d": 55,
+        "writes": [
+          {
+            "position": 2124,
+            "value_before": 78,
+            "value_after": 49
+          }
+        ]
+      },
+      {
+        "step": 2028,
+        "position": 2125,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29553,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2125,
+            "value_before": 77,
+            "value_after": 65
+          }
+        ]
+      },
+      {
+        "step": 2029,
+        "position": 2126,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29553,
+        "d": 58299,
+        "writes": [
+          {
+            "position": 2126,
+            "value_before": 104,
+            "value_after": 89
+          }
+        ]
+      },
+      {
+        "step": 2030,
+        "position": 2127,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29553,
+        "d": 58300,
+        "writes": [
+          {
+            "position": 58300,
+            "value_before": 29443,
+            "value_after": 61
+          },
+          {
+            "position": 2127,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2031,
+        "position": 2128,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 61,
+        "d": 58301,
+        "writes": [
+          {
+            "position": 2128,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2032,
+        "position": 2129,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 61,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2129,
+            "value_before": 101,
+            "value_after": 99
+          }
+        ]
+      },
+      {
+        "step": 2033,
+        "position": 2130,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 61,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2130,
+            "value_before": 100,
+            "value_after": 97
+          }
+        ]
+      },
+      {
+        "step": 2034,
+        "position": 2131,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 61,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2131,
+            "value_before": 71,
+            "value_after": 83
+          }
+        ]
+      },
+      {
+        "step": 2035,
+        "position": 2132,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 61,
+        "d": 34,
+        "writes": [
+          {
+            "position": 34,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2132,
+            "value_before": 69,
+            "value_after": 112
+          }
+        ]
+      },
+      {
+        "step": 2036,
+        "position": 2133,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 35,
+        "writes": [
+          {
+            "position": 2133,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2037,
+        "position": 2134,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 36,
+        "writes": [
+          {
+            "position": 2134,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 2038,
+        "position": 2135,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 37,
+        "writes": [
+          {
+            "position": 2135,
+            "value_before": 95,
+            "value_after": 109
+          }
+        ]
+      },
+      {
+        "step": 2039,
+        "position": 2136,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 38,
+        "writes": [
+          {
+            "position": 2136,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2040,
+        "position": 2137,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 39,
+        "writes": [
+          {
+            "position": 2137,
+            "value_before": 93,
+            "value_after": 98
+          }
+        ]
+      },
+      {
+        "step": 2041,
+        "position": 2138,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 40,
+        "writes": [
+          {
+            "position": 2138,
+            "value_before": 64,
+            "value_after": 81
+          }
+        ]
+      },
+      {
+        "step": 2042,
+        "position": 2139,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 58298,
+            "value_after": 57566
+          },
+          {
+            "position": 2139,
+            "value_before": 85,
+            "value_after": 73
+          }
+        ]
+      },
+      {
+        "step": 2043,
+        "position": 2140,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 57566,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2140,
+            "value_before": 62,
+            "value_after": 76
+          }
+        ]
+      },
+      {
+        "step": 2044,
+        "position": 2141,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 88,
+        "writes": [
+          {
+            "position": 2141,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2045,
+        "position": 2142,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 89,
+        "writes": [
+          {
+            "position": 2142,
+            "value_before": 88,
+            "value_after": 47
+          }
+        ]
+      },
+      {
+        "step": 2046,
+        "position": 2143,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 90,
+        "writes": [
+          {
+            "position": 2143,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2047,
+        "position": 2144,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 91,
+        "writes": [
+          {
+            "position": 2144,
+            "value_before": 86,
+            "value_after": 95
+          }
+        ]
+      },
+      {
+        "step": 2048,
+        "position": 2145,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 92,
+        "writes": [
+          {
+            "position": 2145,
+            "value_before": 85,
+            "value_after": 73
+          }
+        ]
+      },
+      {
+        "step": 2049,
+        "position": 2146,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57566,
+        "d": 93,
+        "writes": [
+          {
+            "position": 2146,
+            "value_before": 84,
+            "value_after": 61
+          }
+        ]
+      },
+      {
+        "step": 2050,
+        "position": 2147,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 57566,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 57566,
+            "value_after": 29524
+          },
+          {
+            "position": 2147,
+            "value_before": 77,
+            "value_after": 65
+          }
+        ]
+      },
+      {
+        "step": 2051,
+        "position": 2148,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2148,
+            "value_before": 82,
+            "value_after": 118
+          }
+        ]
+      },
+      {
+        "step": 2052,
+        "position": 2149,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 96,
+        "writes": [
+          {
+            "position": 2149,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 2053,
+        "position": 2150,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2150,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 2054,
+        "position": 2151,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2151,
+            "value_before": 79,
+            "value_after": 67
+          }
+        ]
+      },
+      {
+        "step": 2055,
+        "position": 2152,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2152,
+            "value_before": 78,
+            "value_after": 49
+          }
+        ]
+      },
+      {
+        "step": 2056,
+        "position": 2153,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 85,
+        "writes": [
+          {
+            "position": 2153,
+            "value_before": 49,
+            "value_after": 87
+          }
+        ]
+      },
+      {
+        "step": 2057,
+        "position": 2154,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2154,
+            "value_before": 76,
+            "value_after": 79
+          }
+        ]
+      },
+      {
+        "step": 2058,
+        "position": 2155,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59046
+          },
+          {
+            "position": 2155,
+            "value_before": 69,
+            "value_after": 112
+          }
+        ]
+      },
+      {
+        "step": 2059,
+        "position": 2156,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 57575,
+            "value_after": 28802
+          },
+          {
+            "position": 2156,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 2060,
+        "position": 2157,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 28802,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2157,
+            "value_before": 73,
+            "value_after": 50
+          }
+        ]
+      },
+      {
+        "step": 2061,
+        "position": 2158,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 28802,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2158,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 2062,
+        "position": 2159,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 28802,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 28802,
+            "value_after": 48966
+          },
+          {
+            "position": 2159,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 2063,
+        "position": 2160,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 48966,
+        "d": 75,
+        "writes": [
+          {
+            "position": 75,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2160,
+            "value_before": 41,
+            "value_after": 102
+          }
+        ]
+      },
+      {
+        "step": 2064,
+        "position": 2161,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2161,
+            "value_before": 41,
+            "value_after": 102
+          }
+        ]
+      },
+      {
+        "step": 2065,
+        "position": 2162,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 48966,
+            "value_after": 38874
+          },
+          {
+            "position": 2162,
+            "value_before": 62,
+            "value_after": 76
+          }
+        ]
+      },
+      {
+        "step": 2066,
+        "position": 2163,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38874,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2163,
+            "value_before": 67,
+            "value_after": 85
+          }
+        ]
+      },
+      {
+        "step": 2067,
+        "position": 2164,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 38874,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2164,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 2068,
+        "position": 2165,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 38874,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 38874,
+            "value_after": 9838
+          },
+          {
+            "position": 2165,
+            "value_before": 59,
+            "value_after": 92
+          }
+        ]
+      },
+      {
+        "step": 2069,
+        "position": 2166,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 9838,
+        "d": 75,
+        "writes": [
+          {
+            "position": 75,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2166,
+            "value_before": 35,
+            "value_after": 93
+          }
+        ]
+      },
+      {
+        "step": 2070,
+        "position": 2167,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2167,
+            "value_before": 35,
+            "value_after": 93
+          }
+        ]
+      },
+      {
+        "step": 2071,
+        "position": 2168,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 9838,
+            "value_after": 19676
+          },
+          {
+            "position": 2168,
+            "value_before": 56,
+            "value_after": 44
+          }
+        ]
+      },
+      {
+        "step": 2072,
+        "position": 2169,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 19676,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2169,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 2073,
+        "position": 2170,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 19676,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2170,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2074,
+        "position": 2171,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 19676,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2171,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 2075,
+        "position": 2172,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 19676,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2172,
+            "value_before": 123,
+            "value_after": 71
+          }
+        ]
+      },
+      {
+        "step": 2076,
+        "position": 2173,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2173,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 2077,
+        "position": 2174,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59046,
+            "value_after": 59047
+          },
+          {
+            "position": 2174,
+            "value_before": 50,
+            "value_after": 80
+          }
+        ]
+      },
+      {
+        "step": 2078,
+        "position": 2175,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 19676,
+            "value_after": 9839
+          },
+          {
+            "position": 2175,
+            "value_before": 49,
+            "value_after": 87
+          }
+        ]
+      },
+      {
+        "step": 2079,
+        "position": 2176,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 9839,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2176,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2080,
+        "position": 2177,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 9839,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2177,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2081,
+        "position": 2178,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 9839,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 9839,
+            "value_after": 42645
+          },
+          {
+            "position": 2178,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 2082,
+        "position": 2179,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 42645,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2179,
+            "value_before": 51,
+            "value_after": 41
+          }
+        ]
+      },
+      {
+        "step": 2083,
+        "position": 2180,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 42645,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2180,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2084,
+        "position": 2181,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 42645,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 42645,
+            "value_after": 14215
+          },
+          {
+            "position": 2181,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 2085,
+        "position": 2182,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 14215,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2182,
+            "value_before": 48,
+            "value_after": 123
+          }
+        ]
+      },
+      {
+        "step": 2086,
+        "position": 2183,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 14215,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2183,
+            "value_before": 47,
+            "value_after": 52
+          }
+        ]
+      },
+      {
+        "step": 2087,
+        "position": 2184,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 14215,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2184,
+            "value_before": 112,
+            "value_after": 68
+          }
+        ]
+      },
+      {
+        "step": 2088,
+        "position": 2185,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 14215,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2185,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 2089,
+        "position": 2186,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2186,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 2090,
+        "position": 2187,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59047
+          },
+          {
+            "position": 2187,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2091,
+        "position": 2188,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 14215,
+            "value_after": 8745
+          },
+          {
+            "position": 2188,
+            "value_before": 36,
+            "value_after": 38
+          }
+        ]
+      },
+      {
+        "step": 2092,
+        "position": 2189,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 8745,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2189,
+            "value_before": 41,
+            "value_after": 102
+          }
+        ]
+      },
+      {
+        "step": 2093,
+        "position": 2190,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 8745,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2190,
+            "value_before": 106,
+            "value_after": 77
+          }
+        ]
+      },
+      {
+        "step": 2094,
+        "position": 2191,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 8745,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 8745,
+            "value_after": 2915
+          },
+          {
+            "position": 2191,
+            "value_before": 104,
+            "value_after": 89
+          }
+        ]
+      },
+      {
+        "step": 2095,
+        "position": 2192,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 2915,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2192,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 2096,
+        "position": 2193,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 2915,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2193,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2097,
+        "position": 2194,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 2915,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2194,
+            "value_before": 102,
+            "value_after": 96
+          }
+        ]
+      },
+      {
+        "step": 2098,
+        "position": 2195,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 2915,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2195,
+            "value_before": 100,
+            "value_after": 97
+          }
+        ]
+      },
+      {
+        "step": 2099,
+        "position": 2196,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2196,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2100,
+        "position": 2197,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59047
+          },
+          {
+            "position": 2197,
+            "value_before": 121,
+            "value_after": 35
+          }
+        ]
+      },
+      {
+        "step": 2101,
+        "position": 2198,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 2915,
+            "value_after": 4739
+          },
+          {
+            "position": 2198,
+            "value_before": 120,
+            "value_after": 58
+          }
+        ]
+      },
+      {
+        "step": 2102,
+        "position": 2199,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 4739,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2199,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 2103,
+        "position": 2200,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 4739,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2200,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 2104,
+        "position": 2201,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 4739,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 4739,
+            "value_after": 40945
+          },
+          {
+            "position": 2201,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2105,
+        "position": 2202,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 40945,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2202,
+            "value_before": 122,
+            "value_after": 63
+          }
+        ]
+      },
+      {
+        "step": 2106,
+        "position": 2203,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 40945,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2203,
+            "value_before": 93,
+            "value_after": 98
+          }
+        ]
+      },
+      {
+        "step": 2107,
+        "position": 2204,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 40945,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 40945,
+            "value_after": 33331
+          },
+          {
+            "position": 2204,
+            "value_before": 91,
+            "value_after": 106
+          }
+        ]
+      },
+      {
+        "step": 2108,
+        "position": 2205,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 33331,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2205,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2109,
+        "position": 2206,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 33331,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2206,
+            "value_before": 90,
+            "value_after": 124
+          }
+        ]
+      },
+      {
+        "step": 2110,
+        "position": 2207,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 33331,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 33331,
+            "value_after": 30793
+          },
+          {
+            "position": 2207,
+            "value_before": 88,
+            "value_after": 47
+          }
+        ]
+      },
+      {
+        "step": 2111,
+        "position": 2208,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 30793,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2208,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2112,
+        "position": 2209,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 30793,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2209,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2113,
+        "position": 2210,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 30793,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 30793,
+            "value_after": 29947
+          },
+          {
+            "position": 2210,
+            "value_before": 85,
+            "value_after": 73
+          }
+        ]
+      },
+      {
+        "step": 2114,
+        "position": 2211,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29947,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2211,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 2115,
+        "position": 2212,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29947,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2212,
+            "value_before": 84,
+            "value_after": 61
+          }
+        ]
+      },
+      {
+        "step": 2116,
+        "position": 2213,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29947,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29947,
+            "value_after": 29665
+          },
+          {
+            "position": 2213,
+            "value_before": 82,
+            "value_after": 118
+          }
+        ]
+      },
+      {
+        "step": 2117,
+        "position": 2214,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29665,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2214,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 2118,
+        "position": 2215,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29665,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2215,
+            "value_before": 109,
+            "value_after": 88
+          }
+        ]
+      },
+      {
+        "step": 2119,
+        "position": 2216,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29665,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2216,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 2120,
+        "position": 2217,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29665,
+        "d": 71,
+        "writes": [
+          {
+            "position": 2217,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2121,
+        "position": 2218,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29665,
+        "d": 72,
+        "writes": [
+          {
+            "position": 72,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2218,
+            "value_before": 77,
+            "value_after": 65
+          }
+        ]
+      },
+      {
+        "step": 2122,
+        "position": 2219,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59046
+          },
+          {
+            "position": 2219,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 2123,
+        "position": 2220,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29665,
+            "value_after": 58573
+          },
+          {
+            "position": 2220,
+            "value_before": 98,
+            "value_after": 84
+          }
+        ]
+      },
+      {
+        "step": 2124,
+        "position": 2221,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58573,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2221,
+            "value_before": 103,
+            "value_after": 117
+          }
+        ]
+      },
+      {
+        "step": 2125,
+        "position": 2222,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58573,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2222,
+            "value_before": 102,
+            "value_after": 96
+          }
+        ]
+      },
+      {
+        "step": 2126,
+        "position": 2223,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58573,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2223,
+            "value_before": 101,
+            "value_after": 99
+          }
+        ]
+      },
+      {
+        "step": 2127,
+        "position": 2224,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58573,
+        "d": 78,
+        "writes": [
+          {
+            "position": 2224,
+            "value_before": 72,
+            "value_after": 55
+          }
+        ]
+      },
+      {
+        "step": 2128,
+        "position": 2225,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 58573,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 29524,
+            "value_after": 58431
+          },
+          {
+            "position": 2225,
+            "value_before": 93,
+            "value_after": 98
+          }
+        ]
+      },
+      {
+        "step": 2129,
+        "position": 2226,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2226,
+            "value_before": 98,
+            "value_after": 84
+          }
+        ]
+      },
+      {
+        "step": 2130,
+        "position": 2227,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58431,
+        "d": 96,
+        "writes": [
+          {
+            "position": 2227,
+            "value_before": 69,
+            "value_after": 112
+          }
+        ]
+      },
+      {
+        "step": 2131,
+        "position": 2228,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2228,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 2132,
+        "position": 2229,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2229,
+            "value_before": 95,
+            "value_after": 109
+          }
+        ]
+      },
+      {
+        "step": 2133,
+        "position": 2230,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2230,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2134,
+        "position": 2231,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58431,
+        "d": 85,
+        "writes": [
+          {
+            "position": 2231,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2135,
+        "position": 2232,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2232,
+            "value_before": 92,
+            "value_after": 115
+          }
+        ]
+      },
+      {
+        "step": 2136,
+        "position": 2233,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58431,
+        "d": 73,
+        "writes": [
+          {
+            "position": 2233,
+            "value_before": 91,
+            "value_after": 106
+          }
+        ]
+      },
+      {
+        "step": 2137,
+        "position": 2234,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 58431,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 58573,
+            "value_after": 29413
+          },
+          {
+            "position": 2234,
+            "value_before": 84,
+            "value_after": 61
+          }
+        ]
+      },
+      {
+        "step": 2138,
+        "position": 2235,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29413,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2235,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2139,
+        "position": 2236,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29413,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2236,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2140,
+        "position": 2237,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29413,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29413,
+            "value_after": 29487
+          },
+          {
+            "position": 2237,
+            "value_before": 58,
+            "value_after": 37
+          }
+        ]
+      },
+      {
+        "step": 2141,
+        "position": 2238,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29487,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2238,
+            "value_before": 86,
+            "value_after": 95
+          }
+        ]
+      },
+      {
+        "step": 2142,
+        "position": 2239,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29487,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2239,
+            "value_before": 85,
+            "value_after": 73
+          }
+        ]
+      },
+      {
+        "step": 2143,
+        "position": 2240,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29487,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2240,
+            "value_before": 56,
+            "value_after": 44
+          }
+        ]
+      },
+      {
+        "step": 2144,
+        "position": 2241,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29487,
+        "d": 71,
+        "writes": [
+          {
+            "position": 2241,
+            "value_before": 83,
+            "value_after": 94
+          }
+        ]
+      },
+      {
+        "step": 2145,
+        "position": 2242,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29487,
+        "d": 72,
+        "writes": [
+          {
+            "position": 72,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2242,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 2146,
+        "position": 2243,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59046,
+            "value_after": 59046
+          },
+          {
+            "position": 2243,
+            "value_before": 75,
+            "value_after": 104
+          }
+        ]
+      },
+      {
+        "step": 2147,
+        "position": 2244,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29487,
+            "value_after": 58975
+          },
+          {
+            "position": 2244,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2148,
+        "position": 2245,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58975,
+        "d": 75,
+        "writes": [
+          {
+            "position": 75,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2245,
+            "value_before": 50,
+            "value_after": 80
+          }
+        ]
+      },
+      {
+        "step": 2149,
+        "position": 2246,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2246,
+            "value_before": 50,
+            "value_after": 80
+          }
+        ]
+      },
+      {
+        "step": 2150,
+        "position": 2247,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 58975,
+            "value_after": 29489
+          },
+          {
+            "position": 2247,
+            "value_before": 71,
+            "value_after": 83
+          }
+        ]
+      },
+      {
+        "step": 2151,
+        "position": 2248,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29489,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2248,
+            "value_before": 76,
+            "value_after": 79
+          }
+        ]
+      },
+      {
+        "step": 2152,
+        "position": 2249,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29489,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2249,
+            "value_before": 75,
+            "value_after": 104
+          }
+        ]
+      },
+      {
+        "step": 2153,
+        "position": 2250,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29489,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2250,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2154,
+        "position": 2251,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29489,
+        "d": 78,
+        "writes": [
+          {
+            "position": 2251,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 2155,
+        "position": 2252,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29489,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2252,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 2156,
+        "position": 2253,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29489,
+        "d": 58432,
+        "writes": [
+          {
+            "position": 2253,
+            "value_before": 71,
+            "value_after": 83
+          }
+        ]
+      },
+      {
+        "step": 2157,
+        "position": 2254,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29489,
+        "d": 58433,
+        "writes": [
+          {
+            "position": 2254,
+            "value_before": 70,
+            "value_after": 74
+          }
+        ]
+      },
+      {
+        "step": 2158,
+        "position": 2255,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29489,
+        "d": 58434,
+        "writes": [
+          {
+            "position": 58434,
+            "value_before": 29443,
+            "value_after": 38
+          },
+          {
+            "position": 2255,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2159,
+        "position": 2256,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 38,
+        "d": 58435,
+        "writes": [
+          {
+            "position": 2256,
+            "value_before": 40,
+            "value_after": 121
+          }
+        ]
+      },
+      {
+        "step": 2160,
+        "position": 2257,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2257,
+            "value_before": 67,
+            "value_after": 85
+          }
+        ]
+      },
+      {
+        "step": 2161,
+        "position": 2258,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2258,
+            "value_before": 66,
+            "value_after": 62
+          }
+        ]
+      },
+      {
+        "step": 2162,
+        "position": 2259,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2259,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2163,
+        "position": 2260,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 38,
+        "d": 85,
+        "writes": [
+          {
+            "position": 2260,
+            "value_before": 36,
+            "value_after": 38
+          }
+        ]
+      },
+      {
+        "step": 2164,
+        "position": 2261,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2261,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2165,
+        "position": 2262,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38,
+        "d": 73,
+        "writes": [
+          {
+            "position": 2262,
+            "value_before": 62,
+            "value_after": 76
+          }
+        ]
+      },
+      {
+        "step": 2166,
+        "position": 2263,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 38,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29489,
+            "value_after": 49195
+          },
+          {
+            "position": 2263,
+            "value_before": 126,
+            "value_after": 64
+          }
+        ]
+      },
+      {
+        "step": 2167,
+        "position": 2264,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 49195,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2264,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2168,
+        "position": 2265,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 49195,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2265,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 2169,
+        "position": 2266,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 49195,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 49195,
+            "value_after": 36081
+          },
+          {
+            "position": 2266,
+            "value_before": 123,
+            "value_after": 71
+          }
+        ]
+      },
+      {
+        "step": 2170,
+        "position": 2267,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 36081,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2267,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 2171,
+        "position": 2268,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 36081,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2268,
+            "value_before": 122,
+            "value_after": 63
+          }
+        ]
+      },
+      {
+        "step": 2172,
+        "position": 2269,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 36081,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 36081,
+            "value_after": 12027
+          },
+          {
+            "position": 2269,
+            "value_before": 120,
+            "value_after": 58
+          }
+        ]
+      },
+      {
+        "step": 2173,
+        "position": 2270,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 12027,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2270,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2174,
+        "position": 2271,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 12027,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2271,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2175,
+        "position": 2272,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 12027,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 12027,
+            "value_after": 4009
+          },
+          {
+            "position": 2272,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 2176,
+        "position": 2273,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 4009,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2273,
+            "value_before": 51,
+            "value_after": 41
+          }
+        ]
+      },
+      {
+        "step": 2177,
+        "position": 2274,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 4009,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2274,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2178,
+        "position": 2275,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 4009,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 4009,
+            "value_after": 21019
+          },
+          {
+            "position": 2275,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 2179,
+        "position": 2276,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 21019,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2276,
+            "value_before": 48,
+            "value_after": 123
+          }
+        ]
+      },
+      {
+        "step": 2180,
+        "position": 2277,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 21019,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2277,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 2181,
+        "position": 2278,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 21019,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 21019,
+            "value_after": 26689
+          },
+          {
+            "position": 2278,
+            "value_before": 111,
+            "value_after": 120
+          }
+        ]
+      },
+      {
+        "step": 2182,
+        "position": 2279,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 26689,
+        "d": 75,
+        "writes": [
+          {
+            "position": 75,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2279,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 2183,
+        "position": 2280,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2280,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 2184,
+        "position": 2281,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 26689,
+            "value_after": 53135
+          },
+          {
+            "position": 2281,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2185,
+        "position": 2282,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 53135,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2282,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 2186,
+        "position": 2283,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 53135,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2283,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2187,
+        "position": 2284,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 53135,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 53135,
+            "value_after": 29443
+          },
+          {
+            "position": 2284,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2188,
+        "position": 2285,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29443,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2285,
+            "value_before": 39,
+            "value_after": 116
+          }
+        ]
+      },
+      {
+        "step": 2189,
+        "position": 2286,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29443,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2286,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 2190,
+        "position": 2287,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29443,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2287,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2191,
+        "position": 2288,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29443,
+        "d": 78,
+        "writes": [
+          {
+            "position": 2288,
+            "value_before": 102,
+            "value_after": 96
+          }
+        ]
+      },
+      {
+        "step": 2192,
+        "position": 2289,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29443,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2289,
+            "value_before": 101,
+            "value_after": 99
+          }
+        ]
+      },
+      {
+        "step": 2193,
+        "position": 2290,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29443,
+        "d": 58432,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 29443,
+            "value_after": 81
+          },
+          {
+            "position": 2290,
+            "value_before": 122,
+            "value_after": 63
+          }
+        ]
+      },
+      {
+        "step": 2194,
+        "position": 2291,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 81,
+        "d": 58433,
+        "writes": [
+          {
+            "position": 2291,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 2195,
+        "position": 2292,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 81,
+        "d": 82,
+        "writes": [
+          {
+            "position": 82,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2292,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2196,
+        "position": 2293,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 0,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2293,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2197,
+        "position": 2294,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 0,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2294,
+            "value_before": 96,
+            "value_after": 60
+          }
+        ]
+      },
+      {
+        "step": 2198,
+        "position": 2295,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 58432,
+        "writes": [
+          {
+            "position": 2295,
+            "value_before": 123,
+            "value_after": 71
+          }
+        ]
+      },
+      {
+        "step": 2199,
+        "position": 2296,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 58433,
+        "writes": [
+          {
+            "position": 58433,
+            "value_before": 81,
+            "value_after": 29524
+          },
+          {
+            "position": 2296,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2200,
+        "position": 2297,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 58434,
+        "writes": [
+          {
+            "position": 2297,
+            "value_before": 121,
+            "value_after": 35
+          }
+        ]
+      },
+      {
+        "step": 2201,
+        "position": 2298,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 58435,
+        "writes": [
+          {
+            "position": 2298,
+            "value_before": 92,
+            "value_after": 115
+          }
+        ]
+      },
+      {
+        "step": 2202,
+        "position": 2299,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2299,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2203,
+        "position": 2300,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2300,
+            "value_before": 118,
+            "value_after": 107
+          }
+        ]
+      },
+      {
+        "step": 2204,
+        "position": 2301,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2301,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 2205,
+        "position": 2302,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 85,
+        "writes": [
+          {
+            "position": 2302,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2206,
+        "position": 2303,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 86,
+        "writes": [
+          {
+            "position": 2303,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2207,
+        "position": 2304,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 49,
+        "writes": [
+          {
+            "position": 2304,
+            "value_before": 114,
+            "value_after": 125
+          }
+        ]
+      },
+      {
+        "step": 2208,
+        "position": 2305,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 50,
+        "writes": [
+          {
+            "position": 50,
+            "value_before": 59047,
+            "value_after": 59046
+          },
+          {
+            "position": 2305,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2209,
+        "position": 2306,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 29553,
+            "value_after": 59017
+          },
+          {
+            "position": 2306,
+            "value_before": 106,
+            "value_after": 77
+          }
+        ]
+      },
+      {
+        "step": 2210,
+        "position": 2307,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 59017,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2307,
+            "value_before": 111,
+            "value_after": 120
+          }
+        ]
+      },
+      {
+        "step": 2211,
+        "position": 2308,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59017,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2308,
+            "value_before": 82,
+            "value_after": 118
+          }
+        ]
+      },
+      {
+        "step": 2212,
+        "position": 2309,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 59017,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 59017,
+            "value_after": 39355
+          },
+          {
+            "position": 2309,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 2213,
+        "position": 2310,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 39355,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2310,
+            "value_before": 108,
+            "value_after": 39
+          }
+        ]
+      },
+      {
+        "step": 2214,
+        "position": 2311,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 39355,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2311,
+            "value_before": 79,
+            "value_after": 67
+          }
+        ]
+      },
+      {
+        "step": 2215,
+        "position": 2312,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 39355,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 39355,
+            "value_after": 32801
+          },
+          {
+            "position": 2312,
+            "value_before": 77,
+            "value_after": 65
+          }
+        ]
+      },
+      {
+        "step": 2216,
+        "position": 2313,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 32801,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2313,
+            "value_before": 105,
+            "value_after": 42
+          }
+        ]
+      },
+      {
+        "step": 2217,
+        "position": 2314,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 32801,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2314,
+            "value_before": 76,
+            "value_after": 79
+          }
+        ]
+      },
+      {
+        "step": 2218,
+        "position": 2315,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 32801,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 32801,
+            "value_after": 50299
+          },
+          {
+            "position": 2315,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2219,
+        "position": 2316,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 50299,
+        "d": 52,
+        "writes": [
+          {
+            "position": 52,
+            "value_before": 59048,
+            "value_after": 59048
+          },
+          {
+            "position": 2316,
+            "value_before": 73,
+            "value_after": 50
+          }
+        ]
+      },
+      {
+        "step": 2220,
+        "position": 2317,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59048,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2317,
+            "value_before": 73,
+            "value_after": 50
+          }
+        ]
+      },
+      {
+        "step": 2221,
+        "position": 2318,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59048,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 50299,
+            "value_after": 38273
+          },
+          {
+            "position": 2318,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2222,
+        "position": 2319,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38273,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2319,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 2223,
+        "position": 2320,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38273,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2320,
+            "value_before": 98,
+            "value_after": 84
+          }
+        ]
+      },
+      {
+        "step": 2224,
+        "position": 2321,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 38273,
+        "d": 54,
+        "writes": [
+          {
+            "position": 2321,
+            "value_before": 69,
+            "value_after": 112
+          }
+        ]
+      },
+      {
+        "step": 2225,
+        "position": 2322,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 38273,
+        "d": 48,
+        "writes": [
+          {
+            "position": 48,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2322,
+            "value_before": 67,
+            "value_after": 85
+          }
+        ]
+      },
+      {
+        "step": 2226,
+        "position": 2323,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 49,
+        "writes": [
+          {
+            "position": 2323,
+            "value_before": 95,
+            "value_after": 109
+          }
+        ]
+      },
+      {
+        "step": 2227,
+        "position": 2324,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 50,
+        "writes": [
+          {
+            "position": 50,
+            "value_before": 59046,
+            "value_after": 59047
+          },
+          {
+            "position": 2324,
+            "value_before": 88,
+            "value_after": 47
+          }
+        ]
+      },
+      {
+        "step": 2228,
+        "position": 2325,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 38273,
+            "value_after": 50300
+          },
+          {
+            "position": 2325,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2229,
+        "position": 2326,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 50300,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2326,
+            "value_before": 92,
+            "value_after": 115
+          }
+        ]
+      },
+      {
+        "step": 2230,
+        "position": 2327,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 50300,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2327,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2231,
+        "position": 2328,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 50300,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 50300,
+            "value_after": 56132
+          },
+          {
+            "position": 2328,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 2232,
+        "position": 2329,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56132,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2329,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2233,
+        "position": 2330,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 56132,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2330,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2234,
+        "position": 2331,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 56132,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 56132,
+            "value_after": 58076
+          },
+          {
+            "position": 2331,
+            "value_before": 58,
+            "value_after": 37
+          }
+        ]
+      },
+      {
+        "step": 2235,
+        "position": 2332,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58076,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2332,
+            "value_before": 86,
+            "value_after": 95
+          }
+        ]
+      },
+      {
+        "step": 2236,
+        "position": 2333,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58076,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2333,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 2237,
+        "position": 2334,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58076,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58076,
+            "value_after": 58724
+          },
+          {
+            "position": 2334,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 2238,
+        "position": 2335,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58724,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2335,
+            "value_before": 83,
+            "value_after": 94
+          }
+        ]
+      },
+      {
+        "step": 2239,
+        "position": 2336,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58724,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2336,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2240,
+        "position": 2337,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58724,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58724,
+            "value_after": 58940
+          },
+          {
+            "position": 2337,
+            "value_before": 52,
+            "value_after": 72
+          }
+        ]
+      },
+      {
+        "step": 2241,
+        "position": 2338,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58940,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2338,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 2242,
+        "position": 2339,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58940,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2339,
+            "value_before": 51,
+            "value_after": 41
+          }
+        ]
+      },
+      {
+        "step": 2243,
+        "position": 2340,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58940,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 58940,
+            "value_after": 59012
+          },
+          {
+            "position": 2340,
+            "value_before": 49,
+            "value_after": 87
+          }
+        ]
+      },
+      {
+        "step": 2244,
+        "position": 2341,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 59012,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2341,
+            "value_before": 77,
+            "value_after": 65
+          }
+        ]
+      },
+      {
+        "step": 2245,
+        "position": 2342,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 59012,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2342,
+            "value_before": 76,
+            "value_after": 79
+          }
+        ]
+      },
+      {
+        "step": 2246,
+        "position": 2343,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 59012,
+        "d": 54,
+        "writes": [
+          {
+            "position": 2343,
+            "value_before": 47,
+            "value_after": 52
+          }
+        ]
+      },
+      {
+        "step": 2247,
+        "position": 2344,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 59012,
+        "d": 48,
+        "writes": [
+          {
+            "position": 48,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2344,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 2248,
+        "position": 2345,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 49,
+        "writes": [
+          {
+            "position": 2345,
+            "value_before": 73,
+            "value_after": 50
+          }
+        ]
+      },
+      {
+        "step": 2249,
+        "position": 2346,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 50,
+        "writes": [
+          {
+            "position": 50,
+            "value_before": 59047,
+            "value_after": 59047
+          },
+          {
+            "position": 2346,
+            "value_before": 66,
+            "value_after": 62
+          }
+        ]
+      },
+      {
+        "step": 2250,
+        "position": 2347,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 51,
+        "writes": [
+          {
+            "position": 51,
+            "value_before": 59012,
+            "value_after": 29561
+          },
+          {
+            "position": 2347,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2251,
+        "position": 2348,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29561,
+        "d": 52,
+        "writes": [
+          {
+            "position": 2348,
+            "value_before": 70,
+            "value_after": 74
+          }
+        ]
+      },
+      {
+        "step": 2252,
+        "position": 2349,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29561,
+        "d": 53,
+        "writes": [
+          {
+            "position": 2349,
+            "value_before": 69,
+            "value_after": 112
+          }
+        ]
+      },
+      {
+        "step": 2253,
+        "position": 2350,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29561,
+        "d": 54,
+        "writes": [
+          {
+            "position": 2350,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 2254,
+        "position": 2351,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29561,
+        "d": 55,
+        "writes": [
+          {
+            "position": 2351,
+            "value_before": 39,
+            "value_after": 116
+          }
+        ]
+      },
+      {
+        "step": 2255,
+        "position": 2352,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29561,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2352,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 2256,
+        "position": 2353,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29561,
+        "d": 58432,
+        "writes": [
+          {
+            "position": 2353,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2257,
+        "position": 2354,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29561,
+        "d": 58433,
+        "writes": [
+          {
+            "position": 58433,
+            "value_before": 29524,
+            "value_after": 74
+          },
+          {
+            "position": 2354,
+            "value_before": 58,
+            "value_after": 37
+          }
+        ]
+      },
+      {
+        "step": 2258,
+        "position": 2355,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 74,
+        "d": 58434,
+        "writes": [
+          {
+            "position": 2355,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2259,
+        "position": 2356,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 74,
+        "d": 58435,
+        "writes": [
+          {
+            "position": 2356,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2260,
+        "position": 2357,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 74,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2357,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 2261,
+        "position": 2358,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 74,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2358,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2262,
+        "position": 2359,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 74,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2359,
+            "value_before": 125,
+            "value_after": 105
+          }
+        ]
+      },
+      {
+        "step": 2263,
+        "position": 2360,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 74,
+        "d": 34,
+        "writes": [
+          {
+            "position": 34,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2360,
+            "value_before": 123,
+            "value_after": 71
+          }
+        ]
+      },
+      {
+        "step": 2264,
+        "position": 2361,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 35,
+        "writes": [
+          {
+            "position": 2361,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 2265,
+        "position": 2362,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 36,
+        "writes": [
+          {
+            "position": 2362,
+            "value_before": 56,
+            "value_after": 44
+          }
+        ]
+      },
+      {
+        "step": 2266,
+        "position": 2363,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 37,
+        "writes": [
+          {
+            "position": 2363,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 2267,
+        "position": 2364,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 38,
+        "writes": [
+          {
+            "position": 2364,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2268,
+        "position": 2365,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 39,
+        "writes": [
+          {
+            "position": 2365,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 2269,
+        "position": 2366,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 40,
+        "writes": [
+          {
+            "position": 2366,
+            "value_before": 118,
+            "value_after": 107
+          }
+        ]
+      },
+      {
+        "step": 2270,
+        "position": 2367,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 58431,
+            "value_after": 58320
+          },
+          {
+            "position": 2367,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 2271,
+        "position": 2368,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58320,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2368,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2272,
+        "position": 2369,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 88,
+        "writes": [
+          {
+            "position": 2369,
+            "value_before": 49,
+            "value_after": 87
+          }
+        ]
+      },
+      {
+        "step": 2273,
+        "position": 2370,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 89,
+        "writes": [
+          {
+            "position": 2370,
+            "value_before": 48,
+            "value_after": 123
+          }
+        ]
+      },
+      {
+        "step": 2274,
+        "position": 2371,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 90,
+        "writes": [
+          {
+            "position": 2371,
+            "value_before": 47,
+            "value_after": 52
+          }
+        ]
+      },
+      {
+        "step": 2275,
+        "position": 2372,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 91,
+        "writes": [
+          {
+            "position": 2372,
+            "value_before": 46,
+            "value_after": 101
+          }
+        ]
+      },
+      {
+        "step": 2276,
+        "position": 2373,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 92,
+        "writes": [
+          {
+            "position": 2373,
+            "value_before": 45,
+            "value_after": 119
+          }
+        ]
+      },
+      {
+        "step": 2277,
+        "position": 2374,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58320,
+        "d": 93,
+        "writes": [
+          {
+            "position": 2374,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 2278,
+        "position": 2375,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 58320,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 58320,
+            "value_after": 29524
+          },
+          {
+            "position": 2375,
+            "value_before": 37,
+            "value_after": 103
+          }
+        ]
+      },
+      {
+        "step": 2279,
+        "position": 2376,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2376,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 2280,
+        "position": 2377,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 96,
+        "writes": [
+          {
+            "position": 2377,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2281,
+        "position": 2378,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 82,
+        "writes": [
+          {
+            "position": 2378,
+            "value_before": 40,
+            "value_after": 121
+          }
+        ]
+      },
+      {
+        "step": 2282,
+        "position": 2379,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 83,
+        "writes": [
+          {
+            "position": 2379,
+            "value_before": 39,
+            "value_after": 116
+          }
+        ]
+      },
+      {
+        "step": 2283,
+        "position": 2380,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 84,
+        "writes": [
+          {
+            "position": 2380,
+            "value_before": 38,
+            "value_after": 113
+          }
+        ]
+      },
+      {
+        "step": 2284,
+        "position": 2381,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29524,
+        "d": 85,
+        "writes": [
+          {
+            "position": 2381,
+            "value_before": 103,
+            "value_after": 117
+          }
+        ]
+      },
+      {
+        "step": 2285,
+        "position": 2382,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2382,
+            "value_before": 36,
+            "value_after": 38
+          }
+        ]
+      },
+      {
+        "step": 2286,
+        "position": 2383,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 2383,
+            "value_before": 35,
+            "value_after": 93
+          }
+        ]
+      },
+      {
+        "step": 2287,
+        "position": 2384,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29524,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29443,
+            "value_after": 29497
+          },
+          {
+            "position": 2384,
+            "value_before": 99,
+            "value_after": 86
+          }
+        ]
+      },
+      {
+        "step": 2288,
+        "position": 2385,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29497,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2385,
+            "value_before": 33,
+            "value_after": 53
+          }
+        ]
+      },
+      {
+        "step": 2289,
+        "position": 2386,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29497,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2386,
+            "value_before": 126,
+            "value_after": 64
+          }
+        ]
+      },
+      {
+        "step": 2290,
+        "position": 2387,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 29497,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2387,
+            "value_before": 97,
+            "value_after": 46
+          }
+        ]
+      },
+      {
+        "step": 2291,
+        "position": 2388,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 29497,
+        "d": 71,
+        "writes": [
+          {
+            "position": 2388,
+            "value_before": 124,
+            "value_after": 34
+          }
+        ]
+      },
+      {
+        "step": 2292,
+        "position": 2389,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 29497,
+        "d": 72,
+        "writes": [
+          {
+            "position": 72,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2389,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2293,
+        "position": 2390,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59046,
+            "value_after": 59046
+          },
+          {
+            "position": 2390,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2294,
+        "position": 2391,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 29497,
+            "value_after": 58993
+          },
+          {
+            "position": 2391,
+            "value_before": 115,
+            "value_after": 82
+          }
+        ]
+      },
+      {
+        "step": 2295,
+        "position": 2392,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 58993,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2392,
+            "value_before": 120,
+            "value_after": 58
+          }
+        ]
+      },
+      {
+        "step": 2296,
+        "position": 2393,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 58993,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2393,
+            "value_before": 91,
+            "value_after": 106
+          }
+        ]
+      },
+      {
+        "step": 2297,
+        "position": 2394,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 58993,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 58993,
+            "value_after": 39347
+          },
+          {
+            "position": 2394,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2298,
+        "position": 2395,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 39347,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2395,
+            "value_before": 117,
+            "value_after": 111
+          }
+        ]
+      },
+      {
+        "step": 2299,
+        "position": 2396,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 39347,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2396,
+            "value_before": 116,
+            "value_after": 69
+          }
+        ]
+      },
+      {
+        "step": 2300,
+        "position": 2397,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 39347,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2397,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2301,
+        "position": 2398,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 39347,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2398,
+            "value_before": 85,
+            "value_after": 73
+          }
+        ]
+      },
+      {
+        "step": 2302,
+        "position": 2399,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2399,
+            "value_before": 113,
+            "value_after": 108
+          }
+        ]
+      },
+      {
+        "step": 2303,
+        "position": 2400,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59046,
+            "value_after": 59047
+          },
+          {
+            "position": 2400,
+            "value_before": 106,
+            "value_after": 77
+          }
+        ]
+      },
+      {
+        "step": 2304,
+        "position": 2401,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 39347,
+            "value_after": 49199
+          },
+          {
+            "position": 2401,
+            "value_before": 105,
+            "value_after": 42
+          }
+        ]
+      },
+      {
+        "step": 2305,
+        "position": 2402,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 49199,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2402,
+            "value_before": 110,
+            "value_after": 126
+          }
+        ]
+      },
+      {
+        "step": 2306,
+        "position": 2403,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 49199,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2403,
+            "value_before": 81,
+            "value_after": 54
+          }
+        ]
+      },
+      {
+        "step": 2307,
+        "position": 2404,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 49199,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 49199,
+            "value_after": 55765
+          },
+          {
+            "position": 2404,
+            "value_before": 79,
+            "value_after": 67
+          }
+        ]
+      },
+      {
+        "step": 2308,
+        "position": 2405,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 55765,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2405,
+            "value_before": 107,
+            "value_after": 75
+          }
+        ]
+      },
+      {
+        "step": 2309,
+        "position": 2406,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 55765,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2406,
+            "value_before": 78,
+            "value_after": 49
+          }
+        ]
+      },
+      {
+        "step": 2310,
+        "position": 2407,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 55765,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 55765,
+            "value_after": 38271
+          },
+          {
+            "position": 2407,
+            "value_before": 76,
+            "value_after": 79
+          }
+        ]
+      },
+      {
+        "step": 2311,
+        "position": 2408,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 38271,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2408,
+            "value_before": 104,
+            "value_after": 89
+          }
+        ]
+      },
+      {
+        "step": 2312,
+        "position": 2409,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 38271,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2409,
+            "value_before": 75,
+            "value_after": 104
+          }
+        ]
+      },
+      {
+        "step": 2313,
+        "position": 2410,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 38271,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 38271,
+            "value_after": 12757
+          },
+          {
+            "position": 2410,
+            "value_before": 73,
+            "value_after": 50
+          }
+        ]
+      },
+      {
+        "step": 2314,
+        "position": 2411,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 12757,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2411,
+            "value_before": 101,
+            "value_after": 99
+          }
+        ]
+      },
+      {
+        "step": 2315,
+        "position": 2412,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 12757,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2412,
+            "value_before": 100,
+            "value_after": 97
+          }
+        ]
+      },
+      {
+        "step": 2316,
+        "position": 2413,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 12757,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2413,
+            "value_before": 71,
+            "value_after": 83
+          }
+        ]
+      },
+      {
+        "step": 2317,
+        "position": 2414,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 12757,
+        "d": 71,
+        "writes": [
+          {
+            "position": 2414,
+            "value_before": 98,
+            "value_after": 84
+          }
+        ]
+      },
+      {
+        "step": 2318,
+        "position": 2415,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 12757,
+        "d": 72,
+        "writes": [
+          {
+            "position": 72,
+            "value_before": 29524,
+            "value_after": 29524
+          },
+          {
+            "position": 2415,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 2319,
+        "position": 2416,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29524,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59046
+          },
+          {
+            "position": 2416,
+            "value_before": 90,
+            "value_after": 124
+          }
+        ]
+      },
+      {
+        "step": 2320,
+        "position": 2417,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59046,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 12757,
+            "value_after": 16765
+          },
+          {
+            "position": 2417,
+            "value_before": 89,
+            "value_after": 56
+          }
+        ]
+      },
+      {
+        "step": 2321,
+        "position": 2418,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 16765,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2418,
+            "value_before": 94,
+            "value_after": 57
+          }
+        ]
+      },
+      {
+        "step": 2322,
+        "position": 2419,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 16765,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2419,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2323,
+        "position": 2420,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 16765,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 16765,
+            "value_after": 25271
+          },
+          {
+            "position": 2420,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2324,
+        "position": 2421,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 25271,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2421,
+            "value_before": 91,
+            "value_after": 106
+          }
+        ]
+      },
+      {
+        "step": 2325,
+        "position": 2422,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 25271,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2422,
+            "value_before": 90,
+            "value_after": 124
+          }
+        ]
+      },
+      {
+        "step": 2326,
+        "position": 2423,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 25271,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2423,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 2327,
+        "position": 2424,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 25271,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2424,
+            "value_before": 59,
+            "value_after": 92
+          }
+        ]
+      },
+      {
+        "step": 2328,
+        "position": 2425,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2425,
+            "value_before": 87,
+            "value_after": 48
+          }
+        ]
+      },
+      {
+        "step": 2329,
+        "position": 2426,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59046,
+            "value_after": 59047
+          },
+          {
+            "position": 2426,
+            "value_before": 80,
+            "value_after": 66
+          }
+        ]
+      },
+      {
+        "step": 2330,
+        "position": 2427,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 25271,
+            "value_after": 43619
+          },
+          {
+            "position": 2427,
+            "value_before": 79,
+            "value_after": 67
+          }
+        ]
+      },
+      {
+        "step": 2331,
+        "position": 2428,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 43619,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2428,
+            "value_before": 84,
+            "value_after": 61
+          }
+        ]
+      },
+      {
+        "step": 2332,
+        "position": 2429,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 43619,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2429,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 2333,
+        "position": 2430,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 43619,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 43619,
+            "value_after": 53905
+          },
+          {
+            "position": 2430,
+            "value_before": 53,
+            "value_after": 45
+          }
+        ]
+      },
+      {
+        "step": 2334,
+        "position": 2431,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 53905,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2431,
+            "value_before": 81,
+            "value_after": 54
+          }
+        ]
+      },
+      {
+        "step": 2335,
+        "position": 2432,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 53905,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2432,
+            "value_before": 52,
+            "value_after": 72
+          }
+        ]
+      },
+      {
+        "step": 2336,
+        "position": 2433,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 53905,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 53905,
+            "value_after": 37651
+          },
+          {
+            "position": 2433,
+            "value_before": 50,
+            "value_after": 80
+          }
+        ]
+      },
+      {
+        "step": 2337,
+        "position": 2434,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 37651,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2434,
+            "value_before": 78,
+            "value_after": 49
+          }
+        ]
+      },
+      {
+        "step": 2338,
+        "position": 2435,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 37651,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2435,
+            "value_before": 49,
+            "value_after": 87
+          }
+        ]
+      },
+      {
+        "step": 2339,
+        "position": 2436,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 37651,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 37651,
+            "value_after": 32233
+          },
+          {
+            "position": 2436,
+            "value_before": 47,
+            "value_after": 52
+          }
+        ]
+      },
+      {
+        "step": 2340,
+        "position": 2437,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 32233,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2437,
+            "value_before": 75,
+            "value_after": 104
+          }
+        ]
+      },
+      {
+        "step": 2341,
+        "position": 2438,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 32233,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2438,
+            "value_before": 46,
+            "value_after": 101
+          }
+        ]
+      },
+      {
+        "step": 2342,
+        "position": 2439,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 32233,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 32233,
+            "value_after": 30427
+          },
+          {
+            "position": 2439,
+            "value_before": 44,
+            "value_after": 40
+          }
+        ]
+      },
+      {
+        "step": 2343,
+        "position": 2440,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 30427,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2440,
+            "value_before": 72,
+            "value_after": 55
+          }
+        ]
+      },
+      {
+        "step": 2344,
+        "position": 2441,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 30427,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2441,
+            "value_before": 71,
+            "value_after": 83
+          }
+        ]
+      },
+      {
+        "step": 2345,
+        "position": 2442,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 30427,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2442,
+            "value_before": 42,
+            "value_after": 114
+          }
+        ]
+      },
+      {
+        "step": 2346,
+        "position": 2443,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 30427,
+        "d": 71,
+        "writes": [
+          {
+            "position": 71,
+            "value_before": 0,
+            "value_after": 0
+          },
+          {
+            "position": 2443,
+            "value_before": 40,
+            "value_after": 121
+          }
+        ]
+      },
+      {
+        "step": 2347,
+        "position": 2444,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 0,
+        "d": 72,
+        "writes": [
+          {
+            "position": 2444,
+            "value_before": 68,
+            "value_after": 33
+          }
+        ]
+      },
+      {
+        "step": 2348,
+        "position": 2445,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 0,
+        "d": 73,
+        "writes": [
+          {
+            "position": 73,
+            "value_before": 59047,
+            "value_after": 59047
+          },
+          {
+            "position": 2445,
+            "value_before": 61,
+            "value_after": 100
+          }
+        ]
+      },
+      {
+        "step": 2349,
+        "position": 2446,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 59047,
+        "d": 74,
+        "writes": [
+          {
+            "position": 74,
+            "value_before": 30427,
+            "value_after": 57900
+          },
+          {
+            "position": 2446,
+            "value_before": 60,
+            "value_after": 51
+          }
+        ]
+      },
+      {
+        "step": 2350,
+        "position": 2447,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57900,
+        "d": 75,
+        "writes": [
+          {
+            "position": 2447,
+            "value_before": 65,
+            "value_after": 59
+          }
+        ]
+      },
+      {
+        "step": 2351,
+        "position": 2448,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57900,
+        "d": 76,
+        "writes": [
+          {
+            "position": 2448,
+            "value_before": 64,
+            "value_after": 81
+          }
+        ]
+      },
+      {
+        "step": 2352,
+        "position": 2449,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 57900,
+        "d": 77,
+        "writes": [
+          {
+            "position": 2449,
+            "value_before": 63,
+            "value_after": 43
+          }
+        ]
+      },
+      {
+        "step": 2353,
+        "position": 2450,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 57900,
+        "d": 78,
+        "writes": [
+          {
+            "position": 2450,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2354,
+        "position": 2451,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 57900,
+        "d": 94,
+        "writes": [
+          {
+            "position": 94,
+            "value_before": 29524,
+            "value_after": 56998
+          },
+          {
+            "position": 2451,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 2355,
+        "position": 2452,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 56998,
+        "d": 95,
+        "writes": [
+          {
+            "position": 2452,
+            "value_before": 126,
+            "value_after": 64
+          }
+        ]
+      },
+      {
+        "step": 2356,
+        "position": 2453,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 88,
+        "writes": [
+          {
+            "position": 2453,
+            "value_before": 59,
+            "value_after": 92
+          }
+        ]
+      },
+      {
+        "step": 2357,
+        "position": 2454,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 89,
+        "writes": [
+          {
+            "position": 2454,
+            "value_before": 58,
+            "value_after": 37
+          }
+        ]
+      },
+      {
+        "step": 2358,
+        "position": 2455,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 90,
+        "writes": [
+          {
+            "position": 2455,
+            "value_before": 57,
+            "value_after": 91
+          }
+        ]
+      },
+      {
+        "step": 2359,
+        "position": 2456,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 91,
+        "writes": [
+          {
+            "position": 2456,
+            "value_before": 56,
+            "value_after": 44
+          }
+        ]
+      },
+      {
+        "step": 2360,
+        "position": 2457,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 92,
+        "writes": [
+          {
+            "position": 2457,
+            "value_before": 55,
+            "value_after": 110
+          }
+        ]
+      },
+      {
+        "step": 2361,
+        "position": 2458,
+        "opcode": 68,
+        "opcode_name": "nop",
+        "a": 56998,
+        "d": 93,
+        "writes": [
+          {
+            "position": 2458,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2362,
+        "position": 2459,
+        "opcode": 40,
+        "opcode_name": "movd",
+        "a": 56998,
+        "d": 94,
+        "writes": [
+          {
+            "position": 2459,
+            "value_before": 119,
+            "value_after": 78
+          }
+        ]
+      },
+      {
+        "step": 2363,
+        "position": 2460,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 56998,
+        "d": 56999,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 81,
+            "value_after": 54
+          }
+        ]
+      },
+      {
+        "step": 2364,
+        "position": 58433,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 56998,
+        "d": 57000,
+        "writes": [
+          {
+            "position": 57000,
+            "value_before": 3,
+            "value_after": 1
+          },
+          {
+            "position": 58433,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2365,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 1,
+        "d": 57001,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 54,
+            "value_after": 90
+          }
+        ]
+      },
+      {
+        "step": 2366,
+        "position": 58433,
+        "opcode": 35,
+        "opcode_name": "nop",
+        "a": 1,
+        "d": 57002,
+        "writes": [
+          {
+            "position": 58433,
+            "value_before": 70,
+            "value_after": 74
+          }
+        ]
+      },
+      {
+        "step": 2367,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 1,
+        "d": 57003,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 90,
+            "value_after": 124
+          }
+        ]
+      },
+      {
+        "step": 2368,
+        "position": 58433,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 1,
+        "d": 57004,
+        "writes": [
+          {
+            "position": 57004,
+            "value_before": 9,
+            "value_after": 3
+          },
+          {
+            "position": 58433,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2369,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 3,
+        "d": 57005,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 124,
+            "value_after": 34
+          }
+        ]
+      },
+      {
+        "step": 2370,
+        "position": 58433,
+        "opcode": 35,
+        "opcode_name": "nop",
+        "a": 3,
+        "d": 57006,
+        "writes": [
+          {
+            "position": 58433,
+            "value_before": 70,
+            "value_after": 74
+          }
+        ]
+      },
+      {
+        "step": 2371,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 3,
+        "d": 57007,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 34,
+            "value_after": 122
+          }
+        ]
+      },
+      {
+        "step": 2372,
+        "position": 58433,
+        "opcode": 39,
+        "opcode_name": "rotate",
+        "a": 3,
+        "d": 57008,
+        "writes": [
+          {
+            "position": 57008,
+            "value_before": 15,
+            "value_after": 5
+          },
+          {
+            "position": 58433,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2373,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 5,
+        "d": 57009,
+        "writes": [
+          {
+            "position": 58432,
+            "value_before": 122,
+            "value_after": 63
+          }
+        ]
+      },
+      {
+        "step": 2374,
+        "position": 58433,
+        "opcode": 35,
+        "opcode_name": "nop",
+        "a": 5,
+        "d": 57010,
+        "writes": [
+          {
+            "position": 58433,
+            "value_before": 70,
+            "value_after": 74
+          }
+        ]
+      },
+      {
+        "step": 2375,
+        "position": 58434,
+        "opcode": 4,
+        "opcode_name": "jmp",
+        "a": 5,
+        "d": 57011,
+        "writes": [
+          {
+            "position": 58299,
+            "value_before": 81,
+            "value_after": 54
+          }
+        ]
+      },
+      {
+        "step": 2376,
+        "position": 58300,
+        "opcode": 81,
+        "opcode_name": "halt",
+        "a": 5,
+        "d": 57012,
+        "writes": []
+      }
+    ],
+    "limitations": [
+      "Exhausted input uses EOF mode olmstead_1998; different EOF conventions can change control flow and output.",
+      "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+      "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+      "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+      "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+    ]
+  },
+  "confidence": "observed",
+  "authority": "shipped-artifact",
+  "environment": null,
+  "limitations": [
+    "Exhausted input uses EOF mode olmstead_1998; different EOF conventions can change control flow and output.",
+    "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+    "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+    "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+    "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+  ],
+  "relationship_coverage": null,
+  "locations": [
+    {
+      "kind": "artifact-path",
+      "path": "<image>"
+    }
+  ],
+  "evidence_links": []
+}

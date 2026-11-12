@@ -1,0 +1,30 @@
+{
+  "excluded": "elapsed_seconds",
+  "method": "fresh isolated syntheses",
+  "runs": {
+    "movd": {
+      "artifacts_byte_identical": {
+        "movd_control.mb": true,
+        "movd_control_plan.ops": true,
+        "movd_control_targets.json": true,
+        "movd_positive.mb": true,
+        "movd_positive_plan.ops": true,
+        "movd_positive_targets.json": true
+      },
+      "rc": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rot": {
+      "artifacts_byte_identical": {
+        "rot_control.mb": true,
+        "rot_control_plan.ops": true,
+        "rot_control_targets.json": true,
+        "rot_positive.mb": true,
+        "rot_positive_plan.ops": true,
+        "rot_positive_targets.json": true
+      },
+      "rc": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

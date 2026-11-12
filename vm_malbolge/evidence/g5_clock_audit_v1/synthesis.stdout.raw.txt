@@ -1,0 +1,39 @@
+{
+  "clock_pc": 58470,
+  "clock_initial": 66,
+  "clock_expected_values": [
+    66,
+    62,
+    76,
+    79
+  ],
+  "clock_expected_opcodes": [
+    68,
+    64,
+    78,
+    81
+  ],
+  "output_sites": [
+    58050,
+    58150,
+    58250
+  ],
+  "body_scope": "three distinct OUT sites selected by D pointer sequence; not one reusable body",
+  "control": "second branch jumps to halt island",
+  "programs": {
+    "positive": {
+      "target_cells": 21,
+      "plan_length": 2697,
+      "plan_end": 2796,
+      "fits": true,
+      "elapsed_seconds": 0.038
+    },
+    "control": {
+      "target_cells": 21,
+      "plan_length": 2679,
+      "plan_end": 2778,
+      "fits": true,
+      "elapsed_seconds": 0.014
+    }
+  }
+}
