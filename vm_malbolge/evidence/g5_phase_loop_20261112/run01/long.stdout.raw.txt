@@ -1,0 +1,10 @@
+{
+  "bytes_in": 10000,
+  "prefix_bytes": 10001,
+  "input_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+  "output_prefix_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+  "first_10000_match": true,
+  "extra_eof_byte_hex": "a8",
+  "terminated_by_harness": true,
+  "native_rc": -15
+}

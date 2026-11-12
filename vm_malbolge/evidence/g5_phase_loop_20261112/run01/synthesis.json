@@ -1,0 +1,24 @@
+{
+  "start": 58058,
+  "end": 58212,
+  "length": 155,
+  "S": 57000,
+  "first_branch": 57153,
+  "second_branch": 57308,
+  "entry_d": 57309,
+  "positions": {
+    "movd": 58058,
+    "in": 58135,
+    "out": 58211
+  },
+  "programs": {
+    "positive": {
+      "cells": 159,
+      "plan_length": 6603
+    },
+    "control": {
+      "cells": 159,
+      "plan_length": 6607
+    }
+  }
+}

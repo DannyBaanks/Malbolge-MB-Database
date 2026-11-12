@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-11-12T10:19:37.306298-06:00",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "base": "2f022b143cc585e957bd785e7a3ad279cea8933d",
+  "commands": [
+    "PHASE_OUTPUT_DIR=<empty> python3 vm_malbolge/evidence/g5_phase_loop_20261112/synthesize.py",
+    "python3 vm_malbolge/evidence/g5_phase_loop_20261112/verify.py <dir>",
+    "python3 vm_malbolge/evidence/g5_phase_loop_20261112/verify_long.py <dir>"
+  ],
+  "files": {
+    "GATES.md": "4d733a790ff621da8fdcbdafd79841c5240e726b1d8898d706059b68e02b3148",
+    "VERDICT.md": "9d5384c527fe123a7be6873fd7d9d6d3758489f5d1f10ee049071d86d0a68379",
+    "run01/control.mb": "160d7c5dea2c1d7141f2a5f6f0c5ec095793febdd69948caaa8514bb77ebedfd",
+    "run01/control.ops": "38841485728b594a11e6b99fc280cb8dedfaaeec2095ffd63687a1cd2e96f1b1",
+    "run01/control.targets.json": "51f1b0b4cd2dc95fb7a471b50eb59cadef5a5dda02f76d004dbe49a9f2711f9a",
+    "run01/long.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/long.stdout.raw.txt": "dd3841fdefae263e30b3fda8ff825bf57e198a3f2188cdac976e201091f00b9b",
+    "run01/parity.stdout.raw.txt": "5a17e341e885231d9a8697ba01cc8a7e457ada82c1a8ef5185bbb1c72bea367f",
+    "run01/positive.mb": "1c0ad13cf24daa8a3779d09e2d61b72cdefb22a92cdaab6ffd854127d0b8bd8e",
+    "run01/positive.ops": "aa3cdf0654895f703d259096311d0ebd53e998c523adb45775038542962ada17",
+    "run01/positive.targets.json": "7164d1e618cc92b4c5f6f1969a7c67673c9ab0a470ef17e61325e4c62f4e2b2a",
+    "run01/rea_0.redacted.json": "89ab0e12cf39c24d7c45c73d491477e8be7c4f21a023cdfaaedcee56ea5abd24",
+    "run01/rea_1.redacted.json": "9234d5b5db0edf43b358e21a0cf843f00a5e7829f17aacbb601acb0a9a05008a",
+    "run01/reproduction.json": "b56e761434bd16b8b44481cbaa19d0ceecaed5b26b0b7b2ed722051d3aacba25",
+    "run01/synthesis.json": "17a078e74ec47d9b2ecbe75f8e670841ba4fd36f902a13cd73fc08db664afd46",
+    "run01/synthesis.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/synthesis.stdout.raw.txt": "17a078e74ec47d9b2ecbe75f8e670841ba4fd36f902a13cd73fc08db664afd46",
+    "run01/verification.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/verification.stdout.raw.txt": "2c9e2f416f740d167b4c49b454493716b2b78b3faaff43237ab07187268654c2",
+    "synthesize.py": "9c3cc97f2f5ebd6335138d582005ce89cf555d541ddec6373c4e4e284acef367",
+    "verify.py": "940b04a166abee7885f5416ca414cd332c9ae8b0d13174b50a7b2b2f2f8b9ba1",
+    "verify_long.py": "7453af40b5ead316d6dd11a7bd33a3da03480829125adc0a97e72b6580a876e8"
+  },
+  "inputs": {
+    "BolgeForge/constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "BolgeForge/tools/resynthesize.py": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+    "BolgeForge/reference/malbolge_org/cat.mal": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5"
+  }
+}
