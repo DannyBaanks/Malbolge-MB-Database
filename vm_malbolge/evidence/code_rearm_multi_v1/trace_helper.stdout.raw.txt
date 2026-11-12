@@ -1,0 +1,21 @@
+{'step': 7085, 'op': 'CRAZY', 'at': 58550, 'd': 57020, 'a_before': 57018, 'cell': 29524, 'after': 57907}
+{'step': 7088, 'op': 'ROT', 'at': 58001, 'd': 57040, 'a_before': 29524}
+{'step': 7090, 'op': 'CRAZY', 'at': 58003, 'd': 58550, 'a_before': 29524, 'cell': 70, 'after': 60}
+{'step': 7093, 'op': 'CRAZY', 'at': 58006, 'd': 58550, 'a_before': 60, 'cell': 60, 'after': 29524}
+{'step': 7097, 'op': 'ROT', 'at': 58010, 'd': 57010, 'a_before': 29561}
+{'step': 7100, 'op': 'CRAZY', 'at': 58013, 'd': 58550, 'a_before': 29561, 'cell': 29524, 'after': 74}
+{'step': 7106, 'op': 'CRAZY', 'at': 58550, 'd': 58556, 'a_before': 74, 'cell': 0, 'after': 29487}
+{'step': 7108, 'op': 'CRAZY', 'at': 58573, 'd': 58558, 'a_before': 29487, 'cell': 0, 'after': 37}
+{'step': 7111, 'op': 'ROT', 'at': 58101, 'd': 57140, 'a_before': 29524}
+{'step': 7113, 'op': 'CRAZY', 'at': 58103, 'd': 58573, 'a_before': 29524, 'cell': 41, 'after': 2}
+{'step': 7116, 'op': 'CRAZY', 'at': 58106, 'd': 58573, 'a_before': 2, 'cell': 2, 'after': 29524}
+{'step': 7120, 'op': 'ROT', 'at': 58110, 'd': 57110, 'a_before': 29509}
+{'step': 7123, 'op': 'CRAZY', 'at': 58113, 'd': 58573, 'a_before': 29509, 'cell': 29524, 'after': 51}
+{'step': 7129, 'op': 'CRAZY', 'at': 58573, 'd': 58579, 'a_before': 51, 'cell': 0, 'after': 29485}
+{'step': 7131, 'op': 'ROT', 'at': 58585, 'd': 58581, 'a_before': 0}
+{'step': 7134, 'op': 'ROT', 'at': 58201, 'd': 57240, 'a_before': 29524}
+{'step': 7136, 'op': 'CRAZY', 'at': 58203, 'd': 58585, 'a_before': 29524, 'cell': 126, 'after': 18}
+{'step': 7139, 'op': 'CRAZY', 'at': 58206, 'd': 58585, 'a_before': 18, 'cell': 18, 'after': 29524}
+{'step': 7143, 'op': 'ROT', 'at': 58210, 'd': 57210, 'a_before': 29417}
+{'step': 7146, 'op': 'CRAZY', 'at': 58213, 'd': 58585, 'a_before': 29417, 'cell': 29524, 'after': 110}
+{'step': 7152, 'op': 'ROT', 'at': 58585, 'd': 58591, 'a_before': 0}

@@ -1,0 +1,15 @@
+{
+  "A_note": "crazy(x,x)==29524 does NOT hold for every x; the block works because its rows land on it",
+  "A_universal_reset_crazy_xx_is_29524": false,
+  "B_one_29524_is_rot_fixed_point": true,
+  "carzy_ONE_ONE": 0,
+  "extra_reset_step_distribution": {
+    "1": 48
+  },
+  "restart_recipe": "e --crazy(a=ONE)--> x --crazy(x,x)--> 29524 --crazy(a=ctrl)--> want; ctrl=crazy(want,ONE)",
+  "rows_bad": [],
+  "rows_total": 48,
+  "rows_two_crazy_reset_then_control_restores": 48,
+  "scope": "host-side algebra on the 48 rows; no image, no scheduler, no EOF evidence",
+  "uniform_restart": "every row: e --crazy(a=ONE)--> x --crazy(a=x)--> 29524 (exactly 2 CRAZY, no overshoot: crazy(29524,29524)=0)"
+}

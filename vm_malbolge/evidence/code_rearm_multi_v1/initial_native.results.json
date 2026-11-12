@@ -1,0 +1,12 @@
+{
+  "positive": {
+    "rc": -11,
+    "stdout_hex": "",
+    "stderr_hex": ""
+  },
+  "control": {
+    "rc": -11,
+    "stdout_hex": "",
+    "stderr_hex": ""
+  }
+}

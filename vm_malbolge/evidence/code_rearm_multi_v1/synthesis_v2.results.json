@@ -1,0 +1,31 @@
+{
+  "source_pcs": [
+    58550,
+    58573
+  ],
+  "source_words": [
+    74,
+    51
+  ],
+  "helpers": [
+    58000,
+    58100
+  ],
+  "programs": {
+    "positive": {
+      "target_cells": 107,
+      "plan_length": 6742,
+      "plan_end": 6841,
+      "fits": true,
+      "elapsed_seconds": 0.266
+    },
+    "control": {
+      "target_cells": 107,
+      "plan_length": 6779,
+      "plan_end": 6878,
+      "fits": true,
+      "elapsed_seconds": 0.032
+    }
+  },
+  "scope": "two isolated source-derived code cells with replacement JMP neighbors; not the original contiguous block, a general loop, or EOF behavior"
+}

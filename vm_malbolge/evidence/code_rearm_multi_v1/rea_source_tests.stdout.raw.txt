@@ -1,0 +1,11 @@
+
+ RUN  v5.0.3 /home/danny/Development/rea
+
+ ✓ |domain| src/domain/malbolge/malbolgeClassic.test.ts (14 tests) 168ms
+ ✓ |mcp-boundary| tests/boundary/mcp/malbolgeMcp.test.ts (10 tests) 147ms
+
+ Test Files  2 passed (2)
+      Tests  24 passed (24)
+   Start at  00:26:16
+   Duration  2.13s (transform 53%, import 32%, tests 14%, worker 2%)
+

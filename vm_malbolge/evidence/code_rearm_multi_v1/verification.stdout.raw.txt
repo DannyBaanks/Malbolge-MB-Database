@@ -1,0 +1,198 @@
+{
+  "control": {
+    "image_sha256": "81208cedce235344d194b6c8dd65ba0d04c2f7f011aa0a66d341bed8754b3053",
+    "jump_targets_printable": true,
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "rea_event_start": 5250,
+    "rea_events_truncated": true,
+    "rea_id": "ev_a4d6bf5df9bb4fd405482df13c8be39fc154c15ef64529a75007d007a62bdd77",
+    "rea_status": "HALTED",
+    "rea_steps": 5378,
+    "rea_window_equals_scratch": true,
+    "scratch_steps": 5378,
+    "strict_cells": true,
+    "target_writes": [
+      {
+        "position": 58550,
+        "step": 5332,
+        "value_after": 70,
+        "value_before": 74
+      },
+      {
+        "position": 58550,
+        "step": 5340,
+        "value_after": 60,
+        "value_before": 70
+      },
+      {
+        "position": 58550,
+        "step": 5347,
+        "value_after": 33,
+        "value_before": 60
+      },
+      {
+        "position": 58550,
+        "step": 5353,
+        "value_after": 53,
+        "value_before": 33
+      },
+      {
+        "position": 58573,
+        "step": 5355,
+        "value_after": 41,
+        "value_before": 51
+      },
+      {
+        "position": 58573,
+        "step": 5360,
+        "value_after": 2,
+        "value_before": 41
+      },
+      {
+        "position": 58573,
+        "step": 5363,
+        "value_after": 29524,
+        "value_before": 2
+      },
+      {
+        "position": 58573,
+        "step": 5370,
+        "value_after": 51,
+        "value_before": 29524
+      },
+      {
+        "position": 58573,
+        "step": 5376,
+        "value_after": 41,
+        "value_before": 51
+      }
+    ],
+    "visits": [
+      {
+        "opcode": 62,
+        "pc": 58550,
+        "step": 5332
+      },
+      {
+        "opcode": 21,
+        "pc": 58550,
+        "step": 5353
+      },
+      {
+        "opcode": 62,
+        "pc": 58573,
+        "step": 5355
+      },
+      {
+        "opcode": 62,
+        "pc": 58573,
+        "step": 5376
+      }
+    ],
+    "window_complete_through_halt": true,
+    "window_events": 129
+  },
+  "positive": {
+    "image_sha256": "64ee3f121d1423948763d8dfb93415eef224e80c9164d14f6ada87ac3e58d8a8",
+    "jump_targets_printable": true,
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "rea_event_start": 5250,
+    "rea_events_truncated": true,
+    "rea_id": "ev_21a88b317503c2e1bfb41d5f14dbf56de8e111b5e92593c4ca483392d6a6ad44",
+    "rea_status": "HALTED",
+    "rea_steps": 5337,
+    "rea_window_equals_scratch": true,
+    "scratch_steps": 5337,
+    "strict_cells": true,
+    "target_writes": [
+      {
+        "position": 58550,
+        "step": 5291,
+        "value_after": 70,
+        "value_before": 74
+      },
+      {
+        "position": 58550,
+        "step": 5296,
+        "value_after": 60,
+        "value_before": 70
+      },
+      {
+        "position": 58550,
+        "step": 5299,
+        "value_after": 29524,
+        "value_before": 60
+      },
+      {
+        "position": 58550,
+        "step": 5306,
+        "value_after": 74,
+        "value_before": 29524
+      },
+      {
+        "position": 58550,
+        "step": 5312,
+        "value_after": 70,
+        "value_before": 74
+      },
+      {
+        "position": 58573,
+        "step": 5314,
+        "value_after": 41,
+        "value_before": 51
+      },
+      {
+        "position": 58573,
+        "step": 5319,
+        "value_after": 2,
+        "value_before": 41
+      },
+      {
+        "position": 58573,
+        "step": 5322,
+        "value_after": 29524,
+        "value_before": 2
+      },
+      {
+        "position": 58573,
+        "step": 5329,
+        "value_after": 51,
+        "value_before": 29524
+      },
+      {
+        "position": 58573,
+        "step": 5335,
+        "value_after": 41,
+        "value_before": 51
+      }
+    ],
+    "visits": [
+      {
+        "opcode": 62,
+        "pc": 58550,
+        "step": 5291
+      },
+      {
+        "opcode": 62,
+        "pc": 58550,
+        "step": 5312
+      },
+      {
+        "opcode": 62,
+        "pc": 58573,
+        "step": 5314
+      },
+      {
+        "opcode": 62,
+        "pc": 58573,
+        "step": 5335
+      }
+    ],
+    "window_complete_through_halt": true,
+    "window_events": 88
+  }
+}
