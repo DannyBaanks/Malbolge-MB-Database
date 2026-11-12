@@ -1,0 +1,104 @@
+{
+  "base": "84e83e0",
+  "files": [
+    {
+      "bytes": 1413,
+      "path": "GATES.md",
+      "sha256": "4e5415cbad8ebe04ca0a3206317100fd203eb7506118d5cb857148bda6cc719a"
+    },
+    {
+      "bytes": 4826,
+      "path": "VERDICT.md",
+      "sha256": "756cf5648bbb7a9306affb343e5104781ca6b275edb2e4dd53597efbbc06de16"
+    },
+    {
+      "bytes": 1462,
+      "path": "algebra.py",
+      "sha256": "b200418945585ae8b2fdaba5eee692f82ab98f4613e5c2d3d5978c1b5856ef5e"
+    },
+    {
+      "bytes": 700,
+      "path": "algebra.results.json",
+      "sha256": "2023dcd8e9be6bfcd591a88631858b51f7e04c98783dd361e2f96ec15e7cc489"
+    },
+    {
+      "bytes": 700,
+      "path": "algebra.stdout.raw.txt",
+      "sha256": "2023dcd8e9be6bfcd591a88631858b51f7e04c98783dd361e2f96ec15e7cc489"
+    },
+    {
+      "bytes": 2257,
+      "path": "bf16.py",
+      "sha256": "608443c853fb30912999368309dab1ed62f4ddc3d17b2889ac66f79146ed6f85"
+    },
+    {
+      "bytes": 9,
+      "path": "echo.bf",
+      "sha256": "e9042426905408ed886df8a29d9a64b6a6163759646c05ee81437327f230560a"
+    },
+    {
+      "bytes": 2967,
+      "path": "probe.py",
+      "sha256": "46f94aef8a82345c63ef4fb2017b34717a4dd797174a2795ff4b7aa16baa5a31"
+    },
+    {
+      "bytes": 332,
+      "path": "probe.stdout.raw.txt",
+      "sha256": "3214d2b5f0181789855885b66d933a2e5518f270b59fd99e0ea99aff26e53452"
+    },
+    {
+      "bytes": 2013,
+      "path": "rea_summary.json",
+      "sha256": "2e5cfd5e8c6ee11f8ea0519d3add05ccb6ba3e831b666309ea75d9e21e5cb422"
+    },
+    {
+      "bytes": 46397,
+      "path": "rea_trace.redacted.json",
+      "sha256": "020214c07e3ad4221e58f6b5258a344091ed0dd2dd1ab994aa48dd2564d820d7"
+    },
+    {
+      "bytes": 230,
+      "path": "reference.py",
+      "sha256": "6ef5a3096eef311ba0023071262125f7120ba3111ac1d19609b91075e5451c2c"
+    },
+    {
+      "bytes": 2609,
+      "path": "reference_footprint.py",
+      "sha256": "8739f4c5e7bd36f006d7e9a9207759580284bd833cda86acbc54a235a5253405"
+    },
+    {
+      "bytes": 2796,
+      "path": "reference_footprint.results.json",
+      "sha256": "ca5cd31d931dcb8b43fdf3ddc31a3a93a98a321aa2f9b47d56dacc37d425350d"
+    },
+    {
+      "bytes": 660,
+      "path": "reference_footprint.stdout.raw.txt",
+      "sha256": "39d46012cb875f23f390aac1c5ed20a6d8a7c875eae4c291665a315e2949b371"
+    },
+    {
+      "bytes": 87448,
+      "path": "results.json",
+      "sha256": "88d25fa95d41636817954c7dd169730ec01fb1dc3dd0a4964b9f42468465fa20"
+    },
+    {
+      "bytes": 909,
+      "path": "test_bf16.py",
+      "sha256": "d57120d90d896b1e62c93d65f26150aa2701381f15190b8c5e9d8b9e125c8d45"
+    },
+    {
+      "bytes": 413,
+      "path": "tests.stdout.raw.txt",
+      "sha256": "44e754ee44bd033e5bbbfa2d8fccd8426254f2d4551aafdb73ba1e386e21cc57"
+    }
+  ],
+  "gates": {
+    "G0": "PASS",
+    "G1": "PASS bounded cases",
+    "G2": "PASS bounded controls",
+    "G3": "PARTIAL",
+    "G4": "NOT_DEMONSTRATED"
+  },
+  "gates_commit": "370cb73",
+  "scope": "finite behavior comparison; no BF to Malbolge compilation or relocated EOF claim"
+}

@@ -1,0 +1,8 @@
+test_bad_eof_and_missing_output_are_detectable (test_bf16.EchoTests.test_bad_eof_and_missing_output_are_detectable) ... ok
+test_every_byte_and_eof (test_bf16.EchoTests.test_every_byte_and_eof) ... ok
+test_malformed_programs_and_underflow_fail (test_bf16.EchoTests.test_malformed_programs_and_underflow_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.013s
+
+OK

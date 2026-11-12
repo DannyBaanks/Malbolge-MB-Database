@@ -1,0 +1,6 @@
+empty {'python': True, 'bf16': True, 'olmstead': True}
+nul {'python': True, 'bf16': True, 'olmstead': True}
+mixed {'python': True, 'bf16': True, 'olmstead': True}
+all256 {'python': True, 'bf16': True, 'olmstead': True}
+long10000 {'python': True, 'bf16': True, 'olmstead': True}
+checks {'all_exact': True, 'controls_detected': True}

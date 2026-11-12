@@ -1,0 +1,59 @@
+{
+  "byte_collisions_with_eof": [],
+  "byte_trit_sets": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0
+    ],
+    [
+      0
+    ],
+    [
+      0
+    ],
+    [
+      0
+    ]
+  ],
+  "control_wrong_eof_255_does_not_halt": true,
+  "distinct_byte_results": 256,
+  "distinctive_trits": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "eof_result": 0,
+  "formula": "crazy(crazy(59048, value), 29524)",
+  "orientation": "crazy(accumulator, cell)",
+  "scope": "pure algebra; does not install or rearm a relocated loop"
+}

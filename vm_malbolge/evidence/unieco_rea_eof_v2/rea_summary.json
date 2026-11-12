@@ -1,0 +1,36 @@
+{
+  "artifact_sha256": "0d298645bcabd8c832c6bbad0769124828a8805bb46cc4644e35added50334f1",
+  "evidence_id": "ev_86ec14b08d1d00691006ce8d2bc861ec7561b116b3e99b335f035911e5adbedb",
+  "limitations": [
+    "The trace replays Classic Malbolge semantics in a bounded in-process engine; memory past the program is the canonical crazy chain, never the host.",
+    "Output text is decoded as latin-1 bytes, exactly as the canonical interpreter reports it.",
+    "Each step records its memory writes (rotate/crazy stores plus the post-instruction self-encryption) with before and after values; state digests are SHA-256 over the comma-joined 59049-word machine at load time and at the reported stop.",
+    "Malbolge is self-modifying by design: a revisited position may decode to a different instruction than on its first visit, and the trace reports the post-transformation decode each time."
+  ],
+  "output_hex": "41545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454545454",
+  "parameters": {
+    "event_capture_limit": 128,
+    "input_hex": "41",
+    "max_steps": 30000
+  },
+  "provider": {
+    "id": "rea-malbolge-classic",
+    "name": "REA Malbolge Classic engine",
+    "version": "6.5.0"
+  },
+  "raw_sha256": "2dbeec9541e1241bac7998aa550fff42d0a4fa50a0af9572de9d2b064a99f44b",
+  "redacted_sha256": "020214c07e3ad4221e58f6b5258a344091ed0dd2dd1ab994aa48dd2564d820d7",
+  "run": {
+    "events_truncated": true,
+    "invalid_reason": "step budget of 30000 reached before halt",
+    "peak_position": 59048,
+    "representation_changes": 31904,
+    "state_digest_after": "fa9b53919e4c0abd115725ef8520620a87b41b07995bdac6b3e53cc1d1cbf8da",
+    "state_digest_before": "a370c11e1fe121941a162f7ac489ec2d5388f9f297d3eb776a1c9c64e811c5e5",
+    "status": "MAX_STEPS",
+    "steps": 30000,
+    "writebacks": 33505
+  },
+  "source_file": "src/domain/malbolge/malbolgeClassic.ts (REA checkout)",
+  "source_sha256": "cec31999d9bb42ea64495b2df85c6cb284b0e2428eac15b6c775a491d4fea753"
+}

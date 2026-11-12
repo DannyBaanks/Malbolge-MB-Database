@@ -1,0 +1,36 @@
+{
+  "image_sha256": "0d298645bcabd8c832c6bbad0769124828a8805bb46cc4644e35added50334f1",
+  "input_hex": "00ff",
+  "output_hex": "00ff",
+  "status": "HALTED",
+  "steps": 8620,
+  "first_input": {
+    "step": 7531,
+    "pc": 7657,
+    "d": 58975,
+    "a": 29524
+  },
+  "inputs": [
+    {
+      "step": 7531,
+      "pc": 7657,
+      "value": 0
+    },
+    {
+      "step": 7938,
+      "pc": 7657,
+      "value": 255
+    },
+    {
+      "step": 8345,
+      "pc": 7657,
+      "value": 59048
+    }
+  ],
+  "counts": {
+    "executed": 36,
+    "data_access": 107,
+    "written": 47
+  },
+  "scope": "model trace only for input 00ff and EOF; not a general relocation recipe"
+}
