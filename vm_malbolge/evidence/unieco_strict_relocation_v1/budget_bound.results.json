@@ -1,0 +1,67 @@
+{
+  "bounds": {
+    "formula": "max_plan_ops / ops_per_target_cell",
+    "max_target_cells_current_region": 404,
+    "max_target_cells_max_region": 1060
+  },
+  "comparison": {
+    "lmao_example_cat_halt_on_eof": {
+      "fits_current_region": false,
+      "fits_max_region": false,
+      "over_current_region": 51.43,
+      "over_max_region": 19.6,
+      "reference_cells": 20776
+    },
+    "pureepoch_cat_real": {
+      "fits_current_region": false,
+      "fits_max_region": false,
+      "over_current_region": 19.73,
+      "over_max_region": 7.52,
+      "reference_cells": 7972
+    }
+  },
+  "conclusion": "El techo medido es de 404 celdas destino con la region de plan actual y 1060 con la region maxima admisible antes de invadir el destino. Las dos referencias con deteccion de EOF que existen y funcionan necesitan 7972 y 20776 celdas: un factor de reduccion de 7.5x y 19.6x. Una variante relocalizada con halt en EOF exige por tanto un cuerpo nuevo de como maximo 1060 celdas, que no es ninguno de los dos artefactos medidos.",
+  "dispatch_option": {
+    "cells": 256,
+    "fits_current_region": true,
+    "note": "el indice exige el byte EXACTO en una celda, que en un bucle exige la mascara C1 y su rearme por vuelta (coste medido en las referencias de la tabla superior)",
+    "ops": 11884,
+    "option": "tabla de despacho de 256 entradas indexada por el byte exacto",
+    "remaining_cells_in_current_region": 148,
+    "remaining_ops_in_current_region": 6916
+  },
+  "eof_capable_references": {
+    "lmao_example_cat_halt_on_eof": {
+      "cells": 20776,
+      "exists": true,
+      "file_bytes": 10277,
+      "note": "fuente HeLL; compilada a 20776 celdas; halt limpio en EOF",
+      "path": "third_party/lmao/example_cat_halt_on_eof.hell (este repo)",
+      "sha256": "46ee8a493e6b9a3f8fbfcecc0501d297f61b12e06cf716ff2f677e60e17e293c"
+    },
+    "pureepoch_cat_real": {
+      "cells": 7972,
+      "exists": true,
+      "file_bytes": 7972,
+      "note": "eco binario + halt limpio en EOF; el loader estricto lo acepta",
+      "path": "Malbolge-PureEpoch/candidates/cat_real.mal (repo hermano PureEpoch)",
+      "sha256": "0d298645bcabd8c832c6bbad0769124828a8805bb46cc4644e35added50334f1"
+    }
+  },
+  "measured": {
+    "max_plan_ops": 49214,
+    "max_source_len": 58697,
+    "ops_per_target_cell": 46.4253,
+    "plan_length": 4039,
+    "plan_region_now": 18800,
+    "shift": 58656,
+    "source_len": 28182,
+    "target_cells": 87,
+    "template_len": 9382
+  },
+  "not_demonstrated": [
+    "el minimo celdas de un cuerpo con deteccion de EOF: solo hay dos mediciones (7972 y 20776 celdas), ambas por encima del techo",
+    "que exista un cuerpo con deteccion de EOF por debajo de 1060 celdas",
+    "que la tabla de despacho de 256 entradas sea viable con rearme por vuelta"
+  ]
+}

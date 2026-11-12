@@ -1,0 +1,17 @@
+image {'length': 7972, 'sha256': '0d298645bcabd8c832c6bbad0769124828a8805bb46cc4644e35added50334f1', 'valid_cells': 7972, 'invalid_cells': 0}
+empty {'olmstead': (None, False, True, False), 'runner_c': ('HALTED', False, False, True), 'scratch': ('HALTED', False, True, False), 'independent': ('EOF', False, True, False), 'oracle_default': ('HALTED', False, True, False), 'oracle_stop': ('EOF', False, True, False)}
+zero {'olmstead': (None, False, True, False), 'runner_c': ('HALTED', False, False, True), 'scratch': ('HALTED', False, True, False), 'independent': ('EOF', False, True, False), 'oracle_default': ('HALTED', False, True, False), 'oracle_stop': ('EOF', False, True, False)}
+mixed {'olmstead': (None, False, True, False), 'runner_c': ('HALTED', False, False, True), 'scratch': ('HALTED', False, True, False), 'independent': ('EOF', False, True, False), 'oracle_default': ('HALTED', False, True, False), 'oracle_stop': ('EOF', False, True, False)}
+all256 {'olmstead': (None, False, True, False), 'runner_c': ('HALTED', False, False, True), 'scratch': ('HALTED', False, True, False), 'independent': ('EOF', False, True, False), 'oracle_default': ('HALTED', False, True, False), 'oracle_stop': ('EOF', False, True, False)}
+long10000 {'olmstead': (None, False, True, False), 'runner_c': ('HALTED', False, False, True), 'scratch': ('HALTED', False, True, False), 'independent': ('EOF', False, True, False), 'oracle_default': ('HALTED', False, True, False), 'oracle_stop': ('EOF', False, True, False)}
+summary {
+  "eof_control_not_clean": true,
+  "loader_control_rejected": true,
+  "not_claimed": "esta imagen es una referencia de otro pack; no demuestra la variante relocalizada candidate.mb, que sigue sin deteccion de EOF",
+  "olmstead_accepts_image": true,
+  "olmstead_all256_exact": true,
+  "olmstead_echo_exact_all_cases": true,
+  "olmstead_empty_input_no_bytes": true,
+  "olmstead_long10000_exact": true,
+  "runner_c_framing_is_single_newline": true
+}

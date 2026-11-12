@@ -1,0 +1,27 @@
+{
+  "search_budget": 4339,
+  "scratch_status": "MAX",
+  "steps": 4339,
+  "first_input": {
+    "step": 4041,
+    "pc": 58699,
+    "op": 23,
+    "d": 58782,
+    "value": 74,
+    "dest": null
+  },
+  "pre_input_outputs": 0,
+  "handoff": {
+    "pc_ok": true,
+    "d_ok": true,
+    "expected_memory": 87,
+    "mismatches": [],
+    "pre_input_output_empty": true,
+    "steps_before_first_input": 4040
+  },
+  "runner": {
+    "rc": 0,
+    "stdout_hex": "0a",
+    "stderr": "steps: 4041 | status: TIMEOUT\n"
+  }
+}

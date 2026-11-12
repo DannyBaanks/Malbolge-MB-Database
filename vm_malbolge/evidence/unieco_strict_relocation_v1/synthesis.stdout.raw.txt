@@ -1,0 +1,16 @@
+{
+  "shift": 58656,
+  "source_len": 28182,
+  "plan_length": 4039,
+  "plan_end": 4138,
+  "handoff_c": 58699,
+  "handoff_d": 58782,
+  "target_cells": 87,
+  "invalid_cells": 0,
+  "target_sha256": "908a5f7ad0f4a0f83c6fe3453cef0749625b2d2561c275e974c028fc4c18a7a3",
+  "source_sha256": "a22237ecaaba916b9d8b352640ccb3c4a88e85fa78ebecdf7096ffe1a8031439",
+  "tail_bytes": [
+    82,
+    81
+  ]
+}

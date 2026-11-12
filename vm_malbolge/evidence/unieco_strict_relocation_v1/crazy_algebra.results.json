@@ -1,0 +1,311 @@
+{
+  "byte_trit_sets": {
+    "0": [
+      0,
+      1,
+      2
+    ],
+    "1": [
+      0,
+      1,
+      2
+    ],
+    "2": [
+      0,
+      1,
+      2
+    ],
+    "3": [
+      0,
+      1,
+      2
+    ],
+    "4": [
+      0,
+      1,
+      2
+    ],
+    "5": [
+      0,
+      1
+    ],
+    "6": [
+      0
+    ],
+    "7": [
+      0
+    ],
+    "8": [
+      0
+    ],
+    "9": [
+      0
+    ]
+  },
+  "c1": 29524,
+  "c2": 59048,
+  "collapse_chain_in_loop": {
+    "design": "CRAZY(b;A=0) ; CRAZY(a;B=C2) ; CRAZY(a;C=M3)",
+    "mask_A_after_round1": 29487,
+    "mask_A_is_word_with_trits_in_01": true,
+    "output_stable_across_rounds": false,
+    "outputs": [
+      59048,
+      29524,
+      59048,
+      29524
+    ],
+    "round1_is_constant_2": true,
+    "stream": [
+      65,
+      66,
+      67,
+      68
+    ],
+    "verdict": "la cadena colapsa en la ronda 1 (salida constante) pero no en la ronda 2: la mascara de A es ahora R_0(byte) y su imagen ya no es {0,1}, luego R_2 deja de colapsar",
+    "why_it_should_work": "con mascaras estables R_2 colapsa la imagen {0,1} de R_0 a la constante 2, y R_M3(2) fija el destino"
+  },
+  "columns": {
+    "0": [
+      1,
+      1,
+      2
+    ],
+    "1": [
+      0,
+      0,
+      2
+    ],
+    "2": [
+      0,
+      2,
+      1
+    ]
+  },
+  "conclusions": {
+    "c1_mask_restores_word": "crazy(crazy(V,29524),29524) == V para toda palabra de 10 trits",
+    "collapse_preserves_eof_bit": false,
+    "loop_stable_branch_needs": [
+      "rearmar las mascaras cada vuelta (coste medido: ejemplo LMAO 20776 celdas)",
+      "o despachar por tabla sobre un indice que cubra todos los estados alcanzables"
+    ],
+    "measurements": {
+      "lmao_eof_cat_cells": 20776,
+      "pureepoch_cat_cells": 7972
+    },
+    "single_crazy_branch_possible": false
+  },
+  "constant_compositions": {
+    "1": [],
+    "2": [
+      {
+        "constant": 2,
+        "rows": [
+          0,
+          2
+        ]
+      },
+      {
+        "constant": 0,
+        "rows": [
+          2,
+          0
+        ]
+      }
+    ],
+    "3": [
+      {
+        "constant": 2,
+        "rows": [
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "constant": 2,
+        "rows": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "constant": 0,
+        "rows": [
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "constant": 2,
+        "rows": [
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "constant": 1,
+        "rows": [
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "constant": 2,
+        "rows": [
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "constant": 0,
+        "rows": [
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "constant": 1,
+        "rows": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "constant": 1,
+        "rows": [
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "constant": 2,
+        "rows": [
+          2,
+          0,
+          2
+        ]
+      },
+      {
+        "constant": 0,
+        "rows": [
+          2,
+          2,
+          0
+        ]
+      }
+    ]
+  },
+  "constant_compositions_note": "R_c denota la fila TR[c][.]; una composicion constante sobre {0,1,2} es tambien constante sobre el trit 2 de EOF, luego colapsar un trit borra la distincion EOF en ese trit.",
+  "crz": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      2,
+      1
+    ]
+  ],
+  "distinctive_positions": [
+    6,
+    7,
+    8,
+    9
+  ],
+  "eof_trits": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "mask_drift": {
+    "chain": "CRAZY(b;A) ; CRAZY(a;B)",
+    "note": "con la misma entrada la primera ronda coincide; en cuanto el historial cambia, la composicion effective cambia: la mascara de la ronda n+1 es la salida de la ronda n.",
+    "out_stream_a": [
+      37,
+      39,
+      40
+    ],
+    "out_stream_b": [
+      81,
+      82,
+      82
+    ],
+    "outputs_differ_with_history": true,
+    "stream_a": [
+      65,
+      66,
+      67
+    ],
+    "stream_b": [
+      81,
+      82,
+      83
+    ]
+  },
+  "n": 59049,
+  "parity_engine": {
+    "c1_involution_failures": 0,
+    "c1_involution_samples": 8,
+    "engine": "epoch_dload_compose_v1/probe.py :: SE.crazy",
+    "mismatches": 0,
+    "note": "mem[d] = crazy(a, mem[d])",
+    "orientation": "fila = trit de celda, columna = trit del acumulador",
+    "samples": 4000
+  },
+  "row_images": {
+    "0": [
+      0,
+      1
+    ],
+    "1": [
+      0,
+      1,
+      2
+    ],
+    "2": [
+      1,
+      2
+    ]
+  },
+  "rows": {
+    "0": [
+      1,
+      0,
+      0
+    ],
+    "1": [
+      1,
+      0,
+      2
+    ],
+    "2": [
+      2,
+      2,
+      1
+    ]
+  },
+  "single_crazy_can_be_byte_independent": false
+}

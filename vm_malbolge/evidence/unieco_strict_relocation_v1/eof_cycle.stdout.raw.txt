@@ -1,0 +1,23 @@
+{
+  "semantics": "empty input, IN returns 59048; finite input state permanently EOF",
+  "repeat": {
+    "first_round": 1,
+    "second_round": 181,
+    "period": 180,
+    "first_step": 4123,
+    "second_step": 18883,
+    "memory_equal_exact": true,
+    "registers": [
+      59048,
+      58699,
+      58783
+    ],
+    "output_bytes_before_repeat": 181
+  },
+  "output_len": 181,
+  "output_prefix_hex": "a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8",
+  "all_output_a8": true,
+  "output_sha256": "112566c541481c3a552bc4a6198e5b8b0d430a61539b33247c53621d8e650984",
+  "limit_steps": 99999,
+  "scope": "model repeat; native observed only bounded prefix, not infinite execution"
+}

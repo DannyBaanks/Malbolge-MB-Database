@@ -1,0 +1,101 @@
+{
+  "cap": 824040,
+  "stream_sha256": "b13c2bec64e073d7d2c52c0d88ee22605434afb299103567189dcc472dab836f",
+  "expected_output_sha256": "db0b3c48aed59e9a8c1ae1003130dd6b6b0ea8329cec27ed4d1c5c6ae9fb121e",
+  "trace": {
+    "status": "MAX",
+    "steps": 824040,
+    "input_consumed": 10000,
+    "output_bytes": 10000,
+    "rounds": 10000,
+    "first_three_rounds": [
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ],
+      [
+        23,
+        40,
+        5,
+        4
+      ]
+    ],
+    "d_starts": [
+      58782,
+      58783
+    ],
+    "jmp_destinations": [
+      58698
+    ],
+    "pre_io": [],
+    "memory_sha256": "36b30d5e4a2061b50d360dab9cc66c9b6a3ff6f3aa6d4448edfbc56d160cfa43",
+    "registers": [
+      10,
+      58699,
+      58782
+    ]
+  },
+  "engines": {
+    "scratch": {
+      "status": "MAX",
+      "steps": 824040,
+      "memory_sha256": "36b30d5e4a2061b50d360dab9cc66c9b6a3ff6f3aa6d4448edfbc56d160cfa43"
+    },
+    "independent": {
+      "status": "MAX",
+      "steps": 824040,
+      "memory_sha256": "36b30d5e4a2061b50d360dab9cc66c9b6a3ff6f3aa6d4448edfbc56d160cfa43"
+    },
+    "oracle": {
+      "status": "MAX_STEPS",
+      "steps": 824040
+    },
+    "runner": {
+      "rc": 0,
+      "stderr": "steps: 824040 | status: TIMEOUT\n",
+      "output_sha256": "36fad3496aa52fc021013e8c36bd107b358c696fa67d66f4455f6e10df9dbd97"
+    }
+  },
+  "olmstead_bounded": {
+    "stdout_bytes": 12288,
+    "stdout_sha256": "36538874cb01b6f6ae362ac5474459d03e3e1c19d568b100f245fb753ca83b8f",
+    "prefix_equal": true,
+    "post_eof_bytes_first16": "a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8",
+    "terminated_by_harness": true,
+    "returncode": -15,
+    "stderr": ""
+  },
+  "control": {
+    "mutated_pc": 4128,
+    "original_normalized_op": 62,
+    "new_normalized_op": 68,
+    "status": "NONPRINT",
+    "steps": 4041,
+    "rounds": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "checks": {
+    "10000_rounds": true,
+    "one_in_dload_out_jmp": true,
+    "all_jumps": true,
+    "two_d_values": true,
+    "no_pre_io": true,
+    "all_outputs": true,
+    "all_steps": true,
+    "memory_equal": true,
+    "olmstead_prefix": true,
+    "olmstead_produces_post_eof_bytes": true,
+    "control_breaks": true
+  },
+  "all_checks": true,
+  "eof_clean": "NOT_DEMONSTRATED; native process emitted bytes after EOF and was terminated by harness"
+}

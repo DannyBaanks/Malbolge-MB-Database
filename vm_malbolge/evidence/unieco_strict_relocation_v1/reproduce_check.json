@@ -1,0 +1,58 @@
+{
+  "compared_fields": [
+    "cap",
+    "stream_sha256",
+    "expected_output_sha256",
+    "trace.status",
+    "trace.steps",
+    "trace.input_consumed",
+    "trace.output_bytes",
+    "trace.rounds",
+    "trace.d_starts",
+    "trace.jmp_destinations",
+    "trace.pre_io",
+    "trace.memory_sha256",
+    "trace.registers",
+    "engines.scratch.status",
+    "engines.scratch.steps",
+    "engines.scratch.memory_sha256",
+    "engines.independent.status",
+    "engines.independent.steps",
+    "engines.independent.memory_sha256",
+    "engines.oracle.status",
+    "engines.oracle.steps",
+    "engines.runner.output_sha256",
+    "control.status",
+    "control.steps",
+    "control.rounds",
+    "control.output_bytes",
+    "control.output_sha256",
+    "control.mutated_pc",
+    "checks",
+    "all_checks",
+    "eof_clean"
+  ],
+  "differences": {},
+  "identical_deterministic_fields": true,
+  "method": "re-ejecucion de verify_echo.py en una copia del pack fuera del repositorio; la evidencia almacenada no se modifica",
+  "purpose": "reproducibilidad de las puertas G0-G2 y del ciclo EOF",
+  "timing_dependent": {
+    "field": "olmstead_bounded",
+    "fresh": {
+      "post_eof_bytes_first16": "a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8",
+      "prefix_equal": true,
+      "returncode": -15,
+      "stdout_bytes": 12288,
+      "terminated_by_harness": true
+    },
+    "note": "la longitud de la captura post-EOF depende del reloj; el prefijo igual a la entrada, la presencia de bytes post-EOF y el estado HALTED/terminado si son deterministas",
+    "stored": {
+      "post_eof_bytes_first16": "a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8a8",
+      "prefix_equal": true,
+      "returncode": -15,
+      "stdout_bytes": 12288,
+      "terminated_by_harness": true
+    }
+  },
+  "verdict": "reproducible"
+}
