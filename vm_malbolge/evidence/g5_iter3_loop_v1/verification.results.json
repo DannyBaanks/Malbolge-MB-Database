@@ -1,0 +1,54 @@
+{
+  "control": {
+    "final": {
+      "58376": 79,
+      "58550": 53,
+      "58573": 41,
+      "58585": 126
+    },
+    "halt_pc": 58376,
+    "hclock_values": [
+      66,
+      62,
+      76,
+      79
+    ],
+    "image_sha256": "a4154b02eb05f93bd9b51d92cb2b372a9dce0a7dd09ceed2a2e9eb9220c1f252",
+    "native_rc": 0,
+    "native_stdout_hex": "",
+    "scratch_steps": 7661,
+    "strict_cells": true,
+    "visit_counts": {
+      "58376": 4,
+      "58550": 2,
+      "58573": 2,
+      "58585": 2
+    }
+  },
+  "positive": {
+    "final": {
+      "58376": 79,
+      "58550": 70,
+      "58573": 41,
+      "58585": 126
+    },
+    "halt_pc": 58376,
+    "hclock_values": [
+      66,
+      62,
+      76,
+      79
+    ],
+    "image_sha256": "c702a51d8215665983b62c1610c891a7719e1e3cd391b3306b11449bf65e8df5",
+    "native_rc": 0,
+    "native_stdout_hex": "",
+    "scratch_steps": 7682,
+    "strict_cells": true,
+    "visit_counts": {
+      "58376": 4,
+      "58550": 2,
+      "58573": 2,
+      "58585": 2
+    }
+  }
+}

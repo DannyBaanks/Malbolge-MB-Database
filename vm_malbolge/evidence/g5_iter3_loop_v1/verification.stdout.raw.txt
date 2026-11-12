@@ -1,0 +1,30 @@
+{
+  "positive": {
+    "halt_pc": 58376,
+    "scratch_steps": 7682,
+    "visit_counts": {
+      "58550": 2,
+      "58573": 2,
+      "58585": 2,
+      "58376": 4
+    },
+    "hclock_values": [
+      66,
+      62,
+      76,
+      79
+    ],
+    "native_rc": 0
+  },
+  "control": {
+    "halt_pc": 58376,
+    "scratch_steps": 7661,
+    "visit_counts": {
+      "58550": 2,
+      "58573": 2,
+      "58585": 2,
+      "58376": 4
+    },
+    "native_rc": 0
+  }
+}

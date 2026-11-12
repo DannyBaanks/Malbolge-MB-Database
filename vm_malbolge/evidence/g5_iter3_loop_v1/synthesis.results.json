@@ -1,0 +1,35 @@
+{
+  "targets": [
+    58550,
+    58573,
+    58585
+  ],
+  "wants": {
+    "58550": 74,
+    "58573": 51,
+    "58585": 110
+  },
+  "helpers": [
+    58000,
+    58100,
+    58200
+  ],
+  "hclock": 58376,
+  "programs": {
+    "positive": {
+      "target_cells": 124,
+      "plan_length": 7605,
+      "plan_end": 7704,
+      "fits": true,
+      "elapsed_seconds": 0.391
+    },
+    "control": {
+      "target_cells": 124,
+      "plan_length": 7584,
+      "plan_end": 7683,
+      "fits": true,
+      "elapsed_seconds": 0.173
+    }
+  },
+  "scope": "three v4 body passes then pc\u22612 clock HALT; not mutual R/R2"
+}

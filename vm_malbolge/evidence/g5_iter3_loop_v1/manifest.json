@@ -1,0 +1,21 @@
+{
+  "count": 16,
+  "files": {
+    "DESIGN.md": "1d7505997f4432ecd37eea01c542edc5198e7dadb36da3c03c59453ef8261d75",
+    "GATES.md": "f64b81d16c285e152eef0aadfe1521cb76fd2bef9fd2975602761cf288607dd2",
+    "GUIA.md": "27bb0c3acb2c9c05425496c23846d039f38f02d8e99d9af46c2358c4a4f300df",
+    "VERDICT.md": "fb73882d72022372a025ca02e9ca38b87720ebca504d86a48d374b436b0c1108",
+    "iter3_control.mb": "a4154b02eb05f93bd9b51d92cb2b372a9dce0a7dd09ceed2a2e9eb9220c1f252",
+    "iter3_control_plan.ops": "4c4be25e85cf7d3fee07446d98fb433091574eea783045e65ac3ba455d46ad1c",
+    "iter3_control_targets.json": "fe2e3826a9fff7e604e2d865cfb358fdd708ec1021d63bfb2dfd61e093ae8629",
+    "iter3_positive.mb": "c702a51d8215665983b62c1610c891a7719e1e3cd391b3306b11449bf65e8df5",
+    "iter3_positive_plan.ops": "6e36fead506f94ec0788746894a8ece2a00ecb2b3229e51ace5e297553b1d1ce",
+    "iter3_positive_targets.json": "5c2837d3fbf12064c0ca8fdafc8b33e22461c2e97b1a37c53d4a715b9167715e",
+    "synthesis.results.json": "9e65991c8a27688fe04c72bf2c109e6929f00a24845d3640715a8aeb686671c3",
+    "synthesize.py": "02b88b5e939c0213faf6804394c8a21f37733ec32c352a3edec876746ce4302d",
+    "verification.results.json": "bb13436be36a503047353feb28673ead8668789a9d25de057b66522e9374eac3",
+    "verification.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification.stdout.raw.txt": "ad1792323afa619d60d5f5d11969549932a9ad1dd64be239487fbd73f78f76ea",
+    "verify.py": "1cb7aba917b34d4ba9d8e8697d8cd41f4f645fa9ed2bd4ac3748bd10e8d3e3c5"
+  }
+}
