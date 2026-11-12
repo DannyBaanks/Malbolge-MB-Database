@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "vm_malbolge/evidence/increment_rearm_invariant_v1/observe.py", line 51, in <module>
+    assert len(events)==2 and [e['opcode'] for e in events]==[62,62] and events[-1].get('after')==29524,(name,events)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('t1', [{'step': 56353, 'opcode': 62, 'before': 29524, 'after': 0}, {'step': 56365, 'opcode': 62, 'before': 0, 'after': 1}])

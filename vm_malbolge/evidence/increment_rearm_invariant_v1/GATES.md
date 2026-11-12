@@ -1,0 +1,3 @@
+# Invariante de rearme del bucle de incremento
+
+2026-11-12. Base `7d2e34c`. Medir el estado en las 257 visitas a IN de la imagen existente para la entrada `00..ff` seguida de EOF. Comparar todas las celdas instaladas en cada frontera con la primera; registrar excepciones exactas y si las celdas de código variables permanecen sin efecto durante toda su órbita XLAT2. Para los temporales variables, observar sus dos primeros accesos y su resultado de reinicio antes de uso; contrastar el flujo de salida y HALT con Olmstead. Un resultado observacional finito no prueba todos los estados o streams. No modificar la imagen original.

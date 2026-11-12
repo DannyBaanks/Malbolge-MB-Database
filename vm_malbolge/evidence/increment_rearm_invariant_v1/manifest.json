@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-11-12T17:24:39.485144+00:00",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "database_base": "7d2e34c568a865bb615e4f20bf80838150a0498a",
+  "commands": [
+    "python3 vm_malbolge/evidence/increment_rearm_invariant_v1/observe.py"
+  ],
+  "target_image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+  "files": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "GATES.md": "d91dab9b3c9d4cafa458d704f290ee644ffbcf24cc4337c1cdbb704774d5b912",
+    "VERDICT.md": "3ccab55e53ab0c407ca95367c45ebba45470f664edb7300a79445f10e3f71d48",
+    "observe.py": "329d75f033e02842840a2a55792de691bc5dcc9462e3d2d67b759c651d8ae263",
+    "observe.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observe.stdout.raw.txt": "ad8f2ede423165f33e836615257609449704fff04b363ad99646cc46a2387f09",
+    "observe_v1.stderr.raw.txt": "c04e8d92675d934ab1e33f34f097f5ba25aa5cbc893c14bb8ac825d5adda82d3",
+    "observe_v1.stdout.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observe_v2.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observe_v2.stdout.raw.txt": "bd2d73fe94fc1e7cb16e8a3fcbd723df9b66205c52afdc8df835e492dcb42f09",
+    "observe_v3.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observe_v3.stdout.raw.txt": "ad8f2ede423165f33e836615257609449704fff04b363ad99646cc46a2387f09"
+  }
+}
