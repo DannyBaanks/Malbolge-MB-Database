@@ -1,0 +1,60 @@
+{
+  "halt_step": 3396,
+  "halt_pc": 58303,
+  "T1": 40,
+  "T2": 40,
+  "T3": 57564,
+  "C": 40,
+  "clk": 58,
+  "patch_ok": true,
+  "t1_writes": [
+    {
+      "step": 1753,
+      "before": 29443,
+      "after": 70
+    },
+    {
+      "step": 3310,
+      "before": 70,
+      "after": 60
+    },
+    {
+      "step": 3320,
+      "before": 60,
+      "after": 29524
+    },
+    {
+      "step": 3342,
+      "before": 29524,
+      "after": 29484
+    },
+    {
+      "step": 3347,
+      "before": 29484,
+      "after": 40
+    }
+  ],
+  "t2_writes": [
+    {
+      "step": 3358,
+      "before": 70,
+      "after": 60
+    },
+    {
+      "step": 3368,
+      "before": 60,
+      "after": 29524
+    },
+    {
+      "step": 3382,
+      "before": 29524,
+      "after": 29484
+    },
+    {
+      "step": 3392,
+      "before": 29484,
+      "after": 40
+    }
+  ],
+  "host_store": true
+}

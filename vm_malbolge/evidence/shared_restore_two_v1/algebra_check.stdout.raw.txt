@@ -1,0 +1,62 @@
+{
+  "base": "shared_restore_one_v1@4172c2e",
+  "clock_pc": 58303,
+  "clock_orbit_from_117": [
+    {
+      "value": 117,
+      "opcode": 46
+    },
+    {
+      "value": 111,
+      "opcode": 40
+    },
+    {
+      "value": 120,
+      "opcode": 49
+    },
+    {
+      "value": 58,
+      "opcode": 81
+    },
+    {
+      "value": 37,
+      "opcode": 60
+    },
+    {
+      "value": 103,
+      "opcode": 32
+    }
+  ],
+  "clock_rearm": {
+    "e": 58,
+    "want": 117,
+    "x": 54,
+    "mid": 29524,
+    "ctrl": 29407,
+    "got": 117,
+    "ok": true,
+    "ctrl_roundtrip": true
+  },
+  "constant_rearm_crazy": {
+    "e": 40,
+    "want": 120,
+    "x": 0,
+    "mid": 29524,
+    "ctrl": 29404,
+    "got": 120,
+    "ok": true,
+    "ctrl_roundtrip": true
+  },
+  "constant_rearm_nine_rots": {
+    "from": 40,
+    "to": 120,
+    "ok": true
+  },
+  "double_movd_before_halt_at_clock_pc": [],
+  "implication": "call1 cannot share one xlat2 orbit for two MOVD dispatch phases; must rearm clock (58\u2192117) and constant (40\u2192120), and divert the fourth return through cell T+3=57103 away from CLOCK before HALT",
+  "divert_cell": {
+    "address": 57103,
+    "call1_value": 58302,
+    "role": "JMP target before CLOCK"
+  }
+}

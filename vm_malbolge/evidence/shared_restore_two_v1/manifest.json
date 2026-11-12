@@ -1,0 +1,29 @@
+{
+  "pack": "shared_restore_two_v1",
+  "base": "4172c2e",
+  "native": true,
+  "files": {
+    "DESIGN.md": "7422996a4fa63bcd92209a2becab1f992a595662e923e9ed3cbfa7804a6f1850",
+    "GATES.md": "2def175d818875e70e6a1755f4e701d5238d9ff4ae42801c117ecb52cd94c7ea",
+    "GUIA.md": "132cb3eb0615d5499e2206feb50ab688030eb57de870541bc61d96ad2f4cff49",
+    "VERDICT.md": "ddbd3af1210f782a77de4af6e429d27ea82f5b19f48542fb312bee9f328227bf",
+    "algebra_check.py": "ce23d0fc57915579b8108ee7ac02c33f88e920287115e99872923aed7e165dd1",
+    "algebra_check.results.json": "f9a77cb1d21096a3647d776ecc7d9876371b7983101dea20848edc69f87aeff5",
+    "algebra_check.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algebra_check.stdout.raw.txt": "f9a77cb1d21096a3647d776ecc7d9876371b7983101dea20848edc69f87aeff5",
+    "restore2_control.mb": "2362f4a2baa66f2b32c0aaf3d70078d67c7506963a23751b6c5f2871058d9d45",
+    "restore2_control_plan.ops": "72124fce103ba120266ded643ef3020fce35f0cfa40eed77984abd59b8637de7",
+    "restore2_control_targets.json": "305a763ecbc44a10298ced351f73b6a045bb84ebb27cdd2aac3fec65d584e52f",
+    "restore2_positive.mb": "48ccdb1626c4d29a2b2e48bd24421673a12bb0eccaff19859b6a07e040491ca4",
+    "restore2_positive_plan.ops": "4d5622b593b57ce4e6332264b02ae035e13f878f85bc54179d7f266f042ded20",
+    "restore2_positive_targets.json": "20669ee4cff7725da1fd56fbc25d4a6184f7f393da418c486651b6586a6da4ba",
+    "scratch_proto.py": "e211116320addd89f898a3a9366bcf052842ef29a8383e97547c118989e9364c",
+    "scratch_proto.results.json": "2892fc67a8292d3abed2e0a7ffef1f898e80e3e0b11edf8471b343064302c528",
+    "synthesis.results.json": "70df5180b58238ed821110348ba4a2e7cf47931d081989dd8b239e29a818df2b",
+    "synthesize.py": "4f1a07253dbb47d41ea607f4a2dccce616e01d2221346422b8595a823e011f19",
+    "verification.results.json": "f23d929965e4867110bdb67d286645e7c79db14862b9bed2607030b9de7df74e",
+    "verification.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification.stdout.raw.txt": "f23d929965e4867110bdb67d286645e7c79db14862b9bed2607030b9de7df74e",
+    "verify.py": "7973a6ff8d046b7155bebafc4e55b62c5a79aa887c28d1145b9cec92d2f8b690"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "T1": 57100,
+  "T2": 57300,
+  "C2": 57420,
+  "want": 40,
+  "clock": 58303,
+  "clock2": 58397,
+  "rearm": 57565,
+  "store": 57700,
+  "s2": 57380,
+  "programs": {
+    "positive": {
+      "target_cells": 90,
+      "plan_length": 6551,
+      "plan_end": 6650,
+      "fits": true,
+      "elapsed_seconds": 0.394
+    },
+    "control": {
+      "target_cells": 90,
+      "plan_length": 6530,
+      "plan_end": 6629,
+      "fits": true,
+      "elapsed_seconds": 0.124
+    }
+  },
+  "scope": "two fixed restores; CLOCK2+C2 avoid STORE rearm; STORE is JMP to call2"
+}

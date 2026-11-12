@@ -1,0 +1,148 @@
+{
+  "control": {
+    "final": {
+      "C": 39,
+      "C2": 39,
+      "T1": 39,
+      "T2": 39,
+      "T3": 57564,
+      "clock": 120,
+      "clock2": 58
+    },
+    "halt_pc": 58397,
+    "image_sha256": "2362f4a2baa66f2b32c0aaf3d70078d67c7506963a23751b6c5f2871058d9d45",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "patch_ok": true,
+    "scratch_steps": 6643,
+    "strict_cells": true,
+    "t1_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 1931
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 6540
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 6550
+      },
+      {
+        "after": 29485,
+        "before": 29524,
+        "step": 6572
+      },
+      {
+        "after": 39,
+        "before": 29485,
+        "step": 6581
+      }
+    ],
+    "t2_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 2954
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 6605
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 6615
+      },
+      {
+        "after": 29485,
+        "before": 29524,
+        "step": 6629
+      },
+      {
+        "after": 39,
+        "before": 29485,
+        "step": 6639
+      }
+    ]
+  },
+  "positive": {
+    "final": {
+      "C": 40,
+      "C2": 40,
+      "T1": 40,
+      "T2": 40,
+      "T3": 57564,
+      "clock": 120,
+      "clock2": 58
+    },
+    "halt_pc": 58397,
+    "image_sha256": "48ccdb1626c4d29a2b2e48bd24421673a12bb0eccaff19859b6a07e040491ca4",
+    "native_rc": 0,
+    "native_stderr_hex": "",
+    "native_stdout_hex": "",
+    "patch_ok": true,
+    "scratch_steps": 6664,
+    "strict_cells": true,
+    "t1_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 1931
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 6561
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 6571
+      },
+      {
+        "after": 29484,
+        "before": 29524,
+        "step": 6593
+      },
+      {
+        "after": 40,
+        "before": 29484,
+        "step": 6602
+      }
+    ],
+    "t2_writes": [
+      {
+        "after": 70,
+        "before": 29443,
+        "step": 2966
+      },
+      {
+        "after": 60,
+        "before": 70,
+        "step": 6626
+      },
+      {
+        "after": 29524,
+        "before": 60,
+        "step": 6636
+      },
+      {
+        "after": 29484,
+        "before": 29524,
+        "step": 6650
+      },
+      {
+        "after": 40,
+        "before": 29484,
+        "step": 6660
+      }
+    ]
+  }
+}
