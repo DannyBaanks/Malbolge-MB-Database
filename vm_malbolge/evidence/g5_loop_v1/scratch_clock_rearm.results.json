@@ -1,0 +1,14 @@
+{
+  "clock_rearmed_to": 117,
+  "clock_final": 58,
+  "T2": 40,
+  "t2_after": [
+    60,
+    29524,
+    29484,
+    40
+  ],
+  "halt_pc": 58303,
+  "ok": true,
+  "note": "CLOCK rearm still host-side; call2 on same CLOCK is native-shaped scratch"
+}

@@ -1,0 +1,10 @@
+{
+  "halt_pc": 48,
+  "steps": 27,
+  "a": 40,
+  "d": 70,
+  "clock": 58,
+  "T2": 70,
+  "clock_writes": [],
+  "t2_writes": []
+}

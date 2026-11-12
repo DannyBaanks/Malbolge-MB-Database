@@ -1,0 +1,13 @@
+{
+  "count": 8,
+  "files": {
+    "DESIGN.md": "684cedadd6ae8f66cdc6dfd1a65229666e35d400c6517f8adfad93f8236db7d7",
+    "GATES.md": "3f20e93cd380d5fd8bb99e60d00da31649f7e4e33cd18f2745ab684dd39fb605",
+    "GUIA.md": "2156dd723d8ca2e46d21cbdd29511efe87ea42baacab5cf29570e4eabaa22f18",
+    "VERDICT.md": "1ee8291e9bf0a1a6333f807e2aec08033243f7273e2de065ded3ad0be33a280d",
+    "scratch_aux_probe1.json": "5d79064073b94a91799d6909eef08246b0965f072093acd8baa666b5285a9d5f",
+    "scratch_aux_sled.py": "b1b4a545f6cdd41ab5f49f4edce830fd58b547b86f13642565953fdfc95754ea",
+    "scratch_clock_rearm.py": "db840f6bf1d95afc79f4f9153cda50ae616c750910dafa24e7a6a88ed3aedff9",
+    "scratch_clock_rearm.results.json": "36f3f36bde09492870180028711cfdc1228372fe267db88fcd65edb04146d664"
+  }
+}
