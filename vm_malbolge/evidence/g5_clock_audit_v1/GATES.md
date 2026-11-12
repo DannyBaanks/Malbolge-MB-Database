@@ -1,0 +1,5 @@
+# G5: reloj nativo y análisis de tamaño de restauradores
+
+2026-11-12. Base `0e6fb49`. Antes de sintetizar, verificar la corrección de reloj, construir una imagen Classic estricta que visite la órbita `66→62→76→79` en `pc≡2 mod94`, y comprobar tres vueltas y halt en Olmstead, modelo scratch y REA. Control negativo: cambiar una celda de salto o del reloj, preservando loader donde sea posible. Registrar toda intervención del registro D necesaria para volver al reloj; el reloj no cuenta mediante D/A, pero el flujo de retorno sí puede usarlos.
+
+Analizar además la arquitectura G5 literal de islas de 19 celdas sin compartir: R contiene una isla distinta por cada celda de R2 y B; R2 una isla distinta por cada celda de R. Si sus celdas de código son finitas, disjuntas y cada isla se ejecuta y debe restaurarse, verificar formalmente si las desigualdades de tamaño admiten solución. NO extrapolar ese resultado a arquitecturas con primitivas compartidas, instrucciones que no requieren restauración o restauración por bloques. Un reloj demostrado no es G5 completo; conservar como pendientes R/R2, control G6 y longitud arbitraria.
