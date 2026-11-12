@@ -1,0 +1,179 @@
+{
+  "positive": {
+    "sha256": "47dea659b87f75714f5a8b883ba2232ea9ae049e90a9883318e1ac3c53081743",
+    "strict": true,
+    "outcome": "halt",
+    "steps": 4669,
+    "visits": [
+      {
+        "step": 4634,
+        "pc": 57400,
+        "word": 38,
+        "opcode": 4
+      },
+      {
+        "step": 4651,
+        "pc": 57450,
+        "word": 82,
+        "opcode": 4
+      },
+      {
+        "step": 4668,
+        "pc": 57400,
+        "word": 38,
+        "opcode": 4
+      },
+      {
+        "step": 4669,
+        "pc": 58376,
+        "word": 79,
+        "opcode": 81
+      }
+    ],
+    "writes": [
+      {
+        "step": 1779,
+        "pc": 1876,
+        "address": 57400,
+        "before": 29443,
+        "after": 38
+      },
+      {
+        "step": 2182,
+        "pc": 2279,
+        "address": 57450,
+        "before": 29443,
+        "after": 82
+      },
+      {
+        "step": 4637,
+        "pc": 57602,
+        "address": 57450,
+        "before": 82,
+        "after": 0
+      },
+      {
+        "step": 4640,
+        "pc": 57611,
+        "address": 57450,
+        "before": 0,
+        "after": 29524
+      },
+      {
+        "step": 4646,
+        "pc": 57617,
+        "address": 57450,
+        "before": 29524,
+        "after": 82
+      },
+      {
+        "step": 4654,
+        "pc": 57722,
+        "address": 57400,
+        "before": 38,
+        "after": 2
+      },
+      {
+        "step": 4657,
+        "pc": 57731,
+        "address": 57400,
+        "before": 2,
+        "after": 29524
+      },
+      {
+        "step": 4663,
+        "pc": 57737,
+        "address": 57400,
+        "before": 29524,
+        "after": 38
+      }
+    ],
+    "io": [],
+    "olmstead": {
+      "rc": 0,
+      "stdout_hex": "",
+      "stderr_hex": ""
+    }
+  },
+  "control": {
+    "sha256": "37030948f90214c9281698197174c96cd67c3c77ce7713961e16d5aa58706ca4",
+    "strict": true,
+    "outcome": "nonprintable_pc",
+    "steps": 4663,
+    "visits": [
+      {
+        "step": 4629,
+        "pc": 57400,
+        "word": 38,
+        "opcode": 4
+      },
+      {
+        "step": 4646,
+        "pc": 57450,
+        "word": 82,
+        "opcode": 4
+      },
+      {
+        "step": 4663,
+        "pc": 57400,
+        "word": 29524,
+        "opcode": null
+      }
+    ],
+    "writes": [
+      {
+        "step": 1779,
+        "pc": 1876,
+        "address": 57400,
+        "before": 29443,
+        "after": 38
+      },
+      {
+        "step": 2182,
+        "pc": 2279,
+        "address": 57450,
+        "before": 29443,
+        "after": 82
+      },
+      {
+        "step": 4632,
+        "pc": 57602,
+        "address": 57450,
+        "before": 82,
+        "after": 0
+      },
+      {
+        "step": 4635,
+        "pc": 57611,
+        "address": 57450,
+        "before": 0,
+        "after": 29524
+      },
+      {
+        "step": 4641,
+        "pc": 57617,
+        "address": 57450,
+        "before": 29524,
+        "after": 82
+      },
+      {
+        "step": 4649,
+        "pc": 57722,
+        "address": 57400,
+        "before": 38,
+        "after": 2
+      },
+      {
+        "step": 4652,
+        "pc": 57731,
+        "address": 57400,
+        "before": 2,
+        "after": 29524
+      }
+    ],
+    "io": [],
+    "olmstead": {
+      "timeout": true
+    }
+  }
+}

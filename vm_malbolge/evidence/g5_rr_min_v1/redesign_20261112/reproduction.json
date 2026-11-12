@@ -1,0 +1,26 @@
+{
+  "rr_positive.mb": {
+    "identical": true,
+    "sha256": "47dea659b87f75714f5a8b883ba2232ea9ae049e90a9883318e1ac3c53081743"
+  },
+  "rr_control.mb": {
+    "identical": true,
+    "sha256": "37030948f90214c9281698197174c96cd67c3c77ce7713961e16d5aa58706ca4"
+  },
+  "rr_positive_targets.json": {
+    "identical": true,
+    "sha256": "bb5933149f13864e5846b5eb0da2cd82936f5680dea31fad8baf6554c72f1bab"
+  },
+  "rr_control_targets.json": {
+    "identical": true,
+    "sha256": "d026b8ea92f2b427731e71ec9a26fde3d7886036f01f2402108833e1e39fc22b"
+  },
+  "rr_positive_plan.ops": {
+    "identical": true,
+    "sha256": "25fd6bd3855772bff7cb39822e447a13e11021b889dbd140a508040ad25e51ee"
+  },
+  "rr_control_plan.ops": {
+    "identical": true,
+    "sha256": "6f6b3b53c69f61a883fdb23e1724f7df8928fd9e261a2fa999d34ac079a1d451"
+  }
+}

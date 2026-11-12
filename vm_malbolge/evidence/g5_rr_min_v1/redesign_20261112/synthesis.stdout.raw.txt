@@ -1,0 +1,25 @@
+{
+  "R": 57400,
+  "R2": 57450,
+  "want_r": 38,
+  "want_r2": 82,
+  "SA": 57600,
+  "SB": 57720,
+  "hclock": 58376,
+  "programs": {
+    "positive": {
+      "target_cells": 65,
+      "plan_length": 4632,
+      "plan_end": 4731,
+      "fits": true,
+      "elapsed_seconds": 0.293
+    },
+    "control": {
+      "target_cells": 65,
+      "plan_length": 4627,
+      "plan_end": 4726,
+      "fits": true,
+      "elapsed_seconds": 0.035
+    }
+  }
+}
