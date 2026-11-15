@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5b_orbit_lemmas_v1/lemma_jmp.py", line 139, in <module>
+    assert r['plain_equals_native'] and r['instr_equals_native'], tag
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: phase_loop

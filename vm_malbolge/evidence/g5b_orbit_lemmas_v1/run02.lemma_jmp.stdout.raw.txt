@@ -1,0 +1,70 @@
+{
+  "vendor_sha256": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510",
+  "native_sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+  "g0": {
+    "jmp_line": 122,
+    "encrypt_line": 140,
+    "jmp_text": "case 'i': c = mem[d]; break;",
+    "encrypt_text": "mem[c] = xlat2[mem[c] - 33];"
+  },
+  "cases": {
+    "increment": {
+      "compared_stdout_prefix_bytes": null,
+      "compared_prefix_hex": null,
+      "image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+      "input_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "input_len": 256,
+      "native": {
+        "rc": 0,
+        "timeout": false,
+        "stdout_sha256": "9bc038d0a0fb391f3b33618dcf08b6553560ef0ae0f7ad557871598f27b7194b",
+        "stdout_len": 256
+      },
+      "plain_equals_native": true,
+      "instr_equals_native": true,
+      "instr_log_sha256": "98f79e2da49958f162f9ae70f352e36b8f1eb071e368662bc2f10dcc8f2198f4",
+      "jmp_cells": 46,
+      "jmp_executions": 895600,
+      "revisits_same_word": 895554,
+      "revisits_changed_after_data_write": 0,
+      "revisits_changed_without_write": 0,
+      "examples_changed_without_write": [],
+      "mutant": {
+        "rc": null,
+        "timeout": true,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_len": 0,
+        "diverges_from_native": true
+      }
+    },
+    "phase_loop": {
+      "compared_stdout_prefix_bytes": 5,
+      "compared_prefix_hex": "41424344a8",
+      "image_sha256": "1c0ad13cf24daa8a3779d09e2d61b72cdefb22a92cdaab6ffd854127d0b8bd8e",
+      "input_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+      "input_len": 4,
+      "native": {
+        "rc": null,
+        "timeout": true,
+        "stdout_sha256": "b87426d95e5169fab85c9dd5d276b21514be71806fd6d2bc1ab2e4b753c3e83b",
+        "stdout_len": 1597525
+      },
+      "plain_equals_native": true,
+      "instr_equals_native": true,
+      "instr_log_sha256": "b73627ac4aaa735683df16c0d821f2f4315e10758393b6288a265a2103daa69c",
+      "jmp_cells": 3,
+      "jmp_executions": 932020,
+      "revisits_same_word": 932017,
+      "revisits_changed_after_data_write": 0,
+      "revisits_changed_without_write": 0,
+      "examples_changed_without_write": [],
+      "mutant": {
+        "rc": 0,
+        "timeout": false,
+        "stdout_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+        "stdout_len": 1,
+        "diverges_from_native": true
+      }
+    }
+  }
+}

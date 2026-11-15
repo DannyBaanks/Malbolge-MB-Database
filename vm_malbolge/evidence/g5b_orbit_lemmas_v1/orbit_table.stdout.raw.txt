@@ -1,0 +1,128 @@
+{
+  "vendor_sha256": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510",
+  "sources_agree": true,
+  "table": {
+    "orbit_lengths": [
+      2,
+      4,
+      5,
+      6,
+      9,
+      68
+    ],
+    "period2_orbits": [
+      [
+        70,
+        74
+      ]
+    ],
+    "phase_residues": {
+      "CRAZY": [
+        {
+          "residue": 82,
+          "active_word": 74
+        },
+        {
+          "residue": 86,
+          "active_word": 70
+        }
+      ],
+      "HALT": [
+        {
+          "residue": 7,
+          "active_word": 74
+        },
+        {
+          "residue": 11,
+          "active_word": 70
+        }
+      ],
+      "IN": [
+        {
+          "residue": 43,
+          "active_word": 74
+        },
+        {
+          "residue": 47,
+          "active_word": 70
+        }
+      ],
+      "JMP": [
+        {
+          "residue": 24,
+          "active_word": 74
+        },
+        {
+          "residue": 28,
+          "active_word": 70
+        }
+      ],
+      "MOVD": [
+        {
+          "residue": 60,
+          "active_word": 74
+        },
+        {
+          "residue": 64,
+          "active_word": 70
+        }
+      ],
+      "OUT": [
+        {
+          "residue": 25,
+          "active_word": 74
+        },
+        {
+          "residue": 29,
+          "active_word": 70
+        }
+      ],
+      "ROT": [
+        {
+          "residue": 59,
+          "active_word": 74
+        },
+        {
+          "residue": 63,
+          "active_word": 70
+        }
+      ]
+    },
+    "single_active_residue_count": {
+      "CRAZY": 20,
+      "IN": 19,
+      "JMP": 17,
+      "MOVD": 17,
+      "OUT": 20,
+      "ROT": 19
+    }
+  },
+  "control_swapped_xlat2_detected": true,
+  "crazy": {
+    "trit_table_low_trit": [
+      [
+        1,
+        1,
+        2
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ]
+    ],
+    "keys_trit_bijective_on_data": [
+      2
+    ],
+    "data_trits_bijective_on_key": [
+      1
+    ],
+    "byte_keys_where_crazy_k_is_involution_on_0_255": [],
+    "note": "crazy no es XOR: no existe clave que lo haga involucion; ver cuerpo G5b-1"
+  }
+}

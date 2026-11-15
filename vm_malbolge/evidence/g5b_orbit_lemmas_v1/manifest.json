@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-11-15T17:21:37.668331-06:00",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "database_head": "2f9c5f5b3a7efbb13625ab054e06db0f0ad6cf9c",
+  "pureepoch_head": "9ff4c5c53ab30af43debf74ae63ba38d8ca12cba",
+  "commands": [
+    "python3 vm_malbolge/evidence/g5b_orbit_lemmas_v1/orbit_table.py",
+    "python3 vm_malbolge/evidence/g5b_orbit_lemmas_v1/lemma_jmp.py vm_malbolge/evidence/g5b_orbit_lemmas_v1/run02"
+  ],
+  "exit_codes": {
+    "orbit_table": 0,
+    "lemma_jmp_run01": 1,
+    "lemma_jmp_run02": 0
+  },
+  "inputs": {
+    "Malbolge-PureEpoch/vendor/olmstead_original.c": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510",
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5_phase_loop_20261112/run01/positive.mb": "1c0ad13cf24daa8a3779d09e2d61b72cdefb22a92cdaab6ffd854127d0b8bd8e"
+  },
+  "files": {
+    "GATES.md": "c50466d22f4938271a12e6b91dbe25ce5da6d25c6ba82b707820ca5ca82e51ef",
+    "VERDICT.md": "08bd809ac76910140090e68611e307b31074e60d6cf19fa48551d226905f0eea",
+    "lemma_jmp.py": "dd0a9c41aa2cc801e0d1e2c91590b807e7d7586cf47c8bd999d67a4ad9fdc692",
+    "orbit_table.py": "deaab2bb21f218fff083eccaa1226d173e84c320d3e03dac936688cc6bd64571",
+    "orbit_table.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "orbit_table.stdout.raw.txt": "4b35efdae84f98bae3b88de78ce77838eae46e66e25aff7bcda19c59adf83ee2",
+    "run01/bulk_sha256.txt": "9d7c72b3fc45fb9fd6bf9d5489ed697da6edb6b74cf9f2a85b069c389ff1da70",
+    "run01/instr.diff": "d99aeb51e9ef614546ef0e8beb66e7626bc6b458487510479bd0468a2bf47d98",
+    "run01/mutant.diff": "d3d766af72e48f72060c6faf4ac3bc28fe64851552a3e5801ed02be06833fd1c",
+    "run01/olmstead_instr.c": "b49fc92132f5a9e51e778521e19ca84888e4bc896ed08aaa002d42d474cfcdc2",
+    "run01/olmstead_mutant.c": "a0c7bb0ad7fda007c90a26b255ba16d67e94826d577a844df4c634a73912dbce",
+    "run01/olmstead_plain.c": "aa54d4862340ebccae634e76fc900c2118fc5ff49ba02ca9ed60e2a5f863c880",
+    "run01.lemma_jmp.stderr.raw.txt": "723ae1558c1d7017e451669b394c3438210858e596e3c871e5cde030fa92287b",
+    "run01.lemma_jmp.stdout.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02/bulk_sha256.txt": "b74b1c483c3fb83ad75c972100ef83073c0843e5991201cf616bfa71619ce4cc",
+    "run02/increment.instr.stderr.raw.txt.gz": "c4f02ba4502cc93707ad3d7a8eb1e23f48deeabfc14de9d2db445610c926a71e",
+    "run02/instr.diff": "d99aeb51e9ef614546ef0e8beb66e7626bc6b458487510479bd0468a2bf47d98",
+    "run02/mutant.diff": "d3d766af72e48f72060c6faf4ac3bc28fe64851552a3e5801ed02be06833fd1c",
+    "run02/olmstead_instr.c": "b49fc92132f5a9e51e778521e19ca84888e4bc896ed08aaa002d42d474cfcdc2",
+    "run02/olmstead_mutant.c": "a0c7bb0ad7fda007c90a26b255ba16d67e94826d577a844df4c634a73912dbce",
+    "run02/olmstead_plain.c": "aa54d4862340ebccae634e76fc900c2118fc5ff49ba02ca9ed60e2a5f863c880",
+    "run02/phase_loop.instr.stderr.raw.txt.gz": "4b7689caa6a95ad0faac008cbac2ee74612beca282517e8c1e293ffadabcc147",
+    "run02.lemma_jmp.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02.lemma_jmp.stdout.raw.txt": "c4c99b3161cb3a4d7a988f900072ed8855fca082be773985b42f7e6219a08c16"
+  }
+}
