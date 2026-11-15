@@ -1,0 +1,10 @@
+{
+  "want_r": 38,
+  "want_r2": 82,
+  "visits_r": [
+    38,
+    38
+  ],
+  "ok": true,
+  "note": "host-side linear restore algebra for 1-cell R/R2"
+}

@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-11-15T16:54:16.707052-06:00",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "database_head": "91031b4ce854863b333d8404e8de4e50e066279c",
+  "bolgeforge_head": "0f4b3a5dc3e87d77b318a730d168160758881ad7",
+  "pureepoch_head": "9ff4c5c53ab30af43debf74ae63ba38d8ca12cba",
+  "commands": [
+    "RR_OUTPUT_DIR=<dir-nuevo-vacio> python3 vm_malbolge/evidence/g5_rr_min_v1/synthesize.py",
+    "python3 vm_malbolge/evidence/g5_rr_min_v1/verify_redesign.py <dir>"
+  ],
+  "exit_codes": {
+    "synthesize": 0,
+    "verify_redesign": 0
+  },
+  "stderr_bytes": {
+    "synthesize": 0,
+    "verify_redesign": 0
+  },
+  "inputs_sha256_match_redesign_manifest": true,
+  "inputs": {
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5_rr_min_v1/synthesize.py": "dd17e516d08e23168699c494d521f1e23e89040ea17083f1953cdcda6b6a09ad",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5_rr_min_v1/verify_redesign.py": "c8e7a83da6fa7894aaf28320e9f30c38da6dae38699c8fbe0842a2aeef20ab71",
+    "BolgeForge/constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "BolgeForge/tools/resynthesize.py": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+    "BolgeForge/reference/malbolge_org/cat.mal": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "Malbolge-PureEpoch/vendor/olmstead_original.c": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510"
+  },
+  "outputs": {
+    "rr_positive.mb": {
+      "sha256": "47dea659b87f75714f5a8b883ba2232ea9ae049e90a9883318e1ac3c53081743",
+      "identical_to_redesign_20261112": true
+    },
+    "rr_control.mb": {
+      "sha256": "37030948f90214c9281698197174c96cd67c3c77ce7713961e16d5aa58706ca4",
+      "identical_to_redesign_20261112": true
+    },
+    "rr_positive_targets.json": {
+      "sha256": "bb5933149f13864e5846b5eb0da2cd82936f5680dea31fad8baf6554c72f1bab",
+      "identical_to_redesign_20261112": true
+    },
+    "rr_control_targets.json": {
+      "sha256": "d026b8ea92f2b427731e71ec9a26fde3d7886036f01f2402108833e1e39fc22b",
+      "identical_to_redesign_20261112": true
+    },
+    "rr_positive_plan.ops": {
+      "sha256": "25fd6bd3855772bff7cb39822e447a13e11021b889dbd140a508040ad25e51ee",
+      "identical_to_redesign_20261112": true
+    },
+    "rr_control_plan.ops": {
+      "sha256": "6f6b3b53c69f61a883fdb23e1724f7df8928fd9e261a2fa999d34ac079a1d451",
+      "identical_to_redesign_20261112": true
+    },
+    "synthesis.results.json": {
+      "sha256": "a9e1480f4c7d1d9f90af5cdb02a54d09ef9626ba41e963c0ad10d6099f0ea087",
+      "identical_to_redesign_20261112": false,
+      "note": "solo difiere elapsed_seconds (tiempo de reloj)"
+    },
+    "verification.json": {
+      "sha256": "bdab2d89f27c2e0db10292059d56aa7719686572d3775c542b28ab8bad5bf5a7",
+      "identical_to_redesign_20261112": true
+    }
+  },
+  "verdict": "Reproduccion independiente del rediseño 2026-11-12: imagenes, targets, planes y verification.json identicos byte a byte. G0/G2/G3 se mantienen; G1 (rearme mutuo) y G4 siguen NOT_DEMONSTRATED."
+}
