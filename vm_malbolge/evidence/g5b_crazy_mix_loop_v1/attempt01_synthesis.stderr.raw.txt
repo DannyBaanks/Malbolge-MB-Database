@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "vm_malbolge/evidence/g5b_crazy_mix_loop_v1/synthesize.py", line 267, in <module>
+    prog[pc] = code[pc][1] if pc in code else quiet(pc)
+                                              ^^^^^^^^^
+  File "vm_malbolge/evidence/g5b_crazy_mix_loop_v1/synthesize.py", line 71, in quiet
+    raise ValueError(f'no loadable persistent NOP at {pc}')
+ValueError: no loadable persistent NOP at 15005

@@ -1,0 +1,64 @@
+{
+  "sources_agree": true,
+  "persistent_nop_residues": [
+    6,
+    8,
+    10,
+    17,
+    26,
+    27,
+    37,
+    42,
+    48,
+    51,
+    82,
+    86,
+    88,
+    92
+  ],
+  "phase_residues": {
+    "ROT": [
+      59,
+      63
+    ],
+    "MOVD": [
+      60,
+      64
+    ],
+    "CRAZY": [
+      82,
+      86
+    ],
+    "IN": [
+      43,
+      47
+    ],
+    "OUT": [
+      25,
+      29
+    ]
+  },
+  "predecessor_persistent_nop": {
+    "ROT": {
+      "59": false,
+      "63": false
+    },
+    "MOVD": {
+      "60": false,
+      "64": false
+    },
+    "CRAZY": {
+      "82": false,
+      "86": false
+    },
+    "IN": {
+      "43": true,
+      "47": false
+    },
+    "OUT": {
+      "25": false,
+      "29": false
+    }
+  },
+  "d_ops_always_landed": true
+}
