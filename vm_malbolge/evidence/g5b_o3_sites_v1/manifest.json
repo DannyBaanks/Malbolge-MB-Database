@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-11-15T18:27:46.138429-06:00",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "zig": "0.16.0",
+  "build": "zig build-exe o3_sites.zig -O ReleaseSafe",
+  "binary_sha256_not_committed": "8397dd1bae8d519c8f1224aa762cd9f36004d7f0372f06be8417808f0e781f69",
+  "database_head": "7c10c4ab6fe4d514cba230c3c4bed5346f972053",
+  "inputs": {
+    "Malbolge-PureEpoch/vendor/olmstead_original.c": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510",
+    "MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5b_crazy_mix_loop_v1/obstruction.stdout.raw.txt": "0a3c24605164894116113feae8dc5dfc26bd91b3c2cdd03306084e817383553c"
+  },
+  "exit_codes": {
+    "o3_sites": 0
+  },
+  "files": {
+    "VERDICT.md": "c26ee83c7618c5d77cd396b7b1367939282b5ad3fd989d16459f582e72fa89ae",
+    "o3_sites.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "o3_sites.stdout.raw.txt": "1ef9081b511b4a7aeeb439b24bbc9632aef23154d219f395e3d940e724467851",
+    "o3_sites.zig": "0a731418a44ad48a9b1e37bca4286c0ceef46b0888a300c775fb6213a5fc55aa"
+  }
+}
