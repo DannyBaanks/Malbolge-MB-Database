@@ -36,3 +36,13 @@ Alcance: O2 se aplica a las órbitas de periodo 2 (70↔74). Con órbitas largas
 `attempt01_synthesis.stderr.raw.txt`: se relativizaron las rutas absolutas de la
 estación (exigencia de repo-engine); el resto del texto está intacto.
 `synthesize.py` queda tal cual se ejecutó en el intento 1.
+
+## Adenda: la obstrucción O2 es solo de periodo 2 (O3)
+
+`obstruction.py` (O3) busca órbitas de **cualquier** longitud con un único
+activo, palabra inicial cargable y predecesor NOP persistente. Existen:
+ROT@28 (L=4), MOVD@9 (L=4), MOVD@83 y @93 (L=5), CRAZY@11 (L=5), CRAZY@89 (L=9).
+En esos sitios un op que lee `d` puede ir precedido de ejecución lineal, sin
+aterrizaje, a cambio de visitarse L veces por iteración (el op dispara una de
+cada L). Que esto rompa la atadura "una celda, un sitio" es **NOT_DEMONSTRATED**:
+la salida del op sigue necesitando un sucesor ejecutable y no se ha medido.

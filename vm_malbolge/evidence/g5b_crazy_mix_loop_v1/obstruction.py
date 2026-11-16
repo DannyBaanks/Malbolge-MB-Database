@@ -48,7 +48,19 @@ def analyse(X1, X2, decode):
               if decode(X1, w, r) == ch and decode(X1, succ(w), r) not in EFFECT_CH]
         phase[name] = sorted(set(rs))
     pred = {name: {r: ((r - 1) % 94 in good) for r in rs} for name, rs in phase.items()}
-    return {'persistent_nop_residues': good, 'phase_residues': phase, 'predecessor_persistent_nop': pred}
+    # O3: orbitas de cualquier longitud con un solo activo y palabra inicial cargable
+    long_ok = {}
+    for ch, name in (('*', 'ROT'), ('j', 'MOVD'), ('p', 'CRAZY')):
+        hits = set()
+        for r in range(94):
+            for w in range(33, 127):
+                o = orbit(w)
+                act = [decode(X1, x, r) for x in o if decode(X1, x, r) in EFFECT_CH]
+                if act == [ch] and decode(X1, w, r) in set('ji*p</vo') and (r - 1) % 94 in good:
+                    hits.add((r, len(o)))
+        long_ok[name] = sorted(hits)
+    return {'persistent_nop_residues': good, 'phase_residues': phase, 'predecessor_persistent_nop': pred,
+            'single_active_any_length_with_persistent_predecessor': long_ok}
 
 
 def dec_vendor(X1, w, r):

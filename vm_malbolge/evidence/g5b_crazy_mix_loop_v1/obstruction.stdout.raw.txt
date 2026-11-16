@@ -60,5 +60,37 @@
       "29": false
     }
   },
+  "single_active_any_length_with_persistent_predecessor": {
+    "ROT": [
+      [
+        28,
+        4
+      ]
+    ],
+    "MOVD": [
+      [
+        9,
+        4
+      ],
+      [
+        83,
+        5
+      ],
+      [
+        93,
+        5
+      ]
+    ],
+    "CRAZY": [
+      [
+        11,
+        5
+      ],
+      [
+        89,
+        9
+      ]
+    ]
+  },
   "d_ops_always_landed": true
 }
