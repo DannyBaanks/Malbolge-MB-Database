@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-11-15T21:36:08.110943-06:00",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "zig": "0.16.0",
+  "build": "zig build-exe plan.zig -O ReleaseSafe",
+  "database_head": "d4d32a7a29681e434f37109be473a9043e6726cd",
+  "inputs": {
+    "Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "clasesbolge/tools/malbolge.py": "a5e42fda46fe54d72d2ccebe97bc5f529bfa7c1c56b971a53ae25f7b40e34b89"
+  },
+  "files": {
+    "GATES.md": "e99c1021fc7f78bc0192a3e3aec87bf1996d3d3eafb94c6a2553770ce0b193ab",
+    "VERDICT.md": "6ff3733f959ff7b17d6d36e02ac74a4a32204e5377f3d4bcd66f99e985adfe55",
+    "assemble.py": "207de50b6d06e955a08c9a20cb6de26c3f284d548397f0d884b704e046b75380",
+    "plan.zig": "616641d7a92c9a4f100ed26bcf24a9f8faf094ac8e07c9dcfa094266d56cc1ae",
+    "run01/assembly.results.json": "55794ed678dc3cda688ce9371d41e15897278f6a3b1139d3cd11fa3ed786438d",
+    "run01/control_a.mb": "6e0876b10864d712a52989333e52bff352df8fe9792e3313b908374904e61e8e",
+    "run01/control_a.ops": "c3eddb66533694edc32b9e0c818bf359f3b01e1c61919819f67fe1bb84b0ce5b",
+    "run01/control_a.plan.json": "10873c3787cc588548baa8f2e7472ed3bb464ff40ace6c46515ea8dae3ccf43c",
+    "run01/control_a.targets.json": "60e077c00ec6dc4b0f3b7b904228f16c9b2c2f21940e20d5e7fd49586defa1ae",
+    "run01/control_b.mb": "4edc50e7bbb9e00dd8977141731e36143f0bba4fcbeccadd4d226857b3cc10f6",
+    "run01/control_b.ops": "fb91bd50deadf87d923ba686215890d97c2ad4a69a0c942b36ae3a6e211eaa67",
+    "run01/control_b.plan.json": "88a6d58134ba5ed381df6d375cadefce1176bb97e78a6cd7f310480b00e08fc1",
+    "run01/control_b.targets.json": "24863b10657a4690aca81c2df95e239818bfe8ad18603e68ee8f3463089d3a90",
+    "run01/positive.mb": "be536e36ddb6ebe08a3f4b7b12bbe21f50bed7259d5d4342762a11a6894d2b75",
+    "run01/positive.ops": "6701ec2474f33574b99a477e31710549d237b3b2ede26d23e872f9f721a333f2",
+    "run01/positive.plan.json": "190dd60313b1ddcb3909c55891fc761eca7ec5a5daf74e413e19f3e599595c31",
+    "run01/positive.targets.json": "3c5e912e0c87e244857581dcc2587b054f0c6d5fc5a04e59afc7c9d5ac761a57",
+    "run01/verification.results.json": "ce180bdeb8e4b4e572b311e757a3c879c07fef14b57c26653833de0bb2439f8a",
+    "verify.py": "3c2c5a4f65ccd5769797829656e0f738dea771ba3b9989e0e1ce12d3d9f8da49"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "source_len": 39932,
+  "programs": {
+    "positive": {
+      "sha256": "be536e36ddb6ebe08a3f4b7b12bbe21f50bed7259d5d4342762a11a6894d2b75",
+      "image_len": 39932,
+      "preamble_end": 3359,
+      "plan_length": 3260,
+      "targets": 25,
+      "code_cells": 12,
+      "islands": {
+        "K": 15042,
+        "F": 15100,
+        "MOVD_V": 15104,
+        "ROT_V": 15193,
+        "OUT": 15253,
+        "MOVD_LOOP": 15288
+      },
+      "elapsed_seconds": 0.206
+    },
+    "control_a": {
+      "sha256": "6e0876b10864d712a52989333e52bff352df8fe9792e3313b908374904e61e8e",
+      "image_len": 39932,
+      "preamble_end": 3194,
+      "plan_length": 3095,
+      "targets": 23,
+      "code_cells": 12,
+      "islands": {
+        "K": 15042,
+        "F": 15100,
+        "MOVD_V": 15104,
+        "ROT_V": 15193,
+        "OUT": 15253,
+        "MOVD_LOOP": 15288
+      },
+      "elapsed_seconds": 0.03
+    },
+    "control_b": {
+      "sha256": "4edc50e7bbb9e00dd8977141731e36143f0bba4fcbeccadd4d226857b3cc10f6",
+      "image_len": 39932,
+      "preamble_end": 3285,
+      "plan_length": 3186,
+      "targets": 24,
+      "code_cells": 12,
+      "islands": {
+        "K": 15042,
+        "F": 15100,
+        "MOVD_V": 15104,
+        "ROT_V": 15193,
+        "OUT": 15253,
+        "MOVD_LOOP": 15288
+      },
+      "elapsed_seconds": 0.023
+    }
+  }
+}

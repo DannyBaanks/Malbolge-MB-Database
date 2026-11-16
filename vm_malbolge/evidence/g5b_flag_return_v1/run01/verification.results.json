@@ -1,0 +1,84 @@
+{
+  "olmstead_sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+  "clasesbolge_malbolge_sha256": "a5e42fda46fe54d72d2ccebe97bc5f529bfa7c1c56b971a53ae25f7b40e34b89",
+  "v0": 12345,
+  "expected_hex": {
+    "positive": "1313210b0b914b4b89",
+    "control_a": "13210b",
+    "control_b": "1313210b91"
+  },
+  "modes": {
+    "positive": {
+      "image_sha256": "be536e36ddb6ebe08a3f4b7b12bbe21f50bed7259d5d4342762a11a6894d2b75",
+      "loader_ok": true,
+      "olmstead_rc": 0,
+      "olmstead_stdout_hex": "1313210b0b914b4b89",
+      "scratch_status": "halt",
+      "scratch_steps": 3367,
+      "scratch_output_hex": "1313210b0b914b4b89",
+      "f_at_k": [
+        74,
+        74,
+        74,
+        74
+      ],
+      "v_write_sites": [
+        15193
+      ],
+      "jmp_changed": false,
+      "clasesbolge_status": "end",
+      "clasesbolge_steps": 3366,
+      "clasesbolge_output_hex": "1313210b0b914b4b89",
+      "expected_hex": "1313210b0b914b4b89",
+      "all_interpreters_match": true
+    },
+    "control_a": {
+      "image_sha256": "6e0876b10864d712a52989333e52bff352df8fe9792e3313b908374904e61e8e",
+      "loader_ok": true,
+      "olmstead_rc": 0,
+      "olmstead_stdout_hex": "13210b",
+      "scratch_status": "halt",
+      "scratch_steps": 3154,
+      "scratch_output_hex": "13210b",
+      "f_at_k": [
+        74,
+        74,
+        74,
+        74
+      ],
+      "v_write_sites": [
+        15193
+      ],
+      "jmp_changed": false,
+      "clasesbolge_status": "end",
+      "clasesbolge_steps": 3153,
+      "clasesbolge_output_hex": "13210b",
+      "expected_hex": "13210b",
+      "all_interpreters_match": true
+    },
+    "control_b": {
+      "image_sha256": "4edc50e7bbb9e00dd8977141731e36143f0bba4fcbeccadd4d226857b3cc10f6",
+      "loader_ok": true,
+      "olmstead_rc": 0,
+      "olmstead_stdout_hex": "1313210b91",
+      "scratch_status": "halt",
+      "scratch_steps": 3259,
+      "scratch_output_hex": "1313210b91",
+      "f_at_k": [
+        74,
+        70,
+        70,
+        70
+      ],
+      "v_write_sites": [
+        15193
+      ],
+      "jmp_changed": false,
+      "clasesbolge_status": "end",
+      "clasesbolge_steps": 3258,
+      "clasesbolge_output_hex": "1313210b91",
+      "expected_hex": "1313210b91",
+      "all_interpreters_match": true
+    }
+  }
+}
