@@ -60,7 +60,15 @@ Una única operación compartida recibió cuatro llamadas secuenciales desde un 
 
 ## Actualización 2026-11-16: orden cruzado de llamadores (G5b P3)
 
-Una segunda imagen recorrió `rr → ll → rl → lr` con una variable (`d=40006`) y el mismo sitio compartido (`pc=38058`). Visitó las continuaciones `15000 → 15004 → 15008 → 15012`, mantuvo las flags y la operación en `74`, y emitió `62e66ee6`. Olmstead, `clasesbolge`, el trazador local y REA coincidieron; la segunda generación produjo los mismos 39 932 bytes. El control añade un ajuste de raíz al primer `rr`, toma el retorno terminal `lr` (`15012`) después de una llamada y emite `62`. Esto cubre este orden alternativo; las demás permutaciones siguen sin medirse. [Puertas, trazas, hashes y reproducción G5b P3](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md).
+Una segunda imagen recorrió `rr → ll → rl → lr` con una variable (`d=40006`) y el mismo sitio compartido (`pc=38058`). Visitó las continuaciones `15000 → 15004 → 15008 → 15012`, mantuvo las flags y la operación en `74`, y emitió `62e66ee6`. Olmstead, `clasesbolge`, el trazador local y REA coincidieron; la segunda generación produjo los mismos 39 932 bytes. El control añade un ajuste de raíz al primer `rr`, toma el retorno terminal `lr` (`15012`) después de una llamada y emite `62`. P3 cubrió ese orden alternativo; P4 midió después las 24 permutaciones. [Puertas, trazas, hashes y reproducción G5b P3](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md).
+
+## Actualización 2026-11-17: barrido de órdenes (G5b P4)
+
+Se probaron las 24 permutaciones de `ll`, `lr`, `rl` y `rr`. Cada orden hizo cuatro llamadas a la operación en `pc=38058` con `d=40006`, visitó `15000 → 15004 → 15008 → 15012` y emitió `62e66ee6`. Olmstead, `clasesbolge` y el trazador local coincidieron en las 48 ejecuciones; REA terminó 24/24 trazas completas. Dos procesos generaron las mismas 24 imágenes, con 24 hashes distintos entre órdenes. El control negativo conocido de P3 volvió a producir `62`. Esto cierra el barrido para estos cuatro llamadores, una variable y un sitio; no cubre otros tamaños de conjunto ni variables múltiples. [Puertas, 24 trazas REA, hashes y reproducción G5b P4](vm_malbolge/evidence/g5b_flag_return_v4/VERDICT.md).
+
+## Actualización 2026-11-17: cinco llamadores (G5b P5)
+
+Se añadió una quinta hoja, dividiendo `ll` en `lll` y `llr` con una bandera. El orden `lll → rr → lr → rl → llr` realizó cinco llamadas en `pc=38058` con `d=40006`, visitó `15000 → 15004 → 15008 → 15012 → 15016` y emitió `62e66ee66e`. Olmstead, `clasesbolge` y el trazador local coincidieron; dos generaciones produjeron la misma imagen. El control añade `f_extra` al primer `lll`, toma el retorno terminal `15016` tras una llamada y emite `62`. REA terminó con la salida prevista, pero su captura máxima de 4096 eventos se truncó antes del bloque compartido; la cobertura de rutas por eventos REA queda **NOT_DEMONSTRATED**. No se midió el barrido de órdenes de cinco llamadores. [Puertas, resultados, trazas REA y reproducción G5b P5](vm_malbolge/evidence/g5b_flag_return_v5/VERDICT.md).
 
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
 

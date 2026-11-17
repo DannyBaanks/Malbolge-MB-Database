@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/g5b-p5-stage-20261117/vm_malbolge/evidence/g5b_flag_return_v5/probe.py", line 365, in <module>
+    result = run_sequential(pathlib.Path(sys.argv[1]))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/g5b-p5-stage-20261117/vm_malbolge/evidence/g5b_flag_return_v5/probe.py", line 329, in run_sequential
+    assert expected_calls == [12130, 21990, 7534, 21990, 7534], expected_calls
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [12130]

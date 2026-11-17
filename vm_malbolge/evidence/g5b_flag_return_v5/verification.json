@@ -1,0 +1,55 @@
+{
+  "schema": "g5b_p5_verification_v1",
+  "positive_order": [
+    "lll",
+    "rr",
+    "lr",
+    "rl",
+    "llr"
+  ],
+  "positive_images_identical": true,
+  "positive_image_sha256": "c5b56940aa23efeb6f16f8876f818ca28d349bf3d6392add8126385c028c6bab",
+  "positive_image_bytes": 39932,
+  "positive_shared_op_address": 38058,
+  "positive_variable_address": 40006,
+  "positive_continuations": [
+    15000,
+    15004,
+    15008,
+    15012,
+    15016
+  ],
+  "positive_call_values": [
+    12130,
+    21990,
+    7534,
+    21990,
+    7534
+  ],
+  "positive_output_hex": "62e66ee66e",
+  "positive_steps_local": [
+    4723,
+    4723
+  ],
+  "control_output_hex": "62",
+  "control_return_order": [
+    15016
+  ],
+  "control_calls": 1,
+  "rea_positive_status": "HALTED",
+  "rea_positive_steps": 4723,
+  "rea_positive_events_truncated": true,
+  "rea_control_status": "HALTED",
+  "rea_control_steps": 4806,
+  "rea_control_events_truncated": true,
+  "rea_site_event_coverage": "NOT_DEMONSTRATED: both 4096-event prefixes stop before the shared-code region",
+  "gates": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "REA_runtime_and_output": "PASS",
+    "REA_site_event_coverage": "NOT_DEMONSTRATED"
+  }
+}

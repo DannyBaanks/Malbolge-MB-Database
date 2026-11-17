@@ -1,0 +1,53 @@
+{
+  "run": {
+    "fault": "rr caller incorrectly toggles f_root and routes to lr",
+    "expected_positive_return_order": [
+      15000,
+      15004,
+      15008,
+      15012
+    ],
+    "call_order": [
+      "rr",
+      "ll",
+      "rl",
+      "lr"
+    ],
+    "observed_return_order": [
+      15012
+    ],
+    "shared_op_address": 38058,
+    "variable_address": 40006,
+    "output_hex": "62",
+    "output_length": 1,
+    "shared_calls": [
+      {
+        "a_before": 39999,
+        "d": 40006,
+        "value_before": 12345,
+        "a_after": 12130,
+        "value_after": 12130
+      }
+    ],
+    "native_rc": 0,
+    "independent_status": "end",
+    "local_trace_status": "halt",
+    "local_trace_steps": 3944,
+    "states_at_cont": [
+      {
+        "pc": 15012,
+        "flags": [
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      }
+    ],
+    "tails_unchanged": true,
+    "negative_control_detected": true,
+    "image_sha256": "8450625bfc71fce5191bfa59468b5a9bf581d31f05c110cb7b2ff109b1cf2423"
+  },
+  "negative_control_detected": true,
+  "scope": "rr caller has one extra f_root toggle; router selects terminal lr leaf"
+}

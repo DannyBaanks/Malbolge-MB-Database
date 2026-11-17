@@ -1,0 +1,33 @@
+{
+  "run": {
+    "call_order": [
+      "lll",
+      "rr",
+      "lr",
+      "rl",
+      "llr"
+    ],
+    "fault": "first lll caller incorrectly toggles f_extra and selects llr",
+    "shared_op_address": 38058,
+    "variable_address": 40006,
+    "observed_return_order": [
+      15016
+    ],
+    "output_hex": "62",
+    "shared_calls": [
+      {
+        "a_before": 39999,
+        "d": 40006,
+        "value_before": 12345,
+        "a_after": 12130,
+        "value_after": 12130
+      }
+    ],
+    "native_rc": 0,
+    "independent_status": "end",
+    "local_trace_status": "halt",
+    "local_trace_steps": 4806,
+    "image_sha256": "2a857c758242f00a8ddba9faaf059e6bfad04acdee3384aa2c416c4cc399fe5f",
+    "negative_control_detected": true
+  }
+}

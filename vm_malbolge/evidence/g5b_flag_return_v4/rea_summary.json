@@ -1,0 +1,1127 @@
+{
+  "tool": {
+    "server": "rea",
+    "name": "trace_malbolge",
+    "version": "6.9.0",
+    "engine": "REA Malbolge Classic engine",
+    "engine_version": "1"
+  },
+  "parameters": {
+    "max_steps": 10000,
+    "input_text": "",
+    "eof_mode": "olmstead_1998",
+    "event_capture_limit": 4096
+  },
+  "order_count": 24,
+  "complete_runs": 24,
+  "step_range": [
+    3748,
+    4014
+  ],
+  "runs": [
+    {
+      "order": [
+        "ll",
+        "lr",
+        "rl",
+        "rr"
+      ],
+      "order_name": "ll-lr-rl-rr",
+      "evidence_id": "ev_133623b63faba15d8d1cdf4b5a1467132939881f2dac19188e357418879c4d35",
+      "image_sha256": "9aa1a39cc4f1cc1a2d55b119a26f52a76b5d1d2a62eece59ef915bfe0ed5f3b6",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3756,
+      "event_count": 3756,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4788,
+      "representation_changes": 4504,
+      "state_digest_before": "2d27b69e9128d1e0220fd3c7afc32a9a96e6e610e51397ef5b37af4a6f1c96f7",
+      "state_digest_after": "0aac21c158a3f415888ba87d5f7505f147181f73cecbac0fe792060f9e532d76",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "ll",
+        "lr",
+        "rr",
+        "rl"
+      ],
+      "order_name": "ll-lr-rr-rl",
+      "evidence_id": "ev_8f01220b3b638a9cc4b66da09c8fca471818c71bc7c61ed8fd004cca771a95b5",
+      "image_sha256": "de9176e935acf5eb912e007939c892a8c43273a1280b57a6edce5cf7a395d728",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3934,
+      "event_count": 3934,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 5026,
+      "representation_changes": 4737,
+      "state_digest_before": "6438f09203ff8166c9d1e0b3224a0939cf7bdd64f5b2502d8d668cd68f3dd753",
+      "state_digest_after": "16483fac333684ba4cd9b523d190ec6ca43eb698b4183c4a8a367fde2d606c1d",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "ll",
+        "rl",
+        "lr",
+        "rr"
+      ],
+      "order_name": "ll-rl-lr-rr",
+      "evidence_id": "ev_0dac2ba869b4583905c1cc72e70cbe9500763cba252bb41172a9b3564ba02030",
+      "image_sha256": "8a7b84a01cffe8cd96d1e9b1ccab414c3c539707826a811691f8c9d523fd1585",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3859,
+      "event_count": 3859,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4922,
+      "representation_changes": 4646,
+      "state_digest_before": "df2de8d181df496eb84e8fe90d9db0aae93394d4eeb49404eb3f038548fe6b0a",
+      "state_digest_after": "a8a77806d235dd315606876730953dd3935a403ad043f5c7c6b468161b386f3a",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "ll",
+        "rl",
+        "rr",
+        "lr"
+      ],
+      "order_name": "ll-rl-rr-lr",
+      "evidence_id": "ev_77086809471ef10e40d00e8501618b4168741da7d8249dab38709d0305963abd",
+      "image_sha256": "6201903d8c98ce8800afc586f1070502ed1e7a109120619c6b47dce07eb79607",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3774,
+      "event_count": 3774,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4812,
+      "representation_changes": 4532,
+      "state_digest_before": "e649258c8528a9bb90f58943d6bb06b4c4542aade9f370116932bc3056f104eb",
+      "state_digest_after": "ffea043a90a7950abfb9e85956d3cf6def30a7af70e8844b6476066f9dfb4595",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "ll",
+        "rr",
+        "lr",
+        "rl"
+      ],
+      "order_name": "ll-rr-lr-rl",
+      "evidence_id": "ev_f493366d3606e67959043422336d27dda464b297bfd0ba71143df2d3548855e7",
+      "image_sha256": "1984a0750cfdf132bede859b1521510dab0759dbef407b0f5c0f56f84b29c9ee",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3860,
+      "event_count": 3860,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4927,
+      "representation_changes": 4635,
+      "state_digest_before": "38b04393cc749dbbdbee88cff73b9c8d79fe3eb67a142dc5c6ed0baf739ec1c9",
+      "state_digest_after": "76d834c8add8b0c34100e9c31816b4720962670d8b8daa4ca019f7399f16b029",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "ll",
+        "rr",
+        "rl",
+        "lr"
+      ],
+      "order_name": "ll-rr-rl-lr",
+      "evidence_id": "ev_2e58074a6863624ecbaf9e4ec75c66036f700b1b3b71d0d8c2baf4a06bee15c7",
+      "image_sha256": "577db81239392bba4904a134687f18014f47a0def8f2823e970d45f392b62372",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3761,
+      "event_count": 3761,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4793,
+      "representation_changes": 4517,
+      "state_digest_before": "b2a2b72fd2d90fe60a3d97b839c123271f2fe63746affcf28b08ab4b33f84916",
+      "state_digest_after": "2a258e22e4a0734dcec88373b117a2c029cd5ca2a9264248aba57475ec0b218f",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "ll",
+        "rl",
+        "rr"
+      ],
+      "order_name": "lr-ll-rl-rr",
+      "evidence_id": "ev_f9b22273356d9109ab56eeece4378648025e3f334a2ca5a361394eff11184d65",
+      "image_sha256": "36bb99ee029f4d93aea346120aaad3728d81fb622c849bdcf2e910863a673173",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3908,
+      "event_count": 3908,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4993,
+      "representation_changes": 4708,
+      "state_digest_before": "24146c4d1e1991c8facdc5339a209d305f11fc0e4965cbc70cdf93719a1a9e60",
+      "state_digest_after": "08a1ba62999df18ecfaa9bbf2ef89b697f9e9bc4658f203b4698e41592c2335f",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "ll",
+        "rr",
+        "rl"
+      ],
+      "order_name": "lr-ll-rr-rl",
+      "evidence_id": "ev_2217191522be7e30c770ed9bedca1f25cfd3622c09a29bd413578658c38c9f6b",
+      "image_sha256": "766d1a208be5b3c6adfa17e961f54e53c3a25760e6570c2ff61f559e0f553d48",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3833,
+      "event_count": 3833,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4895,
+      "representation_changes": 4614,
+      "state_digest_before": "58559b9b5e3805c1dc0ed623d8764ddc7253ce71f69b76f5fd477dc543f79503",
+      "state_digest_after": "3f32ef8069e4d25ad00b34dd9a5535ffea4246ef81b665ca494bce70da7ea522",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "rl",
+        "ll",
+        "rr"
+      ],
+      "order_name": "lr-rl-ll-rr",
+      "evidence_id": "ev_ccca457ac319a8fbd1a4a9581645c00a95b2625c9746872d604ee6ea11226f76",
+      "image_sha256": "77b98c374e9ce922dbbcd3649c76611c0e44bcf60d75f170b7aee4446558bd17",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3773,
+      "event_count": 3773,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4798,
+      "representation_changes": 4525,
+      "state_digest_before": "52c3dd056638e939ae0270af1983bfb2ddca4c0d79ba0cdd3725af2b2a06849c",
+      "state_digest_after": "196579bf26f168cd0ecfb000a78bc2d854a5e681837ebcbe2ca9c81c0eb24d30",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "rl",
+        "rr",
+        "ll"
+      ],
+      "order_name": "lr-rl-rr-ll",
+      "evidence_id": "ev_44dd183cc0ecc079dc0f5dfcb394afbc4ee7b0a2da8b090baf7b76e72c222ed6",
+      "image_sha256": "2395fb231170649ddae4ff774e5c11b164c389590131fa6e4259edf5af874686",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3865,
+      "event_count": 3865,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4927,
+      "representation_changes": 4652,
+      "state_digest_before": "e27a3cd64b0219cf4bcdee22f3338f13fe69aca19b577791ff1424ea302015f1",
+      "state_digest_after": "1008221571cde84eaa027abc06979094497fa42763d7f2007d5e54f271e12012",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "rr",
+        "ll",
+        "rl"
+      ],
+      "order_name": "lr-rr-ll-rl",
+      "evidence_id": "ev_485dd2a8483f656ce5a5f3a17f5e75e439049e190dbc6f2accf8f55172af266d",
+      "image_sha256": "1ed0845a47ae185069c393a73dd0c4641dca48591e5f3d2f222bfc526fdea222",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3803,
+      "event_count": 3803,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4854,
+      "representation_changes": 4578,
+      "state_digest_before": "d57f67c0fad6b1c5dfc46955e21f42bc43b88fd49493d237e68a864b5cf16228",
+      "state_digest_after": "af837fcd7b31c524104126250d6c8d2b35c215b90349100021d9d7260da69db8",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "lr",
+        "rr",
+        "rl",
+        "ll"
+      ],
+      "order_name": "lr-rr-rl-ll",
+      "evidence_id": "ev_a01109fd61bd164ac3f7355006cde76e9a7bff1177d7a691301be73d1361eebd",
+      "image_sha256": "0cdb8ddbf6525b2589194a7f8dfa3f452a14530d8411a3806652cf50f0a16cf5",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3748,
+      "event_count": 3748,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4771,
+      "representation_changes": 4491,
+      "state_digest_before": "3cfb7944ab140bc61683522e71f184fd661bee085b09cabc3f227a141135fcad",
+      "state_digest_after": "26499ee49438b93bedd5538ebee76b5e6db752d05f1cadf7ceea1dd43b521597",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "ll",
+        "lr",
+        "rr"
+      ],
+      "order_name": "rl-ll-lr-rr",
+      "evidence_id": "ev_9e74b9c067a15fd688166f7d4372ba773bee9966e3993e3a10efc012bc784f41",
+      "image_sha256": "0af3426ea3fc2efbb78ee71106bce9940ea3bcbfdc4f2cf5e4407274e002f49a",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3889,
+      "event_count": 3889,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4961,
+      "representation_changes": 4688,
+      "state_digest_before": "12d6f825670cd37d47585f9e5e2ecfb22bac23e1f547693a40476fed7382acd8",
+      "state_digest_after": "1b79316f544e0c25c70d148121924f6ee948209801bda9cfece41b613ad6211c",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "ll",
+        "rr",
+        "lr"
+      ],
+      "order_name": "rl-ll-rr-lr",
+      "evidence_id": "ev_7afb904cc872b13e15a9ae0fe86a97c829b65ba1bc2d818dd1369b6b4746c782",
+      "image_sha256": "f91ca8a6c0d7737560ce7ae4fe7f9bb39d84701a0d4369536fcf295324654f54",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3773,
+      "event_count": 3773,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4804,
+      "representation_changes": 4527,
+      "state_digest_before": "2697564777bc2e5ada0d76b1fc08e8179936d4b3d3bd6b807355701606187bac",
+      "state_digest_after": "e4607d0d27cd423e5b356cd7275361ae1fd2c9d82ba901ef6f22e6f3f5b98efe",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "lr",
+        "ll",
+        "rr"
+      ],
+      "order_name": "rl-lr-ll-rr",
+      "evidence_id": "ev_c9bb8734e999b0eab4b9959eaa38198701b267ed776086b1f9260ddf4cb399ae",
+      "image_sha256": "192dfb7abf2a4b60ce93e4e2213ff95e9828eaa4c72d846b20cd34b00cf34abf",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3806,
+      "event_count": 3806,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4840,
+      "representation_changes": 4569,
+      "state_digest_before": "efab5059f68aea2dfdb8de41ac722ea78598afbf633957025a95a0bc964567e7",
+      "state_digest_after": "7194652aae97b2944c4e7f68a868cff317a5408f5465645d85b497f1f9bfde62",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "lr",
+        "rr",
+        "ll"
+      ],
+      "order_name": "rl-lr-rr-ll",
+      "evidence_id": "ev_ecea076cf903f3a91847a90645a8d8571616d495b45bc26261188cbb05b178f2",
+      "image_sha256": "bd25ad10b5e430fd060a21781223a44bd8b2637022c039d56d137f758580a55f",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3850,
+      "event_count": 3850,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4923,
+      "representation_changes": 4637,
+      "state_digest_before": "31e855e64c05ffccc48f0e6e4859617ea3f003daef3e02df4223f672a6eedf01",
+      "state_digest_after": "fd723230606eab2bfa575cfc3e978fcb6c4dd4fab5cf84559f8fe848ea343354",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "rr",
+        "ll",
+        "lr"
+      ],
+      "order_name": "rl-rr-ll-lr",
+      "evidence_id": "ev_e218caf37e0521144f82cf39714992659134457ac749c93e6d7b8579c003e4dc",
+      "image_sha256": "157e5383a9113a8b1b4722840fe38fce4a55683e4b2ad3f04c153044ab25a81b",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3882,
+      "event_count": 3882,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4960,
+      "representation_changes": 4676,
+      "state_digest_before": "2b8d4bd60d71291896b2b906d9d50c41ff260281b111dd8f9fa562dd1954474c",
+      "state_digest_after": "e6ef22eeb2f59d08ff033fbf1d7c35b2407c659e58bc9c29d1a111abfdd9f08f",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rl",
+        "rr",
+        "lr",
+        "ll"
+      ],
+      "order_name": "rl-rr-lr-ll",
+      "evidence_id": "ev_0ba79cd239f19020a9ea20c94bac8a874611f8f2e1d4285971bf4d13db990bc7",
+      "image_sha256": "7aae4ebf8fc9ed5c027206ee7c641efd099d3b13e8e41e07c34208eb0d75211c",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3845,
+      "event_count": 3845,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4912,
+      "representation_changes": 4622,
+      "state_digest_before": "0b7e035212fe877f0f76326f9f81a8e19db8f1fffe655eae5ad89edd1eaf01e3",
+      "state_digest_after": "4d7ed2113e215b82307b16a0b52a0c9c9ccc7a813bfa5d6f60bb27541a59f8d7",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "ll",
+        "lr",
+        "rl"
+      ],
+      "order_name": "rr-ll-lr-rl",
+      "evidence_id": "ev_f5a45994c8f20954eda9b6b5f619932d1db1572d8c97fac177de6eb02441fe87",
+      "image_sha256": "3966fb28f1611f4b25231b0dedef0e21b77281b4d3daa398d29040be5b4b177a",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3886,
+      "event_count": 3886,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4962,
+      "representation_changes": 4688,
+      "state_digest_before": "80d9f89a51a3da1ea243e3ea335621d11dd82c702fda1cc3373b0b73cd065845",
+      "state_digest_after": "9b930dbe773d201606b1840f5a6ab0564eaca5d19717b61b3ca82e1d9a5f2f57",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "ll",
+        "rl",
+        "lr"
+      ],
+      "order_name": "rr-ll-rl-lr",
+      "evidence_id": "ev_44a1aba84b9c6916a88e43d1945baebcd14547b5cd4491a23d042aa7cb59c531",
+      "image_sha256": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 4014,
+      "event_count": 4014,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 5147,
+      "representation_changes": 4842,
+      "state_digest_before": "339c2054a2bec631f1ab075c21fc53000d2b0b50fff0c8a531ca7731a766cb5d",
+      "state_digest_after": "0f897ed24aaccb240892388206c9f52a64bf419a956f1a10aa6170cc87c05b73",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "lr",
+        "ll",
+        "rl"
+      ],
+      "order_name": "rr-lr-ll-rl",
+      "evidence_id": "ev_44bbcb44c3a2cd4d12e85734254236319357d547683da231957573d3c9d38ffe",
+      "image_sha256": "394ae8bd7571252443b6289a0696f92e0975d019c32423634eb6a3335d928d5c",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3916,
+      "event_count": 3916,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 5006,
+      "representation_changes": 4726,
+      "state_digest_before": "2274498eefd72784e6deb5f79a37ed9ee4b1fc53a4a3107087fac0b7da09415b",
+      "state_digest_after": "dd698444f9ebda8447a87184b4866d61742ccbceb19e6dc4ee469970915cca9d",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "lr",
+        "rl",
+        "ll"
+      ],
+      "order_name": "rr-lr-rl-ll",
+      "evidence_id": "ev_888d4fcbedc6949c21e6b790610320e651f5918fd6e516c2299f2d7a702a7145",
+      "image_sha256": "bf5f0d59551163e34df5792e7caf56245dcc8183f0fa3810805d240cdb4bd842",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3779,
+      "event_count": 3779,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 4815,
+      "representation_changes": 4535,
+      "state_digest_before": "0d316da73f2fd3f6de49ad18eafdee3a232dac04fdba08d20aa713b873e4b66a",
+      "state_digest_after": "67c1093c891c7c8c544ab96e803ad94934a78a0bc866de62380979c5408a65ba",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "rl",
+        "ll",
+        "lr"
+      ],
+      "order_name": "rr-rl-ll-lr",
+      "evidence_id": "ev_aff07e89e526b416506a3c0d7fb0a9efea4fa00b560c98f85c6cb1158cc1275b",
+      "image_sha256": "ceffc7c266f75d7a9ca150a421d31f70a5324d2e0ce40277ea6a2f8ae83258ac",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3957,
+      "event_count": 3957,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 5068,
+      "representation_changes": 4766,
+      "state_digest_before": "d96de30f35b7340af8caee40f95d749a0f7dc2fddca9a0418cae248962352f46",
+      "state_digest_after": "7f13e3eb998879d599868ee2167bbd9e0b69f2fae1c2ae13df1500abfc1f74e8",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    },
+    {
+      "order": [
+        "rr",
+        "rl",
+        "lr",
+        "ll"
+      ],
+      "order_name": "rr-rl-lr-ll",
+      "evidence_id": "ev_8396bcd44206dde1896db42f99cc75dece384b6d7c1c79d70a28af6893937241",
+      "image_sha256": "5ad368157aa88c053c689d7b513885110c07a2a9bb99aedcd06736cd6db42a00",
+      "bytes": 39932,
+      "status": "HALTED",
+      "steps": 3923,
+      "event_count": 3923,
+      "events_truncated": false,
+      "output_bytes": [
+        98,
+        230,
+        110,
+        230
+      ],
+      "peak_position": 38695,
+      "writebacks": 5023,
+      "representation_changes": 4726,
+      "state_digest_before": "061e956b833c4803f277c2d7204576e2b28e07c84a23853dc75a95a60418f12f",
+      "state_digest_after": "e3c6088fdf4cac37414c0998be94c1e3f00a5614b56572ed835da4768703b604",
+      "shared_calls": 4,
+      "shared_call_ds": [
+        40006,
+        40006,
+        40006,
+        40006
+      ],
+      "continuation_visits": [
+        15000,
+        15004,
+        15008,
+        15012
+      ],
+      "continuation_accumulators": [
+        12130,
+        21990,
+        7534,
+        21990
+      ]
+    }
+  ]
+}

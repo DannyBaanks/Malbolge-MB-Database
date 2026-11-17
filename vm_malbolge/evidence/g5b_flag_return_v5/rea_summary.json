@@ -1,0 +1,61 @@
+{
+  "tool": {
+    "server": "rea",
+    "name": "trace_malbolge",
+    "version": "6.9.0",
+    "engine": "REA Malbolge Classic engine",
+    "engine_version": "1"
+  },
+  "parameters": {
+    "input_text": "",
+    "eof_mode": "olmstead_1998",
+    "max_steps": 10000,
+    "event_capture_limit": 4096
+  },
+  "completed_runs": 2,
+  "runs": [
+    {
+      "label": "positive",
+      "order": ["lll", "rr", "lr", "rl", "llr"],
+      "evidence_id": "ev_9ec032d61bf9e84511412b35648ce5ad800decf0020c6b02e640c774f9f14283",
+      "image_sha256": "c5b56940aa23efeb6f16f8876f818ca28d349bf3d6392add8126385c028c6bab",
+      "image_bytes": 39932,
+      "status": "HALTED",
+      "steps": 4723,
+      "event_count": 4096,
+      "events_truncated": true,
+      "captured_event_steps": [1, 4096],
+      "output_bytes": [98, 230, 110, 230, 110],
+      "peak_position": 38883,
+      "writebacks": 6066,
+      "representation_changes": 5685,
+      "state_digest_before": "93d3bf6140fbc72fabdb61c19eb506c9f9c55e8e9754d8bfa9d13e1ab3efba34",
+      "state_digest_after": "76426f461ac03d6324ca4410c9f50bf77095d650376166fa2a265321d2575f2f",
+      "captured_shared_site_events": 0,
+      "captured_continuation_events": [],
+      "site_event_coverage": "NOT_DEMONSTRATED: the retained prefix ends before the shared-code region"
+    },
+    {
+      "label": "negative_control",
+      "order": ["lll", "rr", "lr", "rl", "llr"],
+      "evidence_id": "ev_63857e5d868c74602bb9b4a604172df1fdcb7f2999e1b7128afe4e30b0cb8f53",
+      "image_sha256": "2a857c758242f00a8ddba9faaf059e6bfad04acdee3384aa2c416c4cc399fe5f",
+      "image_bytes": 39932,
+      "status": "HALTED",
+      "steps": 4806,
+      "event_count": 4096,
+      "events_truncated": true,
+      "captured_event_steps": [1, 4096],
+      "output_bytes": [98],
+      "peak_position": 38507,
+      "writebacks": 6188,
+      "representation_changes": 5809,
+      "state_digest_before": "78f76b012127b638b0d82d5c682801ab76fcbe44b25e88385d7aab1e5b2b7b06",
+      "state_digest_after": "20cff9e6e5993a6a768aeb3518fe44e78b5ca30d98c4d78ca6d0efab02d8c8d8",
+      "captured_shared_site_events": 0,
+      "captured_continuation_events": [],
+      "site_event_coverage": "NOT_DEMONSTRATED: the retained prefix ends before the shared-code region"
+    }
+  ],
+  "result": "Both complete REA runs halt with the expected output. The 4096-event cap retains only the prefix before the shared-code region, so REA event records do not demonstrate the call or continuation addresses."
+}
