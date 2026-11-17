@@ -1,0 +1,173 @@
+{
+  "experiment": "G5b P3: crossed order of four sequential callers sharing one operation and one variable",
+  "date": "2026-11-16",
+  "base_commit": "7b25c02edbedafa29394322da6befac5e133d8d6",
+  "environment": {
+    "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "tool_sha256": {
+      "native_runner": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+      "independent_interpreter": "a5e42fda46fe54d72d2ccebe97bc5f529bfa7c1c56b971a53ae25f7b40e34b89",
+      "scratch_trace_model": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+      "bolgeforge_constants": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+      "bolgeforge_resynthesize": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+      "bolgeforge_cat_template": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52"
+    }
+  },
+  "protocol": {
+    "call_order": [
+      "rr",
+      "ll",
+      "rl",
+      "lr"
+    ],
+    "shared_operation": 38058,
+    "shared_variable": 40006,
+    "continuations": [
+      15000,
+      15004,
+      15008,
+      15012
+    ],
+    "positive_image_generated_after_predictions_fixed": true
+  },
+  "positive": {
+    "image_sha256": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+    "image_bytes": 39932,
+    "output_hex": "62e66ee6",
+    "value_chain": [
+      12345,
+      12130,
+      21990,
+      7534,
+      21990
+    ],
+    "call_order": [
+      "rr",
+      "ll",
+      "rl",
+      "lr"
+    ],
+    "continuations": [
+      15000,
+      15004,
+      15008,
+      15012
+    ],
+    "local_steps": 4014,
+    "local_status": "halt",
+    "native_returncode": 0,
+    "independent_status": "end",
+    "rea": {
+      "evidence_id": "ev_0738dd8e4fefebb83e449a1ef38bfc94b1e8938d8e1ac2bf9ac2f8b7b9463fa1",
+      "image_sha256": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+      "status": "HALTED",
+      "steps": 4014,
+      "event_count": 4014,
+      "events_truncated": false,
+      "output_hex": "62e66ee6",
+      "peak_position": 38695,
+      "writebacks": 5147,
+      "representation_changes": 4842,
+      "state_digest_before": "339c2054a2bec631f1ab075c21fc53000d2b0b50fff0c8a531ca7731a766cb5d",
+      "state_digest_after": "0f897ed24aaccb240892388206c9f52a64bf419a956f1a10aa6170cc87c05b73"
+    }
+  },
+  "negative_control": {
+    "fault": "rr caller incorrectly toggles f_root and routes to lr",
+    "image_sha256": "8450625bfc71fce5191bfa59468b5a9bf581d31f05c110cb7b2ff109b1cf2423",
+    "image_bytes": 39932,
+    "output_hex": "62",
+    "observed_return_order": [
+      15012
+    ],
+    "shared_calls": 1,
+    "local_steps": 3944,
+    "native_returncode": 0,
+    "independent_status": "end",
+    "local_status": "halt",
+    "rea": {
+      "evidence_id": "ev_85e2fe5a9e075ffc21577f0d370f08bd96570095f2a8bba36f7c4c05c51b5dbc",
+      "image_sha256": "8450625bfc71fce5191bfa59468b5a9bf581d31f05c110cb7b2ff109b1cf2423",
+      "status": "HALTED",
+      "steps": 3944,
+      "event_count": 3944,
+      "events_truncated": false,
+      "output_hex": "62",
+      "peak_position": 38413,
+      "writebacks": 5054,
+      "representation_changes": 4764,
+      "state_digest_before": "c3c883c13efe4ae72561c5d5a6e05c88c41dc25fb21dfbeada7b092890a8afe4",
+      "state_digest_after": "d940f5a22e806ccab75a9347bca59848ddead5b5808785c648bec834e460d0a2"
+    }
+  },
+  "reproduction": {
+    "positive_replay_sha256": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+    "positive_images_identical": true,
+    "replay_output_hex": "62e66ee6"
+  },
+  "gates": {
+    "G0_loader": "PASS",
+    "G1_native": "PASS",
+    "G2_parity": "PASS",
+    "G3_negative_control": "PASS",
+    "G4_reproducibility": "PASS",
+    "REA_positive_and_control": "PASS"
+  },
+  "not_demonstrated": [
+    "the other 23 permutations of four callers",
+    "arbitrary caller sets or counts",
+    "multiple shared variables",
+    "input or EOF behavior",
+    "recursive calls"
+  ],
+  "preexisting_worktree": "Six pre-existing untracked paths were preserved and not used by this pack.",
+  "pack_artifacts_sha256": {
+    "GATES.md": "bc4cdd01952eeba9c03230691505e7933d332ed286713c8b39267335a7c1c997",
+    "REA.md": "6f176582b85209b0226daf6a8aee86b3e06a8d790419da1c41456fd460eabe34",
+    "VERDICT.md": "4eab0b26089cd9178a1e806214e97f3d1536e5702dd1e62a058b9635760eacc0",
+    "control.py": "5ce4cef91f8b639a787ed5e68d0265c4d2974b1412fe45e71bcf0d05403a3a7b",
+    "probe.py": "575f2f9e68f34cc6e0cf977cec7338be9441d84188327b6a042fe303a02fe2dd",
+    "run01/control.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/control.stdout.raw.json": "7063528bace8f481dc1d07616cc4d64359f532838ff77f2cfe4f0d4937a1e23c",
+    "run01/g4_reproducibility.json": "24d29970d6796120df5bb0d4af5440a40dcd7b69bbcbeaa39bc28c28732f1d88",
+    "run01/negative.mb": "8450625bfc71fce5191bfa59468b5a9bf581d31f05c110cb7b2ff109b1cf2423",
+    "run01/negative.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/negative.mb.native.stdout.raw": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+    "run01/positive.mb": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+    "run01/positive.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/positive.mb.native.stdout.raw": "1e5acffe88e59057c59591f37835775d9a00a7ec86f482014a8ac92f03973c73",
+    "run01/probe.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/probe.stdout.raw.json": "2bfdfe10312ad77770708a6b4d1093e7e0bdff711c729a9041ee8cf82f89ff7f",
+    "run02/positive.mb": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+    "run02/positive.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02/positive.mb.native.stdout.raw": "1e5acffe88e59057c59591f37835775d9a00a7ec86f482014a8ac92f03973c73",
+    "run02/probe.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02/probe.stdout.raw.json": "2bfdfe10312ad77770708a6b4d1093e7e0bdff711c729a9041ee8cf82f89ff7f",
+    "verify_repro.py": "e1e1c0a59ca614ab8214af70c58ff5d5220e689d810720d14787fd7b12be19cd"
+  },
+  "tool_locations": {
+    "BolgeForge": "../BolgeForge",
+    "Malbolge-PureEpoch": "../Malbolge-PureEpoch",
+    "clasesbolge interpreter": "../../clasesbolge/tools/malbolge.py",
+    "scratch trace model": "vm_malbolge/evidence/epoch_dload_compose_v1/probe.py"
+  },
+  "reproduction_commands": [
+    "RUN_ROOT=$(mktemp -d)",
+    "mkdir -p \"$RUN_ROOT/run01\" \"$RUN_ROOT/run02\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v3/probe.py \"$RUN_ROOT/run01/positive.mb\" > \"$RUN_ROOT/run01/probe.stdout.raw.json\" 2> \"$RUN_ROOT/run01/probe.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v3/control.py \"$RUN_ROOT/run01/negative.mb\" > \"$RUN_ROOT/run01/control.stdout.raw.json\" 2> \"$RUN_ROOT/run01/control.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v3/probe.py \"$RUN_ROOT/run02/positive.mb\" > \"$RUN_ROOT/run02/probe.stdout.raw.json\" 2> \"$RUN_ROOT/run02/probe.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v3/verify_repro.py \"$RUN_ROOT/run01\" \"$RUN_ROOT/run02\"",
+    "cmp \"$RUN_ROOT/run01/positive.mb\" \"$RUN_ROOT/run02/positive.mb\""
+  ],
+  "reproduction_exit_codes": {
+    "positive_probe": 0,
+    "negative_control": 0,
+    "positive_replay": 0,
+    "g4_verifier": 0,
+    "cmp": 0
+  },
+  "command_paths_normalized": "The saved recipe uses repository-relative inputs and RUN_ROOT; scratch invocation paths are not serialized.",
+  "hash_line_endings": "Evidence pack paths use Git -text to preserve the exact bytes listed in hashes.sha256 on checkout."
+}

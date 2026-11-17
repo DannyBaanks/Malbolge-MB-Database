@@ -18,7 +18,7 @@ Núcleo de almacenamiento y catálogo de la **Suite de Datos y Runtimes v2.0** d
 |---|---|
 | Arquitectura, límites y estructura | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | Estado medido y registro de quine | [STATUS.md](STATUS.md) |
-| Malbolge, MBIR y la prueba G5b P2 | [MALBOLGE_CAPABILITIES.md](MALBOLGE_CAPABILITIES.md) |
+| Malbolge, MBIR y las pruebas G5b P2/P3 | [MALBOLGE_CAPABILITIES.md](MALBOLGE_CAPABILITIES.md) |
 | PureEpoch | [PUREEPOCH.md](PUREEPOCH.md) |
 | Hoja de ruta y pistas de lenguaje | [ROADMAP.md](ROADMAP.md) |
 | Comandos de reproducción | [REPRODUCING.md](REPRODUCING.md) |
@@ -28,5 +28,6 @@ Núcleo de almacenamiento y catálogo de la **Suite de Datos y Runtimes v2.0** d
 - [Base de datos y catálogo](DATABASE.md)
 - [Quine récord: 53 562 bytes](quine/README.md)
 - [Evidencia G5b P2: cuatro llamadores secuenciales](vm_malbolge/evidence/g5b_flag_return_v2/VERDICT.md)
+- [Evidencia G5b P3: orden cruzado de cuatro llamadores](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md)
 
 Este índice enlaza la información por tema. Las capacidades, los estados y los límites permanecen en sus documentos específicos para que cada afirmación se lea junto a su evidencia.

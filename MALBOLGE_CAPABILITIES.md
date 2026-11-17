@@ -186,8 +186,10 @@ Imagen canónica que unifica flujo de control almacenado con comparación relaci
 - Esto corre en el host. No hay lexer dentro de Malbolge, ni `python.mb`.
 - Evidencia: [`python/evidence/P5/run_p5_compiler.json`](python/evidence/P5/run_p5_compiler.json), [`python/STATUS.md`](python/STATUS.md).
 
-### 16. Una operación compartida con cuatro llamadores secuenciales (G5b P2)
+### 16. Una operación compartida con cuatro llamadores secuenciales (G5b P2/P3)
 
 Una sola ejecución recorrió `ll → lr → rl → rr` y llamó cuatro veces a la operación compartida (`pc=38058`) con la misma variable (`d=40006`). Los retornos visitaron `15000 → 15004 → 15008 → 15012`; la salida fue `62e66ee6`. Olmstead, clasesbolge, el trazador local y REA coincidieron.
 
 Un control que omite el ajuste de la bandera raíz en `lr` visita `15000 → 15012` y produce `62e6`, detectando el fallo. Esto demuestra solo la secuencia de cuatro llamadores preparada, una variable y un sitio compartido. [Puertas, resultados, trazas y reproducción](vm_malbolge/evidence/g5b_flag_return_v2/VERDICT.md).
+
+P3 repite el caso en el orden cruzado `rr → ll → rl → lr`. La operación y variable siguen en `pc=38058` y `d=40006`; los cuatro retornos llegan a `15000 → 15004 → 15008 → 15012` y la salida vuelve a ser `62e66ee6`. Olmstead, `clasesbolge`, el trazador local y REA coinciden; una segunda generación reproduce exactamente la imagen positiva. El control agrega un ajuste de raíz al primer `rr`, desvía la única llamada a la continuación terminal `lr` (`15012`) y emite `62`. P3 demuestra este orden alternativo, no las otras 23 permutaciones ni un conjunto arbitrario de llamadores. [Puertas, resultados, trazas REA, hashes y reproducción G5b P3](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md).

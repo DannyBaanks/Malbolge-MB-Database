@@ -2,3 +2,4 @@
 quine/**/*.mb binary
 quine/*.mb binary
 vm_malbolge/evidence/g5b_flag_return_v2/** -text
+vm_malbolge/evidence/g5b_flag_return_v3/** -text

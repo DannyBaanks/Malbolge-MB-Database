@@ -58,6 +58,10 @@
 
 Una única operación compartida recibió cuatro llamadas secuenciales desde un solo flujo, con la misma variable. La salida fue `62e66ee6`; el control que omite el ajuste de una bandera termina después de dos llamadas con `62e6`. El alcance medido y los límites están en [el pack G5b P2](vm_malbolge/evidence/g5b_flag_return_v2/VERDICT.md).
 
+## Actualización 2026-11-16: orden cruzado de llamadores (G5b P3)
+
+Una segunda imagen recorrió `rr → ll → rl → lr` con una variable (`d=40006`) y el mismo sitio compartido (`pc=38058`). Visitó las continuaciones `15000 → 15004 → 15008 → 15012`, mantuvo las flags y la operación en `74`, y emitió `62e66ee6`. Olmstead, `clasesbolge`, el trazador local y REA coincidieron; la segunda generación produjo los mismos 39 932 bytes. El control añade un ajuste de raíz al primer `rr`, toma el retorno terminal `lr` (`15012`) después de una llamada y emite `62`. Esto cubre este orden alternativo; las demás permutaciones siguen sin medirse. [Puertas, trazas, hashes y reproducción G5b P3](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md).
+
 ## Hito: Quine Clásica Más Pequeña — 53,562 B (BolgeForge)
 
 **La quine Malbolge clásica más pequeña producida y verificada por este ecosistema: 53,562 bytes, 6,290 bytes menos que la quine de referencia de Matthias Lutter (59,852 B).** Sintetizada por **BolgeForge** (subsistema de síntesis del monorepo ISyCo) y verificada byte a byte con **triple motor C independiente** (incluye un oráculo que se distribuye en `quine/evidence/mb_classic_indep.c` y verifica en ~0.25 s). Supera al récord anterior del mismo ecosistema (m=284, 54,134 B) por **572 bytes** e inaugura el descenso por debajo de m=284, que estaba en `NOT_DEMONSTRATED`.

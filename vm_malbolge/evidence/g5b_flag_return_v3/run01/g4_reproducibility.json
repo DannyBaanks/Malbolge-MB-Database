@@ -1,0 +1,13 @@
+{
+  "g0_loader_ok": true,
+  "g1_native_positive": "62e66ee6",
+  "g2_independent_positive": "end",
+  "g3_negative_control": "62",
+  "g4_reproducible": true,
+  "positive_image_sha256": "5c72beaf362d783f7846cd74463cf729786a1c9c0bfc9e0ea9a6f36a91913d72",
+  "control_image_sha256": "8450625bfc71fce5191bfa59468b5a9bf581d31f05c110cb7b2ff109b1cf2423",
+  "positive_calls": 4,
+  "negative_calls": 1,
+  "positive_local_steps": 4014,
+  "negative_local_steps": 3944
+}
