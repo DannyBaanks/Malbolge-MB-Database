@@ -1,0 +1,64 @@
+{
+  "run": {
+    "fault": "omit f_root toggle for the lr caller",
+    "expected_positive_return_order": [
+      15000,
+      15004,
+      15008,
+      15012
+    ],
+    "observed_return_order": [
+      15000,
+      15012
+    ],
+    "shared_op_address": 38058,
+    "variable_address": 40006,
+    "output_hex": "62e6",
+    "output_length": 2,
+    "shared_calls": [
+      {
+        "a_before": 39999,
+        "d": 40006,
+        "value_before": 12345,
+        "a_after": 12130,
+        "value_after": 12130
+      },
+      {
+        "a_before": 12130,
+        "d": 40006,
+        "value_before": 12130,
+        "a_after": 21990,
+        "value_after": 21990
+      }
+    ],
+    "native_rc": 0,
+    "independent_status": "end",
+    "local_trace_status": "halt",
+    "local_trace_steps": 3672,
+    "states_at_cont": [
+      {
+        "pc": 15000,
+        "flags": [
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      },
+      {
+        "pc": 15012,
+        "flags": [
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      }
+    ],
+    "tails_unchanged": true,
+    "negative_control_detected": true,
+    "image_sha256": "5696889bc004600ed1fc87b4ebf13a5ed9529b4591d20e3d3f812fc8e8af5e46"
+  },
+  "negative_control_detected": true,
+  "scope": "one routing flag deliberately left in the wrong phase"
+}

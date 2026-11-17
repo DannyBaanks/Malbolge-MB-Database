@@ -1,0 +1,115 @@
+{
+  "experiment": "G5b P2: four sequential callers sharing one operation and one variable",
+  "date": "2026-11-16",
+  "base_commit": "7d0b81506b6e3e80c2922d9ed40707f5fdb78ca6",
+  "environment": {
+    "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "native_runner_sha256": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "independent_interpreter_sha256": "a5e42fda46fe54d72d2ccebe97bc5f529bfa7c1c56b971a53ae25f7b40e34b89",
+    "scratch_model_sha256": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "BolgeForge_inputs_sha256": {
+      "bolgeforge_constants": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+      "bolgeforge_resynthesize": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+      "bolgeforge_cat_template": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52"
+    }
+  },
+  "positive": {
+    "image_sha256": "9aa1a39cc4f1cc1a2d55b119a26f52a76b5d1d2a62eece59ef915bfe0ed5f3b6",
+    "output_hex": "62e66ee6",
+    "shared_operation": 38058,
+    "variable": 40006,
+    "call_order": [
+      "ll",
+      "lr",
+      "rl",
+      "rr"
+    ],
+    "continuations": [
+      15000,
+      15004,
+      15008,
+      15012
+    ],
+    "local_steps": 3756,
+    "native_returncode": 0,
+    "independent_status": "end",
+    "rea_evidence_id": "ev_e941b2d8bdb8db08f074d338c7e97eb527e1dbc0f8d7232c7fde1a6f1b92a77a"
+  },
+  "negative_control": {
+    "fault": "omit f_root toggle for the lr caller",
+    "image_sha256": "5696889bc004600ed1fc87b4ebf13a5ed9529b4591d20e3d3f812fc8e8af5e46",
+    "output_hex": "62e6",
+    "continuations": [
+      15000,
+      15012
+    ],
+    "local_steps": 3672,
+    "native_returncode": 0,
+    "independent_status": "end",
+    "rea_evidence_id": "ev_e5667c55af1e9a43e2f1cb39a210dc09a73dacd5a75b28470f275bf1c8a57918"
+  },
+  "gates": {
+    "G0_loader": "PASS",
+    "G1_native": "PASS",
+    "G2_parity": "PASS",
+    "G3_negative_control": "PASS",
+    "G4_reproducibility": "PASS",
+    "REA_positive_and_control": "PASS"
+  },
+  "not_demonstrated": [
+    "more than the four selected callers",
+    "arbitrary caller sets",
+    "multiple shared variables",
+    "input or EOF behavior",
+    "recursive calls"
+  ],
+  "preexisting_worktree": "master ahead of origin/master by 39; six untracked paths observed before this task and preserved.",
+  "pack_artifacts_sha256": {
+    "GATES.md": "e77e207218259821bfed582969f32b3a1dd51e0848287b4a00462e2ed5cded4d",
+    "REA.md": "3afe2d8343295dd720e5d0722f70652cedc612019e1057f90dcc674b28b74622",
+    "VERDICT.md": "c2798924d4bdb737db372d78d617437bab9cb25bf52b91d6332fafffbc33d4bb",
+    "control.py": "9168e7b5dde496a44a7fe777aee7f87178b0ecafce94fc0e54e31f845435d9c0",
+    "probe.py": "b00b707d71f2650f674019333f85e200d2311faccebfcd25a7b49f114bbed6f6",
+    "run01/control.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/control.stdout.raw.json": "d3d9cc2d1a354cbf1008bc5ab760d26961fde28824a47be0f99271f4c09ba473",
+    "run01/g4_reproducibility.json": "072230dcaab3ec172ecdb3af81a331df6a1e89abbe474c04f5f1c697c998bf76",
+    "run01/negative.mb": "5696889bc004600ed1fc87b4ebf13a5ed9529b4591d20e3d3f812fc8e8af5e46",
+    "run01/negative.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/negative.mb.native.stdout.raw": "132b6279b9f0b07002b2d3782dd67d00a4023768b03d70bac6c21b0daf92e78d",
+    "run01/positive.mb": "9aa1a39cc4f1cc1a2d55b119a26f52a76b5d1d2a62eece59ef915bfe0ed5f3b6",
+    "run01/positive.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/positive.mb.native.stdout.raw": "1e5acffe88e59057c59591f37835775d9a00a7ec86f482014a8ac92f03973c73",
+    "run01/probe.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run01/probe.stdout.raw.json": "4472bed0a4e555dea3723c6630af87328ed71e93b47c4386de6fe957ec5a17f5",
+    "run02/positive.mb": "9aa1a39cc4f1cc1a2d55b119a26f52a76b5d1d2a62eece59ef915bfe0ed5f3b6",
+    "run02/positive.mb.native.stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02/positive.mb.native.stdout.raw": "1e5acffe88e59057c59591f37835775d9a00a7ec86f482014a8ac92f03973c73",
+    "run02/probe.stderr.raw.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run02/probe.stdout.raw.json": "4472bed0a4e555dea3723c6630af87328ed71e93b47c4386de6fe957ec5a17f5",
+    "verify_repro.py": "54d21b614517d2b73dce1707ee85c0214973d407aa2896315fff5507e6c059ac"
+  },
+  "tool_locations": {
+    "BolgeForge": "../BolgeForge",
+    "Malbolge-PureEpoch": "../Malbolge-PureEpoch",
+    "clasesbolge interpreter": "../../clasesbolge/tools/malbolge.py",
+    "scratch trace model": "vm_malbolge/evidence/epoch_dload_compose_v1/probe.py"
+  },
+  "reproduction_commands": [
+    "RUN_ROOT=$(mktemp -d)",
+    "mkdir -p \"$RUN_ROOT/run01\" \"$RUN_ROOT/run02\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v2/probe.py \"$RUN_ROOT/run01/positive.mb\" > \"$RUN_ROOT/run01/probe.stdout.raw.json\" 2> \"$RUN_ROOT/run01/probe.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v2/control.py \"$RUN_ROOT/run01/negative.mb\" > \"$RUN_ROOT/run01/control.stdout.raw.json\" 2> \"$RUN_ROOT/run01/control.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v2/probe.py \"$RUN_ROOT/run02/positive.mb\" > \"$RUN_ROOT/run02/probe.stdout.raw.json\" 2> \"$RUN_ROOT/run02/probe.stderr.raw.txt\"",
+    "python3 vm_malbolge/evidence/g5b_flag_return_v2/verify_repro.py \"$RUN_ROOT/run01\" \"$RUN_ROOT/run02\"",
+    "cmp \"$RUN_ROOT/run01/positive.mb\" \"$RUN_ROOT/run02/positive.mb\""
+  ],
+  "reproduction_exit_codes": {
+    "positive_probe": 0,
+    "negative_control": 0,
+    "positive_replay": 0,
+    "g4_verifier": 0
+  },
+  "command_paths_normalized": "The saved reproduction recipe uses repository-relative sources and RUN_ROOT; the scratch invocation directory is intentionally not serialized.",
+  "hash_line_endings": "Evidence pack paths use Git -text to preserve the exact bytes listed in hashes.sha256 on checkout."
+}

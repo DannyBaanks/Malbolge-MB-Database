@@ -1,3 +1,4 @@
 # Artefactos byte-exactos del corpus quine: nunca normalizar fin de linea.
 quine/**/*.mb binary
 quine/*.mb binary
+vm_malbolge/evidence/g5b_flag_return_v2/** -text
