@@ -29,7 +29,6 @@ REPO = HERE.parents[1]
 LMAO = REPO / "third_party/lmao/lmao"
 BASE = REPO / "vm_malbolge/src/mbir_m2_loader.hell"
 sys.path.insert(0, str(REPO / "tools"))
-import oracle_classic  # noqa: E402
 RUNNER = REPO / "runners" / "malbolge-original" / "malbolge"
 
 # --- flags nuevos (el cargador solo declara SUBROUTINE_FLAG1/2/3) ------------

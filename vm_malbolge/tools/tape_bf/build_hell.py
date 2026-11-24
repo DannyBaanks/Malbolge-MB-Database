@@ -76,7 +76,6 @@ def copy(src: str | int, dst: str) -> None:
     a_slot = dst
 
 def build_ir():
-    global reg
     ir = []
     def gate(a, b):
         nonlocal ir
