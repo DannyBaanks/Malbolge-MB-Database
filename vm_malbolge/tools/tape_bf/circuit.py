@@ -54,17 +54,33 @@ def and_or(x: int, y: int, mask: int) -> int:
     return crazy(g3, g3)
 
 def is_eof(x: int) -> bool:
-    """Discriminator for Olmstead EOF (59048) vs byte values (0..255)."""
-    p = eq2_or(x, HIGH)
-    for k in (1, 2, 4):
-        p = and_or(p, left(p, k), HIGH)
-    eof1 = crazy(58324, p)
-    eof_w = crazy(8, eof1)
-    # eof_w reaches 58680 for bytes 0..255, and 58680 for 59048 in crazy(8, eof1)
-    # Wait, in the actual circuit:
-    # eof1_1 = crazy(p1, 58324)
-    # eof1_w = crazy(eof1_1, 8)
+    """Discriminator for Olmstead EOF (59048) vs byte values (0..255).
+
+    The chain `crazy(58324, eq2_or(x, HIGH))` followed by
+    `and_or`/`left` does NOT separate EOF from bytes: it yields 58680 for
+    59048 and for every byte 0..255 (measured). It is therefore not usable as
+    a discriminator; the only correct test is direct equality with TWO.
+    See `probe_eof_chain()` below for the exhaustive check.
+    """
     return x == TWO
+
+
+def probe_eof_chain() -> dict:
+    """Exhaustively confirm the crazy-chain EOF candidate is non-discriminating."""
+    def chain(x: int) -> int:
+        p = eq2_or(x, HIGH)
+        for k in (1, 2, 4):
+            p = and_or(p, left(p, k), HIGH)
+        return crazy(8, crazy(58324, p))
+
+    byte_values = {chain(x) for x in range(256)}
+    eof_value = chain(TWO)
+    return {
+        "distinct_byte_outputs": len(byte_values),
+        "eof_output": eof_value,
+        "eof_collides_with_bytes": eof_value in byte_values,
+        "discriminates": eof_value not in byte_values,
+    }
 
 def tape_swap_oracle(cell0: int, cell1: int) -> tuple[int, int]:
     """Positive 2-cell tape model: cell0 and cell1 are distinct storage locations."""
@@ -88,6 +104,7 @@ def main():
 
     info = {
         "scope": "host ternary tape algebra and negative control oracle",
+        "eof_chain_probe": probe_eof_chain(),
         "distinct_pairs_tested": len(distinct_pairs),
         "positive_all_swapped": all(pos == (c1, c0) for (c0, c1), pos in zip(distinct_pairs, pos_results)),
         "negative_fake_mismatches": fake_mismatches,

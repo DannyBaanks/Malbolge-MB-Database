@@ -113,7 +113,6 @@ def main():
                       f"-> clase1={int(hit[CLS1][0] & 255)}, "
                       f"clase0={int(hit[CLS0][0] & 255)}")
                 break
-            spread = class_spread(allc)
             # Callejon sin salida: la fila entera colapsa a un solo valor.
             # Una vez ahi, cualquier operacion punto a punto da otro valor
             # unico: nunca podra separar. Fuera del beam.

@@ -1,0 +1,132 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+# Un solo run por rama/PR: cancela los obsoletos.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Núcleo rápido: la suite MBIR en Zig (9 tests, milisegundos) ──────────
+  # Sustituye al oráculo Python en cada PR: el harness Python tarda ~1 min por
+  # imagen y la quine ~22 min; eso queda para reproducción manual.
+  zig-tests:
+    name: Zig tests (mbir)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: mbir/zig
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: "0.16.0"
+
+      - name: Run tests
+        run: zig build test --summary all
+
+  # ── Formato canónico de Zig: sin debate de estilo en review ─────────────
+  zig-fmt:
+    name: Zig fmt (mbir)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: "0.16.0"
+
+      - name: Check formatting
+        run: zig fmt --check mbir/zig
+
+  # ── Python: solo lo barato (sintaxis + decoder MBIR) ─────────────────────
+  # NO corre el harness de 85 vectores ni la quine: eso es reproducción manual
+  # documentada en REPRODUCING.md.
+  python-fast:
+    name: Python fast checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Byte-compile every tracked .py
+        # compile() en memoria: no escribe .pyc ni toca el árbol de trabajo.
+        # py_compile.compile(cfile="/dev/null") falla en 3.12 (no es regular).
+        run: |
+          python3 - <<'PY'
+          import pathlib, sys
+          files = sorted(pathlib.Path(".").rglob("*.py"))
+          files = [f for f in files
+                   if ".venv" not in f.parts and "third_party" not in f.parts]
+          bad = []
+          for f in files:
+              try:
+                  compile(f.read_bytes(), str(f), "exec", dont_inherit=True)
+              except Exception as exc:
+                  bad.append((f, f"{type(exc).__name__}: {exc}"))
+          print(f"compiled {len(files)} files")
+          for f, exc in bad:
+              print(f"FAIL {f}: {exc}")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Install pytest
+        run: python3 -m pip install --disable-pip-version-check pytest
+
+      - name: MBIR encoder/decoder suite
+        # mbir/tests es pytest puro (funciones sueltas), no unittest.TestCase.
+        run: python3 -m pytest mbir/tests -q
+
+  # ── Guardián de evidencia: nada medido se mueve sin declararlo ──────────
+  # Los artefactos bajo evidence/ son registros append-only. Si un PR los
+  # toca, debe decirlo explícitamente en el cuerpo del PR.
+  repo-gate:
+    name: Evidence guard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reject undeclared changes to measured evidence
+        env:
+          PR_BODY: ${{ github.event.pull_request.body || '' }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE="origin/${{ github.event.before }}"
+          fi
+          git diff --name-only "$BASE" HEAD -- \
+            | grep -E '(^|/)evidence/.*\.(json|mb|sha256)$|hashes\.sha256$' > changed.txt || true
+          if [ -s changed.txt ]; then
+            echo "::warning::Este cambio toca evidencia medida:"
+            cat changed.txt
+            if echo "$PR_BODY" | grep -qiE 'evidencia|evidence'; then
+              echo "Declarado en el cuerpo del PR: permitido."
+            else
+              echo "::error::Se modificó evidencia sin declararlo. Menciona 'evidencia' en el cuerpo del PR."
+              exit 1
+            fi
+          else
+            echo "Sin cambios en evidencia medida."
+          fi

@@ -110,7 +110,6 @@ def main() -> dict:
         path.write_bytes(data)
 
         # predicciones
-        mem_zero = [0] * MEM
         pred_zero = spec_crazy(0, 0) % 256
         text = data.decode("latin-1")
         mem_crazy = oc.load_memory(text)

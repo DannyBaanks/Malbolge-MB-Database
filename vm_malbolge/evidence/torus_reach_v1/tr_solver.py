@@ -578,8 +578,6 @@ def _forward_levels(lib: list[int], max_depth: int, frontier_cap: int):
     seen = set(initials)
     lib_arr = np.array(lib, dtype=np.int64)
     for depth in range(1, max_depth + 1):
-        frontier = sorted(levels[-1] - seen.union(*levels[:-1]) if len(levels) > 1
-                          else levels[-1])
         vals = np.array(sorted(set().union(*levels))[:frontier_cap], dtype=np.int64)
         new: set[int] = set()
         for m in lib_arr:
