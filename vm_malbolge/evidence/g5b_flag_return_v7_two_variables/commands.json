@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run01"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run02"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "REA_DIST",
+        "run01"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "REA_DIST",
+        "run02"
+      ],
+      "exit_status": 0
+    }
+  ],
+  "notes": [
+    "run01 generated before portable ROOT fallback adjustment; run02 generated from final probe.py; image and trace bytes agree.",
+    "The expected values are computed by the crazy recurrence, not hardcoded outputs."
+  ]
+}

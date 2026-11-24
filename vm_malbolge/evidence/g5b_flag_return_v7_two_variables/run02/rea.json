@@ -1,0 +1,1366 @@
+{
+  "positive": {
+    "status": "HALTED",
+    "steps": 3868,
+    "output_hex": "fc7c297305a0",
+    "calls": [
+      {
+        "step": 3782,
+        "a": 55999,
+        "d": 41000,
+        "value": 12345,
+        "flag": 70,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          17916,
+          23456
+        ]
+      },
+      {
+        "step": 3793,
+        "a": 17916,
+        "d": 43000,
+        "value": 23456,
+        "flag": 74,
+        "before": [
+          17916,
+          23456
+        ],
+        "after": [
+          17916,
+          25724
+        ]
+      },
+      {
+        "step": 3813,
+        "a": 25724,
+        "d": 41000,
+        "value": 17916,
+        "flag": 70,
+        "before": [
+          17916,
+          25724
+        ],
+        "after": [
+          15657,
+          25724
+        ]
+      },
+      {
+        "step": 3824,
+        "a": 15657,
+        "d": 43000,
+        "value": 25724,
+        "flag": 74,
+        "before": [
+          15657,
+          25724
+        ],
+        "after": [
+          15657,
+          25715
+        ]
+      },
+      {
+        "step": 3844,
+        "a": 25715,
+        "d": 41000,
+        "value": 15657,
+        "flag": 70,
+        "before": [
+          15657,
+          25715
+        ],
+        "after": [
+          17925,
+          25715
+        ]
+      },
+      {
+        "step": 3855,
+        "a": 17925,
+        "d": 43000,
+        "value": 25715,
+        "flag": 74,
+        "before": [
+          17925,
+          25715
+        ],
+        "after": [
+          17925,
+          23456
+        ]
+      }
+    ],
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          17916,
+          25724
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          15657,
+          25715
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          17925,
+          23456
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "mutations": [
+      {
+        "step": 3782,
+        "pc": 38246,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          17916,
+          23456
+        ]
+      },
+      {
+        "step": 3793,
+        "pc": 38246,
+        "before": [
+          17916,
+          23456
+        ],
+        "after": [
+          17916,
+          25724
+        ]
+      },
+      {
+        "step": 3813,
+        "pc": 38246,
+        "before": [
+          17916,
+          25724
+        ],
+        "after": [
+          15657,
+          25724
+        ]
+      },
+      {
+        "step": 3824,
+        "pc": 38246,
+        "before": [
+          15657,
+          25724
+        ],
+        "after": [
+          15657,
+          25715
+        ]
+      },
+      {
+        "step": 3844,
+        "pc": 38246,
+        "before": [
+          15657,
+          25715
+        ],
+        "after": [
+          17925,
+          25715
+        ]
+      },
+      {
+        "step": 3855,
+        "pc": 38246,
+        "before": [
+          17925,
+          25715
+        ],
+        "after": [
+          17925,
+          23456
+        ]
+      }
+    ],
+    "final_values": [
+      17925,
+      23456
+    ],
+    "site_events": [
+      {
+        "step": 3782,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3793,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 23456,
+            "value_after": 25724
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3813,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 25724,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 15657
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3824,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 15657,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 25724,
+            "value_after": 25715
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3844,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 25715,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 15657,
+            "value_after": 17925
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3855,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17925,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 25715,
+            "value_after": 23456
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "digest": "4409334a0a1b74f772ea6db1f69fff88dda19c9014dec6f53ee0ab5b9846e20c",
+    "all_events_retained": true
+  },
+  "control_first": {
+    "status": "HALTED",
+    "steps": 3899,
+    "output_hex": "8f5103510351",
+    "calls": [
+      {
+        "step": 3813,
+        "a": 55999,
+        "d": 43000,
+        "value": 23456,
+        "flag": 70,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          12345,
+          40847
+        ]
+      },
+      {
+        "step": 3824,
+        "a": 40847,
+        "d": 43000,
+        "value": 40847,
+        "flag": 74,
+        "before": [
+          12345,
+          40847
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "step": 3844,
+        "a": 29521,
+        "d": 43000,
+        "value": 29521,
+        "flag": 70,
+        "before": [
+          12345,
+          29521
+        ],
+        "after": [
+          12345,
+          3
+        ]
+      },
+      {
+        "step": 3855,
+        "a": 3,
+        "d": 43000,
+        "value": 3,
+        "flag": 74,
+        "before": [
+          12345,
+          3
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "step": 3875,
+        "a": 29521,
+        "d": 43000,
+        "value": 29521,
+        "flag": 70,
+        "before": [
+          12345,
+          29521
+        ],
+        "after": [
+          12345,
+          3
+        ]
+      },
+      {
+        "step": 3886,
+        "a": 3,
+        "d": 43000,
+        "value": 3,
+        "flag": 74,
+        "before": [
+          12345,
+          3
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      }
+    ],
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          29521
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "mutations": [
+      {
+        "step": 3813,
+        "pc": 38246,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          12345,
+          40847
+        ]
+      },
+      {
+        "step": 3824,
+        "pc": 38246,
+        "before": [
+          12345,
+          40847
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "step": 3844,
+        "pc": 38246,
+        "before": [
+          12345,
+          29521
+        ],
+        "after": [
+          12345,
+          3
+        ]
+      },
+      {
+        "step": 3855,
+        "pc": 38246,
+        "before": [
+          12345,
+          3
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      },
+      {
+        "step": 3875,
+        "pc": 38246,
+        "before": [
+          12345,
+          29521
+        ],
+        "after": [
+          12345,
+          3
+        ]
+      },
+      {
+        "step": 3886,
+        "pc": 38246,
+        "before": [
+          12345,
+          3
+        ],
+        "after": [
+          12345,
+          29521
+        ]
+      }
+    ],
+    "final_values": [
+      12345,
+      29521
+    ],
+    "site_events": [
+      {
+        "step": 3813,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 23456,
+            "value_after": 40847
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3824,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 40847,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 40847,
+            "value_after": 29521
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3844,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29521,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 29521,
+            "value_after": 3
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3855,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 3,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 3,
+            "value_after": 29521
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3875,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29521,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 29521,
+            "value_after": 3
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3886,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 3,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 3,
+            "value_after": 29521
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "digest": "13f74500c4666eefd3b64390389615daac46cb0fdaff659035451ad6995e3a77",
+    "all_events_retained": true
+  },
+  "control_second": {
+    "status": "HALTED",
+    "steps": 3901,
+    "output_hex": "fc58fc58fc58",
+    "calls": [
+      {
+        "step": 3815,
+        "a": 55999,
+        "d": 41000,
+        "value": 12345,
+        "flag": 70,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          17916,
+          23456
+        ]
+      },
+      {
+        "step": 3826,
+        "a": 17916,
+        "d": 41000,
+        "value": 17916,
+        "flag": 74,
+        "before": [
+          17916,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "step": 3846,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 70,
+        "before": [
+          29272,
+          23456
+        ],
+        "after": [
+          252,
+          23456
+        ]
+      },
+      {
+        "step": 3857,
+        "a": 252,
+        "d": 41000,
+        "value": 252,
+        "flag": 74,
+        "before": [
+          252,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "step": 3877,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 70,
+        "before": [
+          29272,
+          23456
+        ],
+        "after": [
+          252,
+          23456
+        ]
+      },
+      {
+        "step": 3888,
+        "a": 252,
+        "d": 41000,
+        "value": 252,
+        "flag": 74,
+        "before": [
+          252,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      }
+    ],
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          29272,
+          23456
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "mutations": [
+      {
+        "step": 3815,
+        "pc": 38246,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          17916,
+          23456
+        ]
+      },
+      {
+        "step": 3826,
+        "pc": 38246,
+        "before": [
+          17916,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "step": 3846,
+        "pc": 38246,
+        "before": [
+          29272,
+          23456
+        ],
+        "after": [
+          252,
+          23456
+        ]
+      },
+      {
+        "step": 3857,
+        "pc": 38246,
+        "before": [
+          252,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      },
+      {
+        "step": 3877,
+        "pc": 38246,
+        "before": [
+          29272,
+          23456
+        ],
+        "after": [
+          252,
+          23456
+        ]
+      },
+      {
+        "step": 3888,
+        "pc": 38246,
+        "before": [
+          252,
+          23456
+        ],
+        "after": [
+          29272,
+          23456
+        ]
+      }
+    ],
+    "final_values": [
+      29272,
+      23456
+    ],
+    "site_events": [
+      {
+        "step": 3815,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3826,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3846,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3857,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3877,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3888,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "digest": "ce08baa99301ec2a7ace7153022d9c8a8d49e3a8201a5600eddbc16d5723756a",
+    "all_events_retained": true
+  },
+  "swapped": {
+    "status": "HALTED",
+    "steps": 3898,
+    "output_hex": "8f12b90f9239",
+    "calls": [
+      {
+        "step": 3812,
+        "a": 55999,
+        "d": 43000,
+        "value": 23456,
+        "flag": 70,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          12345,
+          40847
+        ]
+      },
+      {
+        "step": 3823,
+        "a": 40847,
+        "d": 41000,
+        "value": 12345,
+        "flag": 74,
+        "before": [
+          12345,
+          40847
+        ],
+        "after": [
+          13074,
+          40847
+        ]
+      },
+      {
+        "step": 3843,
+        "a": 13074,
+        "d": 43000,
+        "value": 40847,
+        "flag": 70,
+        "before": [
+          13074,
+          40847
+        ],
+        "after": [
+          13074,
+          40121
+        ]
+      },
+      {
+        "step": 3854,
+        "a": 40121,
+        "d": 41000,
+        "value": 13074,
+        "flag": 74,
+        "before": [
+          13074,
+          40121
+        ],
+        "after": [
+          13071,
+          40121
+        ]
+      },
+      {
+        "step": 3874,
+        "a": 13071,
+        "d": 43000,
+        "value": 40121,
+        "flag": 70,
+        "before": [
+          13071,
+          40121
+        ],
+        "after": [
+          13071,
+          40850
+        ]
+      },
+      {
+        "step": 3885,
+        "a": 40850,
+        "d": 41000,
+        "value": 13071,
+        "flag": 74,
+        "before": [
+          13071,
+          40850
+        ],
+        "after": [
+          12345,
+          40850
+        ]
+      }
+    ],
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          23456
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          13074,
+          40847
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          13071,
+          40121
+        ]
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "values": [
+          12345,
+          40850
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "mutations": [
+      {
+        "step": 3812,
+        "pc": 38246,
+        "before": [
+          12345,
+          23456
+        ],
+        "after": [
+          12345,
+          40847
+        ]
+      },
+      {
+        "step": 3823,
+        "pc": 38246,
+        "before": [
+          12345,
+          40847
+        ],
+        "after": [
+          13074,
+          40847
+        ]
+      },
+      {
+        "step": 3843,
+        "pc": 38246,
+        "before": [
+          13074,
+          40847
+        ],
+        "after": [
+          13074,
+          40121
+        ]
+      },
+      {
+        "step": 3854,
+        "pc": 38246,
+        "before": [
+          13074,
+          40121
+        ],
+        "after": [
+          13071,
+          40121
+        ]
+      },
+      {
+        "step": 3874,
+        "pc": 38246,
+        "before": [
+          13071,
+          40121
+        ],
+        "after": [
+          13071,
+          40850
+        ]
+      },
+      {
+        "step": 3885,
+        "pc": 38246,
+        "before": [
+          13071,
+          40850
+        ],
+        "after": [
+          12345,
+          40850
+        ]
+      }
+    ],
+    "final_values": [
+      12345,
+      40850
+    ],
+    "site_events": [
+      {
+        "step": 3812,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 23456,
+            "value_after": 40847
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3823,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 40847,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 13074
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3843,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 13074,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 40847,
+            "value_after": 40121
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3854,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 40121,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 13074,
+            "value_after": 13071
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3874,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 13071,
+        "d": 43000,
+        "writes": [
+          {
+            "position": 43000,
+            "value_before": 40121,
+            "value_after": 40850
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3885,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 40850,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 13071,
+            "value_after": 12345
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "digest": "f8d1b7f8034919d5f19cb8d3394e40e1855b8f98a09eb971bcdb1a3e3daf9130",
+    "all_events_retained": true
+  }
+}

@@ -102,3 +102,7 @@ Las 120 permutaciones de cinco hojas quedaron verificadas en tres generaciones i
 ## Actualización 2026-11-24: crazy reutilizable G5b P6
 
 Una imagen ejecuta A B A B A B en tres vueltas reales, con una variable y un sitio crazy; bandera y sitio recuperan 74 en las cuatro visitas al reloj. Olmstead, clasesbolge, trazador local y eventos REA coinciden. Dos controles de bandera alteran los retornos; generaciones independientes coinciden byte a byte. Extiende el bucle ROT de P1 a crazy. [Alcance y reproducción P6](vm_malbolge/evidence/g5b_flag_return_v6_reusable_crazy/VERDICT.md).
+
+## Actualización 2026-11-24: dos variables G5b P7
+
+Una imagen comparte crazy en pc=38246 entre V=41000 y W=43000, con A(V) B(W) repetidos durante tres vueltas. Seis escrituras alternadas conservan la otra celda y el estado entre vueltas. Dos controles redirigen ambas llamadas a una sola variable; mantienen los retornos pero fallan la selección nominal. Una imagen adicional invierte W,V. Cuatro motores coinciden y dos generaciones son idénticas. El aislamiento es de escrituras: a transporta resultados entre llamadas. [Puertas, trazas y límites P7](vm_malbolge/evidence/g5b_flag_return_v7_two_variables/VERDICT.md).
