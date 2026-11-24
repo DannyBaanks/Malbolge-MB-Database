@@ -1,0 +1,317 @@
+{
+  "status": "halt",
+  "steps": 4318,
+  "output_hex": "fc58fc58fc58",
+  "events": [
+    {
+      "kind": "outer_entry",
+      "step": 4163,
+      "pc": 38318,
+      "d": 45005,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4169,
+      "pc": 38434,
+      "d": 41000,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4177,
+      "pc": 38534,
+      "d": 44005,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 4181,
+      "pc": 38131,
+      "d": 44009,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4185,
+      "pc": 38318,
+      "d": 44013,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4191,
+      "pc": 38434,
+      "d": 41000,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4199,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4203,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4216,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4222,
+      "pc": 38434,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4230,
+      "pc": 38534,
+      "d": 44005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 4234,
+      "pc": 38131,
+      "d": 44009,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4238,
+      "pc": 38318,
+      "d": 44013,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4244,
+      "pc": 38434,
+      "d": 41000,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4252,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4256,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4269,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4275,
+      "pc": 38434,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4283,
+      "pc": 38534,
+      "d": 44005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 4287,
+      "pc": 38131,
+      "d": 44009,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4291,
+      "pc": 38318,
+      "d": 44013,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4297,
+      "pc": 38434,
+      "d": 41000,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4305,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4309,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    }
+  ],
+  "clocks": [
+    {
+      "step": 4159,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 12345
+    },
+    {
+      "step": 4212,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 4265,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 4318,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    }
+  ],
+  "mutations": [
+    {
+      "step": 4169,
+      "pc": 38434,
+      "before": 12345,
+      "after": 17916
+    },
+    {
+      "step": 4191,
+      "pc": 38434,
+      "before": 17916,
+      "after": 29272
+    },
+    {
+      "step": 4222,
+      "pc": 38434,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 4244,
+      "pc": 38434,
+      "before": 252,
+      "after": 29272
+    },
+    {
+      "step": 4275,
+      "pc": 38434,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 4297,
+      "pc": 38434,
+      "before": 252,
+      "after": 29272
+    }
+  ],
+  "final_value": 29272,
+  "tails_changed": false
+}

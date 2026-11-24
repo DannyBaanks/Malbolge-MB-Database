@@ -1,0 +1,257 @@
+{
+  "status": "halt",
+  "steps": 4413,
+  "output_hex": "585858",
+  "events": [
+    {
+      "kind": "outer_entry",
+      "step": 4285,
+      "pc": 38318,
+      "d": 45005,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4293,
+      "pc": 38434,
+      "d": 41000,
+      "a": 55999,
+      "fo": 70,
+      "fi": 70,
+      "value": 12345
+    },
+    {
+      "kind": "inner_return_X",
+      "step": 4298,
+      "pc": 38440,
+      "d": 41005,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4304,
+      "pc": 38434,
+      "d": 41000,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4312,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4316,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4329,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4337,
+      "pc": 38434,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 70,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return_X",
+      "step": 4342,
+      "pc": 38440,
+      "d": 41005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4348,
+      "pc": 38434,
+      "d": 41000,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4356,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4360,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 4373,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4381,
+      "pc": 38434,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 70,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return_X",
+      "step": 4386,
+      "pc": 38440,
+      "d": 41005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 4392,
+      "pc": 38434,
+      "d": 41000,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return_Y",
+      "step": 4400,
+      "pc": 38534,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 4404,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    }
+  ],
+  "clocks": [
+    {
+      "step": 4281,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 12345
+    },
+    {
+      "step": 4325,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 4369,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 4413,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    }
+  ],
+  "mutations": [
+    {
+      "step": 4293,
+      "pc": 38434,
+      "before": 12345,
+      "after": 17916
+    },
+    {
+      "step": 4304,
+      "pc": 38434,
+      "before": 17916,
+      "after": 29272
+    },
+    {
+      "step": 4337,
+      "pc": 38434,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 4348,
+      "pc": 38434,
+      "before": 252,
+      "after": 29272
+    },
+    {
+      "step": 4381,
+      "pc": 38434,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 4392,
+      "pc": 38434,
+      "before": 252,
+      "after": 29272
+    }
+  ],
+  "final_value": 29272,
+  "tails_changed": false
+}

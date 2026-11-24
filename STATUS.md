@@ -110,3 +110,7 @@ Una imagen comparte crazy en pc=38246 entre V=41000 y W=43000, con A(V) B(W) rep
 ## Actualización 2026-11-24: llamadas anidadas G5b P8
 
 Dos llamadores A/B usan una rutina exterior compartida que llama a crazy en una interior y recibe su retorno antes de volver a A/B. Una imagen hace seis recorridos de profundidad fija 0→1→2→1→0; la bandera exterior se conserva durante la llamada interior. El control que la cifra dentro del retorno interior desvía A B A B A B a B B B. Cuatro motores coinciden, dos generaciones finales son idénticas y el primer layout fallido queda preservado y reproducible. Dos banderas separadas estáticas y continuación interior fija: no es una pila general ni recursión. [P8: puertas, controles y límites](vm_malbolge/evidence/g5b_flag_return_v8_nested_calls/VERDICT.md).
+
+## Actualización 2026-11-24: dos continuaciones interiores G5b P9
+
+Cada llamada exterior invoca dos veces al mismo crazy interior, retornando primero a X y luego a Y antes de volver a A/B. Una imagen cubre A/X, A/Y, B/X y B/Y durante tres vueltas: doce llamadas interiores y seis exteriores. FO se conserva en ambos intervalos interiores; controles separan fallo de selección interior y corrupción exterior. Cuatro motores coinciden y dos generaciones son idénticas. REA reconstruye todos los pasos mediante dos ventanas solapadas con igualdad de eventos y digests. [Puertas, evidencia y límites P9](vm_malbolge/evidence/g5b_flag_return_v9_inner_continuations/VERDICT.md).

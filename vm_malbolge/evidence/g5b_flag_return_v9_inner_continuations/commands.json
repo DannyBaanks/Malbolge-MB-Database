@@ -1,0 +1,57 @@
+{
+  "path_base": "development_directory",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run01"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run02"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run01"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run02"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea_prefix_only.mjs",
+        "rea/dist",
+        "run01"
+      ],
+      "exit_status": 1,
+      "expected_failure": "4096 retained events truncate the execution"
+    }
+  ]
+}
