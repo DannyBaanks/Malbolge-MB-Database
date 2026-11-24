@@ -98,3 +98,7 @@ El `NOT_DEMONSTRATED` de cobertura por eventos REA de P5 se cerró sin reescribi
 ## Actualización 2026-11-24: barrido exhaustivo G5b P5c
 
 Las 120 permutaciones de cinco hojas quedaron verificadas en tres generaciones idénticas byte a byte, con 120 imágenes distintas por tanda. REA confirmó cinco llamadas y las cinco continuaciones en cada imagen, con equivalencia entre captura de prefijo y ventana tardía. Esto cierra el pendiente de barrido de P5b; conserva su alcance de una variable, un sitio y órdenes fijados en cada imagen. [Veredicto y reproducción](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
+
+## Actualización 2026-11-24: crazy reutilizable G5b P6
+
+Una imagen ejecuta A B A B A B en tres vueltas reales, con una variable y un sitio crazy; bandera y sitio recuperan 74 en las cuatro visitas al reloj. Olmstead, clasesbolge, trazador local y eventos REA coinciden. Dos controles de bandera alteran los retornos; generaciones independientes coinciden byte a byte. Extiende el bucle ROT de P1 a crazy. [Alcance y reproducción P6](vm_malbolge/evidence/g5b_flag_return_v6_reusable_crazy/VERDICT.md).

@@ -1,0 +1,13 @@
+{
+  "commands": [
+    "python3 -B probe.py <new-run-directory>",
+    "node rea.mjs DEPENDENCIES/rea/dist <run-directory>",
+    "python3 verify.py <pack>"
+  ],
+  "recorded_runs": [
+    "run01",
+    "run02",
+    "run03"
+  ],
+  "exit_status": 0
+}

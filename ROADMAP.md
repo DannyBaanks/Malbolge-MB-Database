@@ -59,3 +59,5 @@
 P5c cierra las 120 permutaciones de cinco llamadores con tres generaciones reproducibles y cobertura REA por eventos en todas las imágenes. Ver [P5c](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
 
 Siguiente experimento: reutilizar dos llamadores en una única imagen y un bucle real, aplicando crazy a una variable compartida y comprobando el rearmado de la bandera y del sitio. P1 ya demostró ese mecanismo con ROT: el objetivo nuevo es componerlo con crazy, no atribuirse de nuevo el retorno repetido. Después: dos variables; las llamadas anidadas y una pila general siguen abiertas.
+
+G5b P6 cerró el experimento de dos llamadores repetidos con crazy: A B A B A B en tres vueltas y recuperación de las banderas, con dos controles negativos y cuatro motores. [P6](vm_malbolge/evidence/g5b_flag_return_v6_reusable_crazy/VERDICT.md). El siguiente experimento es aislar dos variables manteniendo los retornos; llamadas anidadas y pila general siguen NOT_DEMONSTRATED.

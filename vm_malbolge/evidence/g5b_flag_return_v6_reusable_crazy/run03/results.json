@@ -1,0 +1,220 @@
+{
+  "positive": {
+    "sha256": "035fc5a15a3e6ccfdb784a766db62b9e196f4147558bfb7d49689dd22c304f09",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "status": "halt",
+    "steps": 3236,
+    "output_hex": "fc58fc58fc58",
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "calls": [
+      {
+        "step": 3150,
+        "a": 55999,
+        "d": 41000,
+        "value": 12345,
+        "flag": 70
+      },
+      {
+        "step": 3161,
+        "a": 17916,
+        "d": 41000,
+        "value": 17916,
+        "flag": 74
+      },
+      {
+        "step": 3181,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 70
+      },
+      {
+        "step": 3192,
+        "a": 252,
+        "d": 41000,
+        "value": 252,
+        "flag": 74
+      },
+      {
+        "step": 3212,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 70
+      },
+      {
+        "step": 3223,
+        "a": 252,
+        "d": 41000,
+        "value": 252,
+        "flag": 74
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "write_sites": [
+      38246
+    ],
+    "tail_changed": false
+  },
+  "control_a": {
+    "sha256": "263e1cf2e8f00745e118cb532a5add3feca191a422469975f4001af28e1c00cf",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "status": "halt",
+    "steps": 3029,
+    "output_hex": "fc58fc",
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 17916
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 252
+      }
+    ],
+    "calls": [
+      {
+        "step": 2980,
+        "a": 55999,
+        "d": 41000,
+        "value": 12345,
+        "flag": 74
+      },
+      {
+        "step": 2998,
+        "a": 17916,
+        "d": 41000,
+        "value": 17916,
+        "flag": 74
+      },
+      {
+        "step": 3016,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 74
+      }
+    ],
+    "returns": [
+      "B",
+      "B",
+      "B"
+    ],
+    "write_sites": [
+      38246
+    ],
+    "tail_changed": false
+  },
+  "control_b": {
+    "sha256": "782f97a51cced4bc5423d83d1b9356b4d07534d7cd76ec365278200042f49766",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "status": "halt",
+    "steps": 3127,
+    "output_hex": "fc58fc58",
+    "clocks": [
+      {
+        "flag": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "flag": 70,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "flag": 70,
+        "mix": 74,
+        "value": 252
+      },
+      {
+        "flag": 70,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "calls": [
+      {
+        "step": 3069,
+        "a": 55999,
+        "d": 41000,
+        "value": 12345,
+        "flag": 70
+      },
+      {
+        "step": 3080,
+        "a": 17916,
+        "d": 41000,
+        "value": 17916,
+        "flag": 74
+      },
+      {
+        "step": 3098,
+        "a": 29272,
+        "d": 41000,
+        "value": 29272,
+        "flag": 74
+      },
+      {
+        "step": 3116,
+        "a": 252,
+        "d": 41000,
+        "value": 252,
+        "flag": 74
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "B",
+      "B"
+    ],
+    "write_sites": [
+      38246
+    ],
+    "tail_changed": false
+  }
+}
