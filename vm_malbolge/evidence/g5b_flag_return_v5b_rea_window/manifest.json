@@ -1,0 +1,38 @@
+{
+  "schema": "g5b_p5b_manifest_v1",
+  "pack": "G5b P5b \u2014 ventana REA tard\u00eda",
+  "extends": "g5b_flag_return_v5",
+  "artifact_count": 6,
+  "artifacts": [
+    {
+      "path": "VERDICT.md",
+      "bytes": 3591,
+      "sha256": "b5b755b01c7858923a927dcf355ea5606d5984408a0f45c6506da3a458bcca7e"
+    },
+    {
+      "path": "capture.mjs",
+      "bytes": 3490,
+      "sha256": "e1bbeb2a0e905002026ef02a4848889391702faf29b6000d8092a2f863343d5b"
+    },
+    {
+      "path": "control.json",
+      "bytes": 2123,
+      "sha256": "6130aaf3ad059ae1b67089e983ba9c44e3061693b0fb4a9927018cd85003dca2"
+    },
+    {
+      "path": "positive.json",
+      "bytes": 2322,
+      "sha256": "8cc2411072e65dfaa39adad9ff246f179330674fc82329e8700bfd365bc56133"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 554,
+      "sha256": "e90108dde1f497fc86a39dd2ac1ab82c7c00b2d1d24fca8e1ad6982e25b74377"
+    },
+    {
+      "path": "verify.py",
+      "bytes": 4723,
+      "sha256": "97673713f9692074dd67dc9cec27a60fb1cb809b7409daddb3c6197cc8389e45"
+    }
+  ]
+}

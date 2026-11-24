@@ -1,0 +1,27 @@
+{
+  "schema": "g5b_p5b_verification_v1",
+  "result": "PASS",
+  "site_event_coverage": "DEMONSTRATED",
+  "positive_site_calls": 5,
+  "positive_continuations": [
+    15000,
+    15004,
+    15008,
+    15012,
+    15016
+  ],
+  "control_site_calls": 1,
+  "control_continuations": [
+    15016
+  ],
+  "p5_values_preserved": true,
+  "window_equivalence": true,
+  "deterministic": true,
+  "gates": {
+    "window_equivalence": "PASS",
+    "site_coverage": "PASS",
+    "continuation_order": "PASS",
+    "negative_control": "PASS",
+    "p5_preservation": "PASS"
+  }
+}
