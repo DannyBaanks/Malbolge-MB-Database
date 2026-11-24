@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "orders": 120,
+  "distinct_images": 120,
+  "identical_sweeps": 3,
+  "rea_orders": 120
+}

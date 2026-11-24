@@ -53,3 +53,9 @@
 | **C** | `c.mb` | Unshackled (primario) | `NOT_STARTED` | — | — |
 
 ---
+
+## Línea G5b — actualización 2026-11-24
+
+P5c cierra las 120 permutaciones de cinco llamadores con tres generaciones reproducibles y cobertura REA por eventos en todas las imágenes. Ver [P5c](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
+
+Siguiente experimento: reutilizar dos llamadores en una única imagen y un bucle real, aplicando crazy a una variable compartida y comprobando el rearmado de la bandera y del sitio. P1 ya demostró ese mecanismo con ROT: el objetivo nuevo es componerlo con crazy, no atribuirse de nuevo el retorno repetido. Después: dos variables; las llamadas anidadas y una pila general siguen abiertas.

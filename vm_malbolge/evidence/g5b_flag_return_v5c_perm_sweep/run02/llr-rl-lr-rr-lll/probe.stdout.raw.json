@@ -1,0 +1,119 @@
+{
+  "run": {
+    "call_order": [
+      "llr",
+      "rl",
+      "lr",
+      "rr",
+      "lll"
+    ],
+    "shared_op_address": 38058,
+    "variable_address": 40006,
+    "continuation_visits": [
+      15000,
+      15004,
+      15008,
+      15012,
+      15016
+    ],
+    "output_hex": "62e66ee66e",
+    "output_length": 5,
+    "shared_calls": [
+      {
+        "a_before": 39999,
+        "d": 40006,
+        "value_before": 12345,
+        "a_after": 12130,
+        "value_after": 12130
+      },
+      {
+        "a_before": 12130,
+        "d": 40006,
+        "value_before": 12130,
+        "a_after": 21990,
+        "value_after": 21990
+      },
+      {
+        "a_before": 21990,
+        "d": 40006,
+        "value_before": 21990,
+        "a_after": 7534,
+        "value_after": 7534
+      },
+      {
+        "a_before": 7534,
+        "d": 40006,
+        "value_before": 7534,
+        "a_after": 21990,
+        "value_after": 21990
+      },
+      {
+        "a_before": 21990,
+        "d": 40006,
+        "value_before": 21990,
+        "a_after": 7534,
+        "value_after": 7534
+      }
+    ],
+    "native_rc": 0,
+    "independent_status": "end",
+    "local_trace_status": "halt",
+    "local_trace_steps": 4818,
+    "states_at_cont": [
+      {
+        "pc": 15000,
+        "flags": [
+          74,
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      },
+      {
+        "pc": 15004,
+        "flags": [
+          74,
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      },
+      {
+        "pc": 15008,
+        "flags": [
+          74,
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      },
+      {
+        "pc": 15012,
+        "flags": [
+          74,
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      },
+      {
+        "pc": 15016,
+        "flags": [
+          74,
+          74,
+          74,
+          74
+        ],
+        "shared_op": 74
+      }
+    ],
+    "tails_unchanged": true,
+    "image_sha256": "e87440d625f8fda4fe2b312d4f46a477c656b09f6161c56bdc2887600ebc56ea"
+  },
+  "all_five_sequential_calls_match": true,
+  "scope": "order llr,rl,lr,rr,lll; one variable and one shared opcode site"
+}

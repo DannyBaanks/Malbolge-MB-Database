@@ -94,3 +94,7 @@ El `NOT_DEMONSTRATED` de cobertura por eventos REA de P5 se cerró sin reescribi
 > **Alcance del claim (anti-fake):** la comparación es contra la referencia Lutter (59,852 B) y la escalera propia; no hay barrido externo exhaustivo de todas las quines clásicas publicadas. El descenso por debajo de m=284 quedó **DEMONSTRATED** hasta m=281 (composite constructivo de la macro `inc`); por debajo de m=281: `NOT_DEMONSTRATED` (m=278 sigue bloqueado por el piso del stream sintetizado; el DP de cadena por sí solo no basta; candidatos inc-dead y palancas en `NOTES.md` §Next steps).
 
 ---
+
+## Actualización 2026-11-24: barrido exhaustivo G5b P5c
+
+Las 120 permutaciones de cinco hojas quedaron verificadas en tres generaciones idénticas byte a byte, con 120 imágenes distintas por tanda. REA confirmó cinco llamadas y las cinco continuaciones en cada imagen, con equivalencia entre captura de prefijo y ventana tardía. Esto cierra el pendiente de barrido de P5b; conserva su alcance de una variable, un sitio y órdenes fijados en cada imagen. [Veredicto y reproducción](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
