@@ -25,7 +25,7 @@ Convención de mensajes: `<tipo>: <resumen>` en español, con `tipo` ∈
 |---|---|---|
 | `zig-tests` | `zig build test --summary all` en `mbir/zig` | ~milisegundos |
 | `zig-fmt` | `zig fmt --check mbir/zig` | ~milisegundos |
-| `python-fast` | `py_compile` de todo el repo + suite MBIR | segundos |
+| `python-fast` | `py_compile` de todo el repo + `pytest mbir/tests` (6 tests) | segundos |
 | `repo-gate` | bloquea cambios en evidencia no declarados | segundos |
 
 **La CI corre la suite en Zig, no el oráculo Python.** El oráculo Python tarda
@@ -63,6 +63,6 @@ en la suite de `mbir/zig/tests/runtime.zig`.
 
 - [ ] `zig fmt mbir/zig` no deja cambios
 - [ ] `zig build test --summary all` pasa 9/9 (o más)
-- [ ] `python3 -m unittest discover -s mbir/tests` pasa
+- [ ] `python3 -m pytest mbir/tests -q` pasa (6 tests)
 - [ ] No tocaste evidencia, o lo declaraste en el cuerpo del PR
 - [ ] `git diff --check` limpio

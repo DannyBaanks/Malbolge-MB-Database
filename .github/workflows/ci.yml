@@ -87,8 +87,12 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Install pytest
+        run: python3 -m pip install --disable-pip-version-check pytest
+
       - name: MBIR encoder/decoder suite
-        run: python3 -m unittest discover -s mbir/tests
+        # mbir/tests es pytest puro (funciones sueltas), no unittest.TestCase.
+        run: python3 -m pytest mbir/tests -q
 
   # ── Guardián de evidencia: nada medido se mueve sin declararlo ──────────
   # Los artefactos bajo evidence/ son registros append-only. Si un PR los
