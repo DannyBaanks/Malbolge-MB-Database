@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/g5b-p11-work/probe.py", line 115, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/g5b-p11-work/probe.py", line 104, in main
+    plan=Stack(mode);image=plan.assemble();path=out/(mode+'.mb');path.write_bytes(image)
+                           ^^^^^^^^^^^^^^^
+  File "/home/danny/Development/ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5b_flag_return_v5/probe.py", line 214, in assemble
+    raise ValueError(f'preamble overlaps code: {preamble_end}')
+ValueError: preamble overlaps code: 70745

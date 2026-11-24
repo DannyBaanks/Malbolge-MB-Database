@@ -118,3 +118,7 @@ Cada llamada exterior invoca dos veces al mismo crazy interior, retornando prime
 ## Actualización 2026-11-24: reentrada de la misma rutina G5b P10
 
 R vuelve a entrar por el mismo ENTRY=38224 y ejecuta el mismo MIX=38246 en un segundo contexto antes de terminar el primero; DISPATCH=38318 es común también a ambos retornos. Seis activaciones exteriores A/B, cada una con una activación interior, profundidad fija 2 y V/W persistentes. REA confirma contexto exterior y FO preservados. Controles: omitir reentrada conserva A/B pero falla profundidad 2; cifrar FO durante el retorno interior pierde A/B. Cuatro motores coinciden, dos generaciones son idénticas y hashes Git comprobados. Marcos estáticos: no es pila dinámica ni recursión general. [P10](vm_malbolge/evidence/g5b_flag_return_v10_reentrant/VERDICT.md).
+
+## Actualización 2026-11-24: primitiva de pila dinámica acotada G5b P11
+
+Pila LIFO nativa de capacidad 2 y tokens A/B: ocupación y contenido mutados durante ejecución. Cinco programas positivos cubren LIFO, reutilización de ambas posiciones, overflow O y underflow U con estado conservado; dos controles devuelven UU/AA y fallan el modelo abstracto. Cuatro motores coinciden y dos generaciones finales son idénticas. Se conserva el intento combinado que no cupo (preámbulo 70745) y su reducción en programas menores. Es una primitiva: todavía no integrada con R, sin direcciones arbitrarias ni intérprete stdin. [P11](vm_malbolge/evidence/g5b_flag_return_v11_token_stack/VERDICT.md).
