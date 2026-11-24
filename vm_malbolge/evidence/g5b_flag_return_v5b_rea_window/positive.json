@@ -1,0 +1,104 @@
+{
+  "schema": "g5b_p5b_rea_window_v1",
+  "tool": {
+    "name": "rea",
+    "module": "dist/domain/malbolge/malbolgeClassic.js",
+    "engine": "malbolgeClassic"
+  },
+  "image": "../g5b_flag_return_v5/run01/positive.mb",
+  "parameters": {
+    "max_steps": 10000,
+    "event_capture_limit": 4096,
+    "event_start_step": 628
+  },
+  "baseline_prefix_only": {
+    "status": "HALTED",
+    "steps": 4723,
+    "output_bytes": [
+      98,
+      230,
+      110,
+      230,
+      110
+    ],
+    "output_hex": "62e66ee66e",
+    "peak_position": 38883,
+    "writebacks": 6066,
+    "representation_changes": 5685,
+    "state_digest_before": "93d3bf6140fbc72fabdb61c19eb506c9f9c55e8e9754d8bfa9d13e1ab3efba34",
+    "state_digest_after": "76426f461ac03d6324ca4410c9f50bf77095d650376166fa2a265321d2575f2f",
+    "events_retained": 4096,
+    "events_truncated": true,
+    "captured_step_range": [
+      1,
+      4096
+    ],
+    "site_calls": 0,
+    "site_values_a": [],
+    "site_d_values": [],
+    "continuation_visits": [],
+    "continuation_first_steps": {
+      "15000": null,
+      "15004": null,
+      "15008": null,
+      "15012": null,
+      "15016": null
+    }
+  },
+  "windowed": {
+    "status": "HALTED",
+    "steps": 4723,
+    "output_bytes": [
+      98,
+      230,
+      110,
+      230,
+      110
+    ],
+    "output_hex": "62e66ee66e",
+    "peak_position": 38883,
+    "writebacks": 6066,
+    "representation_changes": 5685,
+    "state_digest_before": "93d3bf6140fbc72fabdb61c19eb506c9f9c55e8e9754d8bfa9d13e1ab3efba34",
+    "state_digest_after": "76426f461ac03d6324ca4410c9f50bf77095d650376166fa2a265321d2575f2f",
+    "events_retained": 4096,
+    "events_truncated": true,
+    "captured_step_range": [
+      628,
+      4723
+    ],
+    "site_calls": 5,
+    "site_values_a": [
+      39999,
+      12130,
+      21990,
+      7534,
+      21990
+    ],
+    "site_d_values": [
+      40006
+    ],
+    "continuation_visits": [
+      15000,
+      15004,
+      15008,
+      15012,
+      15016
+    ],
+    "continuation_first_steps": {
+      "15000": 4651,
+      "15004": 4669,
+      "15008": 4686,
+      "15012": 4703,
+      "15016": 4722
+    }
+  },
+  "equivalence": {
+    "same_status": true,
+    "same_steps": true,
+    "same_output": true,
+    "same_digest_before": true,
+    "same_digest_after": true
+  },
+  "window_is_suffix_of_run": true
+}

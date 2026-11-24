@@ -1,0 +1,88 @@
+{
+  "schema": "g5b_p5b_rea_window_v1",
+  "tool": {
+    "name": "rea",
+    "module": "dist/domain/malbolge/malbolgeClassic.js",
+    "engine": "malbolgeClassic"
+  },
+  "image": "../g5b_flag_return_v5/run01/control/negative.mb",
+  "parameters": {
+    "max_steps": 10000,
+    "event_capture_limit": 4096,
+    "event_start_step": 711
+  },
+  "baseline_prefix_only": {
+    "status": "HALTED",
+    "steps": 4806,
+    "output_bytes": [
+      98
+    ],
+    "output_hex": "62",
+    "peak_position": 38507,
+    "writebacks": 6188,
+    "representation_changes": 5809,
+    "state_digest_before": "78f76b012127b638b0d82d5c682801ab76fcbe44b25e88385d7aab1e5b2b7b06",
+    "state_digest_after": "20cff9e6e5993a6a768aeb3518fe44e78b5ca30d98c4d78ca6d0efab02d8c8d8",
+    "events_retained": 4096,
+    "events_truncated": true,
+    "captured_step_range": [
+      1,
+      4096
+    ],
+    "site_calls": 0,
+    "site_values_a": [],
+    "site_d_values": [],
+    "continuation_visits": [],
+    "continuation_first_steps": {
+      "15000": null,
+      "15004": null,
+      "15008": null,
+      "15012": null,
+      "15016": null
+    }
+  },
+  "windowed": {
+    "status": "HALTED",
+    "steps": 4806,
+    "output_bytes": [
+      98
+    ],
+    "output_hex": "62",
+    "peak_position": 38507,
+    "writebacks": 6188,
+    "representation_changes": 5809,
+    "state_digest_before": "78f76b012127b638b0d82d5c682801ab76fcbe44b25e88385d7aab1e5b2b7b06",
+    "state_digest_after": "20cff9e6e5993a6a768aeb3518fe44e78b5ca30d98c4d78ca6d0efab02d8c8d8",
+    "events_retained": 4096,
+    "events_truncated": true,
+    "captured_step_range": [
+      711,
+      4806
+    ],
+    "site_calls": 1,
+    "site_values_a": [
+      39999
+    ],
+    "site_d_values": [
+      40006
+    ],
+    "continuation_visits": [
+      15016
+    ],
+    "continuation_first_steps": {
+      "15000": null,
+      "15004": null,
+      "15008": null,
+      "15012": null,
+      "15016": 4805
+    }
+  },
+  "equivalence": {
+    "same_status": true,
+    "same_steps": true,
+    "same_output": true,
+    "same_digest_before": true,
+    "same_digest_after": true
+  },
+  "window_is_suffix_of_run": true
+}

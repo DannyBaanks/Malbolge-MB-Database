@@ -31,5 +31,6 @@ Núcleo de almacenamiento y catálogo de la **Suite de Datos y Runtimes v2.0** d
 - [Evidencia G5b P3: orden cruzado de cuatro llamadores](vm_malbolge/evidence/g5b_flag_return_v3/VERDICT.md)
 - [Evidencia G5b P4: las 24 permutaciones](vm_malbolge/evidence/g5b_flag_return_v4/VERDICT.md)
 - [Evidencia G5b P5: cinco llamadores](vm_malbolge/evidence/g5b_flag_return_v5/VERDICT.md)
+- [Evidencia G5b P5b: ventana REA tardía](vm_malbolge/evidence/g5b_flag_return_v5b_rea_window/VERDICT.md)
 
 Este índice enlaza la información por tema. Las capacidades, los estados y los límites permanecen en sus documentos específicos para que cada afirmación se lea junto a su evidencia.
