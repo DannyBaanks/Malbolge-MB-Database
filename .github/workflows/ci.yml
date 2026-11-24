@@ -67,17 +67,20 @@ jobs:
           python-version: "3.12"
 
       - name: Byte-compile every tracked .py
+        # compile() en memoria: no escribe .pyc ni toca el árbol de trabajo.
+        # py_compile.compile(cfile="/dev/null") falla en 3.12 (no es regular).
         run: |
           python3 - <<'PY'
-          import pathlib, py_compile, sys
+          import pathlib, sys
           files = sorted(pathlib.Path(".").rglob("*.py"))
-          files = [f for f in files if ".venv" not in f.parts and "third_party" not in f.parts]
+          files = [f for f in files
+                   if ".venv" not in f.parts and "third_party" not in f.parts]
           bad = []
           for f in files:
               try:
-                  py_compile.compile(str(f), doraise=True, cfile="/dev/null")
+                  compile(f.read_bytes(), str(f), "exec", dont_inherit=True)
               except Exception as exc:
-                  bad.append((f, exc))
+                  bad.append((f, f"{type(exc).__name__}: {exc}"))
           print(f"compiled {len(files)} files")
           for f, exc in bad:
               print(f"FAIL {f}: {exc}")
