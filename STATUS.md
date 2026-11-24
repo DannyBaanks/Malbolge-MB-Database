@@ -114,3 +114,7 @@ Dos llamadores A/B usan una rutina exterior compartida que llama a crazy en una 
 ## Actualización 2026-11-24: dos continuaciones interiores G5b P9
 
 Cada llamada exterior invoca dos veces al mismo crazy interior, retornando primero a X y luego a Y antes de volver a A/B. Una imagen cubre A/X, A/Y, B/X y B/Y durante tres vueltas: doce llamadas interiores y seis exteriores. FO se conserva en ambos intervalos interiores; controles separan fallo de selección interior y corrupción exterior. Cuatro motores coinciden y dos generaciones son idénticas. REA reconstruye todos los pasos mediante dos ventanas solapadas con igualdad de eventos y digests. [Puertas, evidencia y límites P9](vm_malbolge/evidence/g5b_flag_return_v9_inner_continuations/VERDICT.md).
+
+## Actualización 2026-11-24: reentrada de la misma rutina G5b P10
+
+R vuelve a entrar por el mismo ENTRY=38224 y ejecuta el mismo MIX=38246 en un segundo contexto antes de terminar el primero; DISPATCH=38318 es común también a ambos retornos. Seis activaciones exteriores A/B, cada una con una activación interior, profundidad fija 2 y V/W persistentes. REA confirma contexto exterior y FO preservados. Controles: omitir reentrada conserva A/B pero falla profundidad 2; cifrar FO durante el retorno interior pierde A/B. Cuatro motores coinciden, dos generaciones son idénticas y hashes Git comprobados. Marcos estáticos: no es pila dinámica ni recursión general. [P10](vm_malbolge/evidence/g5b_flag_return_v10_reentrant/VERDICT.md).

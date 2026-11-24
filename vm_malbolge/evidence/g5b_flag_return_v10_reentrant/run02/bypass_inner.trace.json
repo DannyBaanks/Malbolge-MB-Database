@@ -1,0 +1,686 @@
+{
+  "status": "halt",
+  "steps": 4617,
+  "output_hex": "fc58fc58fc58",
+  "events": [
+    {
+      "kind": "entry",
+      "step": 4468,
+      "pc": 38224,
+      "d": 45005,
+      "a": 55999,
+      "argument": 40997,
+      "fo": 70,
+      "values": [
+        12345,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4471,
+      "pc": 38246,
+      "d": 41000,
+      "a": 55999,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        12345,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4478,
+      "pc": 38346,
+      "d": 44002,
+      "a": 17916,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_A",
+      "step": 4485,
+      "pc": 38131,
+      "d": 47002,
+      "a": 17916,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "entry",
+      "step": 4489,
+      "pc": 38224,
+      "d": 47006,
+      "a": 17916,
+      "argument": 40997,
+      "fo": 74,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4492,
+      "pc": 38246,
+      "d": 41000,
+      "a": 17916,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4499,
+      "pc": 38346,
+      "d": 44002,
+      "a": 29272,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_B",
+      "step": 4506,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "entry",
+      "step": 4519,
+      "pc": 38224,
+      "d": 45005,
+      "a": 29272,
+      "argument": 40997,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4522,
+      "pc": 38246,
+      "d": 41000,
+      "a": 29272,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4529,
+      "pc": 38346,
+      "d": 44002,
+      "a": 252,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_A",
+      "step": 4536,
+      "pc": 38131,
+      "d": 47002,
+      "a": 252,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "entry",
+      "step": 4540,
+      "pc": 38224,
+      "d": 47006,
+      "a": 252,
+      "argument": 40997,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4543,
+      "pc": 38246,
+      "d": 41000,
+      "a": 252,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4550,
+      "pc": 38346,
+      "d": 44002,
+      "a": 29272,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_B",
+      "step": 4557,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "entry",
+      "step": 4570,
+      "pc": 38224,
+      "d": 45005,
+      "a": 29272,
+      "argument": 40997,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4573,
+      "pc": 38246,
+      "d": 41000,
+      "a": 29272,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4580,
+      "pc": 38346,
+      "d": 44002,
+      "a": 252,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_A",
+      "step": 4587,
+      "pc": 38131,
+      "d": 47002,
+      "a": 252,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "entry",
+      "step": 4591,
+      "pc": 38224,
+      "d": 47006,
+      "a": 252,
+      "argument": 40997,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "body",
+      "step": 4594,
+      "pc": 38246,
+      "d": 41000,
+      "a": 252,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "resume",
+      "step": 4601,
+      "pc": 38346,
+      "d": 44002,
+      "a": 29272,
+      "argument": null,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "kind": "return_B",
+      "step": 4608,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "argument": null,
+      "fo": 70,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    }
+  ],
+  "clocks": [
+    {
+      "step": 4464,
+      "fo": 74,
+      "values": [
+        12345,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4515,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4566,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4617,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    }
+  ],
+  "mutations": [
+    {
+      "step": 4471,
+      "pc": 38246,
+      "before": [
+        12345,
+        23456
+      ],
+      "after": [
+        17916,
+        23456
+      ]
+    },
+    {
+      "step": 4492,
+      "pc": 38246,
+      "before": [
+        17916,
+        23456
+      ],
+      "after": [
+        29272,
+        23456
+      ]
+    },
+    {
+      "step": 4522,
+      "pc": 38246,
+      "before": [
+        29272,
+        23456
+      ],
+      "after": [
+        252,
+        23456
+      ]
+    },
+    {
+      "step": 4543,
+      "pc": 38246,
+      "before": [
+        252,
+        23456
+      ],
+      "after": [
+        29272,
+        23456
+      ]
+    },
+    {
+      "step": 4573,
+      "pc": 38246,
+      "before": [
+        29272,
+        23456
+      ],
+      "after": [
+        252,
+        23456
+      ]
+    },
+    {
+      "step": 4594,
+      "pc": 38246,
+      "before": [
+        252,
+        23456
+      ],
+      "after": [
+        29272,
+        23456
+      ]
+    }
+  ],
+  "dispatches": [
+    {
+      "step": 4474,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 70,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4481,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 70,
+      "values": [
+        17916,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4495,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4502,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4525,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4532,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4546,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4553,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4576,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4583,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 70,
+      "values": [
+        252,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4597,
+      "pc": 38318,
+      "d": 41003,
+      "frame_pointer": 43998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    },
+    {
+      "step": 4604,
+      "pc": 38318,
+      "d": 44005,
+      "frame_pointer": 46998,
+      "fo": 74,
+      "values": [
+        29272,
+        23456
+      ],
+      "entry_word": 74,
+      "mix_word": 74,
+      "dispatch_word": 74
+    }
+  ],
+  "final_values": [
+    29272,
+    23456
+  ],
+  "tails_changed": false
+}
