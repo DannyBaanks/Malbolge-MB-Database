@@ -122,3 +122,7 @@ R vuelve a entrar por el mismo ENTRY=38224 y ejecuta el mismo MIX=38246 en un se
 ## Actualización 2026-11-24: primitiva de pila dinámica acotada G5b P11
 
 Pila LIFO nativa de capacidad 2 y tokens A/B: ocupación y contenido mutados durante ejecución. Cinco programas positivos cubren LIFO, reutilización de ambas posiciones, overflow O y underflow U con estado conservado; dos controles devuelven UU/AA y fallan el modelo abstracto. Cuatro motores coinciden y dos generaciones finales son idénticas. Se conserva el intento combinado que no cupo (preámbulo 70745) y su reducción en programas menores. Es una primitiva: todavía no integrada con R, sin direcciones arbitrarias ni intérprete stdin. [P11](vm_malbolge/evidence/g5b_flag_return_v11_token_stack/VERDICT.md).
+
+## Actualización 2026-11-24: pila conectada a R, G5b P12
+
+Push/pop de P11 selecciona saltos reales de retorno de R, sin FO exterior separada. Una imagen guarda A y después B, reentra en R a profundidad 2, vuelve por RESUME y recupera A/B (salida AB, pila vacía). La ocupación elige V/W en runtime. Cambiar S0 después del push A produce B; leer slot incorrecto produce AE. Guardas O/U conservan estado. Cuatro motores y dos generaciones coinciden; catálogo (nivel,token) y capacidad 2, sin direcciones arbitrarias. [P12](vm_malbolge/evidence/g5b_flag_return_v12_stack_returns/VERDICT.md).
