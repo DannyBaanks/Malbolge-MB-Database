@@ -106,3 +106,7 @@ Una imagen ejecuta A B A B A B en tres vueltas reales, con una variable y un sit
 ## Actualización 2026-11-24: dos variables G5b P7
 
 Una imagen comparte crazy en pc=38246 entre V=41000 y W=43000, con A(V) B(W) repetidos durante tres vueltas. Seis escrituras alternadas conservan la otra celda y el estado entre vueltas. Dos controles redirigen ambas llamadas a una sola variable; mantienen los retornos pero fallan la selección nominal. Una imagen adicional invierte W,V. Cuatro motores coinciden y dos generaciones son idénticas. El aislamiento es de escrituras: a transporta resultados entre llamadas. [Puertas, trazas y límites P7](vm_malbolge/evidence/g5b_flag_return_v7_two_variables/VERDICT.md).
+
+## Actualización 2026-11-24: llamadas anidadas G5b P8
+
+Dos llamadores A/B usan una rutina exterior compartida que llama a crazy en una interior y recibe su retorno antes de volver a A/B. Una imagen hace seis recorridos de profundidad fija 0→1→2→1→0; la bandera exterior se conserva durante la llamada interior. El control que la cifra dentro del retorno interior desvía A B A B A B a B B B. Cuatro motores coinciden, dos generaciones finales son idénticas y el primer layout fallido queda preservado y reproducible. Dos banderas separadas estáticas y continuación interior fija: no es una pila general ni recursión. [P8: puertas, controles y límites](vm_malbolge/evidence/g5b_flag_return_v8_nested_calls/VERDICT.md).

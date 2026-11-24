@@ -1,0 +1,317 @@
+{
+  "status": "halt",
+  "steps": 3838,
+  "output_hex": "fc58fc58fc58",
+  "events": [
+    {
+      "kind": "outer_entry",
+      "step": 3701,
+      "pc": 38318,
+      "d": 45005,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3704,
+      "pc": 38340,
+      "d": 41000,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_return",
+      "step": 3712,
+      "pc": 38346,
+      "d": 44005,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 3716,
+      "pc": 38131,
+      "d": 44009,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3720,
+      "pc": 38318,
+      "d": 44013,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3723,
+      "pc": 38340,
+      "d": 41000,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_return",
+      "step": 3731,
+      "pc": 38346,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3735,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3748,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3751,
+      "pc": 38340,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return",
+      "step": 3759,
+      "pc": 38346,
+      "d": 44005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 3763,
+      "pc": 38131,
+      "d": 44009,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3767,
+      "pc": 38318,
+      "d": 44013,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3770,
+      "pc": 38340,
+      "d": 41000,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return",
+      "step": 3778,
+      "pc": 38346,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3782,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3795,
+      "pc": 38318,
+      "d": 45005,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3798,
+      "pc": 38340,
+      "d": 41000,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return",
+      "step": 3806,
+      "pc": 38346,
+      "d": 44005,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_return_A",
+      "step": 3810,
+      "pc": 38131,
+      "d": 44009,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3814,
+      "pc": 38318,
+      "d": 44013,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3817,
+      "pc": 38340,
+      "d": 41000,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "inner_return",
+      "step": 3825,
+      "pc": 38346,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3829,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    }
+  ],
+  "clocks": [
+    {
+      "step": 3697,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 12345
+    },
+    {
+      "step": 3744,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 3791,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 3838,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    }
+  ],
+  "mutations": [
+    {
+      "step": 3704,
+      "pc": 38340,
+      "before": 12345,
+      "after": 17916
+    },
+    {
+      "step": 3723,
+      "pc": 38340,
+      "before": 17916,
+      "after": 29272
+    },
+    {
+      "step": 3751,
+      "pc": 38340,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 3770,
+      "pc": 38340,
+      "before": 252,
+      "after": 29272
+    },
+    {
+      "step": 3798,
+      "pc": 38340,
+      "before": 29272,
+      "after": 252
+    },
+    {
+      "step": 3817,
+      "pc": 38340,
+      "before": 252,
+      "after": 29272
+    }
+  ],
+  "final_value": 29272,
+  "tails_changed": false
+}

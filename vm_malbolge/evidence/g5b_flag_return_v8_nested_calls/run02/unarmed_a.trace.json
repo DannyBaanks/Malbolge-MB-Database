@@ -1,0 +1,179 @@
+{
+  "status": "halt",
+  "steps": 3599,
+  "output_hex": "fc58fc",
+  "events": [
+    {
+      "kind": "outer_entry",
+      "step": 3523,
+      "pc": 38318,
+      "d": 45003,
+      "a": 55999,
+      "fo": 74,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3526,
+      "pc": 38340,
+      "d": 41000,
+      "a": 55999,
+      "fo": 74,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_return",
+      "step": 3534,
+      "pc": 38346,
+      "d": 44005,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3538,
+      "pc": 38131,
+      "d": 42001,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3549,
+      "pc": 38318,
+      "d": 45003,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3552,
+      "pc": 38340,
+      "d": 41000,
+      "a": 17916,
+      "fo": 74,
+      "fi": 74,
+      "value": 17916
+    },
+    {
+      "kind": "inner_return",
+      "step": 3560,
+      "pc": 38346,
+      "d": 44005,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3564,
+      "pc": 38131,
+      "d": 42001,
+      "a": 29272,
+      "fo": 70,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "outer_entry",
+      "step": 3575,
+      "pc": 38318,
+      "d": 45003,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3578,
+      "pc": 38340,
+      "d": 41000,
+      "a": 29272,
+      "fo": 74,
+      "fi": 74,
+      "value": 29272
+    },
+    {
+      "kind": "inner_return",
+      "step": 3586,
+      "pc": 38346,
+      "d": 44005,
+      "a": 252,
+      "fo": 74,
+      "fi": 74,
+      "value": 252
+    },
+    {
+      "kind": "outer_return_B",
+      "step": 3590,
+      "pc": 38131,
+      "d": 42001,
+      "a": 252,
+      "fo": 70,
+      "fi": 74,
+      "value": 252
+    }
+  ],
+  "clocks": [
+    {
+      "step": 3521,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 12345
+    },
+    {
+      "step": 3547,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 17916
+    },
+    {
+      "step": 3573,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 29272
+    },
+    {
+      "step": 3599,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 252
+    }
+  ],
+  "mutations": [
+    {
+      "step": 3526,
+      "pc": 38340,
+      "before": 12345,
+      "after": 17916
+    },
+    {
+      "step": 3552,
+      "pc": 38340,
+      "before": 17916,
+      "after": 29272
+    },
+    {
+      "step": 3578,
+      "pc": 38340,
+      "before": 29272,
+      "after": 252
+    }
+  ],
+  "final_value": 252,
+  "tails_changed": false
+}
