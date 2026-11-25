@@ -55,3 +55,15 @@
   - 2 items: `SLOT0 = MovD, SLOT1 = MovD` (Slot 0 + Slot 1 occupied)
   - Popping from depth 2 transitions to depth 1 (Slot 0 remains, Slot 1 cleared and reset to `C1`).
   - Popping from depth 1 transitions to depth 0 (Slot 0 cleared and reset to `C1`).
+
+## Consumers
+
+- `tools/b2t/a04_backend.py` (dispatcher backend `a04-malbolge`) routes MBIR
+  programs to both committed machines: `mbir_a05_lifo.mb` answers every
+  `P^k O^j` body and alternation k ≤ 2; `mbir_a05_multicycle.mb` answers
+  strict `(P,O)^k`, k ≥ 3.  Every executed run asserts byte-and-step parity
+  against `tools/oracle_classic.py`.  Evidence:
+  `evidence/mbir_a04_backend_bridge.json` (16 routed + 5 extension vectors,
+  11 refusals).  The A05b push-push control (`LIMITATION_CONFIRMED`) is
+  unreachable through the backend: that shape routes to the LIFO machine,
+  which implements it correctly.

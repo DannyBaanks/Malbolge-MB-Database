@@ -24,7 +24,9 @@ Two extra surfaces make the boundary inspectable:
 
 Backend boundary: mbir/backends.py (BackendResult / BackendAdapter /
 BackendCatalog).  The default backend `mbir-ref-python` wraps the
-reference VM; other substrates register alongside.
+reference VM; the Malbolge-hosted substrate `a04-malbolge`
+(a04_backend.py, the A04/A05 machines of vm_malbolge/) registers
+alongside it.
 
 Exit codes for `run`:  0 = HALTED, 1 = ERROR, 2 = MAX_STEPS.
 Container / usage errors exit 1 before any execution starts.
@@ -46,6 +48,7 @@ for _path in (_HERE, _REPO_ROOT):
         sys.path.insert(0, str(_path))
 
 import b2t
+import a04_backend
 from mbir import OPERANDS
 from mbir import backends
 from mbir import decode as mbir_decode
@@ -272,6 +275,7 @@ class MBIRRefBackend:
 
 CATALOG = backends.BackendCatalog()
 CATALOG.register(MBIRRefBackend())
+a04_backend.register(CATALOG)  # a04-malbolge: the Malbolge-hosted machines
 
 
 # ---------------------------------------------------------------------------
@@ -337,6 +341,11 @@ def dispatch_container(
         raise DispatchError(
             "backend %s does not expose run_full(); tracing is unavailable" % backend.backend_id
         )
+    if trace and not getattr(backend, "trace_supported", True):
+        raise DispatchError(
+            "backend %s does not support tracing; %s provides the annotated trace"
+            % (backend.backend_id, DEFAULT_BACKEND)
+        )
     data, words = load_payload(container)
     run = backend.run_full(data, stdin=stdin, max_steps=max_steps, trace=trace)
     _m, _v, _f, bit_length, word_count, crc = b2t.HEADER.unpack_from(container)
@@ -356,6 +365,7 @@ def dispatch_container(
         "stdout_bytes": list(run["output"]),
         "stdout_hex": run["output"].hex(),
         "trace": None,
+        "backend_meta": run.get("meta"),
     }
     if trace:
         envelope["trace"] = annotate_trace(run["trace_events"], data, words)

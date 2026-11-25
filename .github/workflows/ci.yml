@@ -94,6 +94,37 @@ jobs:
         # mbir/tests es pytest puro (funciones sueltas), no unittest.TestCase.
         run: python3 -m pytest mbir/tests -q
 
+  # ── A04: la suite b2t contra el substrate Malbolge real ──────────────────
+  # El runner C registrado está gitignored, así que CI construye el suyo
+  # desde Malbolge-Engine.  La suite completa (tests puros de dispatcher +
+  # e2e del backend a04) corre en una sola invocación:
+  # `python3 -m pytest tools/b2t -q`.  Sin runner alcanzable, los tests e2e
+  # se saltan solos (skipUnless); con A04_MALBOLGE_RUNNER ejercitan las 16
+  # máquinas-evidencia + 5 extensiones + 11 rechazos con paridad dual.
+  a04-backend:
+    name: A04 backend (b2t vs Malbolge)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pytest
+        run: python3 -m pip install --disable-pip-version-check pytest
+
+      - name: Build the recorded Malbolge runner
+        run: |
+          git clone --quiet --depth 1 https://github.com/DannyBaanks/Malbolge-Engine /tmp/malbolge-engine
+          make -C /tmp/malbolge-engine
+
+      - name: b2t suite (dispatcher + a04 backend)
+        env:
+          A04_MALBOLGE_RUNNER: /tmp/malbolge-engine/malbolge
+        run: python3 -m pytest tools/b2t -q
+
   # ── Guardián de evidencia: nada medido se mueve sin declararlo ──────────
   # Los artefactos bajo evidence/ son registros append-only. Si un PR los
   # toca, debe decirlo explícitamente en el cuerpo del PR.
