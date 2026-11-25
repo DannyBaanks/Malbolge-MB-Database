@@ -130,3 +130,7 @@ Push/pop de P11 selecciona saltos reales de retorno de R, sin FO exterior separa
 ## Actualización 2026-11-24 (México): slot numérico G5b P13
 
 Un slot guarda/restaura/recupera 19999,24999,29999 y tres JMP indirectos llegan físicamente a 20000,25000,30000 (ABC). Se adapta el protocolo journal PureEpoch M1b: SAVE, alterar, 10 ROT, RESTORE; slot y journal se rearman a 29524 entre transacciones. Controles sin restore y con dirección alterada desvían a E. Cuatro motores y dos generaciones coinciden; identidad algebraica enumerada aparte para 59049 palabras con Python y REA JS. Los valores son fuentes del llamador conocidas al ensamblar; código desplegado, todavía sin servicio cíclico ni pila numérica integrada con R. [P13](vm_malbolge/evidence/g5b_flag_return_v13_numeric_slot/VERDICT.md).
+
+## Actualización 2026-11-24 (México): ejemplo saludar G5b P14
+
+Una imagen Classic implementa manualmente def saludar(): print("Hola"); saludar(), con salida exacta Hola + LF. CALL entra en PC20000 y RET numérico recupera continuación30000; imagen alternativa retorna32000 conservando idéntico cuerpo. Controles: retorno roto imprime Hola seguido de ! sin volver al llamador; omitir CALL no imprime. Cuatro motores y Python de referencia coinciden en los positivos; generaciones idénticas y hashes verificados. No es frontend Python general ni cuerpo cíclico. [P14 y binario](vm_malbolge/evidence/g5b_flag_return_v14_saludar/VERDICT.md), [guía](vm_malbolge/evidence/g5b_flag_return_v14_saludar/GUIA.md).

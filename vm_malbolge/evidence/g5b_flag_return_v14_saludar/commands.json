@@ -1,0 +1,59 @@
+{
+  "path_base": "development_directory",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run02"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run03"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run02"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run03"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "sh",
+        "ejecutar.sh"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0,
+      "stdout": "Hola\n"
+    }
+  ],
+  "intermediate_run": "run01"
+}
