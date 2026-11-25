@@ -1,0 +1,504 @@
+{
+  "schema": "malbolge-mb-database/bridge-evidence",
+  "timestamp": "2026-11-25T15:41:09-0600",
+  "evidence_kind": "BACKEND_BRIDGE",
+  "claim": "the dispatcher backend a04-malbolge executes the demonstrated MBIR subset on the committed Malbolge-hosted machines via the recorded C runner, with byte-and-step dual-engine parity (oracle_classic) asserted on every execution, and refuses every out-of-profile program with an explicit UNSUPPORTED_* envelope",
+  "claim_status": "DEMONSTRATED",
+  "source": {
+    "backend": "tools/b2t/a04_backend.py",
+    "backend_sha256": "e6dde34113d502e1f8b936668c2647971a103ebbf8fc4120c8c057a54f7fd423",
+    "dispatcher": "tools/b2t/dispatch.py",
+    "dispatcher_sha256": "668a2a0ba85a7beeaf879aed346b8cbf29fb5fbad1bf2e8f0c0a91f023947575",
+    "codec": "tools/b2t/b2t.py",
+    "codec_sha256": "81776aa2bc8df1f95113d1720e439c75a5ce64254de6af04553d5c87cb149955",
+    "vectors": "tools/b2t/a04_vectors.py",
+    "vectors_sha256": "291ccda308f0fa2f773f3de2c205dad15a5d54299146b8384f0323460d5f7a44",
+    "tests": "tools/b2t/test_a04_backend.py",
+    "tests_sha256": "d2f408dcf69388c3224e7f730bb612ed353d2951760814fe4783351b055024e2",
+    "oracle": "tools/oracle_classic.py",
+    "oracle_sha256": "1083d5460a60f70cddf026361817eb116ea58938705738d835d2b5a6c14b49aa",
+    "oracle_drift_note": "oracle_classic.py drifted from the hash recorded by the machine evidence (prefix 5dae8f31...) through unrelated master work; behavior parity on every vector was re-verified by this record",
+    "runner": "/tmp/opencode/b2t-a04-wt/runners/malbolge-original/malbolge",
+    "runner_sha256": "3257f1ae98bcd3e86a1b93d1b53a4b3d3512d8265cb7052f2bcb56b1e95ea231",
+    "runner_reproducibility_note": "byte-identical rebuild of the recorded runner binary from Malbolge-Engine master (404de20) with the host gcc; CI builds its own instance and asserts behavioral equality instead"
+  },
+  "artifact": {
+    "lifo_image": "vm_malbolge/src/mbir_a05_lifo.mb",
+    "lifo_image_file_sha256": "787446ca5480a1722f4aaae54c2164b38c5f1da1067dcaa8241f0dadd7f1965a",
+    "multicycle_image": "vm_malbolge/src/mbir_a05_multicycle.mb",
+    "multicycle_image_file_sha256": "9e8eb27178d5d3a7da7565ba53158115047e96df2417241f19283ad510526227",
+    "machine_images_normalized_sha256": {
+      "lifo": "f237df8247f5c8dc10157b96f58ba1dc9eff06ecefe916651b1d3aba5a66ed6c",
+      "multicycle": "9e8eb27178d5d3a7da7565ba53158115047e96df2417241f19283ad510526227"
+    },
+    "normalization_note": "worktree .mb files are autocrlf variants of the committed LF blobs; the normalized sha256 is the runtime identity both engines consume",
+    "multicycle_instance_note": "fresh LMAO 0.6.0 assembly (file sha 9e8eb271...) of the canonical .hell blob (26bf541b..., identical to the machine evidence source); behavior-identical to the recorded A05b instance despite the differing artifact hash (Finding 62)"
+  },
+  "runner_contract": {
+    "invocation": "malbolge <image.mb> <step_budget>",
+    "stdin": "the MBIR program as RAW bytes (never an ASCII hex string)",
+    "stdout": "emitted bytes plus ONE trailing newline (stripped once)",
+    "stderr": "steps: <N> | status: HALTED|TIMEOUT",
+    "exit_code": "0 for HALTED and TIMEOUT alike",
+    "ascii_hex_trap": "feeding ASCII hex feeds the machines' unknown-opcode guard: constant 0x54 emitted per byte, HALTED with wrong output",
+    "step_budget_cap": "the limit is parsed with strtoul into uint32; the backend caps below 2^32"
+  },
+  "routed_cases": [
+    {
+      "input_hex": "01411000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "41",
+      "steps": 59752,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "42",
+      "steps": 59752,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "",
+      "steps": 53700,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "",
+      "steps": 57369,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "4142",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "4241",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "014101421000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "42",
+      "steps": 63421,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "lifo",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01411000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "41",
+      "steps": 59752,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01421000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "42",
+      "steps": 59752,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "00",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "",
+      "steps": 53700,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "014100",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "",
+      "steps": 57369,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "4142",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01411001421001431000",
+      "machine": "multicycle",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "414243",
+      "steps": 60793,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "017a1001001001ff1000",
+      "machine": "multicycle",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "7a00ff",
+      "steps": 60793,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "016810016510016c10016c10016f1000",
+      "machine": "multicycle",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "68656c6c6f",
+      "steps": 72885,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "PASS"
+    },
+    {
+      "input_hex": "01410142101000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "4241",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "source_machine": "multicycle",
+      "recorded_verdict": "LIMITATION_CONFIRMED: concurrent stack depth"
+    }
+  ],
+  "extension_cases": [
+    {
+      "input_hex": "010a1000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "0a",
+      "steps": 59752,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "note": "operand 0x0a: exercises the raw-byte stdin channel and the runner's single-trailing-newline strip"
+    },
+    {
+      "input_hex": "012110015a1000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "215a",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "note": "two sequential cycles with generic operands 0x21/0x5a"
+    },
+    {
+      "input_hex": "01fb1001fd1000",
+      "machine": "lifo",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "fbfd",
+      "steps": 65804,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "note": "high-operand boundary pair 0xfb/0xfd"
+    },
+    {
+      "input_hex": "01411001421001431001441000",
+      "machine": "multicycle",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "41424344",
+      "steps": 66839,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "note": "k=4 alternation (the evidence set spans k=1..5; k=4 sits inside it but was not individually recorded)"
+    },
+    {
+      "input_hex": "01611001621001631001641001651001661000",
+      "machine": "multicycle",
+      "status": "HALTED",
+      "exit_code": 0,
+      "output_hex": "616263646566",
+      "steps": 78931,
+      "runner_status": "HALTED",
+      "malbolge_budget": 600000,
+      "parity": "asserted (oracle_classic: output + steps equal)",
+      "note": "k=6 alternation, beyond the evidenced k<=5: covered by the machine's arbitrary-cycle-count claim and re-verified live by the per-run parity assertion"
+    }
+  ],
+  "instance_checks": {
+    "lifo": [
+      {
+        "input_hex": "01411000",
+        "verdict": "PASS",
+        "output_hex": "41",
+        "steps": 59752,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01421000",
+        "verdict": "PASS",
+        "output_hex": "42",
+        "steps": 59752,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "00",
+        "verdict": "PASS",
+        "output_hex": "",
+        "steps": 53700,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "014100",
+        "verdict": "PASS",
+        "output_hex": "",
+        "steps": 57369,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01411001421000",
+        "verdict": "PASS",
+        "output_hex": "4142",
+        "steps": 65804,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01410142101000",
+        "verdict": "PASS",
+        "output_hex": "4241",
+        "steps": 65804,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "014101421000",
+        "verdict": "PASS",
+        "output_hex": "42",
+        "steps": 63421,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      }
+    ],
+    "multicycle": [
+      {
+        "input_hex": "01411000",
+        "verdict": "PASS",
+        "output_hex": "41",
+        "steps": 48701,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01421000",
+        "verdict": "PASS",
+        "output_hex": "42",
+        "steps": 48701,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "00",
+        "verdict": "PASS",
+        "output_hex": "",
+        "steps": 42655,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "014100",
+        "verdict": "PASS",
+        "output_hex": "",
+        "steps": 46322,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01411001421000",
+        "verdict": "PASS",
+        "output_hex": "4142",
+        "steps": 54747,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01411001421001431000",
+        "verdict": "PASS",
+        "output_hex": "414243",
+        "steps": 60793,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "017a1001001001ff1000",
+        "verdict": "PASS",
+        "output_hex": "7a00ff",
+        "steps": 60793,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "016810016510016c10016c10016f1000",
+        "verdict": "PASS",
+        "output_hex": "68656c6c6f",
+        "steps": 72885,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      },
+      {
+        "input_hex": "01410142101000",
+        "verdict": "LIMITATION_CONFIRMED: concurrent stack depth",
+        "output_hex": "4354",
+        "steps": 54747,
+        "parity": "asserted (oracle_classic: output + steps equal)"
+      }
+    ]
+  },
+  "refusals": [
+    {
+      "input_hex": "01020103061000",
+      "reason": "UNSUPPORTED_OPCODE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "1110111000",
+      "reason": "UNSUPPORTED_OPCODE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "0c000000",
+      "reason": "UNSUPPORTED_OPCODE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "101000",
+      "reason": "UNSUPPORTED_PROFILE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "014110",
+      "reason": "UNSUPPORTED_PROFILE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "0000",
+      "reason": "UNSUPPORTED_PROFILE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "0141014201431000",
+      "reason": "UNSUPPORTED_PROFILE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "0141100100",
+      "reason": "UNSUPPORTED_PROFILE",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "1001",
+      "reason": "UNSUPPORTED_MBIR",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "ff",
+      "reason": "UNSUPPORTED_MBIR",
+      "status": "ERROR"
+    },
+    {
+      "input_hex": "0200",
+      "reason": "UNSUPPORTED_OPCODE",
+      "status": "ERROR"
+    }
+  ],
+  "scope_limits": [
+    "opcodes: {HALT 0x00, PUSH_CONST 0x01, OUT_BYTE 0x10} only; anything else is UNSUPPORTED_OPCODE",
+    "trailing HALT required; nothing after it; a missing HALT is UNSUPPORTED_PROFILE",
+    "stdin must be empty: the machines consume the program itself from stdin; IN_BYTE is out of profile",
+    "shapes: the six LIFO bodies, or strictly alternating (PUSH,OUT)^k with k >= 1 on multicycle",
+    "routing is lifo-first: k <= 2 alternations and single pushes run on the committed LIFO image",
+    "the multicycle push-push limitation (LIMITATION_CONFIRMED control) is unreachable through this backend: that shape routes to the LIFO machine, which implements it correctly",
+    "max_steps is MBIR-denominated; translated to a Malbolge budget (150000 floor + 6500/instruction, capped at 4e9); runner TIMEOUT maps to MAX_STEPS (exit 2)",
+    "trace is not supported by this substrate (trace_supported=False); mbir-ref-python provides it",
+    "a full MBIR-on-Malbolge VM remains NOT_DEMONSTRATED (mbir_vm.hell stub; M2/P* stored programs are not composed with the fetch loop)"
+  ]
+}

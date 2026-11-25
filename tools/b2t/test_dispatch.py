@@ -185,8 +185,10 @@ class TestDispatchRun(unittest.TestCase):
 
 
 class TestBackendContract(unittest.TestCase):
-    def test_catalog_lists_reference_backend(self) -> None:
-        self.assertEqual(dispatch.CATALOG.ids(), ("mbir-ref-python",))
+    def test_catalog_lists_registered_backends(self) -> None:
+        # two real substrates: the reference VM plus the Malbolge-hosted
+        # machines (BackendCatalog.ids() is sorted)
+        self.assertEqual(dispatch.CATALOG.ids(), ("a04-malbolge", "mbir-ref-python"))
         backend = dispatch.CATALOG.get("mbir-ref-python")
         self.assertEqual(backend.backend_id, "mbir-ref-python")
 
@@ -362,7 +364,9 @@ class TestCLI(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir_name:
             proc = _run_cli(["backends"], cwd=Path(tmp_dir_name))
             self.assertEqual(proc.returncode, 0, proc.stderr)
-            self.assertEqual(proc.stdout.strip(), "mbir-ref-python")
+            # two real substrates now: the Malbolge-hosted machines register
+            # alongside the reference VM (BackendCatalog.ids() is sorted)
+            self.assertEqual(proc.stdout.strip(), "a04-malbolge\nmbir-ref-python")
 
     def test_unknown_backend(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir_name:

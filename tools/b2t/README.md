@@ -125,7 +125,69 @@ Corrupt containers exit 1 **before any execution**: transport checks
 ### Boundaries
 
 - Executes **MBIR semantics only**, on the reference VM (A03 oracle).
-- The Malbolge-hosted dispatch (A04) is a separate backend; it registers
-  alongside `mbir-ref-python` when it exists.
+- The Malbolge-hosted machines (A04) are one of the two registered
+  backends: `a04-malbolge` (section below) alongside `mbir-ref-python`.
 - Nothing here turns cell trits into Malbolge opcodes; the dispatcher, not
   Malbolge, is where the trits acquire meaning.
+
+## A04 backend (`a04-malbolge`)
+
+The second registered backend runs the demonstrated MBIR subset on the
+**real Malbolge substrate**: the committed machine images under
+`vm_malbolge/src/`, driven by the recorded C runner.  The runner binary is
+gitignored (`runners/malbolge-original/malbolge`) — build Malbolge-Engine
+(`make`) or point `A04_MALBOLGE_RUNNER` at one; the env var is
+authoritative, with no silent fallback.
+
+It is capability-honest: it executes exactly the shapes its machines
+demonstrate and refuses everything else with an explicit envelope.  Dir
+presence ≠ engine.
+
+### Machines and routing
+
+| id | image | evidence | answers |
+|----|-------|----------|---------|
+| `lifo` | `vm_malbolge/src/mbir_a05_lifo.mb` | `mbir_a05_lifo_smoke.json` (7 vectors) | `P^k O^j` LIFO bodies, alternation k ≤ 2 |
+| `multicycle` | `vm_malbolge/src/mbir_a05_multicycle.mb` | `mbir_a05_multicycle_smoke.json` (9 vectors) | strict `(P,O)^k`, k ≥ 3 |
+
+Routing is lifo-first: the older, cheaper image answers every k ≤ 2
+shape.  Every executed run asserts byte-and-step dual-engine parity
+against `tools/oracle_classic.py`, surfaced as `backend_meta.parity`.
+
+### Capability profile
+
+- Opcodes `{HALT 0x00, PUSH_CONST 0x01, OUT_BYTE 0x10}` only → anything
+  else is `UNSUPPORTED_OPCODE` (including legal-MBIR opcodes like `ADD`,
+  `POP`, loops — no machine executes them).
+- Trailing `HALT` required, nothing after it, evidenced stack shapes only →
+  otherwise `UNSUPPORTED_PROFILE`.
+- stdin must be empty (the machines consume the program itself from stdin;
+  `IN_BYTE` is out of profile) → `UNSUPPORTED_STDIN`.
+- `--trace` is refused → `UNSUPPORTED_TRACE`; `mbir-ref-python` provides
+  the annotated trace (`trace_supported=False`).
+- Truncated or unknown bytes → `UNSUPPORTED_MBIR` (refused at decode).
+
+Errors are envelopes — never a crash — with exit 1; `timeout` maps to
+`MAX_STEPS` with exit 2 (steps consumed = budget).
+
+### Budget translation
+
+`max_steps` is MBIR-denominated; the substrate receives
+`min(150_000 + 6_500 × max_steps, 4_000_000_000)` Malbolge steps
+(600_000 when unset).  The substrate's unit is the Malbolge step, so
+consumption inside one MBIR instruction is invisible at MBIR granularity —
+a 1-MBIR-step budget still carries in-profile programs to completion.
+
+### Usage
+
+```bash
+# from tools/b2t
+printf '\001A\020\000' > prog.bin    # PUSH 0x41, OUT, HALT
+python3 b2t.py encode prog.bin -o prog.b2t
+python3 dispatch.py run --backend a04-malbolge --json prog.b2t
+```
+
+The bridge evidence record is
+`vm_malbolge/evidence/mbir_a04_backend_bridge.json` — regenerate with
+`python3 tools/b2t/a04_probe.py`; the probe refuses to write unless every
+expectation holds.
