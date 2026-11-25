@@ -1,0 +1,1 @@
+PASS: REA verifies outputs, physical CALL/RET, nested slot isolation and one-shot execution in 1 programs

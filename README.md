@@ -14,22 +14,22 @@ No ejecuta el código Python para capturar su salida, no necesita una VM MBIR pa
 
 ## De Python a Malbolge
 
-Entrada — [`saludar.py`](python/examples/saludar.py):
+Ejemplo oficial — [`hola_tontos.py`](python/examples/hola_tontos.py):
 
 ```python
 def saludar():
-    print("Hola")
+    print("Hola Tontos :P Jajajaja")
 
 saludar()
 ```
 
-El compilador genera una [imagen Classic de 39 932 bytes](python/evidence/classic_compiler_v0/run01/saludar/program.mb), que al ejecutarse imprime:
+El compilador genera una [imagen Classic de 39 932 bytes](python/evidence/classic_hola_tontos_v1/run01/hola_tontos/program.mb), que al ejecutarse imprime:
 
 ```text
-Hola
+Hola Tontos :P Jajajaja
 ```
 
-La llamada a `saludar` y su retorno ocurren dentro de Malbolge. El [mapa de ejecución](python/evidence/classic_compiler_v0/run01/saludar/map.json) y la [traza de instrucciones](python/evidence/classic_compiler_v0/run01/saludar/trace.json) permiten inspeccionar ambos saltos.
+La llamada a `saludar` y su retorno ocurren dentro de Malbolge. [Evidencia del saludo oficial](python/evidence/classic_hola_tontos_v1/VERDICT.md). El [mapa de ejecución](python/evidence/classic_hola_tontos_v1/run01/hola_tontos/map.json) y la [traza de instrucciones](python/evidence/classic_hola_tontos_v1/run01/hola_tontos/trace.json) permiten inspeccionar ambos saltos.
 
 ### Llamadas repetidas y anidadas
 
@@ -63,8 +63,8 @@ Desde la raíz del repositorio, con esas dependencias disponibles:
 
 ```bash
 out=$(mktemp -d)
-python3 -B python/src/classic_compiler.py python/examples/saludar.py \
-  -o "$out/saludar.mb" --map "$out/saludar.json" --run
+python3 -B python/src/classic_compiler.py python/examples/hola_tontos.py \
+  -o "$out/hola_tontos.mb" --map "$out/hola_tontos.json" --run
 ```
 
 `--run` ejecuta la imagen recién compilada. Omítelo para generar únicamente el programa; `--map` también es opcional. Usa rutas nuevas: el compilador no sobrescribe archivos existentes.
