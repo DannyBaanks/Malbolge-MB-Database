@@ -1,0 +1,12 @@
+{
+  "hola_tontos": {
+    "image_sha256": "d6685c83a11d6c951087cc891769118d2ee5113b8ed39a17635360ccc4c2a07d",
+    "output_hex": "486f6c6120546f6e746f73203a50204a616a616a616a610a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 6903,
+    "local_steps": 6904,
+    "call_instances": 1
+  }
+}
