@@ -1,0 +1,1 @@
+PASS: whole-word save/clobber/restore/read, indirect destinations, slot reuse, controls and independent algebra

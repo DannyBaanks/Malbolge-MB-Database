@@ -126,3 +126,7 @@ Pila LIFO nativa de capacidad 2 y tokens A/B: ocupación y contenido mutados dur
 ## Actualización 2026-11-24: pila conectada a R, G5b P12
 
 Push/pop de P11 selecciona saltos reales de retorno de R, sin FO exterior separada. Una imagen guarda A y después B, reentra en R a profundidad 2, vuelve por RESUME y recupera A/B (salida AB, pila vacía). La ocupación elige V/W en runtime. Cambiar S0 después del push A produce B; leer slot incorrecto produce AE. Guardas O/U conservan estado. Cuatro motores y dos generaciones coinciden; catálogo (nivel,token) y capacidad 2, sin direcciones arbitrarias. [P12](vm_malbolge/evidence/g5b_flag_return_v12_stack_returns/VERDICT.md).
+
+## Actualización 2026-11-24 (México): slot numérico G5b P13
+
+Un slot guarda/restaura/recupera 19999,24999,29999 y tres JMP indirectos llegan físicamente a 20000,25000,30000 (ABC). Se adapta el protocolo journal PureEpoch M1b: SAVE, alterar, 10 ROT, RESTORE; slot y journal se rearman a 29524 entre transacciones. Controles sin restore y con dirección alterada desvían a E. Cuatro motores y dos generaciones coinciden; identidad algebraica enumerada aparte para 59049 palabras con Python y REA JS. Los valores son fuentes del llamador conocidas al ensamblar; código desplegado, todavía sin servicio cíclico ni pila numérica integrada con R. [P13](vm_malbolge/evidence/g5b_flag_return_v13_numeric_slot/VERDICT.md).
