@@ -1,0 +1,82 @@
+{
+  "saludar": {
+    "image_sha256": "1902110795bc192ab65252bcc19fa41c6f8d9d37fc9778204d4c77b4d69a4e28",
+    "output_hex": "486f6c610a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 3980,
+    "local_steps": 3981,
+    "call_instances": 1
+  },
+  "repeated": {
+    "image_sha256": "7890c3da48fc935a2d0e0e12e48fb438d3a63c4aa0539d3325bd2cbe5a962524",
+    "output_hex": "486f6c610a486f6c610a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 4854,
+    "local_steps": 4855,
+    "call_instances": 2
+  },
+  "nested": {
+    "image_sha256": "bab5f5a80355a3cdd610c40eac5d1c35f05f0af0c58460ba65e16bbf4a09f2b4",
+    "output_hex": "496e6963696f0ac2a1486f6c6120f09f8c8e212046696e0a496e6963696f0ac2a1486f6c6120f09f8c8e212046696e0a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 10790,
+    "local_steps": 10791,
+    "call_instances": 4
+  },
+  "empty": {
+    "image_sha256": "4482361d594471f942ac53972e6577c4df7c6f239b4babed23de8ed21e1a8bb4",
+    "output_hex": "",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 3666,
+    "local_steps": 3667,
+    "call_instances": 2
+  },
+  "early_return": {
+    "image_sha256": "e06ae3b9c6f896ad8dc36d962704933d44d87126df28022b1ff305593a95a4cd",
+    "output_hex": "756e6f0a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 3752,
+    "local_steps": 3753,
+    "call_instances": 1
+  },
+  "forward": {
+    "image_sha256": "b2db11bda5e0d40ce2a2e40071d3a9df0b11ff5feace29f2a1528bfa316c255e",
+    "output_hex": "620a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 4502,
+    "local_steps": 4503,
+    "call_instances": 2
+  },
+  "module": {
+    "image_sha256": "8dc8616dad68f29c96149f8876b008b1ea1e4315011ade648d13f456913ebe23",
+    "output_hex": "612f62210a000a",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 2965,
+    "local_steps": 2966,
+    "call_instances": 0
+  },
+  "nothing": {
+    "image_sha256": "c38758e58014a1fd3231c1642e60c7431c2c31d77aca8e2336d5239ba49f54fb",
+    "output_hex": "",
+    "native_rc": 0,
+    "python_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_steps": 1631,
+    "local_steps": 1632,
+    "call_instances": 0
+  }
+}

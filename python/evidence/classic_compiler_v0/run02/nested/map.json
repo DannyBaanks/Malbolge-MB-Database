@@ -1,0 +1,747 @@
+{
+  "schema": "python_literal_classic_v0",
+  "source_sha256": "337ee2b2346076e08e8cb4bcf9f055a263e9b08747076b90af702cb9e4dc4d81",
+  "strategy": "one-shot-call-instances",
+  "source_length": 39932,
+  "preamble_end": 9480,
+  "main_entry": 20000,
+  "expanded_output_bytes": 48,
+  "instances": [
+    {
+      "id": 0,
+      "name": "outer",
+      "depth": 1,
+      "line": 7,
+      "column": 1,
+      "entry": 20142,
+      "end": 20478,
+      "return_pc": 20477,
+      "call_pc": 20048,
+      "continuation": 20050,
+      "return_source": 40212,
+      "call_pointer": 40276,
+      "slot": 40084,
+      "journal": 40148
+    },
+    {
+      "id": 1,
+      "name": "inner",
+      "depth": 2,
+      "line": 5,
+      "column": 2,
+      "entry": 20479,
+      "end": 20777,
+      "return_pc": 20776,
+      "call_pc": 20342,
+      "continuation": 20344,
+      "return_source": 40980,
+      "call_pointer": 41044,
+      "slot": 40852,
+      "journal": 40916
+    },
+    {
+      "id": 2,
+      "name": "outer",
+      "depth": 1,
+      "line": 8,
+      "column": 1,
+      "entry": 20778,
+      "end": 21118,
+      "return_pc": 21117,
+      "call_pc": 20121,
+      "continuation": 20123,
+      "return_source": 40340,
+      "call_pointer": 40404,
+      "slot": 40084,
+      "journal": 40148
+    },
+    {
+      "id": 3,
+      "name": "inner",
+      "depth": 2,
+      "line": 5,
+      "column": 2,
+      "entry": 21119,
+      "end": 21417,
+      "return_pc": 21416,
+      "call_pc": 20982,
+      "continuation": 20984,
+      "return_source": 41876,
+      "call_pointer": 41940,
+      "slot": 40852,
+      "journal": 40916
+    }
+  ],
+  "slots": {
+    "1": {
+      "slot": 40084,
+      "journal": 40148
+    },
+    "2": {
+      "slot": 40852,
+      "journal": 40916
+    }
+  },
+  "markers": {
+    "20000": [
+      {
+        "kind": "main_entry"
+      }
+    ],
+    "20048": [
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "outer",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148
+      }
+    ],
+    "20050": [
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084
+      }
+    ],
+    "20121": [
+      {
+        "kind": "call",
+        "instance": 2,
+        "name": "outer",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148
+      }
+    ],
+    "20123": [
+      {
+        "kind": "continuation",
+        "instance": 2,
+        "depth": 1,
+        "slot": 40084
+      }
+    ],
+    "20140": [
+      {
+        "kind": "main_halt"
+      }
+    ],
+    "20142": [
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "outer",
+        "depth": 1
+      }
+    ],
+    "20163": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 73
+      }
+    ],
+    "20184": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 110
+      }
+    ],
+    "20205": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "20226": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 99
+      }
+    ],
+    "20247": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "20269": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 111
+      }
+    ],
+    "20290": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 10
+      }
+    ],
+    "20342": [
+      {
+        "kind": "call",
+        "instance": 1,
+        "name": "inner",
+        "depth": 2,
+        "slot": 40852,
+        "journal": 40916
+      }
+    ],
+    "20344": [
+      {
+        "kind": "continuation",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40852
+      }
+    ],
+    "20388": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 70
+      }
+    ],
+    "20409": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "20432": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 110
+      }
+    ],
+    "20454": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 10
+      }
+    ],
+    "20477": [
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084
+      }
+    ],
+    "20479": [
+      {
+        "kind": "function_entry",
+        "instance": 1,
+        "name": "inner",
+        "depth": 2
+      }
+    ],
+    "20500": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 194
+      }
+    ],
+    "20521": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 161
+      }
+    ],
+    "20542": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72
+      }
+    ],
+    "20563": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111
+      }
+    ],
+    "20585": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108
+      }
+    ],
+    "20606": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97
+      }
+    ],
+    "20627": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32
+      }
+    ],
+    "20648": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 240
+      }
+    ],
+    "20669": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 159
+      }
+    ],
+    "20690": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 140
+      }
+    ],
+    "20711": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 142
+      }
+    ],
+    "20732": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 33
+      }
+    ],
+    "20753": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32
+      }
+    ],
+    "20776": [
+      {
+        "kind": "return",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40852
+      }
+    ],
+    "20778": [
+      {
+        "kind": "function_entry",
+        "instance": 2,
+        "name": "outer",
+        "depth": 1
+      }
+    ],
+    "20799": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 73
+      }
+    ],
+    "20820": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 110
+      }
+    ],
+    "20841": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "20862": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 99
+      }
+    ],
+    "20883": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "20905": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 111
+      }
+    ],
+    "20926": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 10
+      }
+    ],
+    "20982": [
+      {
+        "kind": "call",
+        "instance": 3,
+        "name": "inner",
+        "depth": 2,
+        "slot": 40852,
+        "journal": 40916
+      }
+    ],
+    "20984": [
+      {
+        "kind": "continuation",
+        "instance": 3,
+        "depth": 2,
+        "slot": 40852
+      }
+    ],
+    "21028": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 70
+      }
+    ],
+    "21049": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 105
+      }
+    ],
+    "21072": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 110
+      }
+    ],
+    "21094": [
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 10
+      }
+    ],
+    "21117": [
+      {
+        "kind": "return",
+        "instance": 2,
+        "depth": 1,
+        "slot": 40084
+      }
+    ],
+    "21119": [
+      {
+        "kind": "function_entry",
+        "instance": 3,
+        "name": "inner",
+        "depth": 2
+      }
+    ],
+    "21140": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 194
+      }
+    ],
+    "21161": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 161
+      }
+    ],
+    "21182": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72
+      }
+    ],
+    "21203": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111
+      }
+    ],
+    "21225": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108
+      }
+    ],
+    "21246": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97
+      }
+    ],
+    "21267": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32
+      }
+    ],
+    "21288": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 240
+      }
+    ],
+    "21309": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 159
+      }
+    ],
+    "21330": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 140
+      }
+    ],
+    "21351": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 142
+      }
+    ],
+    "21372": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 33
+      }
+    ],
+    "21393": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32
+      }
+    ],
+    "21416": [
+      {
+        "kind": "return",
+        "instance": 3,
+        "depth": 2,
+        "slot": 40852
+      }
+    ]
+  },
+  "cells": {
+    "58000": {
+      "name": "handoff",
+      "initial": 19999
+    },
+    "40020": {
+      "name": "C1",
+      "initial": 29524
+    },
+    "40084": {
+      "name": "return_slot_1",
+      "initial": 29524
+    },
+    "40148": {
+      "name": "journal_1",
+      "initial": 29524
+    },
+    "40212": {
+      "name": "return_address_0",
+      "initial": 20049
+    },
+    "40276": {
+      "name": "call_address_0",
+      "initial": 20141
+    },
+    "40340": {
+      "name": "return_address_2",
+      "initial": 20122
+    },
+    "40404": {
+      "name": "call_address_2",
+      "initial": 20777
+    },
+    "40468": {
+      "name": "byte_73",
+      "initial": 73
+    },
+    "40532": {
+      "name": "byte_110",
+      "initial": 110
+    },
+    "40596": {
+      "name": "byte_105",
+      "initial": 105
+    },
+    "40660": {
+      "name": "byte_99",
+      "initial": 99
+    },
+    "40724": {
+      "name": "byte_111",
+      "initial": 111
+    },
+    "40788": {
+      "name": "byte_10",
+      "initial": 10
+    },
+    "40852": {
+      "name": "return_slot_2",
+      "initial": 29524
+    },
+    "40916": {
+      "name": "journal_2",
+      "initial": 29524
+    },
+    "40980": {
+      "name": "return_address_1",
+      "initial": 20343
+    },
+    "41044": {
+      "name": "call_address_1",
+      "initial": 20478
+    },
+    "41108": {
+      "name": "byte_70",
+      "initial": 70
+    },
+    "41172": {
+      "name": "byte_194",
+      "initial": 194
+    },
+    "41236": {
+      "name": "byte_161",
+      "initial": 161
+    },
+    "41300": {
+      "name": "byte_72",
+      "initial": 72
+    },
+    "41364": {
+      "name": "byte_108",
+      "initial": 108
+    },
+    "41428": {
+      "name": "byte_97",
+      "initial": 97
+    },
+    "41492": {
+      "name": "byte_32",
+      "initial": 32
+    },
+    "41556": {
+      "name": "byte_240",
+      "initial": 240
+    },
+    "41620": {
+      "name": "byte_159",
+      "initial": 159
+    },
+    "41684": {
+      "name": "byte_140",
+      "initial": 140
+    },
+    "41748": {
+      "name": "byte_142",
+      "initial": 142
+    },
+    "41812": {
+      "name": "byte_33",
+      "initial": 33
+    },
+    "41876": {
+      "name": "return_address_3",
+      "initial": 20983
+    },
+    "41940": {
+      "name": "call_address_3",
+      "initial": 21118
+    }
+  }
+}

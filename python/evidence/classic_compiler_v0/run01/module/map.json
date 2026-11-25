@@ -1,0 +1,113 @@
+{
+  "schema": "python_literal_classic_v0",
+  "source_sha256": "fc38269f7d77e68327319745ea3ad68bd390350e8ef47ef15e05ea8c5bca1414",
+  "strategy": "one-shot-call-instances",
+  "source_length": 39932,
+  "preamble_end": 2915,
+  "main_entry": 20000,
+  "expanded_output_bytes": 7,
+  "instances": [],
+  "slots": {},
+  "markers": {
+    "20000": [
+      {
+        "kind": "main_entry"
+      }
+    ],
+    "20021": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 97
+      }
+    ],
+    "20042": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 47
+      }
+    ],
+    "20063": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 98
+      }
+    ],
+    "20084": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 33
+      }
+    ],
+    "20105": [
+      {
+        "kind": "print",
+        "line": 3,
+        "column": 1,
+        "byte": 10
+      }
+    ],
+    "20126": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 1,
+        "byte": 0
+      }
+    ],
+    "20147": [
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 1,
+        "byte": 10
+      }
+    ],
+    "20148": [
+      {
+        "kind": "main_halt"
+      }
+    ]
+  },
+  "cells": {
+    "58000": {
+      "name": "handoff",
+      "initial": 19999
+    },
+    "40020": {
+      "name": "C1",
+      "initial": 29524
+    },
+    "40084": {
+      "name": "byte_97",
+      "initial": 97
+    },
+    "40148": {
+      "name": "byte_47",
+      "initial": 47
+    },
+    "40212": {
+      "name": "byte_98",
+      "initial": 98
+    },
+    "40276": {
+      "name": "byte_33",
+      "initial": 33
+    },
+    "40340": {
+      "name": "byte_10",
+      "initial": 10
+    },
+    "40404": {
+      "name": "byte_0",
+      "initial": 0
+    }
+  }
+}

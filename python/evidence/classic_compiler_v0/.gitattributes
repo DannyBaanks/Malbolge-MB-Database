@@ -1,0 +1,4 @@
+# Preserve measured bytes and hashes across checkouts, irrespective of core.autocrlf.
+* -text
+*.raw -diff
+*.raw.txt -diff

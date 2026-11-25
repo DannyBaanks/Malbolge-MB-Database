@@ -45,3 +45,7 @@ Key finding: **No project implements a Python interpreter that runs ON Malbolge.
 ## Status
 
 P5 (`src/p5_compiler.py`) lowers direct recursion, including `fib(6)`, to MBIR and runs it on the host reference VM. P4 remains the slice that rejects a self-call. See `STATUS.md`. A Malbolge-hosted `python.mb` is not demonstrated.
+
+## Separate tool: Python literal → Classic compiler
+
+`src/classic_compiler.py` is a separate, host-side compiler for the bounded literal-functions subset. It emits autonomous strict Classic code with physical numeric CALL/RET, not MBIR. It does not demonstrate the Malbolge-hosted interpreter above. See [GUIA.md](GUIA.md) and [measured evidence](evidence/classic_compiler_v0/VERDICT.md).
