@@ -53,3 +53,27 @@
 | **C** | `c.mb` | Unshackled (primario) | `NOT_STARTED` | — | — |
 
 ---
+
+## Línea G5b — actualización 2026-11-24
+
+P5c cierra las 120 permutaciones de cinco llamadores con tres generaciones reproducibles y cobertura REA por eventos en todas las imágenes. Ver [P5c](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
+
+Siguiente experimento: reutilizar dos llamadores en una única imagen y un bucle real, aplicando crazy a una variable compartida y comprobando el rearmado de la bandera y del sitio. P1 ya demostró ese mecanismo con ROT: el objetivo nuevo es componerlo con crazy, no atribuirse de nuevo el retorno repetido. Después: dos variables; las llamadas anidadas y una pila general siguen abiertas.
+
+G5b P6 cerró el experimento de dos llamadores repetidos con crazy: A B A B A B en tres vueltas y recuperación de las banderas, con dos controles negativos y cuatro motores. [P6](vm_malbolge/evidence/g5b_flag_return_v6_reusable_crazy/VERDICT.md). El siguiente experimento es aislar dos variables manteniendo los retornos; llamadas anidadas y pila general siguen NOT_DEMONSTRATED.
+
+G5b P7 cierra dos variables para selección fijada en el layout: un sitio crazy, seis llamadas A(V) B(W), aislamiento de escrituras y conservación del estado en tres vueltas; dos controles y selección invertida verificados en cuatro motores. [P7](vm_malbolge/evidence/g5b_flag_return_v7_two_variables/VERDICT.md). Siguiente experimento: llamadas anidadas de profundidad fija 2, conservando el retorno exterior después del interior. Selección de variable por entrada y pila general siguen NOT_DEMONSTRATED.
+
+G5b P8 demuestra llamadas anidadas de profundidad fija 2 y conservación del retorno exterior durante la interior; dos controles, cuatro motores y generaciones finales reproducibles. [P8](vm_malbolge/evidence/g5b_flag_return_v8_nested_calls/VERDICT.md). El límite inmediato es la continuación interior única: siguiente experimento propuesto, dos continuaciones interiores sin perder el retorno exterior. Pila general, reentrada y recursión siguen NOT_DEMONSTRATED.
+
+G5b P9 cierra dos continuaciones interiores X/Y bajo ambos retornos exteriores A/B en una misma imagen, conservando FO y rearmando FI. Orden interior X→Y fijo y dos niveles estáticos. [P9](vm_malbolge/evidence/g5b_flag_return_v9_inner_continuations/VERDICT.md). Siguiente experimento propuesto: reentrada de una misma rutina en dos niveles con contextos de retorno por profundidad. Pila general, selección por entrada y recursión siguen NOT_DEMONSTRATED.
+
+G5b P10 demuestra reentrada acotada del mismo código desde dos niveles: ENTRY, MIX y DISPATCH únicos con contextos V/W distintos y retornos en orden. [P10](vm_malbolge/evidence/g5b_flag_return_v10_reentrant/VERDICT.md). Siguiente intervención propuesta: seleccionar contexto y continuación mediante estado de profundidad en runtime, con controles de desbordamiento y recuperación del contexto anterior. Marcos asignados dinámicamente, profundidad arbitraria y recursión general siguen NOT_DEMONSTRATED.
+
+G5b P11 demuestra la primitiva push/pop con ocupación y tokens A/B dinámicos, capacidad 2 y guardas que conservan estado. [P11](vm_malbolge/evidence/g5b_flag_return_v11_token_stack/VERDICT.md). Siguiente intervención: conectar el token devuelto por pop con su continuación y sustituir el contexto fijo de R por push/reentrada/pop. Direcciones arbitrarias, intérprete de operaciones por entrada y recursión general siguen NOT_DEMONSTRATED; el presupuesto del inicializador es un límite medido, no una imposibilidad global.
+
+G5b P12 conecta la pila de tokens con las continuaciones físicas de R: push exterior/interior, reentrada, pop a RESUME y pop a A/B, con contexto elegido por ocupación. [P12](vm_malbolge/evidence/g5b_flag_return_v12_stack_returns/VERDICT.md). Siguiente intervención propuesta: entrada runtime que elija retorno exterior y decisión de reentrada en una misma imagen. Capacidad mayor, direcciones numéricas y recursión general siguen NOT_DEMONSTRATED.
+
+G5b P13 demuestra slot de dirección numérica completa, journal, alteración/restauración, lectura exacta y tres retornos indirectos en una imagen. [P13](vm_malbolge/evidence/g5b_flag_return_v13_numeric_slot/VERDICT.md). Siguiente intervención: dirección completa elegida por entrada runtime, preservando el slot y retorno; después integrar la representación numérica con los slots y ocupación de P12. Código cíclico, direcciones arbitrarias durante una llamada y recursión general siguen NOT_DEMONSTRATED.
+
+G5b P14 aplica el retorno numérico a una función concreta: saludar imprime Hola y vuelve al llamador. [P14](vm_malbolge/evidence/g5b_flag_return_v14_saludar/VERDICT.md). Es una traducción manual demostrativa, no un nuevo frontend Python general. Repetir llamadas al mismo cuerpo requiere rearmar su código y sigue NOT_DEMONSTRATED en este ejemplo.

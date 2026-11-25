@@ -1,0 +1,56 @@
+{
+  "status": "frozen",
+  "steps": 3709,
+  "output_hex": "",
+  "events": [
+    {
+      "kind": "outer_entry",
+      "step": 3693,
+      "pc": 38318,
+      "d": 45005,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_entry",
+      "step": 3696,
+      "pc": 38340,
+      "d": 41000,
+      "a": 55999,
+      "fo": 70,
+      "fi": 74,
+      "value": 12345
+    },
+    {
+      "kind": "inner_return",
+      "step": 3704,
+      "pc": 38346,
+      "d": 44005,
+      "a": 17916,
+      "fo": 70,
+      "fi": 74,
+      "value": 17916
+    }
+  ],
+  "clocks": [
+    {
+      "step": 3689,
+      "fo": 74,
+      "fi": 74,
+      "mix": 74,
+      "value": 12345
+    }
+  ],
+  "mutations": [
+    {
+      "step": 3696,
+      "pc": 38340,
+      "before": 12345,
+      "after": 17916
+    }
+  ],
+  "final_value": 17916,
+  "tails_changed": true
+}

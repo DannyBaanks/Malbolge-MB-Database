@@ -1,0 +1,1 @@
+PASS: REA confirms runtime stack states, flags, returned tokens and guards in all six programs

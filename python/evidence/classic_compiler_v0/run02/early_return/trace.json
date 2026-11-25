@@ -1,0 +1,186 @@
+{
+  "status": "halt",
+  "steps": 3753,
+  "output_hex": "756e6f0a",
+  "events": [
+    {
+      "kind": "main_entry",
+      "step": 3580,
+      "pc": 20000,
+      "d": 58001,
+      "a": 57999,
+      "slots": {
+        "1": {
+          "value": 29524,
+          "journal": 29524
+        }
+      }
+    },
+    {
+      "kind": "call",
+      "instance": 0,
+      "name": "f",
+      "depth": 1,
+      "slot": 40084,
+      "journal": 40148,
+      "step": 3628,
+      "pc": 20048,
+      "d": 40276,
+      "a": 20049,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "function_entry",
+      "instance": 0,
+      "name": "f",
+      "depth": 1,
+      "step": 3629,
+      "pc": 20069,
+      "d": 40277,
+      "a": 20049,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 2,
+      "byte": 117,
+      "step": 3650,
+      "pc": 20090,
+      "d": 40341,
+      "a": 117,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 2,
+      "byte": 110,
+      "step": 3671,
+      "pc": 20111,
+      "d": 40405,
+      "a": 110,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 2,
+      "byte": 111,
+      "step": 3692,
+      "pc": 20132,
+      "d": 40469,
+      "a": 111,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 2,
+      "byte": 10,
+      "step": 3713,
+      "pc": 20153,
+      "d": 40533,
+      "a": 10,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "return",
+      "instance": 0,
+      "depth": 1,
+      "slot": 40084,
+      "step": 3735,
+      "pc": 20175,
+      "d": 40084,
+      "a": 20049,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "continuation",
+      "instance": 0,
+      "depth": 1,
+      "slot": 40084,
+      "step": 3736,
+      "pc": 20050,
+      "d": 40085,
+      "a": 20049,
+      "slots": {
+        "1": {
+          "value": 20049,
+          "journal": 9484
+        }
+      }
+    },
+    {
+      "kind": "main_halt",
+      "step": 3753,
+      "pc": 20067,
+      "d": 40149,
+      "a": 29524,
+      "slots": {
+        "1": {
+          "value": 29524,
+          "journal": 29524
+        }
+      }
+    }
+  ],
+  "jumps": [
+    {
+      "step": 3628,
+      "pc": 20048,
+      "d": 40276,
+      "stored": 20068,
+      "next_pc": 20069
+    },
+    {
+      "step": 3735,
+      "pc": 20175,
+      "d": 40084,
+      "stored": 20049,
+      "next_pc": 20050
+    }
+  ],
+  "compiled_code_visits_max": 1,
+  "final_slots": {
+    "1": {
+      "value": 29524,
+      "journal": 29524
+    }
+  }
+}

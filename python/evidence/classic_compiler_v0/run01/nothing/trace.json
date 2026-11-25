@@ -1,0 +1,26 @@
+{
+  "status": "halt",
+  "steps": 1632,
+  "output_hex": "",
+  "events": [
+    {
+      "kind": "main_entry",
+      "step": 1632,
+      "pc": 20000,
+      "d": 58001,
+      "a": 57999,
+      "slots": {}
+    },
+    {
+      "kind": "main_halt",
+      "step": 1632,
+      "pc": 20000,
+      "d": 58001,
+      "a": 57999,
+      "slots": {}
+    }
+  ],
+  "jumps": [],
+  "compiled_code_visits_max": 1,
+  "final_slots": {}
+}

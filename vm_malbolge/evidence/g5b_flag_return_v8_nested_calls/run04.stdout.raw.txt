@@ -1,0 +1,710 @@
+{
+  "positive": {
+    "sha256": "f88080fac48e14e44ffdf9decb58171f27b6e6c2d8a3d2f5b9aa015428e265c8",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_output_hex": "fc58fc58fc58",
+    "clasesbolge_steps": 3837,
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "status": "halt",
+    "steps": 3838,
+    "output_hex": "fc58fc58fc58",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3701,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3704,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3712,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3716,
+        "pc": 38131,
+        "d": 44009,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3720,
+        "pc": 38318,
+        "d": 44013,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3723,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3731,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3735,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3748,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3751,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3759,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3763,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3767,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3770,
+        "pc": 38340,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return",
+        "step": 3778,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3782,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3795,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3798,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3806,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3810,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3814,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3817,
+        "pc": 38340,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return",
+        "step": 3825,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3829,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3697,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3744,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3791,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3838,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3704,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3723,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3751,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 3770,
+        "pc": 38340,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 3798,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 3817,
+        "pc": 38340,
+        "before": 252,
+        "after": 29272
+      }
+    ],
+    "final_value": 29272,
+    "tails_changed": false
+  },
+  "outer_clobber": {
+    "sha256": "532bc26f87cd341ebb359d86871763c3746c9d42a6f59aebc0e75e69d23ed2b6",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_output_hex": "fc58fc",
+    "clasesbolge_steps": 3789,
+    "returns": [
+      "B",
+      "B",
+      "B"
+    ],
+    "status": "halt",
+    "steps": 3790,
+    "output_hex": "fc58fc",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3710,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3713,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3721,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3725,
+        "pc": 38131,
+        "d": 42001,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3738,
+        "pc": 38318,
+        "d": 45005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3741,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3749,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3753,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3766,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3769,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3777,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3781,
+        "pc": 38131,
+        "d": 42001,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3706,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3734,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 17916
+      },
+      {
+        "step": 3762,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3790,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 252
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3713,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3741,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3769,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      }
+    ],
+    "final_value": 252,
+    "tails_changed": false
+  },
+  "unarmed_a": {
+    "sha256": "85fa7883de4648d722fcffc36e09fdd426002906e61d508b8147eefa108eaa29",
+    "native_rc": 0,
+    "clasesbolge_status": "end",
+    "clasesbolge_output_hex": "fc58fc",
+    "clasesbolge_steps": 3598,
+    "returns": [
+      "B",
+      "B",
+      "B"
+    ],
+    "status": "halt",
+    "steps": 3599,
+    "output_hex": "fc58fc",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3523,
+        "pc": 38318,
+        "d": 45003,
+        "a": 55999,
+        "fo": 74,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3526,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 74,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3534,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3538,
+        "pc": 38131,
+        "d": 42001,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3549,
+        "pc": 38318,
+        "d": 45003,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3552,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3560,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3564,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3575,
+        "pc": 38318,
+        "d": 45003,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3578,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3586,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3590,
+        "pc": 38131,
+        "d": 42001,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3521,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3547,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 17916
+      },
+      {
+        "step": 3573,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3599,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 252
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3526,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3552,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3578,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      }
+    ],
+    "final_value": 252,
+    "tails_changed": false
+  }
+}

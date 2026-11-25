@@ -1,0 +1,1 @@
+PASS: same entry/body/dispatcher reentered at depth 2, exterior context preserved, controls detected

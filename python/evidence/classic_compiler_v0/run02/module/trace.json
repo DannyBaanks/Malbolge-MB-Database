@@ -1,0 +1,103 @@
+{
+  "status": "halt",
+  "steps": 2966,
+  "output_hex": "612f62210a000a",
+  "events": [
+    {
+      "kind": "main_entry",
+      "step": 2818,
+      "pc": 20000,
+      "d": 58001,
+      "a": 57999,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 1,
+      "byte": 97,
+      "step": 2839,
+      "pc": 20021,
+      "d": 40085,
+      "a": 97,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 1,
+      "byte": 47,
+      "step": 2860,
+      "pc": 20042,
+      "d": 40149,
+      "a": 47,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 1,
+      "byte": 98,
+      "step": 2881,
+      "pc": 20063,
+      "d": 40213,
+      "a": 98,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 2,
+      "column": 1,
+      "byte": 33,
+      "step": 2902,
+      "pc": 20084,
+      "d": 40277,
+      "a": 33,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 3,
+      "column": 1,
+      "byte": 10,
+      "step": 2923,
+      "pc": 20105,
+      "d": 40341,
+      "a": 10,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 4,
+      "column": 1,
+      "byte": 0,
+      "step": 2944,
+      "pc": 20126,
+      "d": 40405,
+      "a": 0,
+      "slots": {}
+    },
+    {
+      "kind": "print",
+      "line": 4,
+      "column": 1,
+      "byte": 10,
+      "step": 2965,
+      "pc": 20147,
+      "d": 40341,
+      "a": 10,
+      "slots": {}
+    },
+    {
+      "kind": "main_halt",
+      "step": 2966,
+      "pc": 20148,
+      "d": 40342,
+      "a": 10,
+      "slots": {}
+    }
+  ],
+  "jumps": [],
+  "compiled_code_visits_max": 1,
+  "final_slots": {}
+}

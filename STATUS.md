@@ -94,3 +94,43 @@ El `NOT_DEMONSTRATED` de cobertura por eventos REA de P5 se cerró sin reescribi
 > **Alcance del claim (anti-fake):** la comparación es contra la referencia Lutter (59,852 B) y la escalera propia; no hay barrido externo exhaustivo de todas las quines clásicas publicadas. El descenso por debajo de m=284 quedó **DEMONSTRATED** hasta m=281 (composite constructivo de la macro `inc`); por debajo de m=281: `NOT_DEMONSTRATED` (m=278 sigue bloqueado por el piso del stream sintetizado; el DP de cadena por sí solo no basta; candidatos inc-dead y palancas en `NOTES.md` §Next steps).
 
 ---
+
+## Actualización 2026-11-24: barrido exhaustivo G5b P5c
+
+Las 120 permutaciones de cinco hojas quedaron verificadas en tres generaciones idénticas byte a byte, con 120 imágenes distintas por tanda. REA confirmó cinco llamadas y las cinco continuaciones en cada imagen, con equivalencia entre captura de prefijo y ventana tardía. Esto cierra el pendiente de barrido de P5b; conserva su alcance de una variable, un sitio y órdenes fijados en cada imagen. [Veredicto y reproducción](vm_malbolge/evidence/g5b_flag_return_v5c_perm_sweep/VERDICT.md).
+
+## Actualización 2026-11-24: crazy reutilizable G5b P6
+
+Una imagen ejecuta A B A B A B en tres vueltas reales, con una variable y un sitio crazy; bandera y sitio recuperan 74 en las cuatro visitas al reloj. Olmstead, clasesbolge, trazador local y eventos REA coinciden. Dos controles de bandera alteran los retornos; generaciones independientes coinciden byte a byte. Extiende el bucle ROT de P1 a crazy. [Alcance y reproducción P6](vm_malbolge/evidence/g5b_flag_return_v6_reusable_crazy/VERDICT.md).
+
+## Actualización 2026-11-24: dos variables G5b P7
+
+Una imagen comparte crazy en pc=38246 entre V=41000 y W=43000, con A(V) B(W) repetidos durante tres vueltas. Seis escrituras alternadas conservan la otra celda y el estado entre vueltas. Dos controles redirigen ambas llamadas a una sola variable; mantienen los retornos pero fallan la selección nominal. Una imagen adicional invierte W,V. Cuatro motores coinciden y dos generaciones son idénticas. El aislamiento es de escrituras: a transporta resultados entre llamadas. [Puertas, trazas y límites P7](vm_malbolge/evidence/g5b_flag_return_v7_two_variables/VERDICT.md).
+
+## Actualización 2026-11-24: llamadas anidadas G5b P8
+
+Dos llamadores A/B usan una rutina exterior compartida que llama a crazy en una interior y recibe su retorno antes de volver a A/B. Una imagen hace seis recorridos de profundidad fija 0→1→2→1→0; la bandera exterior se conserva durante la llamada interior. El control que la cifra dentro del retorno interior desvía A B A B A B a B B B. Cuatro motores coinciden, dos generaciones finales son idénticas y el primer layout fallido queda preservado y reproducible. Dos banderas separadas estáticas y continuación interior fija: no es una pila general ni recursión. [P8: puertas, controles y límites](vm_malbolge/evidence/g5b_flag_return_v8_nested_calls/VERDICT.md).
+
+## Actualización 2026-11-24: dos continuaciones interiores G5b P9
+
+Cada llamada exterior invoca dos veces al mismo crazy interior, retornando primero a X y luego a Y antes de volver a A/B. Una imagen cubre A/X, A/Y, B/X y B/Y durante tres vueltas: doce llamadas interiores y seis exteriores. FO se conserva en ambos intervalos interiores; controles separan fallo de selección interior y corrupción exterior. Cuatro motores coinciden y dos generaciones son idénticas. REA reconstruye todos los pasos mediante dos ventanas solapadas con igualdad de eventos y digests. [Puertas, evidencia y límites P9](vm_malbolge/evidence/g5b_flag_return_v9_inner_continuations/VERDICT.md).
+
+## Actualización 2026-11-24: reentrada de la misma rutina G5b P10
+
+R vuelve a entrar por el mismo ENTRY=38224 y ejecuta el mismo MIX=38246 en un segundo contexto antes de terminar el primero; DISPATCH=38318 es común también a ambos retornos. Seis activaciones exteriores A/B, cada una con una activación interior, profundidad fija 2 y V/W persistentes. REA confirma contexto exterior y FO preservados. Controles: omitir reentrada conserva A/B pero falla profundidad 2; cifrar FO durante el retorno interior pierde A/B. Cuatro motores coinciden, dos generaciones son idénticas y hashes Git comprobados. Marcos estáticos: no es pila dinámica ni recursión general. [P10](vm_malbolge/evidence/g5b_flag_return_v10_reentrant/VERDICT.md).
+
+## Actualización 2026-11-24: primitiva de pila dinámica acotada G5b P11
+
+Pila LIFO nativa de capacidad 2 y tokens A/B: ocupación y contenido mutados durante ejecución. Cinco programas positivos cubren LIFO, reutilización de ambas posiciones, overflow O y underflow U con estado conservado; dos controles devuelven UU/AA y fallan el modelo abstracto. Cuatro motores coinciden y dos generaciones finales son idénticas. Se conserva el intento combinado que no cupo (preámbulo 70745) y su reducción en programas menores. Es una primitiva: todavía no integrada con R, sin direcciones arbitrarias ni intérprete stdin. [P11](vm_malbolge/evidence/g5b_flag_return_v11_token_stack/VERDICT.md).
+
+## Actualización 2026-11-24: pila conectada a R, G5b P12
+
+Push/pop de P11 selecciona saltos reales de retorno de R, sin FO exterior separada. Una imagen guarda A y después B, reentra en R a profundidad 2, vuelve por RESUME y recupera A/B (salida AB, pila vacía). La ocupación elige V/W en runtime. Cambiar S0 después del push A produce B; leer slot incorrecto produce AE. Guardas O/U conservan estado. Cuatro motores y dos generaciones coinciden; catálogo (nivel,token) y capacidad 2, sin direcciones arbitrarias. [P12](vm_malbolge/evidence/g5b_flag_return_v12_stack_returns/VERDICT.md).
+
+## Actualización 2026-11-24 (México): slot numérico G5b P13
+
+Un slot guarda/restaura/recupera 19999,24999,29999 y tres JMP indirectos llegan físicamente a 20000,25000,30000 (ABC). Se adapta el protocolo journal PureEpoch M1b: SAVE, alterar, 10 ROT, RESTORE; slot y journal se rearman a 29524 entre transacciones. Controles sin restore y con dirección alterada desvían a E. Cuatro motores y dos generaciones coinciden; identidad algebraica enumerada aparte para 59049 palabras con Python y REA JS. Los valores son fuentes del llamador conocidas al ensamblar; código desplegado, todavía sin servicio cíclico ni pila numérica integrada con R. [P13](vm_malbolge/evidence/g5b_flag_return_v13_numeric_slot/VERDICT.md).
+
+## Actualización 2026-11-24 (México): ejemplo saludar G5b P14
+
+Una imagen Classic implementa manualmente def saludar(): print("Hola"); saludar(), con salida exacta Hola + LF. CALL entra en PC20000 y RET numérico recupera continuación30000; imagen alternativa retorna32000 conservando idéntico cuerpo. Controles: retorno roto imprime Hola seguido de ! sin volver al llamador; omitir CALL no imprime. Cuatro motores y Python de referencia coinciden en los positivos; generaciones idénticas y hashes verificados. No es frontend Python general ni cuerpo cíclico. [P14 y binario](vm_malbolge/evidence/g5b_flag_return_v14_saludar/VERDICT.md), [guía](vm_malbolge/evidence/g5b_flag_return_v14_saludar/GUIA.md).

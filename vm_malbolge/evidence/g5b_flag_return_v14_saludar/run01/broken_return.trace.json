@@ -1,0 +1,243 @@
+{
+  "status": "halt",
+  "steps": 12858,
+  "output_hex": "486f6c610a21",
+  "events": [
+    {
+      "kind": "caller",
+      "index": 0,
+      "step": 12628,
+      "pc": 15000,
+      "d": 56001,
+      "a": 55999,
+      "slot": 29524,
+      "journal": 29524,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "return_saved",
+      "index": 0,
+      "step": 12684,
+      "pc": 15056,
+      "d": 50001,
+      "a": 29999,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "call",
+      "index": 0,
+      "step": 12697,
+      "pc": 15069,
+      "d": 51000,
+      "a": 29999,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "saludar_entry",
+      "index": 0,
+      "step": 12698,
+      "pc": 20000,
+      "d": 51001,
+      "a": 29999,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "print_0",
+      "index": 0,
+      "step": 12714,
+      "pc": 20016,
+      "d": 53001,
+      "a": 72,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "print_1",
+      "index": 0,
+      "step": 12731,
+      "pc": 20033,
+      "d": 53101,
+      "a": 111,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "print_2",
+      "index": 0,
+      "step": 12749,
+      "pc": 20051,
+      "d": 53201,
+      "a": 108,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "print_3",
+      "index": 0,
+      "step": 12768,
+      "pc": 20070,
+      "d": 53301,
+      "a": 97,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "print_4",
+      "index": 0,
+      "step": 12788,
+      "pc": 20090,
+      "d": 53401,
+      "a": 10,
+      "slot": 29999,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "return_corrupted",
+      "index": 0,
+      "step": 12814,
+      "pc": 20116,
+      "d": 50001,
+      "a": 29524,
+      "slot": 29524,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "ret",
+      "index": 0,
+      "step": 12835,
+      "pc": 20137,
+      "d": 50000,
+      "a": 29524,
+      "slot": 29524,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    },
+    {
+      "kind": "error",
+      "index": -1,
+      "step": 12836,
+      "pc": 29525,
+      "d": 50001,
+      "a": 29524,
+      "slot": 29524,
+      "journal": 1715,
+      "mask": 29524,
+      "sources": [
+        29999
+      ]
+    }
+  ],
+  "jumps": [
+    {
+      "step": 12697,
+      "pc": 15069,
+      "d": 51000,
+      "stored": 19999,
+      "next_pc": 20000
+    },
+    {
+      "step": 12835,
+      "pc": 20137,
+      "d": 50000,
+      "stored": 29524,
+      "next_pc": 29525
+    }
+  ],
+  "writes": [
+    {
+      "step": 12672,
+      "pc": 15044,
+      "before": [
+        29524,
+        29524
+      ],
+      "after": [
+        29524,
+        1715
+      ]
+    },
+    {
+      "step": 12683,
+      "pc": 15055,
+      "before": [
+        29524,
+        1715
+      ],
+      "after": [
+        29999,
+        1715
+      ]
+    },
+    {
+      "step": 12811,
+      "pc": 20113,
+      "before": [
+        29999,
+        1715
+      ],
+      "after": [
+        1460,
+        1715
+      ]
+    },
+    {
+      "step": 12813,
+      "pc": 20115,
+      "before": [
+        1460,
+        1715
+      ],
+      "after": [
+        29524,
+        1715
+      ]
+    }
+  ],
+  "final_slot": 29524,
+  "final_journal": 1715
+}

@@ -1,0 +1,62 @@
+{
+  "path_base": "development_directory",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run04"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run05"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run04"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run05"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "oversized_probe.py",
+        "run01"
+      ],
+      "exit_status": 1,
+      "failure": "preamble overlaps code: 70745"
+    }
+  ],
+  "intermediate_runs": [
+    "run02",
+    "run03"
+  ],
+  "intermediate_source": "probe_pre_top.py"
+}

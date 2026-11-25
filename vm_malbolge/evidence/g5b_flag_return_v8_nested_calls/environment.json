@@ -1,0 +1,16 @@
+{
+  "timestamp_utc": "2026-11-24T19:04:46.049362+00:00",
+  "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "base_commit": "0fb866ce11caa2d2035c66002929e17dc6b6c1a9",
+  "dependencies": {
+    "ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/g5b_flag_return_v5/probe.py": "a5067cefa52d7c0b876c0f0a8760b95b914019697feca3a9ff2b61162fda4126",
+    "ISyCo Git/MALBOLGE-MB-DATABASE/vm_malbolge/evidence/epoch_dload_compose_v1/probe.py": "deac96240180450d2d1804fb97af5677db6a8fec0f68d632e7dfd4b52b167df5",
+    "ISyCo Git/BolgeForge/constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "ISyCo Git/BolgeForge/tools/resynthesize.py": "8f36a77bf13877ff4e67564d3663eb9873c1952cbb2cf0c7d96fef20c208a9ae",
+    "ISyCo Git/BolgeForge/reference/malbolge_org/cat.mal": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "ISyCo Git/Malbolge-PureEpoch/build/olmstead": "dfee14b7b7914facf36094e1b6c2b509b4f49277e093d9440f41c6f091c132f6",
+    "clasesbolge/tools/malbolge.py": "a5e42fda46fe54d72d2ccebe97bc5f529bfa7c1c56b971a53ae25f7b40e34b89",
+    "rea/dist/domain/malbolge/malbolgeClassic.js": "ed37e1044c42d26fe38825a936b3dadabee9d0141bf05dd3cc5d91366eb726de"
+  }
+}

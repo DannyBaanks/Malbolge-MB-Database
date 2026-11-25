@@ -1,0 +1,1 @@
+PASS: native pop selects actual R continuation, nested contexts and guard/error paths verified

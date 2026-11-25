@@ -1,0 +1,1239 @@
+{
+  "positive": {
+    "status": "HALTED",
+    "steps": 3838,
+    "output_hex": "fc58fc58fc58",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3701,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3704,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3712,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3716,
+        "pc": 38131,
+        "d": 44009,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3720,
+        "pc": 38318,
+        "d": 44013,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3723,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3731,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3735,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3748,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3751,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3759,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3763,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3767,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3770,
+        "pc": 38340,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return",
+        "step": 3778,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3782,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3795,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3798,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3806,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 3810,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3814,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3817,
+        "pc": 38340,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return",
+        "step": 3825,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3829,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3697,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3744,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3791,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3838,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3704,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3723,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3751,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 3770,
+        "pc": 38340,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 3798,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 3817,
+        "pc": 38340,
+        "before": 252,
+        "after": 29272
+      }
+    ],
+    "depths": [
+      {
+        "step": 3701,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3704,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3712,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3716,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3720,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3723,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3731,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3735,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3748,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3751,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3759,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3763,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3767,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3770,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3778,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3782,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3795,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3798,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3806,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3810,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3814,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3817,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3825,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3829,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [],
+    "site_events": [
+      {
+        "step": 3704,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3723,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3751,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3770,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3798,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3817,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "all_events_retained": true,
+    "digest": "a8a744d501d06b3a57689adc2e90559fa6c0d7e94687ec4a6873e0cafd9b6a76"
+  },
+  "outer_clobber": {
+    "status": "HALTED",
+    "steps": 3790,
+    "output_hex": "fc58fc",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3710,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3713,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3721,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3725,
+        "pc": 38131,
+        "d": 42001,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3738,
+        "pc": 38318,
+        "d": 45005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3741,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3749,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3753,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3766,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3769,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3777,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3781,
+        "pc": 38131,
+        "d": 42001,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3706,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3734,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 17916
+      },
+      {
+        "step": 3762,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3790,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 252
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3713,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3741,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3769,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      }
+    ],
+    "depths": [
+      {
+        "step": 3710,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3713,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3721,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3725,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3738,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3741,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3749,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3753,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3766,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3769,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3777,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3781,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [
+      {
+        "step": 3719,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      },
+      {
+        "step": 3747,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      },
+      {
+        "step": 3775,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      }
+    ],
+    "site_events": [
+      {
+        "step": 3713,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3741,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3769,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "all_events_retained": true,
+    "digest": "4530c49afaa944b6244bf6613a7cb9eda6a28adb8f6f659f67dcdc21ca9174ce"
+  },
+  "unarmed_a": {
+    "status": "HALTED",
+    "steps": 3599,
+    "output_hex": "fc58fc",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 3523,
+        "pc": 38318,
+        "d": 45003,
+        "a": 55999,
+        "fo": 74,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3526,
+        "pc": 38340,
+        "d": 41000,
+        "a": 55999,
+        "fo": 74,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return",
+        "step": 3534,
+        "pc": 38346,
+        "d": 44005,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3538,
+        "pc": 38131,
+        "d": 42001,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3549,
+        "pc": 38318,
+        "d": 45003,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3552,
+        "pc": 38340,
+        "d": 41000,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return",
+        "step": 3560,
+        "pc": 38346,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3564,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 3575,
+        "pc": 38318,
+        "d": 45003,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 3578,
+        "pc": 38340,
+        "d": 41000,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return",
+        "step": 3586,
+        "pc": 38346,
+        "d": 44005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 3590,
+        "pc": 38131,
+        "d": 42001,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      }
+    ],
+    "clocks": [
+      {
+        "step": 3521,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 3547,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 17916
+      },
+      {
+        "step": 3573,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 3599,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 252
+      }
+    ],
+    "mutations": [
+      {
+        "step": 3526,
+        "pc": 38340,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 3552,
+        "pc": 38340,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 3578,
+        "pc": 38340,
+        "before": 29272,
+        "after": 252
+      }
+    ],
+    "depths": [
+      {
+        "step": 3523,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3526,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3534,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3538,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3549,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3552,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3560,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3564,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 3575,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 3578,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 3586,
+        "kind": "inner_return",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 3590,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [],
+    "site_events": [
+      {
+        "step": 3526,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3552,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3578,
+        "position": 38340,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38340,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "all_events_retained": true,
+    "digest": "31a22ee6feecbe62add70e2f1edea1f65a1496a8bdc1180e31f2cd94edc7d9a8"
+  }
+}

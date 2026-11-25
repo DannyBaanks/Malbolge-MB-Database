@@ -1,0 +1,323 @@
+{
+  "positive": {
+    "status": "HALTED",
+    "steps": 3236,
+    "output_hex": "fc58fc58fc58",
+    "site_events": [
+      {
+        "step": 3150,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3161,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3181,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3192,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3212,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3223,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "clock_steps": [
+      3143,
+      3174,
+      3205,
+      3236
+    ],
+    "digest": "6b816db2bf9022a6e9ceb5b7577b23e3078875504d10c74790c6e800ffbc5549"
+  },
+  "control_a": {
+    "status": "HALTED",
+    "steps": 3029,
+    "output_hex": "fc58fc",
+    "site_events": [
+      {
+        "step": 2980,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 2998,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3016,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "returns": [
+      "B",
+      "B",
+      "B"
+    ],
+    "clock_steps": [
+      2975,
+      2993,
+      3011,
+      3029
+    ],
+    "digest": "53e82258f9528d1863cd6cdb4bf9138c6559713c5a99b8cc9f251b9f21067906"
+  },
+  "control_b": {
+    "status": "HALTED",
+    "steps": 3127,
+    "output_hex": "fc58fc58",
+    "site_events": [
+      {
+        "step": 3069,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3080,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3098,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 3116,
+        "position": 38246,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38246,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "returns": [
+      "A",
+      "B",
+      "B",
+      "B"
+    ],
+    "clock_steps": [
+      3062,
+      3091,
+      3109,
+      3127
+    ],
+    "digest": "06d487ecd6fee26bac81258406b1577aa64678f7f2b2f80ab744a1964fe9c530"
+  }
+}

@@ -1,0 +1,2879 @@
+{
+  "saludar": {
+    "status": "HALTED",
+    "steps": 3981,
+    "output_hex": "486f6c610a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 3787,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "saludar",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 3835,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "saludar",
+        "depth": 1,
+        "step": 3836,
+        "pc": 20069,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72,
+        "step": 3857,
+        "pc": 20090,
+        "d": 40341,
+        "a": 72,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 3878,
+        "pc": 20111,
+        "d": 40405,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108,
+        "step": 3899,
+        "pc": 20132,
+        "d": 40469,
+        "a": 108,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97,
+        "step": 3920,
+        "pc": 20153,
+        "d": 40533,
+        "a": 97,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 10,
+        "step": 3941,
+        "pc": 20174,
+        "d": 40597,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3963,
+        "pc": 20196,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3964,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 3981,
+        "pc": 20067,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 3835,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20068,
+        "next_pc": 20069
+      },
+      {
+        "step": 3963,
+        "pc": 20196,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 3981
+        }
+      ],
+      "overlaps": 0,
+      "contiguous_steps": 3981,
+      "equivalent_runs": true
+    },
+    "digest": "1c9747e65cc3fd3d504fafb902de5202aaebb93906bc2ad608ab7fc1b37dcf78"
+  },
+  "repeated": {
+    "status": "HALTED",
+    "steps": 4855,
+    "output_hex": "486f6c610a486f6c610a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 4461,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 4509,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "step": 4510,
+        "pc": 20142,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72,
+        "step": 4531,
+        "pc": 20163,
+        "d": 40469,
+        "a": 72,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 4552,
+        "pc": 20184,
+        "d": 40533,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108,
+        "step": 4573,
+        "pc": 20205,
+        "d": 40597,
+        "a": 108,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97,
+        "step": 4594,
+        "pc": 20226,
+        "d": 40661,
+        "a": 97,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 10,
+        "step": 4615,
+        "pc": 20247,
+        "d": 40725,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4637,
+        "pc": 20269,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4638,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 1,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 4709,
+        "pc": 20121,
+        "d": 40404,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 1,
+        "name": "f",
+        "depth": 1,
+        "step": 4710,
+        "pc": 20271,
+        "d": 40405,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72,
+        "step": 4731,
+        "pc": 20292,
+        "d": 40469,
+        "a": 72,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 4752,
+        "pc": 20313,
+        "d": 40533,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108,
+        "step": 4773,
+        "pc": 20334,
+        "d": 40597,
+        "a": 108,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97,
+        "step": 4794,
+        "pc": 20355,
+        "d": 40661,
+        "a": 97,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 10,
+        "step": 4815,
+        "pc": 20376,
+        "d": 40725,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 1,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4837,
+        "pc": 20398,
+        "d": 40084,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 1,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4838,
+        "pc": 20123,
+        "d": 40085,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 4855,
+        "pc": 20140,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 4509,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20141,
+        "next_pc": 20142
+      },
+      {
+        "step": 4637,
+        "pc": 20269,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      },
+      {
+        "step": 4709,
+        "pc": 20121,
+        "d": 40404,
+        "stored": 20270,
+        "next_pc": 20271
+      },
+      {
+        "step": 4837,
+        "pc": 20398,
+        "d": 40084,
+        "stored": 20122,
+        "next_pc": 20123
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 4096
+        },
+        {
+          "start": 4096,
+          "end": 4855
+        }
+      ],
+      "overlaps": 1,
+      "contiguous_steps": 4855,
+      "equivalent_runs": true
+    },
+    "digest": "25d32a4c7faf2a76bebda911b436f5c1aa129cc9ef1ad1f73e951681ecb7d725"
+  },
+  "nested": {
+    "status": "HALTED",
+    "steps": 10791,
+    "output_hex": "496e6963696f0ac2a1486f6c6120f09f8c8e212046696e0a496e6963696f0ac2a1486f6c6120f09f8c8e212046696e0a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 9383,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "outer",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 9431,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "outer",
+        "depth": 1,
+        "step": 9432,
+        "pc": 20142,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 73,
+        "step": 9453,
+        "pc": 20163,
+        "d": 40469,
+        "a": 73,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 110,
+        "step": 9474,
+        "pc": 20184,
+        "d": 40533,
+        "a": 110,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105,
+        "step": 9495,
+        "pc": 20205,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 99,
+        "step": 9516,
+        "pc": 20226,
+        "d": 40661,
+        "a": 99,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105,
+        "step": 9537,
+        "pc": 20247,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 111,
+        "step": 9559,
+        "pc": 20269,
+        "d": 40725,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 10,
+        "step": 9580,
+        "pc": 20290,
+        "d": 40789,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 1,
+        "name": "inner",
+        "depth": 2,
+        "slot": 40852,
+        "journal": 40916,
+        "step": 9632,
+        "pc": 20342,
+        "d": 41044,
+        "a": 20343,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 1,
+        "name": "inner",
+        "depth": 2,
+        "step": 9633,
+        "pc": 20479,
+        "d": 41045,
+        "a": 20343,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 194,
+        "step": 9654,
+        "pc": 20500,
+        "d": 41173,
+        "a": 194,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 161,
+        "step": 9675,
+        "pc": 20521,
+        "d": 41237,
+        "a": 161,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72,
+        "step": 9696,
+        "pc": 20542,
+        "d": 41301,
+        "a": 72,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 9717,
+        "pc": 20563,
+        "d": 40725,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108,
+        "step": 9739,
+        "pc": 20585,
+        "d": 41365,
+        "a": 108,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97,
+        "step": 9760,
+        "pc": 20606,
+        "d": 41429,
+        "a": 97,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32,
+        "step": 9781,
+        "pc": 20627,
+        "d": 41493,
+        "a": 32,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 240,
+        "step": 9802,
+        "pc": 20648,
+        "d": 41557,
+        "a": 240,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 159,
+        "step": 9823,
+        "pc": 20669,
+        "d": 41621,
+        "a": 159,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 140,
+        "step": 9844,
+        "pc": 20690,
+        "d": 41685,
+        "a": 140,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 142,
+        "step": 9865,
+        "pc": 20711,
+        "d": 41749,
+        "a": 142,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 33,
+        "step": 9886,
+        "pc": 20732,
+        "d": 41813,
+        "a": 33,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32,
+        "step": 9907,
+        "pc": 20753,
+        "d": 41493,
+        "a": 32,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40852,
+        "step": 9930,
+        "pc": 20776,
+        "d": 40852,
+        "a": 20343,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40852,
+        "step": 9931,
+        "pc": 20344,
+        "d": 40853,
+        "a": 20343,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20343,
+            "journal": 10153
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 70,
+        "step": 9975,
+        "pc": 20388,
+        "d": 41109,
+        "a": 70,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 105,
+        "step": 9996,
+        "pc": 20409,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 110,
+        "step": 10019,
+        "pc": 20432,
+        "d": 40533,
+        "a": 110,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 10,
+        "step": 10041,
+        "pc": 20454,
+        "d": 40789,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 10064,
+        "pc": 20477,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 10065,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 2,
+        "name": "outer",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 10136,
+        "pc": 20121,
+        "d": 40404,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 2,
+        "name": "outer",
+        "depth": 1,
+        "step": 10137,
+        "pc": 20778,
+        "d": 40405,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 73,
+        "step": 10158,
+        "pc": 20799,
+        "d": 40469,
+        "a": 73,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 110,
+        "step": 10179,
+        "pc": 20820,
+        "d": 40533,
+        "a": 110,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105,
+        "step": 10200,
+        "pc": 20841,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 99,
+        "step": 10221,
+        "pc": 20862,
+        "d": 40661,
+        "a": 99,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 105,
+        "step": 10242,
+        "pc": 20883,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 111,
+        "step": 10264,
+        "pc": 20905,
+        "d": 40725,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 10,
+        "step": 10285,
+        "pc": 20926,
+        "d": 40789,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 3,
+        "name": "inner",
+        "depth": 2,
+        "slot": 40852,
+        "journal": 40916,
+        "step": 10341,
+        "pc": 20982,
+        "d": 41940,
+        "a": 20983,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 3,
+        "name": "inner",
+        "depth": 2,
+        "step": 10342,
+        "pc": 21119,
+        "d": 41941,
+        "a": 20983,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 194,
+        "step": 10363,
+        "pc": 21140,
+        "d": 41173,
+        "a": 194,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 161,
+        "step": 10384,
+        "pc": 21161,
+        "d": 41237,
+        "a": 161,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 72,
+        "step": 10405,
+        "pc": 21182,
+        "d": 41301,
+        "a": 72,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 10426,
+        "pc": 21203,
+        "d": 40725,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 108,
+        "step": 10448,
+        "pc": 21225,
+        "d": 41365,
+        "a": 108,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 97,
+        "step": 10469,
+        "pc": 21246,
+        "d": 41429,
+        "a": 97,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32,
+        "step": 10490,
+        "pc": 21267,
+        "d": 41493,
+        "a": 32,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 240,
+        "step": 10511,
+        "pc": 21288,
+        "d": 41557,
+        "a": 240,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 159,
+        "step": 10532,
+        "pc": 21309,
+        "d": 41621,
+        "a": 159,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 140,
+        "step": 10553,
+        "pc": 21330,
+        "d": 41685,
+        "a": 140,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 142,
+        "step": 10574,
+        "pc": 21351,
+        "d": 41749,
+        "a": 142,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 33,
+        "step": 10595,
+        "pc": 21372,
+        "d": 41813,
+        "a": 33,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 32,
+        "step": 10616,
+        "pc": 21393,
+        "d": 41493,
+        "a": 32,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 3,
+        "depth": 2,
+        "slot": 40852,
+        "step": 10639,
+        "pc": 21416,
+        "d": 40852,
+        "a": 20983,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 3,
+        "depth": 2,
+        "slot": 40852,
+        "step": 10640,
+        "pc": 20984,
+        "d": 40853,
+        "a": 20983,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 20983,
+            "journal": 9270
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 70,
+        "step": 10684,
+        "pc": 21028,
+        "d": 41109,
+        "a": 70,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 105,
+        "step": 10705,
+        "pc": 21049,
+        "d": 40597,
+        "a": 105,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 110,
+        "step": 10728,
+        "pc": 21072,
+        "d": 40533,
+        "a": 110,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 6,
+        "column": 2,
+        "byte": 10,
+        "step": 10750,
+        "pc": 21094,
+        "d": 40789,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 2,
+        "depth": 1,
+        "slot": 40084,
+        "step": 10773,
+        "pc": 21117,
+        "d": 40084,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 2,
+        "depth": 1,
+        "slot": 40084,
+        "step": 10774,
+        "pc": 20123,
+        "d": 40085,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 10791,
+        "pc": 20140,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 9431,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20141,
+        "next_pc": 20142
+      },
+      {
+        "step": 9632,
+        "pc": 20342,
+        "d": 41044,
+        "stored": 20478,
+        "next_pc": 20479
+      },
+      {
+        "step": 9930,
+        "pc": 20776,
+        "d": 40852,
+        "stored": 20343,
+        "next_pc": 20344
+      },
+      {
+        "step": 10064,
+        "pc": 20477,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      },
+      {
+        "step": 10136,
+        "pc": 20121,
+        "d": 40404,
+        "stored": 20777,
+        "next_pc": 20778
+      },
+      {
+        "step": 10341,
+        "pc": 20982,
+        "d": 41940,
+        "stored": 21118,
+        "next_pc": 21119
+      },
+      {
+        "step": 10639,
+        "pc": 21416,
+        "d": 40852,
+        "stored": 20983,
+        "next_pc": 20984
+      },
+      {
+        "step": 10773,
+        "pc": 21117,
+        "d": 40084,
+        "stored": 20122,
+        "next_pc": 20123
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      },
+      "2": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 4096
+        },
+        {
+          "start": 4096,
+          "end": 8191
+        },
+        {
+          "start": 8191,
+          "end": 10791
+        }
+      ],
+      "overlaps": 2,
+      "contiguous_steps": 10791,
+      "equivalent_runs": true
+    },
+    "digest": "01b29cf96d9fffdfd20cf268a1943076b25d8bdb98fc4a5f154f222ac89433c0"
+  },
+  "empty": {
+    "status": "HALTED",
+    "steps": 3667,
+    "output_hex": "",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 3483,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 3531,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "step": 3532,
+        "pc": 20142,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3554,
+        "pc": 20164,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3555,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 1,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 3626,
+        "pc": 20121,
+        "d": 40404,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 1,
+        "name": "f",
+        "depth": 1,
+        "step": 3627,
+        "pc": 20166,
+        "d": 40405,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 1,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3649,
+        "pc": 20188,
+        "d": 40084,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 1,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3650,
+        "pc": 20123,
+        "d": 40085,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 3667,
+        "pc": 20140,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 3531,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20141,
+        "next_pc": 20142
+      },
+      {
+        "step": 3554,
+        "pc": 20164,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      },
+      {
+        "step": 3626,
+        "pc": 20121,
+        "d": 40404,
+        "stored": 20165,
+        "next_pc": 20166
+      },
+      {
+        "step": 3649,
+        "pc": 20188,
+        "d": 40084,
+        "stored": 20122,
+        "next_pc": 20123
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 3667
+        }
+      ],
+      "overlaps": 0,
+      "contiguous_steps": 3667,
+      "equivalent_runs": true
+    },
+    "digest": "c7f7296a00800a0cbe74f5e888cd97579b0fe2ad06b6d1cfada19705b63845ed"
+  },
+  "early_return": {
+    "status": "HALTED",
+    "steps": 3753,
+    "output_hex": "756e6f0a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 3580,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 3628,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "step": 3629,
+        "pc": 20069,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 117,
+        "step": 3650,
+        "pc": 20090,
+        "d": 40341,
+        "a": 117,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 110,
+        "step": 3671,
+        "pc": 20111,
+        "d": 40405,
+        "a": 110,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111,
+        "step": 3692,
+        "pc": 20132,
+        "d": 40469,
+        "a": 111,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 10,
+        "step": 3713,
+        "pc": 20153,
+        "d": 40533,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3735,
+        "pc": 20175,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 3736,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 3753,
+        "pc": 20067,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 3628,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20068,
+        "next_pc": 20069
+      },
+      {
+        "step": 3735,
+        "pc": 20175,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 3753
+        }
+      ],
+      "overlaps": 0,
+      "contiguous_steps": 3753,
+      "equivalent_runs": true
+    },
+    "digest": "94dd79dfb95421ceea53a801d917857719735fad1e20c8e4d88a6e39884cf002"
+  },
+  "forward": {
+    "status": "HALTED",
+    "steps": 4503,
+    "output_hex": "620a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 4273,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "a",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148,
+        "step": 4321,
+        "pc": 20048,
+        "d": 40276,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "a",
+        "depth": 1,
+        "step": 4322,
+        "pc": 20069,
+        "d": 40277,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "call",
+        "instance": 1,
+        "name": "b",
+        "depth": 2,
+        "slot": 40340,
+        "journal": 40404,
+        "step": 4374,
+        "pc": 20121,
+        "d": 40532,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "function_entry",
+        "instance": 1,
+        "name": "b",
+        "depth": 2,
+        "step": 4375,
+        "pc": 20170,
+        "d": 40533,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 98,
+        "step": 4396,
+        "pc": 20191,
+        "d": 40597,
+        "a": 98,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 2,
+        "byte": 10,
+        "step": 4417,
+        "pc": 20212,
+        "d": 40661,
+        "a": 10,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40340,
+        "step": 4439,
+        "pc": 20234,
+        "d": 40340,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 1,
+        "depth": 2,
+        "slot": 40340,
+        "step": 4440,
+        "pc": 20123,
+        "d": 40341,
+        "a": 20122,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 20122,
+            "journal": 9654
+          }
+        }
+      },
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4485,
+        "pc": 20168,
+        "d": 40084,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084,
+        "step": 4486,
+        "pc": 20050,
+        "d": 40085,
+        "a": 20049,
+        "slots": {
+          "1": {
+            "value": 20049,
+            "journal": 9484
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      },
+      {
+        "kind": "main_halt",
+        "step": 4503,
+        "pc": 20067,
+        "d": 40149,
+        "a": 29524,
+        "slots": {
+          "1": {
+            "value": 29524,
+            "journal": 29524
+          },
+          "2": {
+            "value": 29524,
+            "journal": 29524
+          }
+        }
+      }
+    ],
+    "jumps": [
+      {
+        "step": 4321,
+        "pc": 20048,
+        "d": 40276,
+        "stored": 20068,
+        "next_pc": 20069
+      },
+      {
+        "step": 4374,
+        "pc": 20121,
+        "d": 40532,
+        "stored": 20169,
+        "next_pc": 20170
+      },
+      {
+        "step": 4439,
+        "pc": 20234,
+        "d": 40340,
+        "stored": 20122,
+        "next_pc": 20123
+      },
+      {
+        "step": 4485,
+        "pc": 20168,
+        "d": 40084,
+        "stored": 20049,
+        "next_pc": 20050
+      }
+    ],
+    "final_slots": {
+      "1": {
+        "value": 29524,
+        "journal": 29524
+      },
+      "2": {
+        "value": 29524,
+        "journal": 29524
+      }
+    },
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 4096
+        },
+        {
+          "start": 4096,
+          "end": 4503
+        }
+      ],
+      "overlaps": 1,
+      "contiguous_steps": 4503,
+      "equivalent_runs": true
+    },
+    "digest": "e229ef6f104ffa0918ddfd97f21795dcd32c67740351b48d98ae9dd24ba1955e"
+  },
+  "module": {
+    "status": "HALTED",
+    "steps": 2966,
+    "output_hex": "612f62210a000a",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 2818,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 97,
+        "step": 2839,
+        "pc": 20021,
+        "d": 40085,
+        "a": 97,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 47,
+        "step": 2860,
+        "pc": 20042,
+        "d": 40149,
+        "a": 47,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 98,
+        "step": 2881,
+        "pc": 20063,
+        "d": 40213,
+        "a": 98,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 1,
+        "byte": 33,
+        "step": 2902,
+        "pc": 20084,
+        "d": 40277,
+        "a": 33,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 3,
+        "column": 1,
+        "byte": 10,
+        "step": 2923,
+        "pc": 20105,
+        "d": 40341,
+        "a": 10,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 1,
+        "byte": 0,
+        "step": 2944,
+        "pc": 20126,
+        "d": 40405,
+        "a": 0,
+        "slots": {}
+      },
+      {
+        "kind": "print",
+        "line": 4,
+        "column": 1,
+        "byte": 10,
+        "step": 2965,
+        "pc": 20147,
+        "d": 40341,
+        "a": 10,
+        "slots": {}
+      },
+      {
+        "kind": "main_halt",
+        "step": 2966,
+        "pc": 20148,
+        "d": 40342,
+        "a": 10,
+        "slots": {}
+      }
+    ],
+    "jumps": [],
+    "final_slots": {},
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 2966
+        }
+      ],
+      "overlaps": 0,
+      "contiguous_steps": 2966,
+      "equivalent_runs": true
+    },
+    "digest": "11a79b262e65cb2113ad2256b31b6c7bf77c88c1c33f9eb12892cd012d9e9929"
+  },
+  "nothing": {
+    "status": "HALTED",
+    "steps": 1632,
+    "output_hex": "",
+    "events": [
+      {
+        "kind": "main_entry",
+        "step": 1632,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {}
+      },
+      {
+        "kind": "main_halt",
+        "step": 1632,
+        "pc": 20000,
+        "d": 58001,
+        "a": 57999,
+        "slots": {}
+      }
+    ],
+    "jumps": [],
+    "final_slots": {},
+    "compiled_code_visits_max": 1,
+    "capture": {
+      "windows": [
+        {
+          "start": 1,
+          "end": 1632
+        }
+      ],
+      "overlaps": 0,
+      "contiguous_steps": 1632,
+      "equivalent_runs": true
+    },
+    "digest": "90c6fdbec7e243e8c617af4877063cc35bb9e6e1c7f41023837f0033a305fcbb"
+  }
+}

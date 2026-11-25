@@ -1,0 +1,2070 @@
+{
+  "positive": {
+    "status": "HALTED",
+    "steps": 4474,
+    "output_hex": "585858585858",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 4241,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4249,
+        "pc": 38434,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 70,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4254,
+        "pc": 38440,
+        "d": 41005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4260,
+        "pc": 38434,
+        "d": 41000,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4268,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4272,
+        "pc": 38131,
+        "d": 44009,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4276,
+        "pc": 38318,
+        "d": 44013,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4284,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 74,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4289,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4295,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4303,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4307,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4320,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4328,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4333,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4339,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4347,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4351,
+        "pc": 38131,
+        "d": 44009,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4355,
+        "pc": 38318,
+        "d": 44013,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4363,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 74,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4368,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4374,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4382,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4386,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4399,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4407,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4412,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4418,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4426,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4430,
+        "pc": 38131,
+        "d": 44009,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4434,
+        "pc": 38318,
+        "d": 44013,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4442,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 74,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4447,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4453,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4461,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4465,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      }
+    ],
+    "clocks": [
+      {
+        "step": 4237,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 4316,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4395,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4474,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "mutations": [
+      {
+        "step": 4249,
+        "pc": 38434,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 4260,
+        "pc": 38434,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 4284,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4295,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4328,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4339,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4363,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4374,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4407,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4418,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4442,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4453,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      }
+    ],
+    "depths": [
+      {
+        "step": 4241,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4249,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4254,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4260,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4268,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4272,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4276,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4284,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4289,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4295,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4303,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4307,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4320,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4328,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4333,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4339,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4347,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4351,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4355,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4363,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4368,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4374,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4382,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4386,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4399,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4407,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4412,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4418,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4426,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4430,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4434,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4442,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4447,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4453,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4461,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4465,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [],
+    "site_events": [
+      {
+        "step": 4249,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4260,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4284,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4295,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4328,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4339,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4363,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4374,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4407,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4418,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4442,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4453,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "capture": {
+      "prefix_range": [
+        1,
+        4096
+      ],
+      "suffix_range": [
+        379,
+        4474
+      ],
+      "overlap_events": 3718,
+      "equivalent_runs": true,
+      "contiguous_steps": 4474
+    },
+    "all_events_retained": true,
+    "digest": "f9572b0ee179a0dcd68528d51b3813313397a76067d2cc6fe8598cbe2535a935"
+  },
+  "inner_misselected": {
+    "status": "HALTED",
+    "steps": 4318,
+    "output_hex": "fc58fc58fc58",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 4163,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4169,
+        "pc": 38434,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4177,
+        "pc": 38534,
+        "d": 44005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4181,
+        "pc": 38131,
+        "d": 44009,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4185,
+        "pc": 38318,
+        "d": 44013,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4191,
+        "pc": 38434,
+        "d": 41000,
+        "a": 17916,
+        "fo": 74,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4199,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4203,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4216,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4222,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4230,
+        "pc": 38534,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4234,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4238,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4244,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4252,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4256,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4269,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4275,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4283,
+        "pc": 38534,
+        "d": 44005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_return_A",
+        "step": 4287,
+        "pc": 38131,
+        "d": 44009,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4291,
+        "pc": 38318,
+        "d": 44013,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4297,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 74,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4305,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4309,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      }
+    ],
+    "clocks": [
+      {
+        "step": 4159,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 4212,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4265,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4318,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "mutations": [
+      {
+        "step": 4169,
+        "pc": 38434,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 4191,
+        "pc": 38434,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 4222,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4244,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4275,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4297,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      }
+    ],
+    "depths": [
+      {
+        "step": 4163,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4169,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4177,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4181,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4185,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4191,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4199,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4203,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4216,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4222,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4230,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4234,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4238,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4244,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4252,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4256,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4269,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4275,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4283,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4287,
+        "kind": "outer_return_A",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4291,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4297,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4305,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4309,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [],
+    "site_events": [
+      {
+        "step": 4169,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4191,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4222,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4244,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4275,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4297,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "capture": {
+      "prefix_range": [
+        1,
+        4096
+      ],
+      "suffix_range": [
+        223,
+        4318
+      ],
+      "overlap_events": 3874,
+      "equivalent_runs": true,
+      "contiguous_steps": 4318
+    },
+    "all_events_retained": true,
+    "digest": "6a6516433523043dda72a058325a23241a20e1bd1a71a9486760ce027ba9087e"
+  },
+  "outer_clobber": {
+    "status": "HALTED",
+    "steps": 4413,
+    "output_hex": "585858",
+    "events": [
+      {
+        "kind": "outer_entry",
+        "step": 4285,
+        "pc": 38318,
+        "d": 45005,
+        "a": 55999,
+        "fo": 70,
+        "fi": 74,
+        "value": 12345
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4293,
+        "pc": 38434,
+        "d": 41000,
+        "a": 55999,
+        "fo": 70,
+        "fi": 70,
+        "value": 12345
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4298,
+        "pc": 38440,
+        "d": 41005,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4304,
+        "pc": 38434,
+        "d": 41000,
+        "a": 17916,
+        "fo": 70,
+        "fi": 74,
+        "value": 17916
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4312,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4316,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4329,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4337,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4342,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4348,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4356,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4360,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_entry",
+        "step": 4373,
+        "pc": 38318,
+        "d": 45005,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4381,
+        "pc": 38434,
+        "d": 41000,
+        "a": 29272,
+        "fo": 70,
+        "fi": 70,
+        "value": 29272
+      },
+      {
+        "kind": "inner_return_X",
+        "step": 4386,
+        "pc": 38440,
+        "d": 41005,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_entry",
+        "step": 4392,
+        "pc": 38434,
+        "d": 41000,
+        "a": 252,
+        "fo": 70,
+        "fi": 74,
+        "value": 252
+      },
+      {
+        "kind": "inner_return_Y",
+        "step": 4400,
+        "pc": 38534,
+        "d": 44005,
+        "a": 29272,
+        "fo": 74,
+        "fi": 74,
+        "value": 29272
+      },
+      {
+        "kind": "outer_return_B",
+        "step": 4404,
+        "pc": 38131,
+        "d": 42001,
+        "a": 29272,
+        "fo": 70,
+        "fi": 74,
+        "value": 29272
+      }
+    ],
+    "clocks": [
+      {
+        "step": 4281,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 12345
+      },
+      {
+        "step": 4325,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4369,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      },
+      {
+        "step": 4413,
+        "fo": 74,
+        "fi": 74,
+        "mix": 74,
+        "value": 29272
+      }
+    ],
+    "mutations": [
+      {
+        "step": 4293,
+        "pc": 38434,
+        "before": 12345,
+        "after": 17916
+      },
+      {
+        "step": 4304,
+        "pc": 38434,
+        "before": 17916,
+        "after": 29272
+      },
+      {
+        "step": 4337,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4348,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      },
+      {
+        "step": 4381,
+        "pc": 38434,
+        "before": 29272,
+        "after": 252
+      },
+      {
+        "step": 4392,
+        "pc": 38434,
+        "before": 252,
+        "after": 29272
+      }
+    ],
+    "depths": [
+      {
+        "step": 4285,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4293,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4298,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4304,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4312,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4316,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4329,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4337,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4342,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4348,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4356,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4360,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      },
+      {
+        "step": 4373,
+        "kind": "outer_entry",
+        "from": 0,
+        "to": 1
+      },
+      {
+        "step": 4381,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4386,
+        "kind": "inner_return_X",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4392,
+        "kind": "inner_entry",
+        "from": 1,
+        "to": 2
+      },
+      {
+        "step": 4400,
+        "kind": "inner_return_Y",
+        "from": 2,
+        "to": 1
+      },
+      {
+        "step": 4404,
+        "kind": "outer_return_B",
+        "from": 1,
+        "to": 0
+      }
+    ],
+    "inner_outer_writes": [
+      {
+        "step": 4310,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      },
+      {
+        "step": 4354,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      },
+      {
+        "step": 4398,
+        "position": 38130,
+        "value_before": 70,
+        "value_after": 74
+      }
+    ],
+    "site_events": [
+      {
+        "step": 4293,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 55999,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 12345,
+            "value_after": 17916
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4304,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 17916,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 17916,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4337,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4348,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4381,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 29272,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 29272,
+            "value_after": 252
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      },
+      {
+        "step": 4392,
+        "position": 38434,
+        "opcode": 62,
+        "opcode_name": "crazy",
+        "a": 252,
+        "d": 41000,
+        "writes": [
+          {
+            "position": 41000,
+            "value_before": 252,
+            "value_after": 29272
+          },
+          {
+            "position": 38434,
+            "value_before": 74,
+            "value_after": 70
+          }
+        ]
+      }
+    ],
+    "capture": {
+      "prefix_range": [
+        1,
+        4096
+      ],
+      "suffix_range": [
+        318,
+        4413
+      ],
+      "overlap_events": 3779,
+      "equivalent_runs": true,
+      "contiguous_steps": 4413
+    },
+    "all_events_retained": true,
+    "digest": "622eb33f1c9a75ad571c890fe0c83aeb4d1807b67f1711bfb5751960de0f9bc6"
+  }
+}

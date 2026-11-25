@@ -1,0 +1,153 @@
+{
+  "schema": "python_literal_classic_v0",
+  "source_sha256": "5d34ae3aedf288fc80dbde70bea463c826306987fdd8ff4b2c524ec09112ecb1",
+  "strategy": "one-shot-call-instances",
+  "source_length": 39932,
+  "preamble_end": 3677,
+  "main_entry": 20000,
+  "expanded_output_bytes": 4,
+  "instances": [
+    {
+      "id": 0,
+      "name": "f",
+      "depth": 1,
+      "line": 5,
+      "column": 1,
+      "entry": 20069,
+      "end": 20176,
+      "return_pc": 20175,
+      "call_pc": 20048,
+      "continuation": 20050,
+      "return_source": 40212,
+      "call_pointer": 40276,
+      "slot": 40084,
+      "journal": 40148
+    }
+  ],
+  "slots": {
+    "1": {
+      "slot": 40084,
+      "journal": 40148
+    }
+  },
+  "markers": {
+    "20000": [
+      {
+        "kind": "main_entry"
+      }
+    ],
+    "20048": [
+      {
+        "kind": "call",
+        "instance": 0,
+        "name": "f",
+        "depth": 1,
+        "slot": 40084,
+        "journal": 40148
+      }
+    ],
+    "20050": [
+      {
+        "kind": "continuation",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084
+      }
+    ],
+    "20067": [
+      {
+        "kind": "main_halt"
+      }
+    ],
+    "20069": [
+      {
+        "kind": "function_entry",
+        "instance": 0,
+        "name": "f",
+        "depth": 1
+      }
+    ],
+    "20090": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 117
+      }
+    ],
+    "20111": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 110
+      }
+    ],
+    "20132": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 111
+      }
+    ],
+    "20153": [
+      {
+        "kind": "print",
+        "line": 2,
+        "column": 2,
+        "byte": 10
+      }
+    ],
+    "20175": [
+      {
+        "kind": "return",
+        "instance": 0,
+        "depth": 1,
+        "slot": 40084
+      }
+    ]
+  },
+  "cells": {
+    "58000": {
+      "name": "handoff",
+      "initial": 19999
+    },
+    "40020": {
+      "name": "C1",
+      "initial": 29524
+    },
+    "40084": {
+      "name": "return_slot_1",
+      "initial": 29524
+    },
+    "40148": {
+      "name": "journal_1",
+      "initial": 29524
+    },
+    "40212": {
+      "name": "return_address_0",
+      "initial": 20049
+    },
+    "40276": {
+      "name": "call_address_0",
+      "initial": 20068
+    },
+    "40340": {
+      "name": "byte_117",
+      "initial": 117
+    },
+    "40404": {
+      "name": "byte_110",
+      "initial": 110
+    },
+    "40468": {
+      "name": "byte_111",
+      "initial": 111
+    },
+    "40532": {
+      "name": "byte_10",
+      "initial": 10
+    }
+  }
+}

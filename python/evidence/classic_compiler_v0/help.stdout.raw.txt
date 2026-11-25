@@ -1,0 +1,15 @@
+usage: classic_compiler.py [-h] -o OUTPUT [--map MAP_PATH] [--run]
+                           [--runner RUNNER]
+                           source
+
+Python literal (def/print/llamadas) → Malbolge Classic autónomo
+
+positional arguments:
+  source
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+  --map MAP_PATH        guardar mapa de instancias y CALL/RET
+  --run                 ejecutar la imagen con Olmstead después de compilar
+  --runner RUNNER       ruta alternativa al intérprete Classic

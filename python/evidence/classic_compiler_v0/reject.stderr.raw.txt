@@ -1,0 +1,1 @@
+python/examples/saludar.py:1:1: error: la salida ya existe; elige una ruta nueva: /tmp/classic62-demo.Xd8lzg/saludar.mb

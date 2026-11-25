@@ -1,0 +1,67 @@
+{
+  "path_base": "development_directory",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run04"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "probe.py",
+        "run05"
+      ],
+      "environment": {
+        "MALBOLGE_MB_DATABASE_ROOT": "ISyCo Git/MALBOLGE-MB-DATABASE"
+      },
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run04"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "node",
+        "rea.mjs",
+        "rea/dist",
+        "run05"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "reproduce_failure.py",
+        "failure_replay"
+      ],
+      "exit_status": 0,
+      "expected_behavior": "frozen; JMP tail changed"
+    }
+  ],
+  "historical_attempt": {
+    "run": "run01",
+    "probe_exit_status": 1,
+    "trace_status": "frozen",
+    "steps": 3709
+  },
+  "intermediate_corrected_runs": [
+    "run02",
+    "run03"
+  ]
+}
