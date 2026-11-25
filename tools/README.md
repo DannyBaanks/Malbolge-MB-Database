@@ -14,12 +14,17 @@ Build, run, and test utilities.
 - `fixtures/hello_world_40.mb` — known-vector Classic program
   (output "Hello World!" at 40 steps, HALTED; cross-verified against the
   C engine and the Python oracle).
+- `b2t/` — `b2t.py`, binary⇄ternary cell codec (B2T0): packs a byte stream
+  into 15-bit groups, each into one 10-trit Malbolge cell (`2^15 < 3^10`),
+  with a strict container (bit length, CRC-32, reserved-cell rejection);
+  `test_b2t.py` covers the full round trip and the whole 32,768-value payload space.
 
 ## How to use
 
 ```
 py powershell tools/runner_doctor.ps1    # verify runners (fast, no build)
 py powershell tools/bootstrap_runners.ps1 # rebuild + hash-check runners
+python3 tools/b2t/b2t.py inspect input.b2t # show cells/metadata (encode/decode too)
 ```
 
 ## Planned
