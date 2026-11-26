@@ -23,6 +23,11 @@ Contenedor BLC1:
     magic 'BLC1'(4) | version(1)=1 | nonce(8) | data_len(4 BE) |
     crc32_plain(4 BE) | payload_len(2 BE) | payload (base-94 ASCII 33..126)
 
+v0.5 (orquestacion por lotes): la maquina incrementa todo el stream en una
+pasada; en la pasada p viajan juntos todos los bytes con k_i >= p, asi que
+un mensaje cuesta max(k) ~ 255 pasadas (no sum(k)). Medido: ~2,4 ms/byte
+asintotico con Zigbolge.
+
 CLI:
     bolgecrypt.py cipher   --key HEX --in F --out F.bc1
     bolgecrypt.py decipher --key HEX --in F.bc1 --out F
@@ -80,7 +85,10 @@ class Runner:
     def __init__(self, path: str):
         self.path = path
 
-    def run(self, image: pathlib.Path, stdin_bytes: bytes, budget: int = 2_000_000):
+    def run(self, image: pathlib.Path, stdin_bytes: bytes, budget: int | None = None):
+        # la maquina de incremento gasta ~60k de init + ~1,9k pasos/byte
+        if budget is None:
+            budget = 150_000 + 7_000 * len(stdin_bytes)
         t0 = time.perf_counter()
         p = subprocess.run(
             [self.path, str(image), str(budget)],
@@ -167,22 +175,40 @@ def apply_plus1(runner: Runner, image: pathlib.Path, byte: int, passes: int, sta
     return b
 
 
+def _stream_batched(runner, image, data: bytes, ks: list[int], stats: dict) -> bytes:
+    """v0.5: suma modular por LOTES. La maquina incrementa todo el stream en
+    una pasada; en la pasada p viajan juntos todos los bytes con k_i >= p.
+    Coste: max(k) procesos (no sum(k)). La aritmetica sigue siendo 100%
+    Malbolge: cada +1 de cada byte lo hace la maquina."""
+    vals = list(data)
+    rem = list(ks)
+    for _p in range(1, max(rem) + 1 if rem else 0):
+        idx = [i for i, r in enumerate(rem) if r > 0]
+        if not idx:
+            break
+        out, steps, status, wall = runner.run(image, bytes(vals[i] for i in idx))
+        if len(out) != len(idx) or (status not in ("HALTED", "")):
+            raise RuntimeError(f"maquina devolvio {len(out)} bytes para {len(idx)} (status={status})")
+        for j, i in enumerate(idx):
+            vals[i] = out[j]
+            rem[i] -= 1
+        stats["passes"] += 1
+        stats["steps"] += max(steps, 0)
+        stats["wall"] += wall
+    return bytes(vals)
+
+
 def cipher(runner, image, data: bytes, key: bytes, nonce: bytes, stats=None):
     stats = stats or {"passes": 0, "steps": 0, "wall": 0.0}
     ks = keystream(key, nonce, len(data))
-    out = bytearray()
-    for x, k in zip(data, ks):
-        out.append(apply_plus1(runner, image, x, k, stats))
-    return bytes(out), stats
+    return _stream_batched(runner, image, data, ks, stats), stats
 
 
 def decipher(runner, image, cipher_bytes: bytes, key: bytes, nonce: bytes, stats=None):
     stats = stats or {"passes": 0, "steps": 0, "wall": 0.0}
     ks = keystream(key, nonce, len(cipher_bytes))
-    out = bytearray()
-    for x, k in zip(cipher_bytes, ks):
-        out.append(apply_plus1(runner, image, x, (256 - k) % 256, stats))
-    return bytes(out), stats
+    comp = [(256 - k) % 256 for k in ks]
+    return _stream_batched(runner, image, cipher_bytes, comp, stats), stats
 
 
 # ---------------- contenedor ----------------
