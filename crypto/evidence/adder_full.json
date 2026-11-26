@@ -1,0 +1,43 @@
+{
+  "claim_status": "FAILED",
+  "milestone": "M2 kit sumador/restador a nivel de gates",
+  "gadgets": {
+    "B": {
+      "found": true,
+      "expr": "crazy(crazy(x,TWO),crazy(crazy(0,crazy(TWO,y)),crazy(x,y)))"
+    },
+    "P": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(y,x),crazy(crazy(TWO,crazy(crazy(y,x),y)),crazy(x,x))),crazy(x,0)),crazy(y,y))"
+    },
+    "G": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(0,x),y),crazy(x,0)),crazy(y,0))"
+    },
+    "DS": {
+      "found": true,
+      "expr": "crazy(crazy(y,crazy(TWO,x)),crazy(crazy(x,TWO),crazy(crazy(crazy(crazy(crazy(x,y),crazy(TWO,crazy(y,crazy(0,x)))),crazy(0,x)),crazy(x,ONE)),crazy(ONE,x))))"
+    },
+    "Q": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(x,TWO),crazy(crazy(crazy(crazy(x,x),crazy(TWO,crazy(y,0))),crazy(y,x)),crazy(x,ONE))),crazy(y,0)),crazy(crazy(x,x),0))"
+    },
+    "D": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(y,TWO),crazy(crazy(y,x),crazy(TWO,crazy(crazy(crazy(TWO,x),y),0)))),crazy(crazy(x,y),y)),crazy(0,crazy(y,crazy(x,x))))"
+    }
+  },
+  "tables_reached": 19683,
+  "cases": {
+    "add256": 65536,
+    "sub256": 65536,
+    "add729": 531441,
+    "sub729": 531441,
+    "failures": 265356
+  },
+  "carry_ripples": {
+    "up_steps": 5,
+    "down_steps": 5
+  },
+  "source_sha256": "50bb767bf3c2cc6680f22755d064bd829bf78711e8b4a9404e95906441e3ee1e"
+}

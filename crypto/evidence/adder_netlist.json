@@ -1,0 +1,86 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "milestone": "M2 host netlist add/sub (bolge-crypt-v0)",
+  "domain": "3^6=729",
+  "cases": {
+    "add": 531441,
+    "sub": 531441,
+    "failures": 0
+  },
+  "max_gate_ops_per_add": 24,
+  "composition": "positional increments of the verified +1 circuit (increment_circuit_loop_v1), <= 12 applications, rotations by k",
+  "source_sha256": "ffada91ba237f6974dc4eaee5ba44262abf76f365ce52baba0449ebc157da666",
+  "rows_sample": [
+    {
+      "x": 0,
+      "y": 0,
+      "got": 0,
+      "exp": 0,
+      "ops": 0
+    },
+    {
+      "x": 0,
+      "y": 89,
+      "got": 89,
+      "exp": 89,
+      "ops": 11
+    },
+    {
+      "x": 0,
+      "y": 178,
+      "got": 178,
+      "exp": 178,
+      "ops": 14
+    },
+    {
+      "x": 0,
+      "y": 267,
+      "got": 267,
+      "exp": 267,
+      "ops": 11
+    },
+    {
+      "x": 0,
+      "y": 356,
+      "got": 356,
+      "exp": 356,
+      "ops": 16
+    },
+    {
+      "x": 0,
+      "y": 445,
+      "got": 445,
+      "exp": 445,
+      "ops": 19
+    },
+    {
+      "x": 0,
+      "y": 534,
+      "got": 534,
+      "exp": 534,
+      "ops": 14
+    },
+    {
+      "x": 0,
+      "y": 623,
+      "got": 623,
+      "exp": 623,
+      "ops": 15
+    },
+    {
+      "x": 0,
+      "y": 712,
+      "got": 712,
+      "exp": 712,
+      "ops": 18
+    },
+    {
+      "x": 97,
+      "y": 0,
+      "got": 97,
+      "exp": 97,
+      "ops": 0
+    }
+  ],
+  "note": "host composition only; HeLL lowering and image emission are M2-image"
+}
