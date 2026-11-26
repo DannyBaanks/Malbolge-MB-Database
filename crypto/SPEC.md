@@ -114,7 +114,32 @@ byte, ~64,5k pasos por pasada incluyendo init); ~0,2 s/byte con Zigbolge
 (667M pasos/s), ~30 s/byte con el Olmstead original (~31k pasos/s).
 Mensajes pequenos (credenciales, tokens): un bloque de 64 B tarda ~13 s.
 
-## 7. M6 — siguiente hito (maquina propia, cuando haya presupuesto)
+## 6b. v0.5 — orquestacion por lotes (desplegado, medido)
+
+El cuello de v0 no era la VM: era el spawn de proceso por pasada. La maquina
+incrementa TODO un stream por pasada, asi que en la pasada p viajan juntos
+todos los bytes con k_i >= p: coste max(k) procesos en vez de sum(k).
+La aritmetica sigue siendo 100% Malbolge (cada +1 lo hace la maquina).
+
+Medido (Zigbolge, ~667M pasos/s):
+
+| Pasos de la maquina | valor |
+|---|---|
+| init por ejecucion | ~59k pasos |
+| por byte de stream | ~5,5k pasos |
+| pasadas por mensaje | max(k) ~ 255 (independiente de N) |
+
+| Mensaje | wall | ms/byte |
+|---|---|---|
+| 64 B | 0,5 s | 8,6 |
+| 256 B | 1,0 s | 4,0 |
+| 1024 B | 2,8 s | 2,7 |
+| 4096 B | 9,7 s | 2,4 (asintota: spawn + VM) |
+
+Correcto y round-trip verificado en todos los tamanos; presupuesto del runner
+escalado a 150k + 7k·N pasos (la maquina TIMEOUTea con presupuesto fijo).
+
+## 7. M6 — siguiente hito (maquina propia, LOOP con keystream crazy-chain)
 
 Con el emisor listo y el netlist verificado (adder_netlist/adder_full/
 gadget_min + el emisor machine_hell/machine_compile), lo que falta para la

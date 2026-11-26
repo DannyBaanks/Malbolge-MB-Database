@@ -94,6 +94,20 @@ def main():
     g05 = all(33 <= c <= 126 for c in payload)
     print(f"G05 payload ASCII 33..126: {'OK' if g05 else 'FALLO'} ({len(payload)} chars)")
 
+    # ---- v0.5: lote de 64 bytes (round-trip + formula) ----
+    big = bytes((i * 7 + 3) % 256 for i in range(64))
+    ks_big = B.keystream(key, nonce, len(big))
+    expect_big = bytes((x + k) % 256 for x, k in zip(big, ks_big))
+    stats_big = {"passes": 0, "steps": 0, "wall": 0.0}
+    got_big, stats_big = B.cipher(primary, image, big, key, nonce, stats_big)
+    big_ok = got_big == expect_big
+    container_big = B.pack(primary, image, key, nonce, big)
+    back_big, _ = B.unpack(primary, image, container_big, key)
+    big_rt = back_big == big
+    print(f"v0.5 lote 64B: {'OK' if big_ok and big_rt else 'FALLO'} "
+          f"(pasadas={stats_big['passes']} wall={stats_big['wall']:.1f}s "
+          f"=> {stats_big['wall']/64*1000:.0f} ms/byte)")
+
     # ---- G07: pasos por byte ----
     n_bytes = max(1, len(data))
     pasos_por_byte = stats["steps"] / n_bytes
@@ -109,10 +123,14 @@ def main():
         wrong_rejected = True
     print(f"clave incorrecta rechazada: {'OK' if wrong_rejected else 'FALLO'}")
 
-    ok = ref_ok and rt_ok and all256_ok and g05 and wrong_rejected and all(p["match"] for p in parity)
+    ok = (ref_ok and rt_ok and all256_ok and g05 and wrong_rejected and big_ok and big_rt
+          and all(p["match"] for p in parity))
     results = {
         "claim_status": "DEMONSTRATED" if ok else "FAILED",
-        "milestone": "BOLGE-CRYPT v0 (bolge-crypt-v0)",
+        "milestone": "BOLGE-CRYPT v0.5 (orquestacion batched)",
+        "v05_batch_64b": {"formula_ok": big_ok, "round_trip_ok": big_rt,
+                          "pasadas": stats_big["passes"], "wall_s": round(stats_big["wall"], 2),
+                          "ms_per_byte": round(stats_big["wall"] / 64 * 1000, 1)},
         "machine": {
             "image": str(image.relative_to(here.parents[0])),
             "image_sha256": hashlib.sha256(image.read_bytes()).hexdigest(),
@@ -138,7 +156,7 @@ def main():
         raise SystemExit(3)
     ev = here / "evidence"
     ev.mkdir(exist_ok=True)
-    out = pathlib.Path(args.out) if args.out else ev / "bolgecrypt_v0.json"
+    out = pathlib.Path(args.out) if args.out else ev / "bolgecrypt_v0_5.json"
     if args.check_only:
         if not out.exists():
             raise SystemExit(f"check-only sin evidencia comprometida: {out}")
@@ -156,6 +174,8 @@ def main():
                         problemas.append(f"gate {k}.{kk}: comprometido={cv.get(kk)} vs actual={vv}")
         if committed.get("wrong_key_rejected") is not results["wrong_key_rejected"]:
             problemas.append("wrong_key_rejected difiere")
+        if not committed.get("v05_batch_64b", {}).get("formula_ok", False):
+            problemas.append("v05_batch_64b ausente o no OK en la evidencia comprometida")
         if problemas:
             print("EVIDENCIA COMPROMETIDA NO COINCIDE:")
             for pr in problemas:

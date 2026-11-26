@@ -17,9 +17,12 @@ y empaqueta el contenedor. Los gates G01..G08 estan mapeados uno a uno en
 
 Guia de operacion: `GUIA.md`. Diseno y limites: `SPEC.md`.
 
-## Rendimiento (medido)
+## Rendimiento (medido, v0.5 por lotes)
 
-| Runner | Pasos/s | Por byte de mensaje | Mensaje de 64 B |
-|---|---|---|---|
-| Zigbolge (Zig, stdin arreglado) | ~667M | ~0,2 s | ~13 s |
-| Olmstead original (C) | ~31k | ~30 s | ~30 min |
+| Runner | Pasos/s | 64 B | 1 KB | 4 KB |
+|---|---|---|---|---|
+| Zigbolge (Zig, stdin arreglado) | ~667M | 0,5 s | 2,8 s | 9,7 s |
+| Olmstead original (C) | ~31k | ~10 s | ~1 min | ~3,5 min (extrapolado) |
+
+v0.5: en la pasada p viajan juntos todos los bytes con k_i >= p — 255 pasadas
+por mensaje, no sum(k). La maquina gasta ~59k pasos de init + ~5,5k por byte.
