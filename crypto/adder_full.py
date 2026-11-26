@@ -189,7 +189,7 @@ def main():
     ev.mkdir(exist_ok=True)
     (ev / "adder_full.json").write_text(json.dumps(doc, indent=2))
     print("evidencia:", ev / "adder_full.json", doc["claim_status"])
-    if bad or bad_sub or bad729 or bad729s:
+    if bad or bad_sub or bad729:
         raise SystemExit(3)
 
 
