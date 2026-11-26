@@ -1,0 +1,18 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "milestone": "M6 circuitos inc/dec del loop (host)",
+  "cases": {
+    "inc_0_510": 511,
+    "dec_1_728": 728,
+    "inc_dec_identity": 728,
+    "failures": 0
+  },
+  "loop_key_property": "el loop comprueba cnt==0 (via neg(cnt)==59048 con la maquinaria EOF ya tuneada) ANTES de decrementar: dec nunca se aplica a 0. dec = neg o inc o neg con el inc VERIFICADO del repo.",
+  "chain": {
+    "reproducible": true,
+    "distinct_in_16": 16,
+    "advance": "c = crazy(c, ONE) (involucion); ks = crazy(ks, c) in-place",
+    "note": "c=rot(c); ks=crazy(ks,c) \u2014 experimental, data-independiente"
+  },
+  "source_sha256": "154a3f836c0f35f5820cf4437245bb49d31b8e4eb4d1e3eb4bf086c5463d866b"
+}
