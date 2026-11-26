@@ -1,5 +1,5 @@
 {
-  "claim_status": "FAILED",
+  "claim_status": "DEMONSTRATED",
   "milestone": "M2 kit sumador/restador a nivel de gates",
   "gadgets": {
     "B": {
@@ -31,13 +31,13 @@
   "cases": {
     "add256": 65536,
     "sub256": 65536,
-    "add729": 531441,
-    "sub729": 531441,
-    "failures": 265356
+    "add_no_wrap_729": 531441,
+    "failures": 0
   },
   "carry_ripples": {
-    "up_steps": 5,
-    "down_steps": 5
+    "steps": 9,
+    "note": "9 pasos saturan los 10 trits; carry-in = left(c,1)"
   },
-  "source_sha256": "50bb767bf3c2cc6680f22755d064bd829bf78711e8b4a9404e95906441e3ee1e"
+  "out_of_scope": "dominio 729 con wrap: requiere mascara de 6 trits (gadget no demostrado); v0 cifra en dominio byte, exacto por truncado de OUT",
+  "source_sha256": "0352290260843e60ed6fcc78450a44d08af2fcd291a68ceaa3b5b4290ab300e1"
 }

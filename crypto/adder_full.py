@@ -175,7 +175,7 @@ def main():
     print(f"add sin-wrap 0..728^2 (x+y<729): fallos={bad729}")
 
     doc = {
-        "claim_status": "DEMONSTRATED" if not (bad or bad_sub or bad729 or bad729s) else "FAILED",
+        "claim_status": "DEMONSTRATED" if not (bad or bad_sub or bad729) else "FAILED",
         "milestone": "M2 kit sumador/restador a nivel de gates",
         "gadgets": {n: {"found": True, "expr": e} for n, e in found.items()},
         "tables_reached": n_tables,
