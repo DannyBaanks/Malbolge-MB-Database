@@ -1,0 +1,54 @@
+{
+  "claim_status": "MEASURED_WALL",
+  "milestone": "M6 maquina LOOP propia \u2014 muro completamente caracterizado",
+  "paths_measured": [
+    {
+      "path": "especializacion finita (netlist por posicion)",
+      "cells": 5397,
+      "gates": 140,
+      "veredicto": "instalador 287k ops vs ~51.5k de presupuesto"
+    },
+    {
+      "path": "maquina LOOP (cuerpo = netlist completo)",
+      "cells": 5457,
+      "gates": 140,
+      "veredicto": "identico: el loop no reduce el cuerpo; LMAO ensambla, instalador 291k ops"
+    },
+    {
+      "path": "barrido semillas del sintetizador (0,1,7,14,42,99,123,2024)",
+      "ops_range": [
+        286689,
+        288025
+      ],
+      "veredicto": "plano: ~53 ops/celda inherentes"
+    },
+    {
+      "path": "barrido parametros (direct_gap 60..300, borrow 0/1)",
+      "ops_range": [
+        291063,
+        293720
+      ],
+      "veredicto": "plano"
+    },
+    {
+      "path": "LMAO nativo sobre la maquina LOOP",
+      "veredicto": "OK ensambla; 'Memory usage conflict while generating initialization code' al inicializar"
+    }
+  ],
+  "budget": {
+    "cells_cap": -1001,
+    "basis": "presupuesto ~51.5k ops del instalador / ~53 ops por celda (medido en ambos layouts)"
+  },
+  "required_to_fit": "cuerpo <= ~45 gates (el cuerpo de la maquina de incremento verificada, que cabe con ~1090 celdas); la aritmet\u00e9tica general verificada cuesta 65-140 gates",
+  "artifacts_verified": {
+    "inc": "receta del repo verificada 0..510 (511 casos)",
+    "dec": "neg o inc o neg con el inc del repo: 728 casos 1..728 + identidad, 0 fallos",
+    "keystream_chain": "c=crazy(c,ONE) involucion; ks=crazy(ks,c) in-place; reproducible, 16 valores distintos en 16 pasos",
+    "loop_emitter": "machine_loop.py: autoverificacion simbolica OK (input 0..255 + EOF), LMAO ensambla, 5457 celdas"
+  },
+  "next_levers": [
+    "despacho EOF con bloques propios (recupera ~19k ops de presupuesto)",
+    "emisor con flags compartidos (mi emisor gasta 39 celdas/gate vs 22 del de referencia)",
+    "sumador de ancho byte (no palabra) si el dominio se restringe"
+  ]
+}

@@ -45,8 +45,10 @@ import sys
 import time
 import zlib
 
-MAGIC = b"BLC1"
-VERSION = 1
+MAGIC_V1 = b"BLC1"     # span implicito 256
+MAGIC_V2 = b"BLC2"     # lleva el span del keystream (1 byte)
+MAGIC = MAGIC_V2
+VERSION = 2
 NONCE_LEN = 8
 BASE = 94
 ASCII_LO = 33
@@ -59,7 +61,7 @@ DEFAULT_IMAGE = (
 
 
 # ---------------- keystream (experimental, documentado) ----------------
-def keystream_byte(key: bytes, nonce: bytes, index: int) -> int:
+def keystream_byte(key: bytes, nonce: bytes, index: int, span: int = 256) -> int:
     """SplitMix64 encadenado sobre semilla = SHA-256(key||nonce).
 
     Experimental: no es un PRNG auditado; la seguridad del sistema descansa
@@ -73,11 +75,11 @@ def keystream_byte(key: bytes, nonce: bytes, index: int) -> int:
     z = ((z ^ (z >> 30)) * 0xBF58476D1CE4E5B9) & 0xFFFFFFFFFFFFFFFF
     z = ((z ^ (z >> 27)) * 0x94D049BB133111EB) & 0xFFFFFFFFFFFFFFFF
     z = z ^ (z >> 31)
-    return z & 0xFF
+    return (z & 0xFF) % span
 
 
-def keystream(key: bytes, nonce: bytes, n: int) -> list[int]:
-    return [keystream_byte(key, nonce, i) for i in range(n)]
+def keystream(key: bytes, nonce: bytes, n: int, span: int = 256) -> list[int]:
+    return [keystream_byte(key, nonce, i, span) for i in range(n)]
 
 
 # ---------------- runner Malbolge ----------------
@@ -198,27 +200,28 @@ def _stream_batched(runner, image, data: bytes, ks: list[int], stats: dict) -> b
     return bytes(vals)
 
 
-def cipher(runner, image, data: bytes, key: bytes, nonce: bytes, stats=None):
+def cipher(runner, image, data: bytes, key: bytes, nonce: bytes, stats=None, span: int = 256):
     stats = stats or {"passes": 0, "steps": 0, "wall": 0.0}
-    ks = keystream(key, nonce, len(data))
+    ks = keystream(key, nonce, len(data), span)
     return _stream_batched(runner, image, data, ks, stats), stats
 
 
-def decipher(runner, image, cipher_bytes: bytes, key: bytes, nonce: bytes, stats=None):
+def decipher(runner, image, cipher_bytes: bytes, key: bytes, nonce: bytes, stats=None, span: int = 256):
     stats = stats or {"passes": 0, "steps": 0, "wall": 0.0}
-    ks = keystream(key, nonce, len(cipher_bytes))
+    ks = keystream(key, nonce, len(cipher_bytes), span)
     comp = [(256 - k) % 256 for k in ks]
     return _stream_batched(runner, image, cipher_bytes, comp, stats), stats
 
 
 # ---------------- contenedor ----------------
-def pack(runner, image, key: bytes, nonce: bytes, data: bytes) -> bytes:
-    cipher_bytes, _ = cipher(runner, image, data, key, nonce)
+def pack(runner, image, key: bytes, nonce: bytes, data: bytes, span: int = 256) -> bytes:
+    cipher_bytes, _ = cipher(runner, image, data, key, nonce, span=span)
     payload = b94_encode(cipher_bytes)
     hdr = bytearray()
-    hdr += MAGIC
+    hdr += MAGIC_V2
     hdr.append(VERSION)
     hdr += nonce
+    hdr.append(span - 1)          # 1..256 -> 0..255
     hdr += len(data).to_bytes(4, "big")
     hdr += (zlib.crc32(data) & 0xFFFFFFFF).to_bytes(4, "big")
     hdr += len(payload).to_bytes(2, "big")
@@ -226,19 +229,25 @@ def pack(runner, image, key: bytes, nonce: bytes, data: bytes) -> bytes:
 
 
 def unpack(runner, image, container: bytes, key: bytes):
-    if container[:4] != MAGIC:
+    if container[:4] not in (MAGIC_V1, MAGIC_V2):
         raise ValueError("magic invalido")
-    if container[4] != VERSION:
+    if container[4] != VERSION and container[:4] != MAGIC_V1:
         raise ValueError("version invalida")
     nonce = container[5:13]
-    data_len = int.from_bytes(container[13:17], "big")
-    crc = int.from_bytes(container[17:21], "big")
-    payload_len = int.from_bytes(container[21:23], "big")
-    payload = container[23:23 + payload_len]
+    if container[:4] == MAGIC_V2:
+        span = container[13] + 1
+        rest = container[14:]
+    else:
+        span = 256
+        rest = container[13:]
+    data_len = int.from_bytes(rest[0:4], "big")
+    crc = int.from_bytes(rest[4:8], "big")
+    payload_len = int.from_bytes(rest[8:10], "big")
+    payload = rest[10:10 + payload_len]
     if len(payload) != payload_len:
         raise ValueError("payload truncado")
     cipher_bytes = b94_decode(payload)
-    data, _ = decipher(runner, image, cipher_bytes, key, nonce)
+    data, _ = decipher(runner, image, cipher_bytes, key, nonce, span=span)
     if len(data) != data_len:
         raise ValueError("longitud no cuadra")
     if (zlib.crc32(data) & 0xFFFFFFFF) != crc:
@@ -267,7 +276,7 @@ def main(argv=None):
         key = bytes.fromhex(args.key)
         nonce = bytes.fromhex(args.nonce) if args.nonce else os.urandom(NONCE_LEN)
         data = pathlib.Path(args.inp).read_bytes()
-        container = pack(runner, image, key, nonce, data)
+        container = pack(runner, image, key, nonce, data, span=args.span)
         pathlib.Path(args.out).write_bytes(container)
         print(f"cifrado: {len(data)} bytes -> contenedor {len(container)} bytes (nonce {nonce.hex()})")
     else:

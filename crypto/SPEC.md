@@ -139,7 +139,45 @@ Medido (Zigbolge, ~667M pasos/s):
 Correcto y round-trip verificado en todos los tamanos; presupuesto del runner
 escalado a 150k + 7k·N pasos (la maquina TIMEOUTea con presupuesto fijo).
 
-## 7. M6 — siguiente hito (maquina propia, LOOP con keystream crazy-chain)
+## 6c. v0.6 — span del keystream acotado (opcional, medido)
+
+El numero de pasadas de un mensaje es max(k). Con el keystream acotado a un
+span S, las pasadas caen a S-1: el trade-off (documentado, opt-in via
+`--span`) es mas filtraje estadistico por byte a cambio de velocidad; el
+modelo de seguridad no cambia (sigue descansando en el PRNG + la clave).
+
+| span | ms/byte (256 B) | pasadas |
+|---|---|---|
+| 256 (default) | 4,06 | 255 |
+| 32 | 0,49 | 31 |
+| 16 | 0,24 | 15 |
+
+Contenedor BLC2 (lleva el byte de span; BLC1 se sigue leyendo como span=256).
+
+## 7. M6 — MAQUINA LOOP propia: muro completamente caracterizado
+
+| Ruta medida | Resultado |
+|---|---|
+| Especializacion finita (netlist por posicion) | 5.397 celdas; instalador 287k ops vs ~51,5k |
+| Maquina LOOP (mismo cuerpo de netlist) | 5.457 celdas; el loop NO reduce el cuerpo |
+| Semillas del sintetizador (8 valores) | plano ~53 ops/celda |
+| Parametros (direct_gap 60..300, borrow 0/1) | plano |
+| LMAO nativo sobre la maquina LOOP | ensambla; "Memory usage conflict" al inicializar |
+
+Presupuesto implicado: ~1.000 celdas de programa. Para caber haria falta un
+cuerpo de ~45 gates (el de la maquina de incremento verificada); la aritmetica
+general verificada cuesta 65-140 gates.
+
+**Artefactos verificados y entregados** (evidence/machine_loop_circuits.json,
+evidence/machine_loop_wall.json): inc del repo verificado 0..510; dec =
+neg∘inc∘neg (728 casos, 0 fallos, con el invariante del loop documentado);
+cadena de keystream in-place (reproducible, 16 valores distintos en 16 pasos);
+emisor machine_loop.py con autoverificacion simbolica y LMAO OK.
+
+**Palancas siguientes** (numeradas en la evidencia del muro): despacho EOF con
+bloques propios (+~19k ops de presupuesto); emisor con flags compartidos (mi
+emisor gasta 39 celdas/gate vs 22 del de referencia); sumador de ancho byte.
+
 
 Con el emisor listo y el netlist verificado (adder_netlist/adder_full/
 gadget_min + el emisor machine_hell/machine_compile), lo que falta para la
