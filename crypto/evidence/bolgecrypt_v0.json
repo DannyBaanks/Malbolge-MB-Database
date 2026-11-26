@@ -1,0 +1,36 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "milestone": "BOLGE-CRYPT v0 (bolge-crypt-v0)",
+  "machine": {
+    "image": "vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb",
+    "image_sha256": "aec09e9fe64ae4b456818ce1960b7ecb92ccfae456592c2d5b8413b6190757f1",
+    "role": "incremento de byte mod 256 con carry paralelo; sumar k = k aplicaciones"
+  },
+  "runners": [
+    {
+      "label": "primary",
+      "path": "/tmp/opencode/zigbolge/zig-out/bin/zigbolge"
+    }
+  ],
+  "gates": {
+    "G01_cifrado_en_Classic": true,
+    "G02_descifrado_en_Classic": true,
+    "G03_paridad_runners": "single-runner (no dual disponible)",
+    "G04_vectores": {
+      "referencia": true,
+      "round_trip": true,
+      "all_256_con_k1": true
+    },
+    "G05_payload_ascii_valido": true,
+    "G06_python_no_cifra": true,
+    "G07_steps": {
+      "steps_totales": 129808305,
+      "pasadas": 2013,
+      "pasos_por_byte_mensaje": 9272021.8,
+      "wall_s": 2.88
+    },
+    "G08_seguridad_solo_clave": true
+  },
+  "wrong_key_rejected": true,
+  "source_sha256": "ea7c0c3686e98993de12a44eda2b4a421391c4638b28dfe92a95912e207c3ec4"
+}

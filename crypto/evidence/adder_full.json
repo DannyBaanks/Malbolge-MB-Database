@@ -1,0 +1,43 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "milestone": "M2 kit sumador/restador a nivel de gates",
+  "gadgets": {
+    "B": {
+      "found": true,
+      "expr": "crazy(crazy(x,TWO),crazy(crazy(0,crazy(TWO,y)),crazy(x,y)))"
+    },
+    "P": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(y,x),crazy(crazy(TWO,crazy(crazy(y,x),y)),crazy(x,x))),crazy(x,0)),crazy(y,y))"
+    },
+    "G": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(0,x),y),crazy(x,0)),crazy(y,0))"
+    },
+    "DS": {
+      "found": true,
+      "expr": "crazy(crazy(y,crazy(TWO,x)),crazy(crazy(x,TWO),crazy(crazy(crazy(crazy(crazy(x,y),crazy(TWO,crazy(y,crazy(0,x)))),crazy(0,x)),crazy(x,ONE)),crazy(ONE,x))))"
+    },
+    "Q": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(x,TWO),crazy(crazy(crazy(crazy(x,x),crazy(TWO,crazy(y,0))),crazy(y,x)),crazy(x,ONE))),crazy(y,0)),crazy(crazy(x,x),0))"
+    },
+    "D": {
+      "found": true,
+      "expr": "crazy(crazy(crazy(crazy(y,TWO),crazy(crazy(y,x),crazy(TWO,crazy(crazy(crazy(TWO,x),y),0)))),crazy(crazy(x,y),y)),crazy(0,crazy(y,crazy(x,x))))"
+    }
+  },
+  "tables_reached": 19683,
+  "cases": {
+    "add256": 65536,
+    "sub256": 65536,
+    "add_no_wrap_729": 531441,
+    "failures": 0
+  },
+  "carry_ripples": {
+    "steps": 9,
+    "note": "9 pasos saturan los 10 trits; carry-in = left(c,1)"
+  },
+  "out_of_scope": "dominio 729 con wrap: requiere mascara de 6 trits (gadget no demostrado); v0 cifra en dominio byte, exacto por truncado de OUT",
+  "source_sha256": "9b23865a9856e7279c40e645a23a1d4053db36a48b1fa2fa6821524423efef89"
+}

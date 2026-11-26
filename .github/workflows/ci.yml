@@ -125,6 +125,35 @@ jobs:
           A04_MALBOLGE_RUNNER: /tmp/malbolge-engine/malbolge
         run: python3 -m pytest tools/b2t -q
 
+  # ── BOLGE-CRYPT: cifrado con backend en Malbolge Classic ────────────────
+  # Construye Zigbolge (runner Classic con stdin, fusionado desde el fix de
+  # lectura de stdin) y corre el probe de evidencia del sistema de cifrado.
+  bolge-crypt:
+    name: BOLGE-CRYPT (backend Malbolge)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Zig 0.16
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+
+      - name: Build Zigbolge (runner Classic rápido)
+        run: |
+          git clone --quiet --depth 1 https://github.com/DannyBaanks/Zigbolge /tmp/zigbolge
+          cd /tmp/zigbolge && zig build -Doptimize=ReleaseFast
+
+      - name: BOLGE-CRYPT probe (evidencia)
+        env:
+          BOLGE_RUNNER: /tmp/zigbolge/zig-out/bin/zigbolge
+        run: python3 crypto/probe_bolgecrypt.py --check-only
+
   # ── Guardián de evidencia: nada medido se mueve sin declararlo ──────────
   # Los artefactos bajo evidence/ son registros append-only. Si un PR los
   # toca, debe decirlo explícitamente en el cuerpo del PR.

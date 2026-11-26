@@ -1,0 +1,118 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "milestone": "M1 host oracle carry chain (bolge-crypt-v0)",
+  "domain": "3^6=729 (6 low trits; wrap = trit mask, natural in crazy/ROT; covers all 256 byte values)",
+  "cases": {
+    "add": 531441,
+    "sub": 531441,
+    "total": 1062882,
+    "failures": 0
+  },
+  "identities": {
+    "wrap_high": "add(728,1)=0",
+    "wrap_borrow": "sub(0,1)=728",
+    "bytes_full": "add(255,1)=256, sub(256,1)=255"
+  },
+  "source_sha256": "2db1e215e32792f33ee2471dd1601b5c9e167f7bbf5d6ea8df23eea373e6318b",
+  "note": "host algorithm only; circuit lowering (crazy/ROT gates) and image emission are M2",
+  "rows_sample_add": [
+    {
+      "x": 0,
+      "y": 0,
+      "got": 0,
+      "exp": 0
+    },
+    {
+      "x": 0,
+      "y": 61,
+      "got": 61,
+      "exp": 61
+    },
+    {
+      "x": 0,
+      "y": 122,
+      "got": 122,
+      "exp": 122
+    },
+    {
+      "x": 0,
+      "y": 183,
+      "got": 183,
+      "exp": 183
+    },
+    {
+      "x": 0,
+      "y": 244,
+      "got": 244,
+      "exp": 244
+    },
+    {
+      "x": 0,
+      "y": 305,
+      "got": 305,
+      "exp": 305
+    },
+    {
+      "x": 0,
+      "y": 366,
+      "got": 366,
+      "exp": 366
+    },
+    {
+      "x": 0,
+      "y": 427,
+      "got": 427,
+      "exp": 427
+    }
+  ],
+  "rows_sample_sub": [
+    {
+      "x": 0,
+      "y": 0,
+      "got": 0,
+      "exp": 0
+    },
+    {
+      "x": 0,
+      "y": 61,
+      "got": 668,
+      "exp": 668
+    },
+    {
+      "x": 0,
+      "y": 122,
+      "got": 607,
+      "exp": 607
+    },
+    {
+      "x": 0,
+      "y": 183,
+      "got": 546,
+      "exp": 546
+    },
+    {
+      "x": 0,
+      "y": 244,
+      "got": 485,
+      "exp": 485
+    },
+    {
+      "x": 0,
+      "y": 305,
+      "got": 424,
+      "exp": 424
+    },
+    {
+      "x": 0,
+      "y": 366,
+      "got": 363,
+      "exp": 363
+    },
+    {
+      "x": 0,
+      "y": 427,
+      "got": 302,
+      "exp": 302
+    }
+  ]
+}

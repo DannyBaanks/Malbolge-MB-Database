@@ -1,0 +1,18 @@
+{
+  "D_mod3": {
+    "found": true,
+    "expr": "crazy(crazy(0,crazy(y,crazy(x,x))),crazy(crazy(y,crazy(x,y)),crazy(crazy(y,TWO),crazy(crazy(x,y),crazy(TWO,crazy(0,crazy(y,crazy(x,TWO))))))))",
+    "depth": 2
+  },
+  "G_ge3": {
+    "found": true,
+    "expr": "crazy(crazy(y,0),crazy(crazy(x,0),crazy(y,crazy(x,0))))",
+    "depth": 2
+  },
+  "P_eq2": {
+    "found": true,
+    "expr": "crazy(crazy(y,y),crazy(crazy(x,0),crazy(crazy(x,y),crazy(crazy(x,x),crazy(TWO,crazy(y,crazy(x,y)))))))",
+    "depth": 2
+  },
+  "tables_reached": 19683
+}
