@@ -44,6 +44,15 @@ contenedor, los 256 bytes con +1, paridad entre runners si hay dos,
 payload ASCII 33..126, pasos/byte medidos y rechazo de clave incorrecta.
 El probe se niega a escribir si algo falla.
 
+## Rapido vs estadistica: `--span`
+
+Por defecto el keystream cubre 0..255 (255 pasadas de maquina por mensaje).
+`--span N` (1..256) acota el keystream a N valores: las pasadas caen a N-1
+(span=16 -> ~0,24 ms/byte medido). A cambio, cada byte del claro tiene N
+desplazamientos posibles en su posicion (mas filtraje estadistico cifrado-
+solo). El modelo de seguridad no cambia: sigue descendiendo en el PRNG y la
+clave. Ver SPEC §6c para la tabla completa.
+
 ## Advertencias honestas
 
 - Keystream experimental (splitmix64): no es criptografia auditada.
