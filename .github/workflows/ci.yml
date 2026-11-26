@@ -152,7 +152,7 @@ jobs:
       - name: BOLGE-CRYPT probe (evidencia)
         env:
           BOLGE_RUNNER: /tmp/zigbolge/zig-out/bin/zigbolge
-        run: python3 crypto/probe_bolgecrypt.py
+        run: python3 crypto/probe_bolgecrypt.py --check-only
 
   # ── Guardián de evidencia: nada medido se mueve sin declararlo ──────────
   # Los artefactos bajo evidence/ son registros append-only. Si un PR los

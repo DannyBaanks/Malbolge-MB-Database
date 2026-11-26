@@ -29,6 +29,12 @@ import bolgecrypt as B  # noqa: E402
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", help="ruta de evidencia (default crypto/evidence/bolgecrypt_v0.json)")
+    ap.add_argument("--check-only", action="store_true",
+                    help="no escribe: re-ejecuta las puertas y verifica la evidencia comprometida")
+    args = ap.parse_args()
     here = pathlib.Path(__file__).resolve().parent
     image = here.parents[0] / "vm_malbolge/evidence/increment_circuit_loop_v1/run02/increment.mb"
     if not image.is_file():
@@ -128,15 +134,39 @@ def main():
         "wrong_key_rejected": wrong_rejected,
         "source_sha256": hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
     }
+    if not ok:
+        raise SystemExit(3)
     ev = here / "evidence"
     ev.mkdir(exist_ok=True)
-    out = ev / "bolgecrypt_v0.json"
+    out = pathlib.Path(args.out) if args.out else ev / "bolgecrypt_v0.json"
+    if args.check_only:
+        if not out.exists():
+            raise SystemExit(f"check-only sin evidencia comprometida: {out}")
+        committed = json.loads(out.read_text())
+        problemas = []
+        if committed.get("claim_status") != results["claim_status"]:
+            problemas.append(f"claim_status comprometido={committed.get('claim_status')} vs actual={results['claim_status']}")
+        for k, v in results["gates"].items():
+            cv = committed.get("gates", {}).get(k)
+            if isinstance(v, bool) and cv is not v:
+                problemas.append(f"gate {k}: comprometido={cv} vs actual={v}")
+            if isinstance(v, dict) and cv is not None and not isinstance(cv, str):
+                for kk, vv in v.items():
+                    if isinstance(vv, bool) and cv.get(kk) is not vv:
+                        problemas.append(f"gate {k}.{kk}: comprometido={cv.get(kk)} vs actual={vv}")
+        if committed.get("wrong_key_rejected") is not results["wrong_key_rejected"]:
+            problemas.append("wrong_key_rejected difiere")
+        if problemas:
+            print("EVIDENCIA COMPROMETIDA NO COINCIDE:")
+            for pr in problemas:
+                print(" -", pr)
+            raise SystemExit(4)
+        print(f"evidencia comprometida verificada: {out} claim={committed['claim_status']}")
+        return
     if out.exists():
         raise FileExistsError(out)
     out.write_text(json.dumps(results, indent=2))
     print("evidencia:", out, results["claim_status"])
-    if not ok:
-        raise SystemExit(3)
 
 
 if __name__ == "__main__":
