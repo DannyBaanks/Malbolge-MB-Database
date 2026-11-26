@@ -80,3 +80,49 @@ descifrado: data_i = (out_i - ks_i) mod 256
 - Los `steps` entre Olmstead y Zigbolge pueden diferir en una constante de
   arranque (medido hoy: 80.745 vs 77.999 en la misma imagen de incremento);
   la paridad funcional byte a byte es la que se exige.
+
+## 6. Arquitectura v0 DESPLEGADA (con evidencia)
+
+El plan original (imagen especializada por mensaje, keystream en .DATA por
+posicion, netlist completo de suma/resta) quedo **bloqueado por un muro medido**:
+
+| Ruta | Resultado medido |
+|---|---|
+| Emision straight-line N=1 (machine_hell.py, netlist verificado) | 5.397 celdas de layout (140 ops) |
+| Instalador BolgeForge (seed 14 y barrido 0..2024) | ~287k ops vs presupuesto ~51,5k (53 ops/celda, plano en semillas) |
+| Capacidad implícita del instalador | ~1.050 celdas de programa |
+| LMAO nativo sobre el mismo .hell | "Memory usage conflict while generating initialization code" |
+
+Con ese presupuesto no cabe un sumador completo (~53 gates minimos, closure
+completo demostrado: 19.683/19.683 tablas alcanzables por crazy; gadgets
+minimales D=9, G=6, P=11, DS=13, B=6, Q=12; ripple Kogge-Stone de 3 pasos
+verificado exhaustivo 65.536 casos add + sub256, 0 fallos).
+
+**v0 desplegado (todo medido, evidencia en evidence/bolgecrypt_v0.json):**
+la operacion criptograica de cada byte la ejecuta la maquina Classic
+**verificada** `vm_malbolge/evidence/increment_circuit_loop_v1/run02/
+increment.mb` (incremento mod 256 con acarreo paralelo; 517 casos de paridad
+en su evidencia; reverificada hoy tambien contra Zigbolge). Sumar k a un
+byte = aplicar la maquina k veces; restar k = aplicarla (256-k) veces. La
+suma modular la hace Malbolge en cada paso (G01/G02/G06); Python solo
+deriva el keystream (splitmix64 sobre SHA-256(clave||nonce), experimental
+y documentado) y orquesta. Contenedor BLC1 con nonce por mensaje, CRC-32
+del claro y payload base-94 ASCII 33..126 (G05, sintacticamente valido).
+
+Coste medido: ~9,3M pasos por byte de mensaje (~144 pasadas de maquina por
+byte, ~64,5k pasos por pasada incluyendo init); ~0,2 s/byte con Zigbolge
+(667M pasos/s), ~30 s/byte con el Olmstead original (~31k pasos/s).
+Mensajes pequenos (credenciales, tokens): un bloque de 64 B tarda ~13 s.
+
+## 7. M6 — siguiente hito (maquina propia, cuando haya presupuesto)
+
+Con el emisor listo y el netlist verificado (adder_netlist/adder_full/
+gadget_min + el emisor machine_hell/machine_compile), lo que falta para la
+maquina especializada es resolver el presupuesto del instalador:
+  (a) maquina de encapsulation LOOP con estado (keystream crazy-chain en una
+      celda, avance = 1 crazy/byte) en vez de especializacion por mensaje;
+  (b) despacho EOF con bloques propios (sin las @ fijas) para recuperar
+      ~19k ops de presupuesto;
+  (c) o acceptance de imagenes multi-imagen por contenedor.
+Estimacion: ~39-45 gates de encapsulación (circuitos +1/-1 duales + test de
+contador) => ~1.000-1.300 celdas, en el filo del presupuesto medido.

@@ -1,0 +1,36 @@
+{
+  "claim_status": "DEMONSTRATED",
+  "gadgets_min": {
+    "B": {
+      "expr": "crazy(crazy(x,TWO),crazy(crazy(0,crazy(TWO,y)),crazy(x,y)))",
+      "gates": 6
+    },
+    "P": {
+      "expr": "crazy(crazy(crazy(crazy(y,x),crazy(crazy(TWO,crazy(crazy(y,x),y)),crazy(x,x))),crazy(x,0)),crazy(y,y))",
+      "gates": 11
+    },
+    "G": {
+      "expr": "crazy(crazy(crazy(crazy(0,x),y),crazy(x,0)),crazy(y,0))",
+      "gates": 6
+    },
+    "DS": {
+      "expr": "crazy(crazy(y,crazy(TWO,x)),crazy(crazy(crazy(ONE,x),y),crazy(crazy(crazy(x,0),y),crazy(crazy(TWO,y),crazy(crazy(TWO,x),x)))))",
+      "gates": 13
+    },
+    "Q": {
+      "expr": "crazy(crazy(crazy(crazy(crazy(y,ONE),crazy(TWO,x)),crazy(crazy(y,x),y)),crazy(y,crazy(x,ONE))),crazy(crazy(x,x),0))",
+      "gates": 12
+    },
+    "D": {
+      "expr": "crazy(crazy(TWO,crazy(x,y)),crazy(crazy(y,x),crazy(crazy(x,y),crazy(crazy(x,TWO),y))))",
+      "gates": 9
+    }
+  },
+  "ripple": "Kogge-Stone shifts (1,2,4) with P-doubling, 3 steps",
+  "cases": {
+    "add256": 65536,
+    "sub256": 65536,
+    "failures": 0
+  },
+  "adder_gate_estimate": 53
+}
